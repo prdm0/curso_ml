@@ -1,0 +1,679 @@
+---
+title: "Machine Learning / Aprendizagem de Máquina"
+author: "Prof. Dr. Pedro Rafael D. Marinho<br>Departamento de Estatística - UFPB<br>"
+date: '`r Sys.Date()`'
+format: 
+  revealjs:
+    theme: [default, style.scss]
+    width: 1920
+    height: 1080
+    logo: "https://www.ufpb.br/de/contents/imagens/logode.png"
+    footer: '<a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a>'
+    transition: slide
+    background-transition: fade
+    preview-links: auto
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    controls: true
+    incremental: true  
+    code-tools: true
+    auto-stretch: true
+    code-link: true
+revealjs-plugins:
+  - pointer
+  - attribution
+  - roughnotation
+filters:
+   - roughnotation
+execute:
+  refresh: true
+  warning: false
+  error: false
+  eval: true
+  echo: true
+editor: 
+  markdown: 
+    wrap: 72
+lang: pt
+---
+
+<!-- ```{r} -->
+
+<!-- #| echo: false -->
+
+<!-- #| warning: false -->
+
+<!-- #| eval: true -->
+
+<!-- if(fs::dir_exists("index_files/")) -->
+
+<!--   fs::dir_delete("index_files/") -->
+
+<!-- ``` -->
+
+::: r-fit-text
+Aprendizagem de Máquina
+
+[Bacharelado em Estatística]{.flow}
+
+UFPB
+:::
+
+#  {.title}
+
+::: r-fit-text
+[Apresentação]{.flow}
+:::
+
+##  {background-image="https://raw.githubusercontent.com/prdm0/imagens/main/eu.jpg" background-size="contain" background-position="left"}
+
+::: columns
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+## Sobre mim {.r-fit-text}
+
+<br> <br>
+
+-   Me chamo [Prof. Dr. Pedro Rafael D.
+    Marinho](https://prdm.netlify.app/about_pt_br.html){preview-link="true"}.
+    Meu currículo Lattes poderá ser acessado clicando
+    [aqui](http://lattes.cnpq.br/7185368598935272){preview-link="true"}.
+
+-   Sou docente do Departamento de Estatística da UFPB. 👨‍🏫
+
+-   Toda minha formação acadêmica é na área de estatística (bacharelado
+    ao doutorado).
+
+-   Tenho entusiasmo por programação, ciência de dados e aprendizagem de
+    máquina 💻📈.
+
+-   `r fontawesome::fa("github", "black")` Me acompanhe no GitHub:
+    <https://github.com/prdm0>.
+
+-   `r fontawesome::fa("linkedin", "black")` Me acompanhe no Linkedin:
+    <https://www.linkedin.com/in/prdm0/>.
+:::
+:::
+
+# O Departamento {.title}
+
+## Meu segundo lar {.r-fit-text background-color="black" background-image="https://raw.githubusercontent.com/prdm0/imagens/main/foto_aerea_ufpb.jpeg" background-size="1600px" background-repeat="repeat" background-opacity="0.35"}
+
+```{r width = 100, height = 100, echo = FALSE, fig.cap="Departamento de Estatística da UFPB."}
+library(leaflet)
+leaflet() |>
+  addMarkers(-34.846199, -7.140400) |>
+  leaflet::addTiles() |>
+  setView(
+  -34.846199, -7.140400, zoom = 37,
+  options = popupOptions(
+    minWidth = 1600,
+    maxWidth = 1500
+  ))
+```
+
+## `r fontawesome::fa("laptop-code", "black")` Que linguagem de programação utilizar?
+
+<br>
+
+Nesse curso, será abordado a linguagem de programação [R](https://www.r-project.org/), mas lembre-se que você poderá utilizar qualquer linguagem de programação para fazer ciência de dados. Porém, R e Python são as minhas sugestões, haja vista que, atualmente, elas são as linguagens com maior quantidade de ferramentas e usuários trabalhando na área de [ciência de dados](https://en.wikipedia.org/wiki/Data_science).
+
+<br>
+
+[Outros motivos que me leva a lecionar a disciplina utilizando a linguagem R são:]{.black}
+
+1. Possui ferramentas muito bem pensadas para manipulação e tratamento de dados;
+2. Normalmente, os frameworks de machine learning de R são menos verbosos que os de Python;
+3. Matrizes e data frames são estruturas de dados que já encontra-se definidas dentro da linguagem, não precisando assim de importar bibliotecas.
+
+Isso é meu gosto pessoal. É um gosto que, talvez, faz mais sentido, em se tratando de alguém que vem da estatística. No mercado de trabalho e em seus estudos, após cursar as disciplinas de R e Python, fornecidas pelo [Bacharelado em Estatística da UFPB](https://www.ufpb.br/de), você terá a capacidade de estudar os frameworks de machine learning, aos seus próprios passos e escolher o que melhor te agrada. A linguagem [Julia](https://julialang.org/) também poderá ser uma ótima opção.
+
+#  {.title}
+
+::: r-fit-text
+[Aprendizagem de Máquina: O que é?]{.flow}
+:::
+
+## `r fontawesome::fa("robot", "black")` Aprendizagem de máquina
+
+<br>
+
+![](gifs/am.gif){.fragment width="800" height="600"}
+
+## `r fontawesome::fa("robot", "black")` Aprendizagem de máquina
+
+<br> <br>
+
+**Alguns pontos**:
+
+<br>
+
+1.  A **A**prendizagem de **M**áquina (AM), também chamada de
+    **M**achine **L**earning (ML), no inglês, nasceu na década de 60
+    como um campo da inteligênica artificial.
+
+2.  Em sua origem, as aplicações de AM tinha como objetivo aprender
+    padrões com base nos dados.
+
+3.  Originalmente, as aplicações de AM eram de cunho estritamente
+    computacional. Todavia, desde o início dos anos 90, a área de
+    aprendizagem de máquina expandiu seus horizontes e começou a se
+    estabelecer como um campo por sim mesma.
+
+4.  Em particular, a área de aprendizagem de máquina começou a
+    estabelecer muitas intersecções com a estatística. Muitos de seus
+    algoritmos são construídos com base em metodologias que surgiram na
+    estatística.
+
+5.  Atualmente, a comunidade de AM é bastante interdisciplinar e
+    utiliza-se de ideias desenvolvidas em diversas áreas, sendo a
+    estatística uma delas.
+
+## `r fontawesome::fa("robot", "black")` Tipos de Aprendizado
+
+<br>
+
+[Aprendizado supervisionado]{.black}
+
+<br>
+
+Nesse curso, inicialmente estudaremos problemas de [aprendizado
+supervisionado]{.red}, que consiste em aprender a fazer predições a
+partir de conjunto de dados em que rótulos (valores da variável resposta
+$Y$) são observados. Trataremos tanto de problemas de regressão (estimar
+um valor númérico) quanto problemas de classificação (classificar um
+cliente como aprovado ou reprovado, em um problema de concessão de
+crédito). Por exemplo, os [modelos de regressão]{.red} são exemplos de
+aprendizado supervisionado.
+
+<br>
+
+[Aprendizado não supervisionado]{.black}
+
+<br>
+
+Na segunda parte do curso, aprenderemos alguns métodos de aprendizado
+[não supervisionado]{.red}, ou seja, algoritmos que não utilizam-se de
+rótulos, em que busca-se aprender mais sobre a estrutura dos dados. Por
+exemplo, os [métodos de agrupamento]{.red} (cluster), são exempĺos de
+métodos de aprendizado não supervisionado.
+
+## `r fontawesome::fa("robot", "black")` Tipos de Aprendizado
+
+<br>
+
+Muito embora no nosso curso focaremos nas abordagens de aprendizagem
+**supervisionada** e **não-supervisionada**, os tipos de aprendizagem,
+em geral, podem ser mais amplos, em que temos:
+
+<br>
+
+1.  Aprendizagem supervisionada;
+2.  Aprendizagem não-supervisionada;
+3.  Aprendizagem semi-supervisionada;
+4.  Aprendizagem por reforço.
+
+## O que é aprender?
+
+<br>
+
+Antes de detalharmos os tipos de aprendizagem de máquina, uma dúvida que
+poderá surgir é: ["O que é aprender?"]{.red}. ["Como a máquina
+aprende?"]{.red}.
+
+<br>
+
+![](gifs/am.gif){.fragment width="900" height="600"}
+
+## O que é aprender?
+
+<br>
+
+De forma simples, aprender é ganhar conhecimento através de estudo,
+experiências, por meio de ensinamentos.
+
+<br>
+
+Tá, mais como é que a [máquina]{.red} aprende?
+
+<br>
+
+1.  [Aprendizagem]{.red} é o processo em que se adquire conhecimento,
+    isto é, é o processo em que utilizamos de algoritmos e fornecemos
+    dados a esses algoritmos para que possamos extrair conhecimento.
+    Nesse processo de aprendisagem, os algoritmos fazem uso de dados
+    para a extressão de conhecimento, através de procedimentos
+    **supervisionado**, **não-supervisionado**, **semi-supervisionado**
+    ou **por reforço**, a depender do algoritmo que você deseja
+    utilizar.
+
+<br>
+
+2.  [Aprendizado]{.red} é o modelo ajustado, isto é, é o conhecimento
+    adquirido após o treinamamento obtido no processo de aprendizagem.
+    Você poderá entender como sendo o modelo ajustado e que utilizamores
+    para a tomada de decisões.
+
+## O que é aprender?
+
+<br>
+
+Portanto, você poderá entender, basiciamente, existe quatro tipos de
+aprendizagem, sendo os dois primeiros o que mais focaremos nesse curso e
+que de loge são os mais utilizados:
+
+<br>
+
+1.  Aprendizagem supervisionada;
+2.  Aprendizagem não-supervisionada;
+3.  Aprendizagem semi-supervisionada;
+4.  Aprendizagem por reforço.
+
+## Aprendizagem supervisionada
+
+<br>
+
+Nesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados
+em que conhecemos rótulos para a variável de interesse. É como se você
+soubesse onde um bom modelo deve chegar, para assim ser reconhecido como
+um bom modelo. Por exemplo,
+
+<br>
+
+1.  [Classificação]{.red}: precisamos determinar a classe de uma
+    instância de dados, o seu atributo, i.e.,
+    $\widehat{y} = \mathrm{argmax}_y\,P(Y = y\,|\, X = \bf{x})$, em que
+    y é um atributo que desejamos prever (cahorro, gato, sapo), e
+    $\bf{x}$ é um vetor de características (peso, altura, comprimento,
+    se tem rabo, etc).
+
+<br>
+
+2.  [Regressão]{.red}: precisamos estimar uma quantidade numérica, i.e.,
+    o valor da variável alvo por meio de uma instância de dados, ou
+    seja, precisamos estimar $Y = \mathbb{E}(Y\,|\,X = \bf{x})$, i.e.,
+    devemos encontrar meios de obter $\widehat{Y}$.
+
+::: aside
+**Algumas observações de nomenclaturas**:
+
+1.  É comum chamar cada exemplo de dados, i.e., o vetor $\bf{x}$ que
+    será passado ao modelo de [atributos]{.red} ou [features]{.red};
+2.  Também é comum chamarmos de [rótulo]{.red} ou [label]{.red} a classe
+    ou valor alvo, ou seja, estas são as formas de nomearmos $Y$, sendo
+    $Y$ uma quantidade numérica (modelos de regressão) ou não (modelos
+    de classificação).
+:::
+
+## Aprendizagem supervisionada
+
+<br>
+
+Em se tratando de métodos de classificação, podemos ter os métodos:
+
+<br>
+
+1.  [Generativos]{.red}: são os métodos que dada as variáveis $X$ e $Y$,
+    o objetivo é encontrar a distribuição de probabilidade conjunta
+    $P(X, Y)$, para então poder determinar $P(Y\, | \, X = \bf{x})$.
+    Alguns métodos são:
+
+    -   Naive Bayes;
+    -   Descriminante linear.
+
+<br>
+
+2.  [Descriminativos]{.red}: são os métodos que estimam diretamente a
+    probabilidade condicional $P(Y \, | \, X = \bf{x})$ ou que mesmo nem
+    assumem modelos probabilísticos. Podemos citar:
+    -   Regressão logistica;
+    -   Perceptron;
+    -   Support Vector Machine - SVM.
+
+## Aprendizagem supervisionada
+
+<br>
+
+::: columns
+::: {.column width="60%"}
+![](gifs/classificacao.webp)
+:::
+
+::: {.column width="40%"}
+<br> Poderíamos estar interessados em classificar o tamanho de morangos:
+
+<br>
+
+1.  S (**S**low): pequeno;
+
+2.  M (**M**edium): médio;
+
+3.  L (**L**arge): grande.
+:::
+:::
+
+## Aprendizagem supervisionada
+
+<br> <br>
+
+![Mais dois problemas de classificação (linear x
+não-linear).](gifs/Classification-Examples.gif){.fragment
+fig-align="center" width="900"}
+
+## Aprendizagem supervisionada
+
+<br> <br>
+
+![](gifs/regression.gif){.fragment fig-align="center" width="1200"}
+
+Um exemplo de de um problema de regressão. Aqui, a ideia é utilizar a
+equação da reta estimada, a reta que minimiza a soma dos quadrados entre
+a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica
+através de novos atributos passado ao modelo, i.e., por meio da equação
+da reta e de um novo valor de $x$.
+
+## Aprendizagem supervisionada
+
+<br>
+
+Um outro exemplo seria a classificação de imagem/vídeo, utilizando um
+algoritmo de rede neural, por exemplo, usando uma **C**onvolutional
+**N**eural **N**etwork -
+[CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network). Foram
+utilizados diversas imagens de pessoas "com" e "sem" máscara. Em que
+"com" representa detecção da máscara na face da pessoa e "sem" a não
+detecção.
+
+<br>
+
+{{< video https://www.youtube.com/watch?v=Zt_Fr7YbU1c width="50%" height="50%" >}}
+
+## Aprendizagem não-supervisionada
+
+<br>
+
+Nesse tipo de aprendizagem, os algoritmos trabalham sobre dados não
+rotulados, por exemplo, em uma trarefa de agrupamento.
+
+<br>
+
+Os algoritmos verificam se as instâncias observadas poderão ser
+arranjadas de alguma maneira, por exemplo, usando alguma métrica de
+distância, formando grupos (*clusters*).
+
+<br>
+
+A ideia é maximizar a distância entre os clusters e minimizar a
+distância entre os elementos no interrior do grupo. Em outras palavras,
+o que se quer é tornar os grupos mais diferentes possíveis e tornar os
+elementos dos grupos o mais parecido possível.
+
+<br>
+
+Aqui, por não haver rótulos, um problema comum é determinar a quantidade
+de grupos ideal que muitas vezes são obtidos de forma subjetiva ou por
+heurísticas. A quantidade de grupos é um dilema!
+
+## Aprendizagem não-supervisionada
+
+<br>
+
+![](gifs/kmeans.gif){.fragment fig-align="center" width="900"}
+
+Após a detecção dos grupos, é preciso analisar o resultado de modo a
+tentar extrair informações coerentes de modo a saber o que cada grupo
+representa no problema em questão.
+
+## Aprendizagem semi-supervisionada
+
+<br>
+
+A aprendizagem semi-supervisionada é uma abordagem na área de
+aprendizagem de máquina onde um algoritmo utiliza tanto dados rotulados
+quanto não rotulados para treinamento. Por exemplo, algoritmos que
+propagam rótulos, como o *Label Propagation*, em que rótulos conhecidos
+são propagados para dados não rotulados com base em sua sua proximidade
+no espaço de características.
+
+<br>
+
+Uma outra abordagem seria misturar modelos (*Model Blending*), em que
+diferentes modelos são treinados em diferentes partes do conjunto de
+dados, por exemplo, um modelo para a parte roturada e um para a parte
+não rotulada.
+
+<br>
+
+![](gifs/hum.gif){.fragment width="50%"}
+
+## Aprendizagem por reforço
+
+<br>
+
+Nesse tipo de aprendizagem, não há uma fonte externa de exemplos. O
+agente (modelo) aprende aprende com sua própria experiência, por
+tentativas e erros, em que você deverá definir uma medida de sucesso, e
+eventualmente recompensar os acertos. No vídeo abaixo, veja um joguinho
+que criei em R, onde o carrinho aprendeu a desviar de obstáculos
+aleatórios que aparecem em sua frente. Utilizou-se uma rede neural cuja
+a saída poderia ser ("parado", "para cima" ou "para baixo"). Veja o
+código clicando
+[**aqui**](https://github.com/prdm0/desviando_obstaculos).
+
+<br>
+
+{{< video https://www.youtube.com/watch?v=9NXUtwGkkDw&t=2s width="50%" height="50%" >}}
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamentom
+
+<br>
+
+Um dos passos mais importante no fluxo de trabalho (*workflow*) de um
+modelo de aprendizagem de máquina, consiste na preparação dos dados,
+onde realizamos transformações, inputações de valores ausentes,
+identificação de outliers, remoção de variáveis altamente
+correlacionadas, entre outros.
+
+<br>
+
+Fazer uma análise exploratória dos dados é um passo importante para que
+se possa entender e detecatar possíveis inconsistências na base de
+dados. Não adianta fazer uso de modelos muito sofisticados quando se tem
+uma base de dados cheia de problemas.
+
+<br>
+
+Normalmente trabalhamos com juntos de dados (tabelas) relacionais, em
+que cada linha é uma observação e cada coluna representa um atributo do
+objeto/observação. A linha de uma base de dados relacional, sem sua a
+variável de interesse, lembre-se que denominamos $Y$ de [rótulo]{.red}
+ou [label]{.red}, fornece o vetor de características $\bf{x}$ que
+descreve uma dada observação.
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+No artigo [Tidy Data](https://www.jstatsoft.org/article/view/v059i10),
+2014, publicado no Journal of Statistical Sofware, o Hadley Wickham
+discute que o princípio de dados organizados estão intimamente
+relacionados com banco de dados relacional e mais próximo do reciocínio
+que empregamos na álgebra. Nesse artigo, ele define o que é [Tidy
+Dados]{.red}, sendo essa uma maneira de mapear um conjunto de dados.
+
+<br>
+
+Segundo o artigo, um conjunto de dados é [bagunçado]{.red} ou
+[arrumado]{.red}/[tidy]{.red}, dependendo de como as linhas, colunas e
+tabelas são combinadas com as observações, variáveis e tipos. Em dados
+arrumados (dados tidy), temos que:
+
+<br>
+
+1.  Cada variável forma uma coluna;
+2.  Cada observação forma uma linha;
+3.  Cada valor deve ter sua própria célula.
+
+<br>
+
+Embora existam situações em que já podemos começar a analisar uma base
+de dados real, essa é a exceção e não a regra. Normalmente, nos
+deparamos com bases de dados que violam uma ou mais dessas regras.
+Sempre, que possível, procure utilizar dados no formato [Tidy]{.red}.
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+![Representação de uma base de dados no formato tidy.](imgs/tidy-1.png)
+
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+> "As famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira." -- [Leo Tolstoy](https://en.wikipedia.org/wiki/Leo_Tolstoy)
+
+> "Conjuntos de dados organizados são todos iguais, mas todo conjunto de dados confuso é confuso à sua maneira." -- [Hadley Wickham](https://hadley.nz/)
+
+<br>
+
+![Trabalhar com a Tabela do lado esquerdo é melhor que a Tabela do lado direito. Prefira, sempre que possível, o formato tidy. Não permita-se ficar estressado tão facilmente.](imgs/tidy-2.png){width="50%"}
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+A linguagem de programação R possue diversas ferramentas que permite manipular e explorar bases de dados. Enumero algumas:
+
+
+1. [dplyr](https://dplyr.tidyverse.org/): biblioteca que implementa é uma gramática de manipulação de dados, fornecendo um conjunto consistente de verbos que ajudam a resolver os desafios mais comuns de manipulação de dados;
+2. [tidyr](https://tidyr.tidyverse.org/): ferramentas para ajudar a criar dados organizados, onde cada coluna é uma variável, cada linha é uma observação e cada célula contém um único valor;
+3. [ggplot2](https://ggplot2-book.org/): um sistema para criar gráficos 'declarativamente', baseado no livro [The Grammar of Graphics](https://www.amazon.com.br/Grammar-Graphics-Leland-Wilkinson/dp/0387245448), de [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson);
+4. [visdat](https://docs.ropensci.org/visdat/): uma biblioteca útil para um visualização exploratória preliminar de dados;
+5. [explore](https://github.com/rolkra/explore): biblioteca que apresenta algumas rotinas de análise para realizar uma análise exploratória nos dados.
+
+Todas essas bibliotecas estão muito bem documentadas. É importante que vocês explorem as documentas dessas bibliotecas, pois eventualmente irei utizar alguma delas.
+
+![](gifs/ok.gif)
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+No [Capítulo 12](https://r4ds.had.co.nz/tidy-data.html), do livro [R for Data Science](https://r4ds.had.co.nz/index.html), o autor aborda mais sobre o formato Tidy e como trabalhar com a biblioteca [tidyr](https://tidyr.tidyverse.org/). [Aqui](https://r4ds.had.co.nz/transform.html?q=dplyr#dplyr-basics) o autor aborda de forma básica o pacote [dplyr](https://dplyr.tidyverse.org/).
+
+<br>
+
+Durante o curso, na medida da necessidade de utilização dessas ferramentas, durante a exposição de exemplos, abordaremos alguns conceitos. Ok?
+
+<br>
+
+![](gifs/ok.gif)
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+Muitas vezes, no processo de tratamento dos dados, também estamos preocupados em remover atributos que não são significativo para a modelagem, em que nesse momento a experiência dos especialistas são fundamentais.
+
+<br>
+
+É comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.
+
+<br>
+
+As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se $x >= 1$, em que $x$ é um atributo numérico qualquer. 
+
+<br>
+
+Em diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por `NA`.
+
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+Poderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:
+
+<br>
+
+1. Tomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;
+2. Criar um novo valor que é indicação de valor faltante;
+3. Usar algoritmos como $k$-nearest neighbors - KNN ($k$ vizinhos mais próximos) para imputar valores coerentes;
+4. Interpolar os dados.
+
+<br>
+
+Esses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados.
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+É comum ser necessário transformar os dados:
+
+1. Pode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;
+
+2. Pode-se discretizar valores contínuos ou transformá-los em intervalos;
+
+3. É comum transformar atributos categóricos com $p$ categorias, em $p$ novos atributos binários.
+    - [One-hot encoding](https://en.wikipedia.org/wiki/One-hot)
+    - [Variáveis dummy](https://en.wikipedia.org/wiki/Dummy_variable_(statistics))
+    
+4. Outra transformação muito comum é a normalização dos dados. Normalizar os dados é muito útil quando os atributos numéricos possuem escalas muito diferentes.
+
+::: columns
+
+::: {.column width="50%"}
+$$X_{novo} = \frac{X - X_{min}}{X_{max} - X_{min}},$$
+em que $X_{novo} \in [0, 1].$
+:::
+
+::: {.column width="50%"}
+$$X_{novo} = Z = \frac{X - \mu}{\sigma^2},$$
+em que $\mathbb{E}(X) = \mu$ é a média dos dados e $\mathrm{Var}(X) = \sigma^2$. Na prática, em um contexto de v.a., iids, usamos $\overline{x}$ como estimador de $\mu$ e $S^2$ (variância amostral) como estimador de $\sigma^2$.
+:::
+
+:::
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+Lembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o $\log(\cdot)$.
+
+<br>
+
+::: columns
+
+::: {.column width='50%'}
+
+```{r}
+set.seed(0)
+rgamma(1000, 2, 2) |> 
+  hist()
+```
+:::
+
+::: {.column width='50%'}
+```{r}
+set.seed(0)
+rgamma(1000, 2, 2) |> 
+  log() |> hist()
+```
+:::
+:::
+
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
+
+<br>
+
+Anteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter cidado bibliotecas do framework [tidymodels](https://www.tidymodels.org/packages/), em especial o [recipes](https://recipes.tidymodels.org/) que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote [recipes](https://recipes.tidymodels.org/).
+
+<br>
+
+O tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels.
+
+<br>
+
+![](gifs/ok-2.gif){width=20%}

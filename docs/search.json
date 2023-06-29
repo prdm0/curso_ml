@@ -1,0 +1,226 @@
+[
+  {
+    "objectID": "index.html#section-1",
+    "href": "index.html#section-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "",
+    "text": "Sobre mim\n \n\nMe chamo Prof. Dr. Pedro Rafael D. Marinho. Meu currículo Lattes poderá ser acessado clicando aqui.\nSou docente do Departamento de Estatística da UFPB. 👨‍🏫\nToda minha formação acadêmica é na área de estatística (bacharelado ao doutorado).\nTenho entusiasmo por programação, ciência de dados e aprendizagem de máquina 💻📈.\n Me acompanhe no GitHub: https://github.com/prdm0.\n Me acompanhe no Linkedin: https://www.linkedin.com/in/prdm0/."
+  },
+  {
+    "objectID": "index.html#sobre-mim",
+    "href": "index.html#sobre-mim",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Sobre mim",
+    "text": "Sobre mim\n \n\nMe chamo Prof. Dr. Pedro Rafael D. Marinho. Meu currículo Lattes poderá ser acessado clicando aqui.\nSou docente do Departamento de Estatística da UFPB. 👨‍🏫\nToda minha formação acadêmica é na área de estatística (bacharelado ao doutorado).\nTenho entusiasmo por programação, ciência de dados e aprendizagem de máquina 💻📈.\n Me acompanhe no GitHub: https://github.com/prdm0.\n Me acompanhe no Linkedin: https://www.linkedin.com/in/prdm0/."
+  },
+  {
+    "objectID": "index.html#meu-segundo-lar",
+    "href": "index.html#meu-segundo-lar",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Meu segundo lar",
+    "text": "Meu segundo lar\n\n\n\n\nDepartamento de Estatística da UFPB."
+  },
+  {
+    "objectID": "index.html#que-linguagem-de-programação-utilizar",
+    "href": "index.html#que-linguagem-de-programação-utilizar",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Que linguagem de programação utilizar?",
+    "text": "Que linguagem de programação utilizar?\n\nNesse curso, será abordado a linguagem de programação R, mas lembre-se que você poderá utilizar qualquer linguagem de programação para fazer ciência de dados. Porém, R e Python são as minhas sugestões, haja vista que, atualmente, elas são as linguagens com maior quantidade de ferramentas e usuários trabalhando na área de ciência de dados.\n\nOutros motivos que me leva a lecionar a disciplina utilizando a linguagem R são:\n\nPossui ferramentas muito bem pensadas para manipulação e tratamento de dados;\nNormalmente, os frameworks de machine learning de R são menos verbosos que os de Python;\nMatrizes e data frames são estruturas de dados que já encontra-se definidas dentro da linguagem, não precisando assim de importar bibliotecas.\n\nIsso é meu gosto pessoal. É um gosto que, talvez, faz mais sentido, em se tratando de alguém que vem da estatística. No mercado de trabalho e em seus estudos, após cursar as disciplinas de R e Python, fornecidas pelo Bacharelado em Estatística da UFPB, você terá a capacidade de estudar os frameworks de machine learning, aos seus próprios passos e escolher o que melhor te agrada. A linguagem Julia também poderá ser uma ótima opção."
+  },
+  {
+    "objectID": "index.html#aprendizagem-de-máquina",
+    "href": "index.html#aprendizagem-de-máquina",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Aprendizagem de máquina",
+    "text": "Aprendizagem de máquina"
+  },
+  {
+    "objectID": "index.html#aprendizagem-de-máquina-1",
+    "href": "index.html#aprendizagem-de-máquina-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Aprendizagem de máquina",
+    "text": "Aprendizagem de máquina\n \nAlguns pontos:\n\n\nA Aprendizagem de Máquina (AM), também chamada de Machine Learning (ML), no inglês, nasceu na década de 60 como um campo da inteligênica artificial.\nEm sua origem, as aplicações de AM tinha como objetivo aprender padrões com base nos dados.\nOriginalmente, as aplicações de AM eram de cunho estritamente computacional. Todavia, desde o início dos anos 90, a área de aprendizagem de máquina expandiu seus horizontes e começou a se estabelecer como um campo por sim mesma.\nEm particular, a área de aprendizagem de máquina começou a estabelecer muitas intersecções com a estatística. Muitos de seus algoritmos são construídos com base em metodologias que surgiram na estatística.\nAtualmente, a comunidade de AM é bastante interdisciplinar e utiliza-se de ideias desenvolvidas em diversas áreas, sendo a estatística uma delas."
+  },
+  {
+    "objectID": "index.html#tipos-de-aprendizado",
+    "href": "index.html#tipos-de-aprendizado",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tipos de Aprendizado",
+    "text": "Tipos de Aprendizado\n\nAprendizado supervisionado\n\nNesse curso, inicialmente estudaremos problemas de aprendizado supervisionado, que consiste em aprender a fazer predições a partir de conjunto de dados em que rótulos (valores da variável resposta \\(Y\\)) são observados. Trataremos tanto de problemas de regressão (estimar um valor númérico) quanto problemas de classificação (classificar um cliente como aprovado ou reprovado, em um problema de concessão de crédito). Por exemplo, os modelos de regressão são exemplos de aprendizado supervisionado.\n\nAprendizado não supervisionado\n\nNa segunda parte do curso, aprenderemos alguns métodos de aprendizado não supervisionado, ou seja, algoritmos que não utilizam-se de rótulos, em que busca-se aprender mais sobre a estrutura dos dados. Por exemplo, os métodos de agrupamento (cluster), são exempĺos de métodos de aprendizado não supervisionado."
+  },
+  {
+    "objectID": "index.html#tipos-de-aprendizado-1",
+    "href": "index.html#tipos-de-aprendizado-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tipos de Aprendizado",
+    "text": "Tipos de Aprendizado\n\nMuito embora no nosso curso focaremos nas abordagens de aprendizagem supervisionada e não-supervisionada, os tipos de aprendizagem, em geral, podem ser mais amplos, em que temos:\n\n\nAprendizagem supervisionada;\nAprendizagem não-supervisionada;\nAprendizagem semi-supervisionada;\nAprendizagem por reforço."
+  },
+  {
+    "objectID": "index.html#o-que-é-aprender",
+    "href": "index.html#o-que-é-aprender",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "O que é aprender?",
+    "text": "O que é aprender?\n\nAntes de detalharmos os tipos de aprendizagem de máquina, uma dúvida que poderá surgir é: “O que é aprender?”. “Como a máquina aprende?”."
+  },
+  {
+    "objectID": "index.html#o-que-é-aprender-1",
+    "href": "index.html#o-que-é-aprender-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "O que é aprender?",
+    "text": "O que é aprender?\n\nDe forma simples, aprender é ganhar conhecimento através de estudo, experiências, por meio de ensinamentos.\n\nTá, mais como é que a máquina aprende?\n\n\nAprendizagem é o processo em que se adquire conhecimento, isto é, é o processo em que utilizamos de algoritmos e fornecemos dados a esses algoritmos para que possamos extrair conhecimento. Nesse processo de aprendisagem, os algoritmos fazem uso de dados para a extressão de conhecimento, através de procedimentos supervisionado, não-supervisionado, semi-supervisionado ou por reforço, a depender do algoritmo que você deseja utilizar.\n\n\n\nAprendizado é o modelo ajustado, isto é, é o conhecimento adquirido após o treinamamento obtido no processo de aprendizagem. Você poderá entender como sendo o modelo ajustado e que utilizamores para a tomada de decisões."
+  },
+  {
+    "objectID": "index.html#o-que-é-aprender-2",
+    "href": "index.html#o-que-é-aprender-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "O que é aprender?",
+    "text": "O que é aprender?\n\nPortanto, você poderá entender, basiciamente, existe quatro tipos de aprendizagem, sendo os dois primeiros o que mais focaremos nesse curso e que de loge são os mais utilizados:\n\n\nAprendizagem supervisionada;\nAprendizagem não-supervisionada;\nAprendizagem semi-supervisionada;\nAprendizagem por reforço."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada",
+    "href": "index.html#aprendizagem-supervisionada",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n\nNesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados em que conhecemos rótulos para a variável de interesse. É como se você soubesse onde um bom modelo deve chegar, para assim ser reconhecido como um bom modelo. Por exemplo,\n\n\nClassificação: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., \\(\\widehat{y} = \\mathrm{argmax}_y\\,P(Y = y\\,|\\, X = \\bf{x})\\), em que y é um atributo que desejamos prever (cahorro, gato, sapo), e \\(\\bf{x}\\) é um vetor de características (peso, altura, comprimento, se tem rabo, etc).\n\n\n\nRegressão: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar \\(Y = \\mathbb{E}(Y\\,|\\,X = \\bf{x})\\), i.e., devemos encontrar meios de obter \\(\\widehat{Y}\\).\n\n\n\nAlgumas observações de nomenclaturas:\n\nÉ comum chamar cada exemplo de dados, i.e., o vetor \\(\\bf{x}\\) que será passado ao modelo de atributos ou features;\nTambém é comum chamarmos de rótulo ou label a classe ou valor alvo, ou seja, estas são as formas de nomearmos \\(Y\\), sendo \\(Y\\) uma quantidade numérica (modelos de regressão) ou não (modelos de classificação)."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada-1",
+    "href": "index.html#aprendizagem-supervisionada-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n\nEm se tratando de métodos de classificação, podemos ter os métodos:\n\n\nGenerativos: são os métodos que dada as variáveis \\(X\\) e \\(Y\\), o objetivo é encontrar a distribuição de probabilidade conjunta \\(P(X, Y)\\), para então poder determinar \\(P(Y\\, | \\, X = \\bf{x})\\). Alguns métodos são:\n\nNaive Bayes;\nDescriminante linear.\n\n\n\n\nDescriminativos: são os métodos que estimam diretamente a probabilidade condicional \\(P(Y \\, | \\, X = \\bf{x})\\) ou que mesmo nem assumem modelos probabilísticos. Podemos citar:\n\nRegressão logistica;\nPerceptron;\nSupport Vector Machine - SVM."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada-2",
+    "href": "index.html#aprendizagem-supervisionada-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n\n\n\n\n\n Poderíamos estar interessados em classificar o tamanho de morangos:\n\n\nS (Slow): pequeno;\nM (Medium): médio;\nL (Large): grande."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada-3",
+    "href": "index.html#aprendizagem-supervisionada-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n \n\nMais dois problemas de classificação (linear x não-linear)."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada-4",
+    "href": "index.html#aprendizagem-supervisionada-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n \n\nUm exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de \\(x\\)."
+  },
+  {
+    "objectID": "index.html#aprendizagem-supervisionada-5",
+    "href": "index.html#aprendizagem-supervisionada-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem supervisionada",
+    "text": "Aprendizagem supervisionada\n\nUm outro exemplo seria a classificação de imagem/vídeo, utilizando um algoritmo de rede neural, por exemplo, usando uma Convolutional Neural Network - CNN. Foram utilizados diversas imagens de pessoas “com” e “sem” máscara. Em que “com” representa detecção da máscara na face da pessoa e “sem” a não detecção."
+  },
+  {
+    "objectID": "index.html#aprendizagem-não-supervisionada",
+    "href": "index.html#aprendizagem-não-supervisionada",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem não-supervisionada",
+    "text": "Aprendizagem não-supervisionada\n\nNesse tipo de aprendizagem, os algoritmos trabalham sobre dados não rotulados, por exemplo, em uma trarefa de agrupamento.\n\nOs algoritmos verificam se as instâncias observadas poderão ser arranjadas de alguma maneira, por exemplo, usando alguma métrica de distância, formando grupos (clusters).\n\nA ideia é maximizar a distância entre os clusters e minimizar a distância entre os elementos no interrior do grupo. Em outras palavras, o que se quer é tornar os grupos mais diferentes possíveis e tornar os elementos dos grupos o mais parecido possível.\n\nAqui, por não haver rótulos, um problema comum é determinar a quantidade de grupos ideal que muitas vezes são obtidos de forma subjetiva ou por heurísticas. A quantidade de grupos é um dilema!"
+  },
+  {
+    "objectID": "index.html#aprendizagem-não-supervisionada-1",
+    "href": "index.html#aprendizagem-não-supervisionada-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem não-supervisionada",
+    "text": "Aprendizagem não-supervisionada\n\n\nApós a detecção dos grupos, é preciso analisar o resultado de modo a tentar extrair informações coerentes de modo a saber o que cada grupo representa no problema em questão."
+  },
+  {
+    "objectID": "index.html#aprendizagem-semi-supervisionada",
+    "href": "index.html#aprendizagem-semi-supervisionada",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem semi-supervisionada",
+    "text": "Aprendizagem semi-supervisionada\n\nA aprendizagem semi-supervisionada é uma abordagem na área de aprendizagem de máquina onde um algoritmo utiliza tanto dados rotulados quanto não rotulados para treinamento. Por exemplo, algoritmos que propagam rótulos, como o Label Propagation, em que rótulos conhecidos são propagados para dados não rotulados com base em sua sua proximidade no espaço de características.\n\nUma outra abordagem seria misturar modelos (Model Blending), em que diferentes modelos são treinados em diferentes partes do conjunto de dados, por exemplo, um modelo para a parte roturada e um para a parte não rotulada."
+  },
+  {
+    "objectID": "index.html#aprendizagem-por-reforço",
+    "href": "index.html#aprendizagem-por-reforço",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Aprendizagem por reforço",
+    "text": "Aprendizagem por reforço\n\nNesse tipo de aprendizagem, não há uma fonte externa de exemplos. O agente (modelo) aprende aprende com sua própria experiência, por tentativas e erros, em que você deverá definir uma medida de sucesso, e eventualmente recompensar os acertos. No vídeo abaixo, veja um joguinho que criei em R, onde o carrinho aprendeu a desviar de obstáculos aleatórios que aparecem em sua frente. Utilizou-se uma rede neural cuja a saída poderia ser (“parado”, “para cima” ou “para baixo”). Veja o código clicando aqui."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamentom",
+    "href": "index.html#dados-exploração-e-tratamentom",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamentom",
+    "text": "Dados: exploração e tratamentom\n\nUm dos passos mais importante no fluxo de trabalho (workflow) de um modelo de aprendizagem de máquina, consiste na preparação dos dados, onde realizamos transformações, inputações de valores ausentes, identificação de outliers, remoção de variáveis altamente correlacionadas, entre outros.\n\nFazer uma análise exploratória dos dados é um passo importante para que se possa entender e detecatar possíveis inconsistências na base de dados. Não adianta fazer uso de modelos muito sofisticados quando se tem uma base de dados cheia de problemas.\n\nNormalmente trabalhamos com juntos de dados (tabelas) relacionais, em que cada linha é uma observação e cada coluna representa um atributo do objeto/observação. A linha de uma base de dados relacional, sem sua a variável de interesse, lembre-se que denominamos \\(Y\\) de rótulo ou label, fornece o vetor de características \\(\\bf{x}\\) que descreve uma dada observação."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento",
+    "href": "index.html#dados-exploração-e-tratamento",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\nNo artigo Tidy Data, 2014, publicado no Journal of Statistical Sofware, o Hadley Wickham discute que o princípio de dados organizados estão intimamente relacionados com banco de dados relacional e mais próximo do reciocínio que empregamos na álgebra. Nesse artigo, ele define o que é Tidy Dados, sendo essa uma maneira de mapear um conjunto de dados.\n\nSegundo o artigo, um conjunto de dados é bagunçado ou arrumado/tidy, dependendo de como as linhas, colunas e tabelas são combinadas com as observações, variáveis e tipos. Em dados arrumados (dados tidy), temos que:\n\n\nCada variável forma uma coluna;\nCada observação forma uma linha;\nCada valor deve ter sua própria célula.\n\n\nEmbora existam situações em que já podemos começar a analisar uma base de dados real, essa é a exceção e não a regra. Normalmente, nos deparamos com bases de dados que violam uma ou mais dessas regras. Sempre, que possível, procure utilizar dados no formato Tidy."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-1",
+    "href": "index.html#dados-exploração-e-tratamento-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\n\nRepresentação de uma base de dados no formato tidy."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-2",
+    "href": "index.html#dados-exploração-e-tratamento-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\n\n“As famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira.” – Leo Tolstoy\n\n\n“Conjuntos de dados organizados são todos iguais, mas todo conjunto de dados confuso é confuso à sua maneira.” – Hadley Wickham\n\n\n\nTrabalhar com a Tabela do lado esquerdo é melhor que a Tabela do lado direito. Prefira, sempre que possível, o formato tidy. Não permita-se ficar estressado tão facilmente."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-3",
+    "href": "index.html#dados-exploração-e-tratamento-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\nA linguagem de programação R possue diversas ferramentas que permite manipular e explorar bases de dados. Enumero algumas:\n\ndplyr: biblioteca que implementa é uma gramática de manipulação de dados, fornecendo um conjunto consistente de verbos que ajudam a resolver os desafios mais comuns de manipulação de dados;\ntidyr: ferramentas para ajudar a criar dados organizados, onde cada coluna é uma variável, cada linha é uma observação e cada célula contém um único valor;\nggplot2: um sistema para criar gráficos ‘declarativamente’, baseado no livro The Grammar of Graphics, de Leland Wilkinson;\nvisdat: uma biblioteca útil para um visualização exploratória preliminar de dados;\nexplore: biblioteca que apresenta algumas rotinas de análise para realizar uma análise exploratória nos dados.\n\nTodas essas bibliotecas estão muito bem documentadas. É importante que vocês explorem as documentas dessas bibliotecas, pois eventualmente irei utizar alguma delas."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-4",
+    "href": "index.html#dados-exploração-e-tratamento-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nNo Capítulo 12, do livro R for Data Science, o autor aborda mais sobre o formato Tidy e como trabalhar com a biblioteca tidyr. Aqui o autor aborda de forma básica o pacote dplyr.\n\nDurante o curso, na medida da necessidade de utilização dessas ferramentas, durante a exposição de exemplos, abordaremos alguns conceitos. Ok?"
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-5",
+    "href": "index.html#dados-exploração-e-tratamento-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nMuitas vezes, no processo de tratamento dos dados, também estamos preocupados em remover atributos que não são significativo para a modelagem, em que nesse momento a experiência dos especialistas são fundamentais.\n\nÉ comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.\n\nAs vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se \\(x &gt;= 1\\), em que \\(x\\) é um atributo numérico qualquer.\n\nEm diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por NA."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-6",
+    "href": "index.html#dados-exploração-e-tratamento-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nPoderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:\n\n\nTomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;\nCriar um novo valor que é indicação de valor faltante;\nUsar algoritmos como \\(k\\)-nearest neighbors - KNN (\\(k\\) vizinhos mais próximos) para imputar valores coerentes;\nInterpolar os dados.\n\n\nEsses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-7",
+    "href": "index.html#dados-exploração-e-tratamento-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nÉ comum ser necessário transformar os dados:\n\nPode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;\nPode-se discretizar valores contínuos ou transformá-los em intervalos;\nÉ comum transformar atributos categóricos com \\(p\\) categorias, em \\(p\\) novos atributos binários.\n\nOne-hot encoding\nVariáveis dummy\n\nOutra transformação muito comum é a normalização dos dados. Normalizar os dados é muito útil quando os atributos numéricos possuem escalas muito diferentes.\n\n\n\n\\[X_{novo} = \\frac{X - X_{min}}{X_{max} - X_{min}},\\] em que \\(X_{novo} \\in [0, 1].\\)\n\n\\[X_{novo} = Z = \\frac{X - \\mu}{\\sigma^2},\\] em que \\(\\mathbb{E}(X) = \\mu\\) é a média dos dados e \\(\\mathrm{Var}(X) = \\sigma^2\\). Na prática, em um contexto de v.a., iids, usamos \\(\\overline{x}\\) como estimador de \\(\\mu\\) e \\(S^2\\) (variância amostral) como estimador de \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-8",
+    "href": "index.html#dados-exploração-e-tratamento-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nLembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o \\(\\log(\\cdot)\\).\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  hist()\n\n\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  log() |&gt; hist()"
+  },
+  {
+    "objectID": "index.html#dados-exploração-e-tratamento-9",
+    "href": "index.html#dados-exploração-e-tratamento-9",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Dados: exploração e tratamento",
+    "text": "Dados: exploração e tratamento\n\nAnteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter cidado bibliotecas do framework tidymodels, em especial o recipes que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote recipes.\n\nO tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+  }
+]
