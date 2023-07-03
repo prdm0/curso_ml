@@ -20,6 +20,12 @@ format:
     code-tools: true
     auto-stretch: true
     code-link: true
+    html-math-method: katex
+  pdf: 
+    include-in-header:  
+      - text: |
+            \usepackage{amsfonts}
+            \usepackage{amsmath}
 revealjs-plugins:
   - pointer
   - attribution
@@ -119,17 +125,34 @@ leaflet() |>
 
 <br>
 
-Nesse curso, será abordado a linguagem de programação [R](https://www.r-project.org/), mas lembre-se que você poderá utilizar qualquer linguagem de programação para fazer ciência de dados. Porém, R e Python são as minhas sugestões, haja vista que, atualmente, elas são as linguagens com maior quantidade de ferramentas e usuários trabalhando na área de [ciência de dados](https://en.wikipedia.org/wiki/Data_science).
+Nesse curso, será abordado a linguagem de programação
+[R](https://www.r-project.org/), mas lembre-se que você poderá utilizar
+qualquer linguagem de programação para fazer ciência de dados. Porém, R
+e Python são as minhas sugestões, haja vista que, atualmente, elas são
+as linguagens com maior quantidade de ferramentas e usuários trabalhando
+na área de [ciência de
+dados](https://en.wikipedia.org/wiki/Data_science).
 
 <br>
 
-[Outros motivos que me leva a lecionar a disciplina utilizando a linguagem R são:]{.black}
+[Outros motivos que me leva a lecionar a disciplina utilizando a
+linguagem R são:]{.black}
 
-1. Possui ferramentas muito bem pensadas para manipulação e tratamento de dados;
-2. Normalmente, os frameworks de machine learning de R são menos verbosos que os de Python;
-3. Matrizes e data frames são estruturas de dados que já encontra-se definidas dentro da linguagem, não precisando assim de importar bibliotecas.
+1.  Possui ferramentas muito bem pensadas para manipulação e tratamento
+    de dados;
+2.  Normalmente, os frameworks de machine learning de R são menos
+    verbosos que os de Python;
+3.  Matrizes e data frames são estruturas de dados que já encontra-se
+    definidas dentro da linguagem, não precisando assim de importar
+    bibliotecas.
 
-Isso é meu gosto pessoal. É um gosto que, talvez, faz mais sentido, em se tratando de alguém que vem da estatística. No mercado de trabalho e em seus estudos, após cursar as disciplinas de R e Python, fornecidas pelo [Bacharelado em Estatística da UFPB](https://www.ufpb.br/de), você terá a capacidade de estudar os frameworks de machine learning, aos seus próprios passos e escolher o que melhor te agrada. A linguagem [Julia](https://julialang.org/) também poderá ser uma ótima opção.
+Isso é meu gosto pessoal. É um gosto que, talvez, faz mais sentido, em
+se tratando de alguém que vem da estatística. No mercado de trabalho e
+em seus estudos, após cursar as disciplinas de R e Python, fornecidas
+pelo [Bacharelado em Estatística da UFPB](https://www.ufpb.br/de), você
+terá a capacidade de estudar os frameworks de machine learning, aos seus
+próprios passos e escolher o que melhor te agrada. A linguagem
+[Julia](https://julialang.org/) também poderá ser uma ótima opção.
 
 #  {.title}
 
@@ -528,31 +551,50 @@ Sempre, que possível, procure utilizar dados no formato [Tidy]{.red}.
 
 ![Representação de uma base de dados no formato tidy.](imgs/tidy-1.png)
 
-
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
 <br>
 
-> "As famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira." -- [Leo Tolstoy](https://en.wikipedia.org/wiki/Leo_Tolstoy)
+> "As famílias felizes são todas iguais; toda família infeliz é infeliz
+> à sua maneira." -- [Leo
+> Tolstoy](https://en.wikipedia.org/wiki/Leo_Tolstoy)
 
-> "Conjuntos de dados organizados são todos iguais, mas todo conjunto de dados confuso é confuso à sua maneira." -- [Hadley Wickham](https://hadley.nz/)
+> "Conjuntos de dados organizados são todos iguais, mas todo conjunto de
+> dados confuso é confuso à sua maneira." -- [Hadley
+> Wickham](https://hadley.nz/)
 
 <br>
 
-![Trabalhar com a Tabela do lado esquerdo é melhor que a Tabela do lado direito. Prefira, sempre que possível, o formato tidy. Não permita-se ficar estressado tão facilmente.](imgs/tidy-2.png){width="50%"}
+![Trabalhar com a Tabela do lado esquerdo é melhor que a Tabela do lado
+direito. Prefira, sempre que possível, o formato tidy. Não permita-se
+ficar estressado tão facilmente.](imgs/tidy-2.png){width="50%"}
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
-A linguagem de programação R possue diversas ferramentas que permite manipular e explorar bases de dados. Enumero algumas:
+A linguagem de programação R possue diversas ferramentas que permite
+manipular e explorar bases de dados. Enumero algumas:
 
+1.  [dplyr](https://dplyr.tidyverse.org/): biblioteca que implementa é
+    uma gramática de manipulação de dados, fornecendo um conjunto
+    consistente de verbos que ajudam a resolver os desafios mais comuns
+    de manipulação de dados;
+2.  [tidyr](https://tidyr.tidyverse.org/): ferramentas para ajudar a
+    criar dados organizados, onde cada coluna é uma variável, cada linha
+    é uma observação e cada célula contém um único valor;
+3.  [ggplot2](https://ggplot2-book.org/): um sistema para criar gráficos
+    'declarativamente', baseado no livro [The Grammar of
+    Graphics](https://www.amazon.com.br/Grammar-Graphics-Leland-Wilkinson/dp/0387245448),
+    de [Leland
+    Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson);
+4.  [visdat](https://docs.ropensci.org/visdat/): uma biblioteca útil
+    para um visualização exploratória preliminar de dados;
+5.  [explore](https://github.com/rolkra/explore): biblioteca que
+    apresenta algumas rotinas de análise para realizar uma análise
+    exploratória nos dados.
 
-1. [dplyr](https://dplyr.tidyverse.org/): biblioteca que implementa é uma gramática de manipulação de dados, fornecendo um conjunto consistente de verbos que ajudam a resolver os desafios mais comuns de manipulação de dados;
-2. [tidyr](https://tidyr.tidyverse.org/): ferramentas para ajudar a criar dados organizados, onde cada coluna é uma variável, cada linha é uma observação e cada célula contém um único valor;
-3. [ggplot2](https://ggplot2-book.org/): um sistema para criar gráficos 'declarativamente', baseado no livro [The Grammar of Graphics](https://www.amazon.com.br/Grammar-Graphics-Leland-Wilkinson/dp/0387245448), de [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson);
-4. [visdat](https://docs.ropensci.org/visdat/): uma biblioteca útil para um visualização exploratória preliminar de dados;
-5. [explore](https://github.com/rolkra/explore): biblioteca que apresenta algumas rotinas de análise para realizar uma análise exploratória nos dados.
-
-Todas essas bibliotecas estão muito bem documentadas. É importante que vocês explorem as documentas dessas bibliotecas, pois eventualmente irei utizar alguma delas.
+Todas essas bibliotecas estão muito bem documentadas. É importante que
+vocês explorem as documentas dessas bibliotecas, pois eventualmente irei
+utizar alguma delas.
 
 ![](gifs/ok.gif)
 
@@ -560,11 +602,19 @@ Todas essas bibliotecas estão muito bem documentadas. É importante que vocês 
 
 <br>
 
-No [Capítulo 12](https://r4ds.had.co.nz/tidy-data.html), do livro [R for Data Science](https://r4ds.had.co.nz/index.html), o autor aborda mais sobre o formato Tidy e como trabalhar com a biblioteca [tidyr](https://tidyr.tidyverse.org/). [Aqui](https://r4ds.had.co.nz/transform.html?q=dplyr#dplyr-basics) o autor aborda de forma básica o pacote [dplyr](https://dplyr.tidyverse.org/).
+No [Capítulo 12](https://r4ds.had.co.nz/tidy-data.html), do livro [R for
+Data Science](https://r4ds.had.co.nz/index.html), o autor aborda mais
+sobre o formato Tidy e como trabalhar com a biblioteca
+[tidyr](https://tidyr.tidyverse.org/).
+[Aqui](https://r4ds.had.co.nz/transform.html?q=dplyr#dplyr-basics) o
+autor aborda de forma básica o pacote
+[dplyr](https://dplyr.tidyverse.org/).
 
 <br>
 
-Durante o curso, na medida da necessidade de utilização dessas ferramentas, durante a exposição de exemplos, abordaremos alguns conceitos. Ok?
+Durante o curso, na medida da necessidade de utilização dessas
+ferramentas, durante a exposição de exemplos, abordaremos alguns
+conceitos. Ok?
 
 <br>
 
@@ -574,37 +624,54 @@ Durante o curso, na medida da necessidade de utilização dessas ferramentas, du
 
 <br>
 
-Muitas vezes, no processo de tratamento dos dados, também estamos preocupados em remover atributos que não são significativo para a modelagem, em que nesse momento a experiência dos especialistas são fundamentais.
+Muitas vezes, no processo de tratamento dos dados, também estamos
+preocupados em remover atributos que não são significativo para a
+modelagem, em que nesse momento a experiência dos especialistas são
+fundamentais.
 
 <br>
 
-É comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.
+É comum enriquercermos a base de dados com informações de outras bases
+de dados, em um sistema de gerenciamento de banco de dados relacional,
+em que as bases de dados estão relacionadas por uma chave. Nesse caso,
+buscamos por novos atributos para um mesmo objeto (para uma mesma linha
+da base), em que atributos cruzados devem ter um único valor, para cada
+objeto, respeitando a regra três de conjuntos de dados tidy.
 
 <br>
 
-As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se $x >= 1$, em que $x$ é um atributo numérico qualquer. 
+As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo
+de uma variável numérica que é assimétrica, se $x >= 1$, em que $x$ é um
+atributo numérico qualquer.
 
 <br>
 
-Em diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por `NA`.
-
+Em diveras situações, também é comum a base de dados apresentar
+informações faltantes. Nos data frames de R, a falta de informação na
+base, normlamente serão representadas por `NA`.
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
 <br>
 
-Poderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:
+Poderá ser que um dado atributo apresente informação faltante, e
+normalmente não optaremos em remover a observação e precisaremos imputar
+a informação, por exemplo:
 
 <br>
 
-1. Tomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;
-2. Criar um novo valor que é indicação de valor faltante;
-3. Usar algoritmos como $k$-nearest neighbors - KNN ($k$ vizinhos mais próximos) para imputar valores coerentes;
-4. Interpolar os dados.
+1.  Tomando alguma medida de tendência central como média/moda/mediana
+    dos valores que são conhecidos para aquele atributo;
+2.  Criar um novo valor que é indicação de valor faltante;
+3.  Usar algoritmos como $k$-nearest neighbors - KNN ($k$ vizinhos mais
+    próximos) para imputar valores coerentes;
+4.  Interpolar os dados.
 
 <br>
 
-Esses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados.
+Esses são alguns exemplos de como podemos imputar observações faltantes.
+Muitas vezes não podemos nos dar o luxo de percer observações de nossa
+base de dados.
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
@@ -612,42 +679,50 @@ Esses são alguns exemplos de como podemos imputar observações faltantes. Muit
 
 É comum ser necessário transformar os dados:
 
-1. Pode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;
+1.  Pode ser necessário transformar os tipos ou os valores dos atributos
+    para tentar obter um melhor ajuste do modelo;
 
-2. Pode-se discretizar valores contínuos ou transformá-los em intervalos;
+2.  Pode-se discretizar valores contínuos ou transformá-los em
+    intervalos;
 
-3. É comum transformar atributos categóricos com $p$ categorias, em $p$ novos atributos binários.
-    - [One-hot encoding](https://en.wikipedia.org/wiki/One-hot)
-    - [Variáveis dummy](https://en.wikipedia.org/wiki/Dummy_variable_(statistics))
-    
-4. Outra transformação muito comum é a normalização dos dados. Normalizar os dados é muito útil quando os atributos numéricos possuem escalas muito diferentes.
+3.  É comum transformar atributos categóricos com $p$ categorias, em $p$
+    novos atributos binários.
+
+    -   [One-hot encoding](https://en.wikipedia.org/wiki/One-hot)
+    -   [Variáveis
+        dummy](https://en.wikipedia.org/wiki/Dummy_variable_(statistics))
+
+4.  Outra transformação muito comum é a normalização dos dados.
+    Normalizar os dados é muito útil quando os atributos numéricos
+    possuem escalas muito diferentes.
 
 ::: columns
-
 ::: {.column width="50%"}
-$$X_{novo} = \frac{X - X_{min}}{X_{max} - X_{min}},$$
-em que $X_{novo} \in [0, 1].$
+$$X_{novo} = \frac{X - X_{min}}{X_{max} - X_{min}},$$ em que
+$X_{novo} \in [0, 1].$
 :::
 
 ::: {.column width="50%"}
-$$X_{novo} = Z = \frac{X - \mu}{\sigma^2},$$
-em que $\mathbb{E}(X) = \mu$ é a média dos dados e $\mathrm{Var}(X) = \sigma^2$. Na prática, em um contexto de v.a., iids, usamos $\overline{x}$ como estimador de $\mu$ e $S^2$ (variância amostral) como estimador de $\sigma^2$.
+$$X_{novo} = Z = \frac{X - \mu}{\sigma^2},$$ em que
+$\mathbb{E}(X) = \mu$ é a média dos dados e
+$\mathrm{Var}(X) = \sigma^2$. Na prática, em um contexto de v.a., iids,
+usamos $\overline{x}$ como estimador de $\mu$ e $S^2$ (variância
+amostral) como estimador de $\sigma^2$.
 :::
-
 :::
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
 <br>
 
-Lembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o $\log(\cdot)$.
+Lembre-se, como citado anteriormente, tomar o logaritmo natural, ou
+mesmo na base 10 de variáveis numéricas muito assimétricas, poderá
+ajudar um pouco, desde que seja possivel tomar o $\log(\cdot)$.
 
 <br>
 
 ::: columns
-
-::: {.column width='50%'}
-
+::: {.column width="50%"}
 ```{r}
 set.seed(0)
 rgamma(1000, 2, 2) |> 
@@ -655,7 +730,7 @@ rgamma(1000, 2, 2) |>
 ```
 :::
 
-::: {.column width='50%'}
+::: {.column width="50%"}
 ```{r}
 set.seed(0)
 rgamma(1000, 2, 2) |> 
@@ -668,12 +743,271 @@ rgamma(1000, 2, 2) |>
 
 <br>
 
-Anteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter cidado bibliotecas do framework [tidymodels](https://www.tidymodels.org/packages/), em especial o [recipes](https://recipes.tidymodels.org/) que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote [recipes](https://recipes.tidymodels.org/).
+Anteriormente eu citei algumas bibliotecas úteis de R para explorar os
+dados, na fase de tratamento das observações. Porém, não estranhe não
+ter cidado bibliotecas do framework
+[tidymodels](https://www.tidymodels.org/packages/), em especial o
+[recipes](https://recipes.tidymodels.org/) que é muito utilizado no
+workflow de aprendizagem de máquina na fase de pré-processamento dos
+dados. Muitas dessas transformações são aplicadas como receitas de
+pré-processamento com o pacote
+[recipes](https://recipes.tidymodels.org/).
 
 <br>
 
-O tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels.
+O tidymodels será muito útil para nós, mas, aos poucos, seu uso e
+explicações mais detalhadas serão apresentadas, apesar que em algumas
+situações mais simples, poderei não utilizá-lo, expor detalhes que
+eventualmente não será possível ou estariam camuflados na utilização do
+tidymodels.
 
 <br>
 
-![](gifs/ok-2.gif){width=20%}
+![](gifs/ok-2.gif){width="20%"}
+
+## As duas culturas
+
+<br>
+
+Em [Breiman, L. (2001a). Statistical modeling: The two cultures.
+Statistical Science, 16(3),
+199--231](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2Fss%2F1009213726),
+o Leo Breiman argumenta que existe duas culturas no uso de modelos
+estatísticos, em especialmente na área de modelos de regressão. Segundo
+eles, as culturas são:
+
+<br>
+
+1.  [Data modeling culture]{.red}: nela, em geral, se assume que o
+    modelo de regressão utilizado $r(x)$, por exemplo,
+    $r(x) = \beta_0 + \sum_{i = 1}^d \beta_ix_i$ é correto. O principal
+    objetivo dessa abordagem é a interpretação dos parâmetros que
+    indexam o modelo $r(x)$. Nesse tipo de cultura, a ideia também é
+    construir intervalos aleatórios e testar hipóteses para os
+    $\beta_i's$. Sob essa ótica, muitas suposições sob o modelo são
+    realizadas, em que formas para checar essas suposições são
+    desenvolvidas, uma vez que elas são fundamentais para esse tipo de
+    modelagem.
+
+<br>
+
+2.  [Algorithmic modeling culture]{.red}: essa é a cultura que domina a
+    comunidade de aprendizagem de máquina. Nessa abordagem, o principal
+    objetivo são as predições por meio de novas observações. Não se
+    assume que o modelo utilizado é o modelo correto. Nesse tipo de
+    modelagem, muitas vezes os algoritmos não envolve nenhuma estrutura
+    probabilística. Muitas vezes, modelos não bem especificado conduzem
+    a boas predições.
+
+## As duas culturas
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+![Breiman, L. (2001a). Statistical modeling: The two cultures.
+Statistical Science, 16(3), 199--231.](imgs/paper_breiman){width="70%"}
+:::
+
+::: {.column width="50%"}
+![Leo como um probabilista jovem na Universidade da
+Califórina.](imgs/leo_breiman){width="60%"}
+:::
+:::
+
+## As duas culturas
+
+<br>
+
+Há diversos artigos interessantes que são respostas ao artigo do Leo
+Breiman, como por exemplo, o artigo [Statistical Modeling: The Two
+Cultures: Comment](https://www.jstor.org/stable/2676682) do David Cox e
+com comentários do Brad Efron.
+
+![[Sir David
+Cox.](https://en.wikipedia.org/wiki/David_Cox_(statistician))](imgs/david_cox.png){width="20%"}
+
+## As duas culturas
+
+<br>
+
+Muito embora exista essa divisão entre as culturas, Breiman foi um
+estatístico que desempenhou um grande trabalho para unir a área de
+estatística com aprendizado de máquina. Por conta dessa grande
+importância, um prêmio concedido em sua homenagem foi criado pela
+[American Statistical
+Association](https://community.amstat.org/slds/awards/breiman-award).
+
+![[Leo Breiman trabalhando em sua residência, em
+1985.](https://projecteuclid.org/journalArticle/Download?urlid=10.1214%2Fss%2F1009213290)](imgs/breiman_residencia.png){width="30%"}
+
+#  {.title background-image="imgs/rawpixel/freight.jpg"}
+
+::: r-fit-text
+[Regressão / Parte I]{.flow}
+:::
+
+## Regressão
+
+<br>
+
+Métodos de regressão surgiram há mais de dois séculos com Legendre
+(1805) e Gauss (1809), que exploraram o método dos mínimos quadrados com
+o objetivo de prever órbitas ao redor do Sol. Hoje em dia, o problema de
+estimação de uma função de regressão possui papel central em
+estatística.
+
+<br>
+
+> Apesar de as primeiras técnicas para solucionar esse problema datarem
+> de ao menos 200 anos, os avanços computacionais recentes permitiram
+> que novas metodologias fossem exploradas. Em particular, com a
+> capacidade cada vez maior de armazenamento de dados, métodos com menos
+> suposições sobre o verdadeiro estado da natureza ganham cada vez mais
+> espaço. Com isso, vários desafios surgiram: por exemplo, métodos
+> tradicionais não são capazes de lidar de forma satisfatória com bancos
+> de dados em que há mais covariáveis que observações, uma situação
+> muito comum nos dias de hoje. Similarmente, são frequentes as
+> aplicações em que cada observação consiste em uma imagem ou um
+> documento de texto, objetos complexos que levam a análises que
+> requerem metodologias mais elaboradas. -- Izbick et al.
+
+## Regressão
+
+<br>
+
+De forma geral, temos que o objetivo de um modelo de regressão é
+determinar a relação entre uma variável aleatória (label)
+$Y \in \mathbb{R}$ e um vetor de covariáveis (features)
+$\mathbf{x} = (x_1, \cdots, x_d) \in \mathbb{R}^d$. Mais
+especificamente, busaca-se estimar
+
+$$r(\bf{x}) := \mathbb{E}(Y\,|\,\bf{X} = \bf{x}),$$
+
+sendo esta chamada de [função de regressão]{.red}. Temos que:
+
+<br>
+
+1.  Se $Y$ é uma variável quantitativa, então estamos sob um problema de
+    [regressão]{.red};
+2.  Se $Y$ é uma variável qualitativa, então teremos um problema de
+    [classificação]{.red}.
+
+
+Em aprendizagem de máquina, assumimos que não temos meios de calcular $r({\bf{x}})$, i.e., não conhecemos a distribuição condicional de ${\bf{Y}\,|\,X}$. Portanto, não temos meios de calcular
+
+$$\mathbb{E}({\bf X}|Y = y) = \int x\,\mathrm{d}F_{\bf X}({\bf x} | Y = y).$$
+
+## Notações
+
+<br>
+
+A variável $Y$ recebe frequentemente o nome de variável resposta,
+variável dependente, rótulo ou *label*. Já as observações contidas no
+vetor $\bf{x} = (x_1, \cdots, x_d)$, são, em geral, denominadas de
+variáveis explicativas, variáveis independentes, características,
+atributos, preditores, covariáveis ou *features*.
+
+<br>
+
+A ideia, nessa primeira parte do curso, é descrever algumas técnicas
+para estimar (**treinar**, como é dito em aprendizagem de máquina)
+$r(\bf{x})$.
+
+<br>
+
+A menos quando dito o contrário, assumiremos que nossa amostra são
+i.i.d. (independentes e identicamente distribuídas), ou seja,
+$(\bf{X}_1, Y_1), \cdots, (\bf{X}_n, Y_n)$ são i.i.d.
+
+<br>
+
+Denota-se por $x_{i,j}$ o valor da $j$-ésima covariável na $i$-ésima
+amostra, com $j = 1, \cdots, d$ e $i = 1, \cdots, n$.
+
+## Notações
+
+<br>
+
+| Label    | Features                                     |
+|----------|----------------------------------------------|
+| $Y_1$    | $X_{1,1},\cdots, X_{1,d}\,\,\, (= \bf{X}_1)$ |
+| $\vdots$ | $\,\,\,\vdots\,\,\,\,\, \ddots\,\,\ \vdots$  |
+| $Y_n$    | $X_{n,1},\cdots, X_{n,d}\,\,\, (= \bf{X}_n)$ |
+
+: Notação utilizada nesse material para as variáveis envolvidas em um
+problema de regressão. {tbl-colwidths="\[25,25\]"}
+
+## Regressão
+
+Nossa ideia é construir uma boa estimativa $g$ da função de regressão
+$r(\bf{x}) := \mathbb{E}(Y\,|\,\bf{X} = \bf{x})$, para novas
+observações, i.e., queremos obter uma função $g$, tal que:
+
+$$g: \mathbb{R}^d \rightarrow \mathbb{R},$$
+
+de tal forma que $g$ possua um bom poder preditivo. Em aprendizagem de
+máquina, só estaremos interessados em obter uma função $g$ que estime
+bem um número real (em problemas de regressão), ou que classifique bem
+(em um problema de classificação), utilizando as $d$ covariáveis. Ou
+seja, para $m$ novas observações, desejamos obter $g$, que
+
+$$g({\bf{x}}_{n + 1}) \approx y_{n + 1}, \cdots, g({\bf{x}}_{n + m}) \approx y_{n + m}.$$
+
+## Função de risco
+
+<br>
+
+Para que possamos construir boas funções de predição, é preciso que tenhamos um critério para medir o desempenho de uma dada função $g:\mathbb{R}^d \rightarrow \mathbb{R}$. Em contexto de regressão, usaremos o risco quadrático, muito embora esta não é a única opção. Denotaremos a função de risco quadrático por:
+
+$$R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right],$$
+em que $(\bf X, Y)$ são observações novas que não foram utilizadas para treinar/estimar $g$. Lê-se $R_{pred}(g)$ como "risco preditivo de $g$". Note que, como $\bf X$ são observações conhecidas e $g(\cdot)$ é um modelo preditivo, portanto, $g$ é conhecido, então, $\widehat{\bf Y} = g(\bf X)$ é um estimador dos labels, i.e., de $\bf Y$.
+
+<br>
+
+Diremos que $L(g({\bf X}); {\bf Y}) = ({\bf Y} - g({\bf X}))^2$ é a [função de perda quadrática]{.red}, as vezes chamado de perda $L_2$. Outra funções como a [função de perda absoluta]{.red} denotada por $L(g({\bf X}); {\bf Y}) = |{\bf Y} - g({\bf X})|$, as vezes chamada de perda $L_1$ poderiam ser consideradas.
+
+## Função de risco
+
+<br>
+
+Normalmente considera-se a perda $L_2$, uma vez que em modelos de regressão, minimizar $R_{pred}(g)$, em $g$, equivale a encontrar $r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})$, i.e., equivale a estimar a função de regressão.
+
+<br>
+
+[Teorema]{.red}: Suponha que definimos o risco de uma função de predição $g: \mathbb{R}^d \rightarrow \mathbb{R}$ via função perda quadrática, i.e, $R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]$, em que $\bf (X, Y)$ são novas observações que não foram utilizadas para estimar $g$. Suponha também que estimaos o risco de um estimador de regressão $r({\bf X})$ via função perda quadrática $R_{pred}(g) = \mathbb{E}\left[r({\bf X} - g({\bf X}))^2\right]$. Então,
+
+$$R_{pred}(g) = R_{reg}(g) + \mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right],$$
+
+em que $\mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right]$ é a variância média do modelo que não depende de $g$. Portanto, estimar bem $r({\bf x})$ é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para $\bf Y$ é a função de regressão $r({\bf x})$, de tal modo que:
+
+
+$$\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).$$
+
+## Função de risco
+
+<br>
+
+**Lembre-se**: $r({\bf x}) = \mathbb{E}(Y | \bf{X} = \bf{x})$ é a nossa [função de regressão]{.red}.
+
+<br>
+
+A definição de risco preditivo $R_{pred}$, que também denotaremos simplesmente por $R$, tem um apelo frequentista. Dessa forma, para um novo conjunto com $m$ novas observaçõs, $({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:
+
+
+$$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$
+Chamaremos a quantidade acima de [Erro Quadrático Médio - EQM](https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio). Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.
+
+<br>
+
+Desejamos encontrar $g$ (encontrar métodos) que minimize de forma satisfatória $R$, i.e., métodos que nos conduzam à um risco baixo.
+
+## Função de risco
+
+<br>
+
+Sendo assim, se $R(g)$ possui um valor baixo, então, temos que 
+
+$$g({\bf x}_{n+1}) \approx = y_{n+1}, \cdots, g({\bf x}_{n+m}) \approx = y_{n+m}.$$
+<br>
+![](gifs/hum.gif){width="25%"}

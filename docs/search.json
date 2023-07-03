@@ -46,7 +46,7 @@
     "href": "index.html#tipos-de-aprendizado",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Tipos de Aprendizado",
-    "text": "Tipos de Aprendizado\n\nAprendizado supervisionado\n\nNesse curso, inicialmente estudaremos problemas de aprendizado supervisionado, que consiste em aprender a fazer predições a partir de conjunto de dados em que rótulos (valores da variável resposta \\(Y\\)) são observados. Trataremos tanto de problemas de regressão (estimar um valor númérico) quanto problemas de classificação (classificar um cliente como aprovado ou reprovado, em um problema de concessão de crédito). Por exemplo, os modelos de regressão são exemplos de aprendizado supervisionado.\n\nAprendizado não supervisionado\n\nNa segunda parte do curso, aprenderemos alguns métodos de aprendizado não supervisionado, ou seja, algoritmos que não utilizam-se de rótulos, em que busca-se aprender mais sobre a estrutura dos dados. Por exemplo, os métodos de agrupamento (cluster), são exempĺos de métodos de aprendizado não supervisionado."
+    "text": "Tipos de Aprendizado\n\nAprendizado supervisionado\n\nNesse curso, inicialmente estudaremos problemas de aprendizado supervisionado, que consiste em aprender a fazer predições a partir de conjunto de dados em que rótulos (valores da variável resposta Y) são observados. Trataremos tanto de problemas de regressão (estimar um valor númérico) quanto problemas de classificação (classificar um cliente como aprovado ou reprovado, em um problema de concessão de crédito). Por exemplo, os modelos de regressão são exemplos de aprendizado supervisionado.\n\nAprendizado não supervisionado\n\nNa segunda parte do curso, aprenderemos alguns métodos de aprendizado não supervisionado, ou seja, algoritmos que não utilizam-se de rótulos, em que busca-se aprender mais sobre a estrutura dos dados. Por exemplo, os métodos de agrupamento (cluster), são exempĺos de métodos de aprendizado não supervisionado."
   },
   {
     "objectID": "index.html#tipos-de-aprendizado-1",
@@ -81,14 +81,14 @@
     "href": "index.html#aprendizagem-supervisionada",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem supervisionada",
-    "text": "Aprendizagem supervisionada\n\nNesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados em que conhecemos rótulos para a variável de interesse. É como se você soubesse onde um bom modelo deve chegar, para assim ser reconhecido como um bom modelo. Por exemplo,\n\n\nClassificação: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., \\(\\widehat{y} = \\mathrm{argmax}_y\\,P(Y = y\\,|\\, X = \\bf{x})\\), em que y é um atributo que desejamos prever (cahorro, gato, sapo), e \\(\\bf{x}\\) é um vetor de características (peso, altura, comprimento, se tem rabo, etc).\n\n\n\nRegressão: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar \\(Y = \\mathbb{E}(Y\\,|\\,X = \\bf{x})\\), i.e., devemos encontrar meios de obter \\(\\widehat{Y}\\).\n\n\n\nAlgumas observações de nomenclaturas:\n\nÉ comum chamar cada exemplo de dados, i.e., o vetor \\(\\bf{x}\\) que será passado ao modelo de atributos ou features;\nTambém é comum chamarmos de rótulo ou label a classe ou valor alvo, ou seja, estas são as formas de nomearmos \\(Y\\), sendo \\(Y\\) uma quantidade numérica (modelos de regressão) ou não (modelos de classificação)."
+    "text": "Aprendizagem supervisionada\n\nNesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados em que conhecemos rótulos para a variável de interesse. É como se você soubesse onde um bom modelo deve chegar, para assim ser reconhecido como um bom modelo. Por exemplo,\n\n\nClassificação: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., \\widehat{y} = \\mathrm{argmax}_y\\,P(Y = y\\,|\\, X = \\bf{x}), em que y é um atributo que desejamos prever (cahorro, gato, sapo), e \\bf{x} é um vetor de características (peso, altura, comprimento, se tem rabo, etc).\n\n\n\nRegressão: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar Y = \\mathbb{E}(Y\\,|\\,X = \\bf{x}), i.e., devemos encontrar meios de obter \\widehat{Y}.\n\n\n\nAlgumas observações de nomenclaturas:\n\nÉ comum chamar cada exemplo de dados, i.e., o vetor \\bf{x} que será passado ao modelo de atributos ou features;\nTambém é comum chamarmos de rótulo ou label a classe ou valor alvo, ou seja, estas são as formas de nomearmos Y, sendo Y uma quantidade numérica (modelos de regressão) ou não (modelos de classificação)."
   },
   {
     "objectID": "index.html#aprendizagem-supervisionada-1",
     "href": "index.html#aprendizagem-supervisionada-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem supervisionada",
-    "text": "Aprendizagem supervisionada\n\nEm se tratando de métodos de classificação, podemos ter os métodos:\n\n\nGenerativos: são os métodos que dada as variáveis \\(X\\) e \\(Y\\), o objetivo é encontrar a distribuição de probabilidade conjunta \\(P(X, Y)\\), para então poder determinar \\(P(Y\\, | \\, X = \\bf{x})\\). Alguns métodos são:\n\nNaive Bayes;\nDescriminante linear.\n\n\n\n\nDescriminativos: são os métodos que estimam diretamente a probabilidade condicional \\(P(Y \\, | \\, X = \\bf{x})\\) ou que mesmo nem assumem modelos probabilísticos. Podemos citar:\n\nRegressão logistica;\nPerceptron;\nSupport Vector Machine - SVM."
+    "text": "Aprendizagem supervisionada\n\nEm se tratando de métodos de classificação, podemos ter os métodos:\n\n\nGenerativos: são os métodos que dada as variáveis X e Y, o objetivo é encontrar a distribuição de probabilidade conjunta P(X, Y), para então poder determinar P(Y\\, | \\, X = \\bf{x}). Alguns métodos são:\n\nNaive Bayes;\nDescriminante linear.\n\n\n\n\nDescriminativos: são os métodos que estimam diretamente a probabilidade condicional P(Y \\, | \\, X = \\bf{x}) ou que mesmo nem assumem modelos probabilísticos. Podemos citar:\n\nRegressão logistica;\nPerceptron;\nSupport Vector Machine - SVM."
   },
   {
     "objectID": "index.html#aprendizagem-supervisionada-2",
@@ -109,7 +109,7 @@
     "href": "index.html#aprendizagem-supervisionada-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem supervisionada",
-    "text": "Aprendizagem supervisionada\n \n\nUm exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de \\(x\\)."
+    "text": "Aprendizagem supervisionada\n \n\nUm exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de x."
   },
   {
     "objectID": "index.html#aprendizagem-supervisionada-5",
@@ -151,7 +151,7 @@
     "href": "index.html#dados-exploração-e-tratamentom",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamentom",
-    "text": "Dados: exploração e tratamentom\n\nUm dos passos mais importante no fluxo de trabalho (workflow) de um modelo de aprendizagem de máquina, consiste na preparação dos dados, onde realizamos transformações, inputações de valores ausentes, identificação de outliers, remoção de variáveis altamente correlacionadas, entre outros.\n\nFazer uma análise exploratória dos dados é um passo importante para que se possa entender e detecatar possíveis inconsistências na base de dados. Não adianta fazer uso de modelos muito sofisticados quando se tem uma base de dados cheia de problemas.\n\nNormalmente trabalhamos com juntos de dados (tabelas) relacionais, em que cada linha é uma observação e cada coluna representa um atributo do objeto/observação. A linha de uma base de dados relacional, sem sua a variável de interesse, lembre-se que denominamos \\(Y\\) de rótulo ou label, fornece o vetor de características \\(\\bf{x}\\) que descreve uma dada observação."
+    "text": "Dados: exploração e tratamentom\n\nUm dos passos mais importante no fluxo de trabalho (workflow) de um modelo de aprendizagem de máquina, consiste na preparação dos dados, onde realizamos transformações, inputações de valores ausentes, identificação de outliers, remoção de variáveis altamente correlacionadas, entre outros.\n\nFazer uma análise exploratória dos dados é um passo importante para que se possa entender e detecatar possíveis inconsistências na base de dados. Não adianta fazer uso de modelos muito sofisticados quando se tem uma base de dados cheia de problemas.\n\nNormalmente trabalhamos com juntos de dados (tabelas) relacionais, em que cada linha é uma observação e cada coluna representa um atributo do objeto/observação. A linha de uma base de dados relacional, sem sua a variável de interesse, lembre-se que denominamos Y de rótulo ou label, fornece o vetor de características \\bf{x} que descreve uma dada observação."
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento",
@@ -193,34 +193,125 @@
     "href": "index.html#dados-exploração-e-tratamento-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nMuitas vezes, no processo de tratamento dos dados, também estamos preocupados em remover atributos que não são significativo para a modelagem, em que nesse momento a experiência dos especialistas são fundamentais.\n\nÉ comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.\n\nAs vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se \\(x &gt;= 1\\), em que \\(x\\) é um atributo numérico qualquer.\n\nEm diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por NA."
+    "text": "Dados: exploração e tratamento\n\nMuitas vezes, no processo de tratamento dos dados, também estamos preocupados em remover atributos que não são significativo para a modelagem, em que nesse momento a experiência dos especialistas são fundamentais.\n\nÉ comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.\n\nAs vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se x &gt;= 1, em que x é um atributo numérico qualquer.\n\nEm diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por NA."
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-6",
     "href": "index.html#dados-exploração-e-tratamento-6",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nPoderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:\n\n\nTomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;\nCriar um novo valor que é indicação de valor faltante;\nUsar algoritmos como \\(k\\)-nearest neighbors - KNN (\\(k\\) vizinhos mais próximos) para imputar valores coerentes;\nInterpolar os dados.\n\n\nEsses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados."
+    "text": "Dados: exploração e tratamento\n\nPoderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:\n\n\nTomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;\nCriar um novo valor que é indicação de valor faltante;\nUsar algoritmos como k-nearest neighbors - KNN (k vizinhos mais próximos) para imputar valores coerentes;\nInterpolar os dados.\n\n\nEsses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados."
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-7",
     "href": "index.html#dados-exploração-e-tratamento-7",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nÉ comum ser necessário transformar os dados:\n\nPode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;\nPode-se discretizar valores contínuos ou transformá-los em intervalos;\nÉ comum transformar atributos categóricos com \\(p\\) categorias, em \\(p\\) novos atributos binários.\n\nOne-hot encoding\nVariáveis dummy\n\nOutra transformação muito comum é a normalização dos dados. Normalizar os dados é muito útil quando os atributos numéricos possuem escalas muito diferentes.\n\n\n\n\\[X_{novo} = \\frac{X - X_{min}}{X_{max} - X_{min}},\\] em que \\(X_{novo} \\in [0, 1].\\)\n\n\\[X_{novo} = Z = \\frac{X - \\mu}{\\sigma^2},\\] em que \\(\\mathbb{E}(X) = \\mu\\) é a média dos dados e \\(\\mathrm{Var}(X) = \\sigma^2\\). Na prática, em um contexto de v.a., iids, usamos \\(\\overline{x}\\) como estimador de \\(\\mu\\) e \\(S^2\\) (variância amostral) como estimador de \\(\\sigma^2\\)."
+    "text": "Dados: exploração e tratamento\n\nÉ comum ser necessário transformar os dados:\n\nPode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;\nPode-se discretizar valores contínuos ou transformá-los em intervalos;\nÉ comum transformar atributos categóricos com p categorias, em p novos atributos binários.\n\nOne-hot encoding\nVariáveis dummy\n\nOutra transformação muito comum é a normalização dos dados. Normalizar os dados é muito útil quando os atributos numéricos possuem escalas muito diferentes.\n\n\n\nX_{novo} = \\frac{X - X_{min}}{X_{max} - X_{min}}, em que X_{novo} \\in [0, 1].\n\nX_{novo} = Z = \\frac{X - \\mu}{\\sigma^2}, em que \\mathbb{E}(X) = \\mu é a média dos dados e \\mathrm{Var}(X) = \\sigma^2. Na prática, em um contexto de v.a., iids, usamos \\overline{x} como estimador de \\mu e S^2 (variância amostral) como estimador de \\sigma^2."
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-8",
     "href": "index.html#dados-exploração-e-tratamento-8",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nLembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o \\(\\log(\\cdot)\\).\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  hist()\n\n\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  log() |&gt; hist()"
+    "text": "Dados: exploração e tratamento\n\nLembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o \\log(\\cdot).\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  hist()\n\n\n\n\n\n\nset.seed(0)\nrgamma(1000, 2, 2) |&gt; \n  log() |&gt; hist()"
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-9",
     "href": "index.html#dados-exploração-e-tratamento-9",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nAnteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter cidado bibliotecas do framework tidymodels, em especial o recipes que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote recipes.\n\nO tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Dados: exploração e tratamento\n\nAnteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter cidado bibliotecas do framework tidymodels, em especial o recipes que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote recipes.\n\nO tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels."
+  },
+  {
+    "objectID": "index.html#as-duas-culturas",
+    "href": "index.html#as-duas-culturas",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "As duas culturas",
+    "text": "As duas culturas\n\nEm Breiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231, o Leo Breiman argumenta que existe duas culturas no uso de modelos estatísticos, em especialmente na área de modelos de regressão. Segundo eles, as culturas são:\n\n\nData modeling culture: nela, em geral, se assume que o modelo de regressão utilizado r(x), por exemplo, r(x) = \\beta_0 + \\sum_{i = 1}^d \\beta_ix_i é correto. O principal objetivo dessa abordagem é a interpretação dos parâmetros que indexam o modelo r(x). Nesse tipo de cultura, a ideia também é construir intervalos aleatórios e testar hipóteses para os \\beta_i's. Sob essa ótica, muitas suposições sob o modelo são realizadas, em que formas para checar essas suposições são desenvolvidas, uma vez que elas são fundamentais para esse tipo de modelagem.\n\n\n\nAlgorithmic modeling culture: essa é a cultura que domina a comunidade de aprendizagem de máquina. Nessa abordagem, o principal objetivo são as predições por meio de novas observações. Não se assume que o modelo utilizado é o modelo correto. Nesse tipo de modelagem, muitas vezes os algoritmos não envolve nenhuma estrutura probabilística. Muitas vezes, modelos não bem especificado conduzem a boas predições."
+  },
+  {
+    "objectID": "index.html#as-duas-culturas-1",
+    "href": "index.html#as-duas-culturas-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "As duas culturas",
+    "text": "As duas culturas\n\n\n\n\n\n\nBreiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231.\n\n\n\n\n\n\nLeo como um probabilista jovem na Universidade da Califórina."
+  },
+  {
+    "objectID": "index.html#as-duas-culturas-2",
+    "href": "index.html#as-duas-culturas-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "As duas culturas",
+    "text": "As duas culturas\n\nHá diversos artigos interessantes que são respostas ao artigo do Leo Breiman, como por exemplo, o artigo Statistical Modeling: The Two Cultures: Comment do David Cox e com comentários do Brad Efron.\n\nSir David Cox."
+  },
+  {
+    "objectID": "index.html#as-duas-culturas-3",
+    "href": "index.html#as-duas-culturas-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "As duas culturas",
+    "text": "As duas culturas\n\nMuito embora exista essa divisão entre as culturas, Breiman foi um estatístico que desempenhou um grande trabalho para unir a área de estatística com aprendizado de máquina. Por conta dessa grande importância, um prêmio concedido em sua homenagem foi criado pela American Statistical Association.\n\nLeo Breiman trabalhando em sua residência, em 1985."
+  },
+  {
+    "objectID": "index.html#regressão",
+    "href": "index.html#regressão",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão",
+    "text": "Regressão\n\nMétodos de regressão surgiram há mais de dois séculos com Legendre (1805) e Gauss (1809), que exploraram o método dos mínimos quadrados com o objetivo de prever órbitas ao redor do Sol. Hoje em dia, o problema de estimação de uma função de regressão possui papel central em estatística.\n\n\nApesar de as primeiras técnicas para solucionar esse problema datarem de ao menos 200 anos, os avanços computacionais recentes permitiram que novas metodologias fossem exploradas. Em particular, com a capacidade cada vez maior de armazenamento de dados, métodos com menos suposições sobre o verdadeiro estado da natureza ganham cada vez mais espaço. Com isso, vários desafios surgiram: por exemplo, métodos tradicionais não são capazes de lidar de forma satisfatória com bancos de dados em que há mais covariáveis que observações, uma situação muito comum nos dias de hoje. Similarmente, são frequentes as aplicações em que cada observação consiste em uma imagem ou um documento de texto, objetos complexos que levam a análises que requerem metodologias mais elaboradas. – Izbick et al."
+  },
+  {
+    "objectID": "index.html#regressão-1",
+    "href": "index.html#regressão-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão",
+    "text": "Regressão\n\nDe forma geral, temos que o objetivo de um modelo de regressão é determinar a relação entre uma variável aleatória (label) Y \\in \\mathbb{R} e um vetor de covariáveis (features) \\mathbf{x} = (x_1, \\cdots, x_d) \\in \\mathbb{R}^d. Mais especificamente, busaca-se estimar\nr(\\bf{x}) := \\mathbb{E}(Y\\,|\\,\\bf{X} = \\bf{x}),\nsendo esta chamada de função de regressão. Temos que:\n\n\nSe Y é uma variável quantitativa, então estamos sob um problema de regressão;\nSe Y é uma variável qualitativa, então teremos um problema de classificação.\n\nEm aprendizagem de máquina, assumimos que não temos meios de calcular r({\\bf{x}}), i.e., não conhecemos a distribuição condicional de {\\bf{Y}\\,|\\,X}. Portanto, não temos meios de calcular\n\\mathbb{E}({\\bf X}|Y = y) = \\int x\\,\\mathrm{d}F_{\\bf X}({\\bf x} | Y = y)."
+  },
+  {
+    "objectID": "index.html#notações",
+    "href": "index.html#notações",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Notações",
+    "text": "Notações\n\nA variável Y recebe frequentemente o nome de variável resposta, variável dependente, rótulo ou label. Já as observações contidas no vetor \\bf{x} = (x_1, \\cdots, x_d), são, em geral, denominadas de variáveis explicativas, variáveis independentes, características, atributos, preditores, covariáveis ou features.\n\nA ideia, nessa primeira parte do curso, é descrever algumas técnicas para estimar (treinar, como é dito em aprendizagem de máquina) r(\\bf{x}).\n\nA menos quando dito o contrário, assumiremos que nossa amostra são i.i.d. (independentes e identicamente distribuídas), ou seja, (\\bf{X}_1, Y_1), \\cdots, (\\bf{X}_n, Y_n) são i.i.d.\n\nDenota-se por x_{i,j} o valor da j-ésima covariável na i-ésima amostra, com j = 1, \\cdots, d e i = 1, \\cdots, n."
+  },
+  {
+    "objectID": "index.html#notações-1",
+    "href": "index.html#notações-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Notações",
+    "text": "Notações\n\n\nNotação utilizada nesse material para as variáveis envolvidas em um problema de regressão.\n\n\n\n\n\n\nLabel\nFeatures\n\n\n\n\nY_1\nX_{1,1},\\cdots, X_{1,d}\\,\\,\\, (= \\bf{X}_1)\n\n\n\\vdots\n\\,\\,\\,\\vdots\\,\\,\\,\\,\\, \\ddots\\,\\,\\ \\vdots\n\n\nY_n\nX_{n,1},\\cdots, X_{n,d}\\,\\,\\, (= \\bf{X}_n)"
+  },
+  {
+    "objectID": "index.html#regressão-2",
+    "href": "index.html#regressão-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão",
+    "text": "Regressão\nNossa ideia é construir uma boa estimativa g da função de regressão r(\\bf{x}) := \\mathbb{E}(Y\\,|\\,\\bf{X} = \\bf{x}), para novas observações, i.e., queremos obter uma função g, tal que:\ng: \\mathbb{R}^d \\rightarrow \\mathbb{R},\nde tal forma que g possua um bom poder preditivo. Em aprendizagem de máquina, só estaremos interessados em obter uma função g que estime bem um número real (em problemas de regressão), ou que classifique bem (em um problema de classificação), utilizando as d covariáveis. Ou seja, para m novas observações, desejamos obter g, que\ng({\\bf{x}}_{n + 1}) \\approx y_{n + 1}, \\cdots, g({\\bf{x}}_{n + m}) \\approx y_{n + m}."
+  },
+  {
+    "objectID": "index.html#função-de-risco",
+    "href": "index.html#função-de-risco",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Função de risco",
+    "text": "Função de risco\n\nPara que possamos construir boas funções de predição, é preciso que tenhamos um critério para medir o desempenho de uma dada função g:\\mathbb{R}^d \\rightarrow \\mathbb{R}. Em contexto de regressão, usaremos o risco quadrático, muito embora esta não é a única opção. Denotaremos a função de risco quadrático por:\nR_{pred}(g) = \\mathbb{E}\\left[({\\bf Y} - g({\\bf X}))^2\\right], em que (\\bf X, Y) são observações novas que não foram utilizadas para treinar/estimar g. Lê-se R_{pred}(g) como “risco preditivo de g”. Note que, como \\bf X são observações conhecidas e g(\\cdot) é um modelo preditivo, portanto, g é conhecido, então, \\widehat{\\bf Y} = g(\\bf X) é um estimador dos labels, i.e., de \\bf Y.\n\nDiremos que L(g({\\bf X}); {\\bf Y}) = ({\\bf Y} - g({\\bf X}))^2 é a função de perda quadrática, as vezes chamado de perda L_2. Outra funções como a função de perda absoluta denotada por L(g({\\bf X}); {\\bf Y}) = |{\\bf Y} - g({\\bf X})|, as vezes chamada de perda L_1 poderiam ser consideradas."
+  },
+  {
+    "objectID": "index.html#função-de-risco-1",
+    "href": "index.html#função-de-risco-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Função de risco",
+    "text": "Função de risco\n\nNormalmente considera-se a perda L_2, uma vez que em modelos de regressão, minimizar R_{pred}(g), em g, equivale a encontrar r({\\bf x}) = \\mathbb{E}({\\bf X}|{\\bf Y}), i.e., equivale a estimar a função de regressão.\n\nTeorema: Suponha que definimos o risco de uma função de predição g: \\mathbb{R}^d \\rightarrow \\mathbb{R} via função perda quadrática, i.e, R_{pred}(g) = \\mathbb{E}\\left[({\\bf Y} - g({\\bf X}))^2\\right], em que \\bf (X, Y) são novas observações que não foram utilizadas para estimar g. Suponha também que estimaos o risco de um estimador de regressão r({\\bf X}) via função perda quadrática R_{pred}(g) = \\mathbb{E}\\left[r({\\bf X} - g({\\bf X}))^2\\right]. Então,\nR_{pred}(g) = R_{reg}(g) + \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right],\nem que \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right] é a variância média do modelo que não depende de g. Portanto, estimar bem r({\\bf x}) é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para \\bf Y é a função de regressão r({\\bf x}), de tal modo que:\n\\argmin_g R_{pred}(g) = \\argmin_g R_{reg}(g) = r({\\bf x})."
+  },
+  {
+    "objectID": "index.html#função-de-risco-2",
+    "href": "index.html#função-de-risco-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Função de risco",
+    "text": "Função de risco\n\nLembre-se: r({\\bf x}) = \\mathbb{E}(Y | \\bf{X} = \\bf{x}) é a nossa função de regressão.\n\nA definição de risco preditivo R_{pred}, que também denotaremos simplesmente por R, tem um apelo frequentista. Dessa forma, para um novo conjunto com m novas observaçõs, ({\\bf X}_{n+1}, Y_{n+1}), \\cdots, ({\\bf X}_{n+m}, Y_{n+m}), temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right]. Chamaremos a quantidade acima de Erro Quadrático Médio - EQM. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.\n\nDesejamos encontrar g (encontrar métodos) que minimize de forma satisfatória R, i.e., métodos que nos conduzam à um risco baixo."
+  },
+  {
+    "objectID": "index.html#função-de-risco-3",
+    "href": "index.html#função-de-risco-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Função de risco",
+    "text": "Função de risco\n\nSendo assim, se R(g) possui um valor baixo, então, temos que\ng({\\bf x}_{n+1}) \\approx = y_{n+1}, \\cdots, g({\\bf x}_{n+m}) \\approx = y_{n+m}.  \n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

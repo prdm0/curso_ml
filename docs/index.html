@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-06-29">
+  <meta name="dcterms.date" content="2023-07-03">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -99,6 +99,22 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -418,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-06-29</p>
+  <p class="date">2023-07-03</p>
 </section>
 <section class="slide level2">
 
@@ -472,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1e1dd49b6d95a4091f54" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1e1dd49b6d95a4091f54">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-fd7a96e82cb5688904e7" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-fd7a96e82cb5688904e7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -521,7 +537,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p><span class="black">Aprendizado supervisionado</span></p>
 <p><br></p>
-<p>Nesse curso, inicialmente estudaremos problemas de <span class="red">aprendizado supervisionado</span>, que consiste em aprender a fazer predições a partir de conjunto de dados em que rótulos (valores da variável resposta <span class="math inline">\(Y\)</span>) são observados. Trataremos tanto de problemas de regressão (estimar um valor númérico) quanto problemas de classificação (classificar um cliente como aprovado ou reprovado, em um problema de concessão de crédito). Por exemplo, os <span class="red">modelos de regressão</span> são exemplos de aprendizado supervisionado.</p>
+<p>Nesse curso, inicialmente estudaremos problemas de <span class="red">aprendizado supervisionado</span>, que consiste em aprender a fazer predições a partir de conjunto de dados em que rótulos (valores da variável resposta <span class="math inline">Y</span>) são observados. Trataremos tanto de problemas de regressão (estimar um valor númérico) quanto problemas de classificação (classificar um cliente como aprovado ou reprovado, em um problema de concessão de crédito). Por exemplo, os <span class="red">modelos de regressão</span> são exemplos de aprendizado supervisionado.</p>
 <p><br></p>
 <p><span class="black">Aprendizado não supervisionado</span></p>
 <p><br></p>
@@ -579,18 +595,18 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Nesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados em que conhecemos rótulos para a variável de interesse. É como se você soubesse onde um bom modelo deve chegar, para assim ser reconhecido como um bom modelo. Por exemplo,</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><span class="red">Classificação</span>: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., <span class="math inline">\(\widehat{y} = \mathrm{argmax}_y\,P(Y = y\,|\, X = \bf{x})\)</span>, em que y é um atributo que desejamos prever (cahorro, gato, sapo), e <span class="math inline">\(\bf{x}\)</span> é um vetor de características (peso, altura, comprimento, se tem rabo, etc).</li>
+<li class="fragment"><span class="red">Classificação</span>: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., <span class="math inline">\widehat{y} = \mathrm{argmax}_y\,P(Y = y\,|\, X = \bf{x})</span>, em que y é um atributo que desejamos prever (cahorro, gato, sapo), e <span class="math inline">\bf{x}</span> é um vetor de características (peso, altura, comprimento, se tem rabo, etc).</li>
 </ol>
 <p><br></p>
 <ol start="2" type="1">
-<li class="fragment"><span class="red">Regressão</span>: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar <span class="math inline">\(Y = \mathbb{E}(Y\,|\,X = \bf{x})\)</span>, i.e., devemos encontrar meios de obter <span class="math inline">\(\widehat{Y}\)</span>.</li>
+<li class="fragment"><span class="red">Regressão</span>: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar <span class="math inline">Y = \mathbb{E}(Y\,|\,X = \bf{x})</span>, i.e., devemos encontrar meios de obter <span class="math inline">\widehat{Y}</span>.</li>
 </ol>
 
 <aside><div>
 <p><strong>Algumas observações de nomenclaturas</strong>:</p>
 <ol type="1">
-<li class="fragment">É comum chamar cada exemplo de dados, i.e., o vetor <span class="math inline">\(\bf{x}\)</span> que será passado ao modelo de <span class="red">atributos</span> ou <span class="red">features</span>;</li>
-<li class="fragment">Também é comum chamarmos de <span class="red">rótulo</span> ou <span class="red">label</span> a classe ou valor alvo, ou seja, estas são as formas de nomearmos <span class="math inline">\(Y\)</span>, sendo <span class="math inline">\(Y\)</span> uma quantidade numérica (modelos de regressão) ou não (modelos de classificação).</li>
+<li class="fragment">É comum chamar cada exemplo de dados, i.e., o vetor <span class="math inline">\bf{x}</span> que será passado ao modelo de <span class="red">atributos</span> ou <span class="red">features</span>;</li>
+<li class="fragment">Também é comum chamarmos de <span class="red">rótulo</span> ou <span class="red">label</span> a classe ou valor alvo, ou seja, estas são as formas de nomearmos <span class="math inline">Y</span>, sendo <span class="math inline">Y</span> uma quantidade numérica (modelos de regressão) ou não (modelos de classificação).</li>
 </ol>
 </div></aside></section>
 <section id="aprendizagem-supervisionada-1" class="slide level2">
@@ -599,7 +615,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Em se tratando de métodos de classificação, podemos ter os métodos:</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><p><span class="red">Generativos</span>: são os métodos que dada as variáveis <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, o objetivo é encontrar a distribuição de probabilidade conjunta <span class="math inline">\(P(X, Y)\)</span>, para então poder determinar <span class="math inline">\(P(Y\, | \, X = \bf{x})\)</span>. Alguns métodos são:</p>
+<li class="fragment"><p><span class="red">Generativos</span>: são os métodos que dada as variáveis <span class="math inline">X</span> e <span class="math inline">Y</span>, o objetivo é encontrar a distribuição de probabilidade conjunta <span class="math inline">P(X, Y)</span>, para então poder determinar <span class="math inline">P(Y\, | \, X = \bf{x})</span>. Alguns métodos são:</p>
 <ul>
 <li class="fragment">Naive Bayes;</li>
 <li class="fragment">Descriminante linear.</li>
@@ -607,7 +623,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </ol>
 <p><br></p>
 <ol start="2" type="1">
-<li class="fragment"><span class="red">Descriminativos</span>: são os métodos que estimam diretamente a probabilidade condicional <span class="math inline">\(P(Y \, | \, X = \bf{x})\)</span> ou que mesmo nem assumem modelos probabilísticos. Podemos citar:
+<li class="fragment"><span class="red">Descriminativos</span>: são os métodos que estimam diretamente a probabilidade condicional <span class="math inline">P(Y \, | \, X = \bf{x})</span> ou que mesmo nem assumem modelos probabilísticos. Podemos citar:
 <ul>
 <li class="fragment">Regressão logistica;</li>
 <li class="fragment">Perceptron;</li>
@@ -641,7 +657,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Aprendizagem supervisionada</h2>
 <p><br> <br></p>
 
-<img data-src="gifs/regression.gif" class="fragment r-stretch quarto-figure-center" width="1200"><p>Um exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de <span class="math inline">\(x\)</span>.</p>
+<img data-src="gifs/regression.gif" class="fragment r-stretch quarto-figure-center" width="1200"><p>Um exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de <span class="math inline">x</span>.</p>
 </section>
 <section id="aprendizagem-supervisionada-5" class="slide level2">
 <h2>Aprendizagem supervisionada</h2>
@@ -690,7 +706,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Fazer uma análise exploratória dos dados é um passo importante para que se possa entender e detecatar possíveis inconsistências na base de dados. Não adianta fazer uso de modelos muito sofisticados quando se tem uma base de dados cheia de problemas.</p>
 <p><br></p>
-<p>Normalmente trabalhamos com juntos de dados (tabelas) relacionais, em que cada linha é uma observação e cada coluna representa um atributo do objeto/observação. A linha de uma base de dados relacional, sem sua a variável de interesse, lembre-se que denominamos <span class="math inline">\(Y\)</span> de <span class="red">rótulo</span> ou <span class="red">label</span>, fornece o vetor de características <span class="math inline">\(\bf{x}\)</span> que descreve uma dada observação.</p>
+<p>Normalmente trabalhamos com juntos de dados (tabelas) relacionais, em que cada linha é uma observação e cada coluna representa um atributo do objeto/observação. A linha de uma base de dados relacional, sem sua a variável de interesse, lembre-se que denominamos <span class="math inline">Y</span> de <span class="red">rótulo</span> ou <span class="red">label</span>, fornece o vetor de características <span class="math inline">\bf{x}</span> que descreve uma dada observação.</p>
 </section>
 <section id="dados-exploração-e-tratamento" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"></path></svg> Dados: exploração e tratamento</h2>
@@ -752,7 +768,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>É comum enriquercermos a base de dados com informações de outras bases de dados, em um sistema de gerenciamento de banco de dados relacional, em que as bases de dados estão relacionadas por uma chave. Nesse caso, buscamos por novos atributos para um mesmo objeto (para uma mesma linha da base), em que atributos cruzados devem ter um único valor, para cada objeto, respeitando a regra três de conjuntos de dados tidy.</p>
 <p><br></p>
-<p>As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se <span class="math inline">\(x &gt;= 1\)</span>, em que <span class="math inline">\(x\)</span> é um atributo numérico qualquer.</p>
+<p>As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo de uma variável numérica que é assimétrica, se <span class="math inline">x &gt;= 1</span>, em que <span class="math inline">x</span> é um atributo numérico qualquer.</p>
 <p><br></p>
 <p>Em diveras situações, também é comum a base de dados apresentar informações faltantes. Nos data frames de R, a falta de informação na base, normlamente serão representadas por <code>NA</code>.</p>
 </section>
@@ -764,7 +780,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <ol type="1">
 <li class="fragment">Tomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;</li>
 <li class="fragment">Criar um novo valor que é indicação de valor faltante;</li>
-<li class="fragment">Usar algoritmos como <span class="math inline">\(k\)</span>-nearest neighbors - KNN (<span class="math inline">\(k\)</span> vizinhos mais próximos) para imputar valores coerentes;</li>
+<li class="fragment">Usar algoritmos como <span class="math inline">k</span>-nearest neighbors - KNN (<span class="math inline">k</span> vizinhos mais próximos) para imputar valores coerentes;</li>
 <li class="fragment">Interpolar os dados.</li>
 </ol>
 <p><br></p>
@@ -777,7 +793,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <ol type="1">
 <li class="fragment"><p>Pode ser necessário transformar os tipos ou os valores dos atributos para tentar obter um melhor ajuste do modelo;</p></li>
 <li class="fragment"><p>Pode-se discretizar valores contínuos ou transformá-los em intervalos;</p></li>
-<li class="fragment"><p>É comum transformar atributos categóricos com <span class="math inline">\(p\)</span> categorias, em <span class="math inline">\(p\)</span> novos atributos binários.</p>
+<li class="fragment"><p>É comum transformar atributos categóricos com <span class="math inline">p</span> categorias, em <span class="math inline">p</span> novos atributos binários.</p>
 <ul>
 <li class="fragment"><a href="https://en.wikipedia.org/wiki/One-hot">One-hot encoding</a></li>
 <li class="fragment"><a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">Variáveis dummy</a></li>
@@ -786,16 +802,16 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </ol>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="math display">\[X_{novo} = \frac{X - X_{min}}{X_{max} - X_{min}},\]</span> em que <span class="math inline">\(X_{novo} \in [0, 1].\)</span></p>
+<p><span class="math display">X_{novo} = \frac{X - X_{min}}{X_{max} - X_{min}},</span> em que <span class="math inline">X_{novo} \in [0, 1].</span></p>
 </div><div class="column" style="width:50%;">
-<p><span class="math display">\[X_{novo} = Z = \frac{X - \mu}{\sigma^2},\]</span> em que <span class="math inline">\(\mathbb{E}(X) = \mu\)</span> é a média dos dados e <span class="math inline">\(\mathrm{Var}(X) = \sigma^2\)</span>. Na prática, em um contexto de v.a., iids, usamos <span class="math inline">\(\overline{x}\)</span> como estimador de <span class="math inline">\(\mu\)</span> e <span class="math inline">\(S^2\)</span> (variância amostral) como estimador de <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><span class="math display">X_{novo} = Z = \frac{X - \mu}{\sigma^2},</span> em que <span class="math inline">\mathbb{E}(X) = \mu</span> é a média dos dados e <span class="math inline">\mathrm{Var}(X) = \sigma^2</span>. Na prática, em um contexto de v.a., iids, usamos <span class="math inline">\overline{x}</span> como estimador de <span class="math inline">\mu</span> e <span class="math inline">S^2</span> (variância amostral) como estimador de <span class="math inline">\sigma^2</span>.</p>
 </div>
 </div>
 </section>
 <section id="dados-exploração-e-tratamento-8" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"></path></svg> Dados: exploração e tratamento</h2>
 <p><br></p>
-<p>Lembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o <span class="math inline">\(\log(\cdot)\)</span>.</p>
+<p>Lembre-se, como citado anteriormente, tomar o logaritmo natural, ou mesmo na base 10 de variáveis numéricas muito assimétricas, poderá ajudar um pouco, desde que seja possivel tomar o <span class="math inline">\log(\cdot)</span>.</p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -826,7 +842,166 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>O tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels.</p>
 <p><br></p>
-<p><img data-src="gifs/ok-2.gif" style="width:20.0%"></p>
+
+<img data-src="gifs/ok-2.gif" style="width:20.0%" class="r-stretch"></section>
+<section id="as-duas-culturas" class="slide level2">
+<h2>As duas culturas</h2>
+<p><br></p>
+<p>Em <a href="https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2Fss%2F1009213726">Breiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231</a>, o Leo Breiman argumenta que existe duas culturas no uso de modelos estatísticos, em especialmente na área de modelos de regressão. Segundo eles, as culturas são:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><span class="red">Data modeling culture</span>: nela, em geral, se assume que o modelo de regressão utilizado <span class="math inline">r(x)</span>, por exemplo, <span class="math inline">r(x) = \beta_0 + \sum_{i = 1}^d \beta_ix_i</span> é correto. O principal objetivo dessa abordagem é a interpretação dos parâmetros que indexam o modelo <span class="math inline">r(x)</span>. Nesse tipo de cultura, a ideia também é construir intervalos aleatórios e testar hipóteses para os <span class="math inline">\beta_i's</span>. Sob essa ótica, muitas suposições sob o modelo são realizadas, em que formas para checar essas suposições são desenvolvidas, uma vez que elas são fundamentais para esse tipo de modelagem.</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li class="fragment"><span class="red">Algorithmic modeling culture</span>: essa é a cultura que domina a comunidade de aprendizagem de máquina. Nessa abordagem, o principal objetivo são as predições por meio de novas observações. Não se assume que o modelo utilizado é o modelo correto. Nesse tipo de modelagem, muitas vezes os algoritmos não envolve nenhuma estrutura probabilística. Muitas vezes, modelos não bem especificado conduzem a boas predições.</li>
+</ol>
+</section>
+<section id="as-duas-culturas-1" class="slide level2">
+<h2>As duas culturas</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/paper_breiman.png" style="width:70.0%"></p>
+<figcaption>Breiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/leo_breiman.png" style="width:60.0%"></p>
+<figcaption>Leo como um probabilista jovem na Universidade da Califórina.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="as-duas-culturas-2" class="slide level2">
+<h2>As duas culturas</h2>
+<p><br></p>
+<p>Há diversos artigos interessantes que são respostas ao artigo do Leo Breiman, como por exemplo, o artigo <a href="https://www.jstor.org/stable/2676682">Statistical Modeling: The Two Cultures: Comment</a> do David Cox e com comentários do Brad Efron.</p>
+
+<img data-src="imgs/david_cox.png" style="width:20.0%" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://en.wikipedia.org/wiki/David_Cox_(statistician)">Sir David Cox.</a></p></section>
+<section id="as-duas-culturas-3" class="slide level2">
+<h2>As duas culturas</h2>
+<p><br></p>
+<p>Muito embora exista essa divisão entre as culturas, Breiman foi um estatístico que desempenhou um grande trabalho para unir a área de estatística com aprendizado de máquina. Por conta dessa grande importância, um prêmio concedido em sua homenagem foi criado pela <a href="https://community.amstat.org/slds/awards/breiman-award">American Statistical Association</a>.</p>
+
+<img data-src="imgs/breiman_residencia.png" style="width:30.0%" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://projecteuclid.org/journalArticle/Download?urlid=10.1214%2Fss%2F1009213290">Leo Breiman trabalhando em sua residência, em 1985.</a></p></section></section>
+<section>
+<section id="section-3" class="title-slide slide level1 title center" data-background-image="imgs/rawpixel/freight.jpg">
+<h1></h1>
+<div class="r-fit-text">
+<p><span class="flow">Regressão / Parte I</span></p>
+</div>
+</section>
+<section id="regressão" class="slide level2">
+<h2>Regressão</h2>
+<p><br></p>
+<p>Métodos de regressão surgiram há mais de dois séculos com Legendre (1805) e Gauss (1809), que exploraram o método dos mínimos quadrados com o objetivo de prever órbitas ao redor do Sol. Hoje em dia, o problema de estimação de uma função de regressão possui papel central em estatística.</p>
+<p><br></p>
+<blockquote>
+<p>Apesar de as primeiras técnicas para solucionar esse problema datarem de ao menos 200 anos, os avanços computacionais recentes permitiram que novas metodologias fossem exploradas. Em particular, com a capacidade cada vez maior de armazenamento de dados, métodos com menos suposições sobre o verdadeiro estado da natureza ganham cada vez mais espaço. Com isso, vários desafios surgiram: por exemplo, métodos tradicionais não são capazes de lidar de forma satisfatória com bancos de dados em que há mais covariáveis que observações, uma situação muito comum nos dias de hoje. Similarmente, são frequentes as aplicações em que cada observação consiste em uma imagem ou um documento de texto, objetos complexos que levam a análises que requerem metodologias mais elaboradas. – Izbick et al.</p>
+</blockquote>
+</section>
+<section id="regressão-1" class="slide level2">
+<h2>Regressão</h2>
+<p><br></p>
+<p>De forma geral, temos que o objetivo de um modelo de regressão é determinar a relação entre uma variável aleatória (label) <span class="math inline">Y \in \mathbb{R}</span> e um vetor de covariáveis (features) <span class="math inline">\mathbf{x} = (x_1, \cdots, x_d) \in \mathbb{R}^d</span>. Mais especificamente, busaca-se estimar</p>
+<p><span class="math display">r(\bf{x}) := \mathbb{E}(Y\,|\,\bf{X} = \bf{x}),</span></p>
+<p>sendo esta chamada de <span class="red">função de regressão</span>. Temos que:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment">Se <span class="math inline">Y</span> é uma variável quantitativa, então estamos sob um problema de <span class="red">regressão</span>;</li>
+<li class="fragment">Se <span class="math inline">Y</span> é uma variável qualitativa, então teremos um problema de <span class="red">classificação</span>.</li>
+</ol>
+<p>Em aprendizagem de máquina, assumimos que não temos meios de calcular <span class="math inline">r({\bf{x}})</span>, i.e., não conhecemos a distribuição condicional de <span class="math inline">{\bf{Y}\,|\,X}</span>. Portanto, não temos meios de calcular</p>
+<p><span class="math display">\mathbb{E}({\bf X}|Y = y) = \int x\,\mathrm{d}F_{\bf X}({\bf x} | Y = y).</span></p>
+</section>
+<section id="notações" class="slide level2">
+<h2>Notações</h2>
+<p><br></p>
+<p>A variável <span class="math inline">Y</span> recebe frequentemente o nome de variável resposta, variável dependente, rótulo ou <em>label</em>. Já as observações contidas no vetor <span class="math inline">\bf{x} = (x_1, \cdots, x_d)</span>, são, em geral, denominadas de variáveis explicativas, variáveis independentes, características, atributos, preditores, covariáveis ou <em>features</em>.</p>
+<p><br></p>
+<p>A ideia, nessa primeira parte do curso, é descrever algumas técnicas para estimar (<strong>treinar</strong>, como é dito em aprendizagem de máquina) <span class="math inline">r(\bf{x})</span>.</p>
+<p><br></p>
+<p>A menos quando dito o contrário, assumiremos que nossa amostra são i.i.d. (independentes e identicamente distribuídas), ou seja, <span class="math inline">(\bf{X}_1, Y_1), \cdots, (\bf{X}_n, Y_n)</span> são i.i.d.</p>
+<p><br></p>
+<p>Denota-se por <span class="math inline">x_{i,j}</span> o valor da <span class="math inline">j</span>-ésima covariável na <span class="math inline">i</span>-ésima amostra, com <span class="math inline">j = 1, \cdots, d</span> e <span class="math inline">i = 1, \cdots, n</span>.</p>
+</section>
+<section id="notações-1" class="slide level2">
+<h2>Notações</h2>
+<p><br></p>
+<table style="width:50%;">
+<caption>Notação utilizada nesse material para as variáveis envolvidas em um problema de regressão.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">Y_1</span></td>
+<td><span class="math inline">X_{1,1},\cdots, X_{1,d}\,\,\, (= \bf{X}_1)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\,\,\,\vdots\,\,\,\,\, \ddots\,\,\ \vdots</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">Y_n</span></td>
+<td><span class="math inline">X_{n,1},\cdots, X_{n,d}\,\,\, (= \bf{X}_n)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="regressão-2" class="slide level2">
+<h2>Regressão</h2>
+<p>Nossa ideia é construir uma boa estimativa <span class="math inline">g</span> da função de regressão <span class="math inline">r(\bf{x}) := \mathbb{E}(Y\,|\,\bf{X} = \bf{x})</span>, para novas observações, i.e., queremos obter uma função <span class="math inline">g</span>, tal que:</p>
+<p><span class="math display">g: \mathbb{R}^d \rightarrow \mathbb{R},</span></p>
+<p>de tal forma que <span class="math inline">g</span> possua um bom poder preditivo. Em aprendizagem de máquina, só estaremos interessados em obter uma função <span class="math inline">g</span> que estime bem um número real (em problemas de regressão), ou que classifique bem (em um problema de classificação), utilizando as <span class="math inline">d</span> covariáveis. Ou seja, para <span class="math inline">m</span> novas observações, desejamos obter <span class="math inline">g</span>, que</p>
+<p><span class="math display">g({\bf{x}}_{n + 1}) \approx y_{n + 1}, \cdots, g({\bf{x}}_{n + m}) \approx y_{n + m}.</span></p>
+</section>
+<section id="função-de-risco" class="slide level2">
+<h2>Função de risco</h2>
+<p><br></p>
+<p>Para que possamos construir boas funções de predição, é preciso que tenhamos um critério para medir o desempenho de uma dada função <span class="math inline">g:\mathbb{R}^d \rightarrow \mathbb{R}</span>. Em contexto de regressão, usaremos o risco quadrático, muito embora esta não é a única opção. Denotaremos a função de risco quadrático por:</p>
+<p><span class="math display">R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right],</span> em que <span class="math inline">(\bf X, Y)</span> são observações novas que não foram utilizadas para treinar/estimar <span class="math inline">g</span>. Lê-se <span class="math inline">R_{pred}(g)</span> como “risco preditivo de <span class="math inline">g</span>”. Note que, como <span class="math inline">\bf X</span> são observações conhecidas e <span class="math inline">g(\cdot)</span> é um modelo preditivo, portanto, <span class="math inline">g</span> é conhecido, então, <span class="math inline">\widehat{\bf Y} = g(\bf X)</span> é um estimador dos labels, i.e., de <span class="math inline">\bf Y</span>.</p>
+<p><br></p>
+<p>Diremos que <span class="math inline">L(g({\bf X}); {\bf Y}) = ({\bf Y} - g({\bf X}))^2</span> é a <span class="red">função de perda quadrática</span>, as vezes chamado de perda <span class="math inline">L_2</span>. Outra funções como a <span class="red">função de perda absoluta</span> denotada por <span class="math inline">L(g({\bf X}); {\bf Y}) = |{\bf Y} - g({\bf X})|</span>, as vezes chamada de perda <span class="math inline">L_1</span> poderiam ser consideradas.</p>
+</section>
+<section id="função-de-risco-1" class="slide level2">
+<h2>Função de risco</h2>
+<p><br></p>
+<p>Normalmente considera-se a perda <span class="math inline">L_2</span>, uma vez que em modelos de regressão, minimizar <span class="math inline">R_{pred}(g)</span>, em <span class="math inline">g</span>, equivale a encontrar <span class="math inline">r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})</span>, i.e., equivale a estimar a função de regressão.</p>
+<p><br></p>
+<p><span class="red">Teorema</span>: Suponha que definimos o risco de uma função de predição <span class="math inline">g: \mathbb{R}^d \rightarrow \mathbb{R}</span> via função perda quadrática, i.e, <span class="math inline">R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]</span>, em que <span class="math inline">\bf (X, Y)</span> são novas observações que não foram utilizadas para estimar <span class="math inline">g</span>. Suponha também que estimaos o risco de um estimador de regressão <span class="math inline">r({\bf X})</span> via função perda quadrática <span class="math inline">R_{pred}(g) = \mathbb{E}\left[r({\bf X} - g({\bf X}))^2\right]</span>. Então,</p>
+<p><span class="math display">R_{pred}(g) = R_{reg}(g) + \mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right],</span></p>
+<p>em que <span class="math inline">\mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right]</span> é a variância média do modelo que não depende de <span class="math inline">g</span>. Portanto, estimar bem <span class="math inline">r({\bf x})</span> é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para <span class="math inline">\bf Y</span> é a função de regressão <span class="math inline">r({\bf x})</span>, de tal modo que:</p>
+<p><span class="math display">\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).</span></p>
+</section>
+<section id="função-de-risco-2" class="slide level2">
+<h2>Função de risco</h2>
+<p><br></p>
+<p><strong>Lembre-se</strong>: <span class="math inline">r({\bf x}) = \mathbb{E}(Y | \bf{X} = \bf{x})</span> é a nossa <span class="red">função de regressão</span>.</p>
+<p><br></p>
+<p>A definição de risco preditivo <span class="math inline">R_{pred}</span>, que também denotaremos simplesmente por <span class="math inline">R</span>, tem um apelo frequentista. Dessa forma, para um novo conjunto com <span class="math inline">m</span> novas observaçõs, <span class="math inline">({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})</span>, temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:</p>
+<p><span class="math display">\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].</span> Chamaremos a quantidade acima de <a href="https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio">Erro Quadrático Médio - EQM</a>. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.</p>
+<p><br></p>
+<p>Desejamos encontrar <span class="math inline">g</span> (encontrar métodos) que minimize de forma satisfatória <span class="math inline">R</span>, i.e., métodos que nos conduzam à um risco baixo.</p>
+</section>
+<section id="função-de-risco-3" class="slide level2">
+<h2>Função de risco</h2>
+<p><br></p>
+<p>Sendo assim, se <span class="math inline">R(g)</span> possui um valor baixo, então, temos que</p>
+<p><span class="math display">g({\bf x}_{n+1}) \approx = y_{n+1}, \cdots, g({\bf x}_{n+m}) \approx = y_{n+m}.</span> <br> <img data-src="gifs/hum.gif" style="width:25.0%"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">
@@ -852,7 +1027,6 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
   <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="site_libs/revealjs/plugin/search/search.js"></script>
   <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1022,27 +1196,9 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealPointer, RevealAttribution, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
