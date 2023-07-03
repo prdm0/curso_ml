@@ -971,7 +971,28 @@ Diremos que $L(g({\bf X}); {\bf Y}) = ({\bf Y} - g({\bf X}))^2$ é a [função d
 
 <br>
 
-Normalmente considera-se a perda $L_2$, uma vez que em modelos de regressão, minimizar $R_{pred}(g)$, em $g$, equivale a encontrar $r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})$, i.e., equivale a estimar a função de regressão.
+Em linhas gerais, seja $L(\cdot)$ uma função qualquer, tal que $\forall \, 0 < u < v$, de modo que:
+
+<br>
+
+i) $0 = L(0) \leq L(u) \leq L(v)$;
+ii) $0 = L(0) \leq L(-u) \leq L(-v)$.
+
+<br>
+
+Qualquer função $L(\cdot)$ que satisfaz as propriedades acima é chamada de [função de perda](https://en.wikipedia.org/wiki/Loss_function). Em especial, temos que:
+
+<br>
+
+- Função de perda quadrática: $L(u) = u^2$;
+- Função de perda absoluta: $L(u) = |u|$;
+- Função de perda degradu: $L(0) = 0$, se $|u| < \delta$ e $1$ caso contrário, para algum $\delta > 0$;
+
+## Função de risco
+
+<br>
+
+Normalmente considera-se a perda $L_2$, uma vez que em modelos de regressão, minimizar $R_{pred}(g)$, em $g$, equivale a encontrar $r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})$, i.e., equivale a estimar a função de regressão. 
 
 <br>
 
@@ -1000,7 +1021,7 @@ Chamaremos a quantidade acima de [Erro Quadrático Médio - EQM](https://pt.wiki
 
 <br>
 
-Desejamos encontrar $g$ (encontrar métodos) que minimize de forma satisfatória $R$, i.e., métodos que nos conduzam à um risco baixo.
+''Desejamos encontrar $g$ (encontrar métodos) que minimize de forma satisfatória $R$, i.e., métodos que nos conduzam à um risco baixo.
 
 ## Função de risco
 
@@ -1008,6 +1029,187 @@ Desejamos encontrar $g$ (encontrar métodos) que minimize de forma satisfatória
 
 Sendo assim, se $R(g)$ possui um valor baixo, então, temos que 
 
-$$g({\bf x}_{n+1}) \approx = y_{n+1}, \cdots, g({\bf x}_{n+m}) \approx = y_{n+m}.$$
+$$g({\bf x}_{n+1}) \approx y_{n+1}, \cdots, g({\bf x}_{n+m}) \approx y_{n+m}.$$
 <br>
 ![](gifs/hum.gif){width="25%"}
+
+## Regressão linear
+
+<br>
+
+Nesse momento, vamos pensar um pouco em regressão linear. No caso mais simples, queremos prever o comportamento de uma variável de interesse $Y$ condicional a uma variável explicativa $X$ (regressão linear simples, i.e., $d = 1$). O melhor preditor de $Y$ condicional em $X$ é aquele que minimiza a função de perda esperada, ou seja, é aquele que resolve:
+
+$$\argmin_g \mathbb{E}(L(Y - g)\,|\,X).$$
+
+Para o caso da função perda quadrática (função $L_2$), o melhor preditor de $Y$ condicional à $X$ é a média condicional de $Y$ dado $X$, i.e., $r(X) = \mathbb{E}(Y\,|\,X)$. Já, na situação em que considera-se a perda absoluta (função $L_1$), o melhor estimador é a mediana condicional.
+
+<br>
+
+**Os modelos de regressão, em geral, fazem uso da função de perda quadrática.**
+
+## Regressão linear simples
+
+<br>
+
+No caso da regressão linear simples ($d = 1$), temos que o modelo é dado por:
+
+$$g(x) = \beta_0 + \beta_1 x_{i,1} + \varepsilon_i, \,\, i = 1, \cdots, n.$$
+
+Assumindo que a regressão linear simples é o modelo $g$ que iremos utilizar, então, desejamos minimizar:
+
+$$\argmin_{\beta} R(g_\beta) = \argmin_{\beta} \sum_{i = 1}^n(y_i - \beta_0 - \beta_1x_{i,1})^2.$$
+Derivando em relação à $\beta$ e igualando a zero, após algumas manipulações algébricas, temos que:
+
+$$\widehat{\beta} = \frac{\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = r_{xy}\frac{s_y}{s_x},$$
+em que $s_x$ e $s_y$ são os desvio-padrão de $x$ e $y$, respectivamente, e $r_{xy}$ é o coeficiente de correlação da amostra.
+
+## Regressão linear simples
+
+<br>
+
+$$r_{xy} = \frac{\overline{xy} - \overline{x}\,\overline{y}}{\sqrt{(\overline{x^2} - \overline{x}^2)(\overline{y^2} - \overline{y}^2)}}.$$
+O coeficiente de determinação $R^2$ do modelo é dado por $r_{xy}^2$, quando o modelo é linear e possue uma única variável independente (feature).
+
+<br>
+
+Portanto, temos que:
+
+$$\widehat{\beta_0} = \overline{y} - \widehat{\beta}\overline{x},$$
+
+Na [*data modeling culture*]{.red} (na estatística), normalmente assumimos que o $\varepsilon_i$ tem distribuição normal e variância constante, $\forall\, i = 1, \cdots, n$. Assume-se também que $\mathbb{E}(\varepsilon_i) = 0, \, \forall i$.
+
+## Regressão linear simples
+
+<br>
+
+Aqui não iremos nos preocupar com essas suposições, uma vez que em [*algorithmic modeling culture*]{.red}, não estamos preocupados com suposições nem interpretações, ok!?
+
+<br>
+
+![](gifs/ok-2.gif)
+
+
+## Regressão linear multipla
+
+<br>
+
+A função de perda quadrática (função $L_2$) tem algumas vantagens em relação a função de perda absoluta. Listo algumas:
+
+1. A função de perda quadrática penaliza mais os erros maiores, devido ao vato dos erros serem levado ao quadrado;
+
+2. A função de perda quadrática é mais sensível a presença de [outlier](https://en.wikipedia.org/wiki/Outlier), que em compensação são menos penalizados ao se considerar a função de perda absoluta (função $L_1$);
+
+3. Em situações em que o erro tem distribuição normal, a estimativa de mínimos quadrados é a solução de máxima verossimilhança e é a estimativa linear não viesada e com menor variância. Portanto, gozamos de um estimador com ótimas propriedades, muito embora ele também é um bom estimador mesmo quando a suposição de normalidade não é verificada;
+
+4. A função de perda quadrática é deferenciável, já a função de perda absoluta não é.
+
+Para o caso de regerssão linear múltipla, i.e., quando $d > 1$, poderemos utilizar uma notação matricial para representar o modelo linear múltiplo de regressão.
+
+## Regressão linear multipla
+
+<br>
+
+Considerando o modelo de regressão linear múltiplo, temos que:
+
+
+$$Y = g({\bf X}) = \beta^{T}{\bf X} + \varepsilon,$$
+
+em que $Y$ é um vetor $n \times 1$, ${\bf X}$ é uma matriz fixa e conhecida com os atributos de dimensão $n \times d$, em que a primeira coluna é preenchida de 1, $\beta = (\beta_0, \cdots, \beta_d)$. Na cultura de machine learning, iremos desconsiderar $\varepsilon$, não feremos suposições sobre $\varepsilon$. Portanto, considere
+
+$$g({\bf x}) = \beta^{T}{\bf X} = \beta_{0}x_0 + \beta_1x_{i,1} + \cdots + \beta_dx_{i,d},$$
+em que $x_0 \equiv 1$.
+
+## Regressão linear multipla
+
+<br>
+
+O método dos mínimos quadrados, para o caso de regressão linear múltipla ($d > 1$) é dado por aquele que minimiza $R(\beta^{T}{\bf X})$, i.e., minimiza:
+
+
+$$\argmin_\beta \sum_{i = 1}^n (Y_i - \beta_0 - \beta_1x_{i,1} - \cdots - \beta_dx_{i,d})^2.$$
+Temos que 
+
+$$\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y.$$
+
+Portanto, a função de regressão estimada é dada por:
+
+$$g({\bf x}) = \widehat{\beta}^{T}{\bf x}.$$
+
+## Regressão linear multipla
+
+<br>
+
+Grande parte da literatura estatística é voltada para justificar que o método de mínimos quadrados sob um ponto de vista de um estimador de máxima verossimilhança, assim como também para construção de testes de aderência, métodos para construção de intervalos de confiança e teste de hipótese para $\beta_i$ (parâmetros que indexam o modelo), análise de resíduos, entre outros.
+
+<br> 
+
+Assumir que a verdadeira regressão $r({\bf x}) = \mathbb{E}({\bf X}\,|\,Y)$ é uma suposição muito forte. Contudo, existe, na literatura, justificativas para o uso de métodos de mínimos quadrados para estimar os coeficientes, mesmo quando a regressão real $r({\bf x})$ não satisfaz a suposição de linearidade.
+
+## Regressão linear multipla
+
+<br>
+
+O estimador de mínimos quadrados $\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y$ é bom, por alguns motivos:
+
+<br>
+
+1. É igual ao estimador de máxima verossimilhança sob normalidade, linearidade e homoscedasticidade, portanto, consistente sob essas condições
+
+2. É [*best linear unbiased prediction* - BLUE]{.red} sob linearidade e homoscedasticidade;
+
+3. O método de mínimos quadrados tem alguma garantia, mesmo sem assumir muitas suposições.
+
+<br>
+
+![](gifs/hum.gif)
+
+## Mínimos quadrados sem suposição de linearidade
+
+<br>
+
+Quando a suposição de linearidade falha, ou seja, quando a regressão verdadeira que desconhecemos $r({\bf x})$ não é linear, frequentemente existe um vetor $\beta_{*}$, tal que $g_{\beta_{*}}({\bf x}) = \beta_{*}^{T}{\bf x}$ tem um bom poder preditivo. Nesses casos, o métrodo dos mínimos quadrados $\widehat{\beta}$ tende a produzir estimadores com baixo risco. Isso se deve ao fato que $\widehat{\beta}$ converge para o melhor preditor linear (para o oráculo $\beta_{*}$) que é dado por:
+
+$$\beta_{*} = \argmin_\beta R(g_\beta) =  \argmin_\beta \mathbb{E}\left[(Y - \beta^{T}X)^2\right],$$
+mesmo que a verdadeira regressão $r({\bf x})$ não seja linear, em que $({\bf X}, Y)$ é uma nova observação.
+
+<br>
+
+[Teorema]{.red}: Seja $\beta_{*}$ o melhor estimador linear e $\widehat{\beta}$ o estimador de mínimos quadrados. Então,
+
+
+
+$$\widehat{\beta}\overset{p}{\longrightarrow}  \beta_{*}\,\, \mathrm{e}\,\, R(g_{\widehat{\beta}})\overset{p}{\longrightarrow} R(g_{\beta_{*}}), $$
+quando $n \longrightarrow \infty$. Para uma demonstração, veja <http://www.rizbicki.ufscar.br/AME.pdf>, página. 29.
+
+## Mínimos quadrados sem suposição de linearidade
+
+<br>
+
+Em palavras, o que o Teorema anterior diz é que mesmo quando a regressão verdadeira não é linear, o estimador de mínimos quadrados é consistente para nos conduzir a um bom estimador **linear**, ou seja, ao menos conseguiremos o melhor estimador linear como uma aproximação à $r({\bf x})$ que não é linear.
+
+<br>
+
+Isso não quer dizer que você terá boas estimativas em todas as situações, muito embora o oráculo $\beta_{*}$, em muitas situações, terá bom poder preditivo. Em outras palavras, em situações que um problema, em sua natureza, não linear, poderemos alcançar boas estimativas por uma aproximação linear pelo método dos mínimos quadrados.
+
+<br>
+
+![](gifs/uau.gif)
+
+## Predição versus Inferência
+
+<br>
+
+**Inferência**: assume que o modelo linear é correto. O principal objetivo consiste em interpretar os parâmetros:
+
+<br>
+
+- Quais são os parâmetros significantes?
+- Qual o efeito do aumento da dose de um remédio no paciente?
+
+<br>
+
+**Predição**: queremos criar $g({\bf x})$ com bom poder preditivo, mesmo que a especificação do modelo não esteja correta. Não assume que a verdadeira regressão é de fato linear! A interpretação aqui não é o foco. Tudo bem?
+
+<br>
+
+![](gifs/ok.gif){width='15%'}
