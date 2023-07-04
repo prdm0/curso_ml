@@ -305,14 +305,14 @@
     "href": "index.html#função-de-risco-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Função de risco",
-    "text": "Função de risco\n\nNormalmente considera-se a perda L_2, uma vez que em modelos de regressão, minimizar R_{pred}(g), em g, equivale a encontrar r({\\bf x}) = \\mathbb{E}({\\bf X}|{\\bf Y}), i.e., equivale a estimar a função de regressão.\n\nTeorema: Suponha que definimos o risco de uma função de predição g: \\mathbb{R}^d \\rightarrow \\mathbb{R} via função perda quadrática, i.e, R_{pred}(g) = \\mathbb{E}\\left[({\\bf Y} - g({\\bf X}))^2\\right], em que \\bf (X, Y) são novas observações que não foram utilizadas para estimar g. Suponha também que estimaos o risco de um estimador de regressão r({\\bf X}) via função perda quadrática R_{pred}(g) = \\mathbb{E}\\left[r({\\bf X} - g({\\bf X}))^2\\right]. Então,\nR_{pred}(g) = R_{reg}(g) + \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right],\nem que \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right] é a variância média do modelo que não depende de g. Portanto, estimar bem r({\\bf x}) é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para \\bf Y é a função de regressão r({\\bf x}), de tal modo que:\n\\argmin_g R_{pred}(g) = \\argmin_g R_{reg}(g) = r({\\bf x})."
+    "text": "Função de risco\n\nNormalmente considera-se a perda L_2, uma vez que em modelos de regressão, minimizar R_{pred}(g), em g, equivale a encontrar r({\\bf x}) = \\mathbb{E}({\\bf X}|{\\bf Y}), i.e., equivale a estimar a função de regressão.\n\nTeorema: Suponha que definimos o risco de uma função de predição g: \\mathbb{R}^d \\rightarrow \\mathbb{R} via função perda quadrática, i.e, R_{pred}(g) = \\mathbb{E}\\left[({\\bf Y} - g({\\bf X}))^2\\right], em que \\bf (X, Y) são novas observações que não foram utilizadas para estimar g. Suponha também que estimaos o risco de um estimador de regressão r({\\bf X}) via função perda quadrática R_{reg}(g) = \\mathbb{E}\\left[(r({\\bf X}) - g({\\bf X}))^2\\right]. Então,\nR_{pred}(g) = R_{reg}(g) + \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right],\nem que \\mathbb{E}\\left[\\mathbb{V}[{\\bf Y} | {\\bf X}]\\right] é a variância média do modelo que não depende de g. Portanto, estimar bem r({\\bf x}) é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para \\bf Y é a função de regressão r({\\bf x}), de tal modo que:\n\\argmin_g R_{pred}(g) = \\argmin_g R_{reg}(g) = r({\\bf x})."
   },
   {
     "objectID": "index.html#função-de-risco-3",
     "href": "index.html#função-de-risco-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Função de risco",
-    "text": "Função de risco\n\nLembre-se: r({\\bf x}) = \\mathbb{E}(Y | \\bf{X} = \\bf{x}) é a nossa função de regressão.\n\nA definição de risco preditivo R_{pred}, que também denotaremos simplesmente por R, tem um apelo frequentista. Dessa forma, para um novo conjunto com m novas observaçõs, ({\\bf X}_{n+1}, Y_{n+1}), \\cdots, ({\\bf X}_{n+m}, Y_{n+m}), temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right]. Chamaremos a quantidade acima de Erro Quadrático Médio - EQM. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.\n\n’’Desejamos encontrar g (encontrar métodos) que minimize de forma satisfatória R, i.e., métodos que nos conduzam à um risco baixo."
+    "text": "Função de risco\n\nLembre-se: r({\\bf x}) = \\mathbb{E}(Y | \\bf{X} = \\bf{x}) é a nossa função de regressão.\n\nA definição de risco preditivo R_{pred}, que também denotaremos simplesmente por R, tem um apelo frequentista. Dessa forma, para um novo conjunto com m novas observaçõs, ({\\bf X}_{n+1}, Y_{n+1}), \\cdots, ({\\bf X}_{n+m}, Y_{n+m}), temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right]. \\tag{1}\nChamaremos a quantidade acima de Erro Quadrático Médio - EQM. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.\n\nDesejamos encontrar g (encontrar métodos) que minimize de forma satisfatória R, i.e., métodos que nos conduzam à um risco baixo."
   },
   {
     "objectID": "index.html#função-de-risco-4",
@@ -403,6 +403,181 @@
     "href": "index.html#predição-versus-inferência",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Predição versus Inferência",
-    "text": "Predição versus Inferência\n\nInferência: assume que o modelo linear é correto. O principal objetivo consiste em interpretar os parâmetros:\n\n\nQuais são os parâmetros significantes?\nQual o efeito do aumento da dose de um remédio no paciente?\n\n\nPredição: queremos criar g({\\bf x}) com bom poder preditivo, mesmo que a especificação do modelo não esteja correta. Não assume que a verdadeira regressão é de fato linear! A interpretação aqui não é o foco. Tudo bem?\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Predição versus Inferência\n\nInferência: assume que o modelo linear é correto. O principal objetivo consiste em interpretar os parâmetros:\n\n\nQuais são os parâmetros significantes?\nQual o efeito do aumento da dose de um remédio no paciente?\n\n\nPredição: queremos criar g({\\bf x}) com bom poder preditivo, mesmo que a especificação do modelo não esteja correta. Não assume que a verdadeira regressão é de fato linear! A interpretação aqui não é o foco. Tudo bem?"
+  },
+  {
+    "objectID": "index.html#ajustando-uma-regressão-linear-no-r",
+    "href": "index.html#ajustando-uma-regressão-linear-no-r",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ajustando uma regressão linear no R",
+    "text": "Ajustando uma regressão linear no R\n\nCaso você não queira implementar o estimador de mínimos quadrados \\widehat{\\beta} = ({\\bf X}^{T}{\\bf X})^{-1}{\\bf X}^{T}Y, você poderá utilizar a famosa função lm. Na verdade é melhor que não implemente o estimador \\widehat{\\beta}, uma vez que a função lm, assim como a função glmnet do pacote glmnet, utilizam-se de truques numéricos para um cálculo mais eficiente.\n\nFalaremos do pacote glmnet, um pouco mais a frente, quando abordarmos regressão penalizada. Certo!?"
+  },
+  {
+    "objectID": "index.html#ajustando-uma-regressão-linear-no-r-1",
+    "href": "index.html#ajustando-uma-regressão-linear-no-r-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ajustando uma regressão linear no R",
+    "text": "Ajustando uma regressão linear no R\n\nConsidere o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis aqui. O comportamente entre as variáveis LifeExpectancy e GDPercapita, se fizermos um gráfico, não é linear.\n\nTodavia, isso não impede que possamos ajustar um modelo de regerssão linear, muito embora o seu poder preditivo será baixo.\n\nPorém, como já sabemos, ao menos conseguiremos o melhor oráculo, denotado por \\beta_{*}, i.e., o melhor estimador dentre os possíveis estimadores lineares, como mostrado em teoremas anteriores.\n\nE está tudo bem. Aqui não estou querendo defender que você use uma aproximação linear para esse caso. Em breve, com um pequeno truque, poderemos ajustar uma regressão polinomial à esses dados, e incorporaremos um pouco da tendência não linar presente nos dados."
+  },
+  {
+    "objectID": "index.html#ajustando-uma-regressão-linear-no-r-2",
+    "href": "index.html#ajustando-uma-regressão-linear-no-r-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ajustando uma regressão linear no R",
+    "text": "Ajustando uma regressão linear no R\n\n\n\nVeja o código do gráfico\nlibrary(ggplot2)\n\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\n\n# Criando um arquivo temporário\narquivo_temp &lt;- tempfile()\n\n# Baixando um arquivo temporário\ndownload.file(url = url, destfile = arquivo_temp)\n\n# Carregando os dados\nload(arquivo_temp)\n\ndados_expectativa_renda |&gt; \n  ggplot(aes(x = GDPercapita, y = LifeExpectancy)) +\n  geom_point() +\n  labs(\n    title = \"PIB per Capita versus Expectativa de Vida\",\n    x = \"PIB per Capita\",\n    y = \"Expectativa de Vida\"\n  ) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme(\n    plot.title = element_text(face = \"bold\"),\n    axis.title = element_text(face = \"bold\")\n  )"
+  },
+  {
+    "objectID": "index.html#ajustando-uma-regressão-linear-no-r-3",
+    "href": "index.html#ajustando-uma-regressão-linear-no-r-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ajustando uma regressão linear no R",
+    "text": "Ajustando uma regressão linear no R\n\nClaramente, a reta de regressão (linha azul) do gráfico anterior não tem um bom poder preditivo. O ajuste foi feito diretamente usando o pacote ggplot2, utilizando a função geom_smooth, em que foi escolhido o método \"lm\".\n\nPoderíamos ter utilizado a função lm:\n\n\n\nVeja o código do gráfico\nlibrary(ggplot2)\n\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\n\n# Criando um arquivo temporário\narquivo_temp &lt;- tempfile()\n\n# Baixando um arquivo temporário\ndownload.file(url = url, destfile = arquivo_temp)\n\n# Carregando os dados\nload(arquivo_temp)\n\n# Ajustando o modelo usando a função lm\najuste &lt;- lm(LifeExpectancy ~ GDPercapita, data = dados_expectativa_renda)\n\nmodelo &lt;- function(x){\n  novos_dados &lt;- tibble::tibble(GDPercapita = x)\n  predict(ajuste, newdata = novos_dados)\n}\n\ndados_expectativa_renda |&gt; \n  ggplot(aes(x = GDPercapita, y = LifeExpectancy)) +\n  geom_point() +\n  labs(\n    title = \"PIB per Capita versus Expectativa de Vida\",\n    x = \"PIB per Capita\",\n    y = \"Expectativa de Vida\"\n  ) +\n  stat_function(fun = modelo, color = \"red\", size = 1.2) +\n  theme(\n    plot.title = element_text(face = \"bold\"),\n    axis.title = element_text(face = \"bold\")\n  )"
+  },
+  {
+    "objectID": "index.html#matriz-esparsa",
+    "href": "index.html#matriz-esparsa",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Matriz esparsa",
+    "text": "Matriz esparsa\n\nPara grandes bases de dados, em um problema real que você venha trabalhar, e se o custo computacional você considera elevado, poderá utilizar o pacote biglm.\n\nEm situações em que há muitos zeros na sua matriz, poderá utilizar representação esparsa.\n\nMatrizes esparsas são matrizes com muitas entradas iguais à 0. Elas ocorrem naturalmente em diversas aplicações, como por exemplo uma matriz de termos presentes em um documento, em que se o termo estiver no documento resebe 1, e zero, caso contrário. Abaixo, {\\bf X} é um exemplo de matriz esparsa.\n\n\n{\\bf X} =\n\\begin{bmatrix}\n1 & 0 & 0 & 0 & 0 \\\\\n0 & 2 & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 3 & 0 & 0 \\\\\n0 & 0 & 0 & 4 & 0 \\\\\n\\end{bmatrix}"
+  },
+  {
+    "objectID": "index.html#matriz-esparsa-1",
+    "href": "index.html#matriz-esparsa-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Matriz esparsa",
+    "text": "Matriz esparsa\n\nConsidere os textos:\n\nTexto 1: “Eu amo essa disciplina.”\nTexto 2: “Eu adoro meu professor.”\nTexto 3: “Eu serei muito bom em aprendizagem de máquina.”\nTexto 4: “Adoro o departamento de estatística da UFPB.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTextos\ndisciplina\namo\naprendizagem\nmáquina\nestatistica\nadoro\nUFPB\n\n\n\n\nTexto 1\n1\n1\n0\n0\n0\n0\n0\n\n\nTexto 2\n0\n0\n0\n0\n0\n1\n0\n\n\nTexto 3\n0\n0\n1\n1\n0\n0\n0\n\n\nTexto 4\n0\n0\n0\n0\n1\n1\n1"
+  },
+  {
+    "objectID": "index.html#matriz-esparsa-2",
+    "href": "index.html#matriz-esparsa-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Matriz esparsa",
+    "text": "Matriz esparsa\n\nA matriz com a ocorrência de determinados termos nos textos é dada por:\n\n{\\bf X} =\n\\begin{bmatrix}\n1 & 1 & 0 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 1 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & 1 & 1 \\\\\n\\end{bmatrix}\n\nA representação esparsa de {\\bf X}, aqui denotada por {\\bf X_*} é:\n\n{\\bf X_*} =\n\\begin{bmatrix}\n1 & 1 & 1 \\\\\n2 & 6 & 1 \\\\\n3 & 3 & 1 \\\\\n3 & 4 & 1 \\\\\n4 & 5 & 1 \\\\\n4 & 6 & 1 \\\\\n4 & 7 & 1 \\\\\n\\end{bmatrix},\n em que as duas primeiras colunas, são as linhas e colunas de {\\bf X} com valor diferente de 0. A última coluna representa o valor."
+  },
+  {
+    "objectID": "index.html#regressão-linear-com-matriz-esparsa",
+    "href": "index.html#regressão-linear-com-matriz-esparsa",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão linear com matriz esparsa",
+    "text": "Regressão linear com matriz esparsa\n\nExemplo: Ajuste de um modelo de regerssão linear múltiplo, em que {\\bf X} poderá ter uma representação esparsa. Aqui não estamos interessados em verificar qualidade de predições. Trata-se apenas de um exemplo de como utilizar uma representação esparsa para ajustar um modelo de regessão linear com algumas covariáveis, em R.\n\n\n\nEstude o código\nlibrary(glmnet)\nlibrary(Matrix)\n\n# Dados de exemplo\nx1 &lt;- c(1, 0, 2, 0, 0)\nx2 &lt;- c(0, 3, 0, 4, 0)\nx3 &lt;- c(5, 0, 6, 0, 7)\ny &lt;- c(1, 2, 3, 4, 5)\n\n# Criar data frame com as variáveis explicativas\ndados &lt;- data.frame(x1, x2, x3)\n\n# Converter o data frame para matriz esparsa\nX &lt;- sparse.model.matrix(~ ., data = dados)\n\n# Ajustar a regressão linear utilizando glmnet\nmodelo &lt;- glmnet(x = X, y = y, alpha = 0, lambda = 0)\n\n# Realizar previsões\npredicoes &lt;- predict(modelo, newx = X)"
+  },
+  {
+    "objectID": "index.html#erro-quadrático-médio",
+    "href": "index.html#erro-quadrático-médio",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Erro quadrático médio",
+    "text": "Erro quadrático médio\n\nComo exposto anteriormente, para avaliar o poder preditivo de uma modelo, i.e., a aprendizagem de um modelo, devemos avaliar a função de risco, i.e., devemos avaliar R(g) := \\mathbb{E}\\left[L(g({\\bf X}); Y)\\right]. Em particular, considere L = L_2 (função perda quadrática). Então, poderíamos ser levados a acreditar que o melhor estimador de R(g), utilizando a Lei dos Grandes Números seria:\n\\frac{1}{n}\\sum_{i = 1}^n(Y_{i} - g({\\bf X_{i}}))^2 \\approx R(g) := \\mathbb{E}\\left[L_2(g({\\bf X}); Y)\\right].\n\nEssa quantidade é chamada, de Erro Quadrático Médio - EQM. Desejamos escolher o melhor mode, entre os modelos testados, que minimiza o EQM.\n\nO apelo frequentista em utilizar a Lei dos Grandes Números na forma acima não é correto, uma vez que usamos as n observações para treinar/ajustar o modelo g."
+  },
+  {
+    "objectID": "index.html#erro-quadrático-médio-1",
+    "href": "index.html#erro-quadrático-médio-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Erro quadrático médio",
+    "text": "Erro quadrático médio\n\nPor exemplo, no problema de PIB per Capita versus expectativa de vida, em que consideramos uma aproximação linear, não poderíamos utilizar o EQM da forma acima, com as n observações utilizadas para treinar o modelo. É um detalhe sutil, mas que muitas pessoas cometem esse erro.\n\nNão podemos utilizar as n observações para estimar o risco R(g) através do EQM, uma vez que estamos utilizando o mesmo conjunto de dados para ajustar e avaliar g.\n\nQual o problema?\n\n\nNão vale a Lei dos Grandes Números;\nUsamos os mesmos valores de {\\bf x} e y para treinar e avaliar o modelo."
+  },
+  {
+    "objectID": "index.html#erro-quadrático-médio-2",
+    "href": "index.html#erro-quadrático-médio-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Erro quadrático médio",
+    "text": "Erro quadrático médio\n\nO que diz a Lei dos Grandes Números, em particular, a Lei Forte de Kolmogorov?\n\nTeorema (Lei Forte de Kolmogorov): Sejam X_1, \\cdots, X_n uma sequência de veriáveis aleatórias - v.a. i.i.d. e integráveis, i.e., com valor esperado limitado, tal que \\mathbb{E}(X) = \\mu\\,\\, \\forall i. Então,\n\\frac{X_1 + X_2 + \\cdots + X_n}{n} \\rightarrow \\mu,\nquase certamente, i.e., com probabilidade 1.\n\nNote que se desejamos comparar diversos modelos, g_1({\\bf x}), g_2({\\bf x}), \\cdots, e se utilizarmos as mesmas n obervações para calularmos R(g_1({\\bf x})), R(g_2({\\bf x})), \\cdots, os termos de cada uma das somas não são independentes. Lembre-se que desejamos obter \\argmin_g R_{pred}(g)."
+  },
+  {
+    "objectID": "index.html#erro-quadrático-médio-3",
+    "href": "index.html#erro-quadrático-médio-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Erro quadrático médio",
+    "text": "Erro quadrático médio\n\nPortanto, nunca utilize as mesmas observações utilizadas para treinar o modelo, como aquelas que serão utilizadas para se estimar R(g). Nunca! Isso é um pecado mortal! Ok?!"
+  },
+  {
+    "objectID": "index.html#data-splitting",
+    "href": "index.html#data-splitting",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\n\nCorrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar data splitting. Algo como a segunda linha da imagem abaixo:"
+  },
+  {
+    "objectID": "index.html#data-splitting-1",
+    "href": "index.html#data-splitting-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\n\nEssa divisão é feita de forma aleatória, algumas vezes estratificada de acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de problemas de conjunto de dados ordenados. Queremos que tanto no conjunto de treinamento Training quanto no conjunto de teste Testing, na imagem, contenham a mesma diversidade de observações.\n\nPor exemplo, ainda no exemplo de PIB per Capita versus Expectaitiva de Vida, não quero correr o risco de ter no conjunto de treinamento apenas o países com maiores valores de PIB per Capita, caso o conjunto de dados tenha sido ordenado pela variável GDPercapita. Por isso aleatorizar o conjunto de treinamento e teste é simple uma ótima ideia. Certo!?"
+  },
+  {
+    "objectID": "index.html#data-splitting-2",
+    "href": "index.html#data-splitting-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\n\nO percentual de divisão dos dados normalmente é empírico. Usa-se normalmente a proporção de 70\\% para treinamento e 30\\% para teste (70\\%, 30\\%). Outros esquemas de divisões são bastante utilizados, por exemplo, (80\\%, 20\\%), (99\\%, 1\\%), a depender da quantidade de observações (tamanho do conjunto de dados).\n\nPortanto, utilizar o EQM sob o conjunto de dados de teste para avaliar g_1({\\bf x}), g_2({\\bf x}), \\cdots,, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em Equação 1, i.e,\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right].\n\nEsse resultado valeria para qualquer outra função de perda."
+  },
+  {
+    "objectID": "index.html#data-splitting-3",
+    "href": "index.html#data-splitting-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\nReescrevendo, suponha que o conjunto de dados total possua n observações e que separamos aleatoriamente s &lt; n observações para o conjunto de treinamento. Assim, temos, algo como:\n\n\\overbrace{(X_1, Y_1), (X_2, Y_2), \\cdots, (X_s, Y_s)}^{70\\%}, \\,\\,\\, \\overbrace{(X_{s + 1}, Y_{s + 1}), (X_{s + 2}, Y_{s + 2}), \\cdots, (X_n, Y_n)}^{30\\%}.\n\nEntão, temos que uma boa estimativa de R(g) é dada pelo EQM calculado sobre o conjunto de dados de teste, que nesse caso considerei o conjunto com 30\\%, mas esse percentual poderia ser outro. Então, temos que um bom estimador é:\n\\frac{1}{n - s}\\sum_{i = s + 1}^n (Y_{i} - g(X_{i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right]."
+  },
+  {
+    "objectID": "index.html#data-splitting-4",
+    "href": "index.html#data-splitting-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\n\nAgora você entende por que dividimos os dados em treinamento e teste?\n\n\n\nDividimos para obermos um bom estimador do risco utilizando o EQM. 🎊"
+  },
+  {
+    "objectID": "index.html#data-splitting-5",
+    "href": "index.html#data-splitting-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Data Splitting",
+    "text": "Data Splitting\n\nPodemos argumentar que o procedimento de data splitting, em que dividimos o nosso conjunto de dados em treinamento e teste fará com que venhamos perder muitas observações que poderiam ter sido utilizadas para treinar o modelo. E de certa forma isso é verdade, principalmente quando termos um conjunto não muito grande de observações.\n\nPortanto, uma melhor abordagem, sendo esta uma variação do método de data splitting é o procedimento de cross-validation - cv (validação cruzada). Uma versão mais geral de uma validação cruzada é o leave-one-out cross-validation.\n\nEm palavras, o procedimento consiste em tirar de fora uma única observação das n observações da base de dados para ser o nosso conjunto de teste e treinar o modelo com as observações que permaneceram. Daí, calcula-se o risco observado (EQM, sob o conjunto de teste). Na segunda iteração, a observação que antes era de teste volta para perterncer ao conjunto de treinamento e uma nova observação é removida para ser teste. Esse procedimento ocorre de forma iterativa até a retirada da última observação como teste."
+  },
+  {
+    "objectID": "index.html#leave-one-out-cross-validation",
+    "href": "index.html#leave-one-out-cross-validation",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leave-one-out cross-validation",
+    "text": "Leave-one-out cross-validation\n\nObserve a animação abaixo que ilustra o procedimento de leave-one-out cross-validation - LOOCV, em uma amostra de tamanho n = 8. Ao fim, teremos n modelos ajustados, em que calculamos as suas respectivas performances, i.e., com o risco observado, estimamos o risco de R(g)."
+  },
+  {
+    "objectID": "index.html#leave-one-out-cross-validation-1",
+    "href": "index.html#leave-one-out-cross-validation-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leave-one-out cross-validation",
+    "text": "Leave-one-out cross-validation\n\nVejo muitas pessoas que usam uma validação cruzada, por exemplo, leave-one-out cross-validation - LOOCV comparando com o método Jackknife e algumas inclusive dizendo ser a mesma coisa. Não, não são!\n\nO algoritmo Jackknife é um procedimento de estimação e que por sua vez deve estar dentro do conjunto de treinamento. Para haver algum Jackknife, a estimativa com n-1 observações deve estar dentro do conjunto de treinamento, em que dentro do treinamento teria a remoção de um observação por vez. Consegue perceber a diferença sutil?"
+  },
+  {
+    "objectID": "index.html#leave-one-out-cross-validation-2",
+    "href": "index.html#leave-one-out-cross-validation-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leave-one-out cross-validation",
+    "text": "Leave-one-out cross-validation\n\nO método LOOCV foi proposto por Stones (1974), no artigo intitulado Cross-Validatory Choice and Assessment of Statistical Predictions, no Royal Statistical Society, Série B. Clique aqui se tiver curiosidade em ler o artigo.\n\nEscrevendo o estimador do risco em um procedimento de LOOCV, temos que:\n\\widehat{R}(g) = \\frac{1}{n}\\sum_{i = 1}^n (Y_i - g_{-i}({\\bf X}_i))^2, em que g_{-i}(\\bf{X}_i), representa o ajuste do modelo no conjunto de dados sem a i-ésima observação.\n\nNão é difícil perceber que a depender do valor de n, o método LOOCV é computacionalmente intensivo. O método requer que ajustemos n modelos. Em algumas situações isso não é um grande problema, porém, em diversas outras pode ser impeditivo utilizar o LOOCV. 🤯"
+  },
+  {
+    "objectID": "index.html#k-fold-cross-validation",
+    "href": "index.html#k-fold-cross-validation",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-fold cross-validation",
+    "text": "k-fold cross-validation\n\nUma alternativa ao LOOCV é utilizar o método k-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em k-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} são, cada um, um conjunto de indices aleatórios associados a cada um dos lotes. A ideia aqui é construir k estimadores da função de regressão, denotados por \\widehat{g}_{-1}, \\cdots, \\widehat{g}_{-k}, em que \\widehat{g}_{-j} é criado usando todas as observações do banco de dados, com exceção daquelas do lote L_j, utilizado para validação. O estimador do risco é dado por:\n\\widehat{R}(g) = \\frac{1}{n}\\sum_{j=1}^k \\sum_{i \\in L_j}(Y_i - g_{-j}({\\bf X}_i))^2. Perceba que, que o LOOCV é um caso particular do k-fold cross-validation, quando fazemos k = n. Em outras palavras, L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} representam os índices aleatórios do conjunto de treinamento nos k lotes."
+  },
+  {
+    "objectID": "index.html#k-fold-cross-validation-1",
+    "href": "index.html#k-fold-cross-validation-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-fold cross-validation",
+    "text": "k-fold cross-validation\nA animação abaixo, ilustra o procedimento de 3-fold cross-validation (k = 3), para uma amostra de tamanho n = 12 observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de k-fold cross-validation é randomizado.\n\n\nPerceba que teremos agora apenas 3 modelos. Para cada um desses lotes, calulamos o EQM com o conjunto de teste (parte azul) e treinamos o modelo com o conjunto de treinamento (parte vermelha)."
+  },
+  {
+    "objectID": "index.html#k-fold-cross-validation-2",
+    "href": "index.html#k-fold-cross-validation-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-fold cross-validation",
+    "text": "k-fold cross-validation\n\nMuitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco R(g).\n\nAo estimar k modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação."
+  },
+  {
+    "objectID": "index.html#k-fold-cross-validation-3",
+    "href": "index.html#k-fold-cross-validation-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-fold cross-validation",
+    "text": "k-fold cross-validation\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

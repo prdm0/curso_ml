@@ -893,8 +893,9 @@ sendo esta chamada de [função de regressão]{.red}. Temos que:
 2.  Se $Y$ é uma variável qualitativa, então teremos um problema de
     [classificação]{.red}.
 
-
-Em aprendizagem de máquina, assumimos que não temos meios de calcular $r({\bf{x}})$, i.e., não conhecemos a distribuição condicional de ${\bf{Y}\,|\,X}$. Portanto, não temos meios de calcular
+Em aprendizagem de máquina, assumimos que não temos meios de calcular
+$r({\bf{x}})$, i.e., não conhecemos a distribuição condicional de
+${\bf{Y}\,|\,X}$. Portanto, não temos meios de calcular
 
 $$\mathbb{E}({\bf X}|Y = y) = \int x\,\mathrm{d}F_{\bf X}({\bf x} | Y = y).$$
 
@@ -958,50 +959,81 @@ $$g({\bf{x}}_{n + 1}) \approx y_{n + 1}, \cdots, g({\bf{x}}_{n + m}) \approx y_{
 
 <br>
 
-Para que possamos construir boas funções de predição, é preciso que tenhamos um critério para medir o desempenho de uma dada função $g:\mathbb{R}^d \rightarrow \mathbb{R}$. Em contexto de regressão, usaremos o risco quadrático, muito embora esta não é a única opção. Denotaremos a função de risco quadrático por:
+Para que possamos construir boas funções de predição, é preciso que
+tenhamos um critério para medir o desempenho de uma dada função
+$g:\mathbb{R}^d \rightarrow \mathbb{R}$. Em contexto de regressão,
+usaremos o risco quadrático, muito embora esta não é a única opção.
+Denotaremos a função de risco quadrático por:
 
-$$R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right],$$
-em que $(\bf X, Y)$ são observações novas que não foram utilizadas para treinar/estimar $g$. Lê-se $R_{pred}(g)$ como "risco preditivo de $g$". Note que, como $\bf X$ são observações conhecidas e $g(\cdot)$ é um modelo preditivo, portanto, $g$ é conhecido, então, $\widehat{\bf Y} = g(\bf X)$ é um estimador dos labels, i.e., de $\bf Y$.
+$$R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right],$$ em
+que $(\bf X, Y)$ são observações novas que não foram utilizadas para
+treinar/estimar $g$. Lê-se $R_{pred}(g)$ como "risco preditivo de $g$".
+Note que, como $\bf X$ são observações conhecidas e $g(\cdot)$ é um
+modelo preditivo, portanto, $g$ é conhecido, então,
+$\widehat{\bf Y} = g(\bf X)$ é um estimador dos labels, i.e., de
+$\bf Y$.
 
 <br>
 
-Diremos que $L(g({\bf X}); {\bf Y}) = ({\bf Y} - g({\bf X}))^2$ é a [função de perda quadrática]{.red}, as vezes chamado de perda $L_2$. Outra funções como a [função de perda absoluta]{.red} denotada por $L(g({\bf X}); {\bf Y}) = |{\bf Y} - g({\bf X})|$, as vezes chamada de perda $L_1$ poderiam ser consideradas.
+Diremos que $L(g({\bf X}); {\bf Y}) = ({\bf Y} - g({\bf X}))^2$ é a
+[função de perda quadrática]{.red}, as vezes chamado de perda $L_2$.
+Outra funções como a [função de perda absoluta]{.red} denotada por
+$L(g({\bf X}); {\bf Y}) = |{\bf Y} - g({\bf X})|$, as vezes chamada de
+perda $L_1$ poderiam ser consideradas.
 
 ## Função de risco
 
 <br>
 
-Em linhas gerais, seja $L(\cdot)$ uma função qualquer, tal que $\forall \, 0 < u < v$, de modo que:
+Em linhas gerais, seja $L(\cdot)$ uma função qualquer, tal que
+$\forall \, 0 < u < v$, de modo que:
 
 <br>
 
-i) $0 = L(0) \leq L(u) \leq L(v)$;
+i)  $0 = L(0) \leq L(u) \leq L(v)$;
 ii) $0 = L(0) \leq L(-u) \leq L(-v)$.
 
 <br>
 
-Qualquer função $L(\cdot)$ que satisfaz as propriedades acima é chamada de [função de perda](https://en.wikipedia.org/wiki/Loss_function). Em especial, temos que:
+Qualquer função $L(\cdot)$ que satisfaz as propriedades acima é chamada
+de [função de perda](https://en.wikipedia.org/wiki/Loss_function). Em
+especial, temos que:
 
 <br>
 
-- Função de perda quadrática: $L(u) = u^2$;
-- Função de perda absoluta: $L(u) = |u|$;
-- Função de perda degradu: $L(0) = 0$, se $|u| < \delta$ e $1$ caso contrário, para algum $\delta > 0$;
+-   Função de perda quadrática: $L(u) = u^2$;
+-   Função de perda absoluta: $L(u) = |u|$;
+-   Função de perda degradu: $L(0) = 0$, se $|u| < \delta$ e $1$ caso
+    contrário, para algum $\delta > 0$;
 
 ## Função de risco
 
 <br>
 
-Normalmente considera-se a perda $L_2$, uma vez que em modelos de regressão, minimizar $R_{pred}(g)$, em $g$, equivale a encontrar $r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})$, i.e., equivale a estimar a função de regressão. 
+Normalmente considera-se a perda $L_2$, uma vez que em modelos de
+regressão, minimizar $R_{pred}(g)$, em $g$, equivale a encontrar
+$r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})$, i.e., equivale a estimar a
+função de regressão.
 
 <br>
 
-[Teorema]{.red}: Suponha que definimos o risco de uma função de predição $g: \mathbb{R}^d \rightarrow \mathbb{R}$ via função perda quadrática, i.e, $R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]$, em que $\bf (X, Y)$ são novas observações que não foram utilizadas para estimar $g$. Suponha também que estimaos o risco de um estimador de regressão $r({\bf X})$ via função perda quadrática $R_{pred}(g) = \mathbb{E}\left[r({\bf X} - g({\bf X}))^2\right]$. Então,
+[Teorema]{.red}: Suponha que definimos o risco de uma função de predição
+$g: \mathbb{R}^d \rightarrow \mathbb{R}$ via função perda quadrática,
+i.e, $R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]$, em
+que $\bf (X, Y)$ são novas observações que não foram utilizadas para
+estimar $g$. Suponha também que estimaos o risco de um estimador de
+regressão $r({\bf X})$ via função perda quadrática
+$R_{reg}(g) = \mathbb{E}\left[(r({\bf X}) - g({\bf X}))^2\right]$.
+Então,
 
 $$R_{pred}(g) = R_{reg}(g) + \mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right],$$
 
-em que $\mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right]$ é a variância média do modelo que não depende de $g$. Portanto, estimar bem $r({\bf x})$ é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para $\bf Y$ é a função de regressão $r({\bf x})$, de tal modo que:
-
+em que $\mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right]$ é a
+variância média do modelo que não depende de $g$. Portanto, estimar bem
+$r({\bf x})$ é de fundamental importância para criar uma boa função de
+predição. Em especial, sob a ótica do risco quadrático, a melhor função
+de predição para $\bf Y$ é a função de regressão $r({\bf x})$, de tal
+modo que:
 
 $$\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).$$
 
@@ -1009,66 +1041,94 @@ $$\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).$$
 
 <br>
 
-**Lembre-se**: $r({\bf x}) = \mathbb{E}(Y | \bf{X} = \bf{x})$ é a nossa [função de regressão]{.red}.
+**Lembre-se**: $r({\bf x}) = \mathbb{E}(Y | \bf{X} = \bf{x})$ é a nossa
+[função de regressão]{.red}.
 
 <br>
 
-A definição de risco preditivo $R_{pred}$, que também denotaremos simplesmente por $R$, tem um apelo frequentista. Dessa forma, para um novo conjunto com $m$ novas observaçõs, $({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:
+A definição de risco preditivo $R_{pred}$, que também denotaremos
+simplesmente por $R$, tem um apelo frequentista. Dessa forma, para um
+novo conjunto com $m$ novas observaçõs,
+$({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que
+que essa nova amostra é i.i.d à amostra observada (utilizada no
+treinamento do modelo/na estimação). Então, pela Lei dos Grandes
+Números, temos que um bom estimador para a função para o risco preditivo
+é dado por:
 
+$$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$ {#eq-risco-correto}
 
-$$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$
-Chamaremos a quantidade acima de [Erro Quadrático Médio - EQM](https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio). Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.
+Chamaremos a quantidade acima de [Erro Quadrático Médio -
+EQM](https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio). Em
+aprendizagem de máquina, normalmente estaremos no contexto em que temos
+muitas observações, e que portanto, poderemos fazer esse apelo
+frequentista.
 
 <br>
 
-''Desejamos encontrar $g$ (encontrar métodos) que minimize de forma satisfatória $R$, i.e., métodos que nos conduzam à um risco baixo.
+Desejamos encontrar $g$ (encontrar métodos) que minimize de forma
+satisfatória $R$, i.e., métodos que nos conduzam à um risco baixo.
 
 ## Função de risco
 
 <br>
 
-Sendo assim, se $R(g)$ possui um valor baixo, então, temos que 
+Sendo assim, se $R(g)$ possui um valor baixo, então, temos que
 
 $$g({\bf x}_{n+1}) \approx y_{n+1}, \cdots, g({\bf x}_{n+m}) \approx y_{n+m}.$$
-<br>
-![](gifs/hum.gif){width="25%"}
+<br> ![](gifs/hum.gif){width="25%"}
 
 ## Regressão linear
 
 <br>
 
-Nesse momento, vamos pensar um pouco em regressão linear. No caso mais simples, queremos prever o comportamento de uma variável de interesse $Y$ condicional a uma variável explicativa $X$ (regressão linear simples, i.e., $d = 1$). O melhor preditor de $Y$ condicional em $X$ é aquele que minimiza a função de perda esperada, ou seja, é aquele que resolve:
+Nesse momento, vamos pensar um pouco em regressão linear. No caso mais
+simples, queremos prever o comportamento de uma variável de interesse
+$Y$ condicional a uma variável explicativa $X$ (regressão linear
+simples, i.e., $d = 1$). O melhor preditor de $Y$ condicional em $X$ é
+aquele que minimiza a função de perda esperada, ou seja, é aquele que
+resolve:
 
 $$\argmin_g \mathbb{E}(L(Y - g)\,|\,X).$$
 
-Para o caso da função perda quadrática (função $L_2$), o melhor preditor de $Y$ condicional à $X$ é a média condicional de $Y$ dado $X$, i.e., $r(X) = \mathbb{E}(Y\,|\,X)$. Já, na situação em que considera-se a perda absoluta (função $L_1$), o melhor estimador é a mediana condicional.
+Para o caso da função perda quadrática (função $L_2$), o melhor preditor
+de $Y$ condicional à $X$ é a média condicional de $Y$ dado $X$, i.e.,
+$r(X) = \mathbb{E}(Y\,|\,X)$. Já, na situação em que considera-se a
+perda absoluta (função $L_1$), o melhor estimador é a mediana
+condicional.
 
 <br>
 
-**Os modelos de regressão, em geral, fazem uso da função de perda quadrática.**
+**Os modelos de regressão, em geral, fazem uso da função de perda
+quadrática.**
 
 ## Regressão linear simples
 
 <br>
 
-No caso da regressão linear simples ($d = 1$), temos que o modelo é dado por:
+No caso da regressão linear simples ($d = 1$), temos que o modelo é dado
+por:
 
 $$g(x) = \beta_0 + \beta_1 x_{i,1} + \varepsilon_i, \,\, i = 1, \cdots, n.$$
 
-Assumindo que a regressão linear simples é o modelo $g$ que iremos utilizar, então, desejamos minimizar:
+Assumindo que a regressão linear simples é o modelo $g$ que iremos
+utilizar, então, desejamos minimizar:
 
 $$\argmin_{\beta} R(g_\beta) = \argmin_{\beta} \sum_{i = 1}^n(y_i - \beta_0 - \beta_1x_{i,1})^2.$$
-Derivando em relação à $\beta$ e igualando a zero, após algumas manipulações algébricas, temos que:
+Derivando em relação à $\beta$ e igualando a zero, após algumas
+manipulações algébricas, temos que:
 
 $$\widehat{\beta} = \frac{\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = r_{xy}\frac{s_y}{s_x},$$
-em que $s_x$ e $s_y$ são os desvio-padrão de $x$ e $y$, respectivamente, e $r_{xy}$ é o coeficiente de correlação da amostra.
+em que $s_x$ e $s_y$ são os desvio-padrão de $x$ e $y$, respectivamente,
+e $r_{xy}$ é o coeficiente de correlação da amostra.
 
 ## Regressão linear simples
 
 <br>
 
 $$r_{xy} = \frac{\overline{xy} - \overline{x}\,\overline{y}}{\sqrt{(\overline{x^2} - \overline{x}^2)(\overline{y^2} - \overline{y}^2)}}.$$
-O coeficiente de determinação $R^2$ do modelo é dado por $r_{xy}^2$, quando o modelo é linear e possue uma única variável independente (feature).
+O coeficiente de determinação $R^2$ do modelo é dado por $r_{xy}^2$,
+quando o modelo é linear e possue uma única variável independente
+(feature).
 
 <br>
 
@@ -1076,34 +1136,51 @@ Portanto, temos que:
 
 $$\widehat{\beta_0} = \overline{y} - \widehat{\beta}\overline{x},$$
 
-Na [*data modeling culture*]{.red} (na estatística), normalmente assumimos que o $\varepsilon_i$ tem distribuição normal e variância constante, $\forall\, i = 1, \cdots, n$. Assume-se também que $\mathbb{E}(\varepsilon_i) = 0, \, \forall i$.
+Na [*data modeling culture*]{.red} (na estatística), normalmente
+assumimos que o $\varepsilon_i$ tem distribuição normal e variância
+constante, $\forall\, i = 1, \cdots, n$. Assume-se também que
+$\mathbb{E}(\varepsilon_i) = 0, \, \forall i$.
 
 ## Regressão linear simples
 
 <br>
 
-Aqui não iremos nos preocupar com essas suposições, uma vez que em [*algorithmic modeling culture*]{.red}, não estamos preocupados com suposições nem interpretações, ok!?
+Aqui não iremos nos preocupar com essas suposições, uma vez que em
+[*algorithmic modeling culture*]{.red}, não estamos preocupados com
+suposições nem interpretações, ok!?
 
 <br>
 
 ![](gifs/ok-2.gif)
 
-
 ## Regressão linear multipla
 
 <br>
 
-A função de perda quadrática (função $L_2$) tem algumas vantagens em relação a função de perda absoluta. Listo algumas:
+A função de perda quadrática (função $L_2$) tem algumas vantagens em
+relação a função de perda absoluta. Listo algumas:
 
-1. A função de perda quadrática penaliza mais os erros maiores, devido ao vato dos erros serem levado ao quadrado;
+1.  A função de perda quadrática penaliza mais os erros maiores, devido
+    ao vato dos erros serem levado ao quadrado;
 
-2. A função de perda quadrática é mais sensível a presença de [outlier](https://en.wikipedia.org/wiki/Outlier), que em compensação são menos penalizados ao se considerar a função de perda absoluta (função $L_1$);
+2.  A função de perda quadrática é mais sensível a presença de
+    [outlier](https://en.wikipedia.org/wiki/Outlier), que em compensação
+    são menos penalizados ao se considerar a função de perda absoluta
+    (função $L_1$);
 
-3. Em situações em que o erro tem distribuição normal, a estimativa de mínimos quadrados é a solução de máxima verossimilhança e é a estimativa linear não viesada e com menor variância. Portanto, gozamos de um estimador com ótimas propriedades, muito embora ele também é um bom estimador mesmo quando a suposição de normalidade não é verificada;
+3.  Em situações em que o erro tem distribuição normal, a estimativa de
+    mínimos quadrados é a solução de máxima verossimilhança e é a
+    estimativa linear não viesada e com menor variância. Portanto,
+    gozamos de um estimador com ótimas propriedades, muito embora ele
+    também é um bom estimador mesmo quando a suposição de normalidade
+    não é verificada;
 
-4. A função de perda quadrática é deferenciável, já a função de perda absoluta não é.
+4.  A função de perda quadrática é deferenciável, já a função de perda
+    absoluta não é.
 
-Para o caso de regerssão linear múltipla, i.e., quando $d > 1$, poderemos utilizar uma notação matricial para representar o modelo linear múltiplo de regressão.
+Para o caso de regerssão linear múltipla, i.e., quando $d > 1$,
+poderemos utilizar uma notação matricial para representar o modelo
+linear múltiplo de regressão.
 
 ## Regressão linear multipla
 
@@ -1111,10 +1188,13 @@ Para o caso de regerssão linear múltipla, i.e., quando $d > 1$, poderemos util
 
 Considerando o modelo de regressão linear múltiplo, temos que:
 
-
 $$Y = g({\bf X}) = \beta^{T}{\bf X} + \varepsilon,$$
 
-em que $Y$ é um vetor $n \times 1$, ${\bf X}$ é uma matriz fixa e conhecida com os atributos de dimensão $n \times d$, em que a primeira coluna é preenchida de 1, $\beta = (\beta_0, \cdots, \beta_d)$. Na cultura de machine learning, iremos desconsiderar $\varepsilon$, não feremos suposições sobre $\varepsilon$. Portanto, considere
+em que $Y$ é um vetor $n \times 1$, ${\bf X}$ é uma matriz fixa e
+conhecida com os atributos de dimensão $n \times d$, em que a primeira
+coluna é preenchida de 1, $\beta = (\beta_0, \cdots, \beta_d)$. Na
+cultura de machine learning, iremos desconsiderar $\varepsilon$, não
+feremos suposições sobre $\varepsilon$. Portanto, considere
 
 $$g({\bf x}) = \beta^{T}{\bf X} = \beta_{0}x_0 + \beta_1x_{i,1} + \cdots + \beta_dx_{i,d},$$
 em que $x_0 \equiv 1$.
@@ -1123,11 +1203,12 @@ em que $x_0 \equiv 1$.
 
 <br>
 
-O método dos mínimos quadrados, para o caso de regressão linear múltipla ($d > 1$) é dado por aquele que minimiza $R(\beta^{T}{\bf X})$, i.e., minimiza:
-
+O método dos mínimos quadrados, para o caso de regressão linear múltipla
+($d > 1$) é dado por aquele que minimiza $R(\beta^{T}{\bf X})$, i.e.,
+minimiza:
 
 $$\argmin_\beta \sum_{i = 1}^n (Y_i - \beta_0 - \beta_1x_{i,1} - \cdots - \beta_dx_{i,d})^2.$$
-Temos que 
+Temos que
 
 $$\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y.$$
 
@@ -1139,25 +1220,40 @@ $$g({\bf x}) = \widehat{\beta}^{T}{\bf x}.$$
 
 <br>
 
-Grande parte da literatura estatística é voltada para justificar que o método de mínimos quadrados sob um ponto de vista de um estimador de máxima verossimilhança, assim como também para construção de testes de aderência, métodos para construção de intervalos de confiança e teste de hipótese para $\beta_i$ (parâmetros que indexam o modelo), análise de resíduos, entre outros.
+Grande parte da literatura estatística é voltada para justificar que o
+método de mínimos quadrados sob um ponto de vista de um estimador de
+máxima verossimilhança, assim como também para construção de testes de
+aderência, métodos para construção de intervalos de confiança e teste de
+hipótese para $\beta_i$ (parâmetros que indexam o modelo), análise de
+resíduos, entre outros.
 
-<br> 
+<br>
 
-Assumir que a verdadeira regressão $r({\bf x}) = \mathbb{E}({\bf X}\,|\,Y)$ é uma suposição muito forte. Contudo, existe, na literatura, justificativas para o uso de métodos de mínimos quadrados para estimar os coeficientes, mesmo quando a regressão real $r({\bf x})$ não satisfaz a suposição de linearidade.
+Assumir que a verdadeira regressão
+$r({\bf x}) = \mathbb{E}({\bf X}\,|\,Y)$ é uma suposição muito forte.
+Contudo, existe, na literatura, justificativas para o uso de métodos de
+mínimos quadrados para estimar os coeficientes, mesmo quando a regressão
+real $r({\bf x})$ não satisfaz a suposição de linearidade.
 
 ## Regressão linear multipla
 
 <br>
 
-O estimador de mínimos quadrados $\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y$ é bom, por alguns motivos:
+O estimador de mínimos quadrados
+$\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y$ é bom, por
+alguns motivos:
 
 <br>
 
-1. É igual ao estimador de máxima verossimilhança sob normalidade, linearidade e homoscedasticidade, portanto, consistente sob essas condições
+1.  É igual ao estimador de máxima verossimilhança sob normalidade,
+    linearidade e homoscedasticidade, portanto, consistente sob essas
+    condições
 
-2. É [*best linear unbiased prediction* - BLUE]{.red} sob linearidade e homoscedasticidade;
+2.  É [*best linear unbiased prediction* - BLUE]{.red} sob linearidade e
+    homoscedasticidade;
 
-3. O método de mínimos quadrados tem alguma garantia, mesmo sem assumir muitas suposições.
+3.  O método de mínimos quadrados tem alguma garantia, mesmo sem assumir
+    muitas suposições.
 
 <br>
 
@@ -1167,29 +1263,45 @@ O estimador de mínimos quadrados $\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\
 
 <br>
 
-Quando a suposição de linearidade falha, ou seja, quando a regressão verdadeira que desconhecemos $r({\bf x})$ não é linear, frequentemente existe um vetor $\beta_{*}$, tal que $g_{\beta_{*}}({\bf x}) = \beta_{*}^{T}{\bf x}$ tem um bom poder preditivo. Nesses casos, o métrodo dos mínimos quadrados $\widehat{\beta}$ tende a produzir estimadores com baixo risco. Isso se deve ao fato que $\widehat{\beta}$ converge para o melhor preditor linear (para o oráculo $\beta_{*}$) que é dado por:
+Quando a suposição de linearidade falha, ou seja, quando a regressão
+verdadeira que desconhecemos $r({\bf x})$ não é linear, frequentemente
+existe um vetor $\beta_{*}$, tal que
+$g_{\beta_{*}}({\bf x}) = \beta_{*}^{T}{\bf x}$ tem um bom poder
+preditivo. Nesses casos, o métrodo dos mínimos quadrados
+$\widehat{\beta}$ tende a produzir estimadores com baixo risco. Isso se
+deve ao fato que $\widehat{\beta}$ converge para o melhor preditor
+linear (para o oráculo $\beta_{*}$) que é dado por:
 
 $$\beta_{*} = \argmin_\beta R(g_\beta) =  \argmin_\beta \mathbb{E}\left[(Y - \beta^{T}X)^2\right],$$
-mesmo que a verdadeira regressão $r({\bf x})$ não seja linear, em que $({\bf X}, Y)$ é uma nova observação.
+mesmo que a verdadeira regressão $r({\bf x})$ não seja linear, em que
+$({\bf X}, Y)$ é uma nova observação.
 
 <br>
 
-[Teorema]{.red}: Seja $\beta_{*}$ o melhor estimador linear e $\widehat{\beta}$ o estimador de mínimos quadrados. Então,
-
-
+[Teorema]{.red}: Seja $\beta_{*}$ o melhor estimador linear e
+$\widehat{\beta}$ o estimador de mínimos quadrados. Então,
 
 $$\widehat{\beta}\overset{p}{\longrightarrow}  \beta_{*}\,\, \mathrm{e}\,\, R(g_{\widehat{\beta}})\overset{p}{\longrightarrow} R(g_{\beta_{*}}), $$
-quando $n \longrightarrow \infty$. Para uma demonstração, veja <http://www.rizbicki.ufscar.br/AME.pdf>, página. 29.
+quando $n \longrightarrow \infty$. Para uma demonstração, veja
+<http://www.rizbicki.ufscar.br/AME.pdf>, página. 29.
 
 ## Mínimos quadrados sem suposição de linearidade
 
 <br>
 
-Em palavras, o que o Teorema anterior diz é que mesmo quando a regressão verdadeira não é linear, o estimador de mínimos quadrados é consistente para nos conduzir a um bom estimador **linear**, ou seja, ao menos conseguiremos o melhor estimador linear como uma aproximação à $r({\bf x})$ que não é linear.
+Em palavras, o que o Teorema anterior diz é que mesmo quando a regressão
+verdadeira não é linear, o estimador de mínimos quadrados é consistente
+para nos conduzir a um bom estimador **linear**, ou seja, ao menos
+conseguiremos o melhor estimador linear como uma aproximação à
+$r({\bf x})$ que não é linear.
 
 <br>
 
-Isso não quer dizer que você terá boas estimativas em todas as situações, muito embora o oráculo $\beta_{*}$, em muitas situações, terá bom poder preditivo. Em outras palavras, em situações que um problema, em sua natureza, não linear, poderemos alcançar boas estimativas por uma aproximação linear pelo método dos mínimos quadrados.
+Isso não quer dizer que você terá boas estimativas em todas as
+situações, muito embora o oráculo $\beta_{*}$, em muitas situações, terá
+bom poder preditivo. Em outras palavras, em situações que um problema,
+em sua natureza, não linear, poderemos alcançar boas estimativas por uma
+aproximação linear pelo método dos mínimos quadrados.
 
 <br>
 
@@ -1199,17 +1311,608 @@ Isso não quer dizer que você terá boas estimativas em todas as situações, m
 
 <br>
 
-**Inferência**: assume que o modelo linear é correto. O principal objetivo consiste em interpretar os parâmetros:
+**Inferência**: assume que o modelo linear é correto. O principal
+objetivo consiste em interpretar os parâmetros:
 
 <br>
 
-- Quais são os parâmetros significantes?
-- Qual o efeito do aumento da dose de um remédio no paciente?
+-   Quais são os parâmetros significantes?
+-   Qual o efeito do aumento da dose de um remédio no paciente?
 
 <br>
 
-**Predição**: queremos criar $g({\bf x})$ com bom poder preditivo, mesmo que a especificação do modelo não esteja correta. Não assume que a verdadeira regressão é de fato linear! A interpretação aqui não é o foco. Tudo bem?
+**Predição**: queremos criar $g({\bf x})$ com bom poder preditivo, mesmo
+que a especificação do modelo não esteja correta. Não assume que a
+verdadeira regressão é de fato linear! A interpretação aqui não é o
+foco. Tudo bem?
 
 <br>
 
-![](gifs/ok.gif){width='15%'}
+![](gifs/ok.gif){width="15%"}
+
+## Ajustando uma regressão linear no R
+
+<br>
+
+Caso você não queira implementar o estimador de mínimos quadrados
+$\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y$, você poderá
+utilizar a famosa função `lm`. Na verdade é melhor que não implemente o
+estimador $\widehat{\beta}$, uma vez que a função `lm`, assim como a
+função `glmnet` do pacote
+[glmnet](https://glmnet.stanford.edu/articles/glmnet.html), utilizam-se
+de truques numéricos para um cálculo mais eficiente.
+
+<br>
+
+Falaremos do pacote
+[glmnet](https://glmnet.stanford.edu/articles/glmnet.html), um pouco
+mais a frente, quando abordarmos regressão penalizada. Certo!?
+
+<br>
+
+![](gifs/bom.gif)
+
+## Ajustando uma regressão linear no R
+
+<br>
+
+Considere o conjunto de dados de expectativa de vida versus PIB per
+Capita disponíveis
+[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData).
+O comportamente entre as variáveis `LifeExpectancy` e `GDPercapita`, se
+fizermos um gráfico, não é linear.
+
+<br>
+
+Todavia, isso não impede que possamos ajustar um modelo de regerssão
+linear, muito embora o seu poder preditivo será baixo.
+
+<br>
+
+Porém, como já sabemos, ao menos conseguiremos o melhor oráculo,
+denotado por $\beta_{*}$, i.e., o melhor estimador dentre os possíveis
+estimadores lineares, como mostrado em teoremas anteriores.
+
+<br>
+
+E está tudo bem. Aqui não estou querendo defender que você use uma
+aproximação linear para esse caso. Em breve, com um pequeno truque,
+poderemos ajustar uma regressão polinomial à esses dados, e
+incorporaremos um pouco da tendência não linar presente nos dados.
+
+## Ajustando uma regressão linear no R
+
+<br>
+
+```{r, warning=FALSE}
+#| code-fold: true
+#| code-summary: "Veja o código do gráfico"
+#| fig-align: center
+#| out-width: "1200px"
+#| out-height: "700px"
+
+library(ggplot2)
+
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+
+# Criando um arquivo temporário
+arquivo_temp <- tempfile()
+
+# Baixando um arquivo temporário
+download.file(url = url, destfile = arquivo_temp)
+
+# Carregando os dados
+load(arquivo_temp)
+
+dados_expectativa_renda |> 
+  ggplot(aes(x = GDPercapita, y = LifeExpectancy)) +
+  geom_point() +
+  labs(
+    title = "PIB per Capita versus Expectativa de Vida",
+    x = "PIB per Capita",
+    y = "Expectativa de Vida"
+  ) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.title = element_text(face = "bold")
+  )
+```
+
+## Ajustando uma regressão linear no R
+
+<br>
+
+Claramente, a reta de regressão (linha azul) do gráfico anterior não tem
+um bom poder preditivo. O ajuste foi feito diretamente usando o pacote
+[ggplot2](https://ggplot2.tidyverse.org/), utilizando a função
+`geom_smooth`, em que foi escolhido o método `"lm"`.
+
+<br>
+
+Poderíamos ter utilizado a função `lm`:
+
+<br>
+
+```{r}
+#| code-fold: true
+#| code-summary: "Veja o código do gráfico"
+#| fig-align: center
+#| out-width: "1200px"
+#| out-height: "700px"
+#| results: markup
+
+library(ggplot2)
+
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+
+# Criando um arquivo temporário
+arquivo_temp <- tempfile()
+
+# Baixando um arquivo temporário
+download.file(url = url, destfile = arquivo_temp)
+
+# Carregando os dados
+load(arquivo_temp)
+
+# Ajustando o modelo usando a função lm
+ajuste <- lm(LifeExpectancy ~ GDPercapita, data = dados_expectativa_renda)
+
+modelo <- function(x){
+  novos_dados <- tibble::tibble(GDPercapita = x)
+  predict(ajuste, newdata = novos_dados)
+}
+
+dados_expectativa_renda |> 
+  ggplot(aes(x = GDPercapita, y = LifeExpectancy)) +
+  geom_point() +
+  labs(
+    title = "PIB per Capita versus Expectativa de Vida",
+    x = "PIB per Capita",
+    y = "Expectativa de Vida"
+  ) +
+  stat_function(fun = modelo, color = "red", size = 1.2) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.title = element_text(face = "bold")
+  )
+```
+
+## Matriz esparsa
+
+<br>
+
+Para grandes bases de dados, em um problema real que você venha
+trabalhar, e se o custo computacional você considera elevado, poderá
+utilizar o pacote
+[biglm](https://cran.r-project.org/web/packages/biglm/index.html).
+
+<br>
+
+Em situações em que há muitos zeros na sua matriz, poderá utilizar
+representação [esparsa](https://en.wikipedia.org/wiki/Sparse_matrix).
+
+<br>
+
+[Matrizes esparsas]{.red} são matrizes com muitas entradas iguais à $0$.
+Elas ocorrem naturalmente em diversas aplicações, como por exemplo uma
+matriz de termos presentes em um documento, em que se o termo estiver no
+documento resebe 1, e zero, caso contrário. Abaixo, ${\bf X}$ é um
+exemplo de matriz esparsa.
+
+<br>
+
+$$
+{\bf X} = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 2 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 3 & 0 & 0 \\
+0 & 0 & 0 & 4 & 0 \\
+\end{bmatrix}
+$$
+
+## Matriz esparsa
+
+<br>
+
+Considere os textos:
+
+1.  [Texto 1]{.red}: "Eu amo essa disciplina."
+2.  [Texto 2]{.red}: "Eu adoro meu professor."
+3.  [Texto 3]{.red}: "Eu serei muito bom em aprendizagem de máquina."
+4.  [Texto 4]{.red}: "Adoro o departamento de estatística da UFPB."
+
+<br>
+
+| Textos          | disciplina | amo | aprendizagem | máquina | estatistica | adoro | UFPB |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| [Texto 1]{.red} | 1          | 1   | 0            | 0       | 0           | 0     | 0    |
+| [Texto 2]{.red} | 0          | 0   | 0            | 0       | 0           | 1     | 0    |
+| [Texto 3]{.red} | 0          | 0   | 1            | 1       | 0           | 0     | 0    |
+| [Texto 4]{.red} | 0          | 0   | 0            | 0       | 1           | 1     | 1    |
+
+## Matriz esparsa
+
+<br>
+
+A matriz com a ocorrência de determinados termos nos textos é dada por:
+
+$$
+{\bf X} = 
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+\end{bmatrix}
+$$
+
+A representação esparsa de ${\bf X}$, aqui denotada por ${\bf X_*}$ é:
+
+$$
+{\bf X_*} = 
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & 6 & 1 \\
+3 & 3 & 1 \\
+3 & 4 & 1 \\
+4 & 5 & 1 \\
+4 & 6 & 1 \\
+4 & 7 & 1 \\
+\end{bmatrix},
+$$ em que as duas primeiras colunas, são as linhas e colunas de
+${\bf X}$ com valor diferente de 0. A última coluna representa o valor.
+
+## Regressão linear com matriz esparsa
+
+<br>
+
+**Exemplo**: Ajuste de um modelo de regerssão linear múltiplo, em que
+${\bf X}$ poderá ter uma representação esparsa. Aqui não estamos
+interessados em verificar qualidade de predições. Trata-se apenas de um
+exemplo de como utilizar uma representação esparsa para ajustar um
+modelo de regessão linear com algumas covariáveis, em R.
+
+<br>
+
+```{r}
+#| code-fold: true
+#| code-summary: "Estude o código"
+library(glmnet)
+library(Matrix)
+
+# Dados de exemplo
+x1 <- c(1, 0, 2, 0, 0)
+x2 <- c(0, 3, 0, 4, 0)
+x3 <- c(5, 0, 6, 0, 7)
+y <- c(1, 2, 3, 4, 5)
+
+# Criar data frame com as variáveis explicativas
+dados <- data.frame(x1, x2, x3)
+
+# Converter o data frame para matriz esparsa
+X <- sparse.model.matrix(~ ., data = dados)
+
+# Ajustar a regressão linear utilizando glmnet
+modelo <- glmnet(x = X, y = y, alpha = 0, lambda = 0)
+
+# Realizar previsões
+predicoes <- predict(modelo, newx = X)
+```
+
+## Erro quadrático médio
+
+<br>
+
+Como exposto anteriormente, para avaliar o poder preditivo de uma
+modelo, i.e., a aprendizagem de um modelo, devemos avaliar a função de
+risco, i.e., devemos avaliar
+$R(g) := \mathbb{E}\left[L(g({\bf X}); Y)\right]$. Em particular,
+considere $L = L_2$ (função perda quadrática). Então, poderíamos ser
+levados a acreditar que o melhor estimador de $R(g)$, utilizando a Lei
+dos Grandes Números seria:
+
+$$\frac{1}{n}\sum_{i = 1}^n(Y_{i} - g({\bf X_{i}}))^2 \approx R(g) := \mathbb{E}\left[L_2(g({\bf X}); Y)\right].$$
+
+<br>
+
+Essa quantidade é chamada, de **E**rro **Q**uadrático **M**édio -
+**EQM**. Desejamos escolher o melhor mode, entre os modelos testados,
+que minimiza o EQM.
+
+<br>
+
+O apelo frequentista em utilizar a Lei dos Grandes Números na forma
+acima não é correto, uma vez que usamos as $n$ observações para
+treinar/ajustar o modelo $g$.
+
+## Erro quadrático médio
+
+<br>
+
+Por exemplo, no problema de PIB per Capita versus expectativa de vida,
+em que consideramos uma aproximação linear, não poderíamos utilizar o
+EQM da forma acima, com as $n$ observações utilizadas para treinar o
+modelo. É um detalhe sutil, mas que muitas pessoas cometem esse erro.
+
+<br>
+
+Não podemos utilizar as $n$ observações para estimar o risco $R(g)$
+através do EQM, uma vez que estamos utilizando o mesmo conjunto de dados
+para ajustar e avaliar $g$.
+
+<br>
+
+**Qual o problema?**
+
+<br>
+
+1.  Não vale a Lei dos Grandes Números;
+2.  Usamos os mesmos valores de ${\bf x}$ e $y$ para treinar e avaliar o
+    modelo.
+
+## Erro quadrático médio
+
+<br>
+
+O que diz a Lei dos Grandes Números, em particular, a Lei Forte de
+Kolmogorov?
+
+<br>
+
+[Teorema]{.red} (**Lei Forte de Kolmogorov**): Sejam $X_1, \cdots, X_n$
+uma sequência de veriáveis aleatórias - v.a. i.i.d. e integráveis, i.e.,
+com valor esperado limitado, tal que
+$\mathbb{E}(X) = \mu\,\, \forall i$. Então,
+
+$$\frac{X_1 + X_2 + \cdots + X_n}{n} \rightarrow \mu,$$
+
+quase certamente, i.e., com probabilidade 1.
+
+<br>
+
+Note que se desejamos comparar diversos modelos,
+$g_1({\bf x}), g_2({\bf x}), \cdots,$ e se utilizarmos as mesmas $n$
+obervações para calularmos $R(g_1({\bf x})), R(g_2({\bf x})), \cdots$,
+os termos de cada uma das somas **não são independentes**. Lembre-se que
+desejamos obter $\argmin_g R_{pred}(g)$.
+
+## Erro quadrático médio
+
+<br>
+
+Portanto, nunca utilize as mesmas observações utilizadas para treinar o
+modelo, como aquelas que serão utilizadas para se estimar $R(g)$. Nunca!
+Isso é um pecado mortal! Ok?!
+
+<br>
+
+![](gifs/thumbs-up-nod.gif){width="20%"}
+
+## Data Splitting
+
+<br>
+
+Corrigir o problema de dependência que há ao estimarmos o risco usando o
+EQM é fácil. Uma abordagem muito utilizada é utilizar [*data
+splitting*]{.red}. Algo como a segunda linha da imagem abaixo:
+
+<br>
+
+![](imgs/train-and-test-1-min-1.webp){width="35%"}
+
+## Data Splitting
+
+<br>
+
+Essa divisão é feita de forma aleatória, algumas vezes estratificada de
+acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de
+problemas de conjunto de dados ordenados. Queremos que tanto no conjunto
+de treinamento [*Training*]{.red} quanto no conjunto de teste
+[*Testing*]{.red}, na imagem, contenham a mesma diversidade de
+observações.
+
+<br>
+
+Por exemplo, ainda no exemplo de PIB per Capita versus Expectaitiva de
+Vida, não quero correr o risco de ter no conjunto de treinamento apenas
+o países com maiores valores de PIB per Capita, caso o conjunto de dados
+tenha sido ordenado pela variável `GDPercapita`. Por isso aleatorizar o
+conjunto de treinamento e teste é simple uma ótima ideia. Certo!?
+
+<br>
+
+![](gifs/ok-2.gif){width="20%"}
+
+## Data Splitting
+
+<br>
+
+O percentual de divisão dos dados normalmente é empírico. Usa-se
+normalmente a proporção de $70\%$ para treinamento e $30\%$ para teste
+$(70\%, 30\%)$. Outros esquemas de divisões são bastante utilizados, por
+exemplo, $(80\%, 20\%)$, $(99\%, 1\%)$, a depender da quantidade de
+observações (tamanho do conjunto de dados).
+
+<br>
+
+Portanto, utilizar o EQM sob o conjunto de dados de teste para avaliar
+$g_1({\bf x}), g_2({\bf x}), \cdots,$, é uma boa estratégia, uma vez que
+agora não teremos mais uma dependência no numerador do cálculo do EQM.
+Em notação matemática, poderíamos escrever como já apresentado
+anteriormente, em @eq-risco-correto, i.e,
+
+$$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$
+
+<br>
+
+Esse resultado valeria para qualquer outra função de perda.
+
+## Data Splitting
+
+Reescrevendo, suponha que o conjunto de dados total possua $n$
+observações e que separamos aleatoriamente $s < n$ observações para o
+conjunto de treinamento. Assim, temos, algo como:
+
+<br>
+
+$$\overbrace{(X_1, Y_1), (X_2, Y_2), \cdots, (X_s, Y_s)}^{70\%}, \,\,\, \overbrace{(X_{s + 1}, Y_{s + 1}), (X_{s + 2}, Y_{s + 2}), \cdots, (X_n, Y_n)}^{30\%}.$$
+
+<br>
+
+Então, temos que uma boa estimativa de $R(g)$ é dada pelo EQM calculado
+sobre o conjunto de dados de teste, que nesse caso considerei o conjunto
+com $30\%$, mas esse percentual poderia ser outro. Então, temos que um
+bom estimador é:
+
+$$\frac{1}{n - s}\sum_{i = s + 1}^n (Y_{i} - g(X_{i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$
+
+## Data Splitting
+
+<br>
+
+**Agora você entende por que dividimos os dados em treinamento e
+teste?**
+
+<br>
+
+![](gifs/yes.gif){width="25%"}
+
+<br>
+
+Dividimos para obermos um bom estimador do risco utilizando o
+[EQM](https://en.wikipedia.org/wiki/Mean_squared_error). 🎊
+
+## Data Splitting
+
+<br>
+
+Podemos argumentar que o procedimento de *data splitting*, em que
+dividimos o nosso conjunto de dados em treinamento e teste fará com que
+venhamos perder muitas observações que poderiam ter sido utilizadas para
+treinar o modelo. E de certa forma isso é verdade, principalmente quando
+termos um conjunto não muito grande de observações.
+
+<br>
+
+Portanto, uma melhor abordagem, sendo esta uma variação do método de
+*data splitting* é o procedimento de [*cross-validation - cv (validação
+cruzada)*](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
+Uma versão mais geral de uma validação cruzada é o [*leave-one-out
+cross-validation*]{.red}.
+
+<br>
+
+Em palavras, o procedimento consiste em tirar de fora uma única
+observação das $n$ observações da base de dados para ser o nosso
+conjunto de teste e treinar o modelo com as observações que
+permaneceram. Daí, calcula-se o **risco observado** (EQM, sob o conjunto
+de teste). Na segunda iteração, a observação que antes era de teste
+volta para perterncer ao conjunto de treinamento e uma nova observação é
+removida para ser teste. Esse procedimento ocorre de forma iterativa até
+a retirada da última observação como teste.
+
+## Leave-one-out cross-validation
+
+<br>
+
+Observe a animação abaixo que ilustra o procedimento de
+**l**eave-**o**ne-**o**ut **c**ross-**v**alidation - LOOCV, em uma
+amostra de tamanho $n = 8$. Ao fim, teremos $n$ modelos ajustados, em
+que calculamos as suas respectivas performances, i.e., com o risco
+observado, estimamos o risco de $R(g)$.
+
+<br>
+
+![](gifs/LOOCV.gif)
+
+## Leave-one-out cross-validation
+
+<br>
+
+Vejo muitas pessoas que usam uma validação cruzada, por exemplo,
+leave-one-out cross-validation - LOOCV comparando com o método Jackknife
+e algumas inclusive dizendo ser a mesma coisa. Não, não são!
+
+<br>
+
+O algoritmo Jackknife é um procedimento de estimação e que por sua vez
+deve estar dentro do conjunto de treinamento. Para haver algum
+Jackknife, a estimativa com $n-1$ observações deve estar dentro do
+conjunto de treinamento, em que dentro do treinamento teria a remoção de
+um observação por vez. **Consegue perceber a diferença sutil?**
+
+<br>
+
+![](gifs/bean_01.gif){width="20%"}
+
+## Leave-one-out cross-validation
+
+<br>
+
+O método LOOCV foi proposto por Stones (1974), no artigo intitulado
+Cross-Validatory Choice and Assessment of Statistical Predictions, no
+Royal Statistical Society, Série B. Clique
+[aqui](https://www.jstor.org/stable/pdf/2984809.pdf?refreqid=excelsior%3A3071b86b3588905b095d44668025b005&ab_segments=&origin=&initiator=&acceptTC=1)
+se tiver curiosidade em ler o artigo.
+
+<br>
+
+Escrevendo o estimador do risco em um procedimento de LOOCV, temos que:
+
+$$\widehat{R}(g) = \frac{1}{n}\sum_{i = 1}^n (Y_i - g_{-i}({\bf X}_i))^2,$$
+em que $g_{-i}(\bf{X}_i)$, representa o ajuste do modelo no conjunto de
+dados sem a $i$-ésima observação.
+
+<br>
+
+Não é difícil perceber que a depender do valor de $n$, o método LOOCV é
+computacionalmente intensivo. O método requer que ajustemos $n$ modelos.
+Em algumas situações isso não é um grande problema, porém, em diversas
+outras pode ser impeditivo utilizar o LOOCV. 🤯
+
+
+## $k$-fold cross-validation
+
+<br>
+
+Uma alternativa ao LOOCV é utilizar o método $k$-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em $k$-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos $L_1, \cdots, L_k \subset \{1, \cdots, n\}$ são, cada um, um conjunto de indices aleatórios associados a cada um dos lotes. A ideia aqui é construir $k$ estimadores da função de regressão, denotados por $\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}$, em que $\widehat{g}_{-j}$ é criado usando todas as observações do banco de dados, com exceção daquelas do lote $L_j$, utilizado para **validação**. O estimador do risco é dado por:
+
+$$\widehat{R}(g) = \frac{1}{n}\sum_{j=1}^k \sum_{i \in L_j}(Y_i - g_{-j}({\bf X}_i))^2.$$
+Perceba que, que o LOOCV é um caso particular do $k$-fold cross-validation, quando fazemos $k = n$. Em outras palavras, $L_1, \cdots, L_k \subset \{1, \cdots, n\}$ representam os índices aleatórios do conjunto de treinamento nos $k$ lotes.
+
+![](gifs/hum.gif)
+
+## $k$-fold cross-validation
+
+A animação abaixo, ilustra o procedimento de $3$-fold cross-validation ($k = 3$), para uma amostra de tamanho $n = 12$ observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de $k$-fold cross-validation é randomizado.
+
+<br>
+
+![](gifs/KfoldCV.gif)
+
+Perceba que teremos agora apenas $3$ modelos. Para cada um desses lotes, calulamos o EQM com o conjunto de teste (parte [azul]{.trueblue}) e treinamos o modelo com o conjunto de treinamento (parte [vermelha]{.truered}). 
+
+
+## $k$-fold cross-validation
+
+<br>
+
+Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco $R(g)$.
+
+<br>
+
+Ao estimar $k$ modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação.
+
+<br>
+
+![](gifs/ok.gif)
+
+
+## $k$-fold cross-validation
+
+<br>
+
+![](imgs/grid_search_cross_validation.png)

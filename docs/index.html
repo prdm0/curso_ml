@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-03">
+  <meta name="dcterms.date" content="2023-07-04">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-03</p>
+  <p class="date">2023-07-04</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-613c32c39031cb6c67ca" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-613c32c39031cb6c67ca">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-214e1d61e59ef0e0bf60" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-214e1d61e59ef0e0bf60">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1000,7 +1000,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Normalmente considera-se a perda <span class="math inline">L_2</span>, uma vez que em modelos de regressão, minimizar <span class="math inline">R_{pred}(g)</span>, em <span class="math inline">g</span>, equivale a encontrar <span class="math inline">r({\bf x}) = \mathbb{E}({\bf X}|{\bf Y})</span>, i.e., equivale a estimar a função de regressão.</p>
 <p><br></p>
-<p><span class="red">Teorema</span>: Suponha que definimos o risco de uma função de predição <span class="math inline">g: \mathbb{R}^d \rightarrow \mathbb{R}</span> via função perda quadrática, i.e, <span class="math inline">R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]</span>, em que <span class="math inline">\bf (X, Y)</span> são novas observações que não foram utilizadas para estimar <span class="math inline">g</span>. Suponha também que estimaos o risco de um estimador de regressão <span class="math inline">r({\bf X})</span> via função perda quadrática <span class="math inline">R_{pred}(g) = \mathbb{E}\left[r({\bf X} - g({\bf X}))^2\right]</span>. Então,</p>
+<p><span class="red">Teorema</span>: Suponha que definimos o risco de uma função de predição <span class="math inline">g: \mathbb{R}^d \rightarrow \mathbb{R}</span> via função perda quadrática, i.e, <span class="math inline">R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]</span>, em que <span class="math inline">\bf (X, Y)</span> são novas observações que não foram utilizadas para estimar <span class="math inline">g</span>. Suponha também que estimaos o risco de um estimador de regressão <span class="math inline">r({\bf X})</span> via função perda quadrática <span class="math inline">R_{reg}(g) = \mathbb{E}\left[(r({\bf X}) - g({\bf X}))^2\right]</span>. Então,</p>
 <p><span class="math display">R_{pred}(g) = R_{reg}(g) + \mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right],</span></p>
 <p>em que <span class="math inline">\mathbb{E}\left[\mathbb{V}[{\bf Y} | {\bf X}]\right]</span> é a variância média do modelo que não depende de <span class="math inline">g</span>. Portanto, estimar bem <span class="math inline">r({\bf x})</span> é de fundamental importância para criar uma boa função de predição. Em especial, sob a ótica do risco quadrático, a melhor função de predição para <span class="math inline">\bf Y</span> é a função de regressão <span class="math inline">r({\bf x})</span>, de tal modo que:</p>
 <p><span class="math display">\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).</span></p>
@@ -1011,9 +1011,10 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><strong>Lembre-se</strong>: <span class="math inline">r({\bf x}) = \mathbb{E}(Y | \bf{X} = \bf{x})</span> é a nossa <span class="red">função de regressão</span>.</p>
 <p><br></p>
 <p>A definição de risco preditivo <span class="math inline">R_{pred}</span>, que também denotaremos simplesmente por <span class="math inline">R</span>, tem um apelo frequentista. Dessa forma, para um novo conjunto com <span class="math inline">m</span> novas observaçõs, <span class="math inline">({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})</span>, temos que que essa nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para a função para o risco preditivo é dado por:</p>
-<p><span class="math display">\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].</span> Chamaremos a quantidade acima de <a href="https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio">Erro Quadrático Médio - EQM</a>. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.</p>
+<p><span id="eq-risco-correto"><span class="math display">\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right]. \tag{1}</span></span></p>
+<p>Chamaremos a quantidade acima de <a href="https://pt.wikipedia.org/wiki/Erro_quadr%C3%A1tico_m%C3%A9dio">Erro Quadrático Médio - EQM</a>. Em aprendizagem de máquina, normalmente estaremos no contexto em que temos muitas observações, e que portanto, poderemos fazer esse apelo frequentista.</p>
 <p><br></p>
-<p>’’Desejamos encontrar <span class="math inline">g</span> (encontrar métodos) que minimize de forma satisfatória <span class="math inline">R</span>, i.e., métodos que nos conduzam à um risco baixo.</p>
+<p>Desejamos encontrar <span class="math inline">g</span> (encontrar métodos) que minimize de forma satisfatória <span class="math inline">R</span>, i.e., métodos que nos conduzam à um risco baixo.</p>
 </section>
 <section id="função-de-risco-4" class="slide level2">
 <h2>Função de risco</h2>
@@ -1134,7 +1135,428 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p><strong>Predição</strong>: queremos criar <span class="math inline">g({\bf x})</span> com bom poder preditivo, mesmo que a especificação do modelo não esteja correta. Não assume que a verdadeira regressão é de fato linear! A interpretação aqui não é o foco. Tudo bem?</p>
 <p><br></p>
-<p><img data-src="gifs/ok.gif" style="width:15.0%"></p>
+
+<img data-src="gifs/ok.gif" style="width:15.0%" class="r-stretch"></section>
+<section id="ajustando-uma-regressão-linear-no-r" class="slide level2">
+<h2>Ajustando uma regressão linear no R</h2>
+<p><br></p>
+<p>Caso você não queira implementar o estimador de mínimos quadrados <span class="math inline">\widehat{\beta} = ({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}Y</span>, você poderá utilizar a famosa função <code>lm</code>. Na verdade é melhor que não implemente o estimador <span class="math inline">\widehat{\beta}</span>, uma vez que a função <code>lm</code>, assim como a função <code>glmnet</code> do pacote <a href="https://glmnet.stanford.edu/articles/glmnet.html">glmnet</a>, utilizam-se de truques numéricos para um cálculo mais eficiente.</p>
+<p><br></p>
+<p>Falaremos do pacote <a href="https://glmnet.stanford.edu/articles/glmnet.html">glmnet</a>, um pouco mais a frente, quando abordarmos regressão penalizada. Certo!?</p>
+<p><br></p>
+
+<img data-src="gifs/bom.gif" class="r-stretch"></section>
+<section id="ajustando-uma-regressão-linear-no-r-1" class="slide level2">
+<h2>Ajustando uma regressão linear no R</h2>
+<p><br></p>
+<p>Considere o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. O comportamente entre as variáveis <code>LifeExpectancy</code> e <code>GDPercapita</code>, se fizermos um gráfico, não é linear.</p>
+<p><br></p>
+<p>Todavia, isso não impede que possamos ajustar um modelo de regerssão linear, muito embora o seu poder preditivo será baixo.</p>
+<p><br></p>
+<p>Porém, como já sabemos, ao menos conseguiremos o melhor oráculo, denotado por <span class="math inline">\beta_{*}</span>, i.e., o melhor estimador dentre os possíveis estimadores lineares, como mostrado em teoremas anteriores.</p>
+<p><br></p>
+<p>E está tudo bem. Aqui não estou querendo defender que você use uma aproximação linear para esse caso. Em breve, com um pequeno truque, poderemos ajustar uma regressão polinomial à esses dados, e incorporaremos um pouco da tendência não linar presente nos dados.</p>
+</section>
+<section id="ajustando-uma-regressão-linear-no-r-2" class="slide level2">
+<h2>Ajustando uma regressão linear no R</h2>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Veja o código do gráfico</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Criando um arquivo temporário</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Baixando um arquivo temporário</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># Carregando os dados</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a>dados_expectativa_renda <span class="sc">|&gt;</span> </span>
+<span id="cb3-15"><a href="#cb3-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> GDPercapita, <span class="at">y =</span> LifeExpectancy)) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="at">title =</span> <span class="st">"PIB per Capita versus Expectativa de Vida"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19"></a>    <span class="at">x =</span> <span class="st">"PIB per Capita"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20"></a>    <span class="at">y =</span> <span class="st">"Expectativa de Vida"</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-25"><a href="#cb3-25"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="1200" height="700"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ajustando-uma-regressão-linear-no-r-3" class="slide level2">
+<h2>Ajustando uma regressão linear no R</h2>
+<p><br></p>
+<p>Claramente, a reta de regressão (linha azul) do gráfico anterior não tem um bom poder preditivo. O ajuste foi feito diretamente usando o pacote <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, utilizando a função <code>geom_smooth</code>, em que foi escolhido o método <code>"lm"</code>.</p>
+<p><br></p>
+<p>Poderíamos ter utilizado a função <code>lm</code>:</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Veja o código do gráfico</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Criando um arquivo temporário</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># Baixando um arquivo temporário</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co"># Carregando os dados</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co"># Ajustando o modelo usando a função lm</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">lm</span>(LifeExpectancy <span class="sc">~</span> GDPercapita, <span class="at">data =</span> dados_expectativa_renda)</span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a>modelo <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb4-18"><a href="#cb4-18"></a>  novos_dados <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">GDPercapita =</span> x)</span>
+<span id="cb4-19"><a href="#cb4-19"></a>  <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> novos_dados)</span>
+<span id="cb4-20"><a href="#cb4-20"></a>}</span>
+<span id="cb4-21"><a href="#cb4-21"></a></span>
+<span id="cb4-22"><a href="#cb4-22"></a>dados_expectativa_renda <span class="sc">|&gt;</span> </span>
+<span id="cb4-23"><a href="#cb4-23"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> GDPercapita, <span class="at">y =</span> LifeExpectancy)) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="at">title =</span> <span class="st">"PIB per Capita versus Expectativa de Vida"</span>,</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="at">x =</span> <span class="st">"PIB per Capita"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28"></a>    <span class="at">y =</span> <span class="st">"Expectativa de Vida"</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> modelo, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb4-33"><a href="#cb4-33"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb4-34"><a href="#cb4-34"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="1200" height="700"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="matriz-esparsa" class="slide level2">
+<h2>Matriz esparsa</h2>
+<p><br></p>
+<p>Para grandes bases de dados, em um problema real que você venha trabalhar, e se o custo computacional você considera elevado, poderá utilizar o pacote <a href="https://cran.r-project.org/web/packages/biglm/index.html">biglm</a>.</p>
+<p><br></p>
+<p>Em situações em que há muitos zeros na sua matriz, poderá utilizar representação <a href="https://en.wikipedia.org/wiki/Sparse_matrix">esparsa</a>.</p>
+<p><br></p>
+<p><span class="red">Matrizes esparsas</span> são matrizes com muitas entradas iguais à <span class="math inline">0</span>. Elas ocorrem naturalmente em diversas aplicações, como por exemplo uma matriz de termos presentes em um documento, em que se o termo estiver no documento resebe 1, e zero, caso contrário. Abaixo, <span class="math inline">{\bf X}</span> é um exemplo de matriz esparsa.</p>
+<p><br></p>
+<p><span class="math display">
+{\bf X} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 3 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 4 &amp; 0 \\
+\end{bmatrix}
+</span></p>
+</section>
+<section id="matriz-esparsa-1" class="slide level2">
+<h2>Matriz esparsa</h2>
+<p><br></p>
+<p>Considere os textos:</p>
+<ol type="1">
+<li class="fragment"><span class="red">Texto 1</span>: “Eu amo essa disciplina.”</li>
+<li class="fragment"><span class="red">Texto 2</span>: “Eu adoro meu professor.”</li>
+<li class="fragment"><span class="red">Texto 3</span>: “Eu serei muito bom em aprendizagem de máquina.”</li>
+<li class="fragment"><span class="red">Texto 4</span>: “Adoro o departamento de estatística da UFPB.”</li>
+</ol>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Textos</th>
+<th>disciplina</th>
+<th>amo</th>
+<th>aprendizagem</th>
+<th>máquina</th>
+<th>estatistica</th>
+<th>adoro</th>
+<th>UFPB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="red">Texto 1</span></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="red">Texto 2</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="red">Texto 3</span></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="red">Texto 4</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="matriz-esparsa-2" class="slide level2">
+<h2>Matriz esparsa</h2>
+<p><br></p>
+<p>A matriz com a ocorrência de determinados termos nos textos é dada por:</p>
+<p><span class="math display">
+{\bf X} =
+\begin{bmatrix}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+\end{bmatrix}
+</span></p>
+<p>A representação esparsa de <span class="math inline">{\bf X}</span>, aqui denotada por <span class="math inline">{\bf X_*}</span> é:</p>
+<p><span class="math display">
+{\bf X_*} =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+2 &amp; 6 &amp; 1 \\
+3 &amp; 3 &amp; 1 \\
+3 &amp; 4 &amp; 1 \\
+4 &amp; 5 &amp; 1 \\
+4 &amp; 6 &amp; 1 \\
+4 &amp; 7 &amp; 1 \\
+\end{bmatrix},
+</span> em que as duas primeiras colunas, são as linhas e colunas de <span class="math inline">{\bf X}</span> com valor diferente de 0. A última coluna representa o valor.</p>
+</section>
+<section id="regressão-linear-com-matriz-esparsa" class="slide level2">
+<h2>Regressão linear com matriz esparsa</h2>
+<p><br></p>
+<p><strong>Exemplo</strong>: Ajuste de um modelo de regerssão linear múltiplo, em que <span class="math inline">{\bf X}</span> poderá ter uma representação esparsa. Aqui não estamos interessados em verificar qualidade de predições. Trata-se apenas de um exemplo de como utilizar uma representação esparsa para ajustar um modelo de regessão linear com algumas covariáveis, em R.</p>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Estude o código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Dados de exemplo</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>x3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">7</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Criar data frame com as variáveis explicativas</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2, x3)</span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co"># Converter o data frame para matriz esparsa</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>X <span class="ot">&lt;-</span> <span class="fu">sparse.model.matrix</span>(<span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co"># Ajustar a regressão linear utilizando glmnet</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>modelo <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> X, <span class="at">y =</span> y, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="dv">0</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co"># Realizar previsões</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>predicoes <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, <span class="at">newx =</span> X)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="erro-quadrático-médio" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<p><br></p>
+<p>Como exposto anteriormente, para avaliar o poder preditivo de uma modelo, i.e., a aprendizagem de um modelo, devemos avaliar a função de risco, i.e., devemos avaliar <span class="math inline">R(g) := \mathbb{E}\left[L(g({\bf X}); Y)\right]</span>. Em particular, considere <span class="math inline">L = L_2</span> (função perda quadrática). Então, poderíamos ser levados a acreditar que o melhor estimador de <span class="math inline">R(g)</span>, utilizando a Lei dos Grandes Números seria:</p>
+<p><span class="math display">\frac{1}{n}\sum_{i = 1}^n(Y_{i} - g({\bf X_{i}}))^2 \approx R(g) := \mathbb{E}\left[L_2(g({\bf X}); Y)\right].</span></p>
+<p><br></p>
+<p>Essa quantidade é chamada, de <strong>E</strong>rro <strong>Q</strong>uadrático <strong>M</strong>édio - <strong>EQM</strong>. Desejamos escolher o melhor mode, entre os modelos testados, que minimiza o EQM.</p>
+<p><br></p>
+<p>O apelo frequentista em utilizar a Lei dos Grandes Números na forma acima não é correto, uma vez que usamos as <span class="math inline">n</span> observações para treinar/ajustar o modelo <span class="math inline">g</span>.</p>
+</section>
+<section id="erro-quadrático-médio-1" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<p><br></p>
+<p>Por exemplo, no problema de PIB per Capita versus expectativa de vida, em que consideramos uma aproximação linear, não poderíamos utilizar o EQM da forma acima, com as <span class="math inline">n</span> observações utilizadas para treinar o modelo. É um detalhe sutil, mas que muitas pessoas cometem esse erro.</p>
+<p><br></p>
+<p>Não podemos utilizar as <span class="math inline">n</span> observações para estimar o risco <span class="math inline">R(g)</span> através do EQM, uma vez que estamos utilizando o mesmo conjunto de dados para ajustar e avaliar <span class="math inline">g</span>.</p>
+<p><br></p>
+<p><strong>Qual o problema?</strong></p>
+<p><br></p>
+<ol type="1">
+<li class="fragment">Não vale a Lei dos Grandes Números;</li>
+<li class="fragment">Usamos os mesmos valores de <span class="math inline">{\bf x}</span> e <span class="math inline">y</span> para treinar e avaliar o modelo.</li>
+</ol>
+</section>
+<section id="erro-quadrático-médio-2" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<p><br></p>
+<p>O que diz a Lei dos Grandes Números, em particular, a Lei Forte de Kolmogorov?</p>
+<p><br></p>
+<p><span class="red">Teorema</span> (<strong>Lei Forte de Kolmogorov</strong>): Sejam <span class="math inline">X_1, \cdots, X_n</span> uma sequência de veriáveis aleatórias - v.a. i.i.d. e integráveis, i.e., com valor esperado limitado, tal que <span class="math inline">\mathbb{E}(X) = \mu\,\, \forall i</span>. Então,</p>
+<p><span class="math display">\frac{X_1 + X_2 + \cdots + X_n}{n} \rightarrow \mu,</span></p>
+<p>quase certamente, i.e., com probabilidade 1.</p>
+<p><br></p>
+<p>Note que se desejamos comparar diversos modelos, <span class="math inline">g_1({\bf x}), g_2({\bf x}), \cdots,</span> e se utilizarmos as mesmas <span class="math inline">n</span> obervações para calularmos <span class="math inline">R(g_1({\bf x})), R(g_2({\bf x})), \cdots</span>, os termos de cada uma das somas <strong>não são independentes</strong>. Lembre-se que desejamos obter <span class="math inline">\argmin_g R_{pred}(g)</span>.</p>
+</section>
+<section id="erro-quadrático-médio-3" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<p><br></p>
+<p>Portanto, nunca utilize as mesmas observações utilizadas para treinar o modelo, como aquelas que serão utilizadas para se estimar <span class="math inline">R(g)</span>. Nunca! Isso é um pecado mortal! Ok?!</p>
+<p><br></p>
+
+<img data-src="gifs/thumbs-up-nod.gif" style="width:20.0%" class="r-stretch"></section>
+<section id="data-splitting" class="slide level2">
+<h2>Data Splitting</h2>
+<p><br></p>
+<p>Corrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar <span class="red"><em>data splitting</em></span>. Algo como a segunda linha da imagem abaixo:</p>
+<p><br></p>
+
+<img data-src="imgs/train-and-test-1-min-1.webp" style="width:35.0%" class="r-stretch"></section>
+<section id="data-splitting-1" class="slide level2">
+<h2>Data Splitting</h2>
+<p><br></p>
+<p>Essa divisão é feita de forma aleatória, algumas vezes estratificada de acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de problemas de conjunto de dados ordenados. Queremos que tanto no conjunto de treinamento <span class="red"><em>Training</em></span> quanto no conjunto de teste <span class="red"><em>Testing</em></span>, na imagem, contenham a mesma diversidade de observações.</p>
+<p><br></p>
+<p>Por exemplo, ainda no exemplo de PIB per Capita versus Expectaitiva de Vida, não quero correr o risco de ter no conjunto de treinamento apenas o países com maiores valores de PIB per Capita, caso o conjunto de dados tenha sido ordenado pela variável <code>GDPercapita</code>. Por isso aleatorizar o conjunto de treinamento e teste é simple uma ótima ideia. Certo!?</p>
+<p><br></p>
+
+<img data-src="gifs/ok-2.gif" style="width:20.0%" class="r-stretch"></section>
+<section id="data-splitting-2" class="slide level2">
+<h2>Data Splitting</h2>
+<p><br></p>
+<p>O percentual de divisão dos dados normalmente é empírico. Usa-se normalmente a proporção de <span class="math inline">70\%</span> para treinamento e <span class="math inline">30\%</span> para teste <span class="math inline">(70\%, 30\%)</span>. Outros esquemas de divisões são bastante utilizados, por exemplo, <span class="math inline">(80\%, 20\%)</span>, <span class="math inline">(99\%, 1\%)</span>, a depender da quantidade de observações (tamanho do conjunto de dados).</p>
+<p><br></p>
+<p>Portanto, utilizar o EQM sob o conjunto de dados de teste para avaliar <span class="math inline">g_1({\bf x}), g_2({\bf x}), \cdots,</span>, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em <a href="#/função-de-risco-3" class="quarto-xref">Equação&nbsp;1</a>, i.e,</p>
+<p><span class="math display">\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].</span></p>
+<p><br></p>
+<p>Esse resultado valeria para qualquer outra função de perda.</p>
+</section>
+<section id="data-splitting-3" class="slide level2">
+<h2>Data Splitting</h2>
+<p>Reescrevendo, suponha que o conjunto de dados total possua <span class="math inline">n</span> observações e que separamos aleatoriamente <span class="math inline">s &lt; n</span> observações para o conjunto de treinamento. Assim, temos, algo como:</p>
+<p><br></p>
+<p><span class="math display">\overbrace{(X_1, Y_1), (X_2, Y_2), \cdots, (X_s, Y_s)}^{70\%}, \,\,\, \overbrace{(X_{s + 1}, Y_{s + 1}), (X_{s + 2}, Y_{s + 2}), \cdots, (X_n, Y_n)}^{30\%}.</span></p>
+<p><br></p>
+<p>Então, temos que uma boa estimativa de <span class="math inline">R(g)</span> é dada pelo EQM calculado sobre o conjunto de dados de teste, que nesse caso considerei o conjunto com <span class="math inline">30\%</span>, mas esse percentual poderia ser outro. Então, temos que um bom estimador é:</p>
+<p><span class="math display">\frac{1}{n - s}\sum_{i = s + 1}^n (Y_{i} - g(X_{i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].</span></p>
+</section>
+<section id="data-splitting-4" class="slide level2">
+<h2>Data Splitting</h2>
+<p><br></p>
+<p><strong>Agora você entende por que dividimos os dados em treinamento e teste?</strong></p>
+<p><br></p>
+
+<img data-src="gifs/yes.gif" style="width:25.0%" class="r-stretch"><p><br></p>
+<p>Dividimos para obermos um bom estimador do risco utilizando o <a href="https://en.wikipedia.org/wiki/Mean_squared_error">EQM</a>. 🎊</p>
+</section>
+<section id="data-splitting-5" class="slide level2">
+<h2>Data Splitting</h2>
+<p><br></p>
+<p>Podemos argumentar que o procedimento de <em>data splitting</em>, em que dividimos o nosso conjunto de dados em treinamento e teste fará com que venhamos perder muitas observações que poderiam ter sido utilizadas para treinar o modelo. E de certa forma isso é verdade, principalmente quando termos um conjunto não muito grande de observações.</p>
+<p><br></p>
+<p>Portanto, uma melhor abordagem, sendo esta uma variação do método de <em>data splitting</em> é o procedimento de <a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)"><em>cross-validation - cv (validação cruzada)</em></a>. Uma versão mais geral de uma validação cruzada é o <span class="red"><em>leave-one-out cross-validation</em></span>.</p>
+<p><br></p>
+<p>Em palavras, o procedimento consiste em tirar de fora uma única observação das <span class="math inline">n</span> observações da base de dados para ser o nosso conjunto de teste e treinar o modelo com as observações que permaneceram. Daí, calcula-se o <strong>risco observado</strong> (EQM, sob o conjunto de teste). Na segunda iteração, a observação que antes era de teste volta para perterncer ao conjunto de treinamento e uma nova observação é removida para ser teste. Esse procedimento ocorre de forma iterativa até a retirada da última observação como teste.</p>
+</section>
+<section id="leave-one-out-cross-validation" class="slide level2">
+<h2>Leave-one-out cross-validation</h2>
+<p><br></p>
+<p>Observe a animação abaixo que ilustra o procedimento de <strong>l</strong>eave-<strong>o</strong>ne-<strong>o</strong>ut <strong>c</strong>ross-<strong>v</strong>alidation - LOOCV, em uma amostra de tamanho <span class="math inline">n = 8</span>. Ao fim, teremos <span class="math inline">n</span> modelos ajustados, em que calculamos as suas respectivas performances, i.e., com o risco observado, estimamos o risco de <span class="math inline">R(g)</span>.</p>
+<p><br></p>
+
+<img data-src="gifs/LOOCV.gif" class="r-stretch"></section>
+<section id="leave-one-out-cross-validation-1" class="slide level2">
+<h2>Leave-one-out cross-validation</h2>
+<p><br></p>
+<p>Vejo muitas pessoas que usam uma validação cruzada, por exemplo, leave-one-out cross-validation - LOOCV comparando com o método Jackknife e algumas inclusive dizendo ser a mesma coisa. Não, não são!</p>
+<p><br></p>
+<p>O algoritmo Jackknife é um procedimento de estimação e que por sua vez deve estar dentro do conjunto de treinamento. Para haver algum Jackknife, a estimativa com <span class="math inline">n-1</span> observações deve estar dentro do conjunto de treinamento, em que dentro do treinamento teria a remoção de um observação por vez. <strong>Consegue perceber a diferença sutil?</strong></p>
+<p><br></p>
+
+<img data-src="gifs/bean_01.gif" style="width:20.0%" class="r-stretch"></section>
+<section id="leave-one-out-cross-validation-2" class="slide level2">
+<h2>Leave-one-out cross-validation</h2>
+<p><br></p>
+<p>O método LOOCV foi proposto por Stones (1974), no artigo intitulado Cross-Validatory Choice and Assessment of Statistical Predictions, no Royal Statistical Society, Série B. Clique <a href="https://www.jstor.org/stable/pdf/2984809.pdf?refreqid=excelsior%3A3071b86b3588905b095d44668025b005&amp;ab_segments=&amp;origin=&amp;initiator=&amp;acceptTC=1">aqui</a> se tiver curiosidade em ler o artigo.</p>
+<p><br></p>
+<p>Escrevendo o estimador do risco em um procedimento de LOOCV, temos que:</p>
+<p><span class="math display">\widehat{R}(g) = \frac{1}{n}\sum_{i = 1}^n (Y_i - g_{-i}({\bf X}_i))^2,</span> em que <span class="math inline">g_{-i}(\bf{X}_i)</span>, representa o ajuste do modelo no conjunto de dados sem a <span class="math inline">i</span>-ésima observação.</p>
+<p><br></p>
+<p>Não é difícil perceber que a depender do valor de <span class="math inline">n</span>, o método LOOCV é computacionalmente intensivo. O método requer que ajustemos <span class="math inline">n</span> modelos. Em algumas situações isso não é um grande problema, porém, em diversas outras pode ser impeditivo utilizar o LOOCV. 🤯</p>
+</section>
+<section id="k-fold-cross-validation" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p><br></p>
+<p>Uma alternativa ao LOOCV é utilizar o método <span class="math inline">k</span>-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em <span class="math inline">k</span>-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos <span class="math inline">L_1, \cdots, L_k \subset \{1, \cdots, n\}</span> são, cada um, um conjunto de indices aleatórios associados a cada um dos lotes. A ideia aqui é construir <span class="math inline">k</span> estimadores da função de regressão, denotados por <span class="math inline">\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}</span>, em que <span class="math inline">\widehat{g}_{-j}</span> é criado usando todas as observações do banco de dados, com exceção daquelas do lote <span class="math inline">L_j</span>, utilizado para <strong>validação</strong>. O estimador do risco é dado por:</p>
+<p><span class="math display">\widehat{R}(g) = \frac{1}{n}\sum_{j=1}^k \sum_{i \in L_j}(Y_i - g_{-j}({\bf X}_i))^2.</span> Perceba que, que o LOOCV é um caso particular do <span class="math inline">k</span>-fold cross-validation, quando fazemos <span class="math inline">k = n</span>. Em outras palavras, <span class="math inline">L_1, \cdots, L_k \subset \{1, \cdots, n\}</span> representam os índices aleatórios do conjunto de treinamento nos <span class="math inline">k</span> lotes.</p>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="k-fold-cross-validation-1" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p>A animação abaixo, ilustra o procedimento de <span class="math inline">3</span>-fold cross-validation (<span class="math inline">k = 3</span>), para uma amostra de tamanho <span class="math inline">n = 12</span> observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de <span class="math inline">k</span>-fold cross-validation é randomizado.</p>
+<p><br></p>
+
+<img data-src="gifs/KfoldCV.gif" class="r-stretch"><p>Perceba que teremos agora apenas <span class="math inline">3</span> modelos. Para cada um desses lotes, calulamos o EQM com o conjunto de teste (parte <span class="trueblue">azul</span>) e treinamos o modelo com o conjunto de treinamento (parte <span class="truered">vermelha</span>).</p>
+</section>
+<section id="k-fold-cross-validation-2" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p><br></p>
+<p>Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco <span class="math inline">R(g)</span>.</p>
+<p><br></p>
+<p>Ao estimar <span class="math inline">k</span> modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação.</p>
+<p><br></p>
+
+<img data-src="gifs/ok.gif" class="r-stretch"></section>
+<section id="k-fold-cross-validation-3" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p><br></p>
+<p><img data-src="imgs/grid_search_cross_validation.png"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">

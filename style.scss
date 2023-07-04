@@ -7,6 +7,8 @@ $theme-red: #ec407a;
 $theme-grey: #515966;
 $theme-lightgrey: #90A1B8;
 $theme-black: #000000;
+$theme-truered: #ff0000;
+$theme-trueblue: #0000ff;
 
 $body-bg: $theme-light;
 $body-color: $theme-grey;
@@ -15,6 +17,15 @@ $link-color: $theme-red;
 $code-block-font-size: 1em;
 
 /*-- scss:rules --*/
+.truered {
+  color: $theme-truered;
+  font-weight: bold;
+}
+
+.trueblue {
+  color: $theme-trueblue;
+  font-weight: bold;
+}
 
 .orange {
   color: $theme-orange;
