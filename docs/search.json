@@ -494,7 +494,7 @@
     "href": "index.html#data-splitting",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Data Splitting",
-    "text": "Data Splitting\n\nCorrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar data splitting. Algo como a segunda linha da imagem abaixo:"
+    "text": "Data Splitting\n\nCorrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar data splitting, também chamado de método hold-out. Algo como a segunda linha da imagem abaixo:"
   },
   {
     "objectID": "index.html#data-splitting-1",
@@ -578,6 +578,27 @@
     "href": "index.html#k-fold-cross-validation-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-fold cross-validation",
-    "text": "k-fold cross-validation\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "k-fold cross-validation\nA imagem abaixo ilustra o procedimento k-fold cross-validation, em que uma 5-fold cross-validation é realizada dentro do conjunto de treinamento. Em cada split, o conjunto verde de observações (fold verde) são utilizados para treinar/ajustar o modelo e o conjunto azul, em cada um dos splits é utilizado para avaliar o risco preditivo R(g) (através, por exemplo do EQM).\n\n\n \n\nNão confunda os folds azuis com o conjunto de teste (Test data), este último utilizado por fim, depois do modelo pronto, para avaliar o desempenho do modelo treinado.\nNote também que a validação cruzada também é utilizada para o ajuste de hiperparâmetros, que são parâmetros de sintonização que não dependem dos dados para serem equalizados. Por exemplo, em uma regressão lasso, que veremos adiante, há o hiperparâmetro \\lambda que precisamos obter, normalmente por meio de um grid search (sequência finita), por exemplo, \\lambda \\in [0.5, 1, 1.5, 2, 2.5] de possíveis valores. Cada split pode ser utilizado para avaliar um valor de \\lambda, dos possíveis valores dispostos no grid. Aumentaríamos a quantidade de splits para mais valores de \\lambda na sequência."
+  },
+  {
+    "objectID": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação",
+    "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\n\n\n\nO simples procedimento de dividir o conjunto de dados em dois, uma parte para treinar o modelo e a outra parte (conjunto de teste) para estimar o risco R(g) é denominado de data splitting ou Hold-out Method. É um procedimento mais simples, porém, pode não ser útil em conjunto de dados não muito grandes.\nA segunda linha da ilustração, demonstra o procedimento de cross-validation (validação cruzada), procedimento mais utilizado nos treinamentos de modelos de aprendizagem de máquina.\nA terceira linha é uma abordagem também utilizada, porém não tão interessante quanto a validação cruzada. Nessa abordagem o banco de dados é dividido aleatoriamente em três partes. Traina-se o modelo com a parte verde, estima-se o risco com o conjunto de validação amarelo e testa-se o modelo com o conjunto de teste."
+  },
+  {
+    "objectID": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-1",
+    "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n A abordagem do conjunto de validação envolve dividir o conjunto de treinamento em duas partes: uma parte é usada para treinar o modelo e a outra parte é usada para avaliar o desempenho do modelo. O conjunto de validação é utilizado para ajustar os hiperparâmetros do modelo, como a taxa de aprendizado, o número de camadas ocultas em uma rede neural, entre outros. Após o ajuste dos hiperparâmetros, o modelo final é treinado com o conjunto de treinamento completo e avaliado em um conjunto separado chamado conjunto de teste. Essa abordagem é conhecida como divisão simples de treinamento/validação/teste.\n\nPor outro lado, a validação cruzada k-fold é uma abordagem que visa obter uma estimativa mais robusta do desempenho do modelo. Nessa abordagem, o conjunto de treinamento é dividido em k subconjuntos (folds) de tamanho aproximadamente igual. O modelo é treinado k vezes, cada vez usando k-1 folds como conjunto de treinamento e 1 fold como conjunto de validação. O desempenho do modelo é então calculado como a média dos resultados obtidos em cada iteração. Isso permite avaliar o modelo de forma mais precisa, pois utiliza todos os dados para treinamento e validação, evitando a dependência de uma única divisão do conjunto de treinamento."
+  },
+  {
+    "objectID": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-2",
+    "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nA validação cruzada k-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada k-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

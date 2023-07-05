@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-04">
+  <meta name="dcterms.date" content="2023-07-05">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-04</p>
+  <p class="date">2023-07-05</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-214e1d61e59ef0e0bf60" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-214e1d61e59ef0e0bf60">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-170a6c6e225e3ade783a" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-170a6c6e225e3ade783a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1454,7 +1454,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="data-splitting" class="slide level2">
 <h2>Data Splitting</h2>
 <p><br></p>
-<p>Corrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar <span class="red"><em>data splitting</em></span>. Algo como a segunda linha da imagem abaixo:</p>
+<p>Corrigir o problema de dependência que há ao estimarmos o risco usando o EQM é fácil. Uma abordagem muito utilizada é utilizar <span class="red"><em>data splitting</em></span>, também chamado de método <span class="red">hold-out</span>. Algo como a segunda linha da imagem abaixo:</p>
 <p><br></p>
 
 <img data-src="imgs/train-and-test-1-min-1.webp" style="width:35.0%" class="r-stretch"></section>
@@ -1555,8 +1555,40 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <img data-src="gifs/ok.gif" class="r-stretch"></section>
 <section id="k-fold-cross-validation-3" class="slide level2">
 <h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p>A imagem abaixo ilustra o procedimento <span class="math inline">k</span>-fold cross-validation, em que uma <span class="math inline">5</span>-fold cross-validation é realizada dentro do conjunto de treinamento. Em cada <em>split</em>, o conjunto verde de observações (fold <span class="green">verde</span>) são utilizados para treinar/ajustar o modelo e o conjunto <span class="trueblue">azul</span>, em cada um dos <em>splits</em> é utilizado para avaliar o risco preditivo <span class="math inline">R(g)</span> (através, por exemplo do EQM).</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="imgs/grid_search_cross_validation.png" width="800"> <img data-src="gifs/hum.gif"></p>
+</div><div class="column" style="width:60%;">
+<p>Não confunda os folds azuis com o conjunto de teste (<span class="trueblue">Test data</span>), este último utilizado por fim, depois do modelo pronto, para avaliar o desempenho do modelo treinado.</p>
+<p>Note também que a validação cruzada também é utilizada para o ajuste de hiperparâmetros, que são parâmetros de sintonização que não dependem dos dados para serem equalizados. Por exemplo, em uma regressão lasso, que veremos adiante, há o hiperparâmetro <span class="math inline">\lambda</span> que precisamos obter, normalmente por meio de um <span class="red">grid search</span> (sequência finita), por exemplo, <span class="math inline">\lambda \in [0.5, 1, 1.5, 2, 2.5]</span> de possíveis valores. Cada <em>split</em> pode ser utilizado para avaliar um valor de <span class="math inline">\lambda</span>, dos possíveis valores dispostos no grid. Aumentaríamos a quantidade de splits para mais valores de <span class="math inline">\lambda</span> na sequência.</p>
+</div>
+</div>
+</section>
+<section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação" class="slide level2">
+<h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="imgs/data_split_validation_cross.png"></p>
+</div><div class="column" style="width:50%;">
+<p>O simples procedimento de dividir o conjunto de dados em dois, uma parte para treinar o modelo e a outra parte (conjunto de teste) para estimar o risco <span class="math inline">R(g)</span> é denominado de <span class="red">data splitting</span> ou <span class="red">Hold-out Method</span>. É um procedimento mais simples, porém, pode não ser útil em conjunto de dados não muito grandes.</p>
+<p>A segunda linha da ilustração, demonstra o procedimento de cross-validation (validação cruzada), procedimento mais utilizado nos treinamentos de modelos de aprendizagem de máquina.</p>
+<p>A terceira linha é uma abordagem também utilizada, porém não tão interessante quanto a validação cruzada. Nessa abordagem o banco de dados é dividido aleatoriamente em três partes. Traina-se o modelo com a parte <span class="green">verde</span>, estima-se o risco com o conjunto de validação amarelo e testa-se o modelo com o conjunto de teste.</p>
+</div>
+</div>
+</section>
+<section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-1" class="slide level2">
+<h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
+<p><br> A abordagem do conjunto de validação envolve dividir o conjunto de treinamento em duas partes: uma parte é usada para treinar o modelo e a outra parte é usada para avaliar o desempenho do modelo. O conjunto de validação é utilizado para ajustar os hiperparâmetros do modelo, como a taxa de aprendizado, o número de camadas ocultas em uma rede neural, entre outros. Após o ajuste dos hiperparâmetros, o modelo final é treinado com o conjunto de treinamento completo e avaliado em um conjunto separado chamado conjunto de teste. Essa abordagem é conhecida como divisão simples de treinamento/validação/teste.</p>
 <p><br></p>
-<p><img data-src="imgs/grid_search_cross_validation.png"></p>
+<p>Por outro lado, a validação cruzada <span class="math inline">k</span>-fold é uma abordagem que visa obter uma estimativa mais robusta do desempenho do modelo. Nessa abordagem, o conjunto de treinamento é dividido em k subconjuntos (folds) de tamanho aproximadamente igual. O modelo é treinado <span class="math inline">k</span> vezes, cada vez usando <span class="math inline">k-1</span> folds como conjunto de treinamento e <span class="math inline">1</span> fold como conjunto de validação. O desempenho do modelo é então calculado como a média dos resultados obtidos em cada iteração. Isso permite avaliar o modelo de forma mais precisa, pois utiliza todos os dados para treinamento e validação, evitando a dependência de uma única divisão do conjunto de treinamento.</p>
+</section>
+<section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-2" class="slide level2">
+<h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
+<p><br></p>
+<p>A validação cruzada <span class="math inline">k</span>-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada <span class="math inline">k</span>-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.</p>
+<p><br></p>
+<p><img data-src="gifs/mr-bean-pivot.gif" style="width:40.0%"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">

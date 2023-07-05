@@ -9,6 +9,7 @@ $theme-lightgrey: #90A1B8;
 $theme-black: #000000;
 $theme-truered: #ff0000;
 $theme-trueblue: #0000ff;
+$theme-green: #008000;
 
 $body-bg: $theme-light;
 $body-color: $theme-grey;
@@ -17,6 +18,11 @@ $link-color: $theme-red;
 $code-block-font-size: 1em;
 
 /*-- scss:rules --*/
+.green {
+  color: $theme-green;
+  font-weight: bold;
+}
+
 .truered {
   color: $theme-truered;
   font-weight: bold;
