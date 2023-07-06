@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-05">
+  <meta name="dcterms.date" content="2023-07-06">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-05</p>
+  <p class="date">2023-07-06</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d344596d4a9b8a5afd5d" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-d344596d4a9b8a5afd5d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-225f4c853aa78416ffd6" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-225f4c853aa78416ffd6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1588,10 +1588,163 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>A validação cruzada <span class="math inline">k</span>-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada <span class="math inline">k</span>-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.</p>
 <p><br></p>
-<p><img data-src="gifs/mr-bean-pivot.gif" style="width:40.0%"></p>
 
-<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img data-src="gifs/mr-bean-pivot.gif" style="width:40.0%" class="r-stretch"></section>
+<section id="balanço-viés-e-variância" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
+<p><br></p>
+<p>A ideia de precisão e exatidão estão ligadas ao viés e variância do modelo <span class="math inline">g</span>, em que precisão está ligado a ideia de variância pequena e exatidão está ligada a ideia de baixo viés. A ideia é termos um estimador próximo o que ilustra o item <span class="red">d</span>. Muitas vezes temos um estimador nas situações <span class="red">b</span> e <span class="red">c</span>. O ideal é o balanço de viés e variância, que seria o estimador ilustrado pelo item <span class="red">d</span>.</p>
+
+<img data-src="imgs/precisao_exatidao.png" style="width:55.0%" class="r-stretch quarto-figure-center"></section>
+<section id="balanço-viés-e-variância-1" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
+<p><br></p>
+<p>Um grande apelo para o uso do risco quadrático, i.e., risco que utiliza a função de perda <span class="math inline">L_2</span> é sua interpretabilidade. Temos que o risco quadrático <span class="math inline">R(g)</span> condicional a um novo <span class="math inline">{\bf x}</span> poderá ser decomposto por:</p>
+<p><span class="math display">\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.</span> <strong>Temos que</strong>:</p>
+<p><br></p>
+<p>i - É a variância intrínseca da vairável resposta (<em>label</em>), que não depende da função <span class="math inline">\widehat{g}</span> escolhida e, assim, não poderá ser reduzida. Na verdade, poderemos reduzir <span class="math inline">i</span>, se incluirmos mais <em>features</em> (covariáveis/variáveis explicativas) ao nosso modelo;</p>
+<p>ii - É o viés ao quadrado do estimador <span class="math inline">\widehat{g}</span> (viés ao quadrado do modelo);</p>
+<p>iii - É a variância do estimador <span class="math inline">\widehat{g}</span>.</p>
+</section>
+<section id="balanço-viés-e-variância-2" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
+<p><br></p>
+<p>Assim, lembre-se que uma escolha adequada de <span class="math inline">\widehat{g}</span> nos grarante que conseguiremos reduzir o risco preditivo <span class="math inline">R(g)</span>, pois a escolha aproriada implica em escolhermos um estimador de <span class="math inline">\widehat{g}</span> com balanço entre víes e variância.</p>
+<p><br></p>
+<p>Modelos com muitos parâmetros possuem viés relativamente baixo, porém, tendem a ter variância muito alta, em geral, uma vez que precisamos estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente tendem a ter variância baixa, acompanhados, normalmente de um alto viés.</p>
+<p><br></p>
+<p>Normalmente, modelos com muitos parâmetros nos levam a termos <span class="red"><em>overffiting</em></span> (super-ajuste), o que não é bom pois são acompanhados de alta variância. Já modelos muito simplistas nos conduzem a um ajuste muito ruim (<span class="red"><em>underffiting</em></span> ou sub-ajuste). Entendeu!?</p>
+
+<img data-src="gifs/mais_ou_menos.gif" class="r-stretch"></section>
+<section id="balanço-viés-e-variância-3" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Estude o código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># Função de regressão verdadeira. Na prática é desconhecida.</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>regressao_verdadeira <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="dv">45</span> <span class="sc">*</span> <span class="fu">tanh</span>(x<span class="sc">/</span><span class="fl">1.9</span> <span class="sc">-</span> <span class="dv">7</span>) <span class="sc">+</span> <span class="dv">57</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a>observacoes_regressao_real <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">desvio_padrao =</span> <span class="fl">0.2</span>) {</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="co"># Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na </span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>  <span class="co"># pratica</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>  seq_x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">17.5</span>, <span class="at">length.out =</span> n), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  </span>
+<span id="cb6-15"><a href="#cb6-15"></a>  step <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    <span class="fu">regressao_verdadeira</span>(x) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> 1L, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> desvio_padrao)</span>
+<span id="cb6-17"><a href="#cb6-17"></a>  </span>
+<span id="cb6-18"><a href="#cb6-18"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">y =</span> purrr<span class="sc">::</span><span class="fu">map_vec</span>(<span class="at">.x =</span> seq_x, <span class="at">.f =</span> step), <span class="at">x =</span> seq_x)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>}</span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co"># Usaremos uma regressão polinomial para tentar ajustar à regressão -------</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a>regressao_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 30L, <span class="at">desvio_padrao =</span> <span class="dv">4</span>, <span class="at">grau =</span> 1L) {</span>
+<span id="cb6-23"><a href="#cb6-23"></a>  </span>
+<span id="cb6-24"><a href="#cb6-24"></a>  dados <span class="ot">&lt;-</span> <span class="fu">observacoes_regressao_real</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>    </span>
+<span id="cb6-26"><a href="#cb6-26"></a>  iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
+<span id="cb6-27"><a href="#cb6-27"></a>      x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
+<span id="cb6-28"><a href="#cb6-28"></a>      iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
+<span id="cb6-29"><a href="#cb6-29"></a>      </span>
+<span id="cb6-30"><a href="#cb6-30"></a>      result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
+<span id="cb6-31"><a href="#cb6-31"></a>      <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
+<span id="cb6-32"><a href="#cb6-32"></a>      </span>
+<span id="cb6-33"><a href="#cb6-33"></a>      <span class="fu">as_tibble</span>(result)</span>
+<span id="cb6-34"><a href="#cb6-34"></a>  }  </span>
+<span id="cb6-35"><a href="#cb6-35"></a>  </span>
+<span id="cb6-36"><a href="#cb6-36"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
+<span id="cb6-37"><a href="#cb6-37"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
+<span id="cb6-38"><a href="#cb6-38"></a>  </span>
+<span id="cb6-39"><a href="#cb6-39"></a>  ajuste <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb6-40"><a href="#cb6-40"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste, <span class="at">new.data =</span> dados)</span>
+<span id="cb6-41"><a href="#cb6-41"></a>  </span>
+<span id="cb6-42"><a href="#cb6-42"></a>  dados <span class="sc">|&gt;</span> </span>
+<span id="cb6-43"><a href="#cb6-43"></a>    dplyr<span class="sc">::</span><span class="fu">relocate</span>(y_chapeu, <span class="at">.before =</span> x)</span>
+<span id="cb6-44"><a href="#cb6-44"></a>}</span>
+<span id="cb6-45"><a href="#cb6-45"></a></span>
+<span id="cb6-46"><a href="#cb6-46"></a>plotando <span class="ot">&lt;-</span> <span class="cf">function</span>(dados){</span>
+<span id="cb6-47"><a href="#cb6-47"></a>  dados <span class="sc">|&gt;</span>  </span>
+<span id="cb6-48"><a href="#cb6-48"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu)) <span class="sc">+</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb6-50"><a href="#cb6-50"></a>}</span>
+<span id="cb6-51"><a href="#cb6-51"></a></span>
+<span id="cb6-52"><a href="#cb6-52"></a>mc_ajustes <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">mc =</span> 100L, <span class="at">n =</span> 50L, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> 1L){</span>
+<span id="cb6-53"><a href="#cb6-53"></a></span>
+<span id="cb6-54"><a href="#cb6-54"></a>  p <span class="ot">&lt;-</span> </span>
+<span id="cb6-55"><a href="#cb6-55"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb6-56"><a href="#cb6-56"></a>      <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">17.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>)) <span class="sc">+</span>      </span>
+<span id="cb6-57"><a href="#cb6-57"></a>      <span class="fu">ylab</span>(<span class="st">"Valores estimados"</span>)</span>
+<span id="cb6-58"><a href="#cb6-58"></a>  </span>
+<span id="cb6-59"><a href="#cb6-59"></a>  df <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb6-60"><a href="#cb6-60"></a>  <span class="cf">for</span>(i <span class="cf">in</span> 1L<span class="sc">:</span>mc){</span>
+<span id="cb6-61"><a href="#cb6-61"></a>    df <span class="ot">&lt;-</span> <span class="fu">regressao_polinomial</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao, <span class="at">grau =</span> grau)</span>
+<span id="cb6-62"><a href="#cb6-62"></a>    p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu))</span>
+<span id="cb6-63"><a href="#cb6-63"></a>  }</span>
+<span id="cb6-64"><a href="#cb6-64"></a>  p <span class="sc">+</span> </span>
+<span id="cb6-65"><a href="#cb6-65"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> regressao_verdadeira, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">size=</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb6-66"><a href="#cb6-66"></a>    <span class="fu">labs</span>(</span>
+<span id="cb6-67"><a href="#cb6-67"></a>      <span class="at">title =</span> <span class="st">"Regressão Polinomial"</span>,</span>
+<span id="cb6-68"><a href="#cb6-68"></a>      <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Grau: "</span>, grau)</span>
+<span id="cb6-69"><a href="#cb6-69"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-70"><a href="#cb6-70"></a>    <span class="fu">theme</span>(</span>
+<span id="cb6-71"><a href="#cb6-71"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb6-72"><a href="#cb6-72"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-73"><a href="#cb6-73"></a>    )</span>
+<span id="cb6-74"><a href="#cb6-74"></a>}</span>
+<span id="cb6-75"><a href="#cb6-75"></a></span>
+<span id="cb6-76"><a href="#cb6-76"></a><span class="co"># Fixando uma semente</span></span>
+<span id="cb6-77"><a href="#cb6-77"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb6-78"><a href="#cb6-78"></a></span>
+<span id="cb6-79"><a href="#cb6-79"></a>p1 <span class="ot">&lt;-</span> <span class="fu">mc_ajustes</span>(<span class="at">grau =</span> <span class="dv">1</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">desvio_padrao =</span> <span class="dv">10</span>)</span>
+<span id="cb6-80"><a href="#cb6-80"></a>p2 <span class="ot">&lt;-</span> <span class="fu">mc_ajustes</span>(<span class="at">grau =</span> <span class="dv">7</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">desvio_padrao =</span> <span class="dv">10</span>)</span>
+<span id="cb6-81"><a href="#cb6-81"></a>p3 <span class="ot">&lt;-</span> <span class="fu">mc_ajustes</span>(<span class="at">grau =</span> <span class="dv">70</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">desvio_padrao =</span> <span class="dv">10</span>)</span>
+<span id="cb6-82"><a href="#cb6-82"></a>p4 <span class="ot">&lt;-</span> <span class="fu">mc_ajustes</span>(<span class="at">grau =</span> <span class="dv">200</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">desvio_padrao =</span> <span class="dv">10</span>)</span>
+<span id="cb6-83"><a href="#cb6-83"></a></span>
+<span id="cb6-84"><a href="#cb6-84"></a>p <span class="ot">&lt;-</span> ((p1 <span class="sc">|</span> p2) <span class="sc">/</span> (p3 <span class="sc">|</span> p4)) <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb6-85"><a href="#cb6-85"></a></span>
+<span id="cb6-86"><a href="#cb6-86"></a><span class="fu">ggsave</span>(p, <span class="at">file =</span> <span class="st">"imgs/vies_variancia.png"</span>, <span class="at">device =</span> <span class="st">"png"</span>, <span class="at">width =</span> <span class="dv">40</span>, <span class="at">height =</span> <span class="dv">30</span>, <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+<img data-src="imgs/vies_variancia.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section>
+<section id="balanço-viés-e-variância-4" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
+<p><br></p>
+<p>Experimente de forma interativa altera a complefixade do modelo.</p>
+<p><br></p>
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+</section>
+<section id="tuning-parameters" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Tuning Parameters</h2>
+<p><br></p>
+<p>No exemplo anterior, note que os parâmetros dos modelos são os coeficientes <span class="math inline">\beta</span>’s que indexam a regressão polinomial. Porém, perceba que á um parâmetro de sintonização (<span class="red"><em>tuning parameter</em></span>) que é o valor de <span class="math inline">p</span>, isto é, qual o grau do polinômio que iremos utilizar.</p>
+<p><br></p>
+<p>Normalmente a escolha é feita realizando um <span class="red"><em>grid search</em></span> por meio de um <span class="red"><em>cross-validation</em></span>.</p>
+<p><br></p>
+<p>No exemplo anterior, fizemos uma simulação e observamos que ao considerar graus nem muito grandes nem muito pequenos, aparentemente teremos escolhas razoáveis.</p>
+</section>
+<section id="exercícios" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> Exercícios</h2>
+<p><br></p>
+<p><span class="red">Exercício</span>: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível <a href="https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData">aqui</a>. Considere a função <span class="math inline">g</span>, da seguinte forma:</p>
+<p><span class="math display">g(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i,</span> com <span class="math inline">p \in \{1, 2, ..., 50\}</span>. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.</p>
+<p><br></p>
+<p><span class="red">Exercício</span>: Refaça o exemplo anterior, utilizando a estratégia de <span class="red"><em>data splitting</em></span>, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.</p>
+<p><br></p>
+<p><span class="red">Exercício</span>: Ainda considerando o primeiro exercício, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco.</p>
+</section>
+<section id="exercícios-1" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> Exercícios</h2>
+<p><br></p>
+<p><span class="red">Exercício</span>: Agora refaça a primeira questão, utilizando um procedimento de <span class="math inline">k</span>-fold cross-validation. Considere <span class="math inline">k = 5</span>. <strong>Dica</strong>: considere utiliza a biblioteca <a href="https://rsample.tidymodels.org/">rsample</a>.</p>
+
+
+<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>
@@ -1622,7 +1775,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': false,
-'previewLinksAuto': true,
+'previewLinksAuto': false,
 'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -1753,7 +1906,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
         hideCursorTime: 5000,
 
         // Opens links in an iframe preview overlay
-        previewLinks: false,
+        previewLinks: true,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
         transition: 'slide',

@@ -1,0 +1,171 @@
+---
+title: Aprendizagem de Máquina - UFPB
+output: 
+  flexdashboard::flex_dashboard:
+    theme: 
+      version: 4
+      font_scale: 1.2
+      bootswatch: journal
+      primary: "#0f385d"
+      secondary: "#EB6864"
+    favicon: "img/logo.png"
+    navbar:
+      - { icon: "fa-link", href: "https://tecnologiageo.com.br/", align: right}
+      - { icon: "fa-twitter", href: "https://twitter.com/tecgeobr", align: right}
+      - { icon: "fa-facebook", href: "https://www.facebook.com/tecnologiageo", align: right}
+      - { icon: "fa-instagram", href: "https://www.instagram.com/tecgeobr/", align: right}
+      - { icon: "fa-linkedin", href: "https://www.linkedin.com/company/tecgeo/?originalSubdomain=br", align: right}
+    options: (shiny.maxRequestSize = 700*1024^2)
+runtime: shiny
+---
+
+```{css}
+.shiny-output-area {
+  margin: 0;
+}
+
+.full-width-image {
+    width: 100vw; /* Define a largura igual à largura da janela do navegador */
+    height: auto; /* Mantém a proporção original da imagem */
+}
+```
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tibble)
+library(ggplot2)
+library(patchwork)
+library(flexdashboard)
+library(shiny)
+library(shinyWidgets)
+library(dplyr)
+library(fontawesome)
+library(purrr)
+library(leaflet)
+
+# Função de regressão verdadeira. Na prática é desconhecida.
+regressao_verdadeira <- function(x)
+  45 * tanh(x/1.9 - 7) + 57
+
+observacoes_regressao_real <- function(n, desvio_padrao = 0.2) {
+  # Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na 
+  # pratica
+  seq_x <- sample(seq(0, 17.5, length.out = n), size = n, replace = TRUE)
+  
+  step <- function(x)
+    regressao_verdadeira(x) + rnorm(n = 1L, mean = 0, sd = desvio_padrao)
+  
+  tibble::tibble(y = purrr::map_vec(.x = seq_x, .f = step), x = seq_x)
+}
+
+# Usaremos uma regressão polinomial para tentar ajustar à regressão -------
+regressao_polinomial <- function(n = 30L, desvio_padrao = 4, grau = 1L) {
+  
+  dados <- observacoes_regressao_real(n = n, desvio_padrao = desvio_padrao)
+    
+  iteracoes <- function(tibble_data, grau) {
+      x <- tibble_data$x
+      iteracoes <- lapply(X = 2L:grau, FUN = function(i) x^i)
+      
+      result <- cbind(tibble_data, do.call(cbind, iteracoes))
+      colnames(result)[(ncol(tibble_data) + 1):ncol(result)] <- paste0("x", 2L:grau)
+      
+      as_tibble(result)
+  }  
+  
+  if(grau >= 2L)
+    dados <- iteracoes(dados, grau = grau)
+  
+  ajuste <- lm(formula = y ~ ., data = dados)
+  dados$y_chapeu <- predict(ajuste, new.data = dados)
+  
+  dados |> 
+    dplyr::relocate(y_chapeu, .before = x)
+}
+
+plotando <- function(dados){
+  dados |>  
+    ggplot(aes(x = x, y = y_chapeu)) +
+    geom_point()
+}
+
+mc_ajustes <- function(mc = 100L, n = 50L, desvio_padrao = 5, grau = 1L){
+
+  p <- 
+    ggplot(data = NULL) +
+      coord_cartesian(xlim = c(0, 17.5), ylim = c(0, 110)) +      
+      ylab("Valores estimados")
+  
+  df <- NULL
+  for(i in 1L:mc){
+    df <- regressao_polinomial(n = n, desvio_padrao = desvio_padrao, grau = grau)
+    p <- p + geom_line(data = df, aes(x = x, y = y_chapeu))
+  }
+  p + 
+    stat_function(fun = regressao_verdadeira, col = "red", size= 1.4) +
+    labs(
+      title = "Regressão Polinomial",
+      subtitle = paste("Grau: ", grau)
+    ) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      axis.title = element_text(face = "bold")
+    )
+}
+```
+
+# Sobre {data-icon="fa-home"}
+
+Rows {data-width=full}
+-------------------------------------
+
+```{r  eval=require('leaflet'), echo = FALSE}
+library(leaflet)
+df_map <- reactive({leaflet() |>  
+  addMarkers(-34.846199, -7.140400) |> 
+  leaflet::addTiles() |> 
+  setView(
+  -34.846199, -7.140400, zoom = 27,
+  options = popupOptions(
+    minWidth = 30,
+    maxWidth = 30
+  )
+)})
+renderLeaflet({df_map()})
+```
+<br>
+
+Essa aplicação foi construída para conter alguns exempos da disciplina de Aprendizagem de Máquina, lecionada aos dicentes do curso de bacharelado em estatística da UFPB.
+
+# Balanço entre viés e variância {data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced"}
+
+Column
+-------------------------------------
+
+### Entrada de informações
+
+```{r}
+sliderInput("numeromodelos", "Número de modelos:",
+    min = 1, max = 100, value = 50
+)
+
+sliderInput("tamanhoamostral", "Tamanho amostral:",
+    min = 100, max = 250, value = 100
+)
+
+sliderInput("grau", "Grau do polinômio:",
+    min = 1, max = 200, value = 1
+)
+```
+
+
+Column
+-------------------------------------
+
+### Resultado gráfico das simulações
+
+```{r}
+renderPlot({
+  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)
+})
+```

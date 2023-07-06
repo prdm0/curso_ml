@@ -599,6 +599,139 @@
     "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
-    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nA validação cruzada k-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada k-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nA validação cruzada k-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada k-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes."
+  },
+  {
+    "objectID": "index.html#balanço-viés-e-variância",
+    "href": "index.html#balanço-viés-e-variância",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Balanço viés e variância",
+    "text": "Balanço viés e variância\n\nA ideia de precisão e exatidão estão ligadas ao viés e variância do modelo g, em que precisão está ligado a ideia de variância pequena e exatidão está ligada a ideia de baixo viés. A ideia é termos um estimador próximo o que ilustra o item d. Muitas vezes temos um estimador nas situações b e c. O ideal é o balanço de viés e variância, que seria o estimador ilustrado pelo item d."
+  },
+  {
+    "objectID": "index.html#balanço-viés-e-variância-1",
+    "href": "index.html#balanço-viés-e-variância-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Balanço viés e variância",
+    "text": "Balanço viés e variância\n\nUm grande apelo para o uso do risco quadrático, i.e., risco que utiliza a função de perda L_2 é sua interpretabilidade. Temos que o risco quadrático R(g) condicional a um novo {\\bf x} poderá ser decomposto por:\n\\mathbb{E}\\left[(Y - \\widehat{g}({\\bf X}))^2| {\\bf X} = {\\bf x}\\right] = \\underbrace{\\mathbb{V}[Y | {\\bf X = x}]}_{\\mathrm{i - Variância\\,\\, intrínseca}} + \\overbrace{(r({\\bf x}) - \\mathbb{E}[\\widehat{g}({\\bf x})])^2}^{\\mathrm{ii - Viés\\, ao\\, quadrado\\, do\\, modelo}} + \\underbrace{\\mathbb{V}[\\widehat{g}({\\bf x})]}_{\\mathrm{iii - Variância\\, do\\, modelo}}. Temos que:\n\ni - É a variância intrínseca da vairável resposta (label), que não depende da função \\widehat{g} escolhida e, assim, não poderá ser reduzida. Na verdade, poderemos reduzir i, se incluirmos mais features (covariáveis/variáveis explicativas) ao nosso modelo;\nii - É o viés ao quadrado do estimador \\widehat{g} (viés ao quadrado do modelo);\niii - É a variância do estimador \\widehat{g}."
+  },
+  {
+    "objectID": "index.html#balanço-viés-e-variância-2",
+    "href": "index.html#balanço-viés-e-variância-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Balanço viés e variância",
+    "text": "Balanço viés e variância\n\nAssim, lembre-se que uma escolha adequada de \\widehat{g} nos grarante que conseguiremos reduzir o risco preditivo R(g), pois a escolha aproriada implica em escolhermos um estimador de \\widehat{g} com balanço entre víes e variância.\n\nModelos com muitos parâmetros possuem viés relativamente baixo, porém, tendem a ter variância muito alta, em geral, uma vez que precisamos estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente tendem a ter variância baixa, acompanhados, normalmente de um alto viés.\n\nNormalmente, modelos com muitos parâmetros nos levam a termos overffiting (super-ajuste), o que não é bom pois são acompanhados de alta variância. Já modelos muito simplistas nos conduzem a um ajuste muito ruim (underffiting ou sub-ajuste). Entendeu!?"
+  },
+  {
+    "objectID": "index.html#balanço-viés-e-variância-3",
+    "href": "index.html#balanço-viés-e-variância-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Balanço viés e variância",
+    "text": "Balanço viés e variância\n\n\n\nEstude o código\nlibrary(ggplot2)\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(patchwork)\n\n# Função de regressão verdadeira. Na prática é desconhecida.\nregressao_verdadeira &lt;- function(x)\n  45 * tanh(x/1.9 - 7) + 57\n\nobservacoes_regressao_real &lt;- function(n, desvio_padrao = 0.2) {\n  # Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na \n  # pratica\n  seq_x &lt;- sample(seq(0, 17.5, length.out = n), size = n, replace = TRUE)\n  \n  step &lt;- function(x)\n    regressao_verdadeira(x) + rnorm(n = 1L, mean = 0, sd = desvio_padrao)\n  \n  tibble::tibble(y = purrr::map_vec(.x = seq_x, .f = step), x = seq_x)\n}\n\n# Usaremos uma regressão polinomial para tentar ajustar à regressão -------\nregressao_polinomial &lt;- function(n = 30L, desvio_padrao = 4, grau = 1L) {\n  \n  dados &lt;- observacoes_regressao_real(n = n, desvio_padrao = desvio_padrao)\n    \n  iteracoes &lt;- function(tibble_data, grau) {\n      x &lt;- tibble_data$x\n      iteracoes &lt;- lapply(X = 2L:grau, FUN = function(i) x^i)\n      \n      result &lt;- cbind(tibble_data, do.call(cbind, iteracoes))\n      colnames(result)[(ncol(tibble_data) + 1):ncol(result)] &lt;- paste0(\"x\", 2L:grau)\n      \n      as_tibble(result)\n  }  \n  \n  if(grau &gt;= 2L)\n    dados &lt;- iteracoes(dados, grau = grau)\n  \n  ajuste &lt;- lm(formula = y ~ ., data = dados)\n  dados$y_chapeu &lt;- predict(ajuste, new.data = dados)\n  \n  dados |&gt; \n    dplyr::relocate(y_chapeu, .before = x)\n}\n\nplotando &lt;- function(dados){\n  dados |&gt;  \n    ggplot(aes(x = x, y = y_chapeu)) +\n    geom_point()\n}\n\nmc_ajustes &lt;- function(mc = 100L, n = 50L, desvio_padrao = 5, grau = 1L){\n\n  p &lt;- \n    ggplot(data = NULL) +\n      coord_cartesian(xlim = c(0, 17.5), ylim = c(0, 110)) +      \n      ylab(\"Valores estimados\")\n  \n  df &lt;- NULL\n  for(i in 1L:mc){\n    df &lt;- regressao_polinomial(n = n, desvio_padrao = desvio_padrao, grau = grau)\n    p &lt;- p + geom_line(data = df, aes(x = x, y = y_chapeu))\n  }\n  p + \n    stat_function(fun = regressao_verdadeira, col = \"red\", size= 1.4) +\n    labs(\n      title = \"Regressão Polinomial\",\n      subtitle = paste(\"Grau: \", grau)\n    ) +\n    theme(\n      plot.title = element_text(face = \"bold\"),\n      axis.title = element_text(face = \"bold\")\n    )\n}\n\n# Fixando uma semente\nset.seed(0)\n\np1 &lt;- mc_ajustes(grau = 1, n = 100, desvio_padrao = 10)\np2 &lt;- mc_ajustes(grau = 7, n = 100, desvio_padrao = 10)\np3 &lt;- mc_ajustes(grau = 70, n = 100, desvio_padrao = 10)\np4 &lt;- mc_ajustes(grau = 200, n = 100, desvio_padrao = 10)\n\np &lt;- ((p1 | p2) / (p3 | p4)) + plot_annotation(tag_levels = \"A\")\n\nggsave(p, file = \"imgs/vies_variancia.png\", device = \"png\", width = 40, height = 30, units = \"cm\")"
+  },
+  {
+    "objectID": "index.html#tuning-parameters",
+    "href": "index.html#tuning-parameters",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\nNo exemplo anterior, note que os parâmetros dos modelos são os coeficientes \\beta’s que indexam a regressão polinomial. Porém, perceba que á um parâmetro de sintonização (tuning parameter) que é o valor de p, isto é, qual o grau do polinômio que iremos utilizar.\n\nNormalmente a escolha é feita realizando um grid search por meio de um cross-validation.\n\nNo exemplo anterior, fizemos uma simulação e observamos que ao considerar graus nem muito grandes nem muito pequenos, aparentemente teremos escolhas razoáveis."
+  },
+  {
+    "objectID": "index.html#exercícios",
+    "href": "index.html#exercícios",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Exercícios",
+    "text": "Exercícios\n\nExercício: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível aqui. Considere a função g, da seguinte forma:\ng(x) = \\beta_0 + \\sum_{i = 1}^p \\beta_i x^i, com p \\in \\{1, 2, ..., 50\\}. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.\n\nExercício: Refaça o exemplo anterior, utilizando a estratégia de data splitting, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.\n\nExercício: Ainda considerando o primeiro exercício, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco."
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html",
+    "href": "shiny_apps/balanco_vies_variancia.html",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "",
+    "text": ".shiny-output-area {\n  margin: 0;\n}\n\n.full-width-image {\n    width: 100vw; /* Define a largura igual à largura da janela do navegador */\n    height: auto; /* Mantém a proporção original da imagem */\n}"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#experimete",
+    "href": "shiny_apps/balanco_vies_variancia.html#experimete",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Experimete",
+    "text": "Experimete"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#row",
+    "href": "shiny_apps/balanco_vies_variancia.html#row",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Row",
+    "text": "Row\n\nAll Lung Deaths\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#column",
+    "href": "shiny_apps/balanco_vies_variancia.html#column",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nEntrada de informações\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 1, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 100, max = 250, value = 100\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 200, value = 1\n)\n\n\nGrau do polinômio:"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#balança-entre-viés-e-variância",
+    "href": "shiny_apps/balanco_vies_variancia.html#balança-entre-viés-e-variância",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Balança entre viés e variância",
+    "text": "Balança entre viés e variância\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\n### Balanço entre Viés e Variância\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#balanço-entre-viés-e-variância",
+    "href": "shiny_apps/balanco_vies_variancia.html#balanço-entre-viés-e-variância",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Balanço entre viés e variância",
+    "text": "Balanço entre viés e variância\n\nBalanço entre Viés e Variância\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#experiências-iterativas",
+    "href": "shiny_apps/balanco_vies_variancia.html#experiências-iterativas",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Experiências iterativas",
+    "text": "Experiências iterativas\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#balanço",
+    "href": "shiny_apps/balanco_vies_variancia.html#balanço",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Balanço",
+    "text": "Balanço\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#teste",
+    "href": "shiny_apps/balanco_vies_variancia.html#teste",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "## Teste",
+    "text": "## Teste\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 2, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 20, max = 250, value = 250\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 100, value = 1\n)\n\n\nGrau do polinômio:\n\n\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#rows",
+    "href": "shiny_apps/balanco_vies_variancia.html#rows",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Rows",
+    "text": "Rows\n\n\n\n\n\n\nEssa aplicação foi construída para conter alguns exempos da disciplina de Aprendizagem de Máquina, lecionada aos dicentes do curso de bacharelado em estatística da UFPB."
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#column-1",
+    "href": "shiny_apps/balanco_vies_variancia.html#column-1",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nResultado gráfico das simulações\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "index.html#balanço-viés-e-variância-4",
+    "href": "index.html#balanço-viés-e-variância-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Balanço viés e variância",
+    "text": "Balanço viés e variância\n\nExperimente de forma interativa altera a complefixade do modelo."
+  },
+  {
+    "objectID": "index.html#exercícios-1",
+    "href": "index.html#exercícios-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Exercícios",
+    "text": "Exercícios\n\nExercício: Agora refaça a primeira questão, utilizando um procedimento de k-fold cross-validation. Considere k = 5. Dica: considere utiliza a biblioteca rsample.\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

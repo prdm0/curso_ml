@@ -11,7 +11,7 @@ format:
     footer: '<a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a>'
     transition: slide
     background-transition: fade
-    preview-links: auto
+    preview-links: true
     slide-number: true
     chalkboard: true
     scrollable: true
@@ -21,6 +21,7 @@ format:
     auto-stretch: true
     code-link: true
     html-math-method: katex
+    auto-animate: false
   pdf: 
     include-in-header:  
       - text: |
@@ -1697,7 +1698,8 @@ Isso é um pecado mortal! Ok?!
 
 Corrigir o problema de dependência que há ao estimarmos o risco usando o
 EQM é fácil. Uma abordagem muito utilizada é utilizar [*data
-splitting*]{.red}, também chamado de método [hold-out]{.red}. Algo como a segunda linha da imagem abaixo:
+splitting*]{.red}, também chamado de método [hold-out]{.red}. Algo como
+a segunda linha da imagem abaixo:
 
 <br>
 
@@ -1873,97 +1875,350 @@ computacionalmente intensivo. O método requer que ajustemos $n$ modelos.
 Em algumas situações isso não é um grande problema, porém, em diversas
 outras pode ser impeditivo utilizar o LOOCV. 🤯
 
-
 ## $k$-fold cross-validation
 
 <br>
 
-Uma alternativa ao LOOCV é utilizar o método $k$-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em $k$-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos $L_1, \cdots, L_k \subset \{1, \cdots, n\}$ são, cada um, um conjunto de indices aleatórios associados a cada um dos lotes. A ideia aqui é construir $k$ estimadores da função de regressão, denotados por $\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}$, em que $\widehat{g}_{-j}$ é criado usando todas as observações do banco de dados, com exceção daquelas do lote $L_j$, utilizado para **validação**. O estimador do risco é dado por:
+Uma alternativa ao LOOCV é utilizar o método $k$-fold cross-validation.
+Nessa abordagem, dividimos o conjunto de dados em $k$-folds (lotes)
+disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos
+$L_1, \cdots, L_k \subset \{1, \cdots, n\}$ são, cada um, um conjunto de
+indices aleatórios associados a cada um dos lotes. A ideia aqui é
+construir $k$ estimadores da função de regressão, denotados por
+$\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}$, em que $\widehat{g}_{-j}$
+é criado usando todas as observações do banco de dados, com exceção
+daquelas do lote $L_j$, utilizado para **validação**. O estimador do
+risco é dado por:
 
 $$\widehat{R}(g) = \frac{1}{n}\sum_{j=1}^k \sum_{i \in L_j}(Y_i - g_{-j}({\bf X}_i))^2.$$
-Perceba que, que o LOOCV é um caso particular do $k$-fold cross-validation, quando fazemos $k = n$. Em outras palavras, $L_1, \cdots, L_k \subset \{1, \cdots, n\}$ representam os índices aleatórios do conjunto de treinamento nos $k$ lotes.
+Perceba que, que o LOOCV é um caso particular do $k$-fold
+cross-validation, quando fazemos $k = n$. Em outras palavras,
+$L_1, \cdots, L_k \subset \{1, \cdots, n\}$ representam os índices
+aleatórios do conjunto de treinamento nos $k$ lotes.
 
 ![](gifs/hum.gif)
 
 ## $k$-fold cross-validation
 
-A animação abaixo, ilustra o procedimento de $3$-fold cross-validation ($k = 3$), para uma amostra de tamanho $n = 12$ observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de $k$-fold cross-validation é randomizado.
+A animação abaixo, ilustra o procedimento de $3$-fold cross-validation
+($k = 3$), para uma amostra de tamanho $n = 12$ observações. Note que os
+valores que pertencem a cada um dos lotes são aleatórios. Portanto, o
+procedimento LOOCV é deterministico, já o procedimento de $k$-fold
+cross-validation é randomizado.
 
 <br>
 
 ![](gifs/KfoldCV.gif)
 
-Perceba que teremos agora apenas $3$ modelos. Para cada um desses lotes, calulamos o EQM com o conjunto de teste (parte [azul]{.trueblue}) e treinamos o modelo com o conjunto de treinamento (parte [vermelha]{.truered}). 
-
+Perceba que teremos agora apenas $3$ modelos. Para cada um desses lotes,
+calulamos o EQM com o conjunto de teste (parte [azul]{.trueblue}) e
+treinamos o modelo com o conjunto de treinamento (parte
+[vermelha]{.truered}).
 
 ## $k$-fold cross-validation
 
 <br>
 
-Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco $R(g)$.
+Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros
+de sintonização) que não dependem dos dados. É muito comum os algoritmos
+de aprendizagem de máquina se utilizarem do procedimento de validação
+cruzada, para além da estimação do risco $R(g)$.
 
 <br>
 
-Ao estimar $k$ modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação.
+Ao estimar $k$ modelos, normalmente faz-se um grid de possíveis valores
+para esses hiperparâmetros em que ao final, escolhe-se como
+hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo
+final, com todo o conjunto de treinamento usando o valor do
+hiperparâmetro que retornou o menor EQM no conjunto de validação.
 
 <br>
 
 ![](gifs/ok.gif)
 
-
 ## $k$-fold cross-validation
 
-A imagem abaixo ilustra o procedimento $k$-fold cross-validation, em que uma $5$-fold cross-validation é realizada dentro do conjunto de treinamento. Em cada *split*, o conjunto verde de observações (fold [verde]{.green}) são utilizados para treinar/ajustar o modelo e o conjunto [azul]{.trueblue}, em cada um dos *splits* é utilizado para avaliar o risco preditivo $R(g)$ (através, por exemplo do EQM).
+A imagem abaixo ilustra o procedimento $k$-fold cross-validation, em que
+uma $5$-fold cross-validation é realizada dentro do conjunto de
+treinamento. Em cada *split*, o conjunto verde de observações (fold
+[verde]{.green}) são utilizados para treinar/ajustar o modelo e o
+conjunto [azul]{.trueblue}, em cada um dos *splits* é utilizado para
+avaliar o risco preditivo $R(g)$ (através, por exemplo do EQM).
 
 ::: columns
-
 ::: {.column width="40%"}
 ![](imgs/grid_search_cross_validation.png){width="800"}
 ![](gifs/hum.gif)
-
 :::
 
 ::: {.column width="60%"}
-Não confunda os folds azuis com o conjunto de teste ([Test data]{.trueblue}), este último utilizado por fim, depois do modelo pronto, para avaliar o desempenho do modelo treinado.
+Não confunda os folds azuis com o conjunto de teste ([Test
+data]{.trueblue}), este último utilizado por fim, depois do modelo
+pronto, para avaliar o desempenho do modelo treinado.
 
-Note também que a validação cruzada também é utilizada para o ajuste de hiperparâmetros, que são parâmetros de sintonização que não dependem dos dados para serem equalizados. Por exemplo, em uma regressão lasso, que veremos adiante, há o hiperparâmetro $\lambda$ que precisamos obter, normalmente por meio de um [grid search]{.red} (sequência finita), por exemplo, $\lambda \in [0.5, 1, 1.5, 2, 2.5]$ de possíveis valores. Cada *split* pode ser utilizado para avaliar um valor de $\lambda$, dos possíveis valores dispostos no grid. Aumentaríamos a quantidade de splits para mais valores de $\lambda$ na sequência.
+Note também que a validação cruzada também é utilizada para o ajuste de
+hiperparâmetros, que são parâmetros de sintonização que não dependem dos
+dados para serem equalizados. Por exemplo, em uma regressão lasso, que
+veremos adiante, há o hiperparâmetro $\lambda$ que precisamos obter,
+normalmente por meio de um [grid search]{.red} (sequência finita), por
+exemplo, $\lambda \in [0.5, 1, 1.5, 2, 2.5]$ de possíveis valores. Cada
+*split* pode ser utilizado para avaliar um valor de $\lambda$, dos
+possíveis valores dispostos no grid. Aumentaríamos a quantidade de
+splits para mais valores de $\lambda$ na sequência.
 :::
 :::
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
 ::: columns
-
-::: {.column width='50%'}
+::: {.column width="50%"}
 ![](imgs/data_split_validation_cross.png)
 :::
 
-::: {.column width='50%'}
+::: {.column width="50%"}
+O simples procedimento de dividir o conjunto de dados em dois, uma parte
+para treinar o modelo e a outra parte (conjunto de teste) para estimar o
+risco $R(g)$ é denominado de [data splitting]{.red} ou [Hold-out
+Method]{.red}. É um procedimento mais simples, porém, pode não ser útil
+em conjunto de dados não muito grandes.
 
-O simples procedimento de dividir o conjunto de dados em dois, uma parte para treinar o modelo e a outra parte (conjunto de teste) para estimar o risco $R(g)$ é denominado de [data splitting]{.red} ou [Hold-out Method]{.red}. É um procedimento mais simples, porém, pode não ser útil em conjunto de dados não muito grandes.
+A segunda linha da ilustração, demonstra o procedimento de
+cross-validation (validação cruzada), procedimento mais utilizado nos
+treinamentos de modelos de aprendizagem de máquina.
 
-A segunda linha da ilustração, demonstra o procedimento de cross-validation (validação cruzada), procedimento mais utilizado nos treinamentos de modelos de aprendizagem de máquina.
-
-A terceira linha é uma abordagem também utilizada, porém não tão interessante quanto a validação cruzada. Nessa abordagem o banco de dados é dividido aleatoriamente em três partes. Traina-se o modelo com a parte [verde]{.green}, estima-se o risco com o conjunto de validação amarelo e testa-se o modelo com o conjunto de teste.
+A terceira linha é uma abordagem também utilizada, porém não tão
+interessante quanto a validação cruzada. Nessa abordagem o banco de
+dados é dividido aleatoriamente em três partes. Traina-se o modelo com a
+parte [verde]{.green}, estima-se o risco com o conjunto de validação
+amarelo e testa-se o modelo com o conjunto de teste.
 :::
 :::
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
-<br>
-A abordagem do conjunto de validação envolve dividir o conjunto de treinamento em duas partes: uma parte é usada para treinar o modelo e a outra parte é usada para avaliar o desempenho do modelo. O conjunto de validação é utilizado para ajustar os hiperparâmetros do modelo, como a taxa de aprendizado, o número de camadas ocultas em uma rede neural, entre outros. Após o ajuste dos hiperparâmetros, o modelo final é treinado com o conjunto de treinamento completo e avaliado em um conjunto separado chamado conjunto de teste. Essa abordagem é conhecida como divisão simples de treinamento/validação/teste.
+<br> A abordagem do conjunto de validação envolve dividir o conjunto de
+treinamento em duas partes: uma parte é usada para treinar o modelo e a
+outra parte é usada para avaliar o desempenho do modelo. O conjunto de
+validação é utilizado para ajustar os hiperparâmetros do modelo, como a
+taxa de aprendizado, o número de camadas ocultas em uma rede neural,
+entre outros. Após o ajuste dos hiperparâmetros, o modelo final é
+treinado com o conjunto de treinamento completo e avaliado em um
+conjunto separado chamado conjunto de teste. Essa abordagem é conhecida
+como divisão simples de treinamento/validação/teste.
 
 <br>
 
-Por outro lado, a validação cruzada $k$-fold é uma abordagem que visa obter uma estimativa mais robusta do desempenho do modelo. Nessa abordagem, o conjunto de treinamento é dividido em k subconjuntos (folds) de tamanho aproximadamente igual. O modelo é treinado $k$ vezes, cada vez usando $k-1$ folds como conjunto de treinamento e $1$ fold como conjunto de validação. O desempenho do modelo é então calculado como a média dos resultados obtidos em cada iteração. Isso permite avaliar o modelo de forma mais precisa, pois utiliza todos os dados para treinamento e validação, evitando a dependência de uma única divisão do conjunto de treinamento.
-
+Por outro lado, a validação cruzada $k$-fold é uma abordagem que visa
+obter uma estimativa mais robusta do desempenho do modelo. Nessa
+abordagem, o conjunto de treinamento é dividido em k subconjuntos
+(folds) de tamanho aproximadamente igual. O modelo é treinado $k$ vezes,
+cada vez usando $k-1$ folds como conjunto de treinamento e $1$ fold como
+conjunto de validação. O desempenho do modelo é então calculado como a
+média dos resultados obtidos em cada iteração. Isso permite avaliar o
+modelo de forma mais precisa, pois utiliza todos os dados para
+treinamento e validação, evitando a dependência de uma única divisão do
+conjunto de treinamento.
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
 <br>
 
-A validação cruzada $k$-fold é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada $k$-fold pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.
+A validação cruzada $k$-fold é particularmente útil quando o conjunto de
+dados é limitado, pois aproveita ao máximo os dados disponíveis. Além
+disso, ela permite verificar se o modelo é estável e se seu desempenho
+varia significativamente com diferentes divisões dos dados. É importante
+ressaltar que a validação cruzada $k$-fold pode ser computacionalmente
+mais cara do que a abordagem do conjunto de validação, uma vez que
+envolve treinar e avaliar o modelo várias vezes.
 
 <br>
 
-![](gifs/mr-bean-pivot.gif){width='40%'}
+![](gifs/mr-bean-pivot.gif){width="40%"}
+
+## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+
+<br>
+
+A ideia de precisão e exatidão estão ligadas ao viés e variância do modelo $g$, em que precisão está ligado a ideia de variância pequena e exatidão está ligada a ideia de baixo viés. A ideia é termos um estimador próximo o que ilustra o item [d]{.red}. Muitas vezes temos um estimador nas situações [b]{.red} e [c]{.red}. O ideal é o balanço de viés e variância, que seria o estimador ilustrado pelo item [d]{.red}. 
+
+![](imgs/precisao_exatidao.png){fig-align="center" width="55%"}
+
+## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+
+<br>
+
+Um grande apelo para o uso do risco quadrático, i.e., risco que utiliza a função de perda $L_2$ é sua interpretabilidade. Temos que o risco quadrático $R(g)$ condicional a um novo ${\bf x}$ poderá ser decomposto por:
+
+$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$
+**Temos que**:
+
+<br>
+
+i - É a variância intrínseca da vairável resposta (*label*), que não depende da função $\widehat{g}$ escolhida e, assim, não poderá ser reduzida. Na verdade, poderemos reduzir $i$, se incluirmos mais *features* (covariáveis/variáveis explicativas) ao nosso modelo;
+
+ii - É o viés ao quadrado do estimador $\widehat{g}$ (viés ao quadrado do modelo);
+
+iii - É a variância do estimador $\widehat{g}$.
+
+## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+
+<br>
+
+Assim, lembre-se que uma escolha adequada de $\widehat{g}$ nos grarante que conseguiremos reduzir o risco preditivo $R(g)$, pois a escolha aproriada implica em escolhermos um estimador de $\widehat{g}$ com balanço entre víes e variância.
+
+<br>
+
+Modelos com muitos parâmetros possuem viés relativamente baixo, porém, tendem a ter variância muito alta, em geral, uma vez que precisamos estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente tendem a ter variância baixa, acompanhados, normalmente de um alto viés. 
+
+<br>
+
+Normalmente, modelos com muitos parâmetros nos levam a termos [*overffiting*]{.red} (super-ajuste), o que não é bom pois são acompanhados de alta variância. Já modelos muito simplistas nos conduzem a um ajuste muito ruim ([*underffiting*]{.red} ou sub-ajuste). Entendeu!?
+
+![](gifs/mais_ou_menos.gif)
+
+## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+
+<br> 
+
+```{r}
+#| code-fold: true
+#| code-summary: "Estude o código"
+#| eval: false
+library(ggplot2)
+library(tibble)
+library(ggplot2)
+library(patchwork)
+
+# Função de regressão verdadeira. Na prática é desconhecida.
+regressao_verdadeira <- function(x)
+  45 * tanh(x/1.9 - 7) + 57
+
+observacoes_regressao_real <- function(n, desvio_padrao = 0.2) {
+  # Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na 
+  # pratica
+  seq_x <- sample(seq(0, 17.5, length.out = n), size = n, replace = TRUE)
+  
+  step <- function(x)
+    regressao_verdadeira(x) + rnorm(n = 1L, mean = 0, sd = desvio_padrao)
+  
+  tibble::tibble(y = purrr::map_vec(.x = seq_x, .f = step), x = seq_x)
+}
+
+# Usaremos uma regressão polinomial para tentar ajustar à regressão -------
+regressao_polinomial <- function(n = 30L, desvio_padrao = 4, grau = 1L) {
+  
+  dados <- observacoes_regressao_real(n = n, desvio_padrao = desvio_padrao)
+    
+  iteracoes <- function(tibble_data, grau) {
+      x <- tibble_data$x
+      iteracoes <- lapply(X = 2L:grau, FUN = function(i) x^i)
+      
+      result <- cbind(tibble_data, do.call(cbind, iteracoes))
+      colnames(result)[(ncol(tibble_data) + 1):ncol(result)] <- paste0("x", 2L:grau)
+      
+      as_tibble(result)
+  }  
+  
+  if(grau >= 2L)
+    dados <- iteracoes(dados, grau = grau)
+  
+  ajuste <- lm(formula = y ~ ., data = dados)
+  dados$y_chapeu <- predict(ajuste, new.data = dados)
+  
+  dados |> 
+    dplyr::relocate(y_chapeu, .before = x)
+}
+
+plotando <- function(dados){
+  dados |>  
+    ggplot(aes(x = x, y = y_chapeu)) +
+    geom_point()
+}
+
+mc_ajustes <- function(mc = 100L, n = 50L, desvio_padrao = 5, grau = 1L){
+
+  p <- 
+    ggplot(data = NULL) +
+      coord_cartesian(xlim = c(0, 17.5), ylim = c(0, 110)) +      
+      ylab("Valores estimados")
+  
+  df <- NULL
+  for(i in 1L:mc){
+    df <- regressao_polinomial(n = n, desvio_padrao = desvio_padrao, grau = grau)
+    p <- p + geom_line(data = df, aes(x = x, y = y_chapeu))
+  }
+  p + 
+    stat_function(fun = regressao_verdadeira, col = "red", size= 1.4) +
+    labs(
+      title = "Regressão Polinomial",
+      subtitle = paste("Grau: ", grau)
+    ) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      axis.title = element_text(face = "bold")
+    )
+}
+
+# Fixando uma semente
+set.seed(0)
+
+p1 <- mc_ajustes(grau = 1, n = 100, desvio_padrao = 10)
+p2 <- mc_ajustes(grau = 7, n = 100, desvio_padrao = 10)
+p3 <- mc_ajustes(grau = 70, n = 100, desvio_padrao = 10)
+p4 <- mc_ajustes(grau = 200, n = 100, desvio_padrao = 10)
+
+p <- ((p1 | p2) / (p3 | p4)) + plot_annotation(tag_levels = "A")
+
+ggsave(p, file = "imgs/vies_variancia.png", device = "png", width = 40, height = 30, units = "cm")
+```
+
+![](imgs/vies_variancia.png){fig-align="center" width="60%"}
+
+## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+
+<br>
+
+Experimente de forma interativa altera a complefixade do modelo.
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
+
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+
+<br> 
+
+No exemplo anterior, note que os parâmetros dos modelos são os coeficientes $\beta$'s que indexam a regressão polinomial. Porém, perceba que á um parâmetro de sintonização ([*tuning parameter*]{.red}) que é o valor de $p$, isto é, qual o grau do polinômio que iremos utilizar.
+
+<br>
+
+Normalmente a escolha é feita realizando um [*grid search*]{.red} por meio de um [*cross-validation*]{.red}.
+
+<br>
+
+No exemplo anterior, fizemos uma simulação e observamos que ao considerar graus nem muito grandes nem muito pequenos, aparentemente teremos escolhas razoáveis.
+
+## `r fontawesome::fa("book", "black")` Exercícios
+
+<br>
+
+[Exercício]{.red}: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível [aqui](https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData). Considere a função $g$, da seguinte forma:
+
+$$g(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i,$$
+com $p \in \{1, 2, ..., 50\}$. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.
+
+<br>
+
+[Exercício]{.red}: Refaça o exemplo anterior, utilizando a estratégia de [*data splitting*]{.red}, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.
+
+<br>
+
+[Exercício]{.red}: Ainda considerando o primeiro exercício, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco.
+
+## `r fontawesome::fa("book", "black")` Exercícios
+
+<br>
+
+[Exercício]{.red}: Agora refaça a primeira questão, utilizando um procedimento de $k$-fold cross-validation. Considere $k = 5$. **Dica**: considere utiliza a biblioteca [rsample](https://rsample.tidymodels.org/).
