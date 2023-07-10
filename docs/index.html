@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9cedc475acde30acdeca" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-9cedc475acde30acdeca">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-392c7eab95460a08b718" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-392c7eab95460a08b718">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -595,12 +595,10 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Nesse tipo de aprendizagem, o algoritmo irá receber um conjunto de dados em que conhecemos rótulos para a variável de interesse. É como se você soubesse onde um bom modelo deve chegar, para assim ser reconhecido como um bom modelo. Por exemplo,</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><span class="red">Classificação</span>: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., <span class="math inline">\widehat{y} = \mathrm{argmax}_y\,P(Y = y\,|\, X = \bf{x})</span>, em que y é um atributo que desejamos prever (cahorro, gato, sapo), e <span class="math inline">\bf{x}</span> é um vetor de características (peso, altura, comprimento, se tem rabo, etc).</li>
+<li class="fragment"><p><span class="red">Classificação</span>: precisamos determinar a classe de uma instância de dados, o seu atributo, i.e., <span class="math inline">\widehat{y} = \mathrm{argmax}_y\,P(Y = y\,|\, X = \bf{x})</span>, em que y é um atributo que desejamos prever (cahorro, gato, sapo), e <span class="math inline">\bf{x}</span> é um vetor de características (peso, altura, comprimento, se tem rabo, etc).</p></li>
+<li class="fragment"><p><span class="red">Regressão</span>: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar <span class="math inline">Y = \mathbb{E}(Y\,|\,X = \bf{x})</span>, i.e., devemos encontrar meios de obter <span class="math inline">\widehat{Y}</span>.</p></li>
 </ol>
 <p><br></p>
-<ol start="2" type="1">
-<li class="fragment"><span class="red">Regressão</span>: precisamos estimar uma quantidade numérica, i.e., o valor da variável alvo por meio de uma instância de dados, ou seja, precisamos estimar <span class="math inline">Y = \mathbb{E}(Y\,|\,X = \bf{x})</span>, i.e., devemos encontrar meios de obter <span class="math inline">\widehat{Y}</span>.</li>
-</ol>
 
 <aside><div>
 <p><strong>Algumas observações de nomenclaturas</strong>:</p>
@@ -652,12 +650,12 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Aprendizagem supervisionada</h2>
 <p><br> <br></p>
 
-<img data-src="gifs/Classification-Examples.gif" class="fragment r-stretch quarto-figure-center" width="900"><p class="caption">Mais dois problemas de classificação (linear x não-linear).</p></section>
+<img data-src="gifs/Classification-Examples.gif" style="width:45.0%" class="r-stretch quarto-figure-center"><p class="caption">Mais dois problemas de classificação (linear x não-linear).</p></section>
 <section id="aprendizagem-supervisionada-4" class="slide level2">
 <h2>Aprendizagem supervisionada</h2>
 <p><br> <br></p>
 
-<img data-src="gifs/regression.gif" class="fragment r-stretch quarto-figure-center" width="1200"><p>Um exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de <span class="math inline">x</span>.</p>
+<img data-src="gifs/regression.gif" width="1200" class="r-stretch quarto-figure-center"><p>Um exemplo de de um problema de regressão. Aqui, a ideia é utilizar a equação da reta estimada, a reta que minimiza a soma dos quadrados entre a reta e os ponto seria a melhor, de modo a ter uma estimativa numérica através de novos atributos passado ao modelo, i.e., por meio da equação da reta e de um novo valor de <span class="math inline">x</span>.</p>
 </section>
 <section id="aprendizagem-supervisionada-5" class="slide level2">
 <h2>Aprendizagem supervisionada</h2>
@@ -681,7 +679,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Aprendizagem não-supervisionada</h2>
 <p><br></p>
 
-<img data-src="gifs/kmeans.gif" class="fragment r-stretch quarto-figure-center" width="900"><p>Após a detecção dos grupos, é preciso analisar o resultado de modo a tentar extrair informações coerentes de modo a saber o que cada grupo representa no problema em questão.</p>
+<img data-src="gifs/kmeans.gif" width="900" class="r-stretch quarto-figure-center"><p>Após a detecção dos grupos, é preciso analisar o resultado de modo a tentar extrair informações coerentes de modo a saber o que cada grupo representa no problema em questão.</p>
 </section>
 <section id="aprendizagem-semi-supervisionada" class="slide level2">
 <h2>Aprendizagem semi-supervisionada</h2>
