@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-06">
+  <meta name="dcterms.date" content="2023-07-10">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-06</p>
+  <p class="date">2023-07-10</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-225f4c853aa78416ffd6" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-225f4c853aa78416ffd6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9cedc475acde30acdeca" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-9cedc475acde30acdeca">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1590,6 +1590,13 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 
 <img data-src="gifs/mr-bean-pivot.gif" style="width:40.0%" class="r-stretch"></section>
+<section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-3" class="slide level2">
+<h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
+<p><br></p>
+<p>Um outro detalhe que muitas vezes não é falado é que apesar de temos duas tarefas de estimação, uma envolvendo o conjunto de <strong>treinamento</strong>, em que treinamos o modelo e outra envolvendo o conjunto de <strong>teste</strong>, em que queremos estimar o risco <span class="math inline">R(g)</span>, de modo a poder selecionar o melhor modelo, a segunda tarefa é bem mais fácil É por isso que o conjunto de treinamento tende a ser menor que o conjunto de teste.</p>
+<p><br></p>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
 <section id="balanço-viés-e-variância" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Balanço viés e variância</h2>
 <p><br></p>
@@ -1731,17 +1738,230 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="exercícios" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> Exercícios</h2>
 <p><br></p>
+<p><span class="red">Exercício</span>: Explique resumidamente o que é aprendizagem supervisionada e não-supervisionada. Cite um problema de aprendizagem supervisionada e um outro de aprendizagem não-supervisionada.</p>
+<p><br></p>
 <p><span class="red">Exercício</span>: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível <a href="https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData">aqui</a>. Considere a função <span class="math inline">g</span>, da seguinte forma:</p>
 <p><span class="math display">g(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i,</span> com <span class="math inline">p \in \{1, 2, ..., 50\}</span>. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.</p>
 <p><br></p>
-<p><span class="red">Exercício</span>: Refaça o exemplo anterior, utilizando a estratégia de <span class="red"><em>data splitting</em></span>, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.</p>
-<p><br></p>
-<p><span class="red">Exercício</span>: Ainda considerando o primeiro exercício, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco.</p>
+<p><span class="red">Exercício</span>: Explique qual o motivo que faz com que o Erro Quadrático Médio - EQM para avaliar o desempenho de um modelo é ruim quando não adotamos nenhuma estratégia de divisão do conjunto de dados em treinamento e teste.</p>
 </section>
 <section id="exercícios-1" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> Exercícios</h2>
 <p><br></p>
-<p><span class="red">Exercício</span>: Agora refaça a primeira questão, utilizando um procedimento de <span class="math inline">k</span>-fold cross-validation. Considere <span class="math inline">k = 5</span>. <strong>Dica</strong>: considere utiliza a biblioteca <a href="https://rsample.tidymodels.org/">rsample</a>.</p>
+<p><span class="red">Exercício</span>: Com suas palavras, explique o dilema de balanço entre víes e variância.</p>
+<p><br></p>
+<p><span class="red">Exercício</span>: Refaça o exercício do polinômio, utilizando a estratégia de <span class="red"><em>data splitting</em></span>, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.</p>
+<p><br></p>
+<p><span class="red">Exercício</span>: Ainda considerando o exercício do polinômio, implemente uma estratégia de <span class="red"><em>leave-one-out cross-validation</em></span> e selecione o melhor modelo minimizando a função de risco.</p>
+<p><br></p>
+<p><span class="red">Exercício</span>: Por fim, considerando o exercício do polinômio, rafaça-o utilizando um procedimento de <span class="red"><span class="math inline">k</span>-fold cross-validation</span>. Considere <span class="math inline">k = 5</span>. <strong>Dica</strong>: considere utiliza a biblioteca <a href="https://rsample.tidymodels.org/">rsample</a>.</p>
+
+<img data-src="imgs/rsample.png" class="r-stretch"></section>
+<section id="melhor-subconjunto-de-covariáveis" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>O estimador de mínimos quadrados - EMQ, na presença de muitas <em>features</em> (covariáveis), i.e., quando temos <span class="math inline">d</span> grande, possui um baixo poder preditivo devido <em>overfitting</em> (super-ajuste). Isso, porquê haverá muitos parâmetros a serem estimados, e portanto, a função de regressão estimada <span class="math inline">\widehat{r}({\bf x})</span> terá baixo poder preditivo.</p>
+<p><br></p>
+<p>Isso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo será muito alta.</p>
+<p><br></p>
+<p><strong>Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis.</strong></p>
+<p><br></p>
+
+<img data-src="gifs/chapulin-colorado-no.gif" style="width:20.0%" class="r-stretch"></section>
+<section id="melhor-subconjunto-de-covariáveis-1" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>A ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de <span class="math inline">\widehat{g}</span>.</p>
+<p><br></p>
+<p>Você poderá entender que estamos em busca de um estimador <span class="math inline">\widehat{g}</span> de <span class="math inline">g</span> um <strong>pouco</strong> mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo e troca de ganharmos um pouco mais de viés.</p>
+<p><br></p>
+
+<img data-src="gifs/kiko.gif" class="r-stretch"></section>
+<section id="melhor-subconjunto-de-covariáveis-2" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>Matematicamente, uma maneira de fazer isso, é buscar a estimativa para</p>
+<p><span id="eq-risco-penalizacao"><span class="math display">\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}. \tag{2}</span></span></p>
+<p>Note que a penalização <span class="math inline">\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)</span> nos conduz na direção de modelos com poucas covariáveis, quando <span class="math inline">\lambda</span> é um valor alto. Em particualr, quando <span class="math inline">\lambda \to \infty</span>, forçamos a retirada de todas as covariáveis <span class="math inline">\beta_i</span>’s, i.e., a solução para o problema seria <span class="math inline">\widehat{\beta}_{L_0} \equiv (\overline{y}, {\bf 0})</span>. Note que não há penalização para o intercepto <span class="math inline">\beta_0</span>.</p>
+<p><br> No outro extremo, para <span class="math inline">\lambda = 0</span>, temos o estimador de mínimos quadrados, em que nenhuma penalização será considerada.</p>
+<p><br> <span class="red">Não há uma forma fácil de minimizar <span class="math inline">\widehat{\beta}_{L_0}</span>.</span></p>
+</section>
+<section id="melhor-subconjunto-de-covariáveis-3" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>Poderíamos, ingenuamente, pensar em ajustar todas as combinações possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em novas observações para escolher o melhor modelo de todas as combinações possíveis. Isto é, escolher o melhor modelo entre todas as <span class="math inline">2^d</span> combinações possíveis de modelos em <span class="math inline">\mathbb{G}</span>.</p>
+<p><br></p>
+<p>Se <span class="math inline">\widehat{\lambda} = \frac{2}{n}\widehat{\sigma}^2</span>, estimar <span class="math inline">\widehat{\beta}_{L_0}</span> equivale uma busca entre <span class="math inline">2^d</span> modelos da classe <span class="math inline">\mathbb{G}</span>:</p>
+<p><br></p>
+<p><span class="math display">\begin{align*}
+\mathbb{G} = \{
+&amp;g({\bf x}) = \widehat{\beta}_0, \\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1,\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_2x_2,\\
+&amp;\cdots\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_dx_d,\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2,\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_3x_3,\\
+&amp;\cdots\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_dx_d,\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2 + \widehat{\beta}_3x_3,\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2 + \widehat{\beta}_dx_d,\\
+&amp;\cdots\\
+&amp;g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2 + \widehat{\beta}_3x_3 + \cdots + &amp;\widehat{\beta}_dx_d
+\}.
+\end{align*}</span></p>
+</section>
+<section id="melhor-subconjunto-de-covariáveis-4" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>Utilizar <span class="math inline">\lambda = \frac{2}{n}\widehat{\sigma}^2</span> é o mesmo que utilizar o critério AIC para determinar o melhor modelo, em que dado</p>
+<p><span class="math display">\widehat{R}(g) = \frac{1}{m}\sum_{k = 1}^m \underbrace{(\widetilde{Y}_k - g({\bf \widetilde{X}}_k))^2}_{W_k},</span> em que <span class="math inline">(\widetilde{{\bf X}}_1, \widetilde{Y}_1), \cdots, (\widetilde{{\bf X}}_m, \widetilde{Y}_m)</span>, representa o conjunto de teste, i.e., calculado com base em <span class="math inline">m</span> observações em um conjundo de dados não utilizados para treinar o modelo, independentemente da estratégia de divisão utilizada, em que</p>
+<p><span class="math display">\widehat{\sigma}^2 = \frac{1}{m}\sum_{k = 1}^m (W_k - \overline{W})^2,</span> com <span class="math inline">\overline{W} = \frac{1}{m}\sum_{k=1}^m W_k</span>.</p>
+</section>
+<section id="melhor-subconjunto-de-covariáveis-5" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>Temos que <span class="math inline">\widehat{R}(g)</span>, calculado em novas observações (oboservações não utilizadas no treinamento), pode se valer do Teorema Central do Limite, uma vez que <span class="math inline">\widehat{R}(g)</span> é calculado em uma sequência de variáveis aleatórias i.i.d.’s. Então:</p>
+<p><span class="math display">\widehat{R}(g) \sim \text{Normal}\left(R(g), \frac{1}{m}\mathbb{V}[W_1]\right).</span></p>
+<p>Portanto, um intervalo aleatório de aproximadamente <span class="math inline">95\%</span> de confiança para o erro preditivo <span class="math inline">R(g)</span> poderá ser calculado como:</p>
+<p><span class="math display">\widehat{R}(g) \pm 1,645 \sqrt{\frac{1}{m}\widehat{\sigma}^2}.</span></p>
+<p>O cálculo de um intervalo de confiança poderá ser útil para entendermos como está variando o risco preditivo do nosso modelo. Gostamos de ter modelos com intervalo de amplitude pequena. O intervalo poderá ser utilizado para fornecer insight de como escolher a divisão de treinamento e teste. Por exemplo, pode-se escolher o menor valor de <span class="math inline">m</span> de modo que a amplitude seja a menor possível.</p>
+</section>
+<section id="melhor-subconjunto-de-covariáveis-6" class="slide level2">
+<h2>Melhor subconjunto de covariáveis</h2>
+<p><br></p>
+<p>Por que essa seria uma escolha ingênua? Pense na situação em que temos <span class="math inline">d = 30</span>, i.e., trinta covariáveis. Teríamos portanto <span class="math inline">2^{30}</span> modelos para ajustar, ou seja, um bilhão e setenta e três milhões, setecentos e quarenta e um mil, oitocentos e vinte e quatro modelos para ajustar. É um a quantidade absurda de modelos para serem estimados!</p>
+<p><br></p>
+<p>Se <span class="math inline">d = 100</span>, teríamos que estimar uma quantidade de modelos que a quantidade estimada de estrelas no universo. Alias, seriam mais modelos para ajustar que a quantidade de átomos no universo.</p>
+<p><br></p>
+
+<img data-src="gifs/side-eyeing-chloe-chloe.gif" class="r-stretch"></section>
+<section id="regressão-stepwise" class="slide level2">
+<h2>Regressão <em>Stepwise</em></h2>
+<p><br> Devido a impossibilidade de experimentar uma grande quantidade de modelos (<span class="math inline">2^d</span>), existe uma série de algoritmos (heurísticas), que visam reduzir a quantidade de modelos avaliados. Um dos mais conhecidos é o <span class="red">forward stepwise</span>. Trata-se de um algoritmo sequencial, que em cada passo, apenas uma variável é adicionada:</p>
+<p><br></p>
+<p>1 - Para <span class="math inline">j = 1, \cdots, d</span>, ajuste a regressão de <span class="math inline">Y</span> na <span class="math inline">j</span>-ésima variável <span class="math inline">X_j</span>. Seja <span class="math inline">\widehat{R}(g_j)</span> o risco estimado desta função. Então,</p>
+<p><span class="math display">\widehat{j} = \argmin_j \widehat{R}(g_j)\,\,\,\,\,\, \text{e}\,\,\,\,\,\, S = \{\widehat{j}\}.</span> 2 - Para cada <span class="math inline">j \in S^c</span>, ajuste a regressão <span class="math inline">Y = \beta_jX_j + \sum_{s \in S}\beta_sX_S</span>, em que <span class="math inline">\widehat{R}(g_j)</span> é o risco estimado desta função. Defina</p>
+<p><span class="math display">\widehat{j} = \argmin_{j \in S^c} \widehat{R}(g_j)\,\,\,\,\,\, \text{e atualize}\,\,\,\,\,\, S \leftarrow \{S \cup \widehat{j}\}.</span></p>
+<p>3 - Repita os passos anteriores até que todas as variáveis estejam em <span class="math inline">S</span> ou até quando não seja mais possível ajustar o modelo de regressão.</p>
+<p>4 - Selecione o modelo com menor risco estimado.</p>
+</section>
+<section id="regressão-stepwise-1" class="slide level2">
+<h2>Regressão <em>Stepwise</em></h2>
+<p><br></p>
+<p>Utilizar o algoritmo de seleção de variáveis <span class="red"><em>foward stepwise</em></span>, ao invés de buscarmos o melhor ajuste entre <span class="math inline">2^d</span> possíveis modelos, que muitas vezes é impossível, precisaremos investigar apenas <span class="math inline">1 + d(d + 1)/2</span> modelos. Reduzimos a complexidade da seleção que antes era um problema exponencial. Melhor, não?!</p>
+<p><br></p>
+
+<img data-src="gifs/bom.gif" class="r-stretch"></section>
+<section id="penalização" class="slide level2">
+<h2>Penalização</h2>
+<p><br></p>
+<p>Quando temos modelos que envolve <span class="math inline">d</span> parâmetros e que temos controle sobre eles (conhecemos muito bem cada um deles), acrescentar algum tipo de penalização à função objetivo poderá ser útil. A penalização é uma <span class="red">medida de complexidade</span>, em que é útil para equilibrar o modelo, de modo a tentar buscar um equilibrio entre viés e variância, discutidos anteriormente. Assim, sob novas observações, desejamos estimar o risco <span class="math inline">R(g)</span>, por</p>
+<p><br></p>
+<p><span class="math display">R(g) \approx EQM(g) + \mathcal{P}(g).</span></p>
+<p><br></p>
+<p>Desejamos minimiar <span class="math inline">R(g)</span>, mas não a custa de muitos parâmetros, pois assim teríamos <span class="red">overfitting</span>. Portanto, para muitos parâmetros temos que ter EQM baixo, porém, <span class="math inline">\mathcal{P}(g)</span> deve ser alto. Já em modelos viesados, quando temos poucos parâmetros, o EQM normalmente é alto, mas a complexidade <span class="math inline">\mathcal{P}(g)</span> deve ser baixo, pois temos um modelo mais simplista.</p>
+</section>
+<section id="aic-e-bic" class="slide level2">
+<h2>AIC e BIC</h2>
+<p><br></p>
+<p>Existem diversas penalizações, em que o AIC (<strong>A</strong>kaike <strong>I</strong>nformation <strong>C</strong>riterion) e BIC (<strong>B</strong>ayesian <strong>I</strong>nformation <strong>C</strong>riterion) são as mais conhecidas. Com base nesses critérios, temos que</p>
+<p><br></p>
+<div class="{columns}">
+<div class="column" style="width:30%;">
+<ol type="1">
+<li class="fragment"><span class="red">AIC</span>: <span class="math display">EQM + \frac{2}{n\,d\, \widehat{\sigma}^2}.</span></li>
+<li class="fragment"><span class="red">BIC</span>: <span class="math display">EQM + \frac{\log(n)}{n\, d\, \widehat{\sigma}^2}.</span></li>
+</ol>
+</div>
+<div class="column" style="width:70%;">
+<p><span class="math display">\widehat{\sigma}^2 = \frac{1}{m}\sum_{k = 1}^m (W_k - \overline{W})^2.</span></p>
+</div>
+</div>
+<p><br></p>
+<p>Aqui, <span class="math inline">d</span> é a quantidade de parâmetros no modelo e <span class="math inline">\widehat{\sigma}^2</span> é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de <span class="math inline">\widehat{\sigma}^2</span> conforme descrito anteriormente. Segundo <a href="https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf">James, Gareth, et al.&nbsp;An introduction to statistical learning. Ed. 2, p.&nbsp;233</a>, assume-se o modelo com todos os preditores para o cálculo de <span class="math inline">\widehat{\sigma}^2</span>.</p>
+</section>
+<section id="lasso" class="slide level2">
+<h2>Lasso</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>O lasso foi desenvolvido pelo Robert Tibshirani, em um artigo publicado no artigo <a href="https://www.jstor.org/stable/2346178">Regression Shrinkage and Selection via the Lasso</a>.</p>
+<p><img data-src="imgs/lasso.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="imgs/P55268-Robert-Tibshirani.jpg" style="width:60.0%"></p>
+</div>
+</div>
+</section>
+<section id="lasso-1" class="slide level2">
+<h2>Lasso</h2>
+<p><br></p>
+<p>O lasso tem como objetivo encontrar um estimador de uma regressão linear que possui risco menor que o de mínimos quadrados, possuindo duas grandes vantagens, em relação ao <em>stepwise</em>:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment">Sua solução é mais rápida, ainda que <em>stepwise</em> seja consideravalmente mais rápido do que avaliar <span class="math inline">2^d</span> modelos;</li>
+<li class="fragment">O lasso é capaz de selecionar automaticamente as variáveis mais relevantes para o modelo, reduzindo a dimensionalidade dos dados.</li>
+</ol>
+<p><br></p>
+<p>A segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à estimativas de alguns coeficientes <span class="math inline">\beta_i</span> igual a zero, eliminando as variáveis menos importantes.</p>
+<p><br></p>
+
+<img data-src="gifs/uau.gif" class="r-stretch"></section>
+<section id="lasso-2" class="slide level2">
+<h2>Lasso</h2>
+<p><br></p>
+<p>No lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (<span class="math inline">L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0</span>) em <a href="#/melhor-subconjunto-de-covariáveis-2" class="quarto-xref">Equação&nbsp;2</a>, usa-se a penalização <span class="math inline">L_1 = \sum_{i = 1}^d|\beta_i|</span>. No lasso, buscamos:</p>
+<p><span class="math display">\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},</span> em que <span class="math inline">\lambda</span> é um <em>tuning parameter</em>. Perceba que quando <span class="math inline">\lambda = 0</span>, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando <span class="math inline">\lambda \rightarrow \infty</span>, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante.</p>
+</section>
+<section id="lasso-3" class="slide level2">
+<h2>Lasso</h2>
+<p><br></p>
+<p>Quando <span class="math inline">\lambda</span> é grande, temos que</p>
+<p><span class="math display">\sum_{k = 1}^n \left(y_k - \beta_0 - \sum_{j = 1}^d \beta_j x_{k,j}\right)^2 + \lambda \sum_{j = 1}^d |\beta_j| \approx \lambda \sum_{j = 1}^d |\beta_j|,</span> e portanto, <span class="math inline">\widehat{\beta}_1 = 0, \cdots, \widehat{\beta}_d = 0</span>.</p>
+<p><br></p>
+<p>A escolha de <span class="math inline">\lambda</span>, em geral, é feita utilizado algum método de validação cruzada.</p>
+</section>
+<section id="lasso-4" class="slide level2">
+<h2>Lasso</h2>
+<p><br></p>
+<p>O lasso é extremamente rápido, e nos últimos anos, diversos algoritmos foram construídos para fazer essa taréfa de forma eficiente. O LARS foi um dos primeiros algoritmos desenvolvidos em 2010. Para detalhes, ler <a href="https://www.jstor.org/stable/2699986">Friedman, J. H. (2001). Greedy function approximation: a gradient boosting machine. Annals of statistics, 1189–1232</a>.</p>
+<p><br></p>
+<p>No R, a regressão lasso poderá ser feita usando a biblioteca <a href="https://cran.r-project.org/web/packages/glmnet/index.html">glmnet</a>, assim:</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+
+<img data-src="gifs/teclado-anime.gif" style="width:21.0%" class="r-stretch"></section>
+<section id="ridge" class="slide level2">
+<h2>Ridge</h2>
+<p><br></p>
+<p>Uma alternativa que surgiu antes do lasso é a <span class="red">regressão ridge</span>. Ela foi proposta no artigo <a href="https://www.jstor.org/stable/1267351">Hoerl, A. E. &amp; Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55–67</a>. Aqui, utiliza-se como medida de complexidade a norma <span class="math inline">L_2</span>, em que, o estimador é dado por:</p>
+<p><span class="math display">\widehat{\beta}_{L_2,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d\beta_j^2}_{\text{Penalização}}.</span> Diferentemente do lasso, a regressão ridge possui solução analítica, dada por:</p>
+<p><span class="math display">\widehat{\beta}_{L_2,\lambda} = ({\bf X}^{T}{\bf X} + \lambda\mathbb{\bf I}_0)^{-1}{\bf X}^{T}Y,</span> em que <span class="math inline">\mathbb{\bf I}_0</span> é a matriz identidade <span class="math inline">(d + 1) \times (d + 1)</span> com <span class="math inline">\mathbb{\bf I}_0(1,1) = 0</span>.</p>
+<p><br></p>
+</section>
+<section id="ridge-1" class="slide level2">
+<h2>Ridge</h2>
+<p><br></p>
+<p>A regressão ridge poderá ter uma variância menor que a regressão lasso, porém seu viés poderá ser maior. Outra característica da regressão ridge é que ela possue uma única solução, enquanto a regressão lasso poderá ter multiplas soluções. Os autores também demonstram que a regressão ridge lida melhor com multicolinearidade.</p>
+<p><br></p>
+<p>No R, também poderemos utilizar a biblioteca <a href="https://cran.r-project.org/web/packages/glmnet/index.html">glmnet</a>:</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+
+<img data-src="gifs/teclado-anime.gif" style="width:21.0%" class="r-stretch"></section>
+<section id="elastic-net" class="slide level2">
+<h2>Elastic Net</h2>
+<p><br></p>
+<p>Nesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.</p>
+<p><span class="math display">(1-\alpha)\widehat{\beta}_{L_2,\lambda} + \alpha\widehat{\beta}_{L_1,\lambda},</span> em que <span class="math inline">0 \leq \alpha \leq1</span>. Em R, basta especificar para a função <code>glmnet</code> um valor de <span class="math inline">\alpha</span> diferente de 0 e 1.</p>
 
 
 <img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">

@@ -641,7 +641,7 @@
     "href": "index.html#exercícios",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Exercícios",
-    "text": "Exercícios\n\nExercício: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível aqui. Considere a função g, da seguinte forma:\ng(x) = \\beta_0 + \\sum_{i = 1}^p \\beta_i x^i, com p \\in \\{1, 2, ..., 50\\}. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.\n\nExercício: Refaça o exemplo anterior, utilizando a estratégia de data splitting, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.\n\nExercício: Ainda considerando o primeiro exercício, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco."
+    "text": "Exercícios\n\nExercício: Explique resumidamente o que é aprendizagem supervisionada e não-supervisionada. Cite um problema de aprendizagem supervisionada e um outro de aprendizagem não-supervisionada.\n\nExercício: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível aqui. Considere a função g, da seguinte forma:\ng(x) = \\beta_0 + \\sum_{i = 1}^p \\beta_i x^i, com p \\in \\{1, 2, ..., 50\\}. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.\n\nExercício: Explique qual o motivo que faz com que o Erro Quadrático Médio - EQM para avaliar o desempenho de um modelo é ruim quando não adotamos nenhuma estratégia de divisão do conjunto de dados em treinamento e teste."
   },
   {
     "objectID": "shiny_apps/balanco_vies_variancia.html",
@@ -732,6 +732,167 @@
     "href": "index.html#exercícios-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Exercícios",
-    "text": "Exercícios\n\nExercício: Agora refaça a primeira questão, utilizando um procedimento de k-fold cross-validation. Considere k = 5. Dica: considere utiliza a biblioteca rsample.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Exercícios\n\nExercício: Com suas palavras, explique o dilema de balanço entre víes e variância.\n\nExercício: Refaça o exercício do polinômio, utilizando a estratégia de data splitting, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.\n\nExercício: Ainda considerando o exercício do polinômio, implemente uma estratégia de leave-one-out cross-validation e selecione o melhor modelo minimizando a função de risco.\n\nExercício: Por fim, considerando o exercício do polinômio, rafaça-o utilizando um procedimento de k-fold cross-validation. Considere k = 5. Dica: considere utiliza a biblioteca rsample."
+  },
+  {
+    "objectID": "index.html#regressão-stepwise",
+    "href": "index.html#regressão-stepwise",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão Stepwise",
+    "text": "Regressão Stepwise\n Devido a impossibilidade de experimentar uma grande quantidade de modelos (2^d), existe uma série de algoritmos (heurísticas), que visam reduzir a quantidade de modelos avaliados. Um dos mais conhecidos é o forward stepwise. Trata-se de um algoritmo sequencial, que em cada passo, apenas uma variável é adicionada:\n\n1 - Para j = 1, \\cdots, d, ajuste a regressão de Y na j-ésima variável X_j. Seja \\widehat{R}(g_j) o risco estimado desta função. Então,\n\\widehat{j} = \\argmin_j \\widehat{R}(g_j)\\,\\,\\,\\,\\,\\, \\text{e}\\,\\,\\,\\,\\,\\, S = \\{\\widehat{j}\\}. 2 - Para cada j \\in S^c, ajuste a regressão Y = \\beta_jX_j + \\sum_{s \\in S}\\beta_sX_S, em que \\widehat{R}(g_j) é o risco estimado desta função. Defina\n\\widehat{j} = \\argmin_{j \\in S^c} \\widehat{R}(g_j)\\,\\,\\,\\,\\,\\, \\text{e atualize}\\,\\,\\,\\,\\,\\, S \\leftarrow \\{S \\cup \\widehat{j}\\}.\n3 - Repita os passos anteriores até que todas as variáveis estejam em S ou até quando não seja mais possível ajustar o modelo de regressão.\n4 - Selecione o modelo com menor risco estimado."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis",
+    "href": "index.html#melhor-subconjunto-de-covariáveis",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nO estimador de mínimos quadrados - EMQ, na presença de muitas features (covariáveis), i.e., quando temos d grande, possui um baixo poder preditivo devido overfitting (super-ajuste). Isso, porquê haverá muitos parâmetros a serem estimados, e portanto, a função de regressão estimada \\widehat{r}({\\bf x}) terá baixo poder preditivo.\n\nIsso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo será muito alta.\n\nPortanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-1",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nA ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de \\widehat{g}.\n\nVocê poderá entender que estamos em busca de um estimador \\widehat{g} de g um pouco mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo e troca de ganharmos um pouco mais de viés."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-2",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nMatematicamente, uma maneira de fazer isso, é buscar a estimativa para\n\\widehat{\\beta}_{L_0} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2 + \\lambda \\,\\,\\underbrace{\\sum_{i = 1}^d \\mathbb{I}(\\beta_i \\neq 0)}_{\\text{Penalização}}. \\tag{2}\nNote que a penalização \\sum_{i = 1}^d \\mathbb{I}(\\beta_i \\neq 0) nos conduz na direção de modelos com poucas covariáveis, quando \\lambda é um valor alto. Em particualr, quando \\lambda \\to \\infty, forçamos a retirada de todas as covariáveis \\beta_i’s, i.e., a solução para o problema seria \\widehat{\\beta}_{L_0} \\equiv (\\overline{y}, {\\bf 0}). Note que não há penalização para o intercepto \\beta_0.\n No outro extremo, para \\lambda = 0, temos o estimador de mínimos quadrados, em que nenhuma penalização será considerada.\n Não há uma forma fácil de minimizar \\widehat{\\beta}_{L_0}."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-3",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nPoderíamos, ingenuamente, pensar em ajustar todas as combinações possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em novas observações para escolher o melhor modelo de todas as combinações possíveis. Isto é, escolher o melhor modelo entre todas as 2^d combinações possíveis de modelos em \\mathbb{G}.\n\nSe \\widehat{\\lambda} = \\frac{2}{n}\\widehat{\\sigma}^2, estimar \\widehat{\\beta}_{L_0} equivale uma busca entre 2^d modelos da classe \\mathbb{G}:\n\n\\begin{align*}\n\\mathbb{G} = \\{\n&g({\\bf x}) = \\widehat{\\beta}_0, \\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1,\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_2x_2,\\\\\n&\\cdots\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_dx_d,\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_2x_2,\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_3x_3,\\\\\n&\\cdots\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_dx_d,\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_2x_2 + \\widehat{\\beta}_3x_3,\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_2x_2 + \\widehat{\\beta}_dx_d,\\\\\n&\\cdots\\\\\n&g({\\bf x}) = \\widehat{\\beta}_0 + \\widehat{\\beta}_1x_1 + \\widehat{\\beta}_2x_2 + \\widehat{\\beta}_3x_3 + \\cdots + &\\widehat{\\beta}_dx_d\n\\}.\n\\end{align*}"
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-4",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nUtilizar \\lambda = \\frac{2}{n}\\widehat{\\sigma}^2 é o mesmo que utilizar o critério AIC para determinar o melhor modelo, em que dado\n\\widehat{R}(g) = \\frac{1}{m}\\sum_{k = 1}^m \\underbrace{(\\widetilde{Y}_k - g({\\bf \\widetilde{X}}_k))^2}_{W_k}, em que (\\widetilde{{\\bf X}}_1, \\widetilde{Y}_1), \\cdots, (\\widetilde{{\\bf X}}_m, \\widetilde{Y}_m), representa o conjunto de teste, i.e., calculado com base em m observações em um conjundo de dados não utilizados para treinar o modelo, independentemente da estratégia de divisão utilizada, em que\n\\widehat{\\sigma}^2 = \\frac{1}{m}\\sum_{k = 1}^m (W_k - \\overline{W})^2, com \\overline{W} = \\frac{1}{m}\\sum_{k=1}^m W_k."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-5",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nTemos que \\widehat{R}(g), calculado em novas observações (oboservações não utilizadas no treinamento), pode se valer do Teorema Central do Limite, uma vez que \\widehat{R}(g) é calculado em uma sequência de variáveis aleatórias i.i.d.’s. Então:\n\\widehat{R}(g) \\sim \\text{Normal}\\left(R(g), \\frac{1}{m}\\mathbb{V}[W_1]\\right).\nPortanto, um intervalo aleatório de aproximadamente 95\\% de confiança para o erro preditivo R(g) poderá ser calculado como:\n\\widehat{R}(g) \\pm 1,645 \\sqrt{\\frac{1}{m}\\widehat{\\sigma}^2}.\nO cálculo de um intervalo de confiança poderá ser útil para entendermos como está variando o risco preditivo do nosso modelo. Gostamos de ter modelos com intervalo de amplitude pequena. O intervalo poderá ser utilizado para fornecer insight de como escolher a divisão de treinamento e teste. Por exemplo, pode-se escolher o menor valor de m de modo que a amplitude seja a menor possível."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-6",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nPor que essa seria uma escolha ingênua? Pense na situação em que temos d = 30, i.e., trinta covariáveis. Teríamos portanto 2^{30} modelos para ajustar, ou seja, um bilhão e setenta e três milhões, setecentos e quarenta e um mil, oitocentos e vinte e quatro modelos para ajustar. É um a quantidade absurda de modelos para serem estimados!\n\nSe d = 100, teríamos que estimar uma quantidade de modelos que a quantidade estimada de estrelas no universo. Alias, seriam mais modelos para ajustar que a quantidade de átomos no universo."
+  },
+  {
+    "objectID": "index.html#melhor-subconjunto-de-covariáveis-7",
+    "href": "index.html#melhor-subconjunto-de-covariáveis-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Melhor subconjunto de covariáveis",
+    "text": "Melhor subconjunto de covariáveis\n\nNão há uma forma fácil de minimizar \\widehat{\\beta}_{L_0}."
+  },
+  {
+    "objectID": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-3",
+    "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nUm outro detalhe que muitas vezes não é falado é que apesar de temos duas tarefas de estimação, uma envolvendo o conjunto de treinamento, em que treinamos o modelo e outra envolvendo o conjunto de teste, em que queremos estimar o risco R(g), de modo a poder selecionar o melhor modelo, a segunda tarefa é bem mais fácil É por isso que o conjunto de treinamento tende a ser menor que o conjunto de teste."
+  },
+  {
+    "objectID": "index.html#regressão-stepwise-1",
+    "href": "index.html#regressão-stepwise-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Regressão Stepwise",
+    "text": "Regressão Stepwise\n\nUtilizar o algoritmo de seleção de variáveis foward stepwise, ao invés de buscarmos o melhor ajuste entre 2^d possíveis modelos, que muitas vezes é impossível, precisaremos investigar apenas 1 + d(d + 1)/2 modelos. Reduzimos a complexidade da seleção que antes era um problema exponencial. Melhor, não?!"
+  },
+  {
+    "objectID": "index.html#penalização",
+    "href": "index.html#penalização",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Penalização",
+    "text": "Penalização\n\nQuando temos modelos que envolve d parâmetros e que temos controle sobre eles (conhecemos muito bem cada um deles), acrescentar algum tipo de penalização à função objetivo poderá ser útil. A penalização é uma medida de complexidade, em que é útil para equilibrar o modelo, de modo a tentar buscar um equilibrio entre viés e variância, discutidos anteriormente. Assim, sob novas observações, desejamos estimar o risco R(g), por\n\nR(g) \\approx EQM(g) + \\mathcal{P}(g).\n\nDesejamos minimiar R(g), mas não a custa de muitos parâmetros, pois assim teríamos overfitting. Portanto, para muitos parâmetros temos que ter EQM baixo, porém, \\mathcal{P}(g) deve ser alto. Já em modelos viesados, quando temos poucos parâmetros, o EQM normalmente é alto, mas a complexidade \\mathcal{P}(g) deve ser baixo, pois temos um modelo mais simplista."
+  },
+  {
+    "objectID": "index.html#penalização-1",
+    "href": "index.html#penalização-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Penalização",
+    "text": "Penalização\n\nExistem diversas penalizações, em que o AIC (Akaike Information Criterion) e BIC (Bayesian Information Criterion) são as mais conhecidas. Com base nesses critérios, temos que\n\n\nAIC: EQM + \\frac{2}{n\\,d\\, \\widehat{\\sigma}^2}.\nBIC: EQM + \\frac{\\log(n)}{n\\, d\\, \\widehat{\\sigma}^2}.\n\n\nAqui, d é a quantidade de parâmetros no modelo e \\widehat{\\sigma}^2 é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de \\widehat{\\sigma}^2 conforme descrito anteriormente.\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#aic-e-bic",
+    "href": "index.html#aic-e-bic",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "AIC e BIC",
+    "text": "AIC e BIC\n\nExistem diversas penalizações, em que o AIC (Akaike Information Criterion) e BIC (Bayesian Information Criterion) são as mais conhecidas. Com base nesses critérios, temos que\n\n\n\n\nAIC: EQM + \\frac{2}{n\\,d\\, \\widehat{\\sigma}^2}.\nBIC: EQM + \\frac{\\log(n)}{n\\, d\\, \\widehat{\\sigma}^2}.\n\n\n\n\\widehat{\\sigma}^2 = \\frac{1}{m}\\sum_{k = 1}^m (W_k - \\overline{W})^2.\n\n\n\nAqui, d é a quantidade de parâmetros no modelo e \\widehat{\\sigma}^2 é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de \\widehat{\\sigma}^2 conforme descrito anteriormente. Segundo James, Gareth, et al. An introduction to statistical learning. Ed. 2, p. 233, assume-se o modelo com todos os preditores para o cálculo de \\widehat{\\sigma}^2."
+  },
+  {
+    "objectID": "index.html#lasso",
+    "href": "index.html#lasso",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\n\n\nO lasso foi desenvolvido pelo Robert Tibshirani, em um artigo publicado no artigo Regression Shrinkage and Selection via the Lasso."
+  },
+  {
+    "objectID": "index.html#lasso-1",
+    "href": "index.html#lasso-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\nO lasso tem como objetivo encontrar um estimador de uma regressão linear que possui risco menor que o de mínimos quadrados, possuindo duas grandes vantagens, em relação ao stepwise:\n\n\nSua solução é mais rápida, ainda que stepwise seja consideravalmente mais rápido do que avaliar 2^d modelos;\nO lasso é capaz de selecionar automaticamente as variáveis mais relevantes para o modelo, reduzindo a dimensionalidade dos dados.\n\n\nA segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à estimativas de alguns coeficientes \\beta_i igual a zero, eliminando as variáveis menos importantes."
+  },
+  {
+    "objectID": "index.html#lasso-2",
+    "href": "index.html#lasso-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\nNo lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (L_0 = \\sum_{i = 1}^d\\mathbb{I}(\\beta_i) \\neq 0) em Equação 2, usa-se a penalização L_1 = \\sum_{i = 1}^d|\\beta_i|. No lasso, buscamos:\n\\widehat{\\beta}_{L_1,\\lambda} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2 + \\lambda \\,\\,\\underbrace{\\sum_{j = 1}^d|\\beta_j|}_{\\text{Penalização}}, em que \\lambda é um tuning parameter. Perceba que quando \\lambda = 0, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando \\lambda \\rightarrow \\infty, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante."
+  },
+  {
+    "objectID": "index.html#lasso-4",
+    "href": "index.html#lasso-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\nO lasso é extremamente rápido, e nos últimos anos, diversos algoritmos foram construídos para fazer essa taréfa de forma eficiente. O LARS foi um dos primeiros algoritmos desenvolvidos em 2010. Para detalhes, ler Friedman, J. H. (2001). Greedy function approximation: a gradient boosting machine. Annals of statistics, 1189–1232.\n\nNo R, a regressão lasso poderá ser feita usando a biblioteca glmnet, assim:\n\n\nlibrary(glmnet)\najuste &lt;- cv.glmnet(x, y, alpha = 1)"
+  },
+  {
+    "objectID": "index.html#lasso-3",
+    "href": "index.html#lasso-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\nQuando \\lambda é grande, temos que\n\\sum_{k = 1}^n \\left(y_k - \\beta_0 - \\sum_{j = 1}^d \\beta_j x_{k,j}\\right)^2 + \\lambda \\sum_{j = 1}^d |\\beta_j| \\approx \\lambda \\sum_{j = 1}^d |\\beta_j|, e portanto, \\widehat{\\beta}_1 = 0, \\cdots, \\widehat{\\beta}_d = 0.\n\nA escolha de \\lambda, em geral, é feita utilizado algum método de validação cruzada."
+  },
+  {
+    "objectID": "index.html#lasso-5",
+    "href": "index.html#lasso-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Lasso",
+    "text": "Lasso\n\nUma alternativa que surgiu antes do lasso é a regressão ridge. Ela foi proposta no artigo Hoerl, A. E. & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55–67. Aqui, utiliza-se como medida de complexidade a norma L_2, em que, o estimador é dado por:\n\\widehat{\\beta}_{L_2,\\lambda} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2 + \\lambda \\,\\,\\underbrace{\\sum_{j = 1}^d\\beta_j^2}_{\\text{Penalização}}. Diferentemente do lasso, a regressão ridge possui solução analítica, dada por:\n\\widehat{\\beta}_{L_2,\\lambda} = ({\\bf X}^{T}{\\bf X} + \\lambda\\mathbb{\\bf I}_0)^{-1}{\\bf X}^{T}Y, em que \\mathbb{\\bf I}_0 é a matriz identidade (d + 1) \\times (d + 1) com \\mathbb{\\bf I}_0(1,1) = 0.\n\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#ridge",
+    "href": "index.html#ridge",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ridge",
+    "text": "Ridge\n\nUma alternativa que surgiu antes do lasso é a regressão ridge. Ela foi proposta no artigo Hoerl, A. E. & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55–67. Aqui, utiliza-se como medida de complexidade a norma L_2, em que, o estimador é dado por:\n\\widehat{\\beta}_{L_2,\\lambda} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2 + \\lambda \\,\\,\\underbrace{\\sum_{j = 1}^d\\beta_j^2}_{\\text{Penalização}}. Diferentemente do lasso, a regressão ridge possui solução analítica, dada por:\n\\widehat{\\beta}_{L_2,\\lambda} = ({\\bf X}^{T}{\\bf X} + \\lambda\\mathbb{\\bf I}_0)^{-1}{\\bf X}^{T}Y, em que \\mathbb{\\bf I}_0 é a matriz identidade (d + 1) \\times (d + 1) com \\mathbb{\\bf I}_0(1,1) = 0."
+  },
+  {
+    "objectID": "index.html#ridge-1",
+    "href": "index.html#ridge-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ridge",
+    "text": "Ridge\n\nA regressão ridge poderá ter uma variância menor que a regressão lasso, porém seu viés poderá ser maior. Outra característica da regressão ridge é que ela possue uma única solução, enquanto a regressão lasso poderá ter multiplas soluções. Os autores também demonstram que a regressão ridge lida melhor com multicolinearidade.\n\nNo R, também poderemos utilizar a biblioteca glmnet:\n\n\nlibrary(glmnet)\najuste &lt;- cv.glmnet(x, y, alpha = 0)"
+  },
+  {
+    "objectID": "index.html#elastic-net",
+    "href": "index.html#elastic-net",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Elastic Net",
+    "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1.\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
