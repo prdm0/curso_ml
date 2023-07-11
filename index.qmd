@@ -314,17 +314,14 @@ um bom modelo. Por exemplo,
     $\bf{x}$ é um vetor de características (peso, altura, comprimento,
     se tem rabo, etc).
 
-
 2.  [Regressão]{.red}: precisamos estimar uma quantidade numérica, i.e.,
     o valor da variável alvo por meio de uma instância de dados, ou
     seja, precisamos estimar $Y = \mathbb{E}(Y\,|\,X = \bf{x})$, i.e.,
     devemos encontrar meios de obter $\widehat{Y}$.
 
-
 <br>
 
 ::: aside
-
 **Algumas observações de nomenclaturas**:
 
 1.  É comum chamar cada exemplo de dados, i.e., o vetor $\bf{x}$ que
@@ -387,8 +384,8 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 <br> <br>
 
 ![Mais dois problemas de classificação (linear x
-não-linear).](gifs/Classification-Examples.gif){
-fig-align="center" width="45%"}
+não-linear).](gifs/Classification-Examples.gif){fig-align="center"
+width="45%"}
 
 ## Aprendizagem supervisionada
 
@@ -2042,18 +2039,27 @@ envolve treinar e avaliar o modelo várias vezes.
 
 <br>
 
-Um outro detalhe que muitas vezes não é falado é que apesar de temos duas tarefas de estimação, uma envolvendo o conjunto de **treinamento**, em que treinamos o modelo e outra envolvendo o conjunto de **teste**, em que queremos estimar o risco $R(g)$, de modo a poder selecionar o melhor modelo, a segunda tarefa é bem mais fácil É por isso que o conjunto de treinamento tende a ser menor que o conjunto de teste.
+Um outro detalhe que muitas vezes não é falado é que apesar de temos
+duas tarefas de estimação, uma envolvendo o conjunto de **treinamento**,
+em que treinamos o modelo e outra envolvendo o conjunto de **teste**, em
+que queremos estimar o risco $R(g)$, de modo a poder selecionar o melhor
+modelo, a segunda tarefa é bem mais fácil É por isso que o conjunto de
+treinamento tende a ser menor que o conjunto de teste.
 
 <br>
 
 ![](gifs/hum.gif)
 
-
 ## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
 
 <br>
 
-A ideia de precisão e exatidão estão ligadas ao viés e variância do modelo $g$, em que precisão está ligado a ideia de variância pequena e exatidão está ligada a ideia de baixo viés. A ideia é termos um estimador próximo o que ilustra o item [d]{.red}. Muitas vezes temos um estimador nas situações [b]{.red} e [c]{.red}. O ideal é o balanço de viés e variância, que seria o estimador ilustrado pelo item [d]{.red}. 
+A ideia de precisão e exatidão estão ligadas ao viés e variância do
+modelo $g$, em que precisão está ligado a ideia de variância pequena e
+exatidão está ligada a ideia de baixo viés. A ideia é termos um
+estimador próximo o que ilustra o item [d]{.red}. Muitas vezes temos um
+estimador nas situações [b]{.red} e [c]{.red}. O ideal é o balanço de
+viés e variância, que seria o estimador ilustrado pelo item [d]{.red}.
 
 ![](imgs/precisao_exatidao.png){fig-align="center" width="55%"}
 
@@ -2061,16 +2067,23 @@ A ideia de precisão e exatidão estão ligadas ao viés e variância do modelo 
 
 <br>
 
-Um grande apelo para o uso do risco quadrático, i.e., risco que utiliza a função de perda $L_2$ é sua interpretabilidade. Temos que o risco quadrático $R(g)$ condicional a um novo ${\bf x}$ poderá ser decomposto por:
+Um grande apelo para o uso do risco quadrático, i.e., risco que utiliza
+a função de perda $L_2$ é sua interpretabilidade. Temos que o risco
+quadrático $R(g)$ condicional a um novo ${\bf x}$ poderá ser decomposto
+por:
 
 $$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$
 **Temos que**:
 
 <br>
 
-i - É a variância intrínseca da vairável resposta (*label*), que não depende da função $\widehat{g}$ escolhida e, assim, não poderá ser reduzida. Na verdade, poderemos reduzir $i$, se incluirmos mais *features* (covariáveis/variáveis explicativas) ao nosso modelo;
+i - É a variância intrínseca da vairável resposta (*label*), que não
+depende da função $\widehat{g}$ escolhida e, assim, não poderá ser
+reduzida. Na verdade, poderemos reduzir $i$, se incluirmos mais
+*features* (covariáveis/variáveis explicativas) ao nosso modelo;
 
-ii - É o viés ao quadrado do estimador $\widehat{g}$ (viés ao quadrado do modelo);
+ii - É o viés ao quadrado do estimador $\widehat{g}$ (viés ao quadrado
+do modelo);
 
 iii - É a variância do estimador $\widehat{g}$.
 
@@ -2078,21 +2091,31 @@ iii - É a variância do estimador $\widehat{g}$.
 
 <br>
 
-Assim, lembre-se que uma escolha adequada de $\widehat{g}$ nos grarante que conseguiremos reduzir o risco preditivo $R(g)$, pois a escolha aproriada implica em escolhermos um estimador de $\widehat{g}$ com balanço entre víes e variância.
+Assim, lembre-se que uma escolha adequada de $\widehat{g}$ nos grarante
+que conseguiremos reduzir o risco preditivo $R(g)$, pois a escolha
+aproriada implica em escolhermos um estimador de $\widehat{g}$ com
+balanço entre víes e variância.
 
 <br>
 
-Modelos com muitos parâmetros possuem viés relativamente baixo, porém, tendem a ter variância muito alta, em geral, uma vez que precisamos estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente tendem a ter variância baixa, acompanhados, normalmente de um alto viés. 
+Modelos com muitos parâmetros possuem viés relativamente baixo, porém,
+tendem a ter variância muito alta, em geral, uma vez que precisamos
+estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente
+tendem a ter variância baixa, acompanhados, normalmente de um alto viés.
 
 <br>
 
-Normalmente, modelos com muitos parâmetros nos levam a termos [*overffiting*]{.red} (super-ajuste), o que não é bom pois são acompanhados de alta variância. Já modelos muito simplistas nos conduzem a um ajuste muito ruim ([*underffiting*]{.red} ou sub-ajuste). Entendeu!?
+Normalmente, modelos com muitos parâmetros nos levam a termos
+[*overffiting*]{.red} (super-ajuste), o que não é bom pois são
+acompanhados de alta variância. Já modelos muito simplistas nos conduzem
+a um ajuste muito ruim ([*underffiting*]{.red} ou sub-ajuste).
+Entendeu!?
 
 ![](gifs/mais_ou_menos.gif)
 
 ## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
 
-<br> 
+<br>
 
 ```{r}
 #| code-fold: true
@@ -2199,56 +2222,167 @@ Experimente de forma interativa altera a complefixade do modelo.
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+
+<br>
+
+No exemplo anterior, note que os parâmetros dos modelos são os
+coeficientes $\beta$'s que indexam a regressão polinomial. Porém,
+perceba que á um parâmetro de sintonização ([*tuning parameter*]{.red})
+que é o valor de $p$, isto é, qual o grau do polinômio que iremos
+utilizar.
+
+<br>
+
+Normalmente a escolha é feita realizando um [*grid search*]{.red} por
+meio de um [*cross-validation*]{.red}.
+
+<br>
+
+No exemplo anterior, fizemos uma simulação e observamos que ao
+considerar graus nem muito grandes nem muito pequenos, aparentemente
+teremos escolhas razoáveis.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
-<br> 
+<br>
 
-No exemplo anterior, note que os parâmetros dos modelos são os coeficientes $\beta$'s que indexam a regressão polinomial. Porém, perceba que á um parâmetro de sintonização ([*tuning parameter*]{.red}) que é o valor de $p$, isto é, qual o grau do polinômio que iremos utilizar.
+[Exemplo]{.red}: Consedere os dados de expectativa de vida versus PIB
+per Capita, disponíveis
+[aqui](https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData).
+Selecione o melhor estimador $g$ da classe $\mathbb{G}$, em que
+
+$$\mathbb{G} = \left\{g(x)\,\,:\,\, \beta_0 + \sum_{i = 1}^p \beta_i x^i\,\, \text{para } p \in \{1, 2, \cdots,11\} \right\}.$$
+Note que selecionar o melhor polinômio é uma busca em $p$. Devemos
+utilizar o erro quadrático médio - EQM sob o conjunto de validação, uma
+vez que sabemos que apenas em um conjunto de validação ou em novas
+observações o estimador do risco pelo EQM é consistente, pela Lei dos
+Grandes Números.
 
 <br>
 
-Normalmente a escolha é feita realizando um [*grid search*]{.red} por meio de um [*cross-validation*]{.red}.
+Vamos utilizar a biblioteca
+[rsample](https://rsample.tidymodels.org/index.html) para a tarefa de
+validação cruzada. Leia a documentação da biblioteca, em especial, a da
+função `vfold_cv`, responsável por construir a validação cruzada. Na
+verdade ela faz a divisão da base de dados em $v$ *splits* de tamanho
+aproximadamente iguais. Por padrão, $v = 10$. Esse é o procedimento de
+$k$-fold cross-validation que apresentamos aqui, em que $v = k$.
+
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
 <br>
 
-No exemplo anterior, fizemos uma simulação e observamos que ao considerar graus nem muito grandes nem muito pequenos, aparentemente teremos escolhas razoáveis.
+Algumas observações gerais a respetioda biblioteca
+[rsample](https://rsample.tidymodels.org/index.html), que são úteis para
+resolver esse problema:
+
+![](imgs/rsample.png){fig-align="center"}
+
+1.  Para realizar uma primeira divisão do conjunto de dados (data
+    splitting/hold-out), utiliza-se a função `initial_split`;
+2.  Para acessar o conjunto de treinamento dos dados, usamos a função
+    `training`;
+3.  Para acessar o conjunto de teste, usamos a função `testing`;
+4.  Para constuir todas as divisões da validação cruzada, entre
+    treinamento e validação, no conjunto de treinamento inicial, usamos
+    a função `vfold_cv` já mencionada;
+5.  Para acessar o conjunto de treinamento de um split da validação
+    cruzada, usamos a função `analysis`;
+6.  Para acessar o conjunto de validação, utilizamos a função
+    `assessment`.
+
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+
+![](imgs/rsample.png){fig-align="center" width="10%"}
+
+<br> Note que realizar uma validação cruzada é importante para podemos
+selecionar o melhor polinômio, i.e., o melhor valor de $p$. Caso
+venhamos negligenciar esse aspecto da análise, iremos cair na falácia de
+acreditarmos que quanto maior o grau do polinômio, maior será o poder
+preditivo do modelo. Isso não é verdade e você deverá selecionar o
+melhor modelo dentro de um esquema de validação cruzada.
+
+<br>
+
+No mundo de aprendizagem de máquina, muitos chamam o processo de
+encontrar o melhor hiperparâmetro de ["tunagem"]{.red}.
+
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+
+<br>
+
+As Figuras abaixo, mostra a avaliação dos polinômios da classe
+$\mathbb{G}$, usando o risco estimado $\widehat{R}(g)$ pelo erro
+quadrático médio - EQM. Porém, a Figura [A]{.red} aprenseta a avaliação
+dos modelos, usando simplesmente o conjunto de treinamento e a Figura
+[B]{.red} aprensenta a avaliação do grau do polinômio considerando uma
+validação cruzada dentro do conjunto de treinamento.
+
+<br> ![](imgs/avaliacao_risco.png){fig-align="center"}
+
+<br>
+
+A mensagem equivocada passada pela Figura [A]{.red} é que supostamente
+aumentar a complexidade do modelo seria uma uma boa alternativa e nos
+conduziríamos à bons modelos preditivos. Mas sempre se lembre do
+equilíbrio que temos que ter entre viés e variância. A Figura [B]{.red}
+mostra que um polinômio com grau próximo à $p = 8$ é a melhor
+alternativa.
 
 ## `r fontawesome::fa("book", "black")` Exercícios
 
 <br>
 
-[Exercício]{.red}: Explique resumidamente o que é aprendizagem supervisionada e não-supervisionada. Cite um problema de aprendizagem supervisionada e um outro de aprendizagem não-supervisionada.
+[Exercício]{.red}: Explique resumidamente o que é aprendizagem
+supervisionada e não-supervisionada. Cite um problema de aprendizagem
+supervisionada e um outro de aprendizagem não-supervisionada.
 
 <br>
 
-[Exercício]{.red}: Considere o conjunto de dados de Expectativa de vida versus PIB per Capita, disponível [aqui](https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData). Considere a função $g$, da seguinte forma:
+[Exercício]{.red}: Considere o conjunto de dados de Expectativa de vida
+versus PIB per Capita, disponível
+[aqui](https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData).
+Considere a função $g$, da seguinte forma:
 
-$$g(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i,$$
-com $p \in \{1, 2, ..., 50\}$. Utilizando o erro quadrático médio observado, sem fazer nenhuma estratégia de divisão dos dados, implemente um código em R para checar qual o melhor modelo.
+$$g(x) = \beta_0 + \sum_{i = 1}^p \beta_i x^i,$$ com
+$p \in \{1, 2, ..., 50\}$. Utilizando o erro quadrático médio observado,
+sem fazer nenhuma estratégia de divisão dos dados, implemente um código
+em R para checar qual o melhor modelo.
 
 <br>
 
-[Exercício]{.red}: Explique qual o motivo que faz com que o Erro Quadrático Médio - EQM para avaliar o desempenho de um modelo é ruim quando não adotamos nenhuma estratégia de divisão do conjunto de dados em treinamento e teste.
-
+[Exercício]{.red}: Explique qual o motivo que faz com que o Erro
+Quadrático Médio - EQM para avaliar o desempenho de um modelo é ruim
+quando não adotamos nenhuma estratégia de divisão do conjunto de dados
+em treinamento e teste.
 
 ## `r fontawesome::fa("book", "black")` Exercícios
 
 <br>
 
-[Exercício]{.red}: Com suas palavras, explique o dilema de balanço entre víes e variância.
+[Exercício]{.red}: Com suas palavras, explique o dilema de balanço entre
+víes e variância.
 
 <br>
 
-[Exercício]{.red}: Refaça o exercício do polinômio, utilizando a estratégia de [*data splitting*]{.red}, em que divide-se o conjunto de dados em treinamento e teste. Utilize o conjunto de teste para calcular a estimativa do risco, usando o EQM.
+[Exercício]{.red}: Refaça o exercício do polinômio, utilizando a
+estratégia de [*data splitting*]{.red}, em que divide-se o conjunto de
+dados em treinamento e teste. Utilize o conjunto de teste para calcular
+a estimativa do risco, usando o EQM.
 
 <br>
 
-[Exercício]{.red}: Ainda considerando o exercício do polinômio, implemente uma estratégia de [*leave-one-out cross-validation*]{.red} e selecione o melhor modelo minimizando a função de risco.
+[Exercício]{.red}: Ainda considerando o exercício do polinômio,
+implemente uma estratégia de [*leave-one-out cross-validation*]{.red} e
+selecione o melhor modelo minimizando a função de risco.
 
 <br>
 
-[Exercício]{.red}: Por fim, considerando o exercício do polinômio, rafaça-o utilizando um procedimento de [$k$-fold cross-validation]{.red}. Considere $k = 5$. **Dica**: considere utiliza a biblioteca [rsample](https://rsample.tidymodels.org/).
+[Exercício]{.red}: Por fim, considerando o exercício do polinômio,
+rafaça-o utilizando um procedimento de [$k$-fold
+cross-validation]{.red}. Considere $k = 5$. **Dica**: considere utiliza
+a biblioteca [rsample](https://rsample.tidymodels.org/).
 
 ![](imgs/rsample.png)
 
@@ -2256,29 +2390,41 @@ com $p \in \{1, 2, ..., 50\}$. Utilizando o erro quadrático médio observado, s
 
 <br>
 
-O estimador de mínimos quadrados - EMQ, na presença de muitas *features* (covariáveis), i.e., quando temos $d$ grande, possui um baixo poder preditivo devido *overfitting* (super-ajuste). Isso, porquê haverá muitos parâmetros a serem estimados, e portanto, a função de regressão estimada $\widehat{r}({\bf x})$ terá baixo poder preditivo.
+O estimador de mínimos quadrados - EMQ, na presença de muitas *features*
+(covariáveis), i.e., quando temos $d$ grande, possui um baixo poder
+preditivo devido *overfitting* (super-ajuste). Isso, porquê haverá
+muitos parâmetros a serem estimados, e portanto, a função de regressão
+estimada $\widehat{r}({\bf x})$ terá baixo poder preditivo.
 
 <br>
 
-Isso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo será muito alta.
+Isso se deve ao fato do balanço de viés e variância. Havendo muitos
+parâmetros, como já tinhamos visto, a variância do modelo será muito
+alta.
 
 <br>
 
-**Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis.**
+**Portanto, deveremos buscar meios de encontrar o melhor (ao menos um
+bom) comjunto de covariáveis.**
 
 <br>
 
-![](gifs/chapulin-colorado-no.gif){width='20%'}
+![](gifs/chapulin-colorado-no.gif){width="20%"}
 
 ## Melhor subconjunto de covariáveis
 
 <br>
 
-A ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de $\widehat{g}$.
+A ideia para resolver esse problema é retirar algumas covariáveis do
+modelo de regressão, com o objetivo de diminuir a variância de
+$\widehat{g}$.
 
 <br>
 
-Você poderá entender que estamos em busca de um estimador $\widehat{g}$ de $g$ um **pouco** mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo e troca de ganharmos um pouco mais de viés.
+Você poderá entender que estamos em busca de um estimador $\widehat{g}$
+de $g$ um **pouco** mais viesado. Trata-se de uma troca em que desejamos
+reduzir substancialmente a variabilidade do estiamdor do modelo e troca
+de ganharmos um pouco mais de viés.
 
 <br>
 
@@ -2292,26 +2438,38 @@ Matematicamente, uma maneira de fazer isso, é buscar a estimativa para
 
 $$\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}.$$ {#eq-risco-penalizacao}
 
-Note que a penalização $\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)$ nos conduz na direção de modelos com poucas covariáveis, quando $\lambda$ é um valor alto. Em particualr, quando $\lambda \to \infty$, forçamos a retirada de todas as covariáveis $\beta_i$'s, i.e., a solução para o problema seria $\widehat{\beta}_{L_0} \equiv (\overline{y}, {\bf 0})$. Note que não há penalização para o intercepto $\beta_0$.
+Note que a penalização $\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)$ nos
+conduz na direção de modelos com poucas covariáveis, quando $\lambda$ é
+um valor alto. Em particualr, quando $\lambda \to \infty$, forçamos a
+retirada de todas as covariáveis $\beta_i$'s, i.e., a solução para o
+problema seria $\widehat{\beta}_{L_0} \equiv (\overline{y}, {\bf 0})$.
+Note que não há penalização para o intercepto $\beta_0$.
 
-<br>
-No outro extremo, para $\lambda = 0$, temos o estimador de mínimos quadrados, em que nenhuma penalização será considerada.
+<br> No outro extremo, para $\lambda = 0$, temos o estimador de mínimos
+quadrados, em que nenhuma penalização será considerada.
 
-<br>
-[Não há uma forma fácil de minimizar $\widehat{\beta}_{L_0}$.]{.red}
+<br> [Não há uma forma fácil de minimizar
+$\widehat{\beta}_{L_0}$.]{.red}
 
 ## Melhor subconjunto de covariáveis
 
-<br> 
+<br>
 
-Poderíamos, ingenuamente, pensar em ajustar todas as combinações possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em novas observações para escolher o melhor modelo de todas as combinações possíveis. Isto é, escolher o melhor modelo entre todas as $2^d$ combinações possíveis de modelos em $\mathbb{G}$.
+Poderíamos, ingenuamente, pensar em ajustar todas as combinações
+possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em
+novas observações para escolher o melhor modelo de todas as combinações
+possíveis. Isto é, escolher o melhor modelo entre todas as $2^d$
+combinações possíveis de modelos em $\mathbb{G}$.
 
 <br>
 
-Se $\widehat{\lambda} = \frac{2}{n}\widehat{\sigma}^2$, estimar $\widehat{\beta}_{L_0}$ equivale uma busca entre $2^d$ modelos da classe $\mathbb{G}$:
+Se $\widehat{\lambda} = \frac{2}{n}\widehat{\sigma}^2$, estimar
+$\widehat{\beta}_{L_0}$ equivale uma busca entre $2^d$ modelos da classe
+$\mathbb{G}$:
 
 <br>
 
+```{=tex}
 \begin{align*}
 \mathbb{G} = \{
 &g({\bf x}) = \widehat{\beta}_0, \\
@@ -2329,15 +2487,20 @@ Se $\widehat{\lambda} = \frac{2}{n}\widehat{\sigma}^2$, estimar $\widehat{\beta}
 &g({\bf x}) = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2 + \widehat{\beta}_3x_3 + \cdots + &\widehat{\beta}_dx_d
 \}.
 \end{align*}
-
+```
 ## Melhor subconjunto de covariáveis
 
-<br> 
+<br>
 
-Utilizar $\lambda = \frac{2}{n}\widehat{\sigma}^2$ é o mesmo que utilizar o critério AIC para determinar o melhor modelo, em que dado
+Utilizar $\lambda = \frac{2}{n}\widehat{\sigma}^2$ é o mesmo que
+utilizar o critério AIC para determinar o melhor modelo, em que dado
 
 $$\widehat{R}(g) = \frac{1}{m}\sum_{k = 1}^m \underbrace{(\widetilde{Y}_k - g({\bf \widetilde{X}}_k))^2}_{W_k},$$
-em que $(\widetilde{{\bf X}}_1, \widetilde{Y}_1), \cdots, (\widetilde{{\bf X}}_m, \widetilde{Y}_m)$, representa o conjunto de teste, i.e., calculado com base em $m$ observações em um conjundo de dados não utilizados para treinar o modelo, independentemente da estratégia de divisão utilizada, em que
+em que
+$(\widetilde{{\bf X}}_1, \widetilde{Y}_1), \cdots, (\widetilde{{\bf X}}_m, \widetilde{Y}_m)$,
+representa o conjunto de teste, i.e., calculado com base em $m$
+observações em um conjundo de dados não utilizados para treinar o
+modelo, independentemente da estratégia de divisão utilizada, em que
 
 $$\widehat{\sigma}^2 = \frac{1}{m}\sum_{k = 1}^m (W_k - \overline{W})^2,$$
 com $\overline{W} = \frac{1}{m}\sum_{k=1}^m W_k$.
@@ -2346,25 +2509,40 @@ com $\overline{W} = \frac{1}{m}\sum_{k=1}^m W_k$.
 
 <br>
 
-Temos que $\widehat{R}(g)$, calculado em novas observações (oboservações não utilizadas no treinamento), pode se valer do Teorema Central do Limite, uma vez que $\widehat{R}(g)$ é calculado em uma sequência de variáveis aleatórias i.i.d.'s. Então:
+Temos que $\widehat{R}(g)$, calculado em novas observações (oboservações
+não utilizadas no treinamento), pode se valer do Teorema Central do
+Limite, uma vez que $\widehat{R}(g)$ é calculado em uma sequência de
+variáveis aleatórias i.i.d.'s. Então:
 
 $$\widehat{R}(g) \sim \text{Normal}\left(R(g), \frac{1}{m}\mathbb{V}[W_1]\right).$$
 
-Portanto, um intervalo aleatório de aproximadamente $95\%$ de confiança para o erro preditivo $R(g)$ poderá ser calculado como:
+Portanto, um intervalo aleatório de aproximadamente $95\%$ de confiança
+para o erro preditivo $R(g)$ poderá ser calculado como:
 
 $$\widehat{R}(g) \pm 1,645 \sqrt{\frac{1}{m}\widehat{\sigma}^2}.$$
 
-O cálculo de um intervalo de confiança poderá ser útil para entendermos como está variando o risco preditivo do nosso modelo. Gostamos de ter modelos com intervalo de amplitude pequena. O intervalo poderá ser utilizado para fornecer insight de como escolher a divisão de treinamento e teste. Por exemplo, pode-se escolher o menor valor de $m$ de modo que a amplitude seja a menor possível.
+O cálculo de um intervalo de confiança poderá ser útil para entendermos
+como está variando o risco preditivo do nosso modelo. Gostamos de ter
+modelos com intervalo de amplitude pequena. O intervalo poderá ser
+utilizado para fornecer insight de como escolher a divisão de
+treinamento e teste. Por exemplo, pode-se escolher o menor valor de $m$
+de modo que a amplitude seja a menor possível.
 
 ## Melhor subconjunto de covariáveis
 
 <br>
 
-Por que essa seria uma escolha ingênua? Pense na situação em que temos $d = 30$, i.e., trinta covariáveis. Teríamos portanto $2^{30}$ modelos para ajustar, ou seja, um bilhão e setenta e três milhões, setecentos e quarenta e um mil, oitocentos e vinte e quatro modelos para ajustar. É um a quantidade absurda de modelos para serem estimados!
+Por que essa seria uma escolha ingênua? Pense na situação em que temos
+$d = 30$, i.e., trinta covariáveis. Teríamos portanto $2^{30}$ modelos
+para ajustar, ou seja, um bilhão e setenta e três milhões, setecentos e
+quarenta e um mil, oitocentos e vinte e quatro modelos para ajustar. É
+um a quantidade absurda de modelos para serem estimados!
 
 <br>
 
-Se $d = 100$, teríamos que estimar uma quantidade de modelos que a quantidade estimada de estrelas no universo. Alias, seriam mais modelos para ajustar que a quantidade de átomos no universo.
+Se $d = 100$, teríamos que estimar uma quantidade de modelos que a
+quantidade estimada de estrelas no universo. Alias, seriam mais modelos
+para ajustar que a quantidade de átomos no universo.
 
 <br>
 
@@ -2372,27 +2550,39 @@ Se $d = 100$, teríamos que estimar uma quantidade de modelos que a quantidade e
 
 ## Regressão *Stepwise*
 
-<br>
-Devido a impossibilidade de experimentar uma grande quantidade de modelos ($2^d$), existe uma série de algoritmos (heurísticas), que visam reduzir a quantidade de modelos avaliados. Um dos mais conhecidos é o [forward stepwise]{.red}. Trata-se de um algoritmo sequencial, que em cada passo, apenas uma variável é adicionada:
+<br> Devido a impossibilidade de experimentar uma grande quantidade de
+modelos ($2^d$), existe uma série de algoritmos (heurísticas), que visam
+reduzir a quantidade de modelos avaliados. Um dos mais conhecidos é o
+[forward stepwise]{.red}. Trata-se de um algoritmo sequencial, que em
+cada passo, apenas uma variável é adicionada:
 
 <br>
 
-1 - Para $j = 1, \cdots, d$, ajuste a regressão de $Y$ na $j$-ésima variável $X_j$. Seja $\widehat{R}(g_j)$ o risco estimado desta função. Então,
+1 - Para $j = 1, \cdots, d$, ajuste a regressão de $Y$ na $j$-ésima
+variável $X_j$. Seja $\widehat{R}(g_j)$ o risco estimado desta função.
+Então,
 
 $$\widehat{j} = \argmin_j \widehat{R}(g_j)\,\,\,\,\,\, \text{e}\,\,\,\,\,\, S = \{\widehat{j}\}.$$
-2 - Para cada $j \in S^c$, ajuste a regressão $Y = \beta_jX_j + \sum_{s \in S}\beta_sX_S$, em que $\widehat{R}(g_j)$ é o risco estimado desta função. Defina
+2 - Para cada $j \in S^c$, ajuste a regressão
+$Y = \beta_jX_j + \sum_{s \in S}\beta_sX_S$, em que $\widehat{R}(g_j)$ é
+o risco estimado desta função. Defina
 
 $$\widehat{j} = \argmin_{j \in S^c} \widehat{R}(g_j)\,\,\,\,\,\, \text{e atualize}\,\,\,\,\,\, S \leftarrow \{S \cup \widehat{j}\}.$$
 
-3 - Repita os passos anteriores até que todas as variáveis estejam em $S$ ou até quando não seja mais possível ajustar o modelo de regressão.
+3 - Repita os passos anteriores até que todas as variáveis estejam em
+$S$ ou até quando não seja mais possível ajustar o modelo de regressão.
 
-4 -  Selecione o modelo com menor risco estimado.
+4 - Selecione o modelo com menor risco estimado.
 
 ## Regressão *Stepwise*
 
 <br>
 
-Utilizar o algoritmo de seleção de variáveis [*foward stepwise*]{.red}, ao invés de buscarmos o melhor ajuste entre $2^d$ possíveis modelos, que muitas vezes é impossível, precisaremos investigar apenas $1 + d(d + 1)/2$ modelos. Reduzimos a complexidade da seleção que antes era um problema exponencial. Melhor, não?!
+Utilizar o algoritmo de seleção de variáveis [*foward stepwise*]{.red},
+ao invés de buscarmos o melhor ajuste entre $2^d$ possíveis modelos, que
+muitas vezes é impossível, precisaremos investigar apenas
+$1 + d(d + 1)/2$ modelos. Reduzimos a complexidade da seleção que antes
+era um problema exponencial. Melhor, não?!
 
 <br>
 
@@ -2402,7 +2592,13 @@ Utilizar o algoritmo de seleção de variáveis [*foward stepwise*]{.red}, ao in
 
 <br>
 
-Quando temos modelos que envolve $d$ parâmetros e que temos controle sobre eles (conhecemos muito bem cada um deles), acrescentar algum tipo de penalização à função objetivo poderá ser útil. A penalização é uma [medida de complexidade]{.red}, em que é útil para equilibrar o modelo, de modo a tentar buscar um equilibrio entre viés e variância, discutidos anteriormente. Assim, sob novas observações, desejamos estimar o risco $R(g)$, por
+Quando temos modelos que envolve $d$ parâmetros e que temos controle
+sobre eles (conhecemos muito bem cada um deles), acrescentar algum tipo
+de penalização à função objetivo poderá ser útil. A penalização é uma
+[medida de complexidade]{.red}, em que é útil para equilibrar o modelo,
+de modo a tentar buscar um equilibrio entre viés e variância, discutidos
+anteriormente. Assim, sob novas observações, desejamos estimar o risco
+$R(g)$, por
 
 <br>
 
@@ -2410,67 +2606,83 @@ $$R(g) \approx EQM(g) + \mathcal{P}(g).$$
 
 <br>
 
-
-Desejamos minimiar $R(g)$, mas não a custa de muitos parâmetros, pois assim teríamos [overfitting]{.red}. Portanto, para muitos parâmetros temos que ter EQM baixo, porém, $\mathcal{P}(g)$ deve ser alto. Já em modelos viesados, quando temos poucos parâmetros, o EQM normalmente é alto, mas a complexidade $\mathcal{P}(g)$ deve ser baixo, pois temos um modelo mais simplista.
-
+Desejamos minimiar $R(g)$, mas não a custa de muitos parâmetros, pois
+assim teríamos [overfitting]{.red}. Portanto, para muitos parâmetros
+temos que ter EQM baixo, porém, $\mathcal{P}(g)$ deve ser alto. Já em
+modelos viesados, quando temos poucos parâmetros, o EQM normalmente é
+alto, mas a complexidade $\mathcal{P}(g)$ deve ser baixo, pois temos um
+modelo mais simplista.
 
 ## AIC e BIC
 
 <br>
 
-Existem diversas penalizações, em que o AIC (**A**kaike **I**nformation **C**riterion) e BIC (**B**ayesian **I**nformation **C**riterion) são as mais conhecidas. Com base nesses critérios, temos que 
+Existem diversas penalizações, em que o AIC (**A**kaike **I**nformation
+**C**riterion) e BIC (**B**ayesian **I**nformation **C**riterion) são as
+mais conhecidas. Com base nesses critérios, temos que
 
 <br>
 
 ::: {columns}
-
-::: {.column width='30%'}
-1. [AIC]{.red}: $$EQM + \frac{2}{n\,d\, \widehat{\sigma}^2}.$$
-2. [BIC]{.red}: $$EQM + \frac{\log(n)}{n\, d\, \widehat{\sigma}^2}.$$
+::: {.column width="30%"}
+1.  [AIC]{.red}: $$EQM + \frac{2}{n\,d\, \widehat{\sigma}^2}.$$
+2.  [BIC]{.red}: $$EQM + \frac{\log(n)}{n\, d\, \widehat{\sigma}^2}.$$
 :::
 
-::: {.column width='70%'}
+::: {.column width="70%"}
 $$\widehat{\sigma}^2 = \frac{1}{m}\sum_{k = 1}^m (W_k - \overline{W})^2.$$
 :::
-
 :::
 
 <br>
 
-Aqui, $d$ é a quantidade de parâmetros no modelo e $\widehat{\sigma}^2$ é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de $\widehat{\sigma}^2$ conforme descrito anteriormente. Segundo [James, Gareth, et al. An introduction to statistical learning. Ed. 2, p. 233](https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf), assume-se o modelo com todos os preditores para o cálculo de $\widehat{\sigma}^2$.
+Aqui, $d$ é a quantidade de parâmetros no modelo e $\widehat{\sigma}^2$
+é uma estimativa da variância do erro, que para um conjunto de teste
+suficientemente grande, poderá ser considerado o estimador de
+$\widehat{\sigma}^2$ conforme descrito anteriormente. Segundo [James,
+Gareth, et al. An introduction to statistical learning. Ed. 2, p.
+233](https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf),
+assume-se o modelo com todos os preditores para o cálculo de
+$\widehat{\sigma}^2$.
 
 ## Lasso
 
 <br>
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-O lasso foi desenvolvido pelo Robert Tibshirani, em um artigo publicado no artigo [Regression Shrinkage and Selection via the Lasso](https://www.jstor.org/stable/2346178).
+O lasso foi desenvolvido pelo Robert Tibshirani, em um artigo publicado
+no artigo [Regression Shrinkage and Selection via the
+Lasso](https://www.jstor.org/stable/2346178).
 
 ![](imgs/lasso.png)
-
 :::
 
 ::: {.column width="50%"}
-![](imgs/P55268-Robert-Tibshirani.jpg){width='60%'}
+![](imgs/P55268-Robert-Tibshirani.jpg){width="60%"}
 :::
-::::
+:::
 
 ## Lasso
 
 <br>
 
-O lasso tem como objetivo encontrar um estimador de uma regressão linear que possui risco menor que o de mínimos quadrados, possuindo duas grandes vantagens, em relação ao *stepwise*:
+O lasso tem como objetivo encontrar um estimador de uma regressão linear
+que possui risco menor que o de mínimos quadrados, possuindo duas
+grandes vantagens, em relação ao *stepwise*:
 
 <br>
 
-1. Sua solução é mais rápida, ainda que *stepwise* seja consideravalmente mais rápido do que avaliar $2^d$ modelos;
-2. O lasso é capaz de selecionar automaticamente as variáveis mais relevantes para o modelo, reduzindo a dimensionalidade dos dados.
+1.  Sua solução é mais rápida, ainda que *stepwise* seja
+    consideravalmente mais rápido do que avaliar $2^d$ modelos;
+2.  O lasso é capaz de selecionar automaticamente as variáveis mais
+    relevantes para o modelo, reduzindo a dimensionalidade dos dados.
 
 <br>
 
-A segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à estimativas de alguns coeficientes $\beta_i$ igual a zero, eliminando as variáveis menos importantes.
+A segunda vantagem ocorre, uma vez que ele realiza uma penalização que
+leva à estimativas de alguns coeficientes $\beta_i$ igual a zero,
+eliminando as variáveis menos importantes.
 
 <br>
 
@@ -2480,10 +2692,18 @@ A segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à
 
 <br>
 
-No lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade ($L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0$) em @eq-risco-penalizacao, usa-se a penalização $L_1 = \sum_{i = 1}^d|\beta_i|$. No lasso, buscamos:
+No lasso, ao invés de reduzir a variância do estimador de mínimos
+quadrados usando a complexidade
+($L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0$) em
+@eq-risco-penalizacao, usa-se a penalização
+$L_1 = \sum_{i = 1}^d|\beta_i|$. No lasso, buscamos:
 
-$$\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},$$ 
-em que $\lambda$ é um *tuning parameter*. Perceba que quando $\lambda = 0$, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando $\lambda \rightarrow \infty$, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante.
+$$\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},$$
+em que $\lambda$ é um *tuning parameter*. Perceba que quando
+$\lambda = 0$, caímos no caso do modelo de regressão por mínimos
+quadrados sem penalização. Já, quando $\lambda \rightarrow \infty$,
+temos um modelo em que todas as variáveis são removidas, uma vez que a
+primeira parte do modelo torna-se insignificante.
 
 ## Lasso
 
@@ -2496,18 +2716,25 @@ e portanto, $\widehat{\beta}_1 = 0, \cdots, \widehat{\beta}_d = 0$.
 
 <br>
 
-A escolha de $\lambda$, em geral, é feita utilizado algum método de validação cruzada.
-
+A escolha de $\lambda$, em geral, é feita utilizado algum método de
+validação cruzada.
 
 ## Lasso
 
-<br> 
+<br>
 
-O lasso é extremamente rápido, e nos últimos anos, diversos algoritmos foram construídos para fazer essa taréfa de forma eficiente. O LARS foi um dos primeiros algoritmos desenvolvidos em 2010. Para detalhes, ler [Friedman, J. H. (2001). Greedy function approximation: a gradient boosting machine. Annals of statistics, 1189–1232](https://www.jstor.org/stable/2699986).
+O lasso é extremamente rápido, e nos últimos anos, diversos algoritmos
+foram construídos para fazer essa taréfa de forma eficiente. O LARS foi
+um dos primeiros algoritmos desenvolvidos em 2010. Para detalhes, ler
+[Friedman, J. H. (2001). Greedy function approximation: a gradient
+boosting machine. Annals of statistics,
+1189--1232](https://www.jstor.org/stable/2699986).
 
 <br>
 
-No R, a regressão lasso poderá ser feita usando a biblioteca [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html), assim:
+No R, a regressão lasso poderá ser feita usando a biblioteca
+[glmnet](https://cran.r-project.org/web/packages/glmnet/index.html),
+assim:
 
 <br>
 
@@ -2516,21 +2743,29 @@ No R, a regressão lasso poderá ser feita usando a biblioteca [glmnet](https://
 library(glmnet)
 ajuste <- cv.glmnet(x, y, alpha = 1)
 ```
+
 <br>
 
-![](gifs/teclado-anime.gif){width='21%'}
+![](gifs/teclado-anime.gif){width="21%"}
 
 ## Ridge
 
 <br>
 
-Uma alternativa que surgiu antes do lasso é a [regressão ridge]{.red}. Ela foi proposta no artigo [Hoerl, A. E. & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55–67](https://www.jstor.org/stable/1267351). Aqui, utiliza-se como medida de complexidade a norma $L_2$, em que, o estimador é dado por:
+Uma alternativa que surgiu antes do lasso é a [regressão ridge]{.red}.
+Ela foi proposta no artigo [Hoerl, A. E. & Kennard, R. W. (1970). Ridge
+regression: Biased estimation for nonorthogonal problems. Technometrics,
+12(1), 55--67](https://www.jstor.org/stable/1267351). Aqui, utiliza-se
+como medida de complexidade a norma $L_2$, em que, o estimador é dado
+por:
 
-$$\widehat{\beta}_{L_2,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d\beta_j^2}_{\text{Penalização}}.$$ 
-Diferentemente do lasso, a regressão ridge possui solução analítica, dada por:
+$$\widehat{\beta}_{L_2,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d\beta_j^2}_{\text{Penalização}}.$$
+Diferentemente do lasso, a regressão ridge possui solução analítica,
+dada por:
 
 $$\widehat{\beta}_{L_2,\lambda} = ({\bf X}^{T}{\bf X} + \lambda\mathbb{\bf I}_0)^{-1}{\bf X}^{T}Y,$$
-em que $\mathbb{\bf I}_0$ é a matriz identidade $(d + 1) \times (d + 1)$ com $\mathbb{\bf I}_0(1,1) = 0$.
+em que $\mathbb{\bf I}_0$ é a matriz identidade $(d + 1) \times (d + 1)$
+com $\mathbb{\bf I}_0(1,1) = 0$.
 
 <br>
 
@@ -2538,11 +2773,16 @@ em que $\mathbb{\bf I}_0$ é a matriz identidade $(d + 1) \times (d + 1)$ com $\
 
 <br>
 
-A regressão ridge poderá ter uma variância menor que a regressão lasso, porém seu viés poderá ser maior. Outra característica da regressão ridge é que ela possue uma única solução, enquanto a regressão lasso poderá ter multiplas soluções. Os autores também demonstram que a regressão ridge lida melhor com multicolinearidade.
+A regressão ridge poderá ter uma variância menor que a regressão lasso,
+porém seu viés poderá ser maior. Outra característica da regressão ridge
+é que ela possue uma única solução, enquanto a regressão lasso poderá
+ter multiplas soluções. Os autores também demonstram que a regressão
+ridge lida melhor com multicolinearidade.
 
 <br>
 
-No R, também poderemos utilizar a biblioteca [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html):
+No R, também poderemos utilizar a biblioteca
+[glmnet](https://cran.r-project.org/web/packages/glmnet/index.html):
 
 <br>
 
@@ -2554,13 +2794,22 @@ ajuste <- cv.glmnet(x, y, alpha = 0)
 
 <br>
 
-![](gifs/teclado-anime.gif){width='21%'}
+![](gifs/teclado-anime.gif){width="21%"}
 
 ## Elastic Net
 
 <br>
 
-Nesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.
+Nesse tipo de modelo de gressão, combina-se as penalizações da regressão
+ridge com a utilizada na regressão lasso, herdando os benefícios do uso
+de cada um dos métodos isoladamente, melhorando a estabilidade das
+estimativas do lasso, em situações de multicolinearidade entre as
+variáveis e também permitindo a seleção automática de variáveis.
 
 $$(1-\alpha)\widehat{\beta}_{L_2,\lambda} + \alpha\widehat{\beta}_{L_1,\lambda},$$
-em que $0 \leq \alpha \leq1$. Em R, basta especificar para a função `glmnet` um valor de $\alpha$ diferente de 0 e 1. 
+em que $0 \leq \alpha \leq1$. Em R, basta especificar para a função
+`glmnet` um valor de $\alpha$ diferente de 0 e 1.
+
+<br>
+
+![](gifs/teclado-anime.gif){width="21%"}

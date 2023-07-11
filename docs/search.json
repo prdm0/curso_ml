@@ -830,7 +830,7 @@
     "href": "index.html#aic-e-bic",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "AIC e BIC",
-    "text": "AIC e BIC\n\nExistem diversas penalizações, em que o AIC (Akaike Information Criterion) e BIC (Bayesian Information Criterion) são as mais conhecidas. Com base nesses critérios, temos que\n\n\n\n\nAIC: EQM + \\frac{2}{n\\,d\\, \\widehat{\\sigma}^2}.\nBIC: EQM + \\frac{\\log(n)}{n\\, d\\, \\widehat{\\sigma}^2}.\n\n\n\n\\widehat{\\sigma}^2 = \\frac{1}{m}\\sum_{k = 1}^m (W_k - \\overline{W})^2.\n\n\n\nAqui, d é a quantidade de parâmetros no modelo e \\widehat{\\sigma}^2 é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de \\widehat{\\sigma}^2 conforme descrito anteriormente. Segundo James, Gareth, et al. An introduction to statistical learning. Ed. 2, p. 233, assume-se o modelo com todos os preditores para o cálculo de \\widehat{\\sigma}^2."
+    "text": "AIC e BIC\n\nExistem diversas penalizações, em que o AIC (Akaike Information Criterion) e BIC (Bayesian Information Criterion) são as mais conhecidas. Com base nesses critérios, temos que\n\n\n\n\nAIC: EQM + \\frac{2}{n\\,d\\, \\widehat{\\sigma}^2}.\nBIC: EQM + \\frac{\\log(n)}{n\\, d\\, \\widehat{\\sigma}^2}.\n\n\n\n\\widehat{\\sigma}^2 = \\frac{1}{m}\\sum_{k = 1}^m (W_k - \\overline{W})^2.\n\n\n\nAqui, d é a quantidade de parâmetros no modelo e \\widehat{\\sigma}^2 é uma estimativa da variância do erro, que para um conjunto de teste suficientemente grande, poderá ser considerado o estimador de \\widehat{\\sigma}^2 conforme descrito anteriormente. Segundo James, Gareth, et al. An introduction to statistical learning. Ed. 2, p. 233, assume-se o modelo com todos os preditores para o cálculo de \\widehat{\\sigma}^2."
   },
   {
     "objectID": "index.html#lasso",
@@ -893,6 +893,34 @@
     "href": "index.html#elastic-net",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Elastic Net",
-    "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#tuning-parameters-1",
+    "href": "index.html#tuning-parameters-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\nExemplo: Consedere os dados de expectativa de vida versus PIB per Capita, disponíveis aqui. Selecione o melhor estimador g da classe \\mathbb{G}, em que\n\\mathbb{G} = \\left\\{g(x)\\,\\,:\\,\\, \\beta_0 + \\sum_{i = 1}^p \\beta_i x^i\\,\\, \\text{para } p \\in \\{1, 2, \\cdots,11\\} \\right\\}. Note que selecionar o melhor polinômio é uma busca em p. Devemos utilizar o erro quadrático médio - EQM sob o conjunto de validação, uma vez que sabemos que apenas em um conjunto de validação ou em novas observações o estimador do risco pelo EQM é consistente, pela Lei dos Grandes Números.\n\nVamos utilizar a biblioteca rsample para a tarefa de validação cruzada. Leia a documentação da biblioteca, em especial, a da função vfold_cv, responsável por construir a validação cruzada. Na verdade ela faz a divisão da base de dados em v splits de tamanho aproximadamente iguais. Por padrão, v = 10. Esse é o procedimento de k-fold cross-validation que apresentamos aqui, em que v = k."
+  },
+  {
+    "objectID": "index.html#tuning-parameters-2",
+    "href": "index.html#tuning-parameters-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\nAlgumas observações gerais a respetioda biblioteca rsample, que são úteis para resolver esse problema:\n\n\nPara realizar uma primeira divisão do conjunto de dados (data splitting/hold-out), utiliza-se a função initial_split;\nPara acessar o conjunto de treinamento dos dados, usamos a função training;\nPara acessar o conjunto de teste, usamos a função testing;\nPara constuir todas as divisões da validação cruzada, entre treinamento e validação, no conjunto de treinamento inicial, usamos a função vfold_cv já mencionada;\nPara acessar o conjunto de treinamento de um split da validação cruzada, usamos a função analysis;\nPara acessar o conjunto de validação, utilizamos a função assessment."
+  },
+  {
+    "objectID": "index.html#tuning-parameters-3",
+    "href": "index.html#tuning-parameters-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\n Note que realizar uma validação cruzada é importante para podemos selecionar o melhor polinômio, i.e., o melhor valor de p. Caso venhamos negligenciar esse aspecto da análise, iremos cair na falácia de acreditarmos que quanto maior o grau do polinômio, maior será o poder preditivo do modelo. Isso não é verdade e você deverá selecionar o melhor modelo dentro de um esquema de validação cruzada.\n\nNo mundo de aprendizagem de máquina, muitos chamam o processo de encontrar o melhor hiperparâmetro de “tunagem”."
+  },
+  {
+    "objectID": "index.html#tuning-parameters-4",
+    "href": "index.html#tuning-parameters-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\nAs Figuras abaixo, mostra a avaliação dos polinômios da classe \\mathbb{G}, usando o risco estimado \\widehat{R}(g) pelo erro quadrático médio - EQM. Porém, a Figura A aprenseta a avaliação dos modelos, usando simplesmente o conjunto de treinamento e a Figura B aprensenta a avaliação do grau do polinômio considerando uma validação cruzada dentro do conjunto de treinamento.\n \n\nA mensagem equivocada passada pela Figura A é que supostamente aumentar a complexidade do modelo seria uma uma boa alternativa e nos conduziríamos à bons modelos preditivos. Mas sempre se lembre do equilíbrio que temos que ter entre viés e variância. A Figura B mostra que um polinômio com grau próximo à p = 8 é a melhor alternativa."
   }
 ]
