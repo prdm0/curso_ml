@@ -72,7 +72,7 @@ plot_avaliacao <- function(dados, errado = FALSE){
   # Plotando
   df_risco |> 
     ggplot(aes(x = p, y = risco, color = risco)) +
-    geom_point(size = 3) +
+    geom_point(size = 5) +
     scale_x_continuous(breaks = p) +
     scale_y_continuous(breaks = p) +
     labs(
@@ -95,3 +95,14 @@ grafico <-
   plot_annotation(tag_levels = c("A", "B"))
 
 ggsave(grafico, file = "imgs/avaliacao_risco.png", device = "png", width = 50, height = 20, units = "cm", limitsize = F)
+
+plot_bar <- function(grau){
+  ruim <- validacao(dados, errado = TRUE, grau = grau)
+  bom <- validacao(dados, errado = FALSE, grau = grau)
+  df <- tibble::tibble(x = c("Errado", "Certo"), y = c(log(ruim), log(bom)))
+  
+  df |> 
+    ggplot(aes(x = x, y = y)) +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = y), vjust = 0)
+}

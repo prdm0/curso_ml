@@ -2330,6 +2330,18 @@ equilíbrio que temos que ter entre viés e variância. A Figura [B]{.red}
 mostra que um polinômio com grau próximo à $p = 8$ é a melhor
 alternativa.
 
+## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+
+<br>
+
+Observe o dashboard interativo. Sabemos que para que tenhamos uma boa estimativa do risco preditivo, devemos utilizar novas observações. No dashboard é possível observar que a forma errada (usando o conjunto de treinamento para avaliar o risco), sugere que sempre será bom adicionar mais parâmetros ao modelo, levando a *overfitting*. Perceba que usando a forma correta (usando validação cruzada), o EQM (risco estimado) sugere que não podemos aumentar muito a quantidade de parâmetros.
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-avalia%C3%A7%C3%A3o-do-risco-preditivo" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
+
 ## `r fontawesome::fa("book", "black")` Exercícios
 
 <br>

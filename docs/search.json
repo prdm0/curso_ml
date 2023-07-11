@@ -922,5 +922,68 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Tuning Parameters",
     "text": "Tuning Parameters\n\nAs Figuras abaixo, mostra a avaliação dos polinômios da classe \\mathbb{G}, usando o risco estimado \\widehat{R}(g) pelo erro quadrático médio - EQM. Porém, a Figura A aprenseta a avaliação dos modelos, usando simplesmente o conjunto de treinamento e a Figura B aprensenta a avaliação do grau do polinômio considerando uma validação cruzada dentro do conjunto de treinamento.\n \n\nA mensagem equivocada passada pela Figura A é que supostamente aumentar a complexidade do modelo seria uma uma boa alternativa e nos conduziríamos à bons modelos preditivos. Mas sempre se lembre do equilíbrio que temos que ter entre viés e variância. A Figura B mostra que um polinômio com grau próximo à p = 8 é a melhor alternativa."
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#column-2",
+    "href": "shiny_apps/balanco_vies_variancia.html#column-2",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nEntrada de informações\n\nsliderInput(\"grau_polinomio\", \"p:\",\n    min = 1L, max = 30L,\n    value = 1L,\n    step = 1L\n)\n\n\np:\n\n\n\n# Lendo dados\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\narquivo_temp &lt;- tempfile()\ndownload.file(url = url, destfile = arquivo_temp)\nload(arquivo_temp)\n\ndados &lt;- \n  dados_expectativa_renda |&gt; \n  dplyr::select(-CountryName) |&gt; \n  dplyr::rename(y = LifeExpectancy, x = GDPercapita)\n  \niteracoes &lt;- function(tibble_data, grau) {\n  x &lt;- tibble_data$x\n  iteracoes &lt;- lapply(X = 2L:grau, FUN = function(i) x^i)\n  \n  result &lt;- cbind(tibble_data, do.call(cbind, iteracoes))\n  colnames(result)[(ncol(tibble_data) + 1):ncol(result)] &lt;- paste0(\"x\", 2L:grau)\n  \n  as_tibble(result)\n}  \n\nreg_polinomial &lt;- function(dados, grau = 1L) {\n  if(grau &gt;= 2L)\n    dados &lt;- iteracoes(dados, grau = grau)\n  \n  lm(formula = y ~ ., data = dados)\n}\n\n# Divisão dos dados\ndivisao_inicial &lt;- rsample::initial_split(dados)\ntreinamento &lt;- rsample::training(divisao_inicial)\nteste &lt;- rsample::testing(divisao_inicial) # Teste final\n\n# v-folds cross-validation\nvalidacao &lt;- function(dados, grau = 1L, errado = FALSE, ...){\n  \n  # Todas as divisões da validacao cruzada\n  cv &lt;- rsample::vfold_cv(dados, ...)\n  \n  hiper &lt;- function(i){\n    treino &lt;- rsample::analysis(cv$splits[[i]]) # Treinamento\n    validacao &lt;- rsample::assessment(cv$splits[[i]]) # Validacação\n    ajuste &lt;- reg_polinomial(dados = treino, grau = grau)\n    \n    if(errado){\n      df_treino &lt;- iteracoes(treino, grau = grau)\n      df_treino &lt;- df_treino |&gt; dplyr::mutate(y_chapeu = predict(ajuste, newdata = df_treino))\n      yardstick::rmse(data = df_treino, truth = y, estimate = y_chapeu)$.estimate\n    } else {\n      df_validacao &lt;- iteracoes(validacao, grau = grau)\n      df_validacao &lt;- df_validacao |&gt; dplyr::mutate(y_chapeu = predict(ajuste, newdata = df_validacao))\n      yardstick::rmse(data = df_validacao, truth = y, estimate = y_chapeu)$.estimate\n    }\n  }\n  purrr::map_dbl(.x = seq_along(cv$splits), .f = hiper) |&gt; \n    mean()\n}\n\nplot_bar &lt;- function(grau){\n  ruim &lt;- validacao(dados, errado = TRUE, grau = grau)\n  bom &lt;- validacao(dados, errado = FALSE, grau = grau)\n  df &lt;- tibble::tibble(x = c(\"Errado\", \"Certo\"), y = c(log(ruim), log(bom)))\n  \n  df |&gt; \n    ggplot(aes(x = x, y = y)) +\n    geom_bar(stat = \"identity\", fill = \"#0f385d\") +\n    geom_text(aes(label = round(y, digits = 2L)), vjust = -0.5, size = 10) +\n    labs(x = \"Estratégia\", y = \"EQM estimado\") + \n    theme(\n      plot.title = element_text(size = 18, face = \"bold\"),\n      plot.subtitle = element_text(size = 16),\n      axis.text = element_text(size = 10), \n      axis.title = element_text(size = 14, face = \"bold\")\n    )\n}"
+  },
+  {
+    "objectID": "shiny_apps/balanco_vies_variancia.html#column-3",
+    "href": "shiny_apps/balanco_vies_variancia.html#column-3",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nAvaliação do risco estimado\n\nrenderPlot({\n  plot_bar(input$grau_polinomio)\n})"
+  },
+  {
+    "objectID": "index.html#tuning-parameters-5",
+    "href": "index.html#tuning-parameters-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": " Tuning Parameters",
+    "text": "Tuning Parameters\n\nObserve o dashboard interativo. Sabemos que para que tenhamos uma boa estimativa do risco preditivo, devemos utilizar novas observações. No dashboard é possível observar que a forma errada (usando o conjunto de treinamento para avaliar o risco), sugere que sempre será bom adicionar mais parâmetros ao modelo, levando a overfitting. Perceba que usando a forma correta (usando validação cruzada), o EQM (risco estimado) sugere que não podemos aumentar muito a quantidade de parâmetros."
+  },
+  {
+    "objectID": "shiny_apps/index.html",
+    "href": "shiny_apps/index.html",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "",
+    "text": ".shiny-output-area {\n  margin: 0;\n}\n\n.full-width-image {\n    width: 100vw; /* Define a largura igual à largura da janela do navegador */\n    height: auto; /* Mantém a proporção original da imagem */\n}"
+  },
+  {
+    "objectID": "shiny_apps/index.html#rows",
+    "href": "shiny_apps/index.html#rows",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Rows",
+    "text": "Rows\n\n\n\n\n\n\nEssa aplicação foi construída para conter alguns exempos da disciplina de Aprendizagem de Máquina, lecionada aos dicentes do curso de bacharelado em estatística da UFPB."
+  },
+  {
+    "objectID": "shiny_apps/index.html#column",
+    "href": "shiny_apps/index.html#column",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nEntrada de informações\n\nsliderInput(\"numeromodelos\", \"Número de modelos:\",\n    min = 1, max = 100, value = 50\n)\n\n\nNúmero de modelos:\n\n\n\nsliderInput(\"tamanhoamostral\", \"Tamanho amostral:\",\n    min = 100, max = 250, value = 100\n)\n\n\nTamanho amostral:\n\n\n\nsliderInput(\"grau\", \"Grau do polinômio:\",\n    min = 1, max = 200, value = 1\n)\n\n\nGrau do polinômio:"
+  },
+  {
+    "objectID": "shiny_apps/index.html#column-1",
+    "href": "shiny_apps/index.html#column-1",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nResultado gráfico das simulações\n\nrenderPlot({\n  mc_ajustes(mc = input$numeromodelos, n = input$tamanhoamostral, desvio_padrao = 5, grau = input$grau)\n})"
+  },
+  {
+    "objectID": "shiny_apps/index.html#column-2",
+    "href": "shiny_apps/index.html#column-2",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nEntrada de informações\n\nsliderInput(\"grau_polinomio\", \"p:\",\n    min = 1L, max = 30L,\n    value = 1L,\n    step = 1L\n)\n\n\np:\n\n\n\n# Lendo dados\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\narquivo_temp &lt;- tempfile()\ndownload.file(url = url, destfile = arquivo_temp)\nload(arquivo_temp)\n\ndados &lt;- \n  dados_expectativa_renda |&gt; \n  dplyr::select(-CountryName) |&gt; \n  dplyr::rename(y = LifeExpectancy, x = GDPercapita)\n  \niteracoes &lt;- function(tibble_data, grau) {\n  x &lt;- tibble_data$x\n  iteracoes &lt;- lapply(X = 2L:grau, FUN = function(i) x^i)\n  \n  result &lt;- cbind(tibble_data, do.call(cbind, iteracoes))\n  colnames(result)[(ncol(tibble_data) + 1):ncol(result)] &lt;- paste0(\"x\", 2L:grau)\n  \n  as_tibble(result)\n}  \n\nreg_polinomial &lt;- function(dados, grau = 1L) {\n  if(grau &gt;= 2L)\n    dados &lt;- iteracoes(dados, grau = grau)\n  \n  lm(formula = y ~ ., data = dados)\n}\n\n# Divisão dos dados\ndivisao_inicial &lt;- rsample::initial_split(dados)\ntreinamento &lt;- rsample::training(divisao_inicial)\nteste &lt;- rsample::testing(divisao_inicial) # Teste final\n\n# v-folds cross-validation\nvalidacao &lt;- function(dados, grau = 1L, errado = FALSE, ...){\n  \n  # Todas as divisões da validacao cruzada\n  cv &lt;- rsample::vfold_cv(dados, ...)\n  \n  hiper &lt;- function(i){\n    treino &lt;- rsample::analysis(cv$splits[[i]]) # Treinamento\n    validacao &lt;- rsample::assessment(cv$splits[[i]]) # Validacação\n    ajuste &lt;- reg_polinomial(dados = treino, grau = grau)\n    \n    if(errado){\n      df_treino &lt;- iteracoes(treino, grau = grau)\n      df_treino &lt;- df_treino |&gt; dplyr::mutate(y_chapeu = predict(ajuste, newdata = df_treino))\n      yardstick::rmse(data = df_treino, truth = y, estimate = y_chapeu)$.estimate\n    } else {\n      df_validacao &lt;- iteracoes(validacao, grau = grau)\n      df_validacao &lt;- df_validacao |&gt; dplyr::mutate(y_chapeu = predict(ajuste, newdata = df_validacao))\n      yardstick::rmse(data = df_validacao, truth = y, estimate = y_chapeu)$.estimate\n    }\n  }\n  purrr::map_dbl(.x = seq_along(cv$splits), .f = hiper) |&gt; \n    mean()\n}\n\nplot_bar &lt;- function(grau){\n  ruim &lt;- validacao(dados, errado = TRUE, grau = grau)\n  bom &lt;- validacao(dados, errado = FALSE, grau = grau)\n  df &lt;- tibble::tibble(x = c(\"Errado\", \"Certo\"), y = c(log(ruim), log(bom)))\n  \n  df |&gt; \n    ggplot(aes(x = x, y = y)) +\n    geom_bar(stat = \"identity\", fill = \"#0f385d\") +\n    geom_text(aes(label = round(y, digits = 2L)), vjust = -0.5, size = 10) +\n    labs(x = \"Estratégia\", y = \"EQM estimado\") + \n    theme(\n      plot.title = element_text(size = 18, face = \"bold\"),\n      plot.subtitle = element_text(size = 16),\n      axis.text = element_text(size = 20), \n      axis.title = element_text(size = 14, face = \"bold\")\n    )\n}"
+  },
+  {
+    "objectID": "shiny_apps/index.html#column-3",
+    "href": "shiny_apps/index.html#column-3",
+    "title": "Aprendizagem de Máquina - UFPB",
+    "section": "Column",
+    "text": "Column\n\nAvaliação do risco estimado\n\nrenderPlot({\n  plot_bar(input$grau_polinomio)\n})"
   }
 ]
