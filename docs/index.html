@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-11">
+  <meta name="dcterms.date" content="2023-07-12">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-11</p>
+  <p class="date">2023-07-12</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1b32a4fbbb5296fc20cd" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1b32a4fbbb5296fc20cd">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7eda1dd35ec91d184e08" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-7eda1dd35ec91d184e08">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1553,6 +1553,25 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <img data-src="gifs/ok.gif" class="r-stretch"></section>
 <section id="k-fold-cross-validation-3" class="slide level2">
 <h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>O termo <span class="red">validação</span> refere-se à parcela do conjunto de treinamento incial que dividimos em validação e treinamento, dentro de uma validação cruzada.</p>
+<p><br></p>
+<p>O conjunto <span class="red"><em>Testing</em></span> na segunda hierarquia da árvore ao lado, só usamos no final para avaliar o desempenho do modelo nesse conjunto.</p>
+<p><br></p>
+<p>Perceba que o conjunto de treinamento (<span class="red"><em>Not Testing</em></span>) é particionado em treinamento e validação. Poderíamos fazer uma única partição, mas o procedimento comumente utilizado é particionar entre <span class="red"><em>Training</em></span> e <span class="red"><em>Validation</em></span> uzando algum procedimento de validação cruzada.</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/validation-split.svg" style="width:64.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="k-fold-cross-validation-4" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
 <p>A imagem abaixo ilustra o procedimento <span class="math inline">k</span>-fold cross-validation, em que uma <span class="math inline">5</span>-fold cross-validation é realizada dentro do conjunto de treinamento. Em cada <em>split</em>, o conjunto verde de observações (fold <span class="green">verde</span>) são utilizados para treinar/ajustar o modelo e o conjunto <span class="trueblue">azul</span>, em cada um dos <em>splits</em> é utilizado para avaliar o risco preditivo <span class="math inline">R(g)</span> (através, por exemplo do EQM).</p>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -1777,6 +1796,126 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-avalia%C3%A7%C3%A3o-do-risco-preditivo" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 </section>
+<section id="tuning-parameters-6" class="slide level2">
+<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"></path></svg> Tuning Parameters</h2>
+<p><br></p>
+<p>Abaixo você poderá acessar o código que soluciona o problema. O parâmetro <code>errado = FALSE</code> da função validação no código que segue, conduz a solução correta (usando a validação cruzada), que sempre você deverá considerar na prática.</p>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Estude o código da solução de exemplo</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(yardstick)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># Lendo dados</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb7-13"><a href="#cb7-13"></a></span>
+<span id="cb7-14"><a href="#cb7-14"></a>dados <span class="ot">&lt;-</span> </span>
+<span id="cb7-15"><a href="#cb7-15"></a>  dados_expectativa_renda <span class="sc">|&gt;</span> </span>
+<span id="cb7-16"><a href="#cb7-16"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName) <span class="sc">|&gt;</span> </span>
+<span id="cb7-17"><a href="#cb7-17"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">y =</span> LifeExpectancy, <span class="at">x =</span> GDPercapita)</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  </span>
+<span id="cb7-19"><a href="#cb7-19"></a>iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
+<span id="cb7-20"><a href="#cb7-20"></a>  x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
+<span id="cb7-21"><a href="#cb7-21"></a>  iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
+<span id="cb7-22"><a href="#cb7-22"></a>  </span>
+<span id="cb7-23"><a href="#cb7-23"></a>  result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
+<span id="cb7-25"><a href="#cb7-25"></a>  </span>
+<span id="cb7-26"><a href="#cb7-26"></a>  <span class="fu">as_tibble</span>(result)</span>
+<span id="cb7-27"><a href="#cb7-27"></a>}  </span>
+<span id="cb7-28"><a href="#cb7-28"></a></span>
+<span id="cb7-29"><a href="#cb7-29"></a>regressao_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L) {</span>
+<span id="cb7-30"><a href="#cb7-30"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
+<span id="cb7-31"><a href="#cb7-31"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
+<span id="cb7-32"><a href="#cb7-32"></a>  </span>
+<span id="cb7-33"><a href="#cb7-33"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb7-34"><a href="#cb7-34"></a>}</span>
+<span id="cb7-35"><a href="#cb7-35"></a></span>
+<span id="cb7-36"><a href="#cb7-36"></a><span class="co"># Divisão dos dados</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>divisao_inicial <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(dados)</span>
+<span id="cb7-38"><a href="#cb7-38"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(divisao_inicial)</span>
+<span id="cb7-39"><a href="#cb7-39"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(divisao_inicial) <span class="co"># Teste final</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a></span>
+<span id="cb7-41"><a href="#cb7-41"></a><span class="co"># v-folds cross-validation</span></span>
+<span id="cb7-42"><a href="#cb7-42"></a>validacao <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L, <span class="at">errado =</span> <span class="cn">FALSE</span>, ...){</span>
+<span id="cb7-43"><a href="#cb7-43"></a>  </span>
+<span id="cb7-44"><a href="#cb7-44"></a>  <span class="co"># Todas as divisões da validacao cruzada</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a>  cv <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(dados, ...)</span>
+<span id="cb7-46"><a href="#cb7-46"></a>  </span>
+<span id="cb7-47"><a href="#cb7-47"></a>  hiper <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
+<span id="cb7-48"><a href="#cb7-48"></a>    treino <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">analysis</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Treinamento</span></span>
+<span id="cb7-49"><a href="#cb7-49"></a>    validacao <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">assessment</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Validacação</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a>    ajuste <span class="ot">&lt;-</span> <span class="fu">regressao_polinomial</span>(<span class="at">dados =</span> treino, <span class="at">grau =</span> grau)</span>
+<span id="cb7-51"><a href="#cb7-51"></a>    </span>
+<span id="cb7-52"><a href="#cb7-52"></a>    <span class="cf">if</span>(errado){</span>
+<span id="cb7-53"><a href="#cb7-53"></a>      df_treino <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(treino, <span class="at">grau =</span> grau)</span>
+<span id="cb7-54"><a href="#cb7-54"></a>      df_treino <span class="ot">&lt;-</span> df_treino <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_treino))</span>
+<span id="cb7-55"><a href="#cb7-55"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_treino, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
+<span id="cb7-56"><a href="#cb7-56"></a>    } <span class="cf">else</span> {</span>
+<span id="cb7-57"><a href="#cb7-57"></a>      df_validacao <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(validacao, <span class="at">grau =</span> grau)</span>
+<span id="cb7-58"><a href="#cb7-58"></a>      df_validacao <span class="ot">&lt;-</span> df_validacao <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_validacao))</span>
+<span id="cb7-59"><a href="#cb7-59"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_validacao, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
+<span id="cb7-60"><a href="#cb7-60"></a>    }</span>
+<span id="cb7-61"><a href="#cb7-61"></a>  }</span>
+<span id="cb7-62"><a href="#cb7-62"></a>  purrr<span class="sc">::</span><span class="fu">map_dbl</span>(<span class="at">.x =</span> <span class="fu">seq_along</span>(cv<span class="sc">$</span>splits), <span class="at">.f =</span> hiper) <span class="sc">|&gt;</span> </span>
+<span id="cb7-63"><a href="#cb7-63"></a>    <span class="fu">mean</span>()</span>
+<span id="cb7-64"><a href="#cb7-64"></a>}</span>
+<span id="cb7-65"><a href="#cb7-65"></a></span>
+<span id="cb7-66"><a href="#cb7-66"></a>plot_avaliacao <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">errado =</span> <span class="cn">FALSE</span>){</span>
+<span id="cb7-67"><a href="#cb7-67"></a>  <span class="co"># Testando iterativamente, vários valores de p:</span></span>
+<span id="cb7-68"><a href="#cb7-68"></a>  p <span class="ot">&lt;-</span> <span class="fu">seq</span>(1L<span class="sc">:</span>11L)</span>
+<span id="cb7-69"><a href="#cb7-69"></a>  risco <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dbl</span>(<span class="at">.x =</span> p, <span class="at">.f =</span> \(p) <span class="fu">validacao</span>(<span class="at">dados =</span> dados, <span class="at">grau =</span> p, <span class="at">errado =</span> errado))</span>
+<span id="cb7-70"><a href="#cb7-70"></a>  df_risco <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">p =</span> p, <span class="at">risco =</span> risco)</span>
+<span id="cb7-71"><a href="#cb7-71"></a>  </span>
+<span id="cb7-72"><a href="#cb7-72"></a>  <span class="co"># Plotando</span></span>
+<span id="cb7-73"><a href="#cb7-73"></a>  df_risco <span class="sc">|&gt;</span> </span>
+<span id="cb7-74"><a href="#cb7-74"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p, <span class="at">y =</span> risco, <span class="at">color =</span> risco)) <span class="sc">+</span></span>
+<span id="cb7-75"><a href="#cb7-75"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> p) <span class="sc">+</span></span>
+<span id="cb7-77"><a href="#cb7-77"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> p) <span class="sc">+</span></span>
+<span id="cb7-78"><a href="#cb7-78"></a>    <span class="fu">labs</span>(</span>
+<span id="cb7-79"><a href="#cb7-79"></a>      <span class="at">title =</span> <span class="st">"Valiando o risco estimado para diversos graus do polinômio"</span>,</span>
+<span id="cb7-80"><a href="#cb7-80"></a>      <span class="at">subtitle =</span> <span class="st">"EQM no conjunto de validação"</span></span>
+<span id="cb7-81"><a href="#cb7-81"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-82"><a href="#cb7-82"></a>    <span class="fu">theme</span>(</span>
+<span id="cb7-83"><a href="#cb7-83"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-84"><a href="#cb7-84"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb7-85"><a href="#cb7-85"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>), </span>
+<span id="cb7-86"><a href="#cb7-86"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb7-87"><a href="#cb7-87"></a>    )</span>
+<span id="cb7-88"><a href="#cb7-88"></a>}</span>
+<span id="cb7-89"><a href="#cb7-89"></a></span>
+<span id="cb7-90"><a href="#cb7-90"></a><span class="co"># Avaliacão errada versus correta</span></span>
+<span id="cb7-91"><a href="#cb7-91"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb7-92"><a href="#cb7-92"></a>grafico <span class="ot">&lt;-</span> </span>
+<span id="cb7-93"><a href="#cb7-93"></a>  <span class="fu">plot_avaliacao</span>(dados, <span class="at">errado =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb7-94"><a href="#cb7-94"></a>  <span class="fu">plot_avaliacao</span>(dados, <span class="at">errado =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-95"><a href="#cb7-95"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb7-96"><a href="#cb7-96"></a></span>
+<span id="cb7-97"><a href="#cb7-97"></a><span class="fu">ggsave</span>(grafico, <span class="at">file =</span> <span class="st">"imgs/avaliacao_risco.png"</span>, <span class="at">device =</span> <span class="st">"png"</span>, <span class="at">width =</span> <span class="dv">50</span>, <span class="at">height =</span> <span class="dv">20</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">limitsize =</span> F)</span>
+<span id="cb7-98"><a href="#cb7-98"></a></span>
+<span id="cb7-99"><a href="#cb7-99"></a>plot_bar <span class="ot">&lt;-</span> <span class="cf">function</span>(grau){</span>
+<span id="cb7-100"><a href="#cb7-100"></a>  ruim <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">TRUE</span>, <span class="at">grau =</span> grau)</span>
+<span id="cb7-101"><a href="#cb7-101"></a>  bom <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">FALSE</span>, <span class="at">grau =</span> grau)</span>
+<span id="cb7-102"><a href="#cb7-102"></a>  df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"Errado"</span>, <span class="st">"Certo"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="fu">log</span>(ruim), <span class="fu">log</span>(bom)))</span>
+<span id="cb7-103"><a href="#cb7-103"></a>  </span>
+<span id="cb7-104"><a href="#cb7-104"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb7-105"><a href="#cb7-105"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb7-106"><a href="#cb7-106"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb7-107"><a href="#cb7-107"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> y), <span class="at">vjust =</span> <span class="dv">0</span>)</span>
+<span id="cb7-108"><a href="#cb7-108"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+<img data-src="gifs/mr-bean-pivot.gif" class="r-stretch"></section>
 <section id="exercícios" class="slide level2">
 <h2><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> Exercícios</h2>
 <p><br></p>
@@ -1971,8 +2110,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>No R, a regressão lasso poderá ser feita usando a biblioteca <a href="https://cran.r-project.org/web/packages/glmnet/index.html">glmnet</a>, assim:</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 
@@ -1993,8 +2132,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>No R, também poderemos utilizar a biblioteca <a href="https://cran.r-project.org/web/packages/glmnet/index.html">glmnet</a>:</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>ajuste <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 
@@ -2005,10 +2144,173 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Nesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.</p>
 <p><span class="math display">(1-\alpha)\widehat{\beta}_{L_2,\lambda} + \alpha\widehat{\beta}_{L_1,\lambda},</span> em que <span class="math inline">0 \leq \alpha \leq1</span>. Em R, basta especificar para a função <code>glmnet</code> um valor de <span class="math inline">\alpha</span> diferente de 0 e 1.</p>
 <p><br></p>
-<p><img data-src="gifs/teclado-anime.gif" style="width:21.0%"></p>
 
-<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img data-src="gifs/teclado-anime.gif" style="width:21.0%" class="r-stretch"></section>
+<section id="exemplo-emq-ridge-lasso-e-elastic-net" class="slide level2">
+<h2>Exemplo: EMQ, Ridge, Lasso e Elastic Net</h2>
+<p><br></p>
+<p><span class="red">Exemplo</span>: Considere uma base de dados simulada, com <span class="math inline">n = 500</span> observações, de tal forma que</p>
+<p><span class="math display">Y = 3X_{1} - 2X_2 + X_3 + -3X_4 + X_5 + \sum_{i = 6}^{20}0X_i + \varepsilon,</span> em que <span class="math inline">\varepsilon \sim \text{Normal}(0, 0.5^2)</span> e <span class="math inline">X_i \sim \text{Normal}(0, 1)</span>, independentes, com <span class="math inline">i = 1, \cdots, 20</span>. Desejamos ajustar quatro modelos de regressão. Para o caso do Estimador de Mínimos Quadrados - EMQ e do modelo Ridge, que não tem seleção automática de variáveis, usaremos <strong>todas</strong> as variáveis. Desejamos avaliar o risco estimado de cada uma das regressões.</p>
+
+<img data-src="gifs/teclado-anime.gif" style="width:21.0%" class="r-stretch"></section>
+<section id="exemplo-emq-ridge-lasso-e-elastic-net-1" class="slide level2">
+<h2>Exemplo: EMQ, Ridge, Lasso e Elastic Net</h2>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Solução utilizando o tidymodels</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># Removendo possíveis conflitos de pacotes --------------------------------</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># Função para gerar os dados ----------------------------------------------</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>gerando_dados <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 300L){</span>
+<span id="cb10-12"><a href="#cb10-12"></a>  regressao <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> 5L)</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    y <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">*</span>x[1L] <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x[2L] <span class="sc">+</span> x[3L] <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x[4L] <span class="sc">+</span> x[5L] <span class="sc">+</span> <span class="fu">rnorm</span>(1L, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb10-16"><a href="#cb10-16"></a>      <span class="at">y =</span> y,</span>
+<span id="cb10-17"><a href="#cb10-17"></a>      <span class="at">x1 =</span> x[1L],</span>
+<span id="cb10-18"><a href="#cb10-18"></a>      <span class="at">x2 =</span> x[2L],</span>
+<span id="cb10-19"><a href="#cb10-19"></a>      <span class="at">x3 =</span> x[3L],</span>
+<span id="cb10-20"><a href="#cb10-20"></a>      <span class="at">x4 =</span> x[4L],</span>
+<span id="cb10-21"><a href="#cb10-21"></a>      <span class="at">x5 =</span> x[5L]</span>
+<span id="cb10-22"><a href="#cb10-22"></a>    )</span>
+<span id="cb10-23"><a href="#cb10-23"></a>  }</span>
+<span id="cb10-24"><a href="#cb10-24"></a>  dados <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> 1L<span class="sc">:</span>n, <span class="at">.f =</span> regressao) <span class="sc">|&gt;</span> </span>
+<span id="cb10-25"><a href="#cb10-25"></a>    purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span>
+<span id="cb10-26"><a href="#cb10-26"></a>  </span>
+<span id="cb10-27"><a href="#cb10-27"></a>  parte_esparsa <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, <span class="dv">15</span>)</span>
+<span id="cb10-28"><a href="#cb10-28"></a>  </span>
+<span id="cb10-29"><a href="#cb10-29"></a>  dados <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dados, parte_esparsa)</span>
+<span id="cb10-30"><a href="#cb10-30"></a>  <span class="fu">colnames</span>(dados) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"y"</span>, <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span><span class="fu">ncol</span>(dados)))</span>
+<span id="cb10-31"><a href="#cb10-31"></a>  <span class="fu">as_tibble</span>(dados)</span>
+<span id="cb10-32"><a href="#cb10-32"></a>}</span>
+<span id="cb10-33"><a href="#cb10-33"></a></span>
+<span id="cb10-34"><a href="#cb10-34"></a>dados <span class="ot">&lt;-</span> <span class="fu">gerando_dados</span>(<span class="at">n =</span> <span class="dv">500</span>)</span>
+<span id="cb10-35"><a href="#cb10-35"></a></span>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="co"># Divisão inicial da base -------------------------------------------------</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a>hod_out <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(dados, <span class="at">prop =</span> <span class="fl">0.7</span>)</span>
+<span id="cb10-38"><a href="#cb10-38"></a>treinamento <span class="ot">&lt;-</span> <span class="fu">training</span>(hod_out)</span>
+<span id="cb10-39"><a href="#cb10-39"></a>teste <span class="ot">&lt;-</span> <span class="fu">testing</span>(hod_out)</span>
+<span id="cb10-40"><a href="#cb10-40"></a></span>
+<span id="cb10-41"><a href="#cb10-41"></a><span class="co"># Setando o modelo (set engine) -------------------------------------------</span></span>
+<span id="cb10-42"><a href="#cb10-42"></a>modelo_eqm <span class="ot">&lt;-</span> </span>
+<span id="cb10-43"><a href="#cb10-43"></a>  <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="dv">0</span>, <span class="at">mixture =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-44"><a href="#cb10-44"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-45"><a href="#cb10-45"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb10-46"><a href="#cb10-46"></a>  </span>
+<span id="cb10-47"><a href="#cb10-47"></a>modelo_ridge <span class="ot">&lt;-</span> </span>
+<span id="cb10-48"><a href="#cb10-48"></a>  <span class="fu">linear_reg</span>(<span class="at">penalty =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-49"><a href="#cb10-49"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-50"><a href="#cb10-50"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb10-51"><a href="#cb10-51"></a></span>
+<span id="cb10-52"><a href="#cb10-52"></a>modelo_lasso <span class="ot">&lt;-</span> </span>
+<span id="cb10-53"><a href="#cb10-53"></a>  parsnip<span class="sc">::</span><span class="fu">linear_reg</span>(<span class="at">penalty =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-54"><a href="#cb10-54"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-55"><a href="#cb10-55"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb10-56"><a href="#cb10-56"></a>  </span>
+<span id="cb10-57"><a href="#cb10-57"></a>modelo_elastic <span class="ot">&lt;-</span> </span>
+<span id="cb10-58"><a href="#cb10-58"></a>  parsnip<span class="sc">::</span><span class="fu">linear_reg</span>(<span class="at">penalty =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), <span class="at">mixture =</span> tune<span class="sc">::</span><span class="fu">tune</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb10-59"><a href="#cb10-59"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-60"><a href="#cb10-60"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb10-61"><a href="#cb10-61"></a></span>
+<span id="cb10-62"><a href="#cb10-62"></a><span class="co"># Criando workflows -------------------------------------------------------</span></span>
+<span id="cb10-63"><a href="#cb10-63"></a>all_wf <span class="ot">&lt;-</span> </span>
+<span id="cb10-64"><a href="#cb10-64"></a>  <span class="fu">workflow_set</span>(</span>
+<span id="cb10-65"><a href="#cb10-65"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(y <span class="sc">~</span> . ),</span>
+<span id="cb10-66"><a href="#cb10-66"></a>    <span class="at">models =</span> <span class="fu">list</span>(<span class="at">eqm =</span> modelo_eqm, <span class="at">ridge =</span> modelo_ridge, <span class="at">lasso =</span> modelo_lasso, <span class="at">elastic =</span> modelo_elastic), </span>
+<span id="cb10-67"><a href="#cb10-67"></a>    <span class="at">cross =</span> <span class="cn">TRUE</span></span>
+<span id="cb10-68"><a href="#cb10-68"></a>  )</span>
+<span id="cb10-69"><a href="#cb10-69"></a></span>
+<span id="cb10-70"><a href="#cb10-70"></a><span class="co"># Validação cruzada -------------------------------------------------------</span></span>
+<span id="cb10-71"><a href="#cb10-71"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb10-72"><a href="#cb10-72"></a>cv <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(treinamento, <span class="at">v =</span> 5L)</span>
+<span id="cb10-73"><a href="#cb10-73"></a></span>
+<span id="cb10-74"><a href="#cb10-74"></a><span class="co"># Setando a métrica -------------------------------------------------------</span></span>
+<span id="cb10-75"><a href="#cb10-75"></a>metrica <span class="ot">&lt;-</span> yardstick<span class="sc">::</span><span class="fu">metric_set</span>(rmse)</span>
+<span id="cb10-76"><a href="#cb10-76"></a></span>
+<span id="cb10-77"><a href="#cb10-77"></a><span class="co"># Tunagem dos hiperparâmetros ---------------------------------------------</span></span>
+<span id="cb10-78"><a href="#cb10-78"></a><span class="co"># A semente (seed = 0) faz com que dentro da validação cruzada para cada modelo</span></span>
+<span id="cb10-79"><a href="#cb10-79"></a><span class="co"># a semente seja sempre a mesma.</span></span>
+<span id="cb10-80"><a href="#cb10-80"></a>tunagem <span class="ot">&lt;-</span> </span>
+<span id="cb10-81"><a href="#cb10-81"></a>  all_wf <span class="sc">|&gt;</span> </span>
+<span id="cb10-82"><a href="#cb10-82"></a>  <span class="fu">workflow_map</span>(</span>
+<span id="cb10-83"><a href="#cb10-83"></a>    <span class="at">seed =</span> <span class="dv">0</span>, </span>
+<span id="cb10-84"><a href="#cb10-84"></a>    <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-85"><a href="#cb10-85"></a>    <span class="at">resamples =</span> cv,</span>
+<span id="cb10-86"><a href="#cb10-86"></a>    <span class="at">grid =</span> <span class="dv">50</span>,</span>
+<span id="cb10-87"><a href="#cb10-87"></a>    <span class="at">metrics =</span> metrica</span>
+<span id="cb10-88"><a href="#cb10-88"></a>  )</span>
+<span id="cb10-89"><a href="#cb10-89"></a></span>
+<span id="cb10-90"><a href="#cb10-90"></a><span class="co"># Rank dos melhores modelos -----------------------------------------------</span></span>
+<span id="cb10-91"><a href="#cb10-91"></a>modelos_rank <span class="ot">&lt;-</span> tunagem <span class="sc">|&gt;</span> <span class="fu">rank_results</span>()</span>
+<span id="cb10-92"><a href="#cb10-92"></a></span>
+<span id="cb10-93"><a href="#cb10-93"></a>melhor_eqm <span class="ot">&lt;-</span> </span>
+<span id="cb10-94"><a href="#cb10-94"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-95"><a href="#cb10-95"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"formula_eqm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-96"><a href="#cb10-96"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb10-97"><a href="#cb10-97"></a></span>
+<span id="cb10-98"><a href="#cb10-98"></a>melhor_ridge <span class="ot">&lt;-</span> </span>
+<span id="cb10-99"><a href="#cb10-99"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-100"><a href="#cb10-100"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"formula_ridge"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-101"><a href="#cb10-101"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb10-102"><a href="#cb10-102"></a></span>
+<span id="cb10-103"><a href="#cb10-103"></a>melhor_lasso <span class="ot">&lt;-</span> </span>
+<span id="cb10-104"><a href="#cb10-104"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-105"><a href="#cb10-105"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"formula_lasso"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-106"><a href="#cb10-106"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb10-107"><a href="#cb10-107"></a></span>
+<span id="cb10-108"><a href="#cb10-108"></a>melhor_elastic <span class="ot">&lt;-</span> </span>
+<span id="cb10-109"><a href="#cb10-109"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-110"><a href="#cb10-110"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"formula_elastic"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-111"><a href="#cb10-111"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb10-112"><a href="#cb10-112"></a></span>
+<span id="cb10-113"><a href="#cb10-113"></a>finalizando_eqm <span class="ot">&lt;-</span> </span>
+<span id="cb10-114"><a href="#cb10-114"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-115"><a href="#cb10-115"></a>  <span class="fu">extract_workflow</span>(<span class="st">"formula_eqm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-116"><a href="#cb10-116"></a>  <span class="fu">finalize_workflow</span>(melhor_eqm) <span class="sc">|&gt;</span> </span>
+<span id="cb10-117"><a href="#cb10-117"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> hod_out)</span>
+<span id="cb10-118"><a href="#cb10-118"></a></span>
+<span id="cb10-119"><a href="#cb10-119"></a>finalizando_ridge <span class="ot">&lt;-</span> </span>
+<span id="cb10-120"><a href="#cb10-120"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-121"><a href="#cb10-121"></a>  <span class="fu">extract_workflow</span>(<span class="st">"formula_ridge"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-122"><a href="#cb10-122"></a>  <span class="fu">finalize_workflow</span>(melhor_ridge) <span class="sc">|&gt;</span> </span>
+<span id="cb10-123"><a href="#cb10-123"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> hod_out)</span>
+<span id="cb10-124"><a href="#cb10-124"></a></span>
+<span id="cb10-125"><a href="#cb10-125"></a>finalizando_lasso <span class="ot">&lt;-</span> </span>
+<span id="cb10-126"><a href="#cb10-126"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-127"><a href="#cb10-127"></a>  <span class="fu">extract_workflow</span>(<span class="st">"formula_lasso"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-128"><a href="#cb10-128"></a>  <span class="fu">finalize_workflow</span>(melhor_lasso) <span class="sc">|&gt;</span> </span>
+<span id="cb10-129"><a href="#cb10-129"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> hod_out)</span>
+<span id="cb10-130"><a href="#cb10-130"></a></span>
+<span id="cb10-131"><a href="#cb10-131"></a>finalizando_elastic <span class="ot">&lt;-</span> </span>
+<span id="cb10-132"><a href="#cb10-132"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb10-133"><a href="#cb10-133"></a>  <span class="fu">extract_workflow</span>(<span class="st">"formula_elastic"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-134"><a href="#cb10-134"></a>  <span class="fu">finalize_workflow</span>(melhor_elastic) <span class="sc">|&gt;</span> </span>
+<span id="cb10-135"><a href="#cb10-135"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> hod_out)</span>
+<span id="cb10-136"><a href="#cb10-136"></a></span>
+<span id="cb10-137"><a href="#cb10-137"></a><span class="co"># Visualizando as métricas</span></span>
+<span id="cb10-138"><a href="#cb10-138"></a>finalizando_eqm <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb10-139"><a href="#cb10-139"></a>finalizando_ridge <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb10-140"><a href="#cb10-140"></a>finalizando_lasso <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb10-141"><a href="#cb10-141"></a>finalizando_elastic <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb10-142"><a href="#cb10-142"></a></span>
+<span id="cb10-143"><a href="#cb10-143"></a><span class="co"># Visualizando predições:</span></span>
+<span id="cb10-144"><a href="#cb10-144"></a>finalizando_eqm <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span>
+<span id="cb10-145"><a href="#cb10-145"></a>finalizando_ridge <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span>
+<span id="cb10-146"><a href="#cb10-146"></a>finalizando_lasso <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span>
+<span id="cb10-147"><a href="#cb10-147"></a>finalizando_elastic <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>
