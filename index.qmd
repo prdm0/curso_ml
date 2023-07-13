@@ -1528,7 +1528,7 @@ Considere os textos:
 <br>
 
 | Textos          | disciplina | amo | aprendizagem | máquina | estatistica | adoro | UFPB |
-|---------|---------|---------|---------|---------|---------|---------|---------|
+|-----------------|------------|-----|--------------|---------|-------------|-------|------|
 | [Texto 1]{.red} | 1          | 1   | 0            | 0       | 0           | 0     | 0    |
 | [Texto 2]{.red} | 0          | 0   | 0            | 0       | 0           | 1     | 0    |
 | [Texto 3]{.red} | 0          | 0   | 1            | 1       | 0           | 0     | 0    |
@@ -1941,22 +1941,29 @@ hiperparâmetro que retornou o menor EQM no conjunto de validação.
 <br>
 
 ::: columns
-::: {.column width='50%'}
-O termo [validação]{.red} refere-se à parcela do conjunto de treinamento incial que dividimos em validação e treinamento, dentro de uma validação cruzada. 
+::: {.column width="50%"}
+O termo [validação]{.red} refere-se à parcela do conjunto de treinamento
+incial que dividimos em validação e treinamento, dentro de uma validação
+cruzada.
 
 <br>
 
-O conjunto [*Testing*]{.red} na segunda hierarquia da árvore ao lado, só usamos no final para avaliar o desempenho do modelo nesse conjunto.
+O conjunto [*Testing*]{.red} na segunda hierarquia da árvore ao lado, só
+usamos no final para avaliar o desempenho do modelo nesse conjunto.
 
 <br>
 
-Perceba que o conjunto de treinamento ([*Not Testing*]{.red}) é particionado em treinamento e validação. Poderíamos fazer uma única partição, mas o procedimento comumente utilizado é particionar entre [*Training*]{.red} e [*Validation*]{.red} uzando algum procedimento de validação cruzada.
-:::
-::: {.column width='50%'}
-![](imgs/validation-split.svg){fig-aling='center' width='64%'}
-:::
+Perceba que o conjunto de treinamento ([*Not Testing*]{.red}) é
+particionado em treinamento e validação. Poderíamos fazer uma única
+partição, mas o procedimento comumente utilizado é particionar entre
+[*Training*]{.red} e [*Validation*]{.red} uzando algum procedimento de
+validação cruzada.
 :::
 
+::: {.column width="50%"}
+![](imgs/validation-split.svg){fig-aling="center" width="64%"}
+:::
+:::
 
 ## $k$-fold cross-validation
 
@@ -2356,19 +2363,27 @@ alternativa.
 
 <br>
 
-Observe o dashboard interativo. Sabemos que para que tenhamos uma boa estimativa do risco preditivo, devemos utilizar novas observações. No dashboard é possível observar que a forma errada (usando o conjunto de treinamento para avaliar o risco), sugere que sempre será bom adicionar mais parâmetros ao modelo, levando a *overfitting*. Perceba que usando a forma correta (usando validação cruzada), o EQM (risco estimado) sugere que não podemos aumentar muito a quantidade de parâmetros.
+Observe o dashboard interativo. Sabemos que para que tenhamos uma boa
+estimativa do risco preditivo, devemos utilizar novas observações. No
+dashboard é possível observar que a forma errada (usando o conjunto de
+treinamento para avaliar o risco), sugere que sempre será bom adicionar
+mais parâmetros ao modelo, levando a *overfitting*. Perceba que usando a
+forma correta (usando validação cruzada), o EQM (risco estimado) sugere
+que não podemos aumentar muito a quantidade de parâmetros.
 
 <br>
 
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-avalia%C3%A7%C3%A3o-do-risco-preditivo" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
-
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
 <br>
 
-Abaixo você poderá acessar o código que soluciona o problema. O parâmetro `errado = FALSE` da função validação no código que segue, conduz a solução correta (usando a validação cruzada), que sempre você deverá considerar na prática.
+Abaixo você poderá acessar o código que soluciona o problema. O
+parâmetro `errado = FALSE` da função validação no código que segue,
+conduz a solução correta (usando a validação cruzada), que sempre você
+deverá considerar na prática.
 
 <br>
 
@@ -2486,8 +2501,8 @@ plot_bar <- function(grau){
     geom_text(aes(label = y), vjust = 0)
 }
 ```
-![](gifs/mr-bean-pivot.gif)
 
+![](gifs/mr-bean-pivot.gif)
 
 ## `r fontawesome::fa("book", "black")` Exercícios
 
@@ -2866,7 +2881,7 @@ primeira parte do modelo torna-se insignificante.
 
 ## Lasso
 
-<br>
+<br> <br>
 
 Quando $\lambda$ é grande, temos que
 
@@ -2975,19 +2990,24 @@ em que $0 \leq \alpha \leq1$. Em R, basta especificar para a função
 
 ## Exemplo: EMQ, Ridge, Lasso e Elastic Net
 
-<br> 
+<br>
 
-[Exemplo]{.red}: Considere uma base de dados simulada, com $n = 500$ observações, de tal forma que
+[Exemplo]{.red}: Considere uma base de dados simulada, com $n = 500$
+observações, de tal forma que
 
 $$Y = 3X_{1} - 2X_2 + X_3 + -3X_4 + X_5 + \sum_{i = 6}^{20}0X_i + \varepsilon,$$
-em que $\varepsilon \sim \text{Normal}(0, 0.5^2)$ e $X_i \sim \text{Normal}(0, 1)$, independentes, com $i = 1, \cdots, 20$. Desejamos ajustar quatro modelos de regressão. Para o caso do Estimador de Mínimos Quadrados - EMQ e do modelo Ridge, que não tem seleção automática de variáveis, usaremos **todas** as variáveis. Desejamos avaliar o risco estimado de cada uma das regressões.
+em que $\varepsilon \sim \text{Normal}(0, 0.5^2)$ e
+$X_i \sim \text{Normal}(0, 1)$, independentes, com $i = 1, \cdots, 20$.
+Desejamos ajustar quatro modelos de regressão. Para o caso do Estimador
+de Mínimos Quadrados - EMQ e do modelo Ridge, que não tem seleção
+automática de variáveis, usaremos **todas** as variáveis. Desejamos
+avaliar o risco estimado de cada uma das regressões.
 
 ![](gifs/teclado-anime.gif){width="21%"}
 
 ## Exemplo: EMQ, Ridge, Lasso e Elastic Net
 
 <br>
-
 
 ```{r}
 #| code-fold: true
@@ -3141,3 +3161,146 @@ finalizando_ridge |> collect_predictions()
 finalizando_lasso |> collect_predictions()
 finalizando_elastic |> collect_predictions()
 ```
+
+## `r fontawesome::fa("book", "black")` Exercícios
+
+<br> [Exercício]{.red}: Utilizando os dados de vinho vermelho🍷,
+disponíveis
+[aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
+faça uma pequena análise exploratória dos dados. No
+[link](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
+do Kaggle você consegue uma explicação sobre o que significa cada uma
+das variáveis.
+
+![](gifs/mr-bean-test.gif){width="211"}
+
+## `r fontawesome::fa("book", "black")` Exercícios
+
+<br>
+
+[Exercício]{.red}: Utilizando os dados de vinho vermelho🍷, disponíveis
+[aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
+obtenha o melhor modelo de regressão linar para modelar a qualidade do
+vinho, considerando:
+
+<br>
+
+1.  $g_1$ - Método dos mínimos quadrados;
+2.  $g_2$ - Regressão ridge;
+3.  $g_3$ - Regressao lasso;
+4.  $g_4$ - Elastic Net.
+
+<br>
+
+Você deverá selecionar o melhor modelo de cada uma das classes de
+modelos de regressão e construir uma tabela com o risco estimado
+$\widehat{R}(g_i),\,\, i = 1, \cdots, 4$, em que aqui $g_i$ representa o
+modelo geral não estimado. Ao fim, construa quatro gráficos mostrando o
+ajuste de cada um dos modelos.
+
+<br>
+
+[Exercício]{.red}: Se você utilizou o
+[tidymodels](https://www.tidymodels.org/) para resolver o exercício
+anterior, rafaça usando a biblioteca
+[glmnet](https://cran.r-project.org/web/packages/glmnet/index.html).
+Caso contrário, resolva-o utilizando o
+[tidymodels](https://www.tidymodels.org/).
+
+## `r fontawesome::fa("book", "black")` Exercícios
+
+<br>
+
+[Exercício]{.red}: Considere agora o conjunto de dados de despesas
+médicas, disponível
+[aqui](https://www.kaggle.com/datasets/mirichoi0218/insurance), refaça o
+mesmo exercício dos dados de vinho vermelho, em que aqui, o objetivo é
+prever a variável `charges`. Perceba que algumas variáveis são
+qualitativas, e portão, você deverá transformá-las em [*dummy*]{.red}.
+Indique os melhores cenários dos quatro modelos e informe qual modelo
+você utilizaria. Explique!
+
+<br>
+
+![](gifs/bean_simple.gif)
+
+## Métodos não-paramétricos
+
+<br>
+
+Métodos paramétricos podem impor muitas limitações na solução de um problema de regressão, i.e., em problemas que desejamos estimar a função de regressão $r({\bf x})$. Por exemplo, nem sempre o melhor estimador linear é um bom estimador para $r({\bf x})$.
+
+<br>
+
+Métodos paramétricos são muitas vezes simplistas e restritivos, em que normalmente abrimos mãos para se ter um estimador um pouco mais viesado, em detrimento da diminuição da variância do modelo. Por exemplo, nas regressões penalizadas que vimos anteriormente (**ridge**, **lasso** e **elastic-net**), penalizamos modelos com muitas covariáveis o que naturalmente aumentará o viés, na maioria das vezes.
+
+<br>
+
+![](gifs/hum.gif)
+
+## Métodos não-paramétricos
+
+<br>
+
+Em situações em que temos muitos dados ($n$ grande), os modelos não-paramétricos possuem, em geral, boa peformance, uma vez que apesar de que nessa classe de modelos existir um aumento da variância, porém, seguida de uma redução de viés, a variância do modelo não aumenta muito.
+
+<br>
+
+De um lado, nos modelos de regressão que vimos até o momento, introduzimos uma penalização para diminuir a variância do modelo frente ao método dos mínimos quadrados (quando não usamos penalização) em troca de um aumento no víes. Aqui, em modelos não paramétricos, desejamos fazer a troca oposta, i.e., diminuir o viés, em troca de um ganho na variância no modelo.
+
+<br>
+
+Qualquer abordagem paramétrica trás consigo a possibilidade de que a forma funcional $g$ para estimar $f$ seja muito diferente da verdadeira, claro, se o modelo resultante não se ajustar bem aos dados, isto é $\widehat{g}$ não tem boa capacidade preditiva, muito embora, também é possível que tenhamos $\widehat{g}$ com boa capacidade preditiva, porém, não represente a estrutura real de $f$ (sempre desconhecida). 
+
+## Métodos não-paramétricos
+
+<br>
+<br>
+
+Isso não é regra, porém ajuda a entender um pouco o dilema entre essas classes de modelos (paramétricos e não-paramétricos).
+
+<br>
+
+![](imgs/vies_variancia_nao_parametrico.png){fig-aling='center'}
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Também chamado de [*$k$-nearest neighbours* - KNN]{.red}, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:
+
+<br>
+
+1 - Benedetti, J. K. (1977). On the nonparametric estimation of regression functions. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;
+
+2 - Stone, C. J. (1977). Consistent nonparametric regression. The Annals of Statistics, 595–
+620.
+
+<br>
+
+A ideia do método é estimar a função de regressão $r({\bf x})$, para um dado ${\bf x}$ com base nas respostas $Y$ dos $k$-vizinhos mais próximos de ${\bf x}$. 
+
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Formalmente, temos que
+
+$$g({\bf x^*}) = \frac{1}{k}\sum_{i \in \mathcal{N}_{\bf x^*}}y_i,$$
+em que $\mathcal{N}_{\bf x}$ é o conjunto índices das $k$ observações mais próximas de ${\bf x}$, i.e,
+
+$$\mathcal{N}_{\bf x^*} = \{i \in \{1, \cdots, n\}\, : \, d({\bf x}_i, {\bf x^*}) \leq d_{\bf x^*}^k\},$$
+em que $d_{\bf x^*}^k$ é a distância do $k$-ésimo vizinho mais próximo de $\bf{x^*}$ em $\bf{x}$. Portanto, o valor da regressão no ponto ${\bf x^*},$ i.e., o valor de $r({\bf x^*}) = \mathbb{E}(Y|{\bf X} = {\bf x^*})$ é estimado pela média de $Y_{N_{\bf x^*}}$. Ou seja, estimamos por:
+
+$$\overline{Y}_{N_{\bf x^*}} = \frac{1}{k} \sum_{i \in \mathcal{N}_{\bf x^*}}y_i.$$
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+<!-- http://leg.ufpr.br/~lucambio/MSM/MSM03.html -->
+Para determinar $d_{\bf x^*}^k$, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:
+
+1. Distância Euclidiana ou distância $L_2$: $d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}$;
+2. Distância de Manhattan, City Block ou distância $L_1$: $d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}$;
+2. Distância de Mahalanobis: $d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}$
