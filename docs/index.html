@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-df232a61a92b73d9e31a" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-df232a61a92b73d9e31a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e3ec62fbfe8218c1aafb" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e3ec62fbfe8218c1aafb">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2538,6 +2538,15 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="nadaraya-watson-1" class="slide level2">
 <h2>Nadaraya-Watson</h2>
 <p><br></p>
+<p>Temos que <span class="math inline">w_i({\bf x})</span> é definido por:</p>
+<p><span class="math display">w_i({\bf x}) = \frac{K({\bf x}, {\bf x}_i)}{\sum_{j = 1}^n K({\bf x}, {\bf x}_j)},</span> em que <span class="math inline">K({\bf x}, {\bf x}_j)</span> é um kernel de suavização usado para medir a similaridade entre as observações. Escolhas que são populares para <span class="math inline">K({\bf x}, {\bf x}_j)</span>, são:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><span class="red">Kernel uniforme</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
+<li class="fragment"><span class="red">Kernel gaussiano</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}</span>;</li>
+<li class="fragment"><span class="red">Kernel triangular</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
+<li class="fragment"><span class="red">Kernel de Epanechnikov</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
+</ol>
 
 
 <img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">

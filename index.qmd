@@ -3496,3 +3496,15 @@ em que $w_i({\bf x})$ é o peso atribuído à $i$-ésima observação, medindo a
 ## Nadaraya-Watson
 
 <br>
+
+Temos que $w_i({\bf x})$ é definido por:
+
+$$w_i({\bf x}) = \frac{K({\bf x}, {\bf x}_i)}{\sum_{j = 1}^n K({\bf x}, {\bf x}_j)},$$
+em que $K({\bf x}, {\bf x}_j)$ é um kernel de suavização usado para medir a similaridade entre as observações. Escolhas que são populares para $K({\bf x}, {\bf x}_j)$, são:
+
+<br>
+
+1. [Kernel uniforme]{.red}: $K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
+2. [Kernel gaussiano]{.red}: $K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}$;
+3. [Kernel triangular]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
+4. [Kernel de Epanechnikov]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;

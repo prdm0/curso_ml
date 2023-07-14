@@ -1138,6 +1138,6 @@
     "href": "index.html#nadaraya-watson-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Nadaraya-Watson",
-    "text": "Nadaraya-Watson\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Nadaraya-Watson\n\nTemos que w_i({\\bf x}) é definido por:\nw_i({\\bf x}) = \\frac{K({\\bf x}, {\\bf x}_i)}{\\sum_{j = 1}^n K({\\bf x}, {\\bf x}_j)}, em que K({\\bf x}, {\\bf x}_j) é um kernel de suavização usado para medir a similaridade entre as observações. Escolhas que são populares para K({\\bf x}, {\\bf x}_j), são:\n\n\nKernel uniforme: K({\\bf x}, {\\bf x}_i) = \\mathbb{I}(d({\\bf x}, {\\bf x}_i) \\leq h);\nKernel gaussiano: K({\\bf x}, {\\bf x}_i) = (\\sqrt{2\\pi h^2})^{-1}\\exp\\left\\{ -\\frac{d^2({\\bf x}, {\\bf x}_i)}{2h^2}\\right\\};\nKernel triangular: K({\\bf x}, {\\bf x}_i) = (1 - d({\\bf x}, {\\bf x}_i)/h)\\mathbb{I}(d({\\bf x}, {\\bf x}_i) \\leq h);\nKernel de Epanechnikov: K({\\bf x}, {\\bf x}_i) = (1 - d^2({\\bf x}, {\\bf x}_i)/h^2)\\mathbb{I}(d({\\bf x}, {\\bf x}_i) \\leq h);\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
