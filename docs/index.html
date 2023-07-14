@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-63b54d1e0d3e73a05610" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-63b54d1e0d3e73a05610">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d6af5de94beaac1c5ed5" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d6af5de94beaac1c5ed5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2581,11 +2581,79 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Nadaraya-Watson</h2>
 <p><br> A imagem abaixo utiliza o kernel gaussiano:</p>
 <p><br></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="imgs/nadaraya_watson.png"></p>
-</figure>
+
+<img data-src="imgs/nadaraya_watson.png" class="r-stretch quarto-figure-center"></section>
+<section id="nadaraya-watson-6" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Solução do exempĺo de Nadaraya Watson</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(glue)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co"># Lendo dados</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb12-15"><a href="#cb12-15"></a></span>
+<span id="cb12-16"><a href="#cb12-16"></a>dados <span class="ot">&lt;-</span> </span>
+<span id="cb12-17"><a href="#cb12-17"></a>  dados_expectativa_renda <span class="sc">|&gt;</span> </span>
+<span id="cb12-18"><a href="#cb12-18"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName) <span class="sc">|&gt;</span> </span>
+<span id="cb12-19"><a href="#cb12-19"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">y =</span> LifeExpectancy, <span class="at">x =</span> GDPercapita)</span>
+<span id="cb12-20"><a href="#cb12-20"></a></span>
+<span id="cb12-21"><a href="#cb12-21"></a>nadaraya_watson_exp_pip <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">h =</span> <span class="dv">1</span>, ...){</span>
+<span id="cb12-22"><a href="#cb12-22"></a>  <span class="co"># Criando receita</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a>  receita <span class="ot">&lt;-</span> </span>
+<span id="cb12-24"><a href="#cb12-24"></a>    <span class="fu">recipe</span>(y <span class="sc">~</span> x, <span class="at">data =</span> dados) <span class="sc">|&gt;</span> </span>
+<span id="cb12-25"><a href="#cb12-25"></a>    <span class="fu">step_normalize</span>()</span>
+<span id="cb12-26"><a href="#cb12-26"></a>  </span>
+<span id="cb12-27"><a href="#cb12-27"></a>  <span class="co"># Definindo o modelo</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a>  modelo_knn <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(<span class="at">dist_power =</span> h, ...) <span class="sc">|&gt;</span> </span>
+<span id="cb12-29"><a href="#cb12-29"></a>    <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-30"><a href="#cb12-30"></a>    <span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb12-31"><a href="#cb12-31"></a>  </span>
+<span id="cb12-32"><a href="#cb12-32"></a>  <span class="co"># Workflow</span></span>
+<span id="cb12-33"><a href="#cb12-33"></a>  ajuste_final <span class="ot">&lt;-</span> </span>
+<span id="cb12-34"><a href="#cb12-34"></a>    <span class="fu">workflow</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-35"><a href="#cb12-35"></a>    <span class="fu">add_model</span>(modelo_knn) <span class="sc">|&gt;</span> </span>
+<span id="cb12-36"><a href="#cb12-36"></a>    <span class="fu">add_recipe</span>(receita) <span class="sc">|&gt;</span> </span>
+<span id="cb12-37"><a href="#cb12-37"></a>    <span class="fu">fit</span>(<span class="at">data =</span> dados)</span>
+<span id="cb12-38"><a href="#cb12-38"></a>  </span>
+<span id="cb12-39"><a href="#cb12-39"></a>  <span class="co"># Retornando previsoes</span></span>
+<span id="cb12-40"><a href="#cb12-40"></a>  y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste_final, <span class="at">new_data =</span> dados)</span>
+<span id="cb12-41"><a href="#cb12-41"></a>  </span>
+<span id="cb12-42"><a href="#cb12-42"></a>  dados <span class="ot">&lt;-</span> </span>
+<span id="cb12-43"><a href="#cb12-43"></a>    dados <span class="sc">|&gt;</span> </span>
+<span id="cb12-44"><a href="#cb12-44"></a>    <span class="fu">mutate</span>(<span class="at">y_chapeu =</span> y_chapeu<span class="sc">$</span>.pred)</span>
+<span id="cb12-45"><a href="#cb12-45"></a>  </span>
+<span id="cb12-46"><a href="#cb12-46"></a>  dados <span class="sc">|&gt;</span> </span>
+<span id="cb12-47"><a href="#cb12-47"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-48"><a href="#cb12-48"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb12-49"><a href="#cb12-49"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb12-50"><a href="#cb12-50"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Nadaraya-Watson"</span>, <span class="at">subtitle =</span> <span class="fu">glue</span>(<span class="st">"h = {h}"</span>)) <span class="sc">+</span></span>
+<span id="cb12-51"><a href="#cb12-51"></a>    <span class="fu">theme</span>(</span>
+<span id="cb12-52"><a href="#cb12-52"></a>      <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb12-53"><a href="#cb12-53"></a>    )</span>
+<span id="cb12-54"><a href="#cb12-54"></a>}</span>
+<span id="cb12-55"><a href="#cb12-55"></a></span>
+<span id="cb12-56"><a href="#cb12-56"></a>p1 <span class="ot">&lt;-</span> <span class="fu">nadaraya_watson_exp_pip</span>(dados, <span class="at">h =</span> <span class="dv">1</span>, <span class="at">weight_func =</span> <span class="st">"gaussian"</span>)</span>
+<span id="cb12-57"><a href="#cb12-57"></a>p2 <span class="ot">&lt;-</span> <span class="fu">nadaraya_watson_exp_pip</span>(dados, <span class="at">h =</span> <span class="dv">1000</span>, <span class="at">weight_func =</span> <span class="st">"gaussian"</span>)</span>
+<span id="cb12-58"><a href="#cb12-58"></a></span>
+<span id="cb12-59"><a href="#cb12-59"></a>p <span class="ot">&lt;-</span> p1 <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb12-60"><a href="#cb12-60"></a></span>
+<span id="cb12-61"><a href="#cb12-61"></a><span class="fu">ggsave</span>(p, <span class="at">file =</span> <span class="st">"imgs/nadaraya_watson.png"</span>, <span class="at">width =</span> <span class="dv">30</span>, <span class="at">height =</span> <span class="dv">15</span>, <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<p><br></p>
+<p><img data-src="gifs/side-eyeing-chloe-chloe.gif"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">
