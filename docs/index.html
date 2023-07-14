@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5249b6b403127b06f556" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-5249b6b403127b06f556">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-df232a61a92b73d9e31a" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-df232a61a92b73d9e31a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2404,7 +2404,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.</p>
 <p><br></p>
-<p>É importante perceber que <strong>o método KNN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos.</p>
+<p>É importante perceber que <strong>o método KNN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O KNN não possui coeficientes para interpretar. Diferentemente da regressão linear, o KNN é um pouco mais “<em>black box</em>”.</p>
 <p><br></p>
 
 <img data-src="gifs/giphy.gif" class="r-stretch"></section>
@@ -2500,10 +2500,47 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </details>
 </div>
 <p><br></p>
-<p><img data-src="gifs/chapulin-colorado-no.gif" style="width:25.0%"></p>
 
-<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img data-src="gifs/chapulin-colorado-no.gif" style="width:25.0%" class="r-stretch"></section>
+<section id="k-vizinhos-mais-próximo-próximos-8" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br></p>
+<p><strong>Algumas limitações do KNN são</strong>:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><p>É totalmente dependente do conjunto de dados para fazer novas predições;</p></li>
+<li class="fragment"><p>Para novas observações que são fora dos limites dos dados de treinamento, as predições do KNN tendem a serem imprecisas;</p></li>
+<li class="fragment"><p>Pode ser custoso para uma grande base de dados;</p></li>
+<li class="fragment"><p>O cálculo de distâncias pode sofrer com a chamada “maldição da dimensionalidade”, em que a depender da métrica de distância utilizada, tudo fica muito distante.</p></li>
+</ol>
+<p><br></p>
+<p><strong>Algumas vantagens são</strong>:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><p>É um método simples de ser implementado;</p></li>
+<li class="fragment"><p>É muito utilizado para imputação de observações faltantes;</p></li>
+<li class="fragment"><p>É comumente utilizado, por conta de sua simplicidade, em explorações iniciais.</p></li>
+</ol>
+</section>
+<section id="nadaraya-watson" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+<p>Uma variação do método KNN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><p>Nadaraya, E. A. (1964). <strong>On estimating regression</strong>. Theory of Probability &amp; Its Applications, 9(1), 141–142</p></li>
+<li class="fragment"><p>Watson, G. S. (1964). <strong>Smooth regression analysis</strong>. Sankhya: The Indian Journal of Statistics, Series A, 359–372.</p></li>
+</ol>
+<p><br></p>
+<p>Esse método também é chamado de estimador <span class="math inline">k</span>-vizinhos ponderados (KNN ponderado), uma vez que a estimação da função de regressão em um dado ponto <span class="math inline">{\bf x}</span> utiliza de médias ponderadas das observações do conjunto de treinamento:</p>
+<p><span class="math display">g({\bf x}) = \sum_{i = 1}^n w_i({\bf x})y_i,</span> em que <span class="math inline">w_i({\bf x})</span> é o peso atribuído à <span class="math inline">i</span>-ésima observação, medindo a similaridade de <span class="math inline">{\bf x}_i</span> à <span class="math inline">{\bf x}</span>.</p>
+</section>
+<section id="nadaraya-watson-1" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+
+
+<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>

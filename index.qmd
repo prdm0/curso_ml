@@ -3327,7 +3327,7 @@ Você poderá utilizar qualquer outra medida de distância além das que foram c
 
 <br>
 
-É importante perceber que **o método KNN não faz uma "compressão" dos dados** como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de $Y$, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$ deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos.
+É importante perceber que **o método KNN não faz uma "compressão" dos dados** como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de $Y$, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$ deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O KNN não possui coeficientes para interpretar. Diferentemente da regressão linear, o KNN é um pouco mais "*black box*".
 
 <br>
 
@@ -3444,3 +3444,55 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 <br>
 
 ![](gifs/chapulin-colorado-no.gif){width='25%'}
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+**Algumas limitações do KNN são**:
+
+<br>
+
+1. É totalmente dependente do conjunto de dados para fazer novas predições;
+
+2. Para novas observações que são fora dos limites dos dados de treinamento, as predições do KNN tendem a serem imprecisas;
+
+3. Pode ser custoso para uma grande base de dados;
+
+4. O cálculo de distâncias pode sofrer com a chamada "maldição da dimensionalidade", em que a depender da métrica de distância utilizada, tudo fica muito distante.
+
+<br>
+
+**Algumas vantagens são**:
+
+<br>
+
+1. É um método simples de ser implementado;
+
+2. É muito utilizado para imputação de observações faltantes;
+
+3. É comumente utilizado, por conta de sua simplicidade, em explorações iniciais.
+
+
+## Nadaraya-Watson
+
+<br>
+
+Uma variação do método KNN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:
+
+<br>
+
+1. Nadaraya, E. A. (1964). **On estimating regression**. Theory of Probability & Its Applications, 9(1), 141–142
+
+2. Watson, G. S. (1964). **Smooth regression analysis**. Sankhya: The Indian Journal of Statistics, Series A, 359–372.
+
+<br>
+
+Esse método também é chamado de estimador $k$-vizinhos ponderados (KNN ponderado), uma vez que a estimação da função de regressão em um dado ponto ${\bf x}$ utiliza de médias ponderadas das observações do conjunto de treinamento:
+
+$$g({\bf x}) = \sum_{i = 1}^n w_i({\bf x})y_i,$$
+em que $w_i({\bf x})$ é o peso atribuído à $i$-ésima observação, medindo a similaridade de ${\bf x}_i$ à ${\bf x}$.
+
+## Nadaraya-Watson
+
+<br>
