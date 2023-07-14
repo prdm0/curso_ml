@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-13">
+  <meta name="dcterms.date" content="2023-07-14">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-13</p>
+  <p class="date">2023-07-14</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5c6a2bcd78e24c8bd6df" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-5c6a2bcd78e24c8bd6df">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5249b6b403127b06f556" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-5249b6b403127b06f556">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2367,8 +2367,9 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Também chamado de <span class="red"><em><span class="math inline">k</span>-nearest neighbours</em> - KNN</span>, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:</p>
 <p><br></p>
-<p>1 - Benedetti, J. K. (1977). On the nonparametric estimation of regression functions. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;</p>
-<p>2 - Stone, C. J. (1977). Consistent nonparametric regression. The Annals of Statistics, 595– 620.</p>
+<p>1 - Benedetti, J. K. (1977). <strong>On the nonparametric estimation of regression functions</strong>. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;</p>
+<p><br></p>
+<p>2 - Stone, C. J. (1977). <strong>Consistent nonparametric regression</strong>. The Annals of Statistics, 595– 620.</p>
 <p><br></p>
 <p>A ideia do método é estimar a função de regressão <span class="math inline">r({\bf x})</span>, para um dado <span class="math inline">{\bf x}</span> com base nas respostas <span class="math inline">Y</span> dos <span class="math inline">k</span>-vizinhos mais próximos de <span class="math inline">{\bf x}</span>.</p>
 </section>
@@ -2382,16 +2383,127 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </section>
 <section id="k-vizinhos-mais-próximo-próximos-2" class="slide level2">
 <h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br> <!-- http://leg.ufpr.br/~lucambio/MSM/MSM03.html --> Para determinar <span class="math inline">d_{\bf x^*}^k</span>, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:</p>
 <p><br></p>
-<p>Para determinar <span class="math inline">d_{\bf x^*}^k</span>, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:</p>
 <ol type="1">
-<li class="fragment">Distância Euclidiana ou distância <span class="math inline">L_2</span>: <span class="math inline">d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}</span>;</li>
-<li class="fragment">Distância de Manhattan, City Block ou distância <span class="math inline">L_1</span>: <span class="math inline">d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}</span>;</li>
-<li class="fragment">Distância de Mahalanobis: <span class="math inline">d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}</span></li>
+<li class="fragment"><span class="red">Distância Euclidiana</span> ou distância <span class="math inline">L_2</span>: <span class="math inline">d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}</span>;</li>
 </ol>
+<p><br></p>
+<ol start="2" type="1">
+<li class="fragment"><span class="red">Distância de Manhattan</span>, City Block ou distância <span class="math inline">L_1</span>: <span class="math inline">d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}</span>;</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li class="fragment"><span class="red">Distância de Mahalanobis</span>: <span class="math inline">d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}</span>, em que <span class="math inline">S</span> é a matriz de covariância, em que na diagonal princial temos as variâncias e fora dela as covariâncias entre os pontos. Lembre-se que se <span class="math inline">x</span> e <span class="math inline">y</span> são vetores de dados quaisquer, a interdependência linear entre eles poderá ser estimada como:</li>
+</ol>
+<p><br></p>
+<p><span class="math display">\mathrm{cov}(x, y) = \frac{1}{n-1}\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y}).</span></p>
+</section>
+<section id="k-vizinhos-mais-próximo-próximos-3" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br></p>
+<p>Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.</p>
+<p><br></p>
+<p>É importante perceber que <strong>o método KNN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos.</p>
+<p><br></p>
 
+<img data-src="gifs/giphy.gif" class="r-stretch"></section>
+<section id="k-vizinhos-mais-próximo-próximos-4" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br> O valor da constante <span class="math inline">k</span> é um hiperparâmetro do KNN e deverá ser obtido por validação cruzada. Perceba que se <span class="math inline">k = n</span> temos um modelo muito viesado, porém com variância pequena. Isso, porquê para <span class="math inline">k = n</span> basicamente iremos tirar uma média dos dados. Para <span class="math inline">k = 1</span>, teremos um <em>overfitting</em>, uma vez que o estimador irá interpolar os dados.</p>
+<p><br> <span class="red">Exemplo</span>: Considere novamente o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. Utilizando o <a href="https://www.tidymodels.org/">tidymodels</a>, vamos construir uma fução que retorne um gráfico com as estimativas do KNN. A função receberá como argumentos o conjunto de dados e o valor de <span class="math inline">k</span>. Você também poderia utilizar outras bibliotecas, como por exemplo a <a href="https://cran.r-project.org/web/packages/FNN/index.html">FNN</a>, ou a <a href="https://github.com/KlausVigo/kknn">KKNN</a>, esta útlima é a que é utilizada internamente na biblioteca <a href="https://parsnip.tidymodels.org/">parsnip</a> do <a href="https://www.tidymodels.org/">tidymodels</a>.</p>
+<p><br></p>
 
-<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<img data-src="imgs/parsnip.png" class="r-stretch"></section>
+<section id="k-vizinhos-mais-próximo-próximos-5" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br></p>
+<p>Abrindo apenas um parêntese, o <a href="https://www.tidymodels.org/">tidymodels</a> refere-se a um conjunto de pacotes que são úteis para o tratamento, treinamento, tunagem e avaliação de modelos de aprendizagem de máquina, em que o <a href="https://parsnip.tidymodels.org/">parsnip</a> implementa as <em>engines</em> (algoritmos/motores) que iremos utilizar para treinar um modelo. Na verdade, os algoritmos estão implementados em pacotes de terceiros e não precisamente no <a href="https://parsnip.tidymodels.org/">parsnip</a>. Porém, o <a href="https://parsnip.tidymodels.org/">parsnip</a> unifica a sintaxe de diversos algoritmos implementados em pacotes separados.</p>
+<p><br></p>
+
+<img data-src="gifs/thumbs-up-nod.gif" class="r-stretch"></section>
+<section id="k-vizinhos-mais-próximo-próximos-6" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br></p>
+<p>Observe que na imagem abaixo, a Figura <span class="red">A</span>, quando <span class="math inline">k=1</span>, percebemos initidamente que houve <em>overfitting</em>, i.e., há uma interpolação dos dados. Já na Figura <span class="red">D</span> temos um modelo com variância menor, porém, este é muito simplista, o que sugere um alto viés.</p>
+<p><br></p>
+
+<img data-src="imgs/knn_plot.png" class="r-stretch quarto-figure-center"></section>
+<section id="k-vizinhos-mais-próximo-próximos-7" class="slide level2">
+<h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
+<p><br></p>
+<p>Estude o código! Ele fornece a solução para o exemplo.</p>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Solução pelo método knn do exemplo anterior</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(glue)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># Lendo dados</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb11-14"><a href="#cb11-14"></a></span>
+<span id="cb11-15"><a href="#cb11-15"></a>dados <span class="ot">&lt;-</span> </span>
+<span id="cb11-16"><a href="#cb11-16"></a>  dados_expectativa_renda <span class="sc">|&gt;</span> </span>
+<span id="cb11-17"><a href="#cb11-17"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName) <span class="sc">|&gt;</span> </span>
+<span id="cb11-18"><a href="#cb11-18"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">y =</span> LifeExpectancy, <span class="at">x =</span> GDPercapita)</span>
+<span id="cb11-19"><a href="#cb11-19"></a></span>
+<span id="cb11-20"><a href="#cb11-20"></a>knn_exp_pip <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">k =</span> 1L){</span>
+<span id="cb11-21"><a href="#cb11-21"></a>  <span class="co"># Criando receita</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>  receita <span class="ot">&lt;-</span> <span class="fu">recipe</span>(y <span class="sc">~</span> x, <span class="at">data =</span> dados)</span>
+<span id="cb11-23"><a href="#cb11-23"></a>  </span>
+<span id="cb11-24"><a href="#cb11-24"></a>  <span class="co"># Definindo o modelo</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a>  modelo_knn <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(<span class="at">neighbors =</span> k) <span class="sc">|&gt;</span> </span>
+<span id="cb11-26"><a href="#cb11-26"></a>    <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-27"><a href="#cb11-27"></a>    <span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb11-28"><a href="#cb11-28"></a>  </span>
+<span id="cb11-29"><a href="#cb11-29"></a>  <span class="co"># Workflow</span></span>
+<span id="cb11-30"><a href="#cb11-30"></a>  ajuste_final <span class="ot">&lt;-</span> </span>
+<span id="cb11-31"><a href="#cb11-31"></a>    <span class="fu">workflow</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-32"><a href="#cb11-32"></a>    <span class="fu">add_model</span>(modelo_knn) <span class="sc">|&gt;</span> </span>
+<span id="cb11-33"><a href="#cb11-33"></a>    <span class="fu">add_recipe</span>(receita) <span class="sc">|&gt;</span> </span>
+<span id="cb11-34"><a href="#cb11-34"></a>    <span class="fu">fit</span>(<span class="at">data =</span> dados)</span>
+<span id="cb11-35"><a href="#cb11-35"></a>  </span>
+<span id="cb11-36"><a href="#cb11-36"></a>  <span class="co"># Retornando previsoes</span></span>
+<span id="cb11-37"><a href="#cb11-37"></a>  y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste_final, <span class="at">new_data =</span> dados)</span>
+<span id="cb11-38"><a href="#cb11-38"></a>  </span>
+<span id="cb11-39"><a href="#cb11-39"></a>  dados <span class="ot">&lt;-</span> </span>
+<span id="cb11-40"><a href="#cb11-40"></a>    dados <span class="sc">|&gt;</span> </span>
+<span id="cb11-41"><a href="#cb11-41"></a>    <span class="fu">mutate</span>(<span class="at">y_chapeu =</span> y_chapeu<span class="sc">$</span>.pred)</span>
+<span id="cb11-42"><a href="#cb11-42"></a>  </span>
+<span id="cb11-43"><a href="#cb11-43"></a>  dados <span class="sc">|&gt;</span> </span>
+<span id="cb11-44"><a href="#cb11-44"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-45"><a href="#cb11-45"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb11-46"><a href="#cb11-46"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb11-47"><a href="#cb11-47"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"k-nearest neighbours"</span>, <span class="at">subtitle =</span> <span class="fu">glue</span>(<span class="st">"k = {k}"</span>)) <span class="sc">+</span></span>
+<span id="cb11-48"><a href="#cb11-48"></a>    <span class="fu">theme</span>(</span>
+<span id="cb11-49"><a href="#cb11-49"></a>      <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb11-50"><a href="#cb11-50"></a>    )</span>
+<span id="cb11-51"><a href="#cb11-51"></a>}</span>
+<span id="cb11-52"><a href="#cb11-52"></a></span>
+<span id="cb11-53"><a href="#cb11-53"></a>p1 <span class="ot">&lt;-</span> <span class="fu">knn_exp_pip</span>(dados, <span class="at">k =</span> 1L)</span>
+<span id="cb11-54"><a href="#cb11-54"></a>p2 <span class="ot">&lt;-</span> <span class="fu">knn_exp_pip</span>(dados, <span class="at">k =</span> 7L)</span>
+<span id="cb11-55"><a href="#cb11-55"></a>p3 <span class="ot">&lt;-</span> <span class="fu">knn_exp_pip</span>(dados, <span class="at">k =</span> 10L)</span>
+<span id="cb11-56"><a href="#cb11-56"></a>p4 <span class="ot">&lt;-</span> <span class="fu">knn_exp_pip</span>(dados, <span class="at">k =</span> 200L)</span>
+<span id="cb11-57"><a href="#cb11-57"></a></span>
+<span id="cb11-58"><a href="#cb11-58"></a>p <span class="ot">&lt;-</span> p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb11-59"><a href="#cb11-59"></a></span>
+<span id="cb11-60"><a href="#cb11-60"></a><span class="fu">ggsave</span>(p, <span class="at">file =</span> <span class="st">"imgs/knn_plot.png"</span>, <span class="at">width =</span> <span class="dv">50</span>, <span class="at">height =</span> <span class="dv">30</span>, <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><img data-src="gifs/chapulin-colorado-no.gif" style="width:25.0%"></p>
+
+<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>

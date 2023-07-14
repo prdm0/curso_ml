@@ -1068,7 +1068,7 @@
     "href": "index.html#k-vizinhos-mais-próximo-próximos",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-vizinhos mais próximo próximos",
-    "text": "k-vizinhos mais próximo próximos\n\nTambém chamado de k-nearest neighbours - KNN, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:\n\n1 - Benedetti, J. K. (1977). On the nonparametric estimation of regression functions. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;\n2 - Stone, C. J. (1977). Consistent nonparametric regression. The Annals of Statistics, 595– 620.\n\nA ideia do método é estimar a função de regressão r({\\bf x}), para um dado {\\bf x} com base nas respostas Y dos k-vizinhos mais próximos de {\\bf x}."
+    "text": "k-vizinhos mais próximo próximos\n\nTambém chamado de k-nearest neighbours - KNN, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:\n\n1 - Benedetti, J. K. (1977). On the nonparametric estimation of regression functions. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;\n\n2 - Stone, C. J. (1977). Consistent nonparametric regression. The Annals of Statistics, 595– 620.\n\nA ideia do método é estimar a função de regressão r({\\bf x}), para um dado {\\bf x} com base nas respostas Y dos k-vizinhos mais próximos de {\\bf x}."
   },
   {
     "objectID": "index.html#k-vizinhos-mais-próximo-próximos-1",
@@ -1082,6 +1082,41 @@
     "href": "index.html#k-vizinhos-mais-próximo-próximos-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-vizinhos mais próximo próximos",
-    "text": "k-vizinhos mais próximo próximos\n\nPara determinar d_{\\bf x^*}^k, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:\n\nDistância Euclidiana ou distância L_2: d(x^a, x^b) = \\sqrt{(x_1^a - x_1^b)^2 + \\cdots + (x_d^a - x_d^b)^2};\nDistância de Manhattan, City Block ou distância L_1: d(x^a, x^b) = \\sqrt{|x_1^a - x_1^b| + \\cdots + |x_d^a - x_d^b|};\nDistância de Mahalanobis: d(x^a, x^b) = \\sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "k-vizinhos mais próximo próximos\n  Para determinar d_{\\bf x^*}^k, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:\n\n\nDistância Euclidiana ou distância L_2: d(x^a, x^b) = \\sqrt{(x_1^a - x_1^b)^2 + \\cdots + (x_d^a - x_d^b)^2};\n\n\n\nDistância de Manhattan, City Block ou distância L_1: d(x^a, x^b) = \\sqrt{|x_1^a - x_1^b| + \\cdots + |x_d^a - x_d^b|};\n\n\n\nDistância de Mahalanobis: d(x^a, x^b) = \\sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}, em que S é a matriz de covariância, em que na diagonal princial temos as variâncias e fora dela as covariâncias entre os pontos. Lembre-se que se x e y são vetores de dados quaisquer, a interdependência linear entre eles poderá ser estimada como:\n\n\n\\mathrm{cov}(x, y) = \\frac{1}{n-1}\\sum_{i = 1}^n (x_i - \\overline{x})(y_i - \\overline{y})."
+  },
+  {
+    "objectID": "index.html#k-vizinhos-mais-próximo-próximos-3",
+    "href": "index.html#k-vizinhos-mais-próximo-próximos-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-vizinhos mais próximo próximos",
+    "text": "k-vizinhos mais próximo próximos\n\nVocê poderá utilizar qualquer outra medida de distância além das que foram citadas acima.\n\nÉ importante perceber que o método KNN não faz uma “compressão” dos dados como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de Y, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular r({\\bf x}) = \\mathbb{E}(Y|{\\bf X} = {\\bf x}) deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos."
+  },
+  {
+    "objectID": "index.html#k-vizinhos-mais-próximo-próximos-4",
+    "href": "index.html#k-vizinhos-mais-próximo-próximos-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-vizinhos mais próximo próximos",
+    "text": "k-vizinhos mais próximo próximos\n O valor da constante k é um hiperparâmetro do KNN e deverá ser obtido por validação cruzada. Perceba que se k = n temos um modelo muito viesado, porém com variância pequena. Isso, porquê para k = n basicamente iremos tirar uma média dos dados. Para k = 1, teremos um overfitting, uma vez que o estimador irá interpolar os dados.\n Exemplo: Considere novamente o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis aqui. Utilizando o tidymodels, vamos construir uma fução que retorne um gráfico com as estimativas do KNN. A função receberá como argumentos o conjunto de dados e o valor de k. Você também poderia utilizar outras bibliotecas, como por exemplo a FNN, ou a KKNN, esta útlima é a que é utilizada internamente na biblioteca parsnip do tidymodels."
+  },
+  {
+    "objectID": "index.html#k-vizinhos-mais-próximo-próximos-5",
+    "href": "index.html#k-vizinhos-mais-próximo-próximos-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-vizinhos mais próximo próximos",
+    "text": "k-vizinhos mais próximo próximos\n\nAbrindo apenas um parêntese, o tidymodels refere-se a um conjunto de pacotes que são úteis para o tratamento, treinamento, tunagem e avaliação de modelos de aprendizagem de máquina, em que o parsnip implementa as engines (algoritmos/motores) que iremos utilizar para treinar um modelo. Na verdade, os algoritmos estão implementados em pacotes de terceiros e não precisamente no parsnip. Porém, o parsnip unifica a sintaxe de diversos algoritmos implementados em pacotes separados."
+  },
+  {
+    "objectID": "index.html#k-vizinhos-mais-próximo-próximos-6",
+    "href": "index.html#k-vizinhos-mais-próximo-próximos-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-vizinhos mais próximo próximos",
+    "text": "k-vizinhos mais próximo próximos\n\nObserve que na imagem abaixo, a Figura A, quando k=1, percebemos initidamente que houve overfitting, i.e., há uma interpolação dos dados. Já na Figura D temos um modelo com variância menor, porém, este é muito simplista, o que sugere um alto viés."
+  },
+  {
+    "objectID": "index.html#k-vizinhos-mais-próximo-próximos-7",
+    "href": "index.html#k-vizinhos-mais-próximo-próximos-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "k-vizinhos mais próximo próximos",
+    "text": "k-vizinhos mais próximo próximos\n\nEstude o código! Ele fornece a solução para o exemplo.\n\n\n\nSolução pelo método knn do exemplo anterior\nlibrary(tidymodels)\nlibrary(glue)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(patchwork)\n\ntidymodels::tidymodels_prefer()\n\n# Lendo dados\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\narquivo_temp &lt;- tempfile()\ndownload.file(url = url, destfile = arquivo_temp)\nload(arquivo_temp)\n\ndados &lt;- \n  dados_expectativa_renda |&gt; \n  dplyr::select(-CountryName) |&gt; \n  dplyr::rename(y = LifeExpectancy, x = GDPercapita)\n\nknn_exp_pip &lt;- function(dados, k = 1L){\n  # Criando receita\n  receita &lt;- recipe(y ~ x, data = dados)\n  \n  # Definindo o modelo\n  modelo_knn &lt;- nearest_neighbor(neighbors = k) |&gt; \n    set_mode(\"regression\") |&gt; \n    set_engine(\"kknn\")\n  \n  # Workflow\n  ajuste_final &lt;- \n    workflow() |&gt; \n    add_model(modelo_knn) |&gt; \n    add_recipe(receita) |&gt; \n    fit(data = dados)\n  \n  # Retornando previsoes\n  y_chapeu &lt;- predict(ajuste_final, new_data = dados)\n  \n  dados &lt;- \n    dados |&gt; \n    mutate(y_chapeu = y_chapeu$.pred)\n  \n  dados |&gt; \n    ggplot() +\n    geom_point(aes(x = x, y = y), size = 3) +\n    geom_line(aes(x = x, y = y_chapeu), col = \"red\", alpha = 0.6, size = 2) +\n    labs(title = \"k-nearest neighbours\", subtitle = glue(\"k = {k}\")) +\n    theme(\n      title = element_text(face = \"bold\")\n    )\n}\n\np1 &lt;- knn_exp_pip(dados, k = 1L)\np2 &lt;- knn_exp_pip(dados, k = 7L)\np3 &lt;- knn_exp_pip(dados, k = 10L)\np4 &lt;- knn_exp_pip(dados, k = 200L)\n\np &lt;- p1 + p2 + p3 + p4 + plot_annotation(tag_levels = \"A\")\n\nggsave(p, file = \"imgs/knn_plot.png\", width = 50, height = 30, units = \"cm\")\n\n\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

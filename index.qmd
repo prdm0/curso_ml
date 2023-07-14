@@ -3271,9 +3271,11 @@ Também chamado de [*$k$-nearest neighbours* - KNN]{.red}, o KNN é um dos méto
 
 <br>
 
-1 - Benedetti, J. K. (1977). On the nonparametric estimation of regression functions. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;
+1 - Benedetti, J. K. (1977). **On the nonparametric estimation of regression functions**. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;
 
-2 - Stone, C. J. (1977). Consistent nonparametric regression. The Annals of Statistics, 595–
+<br>
+
+2 - Stone, C. J. (1977). **Consistent nonparametric regression**. The Annals of Statistics, 595–
 620.
 
 <br>
@@ -3301,6 +3303,144 @@ $$\overline{Y}_{N_{\bf x^*}} = \frac{1}{k} \sum_{i \in \mathcal{N}_{\bf x^*}}y_i
 <!-- http://leg.ufpr.br/~lucambio/MSM/MSM03.html -->
 Para determinar $d_{\bf x^*}^k$, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:
 
-1. Distância Euclidiana ou distância $L_2$: $d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}$;
-2. Distância de Manhattan, City Block ou distância $L_1$: $d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}$;
-2. Distância de Mahalanobis: $d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}$
+<br>
+
+1. [Distância Euclidiana]{.red} ou distância $L_2$: $d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}$;
+
+<br>
+
+2. [Distância de Manhattan]{.red}, City Block ou distância $L_1$: $d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}$;
+
+<br>
+
+2. [Distância de Mahalanobis]{.red}: $d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}$, em que $S$ é a matriz de covariância, em que na diagonal princial temos as variâncias e fora dela as covariâncias entre os pontos. Lembre-se que se $x$ e $y$ são vetores de dados quaisquer, a interdependência linear entre eles poderá ser estimada como:
+
+<br>
+
+$$\mathrm{cov}(x, y) = \frac{1}{n-1}\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y}).$$
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.
+
+<br>
+
+É importante perceber que **o método KNN não faz uma "compressão" dos dados** como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de $Y$, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$ deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos.
+
+<br>
+
+![](gifs/giphy.gif)
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+O valor da constante $k$ é um hiperparâmetro do KNN e deverá ser obtido por validação cruzada. Perceba que se $k = n$ temos um modelo muito viesado, porém com variância pequena. Isso, porquê para $k = n$ basicamente iremos tirar uma média dos dados. Para $k = 1$, teremos um *overfitting*, uma vez que o estimador irá interpolar os dados.
+
+<br>
+[Exemplo]{.red}: Considere novamente o conjunto de dados de expectativa de vida versus PIB per
+Capita disponíveis
+[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData). Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir uma fução que retorne um gráfico com as estimativas do KNN. A função receberá como argumentos o conjunto de dados e o valor de $k$. Você também poderia utilizar outras bibliotecas, como por exemplo a [FNN](https://cran.r-project.org/web/packages/FNN/index.html), ou a [KKNN](https://github.com/KlausVigo/kknn), esta útlima é a que é utilizada internamente na biblioteca [parsnip](https://parsnip.tidymodels.org/) do [tidymodels](https://www.tidymodels.org/).
+
+<br>
+
+![](imgs/parsnip.png)
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Abrindo apenas um parêntese, o [tidymodels](https://www.tidymodels.org/) refere-se a um conjunto de pacotes que são úteis para o tratamento, treinamento, tunagem e avaliação de modelos de aprendizagem de máquina, em que o [parsnip](https://parsnip.tidymodels.org/) implementa as *engines* (algoritmos/motores) que iremos utilizar para treinar um modelo. Na verdade, os algoritmos estão implementados em pacotes de terceiros e não precisamente no [parsnip](https://parsnip.tidymodels.org/). Porém, o [parsnip](https://parsnip.tidymodels.org/) unifica a sintaxe de diversos algoritmos implementados em pacotes separados.
+
+<br>
+
+![](gifs/thumbs-up-nod.gif)
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Observe que na imagem abaixo, a Figura [A]{.red}, quando $k=1$, percebemos initidamente que houve *overfitting*, i.e., há uma interpolação dos dados. Já na Figura [D]{.red} temos um modelo com variância menor, porém, este é muito simplista, o que sugere um alto viés.
+
+<br>
+
+![](imgs/knn_plot.png){fig-aling='center'}
+
+## $k$-vizinhos mais próximo próximos
+
+<br>
+
+Estude o código! Ele fornece a solução para o exemplo.
+
+<br>
+
+```{r}
+#| eval: false
+#| code-summary: "Solução pelo método knn do exemplo anterior"
+#| code-fold: true
+
+library(tidymodels)
+library(glue)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+
+tidymodels::tidymodels_prefer()
+
+# Lendo dados
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+arquivo_temp <- tempfile()
+download.file(url = url, destfile = arquivo_temp)
+load(arquivo_temp)
+
+dados <- 
+  dados_expectativa_renda |> 
+  dplyr::select(-CountryName) |> 
+  dplyr::rename(y = LifeExpectancy, x = GDPercapita)
+
+knn_exp_pip <- function(dados, k = 1L){
+  # Criando receita
+  receita <- recipe(y ~ x, data = dados)
+  
+  # Definindo o modelo
+  modelo_knn <- nearest_neighbor(neighbors = k) |> 
+    set_mode("regression") |> 
+    set_engine("kknn")
+  
+  # Workflow
+  ajuste_final <- 
+    workflow() |> 
+    add_model(modelo_knn) |> 
+    add_recipe(receita) |> 
+    fit(data = dados)
+  
+  # Retornando previsoes
+  y_chapeu <- predict(ajuste_final, new_data = dados)
+  
+  dados <- 
+    dados |> 
+    mutate(y_chapeu = y_chapeu$.pred)
+  
+  dados |> 
+    ggplot() +
+    geom_point(aes(x = x, y = y), size = 3) +
+    geom_line(aes(x = x, y = y_chapeu), col = "red", alpha = 0.6, size = 2) +
+    labs(title = "k-nearest neighbours", subtitle = glue("k = {k}")) +
+    theme(
+      title = element_text(face = "bold")
+    )
+}
+
+p1 <- knn_exp_pip(dados, k = 1L)
+p2 <- knn_exp_pip(dados, k = 7L)
+p3 <- knn_exp_pip(dados, k = 10L)
+p4 <- knn_exp_pip(dados, k = 200L)
+
+p <- p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "A")
+
+ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
+```
+<br>
+
+![](gifs/chapulin-colorado-no.gif){width='25%'}
