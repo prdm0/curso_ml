@@ -63,8 +63,7 @@ modelo_elastic <-
 all_wf <- 
   workflow_set(
     preproc = list(y ~ . ),
-    models = list(eqm = modelo_eqm, ridge = modelo_ridge, lasso = modelo_lasso, elastic = modelo_elastic), 
-    cross = TRUE
+    models = list(eqm = modelo_eqm, ridge = modelo_ridge, lasso = modelo_lasso, elastic = modelo_elastic)
   )
 
 # Validação cruzada -------------------------------------------------------

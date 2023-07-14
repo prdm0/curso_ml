@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e3ec62fbfe8218c1aafb" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-e3ec62fbfe8218c1aafb">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-63b54d1e0d3e73a05610" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-63b54d1e0d3e73a05610">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2528,7 +2528,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Uma variação do método KNN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><p>Nadaraya, E. A. (1964). <strong>On estimating regression</strong>. Theory of Probability &amp; Its Applications, 9(1), 141–142</p></li>
+<li class="fragment"><p>Nadaraya, E. A. (1964). <strong>On estimating regression</strong>. Theory of Probability &amp; Its Applications, 9(1), 141–142;</p></li>
 <li class="fragment"><p>Watson, G. S. (1964). <strong>Smooth regression analysis</strong>. Sankhya: The Indian Journal of Statistics, Series A, 359–372.</p></li>
 </ol>
 <p><br></p>
@@ -2545,11 +2545,50 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <li class="fragment"><span class="red">Kernel uniforme</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
 <li class="fragment"><span class="red">Kernel gaussiano</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}</span>;</li>
 <li class="fragment"><span class="red">Kernel triangular</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
-<li class="fragment"><span class="red">Kernel de Epanechnikov</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>;</li>
+<li class="fragment"><span class="red">Kernel de Epanechnikov</span>: <span class="math inline">K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)</span>.</li>
 </ol>
+</section>
+<section id="nadaraya-watson-2" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+<p>Enquanto no kernel uniforme, os pesos são iguais para as observações a uma distância menor que <span class="math inline">h</span> de <span class="math inline">{\bf x}</span> e atribui peso zero para observações maiores que <span class="math inline">h</span>, os kernels triangular e de Epanechnikov atribui pesos maiores para observações mais próximas de <span class="math inline">{\bf x}</span>. A quantidade <span class="math inline">h</span> é um <span class="red"><em>tuning parameter</em></span>, e na prática, deve ser estimada por um procedimento de validação cruzada.</p>
+<p><br></p>
+<p><strong>Algumas propriedades de uma função kernel são</strong>:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><strong>Simetria</strong>: <span class="math inline">K(x,y) = K(y,x)</span>, permitindo que a função de similaridade seja invariante em relação a ordem dos argumentos;</li>
+<li class="fragment"><strong>Positiva definida</strong>: Para qualquer vetor <span class="math inline">c</span>, em que seja possível fazer <span class="math inline">c^{T}K(x,y)</span>, temos que <span class="math inline">c^{T}K(x,y)c &gt; 0</span>.</li>
+</ol>
+<p><br></p>
+<p>Você poderá encontrar outras funções kernel <a href="https://en.wikipedia.org/wiki/Kernel_(statistics)">aqui</a>.</p>
+</section>
+<section id="nadaraya-watson-3" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+<p><span class="red">Exemplo</span>: Novamente, considerando o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. Utilizando o <a href="https://www.tidymodels.org/">tidymodels</a>, vamos construir uma fução que retorne um gráfico com as estimativas. A função receberá como argumentos o conjunto de dados e o valor de <span class="math inline">h</span>. Observe a documentação da função <code>nearest_neighbor</code> do pacote <a href="https://parsnip.tidymodels.org/">parsnip</a>. Perceba que o argumento <code>weight_func</code> permite que possamos escolher entre algumas funções kernel. Porém, como métrica de distâncias, apenas poderemos utilizar a de Minkowski. Seja <span class="math inline">x = (x_1, \cdots, x_n)</span> e <span class="math inline">y = (y_1, \cdots, y_n)</span>, ambos vetores do <span class="math inline">\mathbb{R}^n</span>. Então, a distância de Minkowski é dada por:</p>
+<p><span class="math display">d(x,y) = \left(\sum_{i = 1}^n |x_i - y_i|^p\right)^{\frac{1}{p}},</span> com <span class="math inline">p \geq 1</span>. Note que se <span class="math inline">p = 1</span> temos a distância euclidiana (distância <span class="math inline">L_1</span>) e se <span class="math inline">p = 2</span> teremos a distancia de Manhattan (distância <span class="math inline">L_2</span>).</p>
+</section>
+<section id="nadaraya-watson-4" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br></p>
+<p>Portanto, com o argumento <code>dist_power</code> da função <code>nearest_neighbor</code>, do pacote <a href="https://parsnip.tidymodels.org/">parsnip</a>, você poderá especificar o valor de <span class="math inline">p</span>, que inclusive poderá ser um hiperparâmetro, podendo ser obtido por meio de uma validação cruzada.</p>
+<p><br></p>
 
+<img data-src="gifs/mr-bean-pivot.gif" class="r-stretch"><p><br></p>
+<p>No exemplo não iremos fazer a validação cruzada, pois apenas queremos implementar uma função em que seja possível experimentar o método para diferentes valores de <span class="math inline">h</span> e diferentes funções de kernel.</p>
+</section>
+<section id="nadaraya-watson-5" class="slide level2">
+<h2>Nadaraya-Watson</h2>
+<p><br> A imagem abaixo utiliza o kernel gaussiano:</p>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/nadaraya_watson.png"></p>
+</figure>
+</div>
 
-<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>

@@ -3482,7 +3482,7 @@ Uma variação do método KNN que é bastante difundida na comunidade estatísti
 
 <br>
 
-1. Nadaraya, E. A. (1964). **On estimating regression**. Theory of Probability & Its Applications, 9(1), 141–142
+1. Nadaraya, E. A. (1964). **On estimating regression**. Theory of Probability & Its Applications, 9(1), 141–142;
 
 2. Watson, G. S. (1964). **Smooth regression analysis**. Sankhya: The Indian Journal of Statistics, Series A, 359–372.
 
@@ -3507,4 +3507,59 @@ em que $K({\bf x}, {\bf x}_j)$ é um kernel de suavização usado para medir a s
 1. [Kernel uniforme]{.red}: $K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
 2. [Kernel gaussiano]{.red}: $K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}$;
 3. [Kernel triangular]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
-4. [Kernel de Epanechnikov]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
+4. [Kernel de Epanechnikov]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$.
+
+## Nadaraya-Watson
+
+<br>
+
+Enquanto no kernel uniforme, os pesos são iguais para as observações a uma distância menor que $h$ de ${\bf x}$ e atribui peso zero para observações maiores que $h$, os kernels triangular e de Epanechnikov atribui pesos maiores para observações mais próximas de ${\bf x}$. A quantidade $h$ é um [*tuning parameter*]{.red}, e na prática, deve ser estimada por um procedimento de validação cruzada.
+
+<br>
+
+**Algumas propriedades de uma função kernel são**:
+
+<br>
+
+1. **Simetria**: $K(x,y) = K(y,x)$, permitindo que a função de similaridade seja invariante em relação a ordem dos argumentos;
+2. **Positiva definida**: Para qualquer vetor $c$, em que seja possível fazer $c^{T}K(x,y)$, temos que $c^{T}K(x,y)c > 0$. 
+
+<br>
+
+Você poderá encontrar outras funções kernel [aqui](https://en.wikipedia.org/wiki/Kernel_(statistics)).
+
+
+## Nadaraya-Watson
+
+<br>
+
+[Exemplo]{.red}: Novamente, considerando o conjunto de dados de expectativa de vida versus PIB per
+Capita disponíveis
+[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData). Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir uma fução que retorne um gráfico com as estimativas. A função receberá como argumentos o conjunto de dados e o valor de $h$. Observe a documentação da função `nearest_neighbor` do pacote [parsnip](https://parsnip.tidymodels.org/). Perceba que o argumento `weight_func` permite que possamos escolher entre algumas funções kernel. Porém, como métrica de distâncias, apenas poderemos utilizar a de Minkowski. Seja $x = (x_1, \cdots, x_n)$ e $y = (y_1, \cdots, y_n)$, ambos vetores do $\mathbb{R}^n$. Então, a distância de Minkowski é dada por:
+
+$$d(x,y) = \left(\sum_{i = 1}^n |x_i - y_i|^p\right)^{\frac{1}{p}},$$
+com $p \geq 1$. Note que se $p = 1$ temos a distância euclidiana (distância $L_1$) e se $p = 2$ teremos a distancia de Manhattan (distância $L_2$).
+
+## Nadaraya-Watson
+
+<br>
+
+Portanto, com o argumento `dist_power` da função `nearest_neighbor`, do pacote [parsnip](https://parsnip.tidymodels.org/), você poderá especificar o valor de $p$, que inclusive poderá ser um hiperparâmetro, podendo ser obtido por meio de uma validação cruzada.
+
+<br>
+
+![](gifs/mr-bean-pivot.gif)
+
+<br>
+
+No exemplo não iremos fazer a validação cruzada, pois apenas queremos implementar uma função em que seja possível experimentar o método para diferentes valores de $h$ e diferentes funções de kernel.
+
+
+## Nadaraya-Watson
+
+<br>
+A imagem abaixo utiliza o kernel gaussiano:
+
+<br>
+
+![](imgs/nadaraya_watson.png){fig-aling='center'}
