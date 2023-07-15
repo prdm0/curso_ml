@@ -215,15 +215,15 @@ aprendizado supervisionado.
 
 <br>
 
-[Aprendizado não supervisionado]{.black}
+[Aprendizado não-supervisionado]{.black}
 
 <br>
 
 Na segunda parte do curso, aprenderemos alguns métodos de aprendizado
-[não supervisionado]{.red}, ou seja, algoritmos que não utilizam-se de
+[não-supervisionado]{.red}, ou seja, algoritmos que não utilizam-se de
 rótulos, em que busca-se aprender mais sobre a estrutura dos dados. Por
 exemplo, os [métodos de agrupamento]{.red} (cluster), são exempĺos de
-métodos de aprendizado não supervisionado.
+métodos de aprendizado não-supervisionado.
 
 ## `r fontawesome::fa("robot", "black")` Tipos de Aprendizado
 
@@ -268,7 +268,7 @@ Tá, mais como é que a [máquina]{.red} aprende?
 1.  [Aprendizagem]{.red} é o processo em que se adquire conhecimento,
     isto é, é o processo em que utilizamos de algoritmos e fornecemos
     dados a esses algoritmos para que possamos extrair conhecimento.
-    Nesse processo de aprendisagem, os algoritmos fazem uso de dados
+    Nesse processo de aprendizagem, os algoritmos fazem uso de dados
     para a extressão de conhecimento, através de procedimentos
     **supervisionado**, **não-supervisionado**, **semi-supervisionado**
     ou **por reforço**, a depender do algoritmo que você deseja
@@ -287,7 +287,7 @@ Tá, mais como é que a [máquina]{.red} aprende?
 
 Portanto, você poderá entender, basiciamente, existe quatro tipos de
 aprendizagem, sendo os dois primeiros o que mais focaremos nesse curso e
-que de loge são os mais utilizados:
+que de longe são os mais utilizados:
 
 <br>
 
@@ -316,7 +316,7 @@ um bom modelo. Por exemplo,
 
 2.  [Regressão]{.red}: precisamos estimar uma quantidade numérica, i.e.,
     o valor da variável alvo por meio de uma instância de dados, ou
-    seja, precisamos estimar $Y = \mathbb{E}(Y\,|\,X = \bf{x})$, i.e.,
+    seja, precisamos estimar $Y = \mathbb{E}(Y|X = \bf{x})$, i.e.,
     devemos encontrar meios de obter $\widehat{Y}$.
 
 <br>
@@ -342,7 +342,7 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 
 1.  [Generativos]{.red}: são os métodos que dada as variáveis $X$ e $Y$,
     o objetivo é encontrar a distribuição de probabilidade conjunta
-    $P(X, Y)$, para então poder determinar $P(Y\, | \, X = \bf{x})$.
+    $P(X, Y)$, para então poder determinar $P(Y|X = \bf{x})$.
     Alguns métodos são:
 
     -   Naive Bayes;
@@ -351,7 +351,7 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 <br>
 
 2.  [Descriminativos]{.red}: são os métodos que estimam diretamente a
-    probabilidade condicional $P(Y \, | \, X = \bf{x})$ ou que mesmo nem
+    probabilidade condicional $P(Y|X = \bf{x})$ ou que mesmo nem
     assumem modelos probabilísticos. Podemos citar:
     -   Regressão logistica;
     -   Perceptron;
@@ -471,7 +471,7 @@ não rotulada.
 
 <br>
 
-![](gifs/hum.gif){.fragment width="50%"}
+![](gifs/hum.gif){width="50%"}
 
 ## Aprendizagem por reforço
 
@@ -883,7 +883,7 @@ $Y \in \mathbb{R}$ e um vetor de covariáveis (features)
 $\mathbf{x} = (x_1, \cdots, x_d) \in \mathbb{R}^d$. Mais
 especificamente, busaca-se estimar
 
-$$r(\bf{x}) := \mathbb{E}(Y\,|\,\bf{X} = \bf{x}),$$
+$$r(\bf{x}) := \mathbb{E}(Y|\bf{X} = \bf{x}),$$
 
 sendo esta chamada de [função de regressão]{.red}. Temos que:
 
@@ -1089,11 +1089,11 @@ simples, i.e., $d = 1$). O melhor preditor de $Y$ condicional em $X$ é
 aquele que minimiza a função de perda esperada, ou seja, é aquele que
 resolve:
 
-$$\argmin_g \mathbb{E}(L(Y - g)\,|\,X).$$
+$$\argmin_g \mathbb{E}(L(Y - g)|X).$$
 
 Para o caso da função perda quadrática (função $L_2$), o melhor preditor
 de $Y$ condicional à $X$ é a média condicional de $Y$ dado $X$, i.e.,
-$r(X) = \mathbb{E}(Y\,|\,X)$. Já, na situação em que considera-se a
+$r(X) = \mathbb{E}(Y|X)$. Já, na situação em que considera-se a
 perda absoluta (função $L_1$), o melhor estimador é a mediana
 condicional.
 
