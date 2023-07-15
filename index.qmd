@@ -3570,7 +3570,7 @@ A imagem abaixo utiliza o kernel gaussiano:
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Solução do exempĺo de Nadaraya Watson"
+#| code-summary: "Solução do exempĺo de Nadaraya-Watson"
 
 library(tidymodels)
 library(glue)
