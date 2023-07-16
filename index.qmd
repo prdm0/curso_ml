@@ -141,19 +141,20 @@ linguagem R são:]{.black}
 
 1.  Possui ferramentas muito bem pensadas para manipulação e tratamento
     de dados;
-2.  Normalmente, os frameworks de machine learning de R são menos
+2.  Normalmente, os *frameworks* de *machine learning* de R são menos
     verbosos que os de Python;
 3.  Matrizes e data frames são estruturas de dados que já encontra-se
     definidas dentro da linguagem, não precisando assim de importar
     bibliotecas.
 
-Isso é meu gosto pessoal. É um gosto que, talvez, faz mais sentido, em
-se tratando de alguém que vem da estatística. No mercado de trabalho e
-em seus estudos, após cursar as disciplinas de R e Python, fornecidas
-pelo [Bacharelado em Estatística da UFPB](https://www.ufpb.br/de), você
-terá a capacidade de estudar os frameworks de machine learning, aos seus
-próprios passos e escolher o que melhor te agrada. A linguagem
-[Julia](https://julialang.org/) também poderá ser uma ótima opção.
+[Isso é meu gosto pessoal]{.red}! É um gosto que, talvez, faz mais
+sentido, em se tratando de alguém que vem da estatística. No mercado de
+trabalho e em seus estudos, após cursar as disciplinas de R e Python,
+fornecidas pelo [Bacharelado em Estatística da
+UFPB](https://www.ufpb.br/de), você terá a capacidade de estudar os
+*frameworks* de *machine learning*, aos seus próprios passos e escolher
+o que melhor te agrada. A linguagem [Julia](https://julialang.org/)
+também poderá ser uma ótima opção.
 
 #  {.title}
 
@@ -164,8 +165,9 @@ próprios passos e escolher o que melhor te agrada. A linguagem
 ## `r fontawesome::fa("robot", "black")` Aprendizagem de máquina
 
 <br>
+<br>
 
-![](gifs/am.gif){.fragment width="800" height="600"}
+![](gifs/am.gif){.fragment width="930" height="600"}
 
 ## `r fontawesome::fa("robot", "black")` Aprendizagem de máquina
 
@@ -177,20 +179,20 @@ próprios passos e escolher o que melhor te agrada. A linguagem
 
 1.  A **A**prendizagem de **M**áquina (AM), também chamada de
     **M**achine **L**earning (ML), no inglês, nasceu na década de 60
-    como um campo da inteligênica artificial.
+    como um campo da inteligênica artificial;
 
 2.  Em sua origem, as aplicações de AM tinha como objetivo aprender
-    padrões com base nos dados.
+    padrões com base nos dados;
 
 3.  Originalmente, as aplicações de AM eram de cunho estritamente
     computacional. Todavia, desde o início dos anos 90, a área de
     aprendizagem de máquina expandiu seus horizontes e começou a se
-    estabelecer como um campo por sim mesma.
+    estabelecer como um campo por sim mesma;
 
 4.  Em particular, a área de aprendizagem de máquina começou a
     estabelecer muitas intersecções com a estatística. Muitos de seus
     algoritmos são construídos com base em metodologias que surgiram na
-    estatística.
+    estatística;
 
 5.  Atualmente, a comunidade de AM é bastante interdisciplinar e
     utiliza-se de ideias desenvolvidas em diversas áreas, sendo a
@@ -235,8 +237,8 @@ em geral, podem ser mais amplos, em que temos:
 
 <br>
 
-1.  Aprendizagem supervisionada;
-2.  Aprendizagem não-supervisionada;
+1.  **Aprendizagem supervisionada**;
+2.  **Aprendizagem não-supervisionada**;
 3.  Aprendizagem semi-supervisionada;
 4.  Aprendizagem por reforço.
 
@@ -261,7 +263,7 @@ experiências, por meio de ensinamentos.
 
 <br>
 
-Tá, mais como é que a [máquina]{.red} aprende?
+**Tá, mais como é que a [máquina]{.red} aprende?**
 
 <br>
 
@@ -274,12 +276,12 @@ Tá, mais como é que a [máquina]{.red} aprende?
     ou **por reforço**, a depender do algoritmo que você deseja
     utilizar.
 
-<br>
-
 2.  [Aprendizado]{.red} é o modelo ajustado, isto é, é o conhecimento
     adquirido após o treinamamento obtido no processo de aprendizagem.
     Você poderá entender como sendo o modelo ajustado e que utilizamores
     para a tomada de decisões.
+
+![](gifs/hum.gif)
 
 ## O que é aprender?
 
@@ -291,10 +293,14 @@ que de longe são os mais utilizados:
 
 <br>
 
-1.  Aprendizagem supervisionada;
-2.  Aprendizagem não-supervisionada;
+1.  **Aprendizagem supervisionada**;
+2.  **Aprendizagem não-supervisionada**;
 3.  Aprendizagem semi-supervisionada;
 4.  Aprendizagem por reforço.
+
+<br>
+
+![](gifs/hum.gif)
 
 ## Aprendizagem supervisionada
 
@@ -315,7 +321,7 @@ um bom modelo. Por exemplo,
     se tem rabo, etc).
 
 2.  [Regressão]{.red}: precisamos estimar uma quantidade numérica, i.e.,
-    o valor da variável alvo por meio de uma instância de dados, ou
+    o valor da variável alvo por meio de uma **instância de dados**, ou
     seja, precisamos estimar $Y = \mathbb{E}(Y|X = \bf{x})$, i.e.,
     devemos encontrar meios de obter $\widehat{Y}$.
 
@@ -325,11 +331,11 @@ um bom modelo. Por exemplo,
 **Algumas observações de nomenclaturas**:
 
 1.  É comum chamar cada exemplo de dados, i.e., o vetor $\bf{x}$ que
-    será passado ao modelo de [atributos]{.red} ou [features]{.red};
-2.  Também é comum chamarmos de [rótulo]{.red} ou [label]{.red} a classe
-    ou valor alvo, ou seja, estas são as formas de nomearmos $Y$, sendo
-    $Y$ uma quantidade numérica (modelos de regressão) ou não (modelos
-    de classificação).
+    será passado ao modelo de [atributos]{.red} ou [*features*]{.red};
+2.  Também é comum chamarmos de [rótulo]{.red} ou [*label*]{.red} a
+    classe ou valor alvo, ou seja, estas são as formas de nomearmos $Y$,
+    sendo $Y$ uma quantidade numérica (modelos de regressão) ou não
+    (modelos de classificação).
 :::
 
 ## Aprendizagem supervisionada
@@ -456,11 +462,11 @@ representa no problema em questão.
 <br>
 
 A aprendizagem semi-supervisionada é uma abordagem na área de
-aprendizagem de máquina onde um algoritmo utiliza tanto dados rotulados
-quanto não rotulados para treinamento. Por exemplo, algoritmos que
-propagam rótulos, como o *Label Propagation*, em que rótulos conhecidos
-são propagados para dados não rotulados com base em sua sua proximidade
-no espaço de características.
+aprendizagem de máquina em que um algoritmo utiliza tanto dados
+rotulados quanto não rotulados para treinamento. Por exemplo, algoritmos
+que propagam rótulos, como o *Label Propagation*, em que rótulos
+conhecidos são propagados para dados não rotulados com base em sua sua
+proximidade no espaço de características.
 
 <br>
 
@@ -477,11 +483,11 @@ não rotulada.
 
 <br>
 
-Nesse tipo de aprendizagem, não há uma fonte externa de exemplos. O
+Nesse tipo de aprendizagem, não **há uma fonte externa de exemplos**. O
 agente (modelo) aprende aprende com sua própria experiência, por
 tentativas e erros, em que você deverá definir uma medida de sucesso, e
 eventualmente recompensar os acertos. No vídeo abaixo, veja um joguinho
-que criei em R, onde o carrinho aprendeu a desviar de obstáculos
+que criei em R, em que o carrinho aprendeu a desviar de obstáculos
 aleatórios que aparecem em sua frente. Utilizou-se uma rede neural cuja
 a saída poderia ser ("parado", "para cima" ou "para baixo"). Veja o
 código clicando
@@ -491,20 +497,20 @@ código clicando
 
 {{< video https://www.youtube.com/watch?v=9NXUtwGkkDw&t=2s width="50%" height="50%" >}}
 
-## `r fontawesome::fa("database", "black")` Dados: exploração e tratamentom
+## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
 <br>
 
 Um dos passos mais importante no fluxo de trabalho (*workflow*) de um
-modelo de aprendizagem de máquina, consiste na preparação dos dados,
-onde realizamos transformações, inputações de valores ausentes,
-identificação de outliers, remoção de variáveis altamente
+modelo de aprendizagem de máquina, consiste na preparação dos dados, em
+que realizamos transformações, inputações de valores ausentes,
+identificação de *outliers*, remoção de variáveis altamente
 correlacionadas, entre outros.
 
 <br>
 
-Fazer uma análise exploratória dos dados é um passo importante para que
-se possa entender e detecatar possíveis inconsistências na base de
+Fazer uma **análise exploratória** dos dados é um passo importante para
+que se possa entender e detecatar possíveis inconsistências na base de
 dados. Não adianta fazer uso de modelos muito sofisticados quando se tem
 uma base de dados cheia de problemas.
 
@@ -514,7 +520,7 @@ Normalmente trabalhamos com juntos de dados (tabelas) relacionais, em
 que cada linha é uma observação e cada coluna representa um atributo do
 objeto/observação. A linha de uma base de dados relacional, sem sua a
 variável de interesse, lembre-se que denominamos $Y$ de [rótulo]{.red}
-ou [label]{.red}, fornece o vetor de características $\bf{x}$ que
+ou [*label*]{.red}, fornece o vetor de características $\bf{x}$ que
 descreve uma dada observação.
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
@@ -524,14 +530,14 @@ No artigo [Tidy Data](https://www.jstatsoft.org/article/view/v059i10),
 discute que o princípio de dados organizados estão intimamente
 relacionados com banco de dados relacional e mais próximo do reciocínio
 que empregamos na álgebra. Nesse artigo, ele define o que é [Tidy
-Dados]{.red}, sendo essa uma maneira de mapear um conjunto de dados.
+Data]{.red}, sendo essa uma maneira de mapear um conjunto de dados.
 
 <br>
 
 Segundo o artigo, um conjunto de dados é [bagunçado]{.red} ou
 [arrumado]{.red}/[tidy]{.red}, dependendo de como as linhas, colunas e
 tabelas são combinadas com as observações, variáveis e tipos. Em dados
-arrumados (dados tidy), temos que:
+arrumados (dados *tidy*), temos que:
 
 <br>
 
@@ -550,7 +556,8 @@ Sempre, que possível, procure utilizar dados no formato [Tidy]{.red}.
 
 <br>
 
-![Representação de uma base de dados no formato tidy.](imgs/tidy-1.png)
+![Representação de uma base de dados no formato
+*tidy*.](imgs/tidy-1.png)
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
@@ -568,7 +575,7 @@ Sempre, que possível, procure utilizar dados no formato [Tidy]{.red}.
 
 ![Trabalhar com a Tabela do lado esquerdo é melhor que a Tabela do lado
 direito. Prefira, sempre que possível, o formato tidy. Não permita-se
-ficar estressado tão facilmente.](imgs/tidy-2.png){width="50%"}
+ficar estressado tão facilmente. 😃](imgs/tidy-2.png){width="50%"}
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
@@ -580,7 +587,7 @@ manipular e explorar bases de dados. Enumero algumas:
     consistente de verbos que ajudam a resolver os desafios mais comuns
     de manipulação de dados;
 2.  [tidyr](https://tidyr.tidyverse.org/): ferramentas para ajudar a
-    criar dados organizados, onde cada coluna é uma variável, cada linha
+    criar dados organizados, em que cada coluna é uma variável, cada linha
     é uma observação e cada célula contém um único valor;
 3.  [ggplot2](https://ggplot2-book.org/): um sistema para criar gráficos
     'declarativamente', baseado no livro [The Grammar of
@@ -605,7 +612,7 @@ utizar alguma delas.
 
 No [Capítulo 12](https://r4ds.had.co.nz/tidy-data.html), do livro [R for
 Data Science](https://r4ds.had.co.nz/index.html), o autor aborda mais
-sobre o formato Tidy e como trabalhar com a biblioteca
+sobre o formato *Tidy* e como trabalhar com a biblioteca
 [tidyr](https://tidyr.tidyverse.org/).
 [Aqui](https://r4ds.had.co.nz/transform.html?q=dplyr#dplyr-basics) o
 autor aborda de forma básica o pacote
@@ -615,7 +622,7 @@ autor aborda de forma básica o pacote
 
 Durante o curso, na medida da necessidade de utilização dessas
 ferramentas, durante a exposição de exemplos, abordaremos alguns
-conceitos. Ok?
+conceitos. Ok?!
 
 <br>
 
@@ -626,29 +633,29 @@ conceitos. Ok?
 <br>
 
 Muitas vezes, no processo de tratamento dos dados, também estamos
-preocupados em remover atributos que não são significativo para a
+preocupados em **remover atributos que não são significativo** para a
 modelagem, em que nesse momento a experiência dos especialistas são
 fundamentais.
 
 <br>
 
-É comum enriquercermos a base de dados com informações de outras bases
-de dados, em um sistema de gerenciamento de banco de dados relacional,
+**É comum enriquercermos a base de dados com informações de outras bases
+de dados**, em um sistema de gerenciamento de banco de dados relacional,
 em que as bases de dados estão relacionadas por uma chave. Nesse caso,
 buscamos por novos atributos para um mesmo objeto (para uma mesma linha
 da base), em que atributos cruzados devem ter um único valor, para cada
-objeto, respeitando a regra três de conjuntos de dados tidy.
+objeto, respeitando a regra três de conjuntos de dados *tidy*.
 
 <br>
 
-As vezes transformamos variáveis. Por exemplo, é comum tomar o logaritmo
-de uma variável numérica que é assimétrica, se $x >= 1$, em que $x$ é um
+**As vezes transformamos variáveis**. Por exemplo, é comum tomar o logaritmo
+de uma variável numérica que é assimétrica, se $x \geq 1$, em que $x$ é um
 atributo numérico qualquer.
 
 <br>
 
 Em diveras situações, também é comum a base de dados apresentar
-informações faltantes. Nos data frames de R, a falta de informação na
+**informações faltantes**. Nos data frames de R, a falta de informação na
 base, normlamente serão representadas por `NA`.
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
@@ -664,15 +671,15 @@ a informação, por exemplo:
 1.  Tomando alguma medida de tendência central como média/moda/mediana
     dos valores que são conhecidos para aquele atributo;
 2.  Criar um novo valor que é indicação de valor faltante;
-3.  Usar algoritmos como $k$-nearest neighbors - KNN ($k$ vizinhos mais
+3.  Usar algoritmos como $k$-nearest neighbors - **KNN** ($k$ vizinhos mais
     próximos) para imputar valores coerentes;
 4.  Interpolar os dados.
-
-<br>
 
 Esses são alguns exemplos de como podemos imputar observações faltantes.
 Muitas vezes não podemos nos dar o luxo de percer observações de nossa
 base de dados.
+
+![](gifs/chapulin-colorado-no.gif)
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
@@ -746,7 +753,7 @@ rgamma(1000, 2, 2) |>
 
 Anteriormente eu citei algumas bibliotecas úteis de R para explorar os
 dados, na fase de tratamento das observações. Porém, não estranhe não
-ter cidado bibliotecas do framework
+ter, até o momento, citado bibliotecas do *framework*
 [tidymodels](https://www.tidymodels.org/packages/), em especial o
 [recipes](https://recipes.tidymodels.org/) que é muito utilizado no
 *workflow* de aprendizagem de máquina na fase de pré-processamento dos
@@ -756,11 +763,11 @@ pré-processamento com o pacote
 
 <br>
 
-O tidymodels será muito útil para nós, mas, aos poucos, seu uso e
+O [tidymodels](https://www.tidymodels.org/packages/) será muito útil para nós, mas, aos poucos, seu uso e
 explicações mais detalhadas serão apresentadas, apesar que em algumas
-situações mais simples, poderei não utilizá-lo, expor detalhes que
+situações mais simples, poderei não utilizá-lo, para expor detalhes que
 eventualmente não será possível ou estariam camuflados na utilização do
-tidymodels.
+[tidymodels](https://www.tidymodels.org/packages/).
 
 <br>
 
@@ -996,7 +1003,7 @@ importante!
 
 <br>
 
-Em [Breiman, L. (2001a). Statistical modeling: The two cultures.
+Em [Breiman, L. (2001a). **Statistical modeling: The two cultures**.
 Statistical Science, 16(3),
 199--231](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2Fss%2F1009213726),
 o Leo Breiman argumenta que existe duas culturas no uso de modelos
@@ -1037,7 +1044,7 @@ Statistical Science, 16(3), 199--231.](imgs/paper_breiman){width="70%"}
 :::
 
 ::: {.column width="50%"}
-![Leo como um probabilista jovem na Universidade da
+![Leo, na época em que era um jovem probabilista na Universidade da
 Califórina.](imgs/leo_breiman){width="60%"}
 :::
 :::
@@ -1067,6 +1074,26 @@ Association](https://community.amstat.org/slds/awards/breiman-award).
 
 ![[Leo Breiman trabalhando em sua residência, em
 1985.](https://projecteuclid.org/journalArticle/Download?urlid=10.1214%2Fss%2F1009213290)](imgs/breiman_residencia.png){width="30%"}
+
+## As duas culturas
+
+<br>
+
+::: columns
+::: {.column width='70%'}
+Leo Breiman, renomado estatístico, contribuiu significativamente para o campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos populares e influentes para a área. Entre tais métodos famosos, cito dois:
+
+<br>
+
+1. **Random forest** (**florestas aleatórias**): método que combina a previsão de vários modelos de árvores de decisão (*decision tree*), que veremos mais a frente, por isso o termo "floresta" para problemas de regressão e classificação;
+
+2. **Bootstrap aggregating** (**bagging**): técnica de aprendizagem *ensemble*, em que cria-se multiplos conjuntos de dados obtidos com reposição da amostra de treinamento. O modelo de aprendizagem de máquina é treinado em cada conjunto de dados e as previsões de cada um dos modelos são combinadas por meio da média (em problemas de regressão), ou por voto majoritário, em problemas de classificação. O *bagging* é utilizado para reduzir a variância e melhorar a estabilidade do modelo.
+:::
+
+::: {.column width='30%'}
+![](imgs/sign1357-gra-0003-m.jpg){fig-aling='right'}
+:::
+:::
 
 #  {.title background-image="imgs/rawpixel/freight.jpg"}
 
@@ -1197,7 +1224,7 @@ que $(\bf X, Y)$ são observações novas que não foram utilizadas para
 treinar/estimar $g$. Lê-se $R_{pred}(g)$ como "risco preditivo de $g$".
 Note que, como $\bf X$ são observações conhecidas e $g(\cdot)$ é um
 modelo preditivo, portanto, $g$ é conhecido, então,
-$\widehat{\bf Y} = g(\bf X)$ é um estimador dos labels, i.e., de
+$\widehat{\bf Y} = g(\bf X)$ é um estimador dos *labels*, i.e., de
 $\bf Y$.
 
 <br>
@@ -1230,7 +1257,7 @@ especial, temos que:
 
 -   Função de perda quadrática: $L(u) = u^2$;
 -   Função de perda absoluta: $L(u) = |u|$;
--   Função de perda degradu: $L(0) = 0$, se $|u| < \delta$ e $1$ caso
+-   Função de perda degrau: $L(0) = 0$, se $|u| < \delta$ e $1$ caso
     contrário, para algum $\delta > 0$;
 
 ## Função de risco
@@ -1248,7 +1275,7 @@ função de regressão.
 $g: \mathbb{R}^d \rightarrow \mathbb{R}$ via função perda quadrática,
 i.e, $R_{pred}(g) = \mathbb{E}\left[({\bf Y} - g({\bf X}))^2\right]$, em
 que $\bf (X, Y)$ são novas observações que não foram utilizadas para
-estimar $g$. Suponha também que estimaos o risco de um estimador de
+estimar $g$. Suponha também que estimamos o risco de um estimador de
 regressão $r({\bf X})$ via função perda quadrática
 $R_{reg}(g) = \mathbb{E}\left[(r({\bf X}) - g({\bf X}))^2\right]$.
 Então,
@@ -1334,7 +1361,8 @@ quadrática.**
 No caso da regressão linear simples ($d = 1$), temos que o modelo é dado
 por:
 
-$$g(x) = \beta_0 + \beta_1 x_{i,1} + \varepsilon_i, \,\, i = 1, \cdots, n.$$
+$$g(x) = \beta_0 + \beta_1 x_{i,1} + \varepsilon_i, \,\, i = 1, \cdots, n,$$
+em que $\varepsilon_i$ é um erro aleatório. Na abordagem *data modeling culture*, várias suposições poderem ser feitas para $\varepsilon_i$.
 
 Assumindo que a regressão linear simples é o modelo $g$ que iremos
 utilizar, então, desejamos minimizar:
@@ -1387,10 +1415,10 @@ A função de perda quadrática (função $L_2$) tem algumas vantagens em
 relação a função de perda absoluta. Listo algumas:
 
 1.  A função de perda quadrática penaliza mais os erros maiores, devido
-    ao vato dos erros serem levado ao quadrado;
+    ao fato dos erros serem levado ao quadrado;
 
 2.  A função de perda quadrática é mais sensível a presença de
-    [outlier](https://en.wikipedia.org/wiki/Outlier), que em compensação
+    [*outlier*](https://en.wikipedia.org/wiki/Outlier), que em compensação
     são menos penalizados ao se considerar a função de perda absoluta
     (função $L_1$);
 
@@ -1404,7 +1432,7 @@ relação a função de perda absoluta. Listo algumas:
 4.  A função de perda quadrática é deferenciável, já a função de perda
     absoluta não é.
 
-Para o caso de regerssão linear múltipla, i.e., quando $d > 1$,
+Para o caso de regressão linear múltipla, i.e., quando $d > 1$,
 poderemos utilizar uma notação matricial para representar o modelo
 linear múltiplo de regressão.
 
@@ -1419,7 +1447,7 @@ $$Y = g({\bf X}) = \beta^{T}{\bf X} + \varepsilon,$$
 em que $Y$ é um vetor $n \times 1$, ${\bf X}$ é uma matriz fixa e
 conhecida com os atributos de dimensão $n \times d$, em que a primeira
 coluna é preenchida de 1, $\beta = (\beta_0, \cdots, \beta_d)$. Na
-cultura de machine learning, iremos desconsiderar $\varepsilon$, não
+cultura de *machine learning*, iremos desconsiderar $\varepsilon$, i.e., não
 feremos suposições sobre $\varepsilon$. Portanto, considere
 
 $$g({\bf x}) = \beta^{T}{\bf X} = \beta_{0}x_0 + \beta_1x_{i,1} + \cdots + \beta_dx_{i,d},$$
@@ -1460,6 +1488,10 @@ $r({\bf x}) = \mathbb{E}({\bf X}\,|\,Y)$ é uma suposição muito forte.
 Contudo, existe, na literatura, justificativas para o uso de métodos de
 mínimos quadrados para estimar os coeficientes, mesmo quando a regressão
 real $r({\bf x})$ não satisfaz a suposição de linearidade.
+
+<br>
+
+![](gifs/chapulin-colorado-no.gif)
 
 ## Regressão linear multipla
 
@@ -1550,7 +1582,7 @@ objetivo consiste em interpretar os parâmetros:
 **Predição**: queremos criar $g({\bf x})$ com bom poder preditivo, mesmo
 que a especificação do modelo não esteja correta. Não assume que a
 verdadeira regressão é de fato linear! A interpretação aqui não é o
-foco. Tudo bem?
+foco. Tudo bem?!
 
 <br>
 
@@ -2096,7 +2128,7 @@ dados sem a $i$-ésima observação.
 <br>
 
 Não é difícil perceber que a depender do valor de $n$, o método LOOCV é
-computacionalmente intensivo. O método requer que ajustemos $n$ modelos.
+**computacionalmente intensivo**. O método requer que ajustemos $n$ modelos.
 Em algumas situações isso não é um grande problema, porém, em diversas
 outras pode ser impeditivo utilizar o LOOCV. 🤯
 
@@ -2232,8 +2264,8 @@ splits para mais valores de $\lambda$ na sequência.
 ::: {.column width="50%"}
 O simples procedimento de dividir o conjunto de dados em dois, uma parte
 para treinar o modelo e a outra parte (conjunto de teste) para estimar o
-risco $R(g)$ é denominado de [data splitting]{.red} ou [Hold-out
-Method]{.red}. É um procedimento mais simples, porém, pode não ser útil
+risco $R(g)$ é denominado de [*data splitting*]{.red} ou [*Hold-out
+Method*]{.red}. É um procedimento mais simples, porém, pode não ser útil
 em conjunto de dados não muito grandes.
 
 A segunda linha da ilustração, demonstra o procedimento de
@@ -2242,7 +2274,7 @@ treinamentos de modelos de aprendizagem de máquina.
 
 A terceira linha é uma abordagem também utilizada, porém não tão
 interessante quanto a validação cruzada. Nessa abordagem o banco de
-dados é dividido aleatoriamente em três partes. Traina-se o modelo com a
+dados é dividido aleatoriamente em três partes. Treina-se o modelo com a
 parte [verde]{.green}, estima-se o risco com o conjunto de validação
 amarelo e testa-se o modelo com o conjunto de teste.
 :::
@@ -2345,9 +2377,9 @@ iii - É a variância do estimador $\widehat{g}$.
 
 <br>
 
-Assim, lembre-se que uma escolha adequada de $\widehat{g}$ nos grarante
+Assim, lembre-se que uma escolha adequada de $\widehat{g}$ nos garante
 que conseguiremos reduzir o risco preditivo $R(g)$, pois a escolha
-aproriada implica em escolhermos um estimador de $\widehat{g}$ com
+apropriada implica em escolhermos um estimador de $\widehat{g}$ com
 balanço entre víes e variância.
 
 <br>
@@ -2355,14 +2387,14 @@ balanço entre víes e variância.
 Modelos com muitos parâmetros possuem viés relativamente baixo, porém,
 tendem a ter variância muito alta, em geral, uma vez que precisamos
 estimar muitos parâmetros. Já modelos com poucos parâmetros, normalmente
-tendem a ter variância baixa, acompanhados, normalmente de um alto viés.
+tendem a ter variância baixa, acompanhados normalmente de um alto viés.
 
 <br>
 
-Normalmente, modelos com muitos parâmetros nos levam a termos
+Geralmente, modelos com muitos parâmetros nos levam a termos
 [*overffiting*]{.red} (super-ajuste), o que não é bom pois são
 acompanhados de alta variância. Já modelos muito simplistas nos conduzem
-a um ajuste muito ruim ([*underffiting*]{.red} ou sub-ajuste).
+à um ajuste muito ruim ([*underffiting*]{.red} ou sub-ajuste).
 Entendeu!?
 
 ![](gifs/mais_ou_menos.gif)
@@ -2521,34 +2553,34 @@ validação cruzada. Leia a documentação da biblioteca, em especial, a da
 função `vfold_cv`, responsável por construir a validação cruzada. Na
 verdade ela faz a divisão da base de dados em $v$ *splits* de tamanho
 aproximadamente iguais. Por padrão, $v = 10$. Esse é o procedimento de
-$k$-fold cross-validation que apresentamos aqui, em que $v = k$.
+$k$-*fold cross-validation* que apresentamos aqui, em que $v = k$.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
 <br>
 
-Algumas observações gerais a respetioda biblioteca
+Algumas observações gerais a respetio da biblioteca
 [rsample](https://rsample.tidymodels.org/index.html), que são úteis para
 resolver esse problema:
 
 ![](imgs/rsample.png){fig-align="center"}
 
-1.  Para realizar uma primeira divisão do conjunto de dados (data
-    splitting/hold-out), utiliza-se a função `initial_split`;
-2.  Para acessar o conjunto de treinamento dos dados, usamos a função
+1.  Para realizar uma **primeira divisão** do conjunto de dados (*data
+    splitting/hold-out*), utiliza-se a função `initial_split`;
+2.  Para acessar o conjunto de **treinamento** dos dados, usamos a função
     `training`;
-3.  Para acessar o conjunto de teste, usamos a função `testing`;
+3.  Para acessar o conjunto de **teste**, usamos a função `testing`;
 4.  Para constuir todas as divisões da validação cruzada, entre
     treinamento e validação, no conjunto de treinamento inicial, usamos
     a função `vfold_cv` já mencionada;
-5.  Para acessar o conjunto de treinamento de um split da validação
+5.  Para acessar o conjunto de **treinamento** de um *split* da validação
     cruzada, usamos a função `analysis`;
-6.  Para acessar o conjunto de validação, utilizamos a função
+6.  Para acessar o conjunto de **validação**, utilizamos a função
     `assessment`.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
-![](imgs/rsample.png){fig-align="center" width="10%"}
+![](imgs/rsample.png){fig-align='center' width='5%'}
 
 <br> Note que realizar uma validação cruzada é importante para podemos
 selecionar o melhor polinômio, i.e., o melhor valor de $p$. Caso
@@ -2560,13 +2592,14 @@ melhor modelo dentro de um esquema de validação cruzada.
 <br>
 
 No mundo de aprendizagem de máquina, muitos chamam o processo de
-encontrar o melhor hiperparâmetro de ["tunagem"]{.red}.
+encontrar o melhor hiperparâmetro de ["tunagem"]{.red}. Em vários modelos, 
+podemos ter mais de um.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
 <br>
 
-As Figuras abaixo, mostra a avaliação dos polinômios da classe
+As Figuras abaixo, mostram a avaliação dos polinômios da classe
 $\mathbb{G}$, usando o risco estimado $\widehat{R}(g)$ pelo erro
 quadrático médio - EQM. Porém, a Figura [A]{.red} aprenseta a avaliação
 dos modelos, usando simplesmente o conjunto de treinamento e a Figura
@@ -2588,9 +2621,9 @@ alternativa.
 
 <br>
 
-Observe o dashboard interativo. Sabemos que para que tenhamos uma boa
+Observe o *dashboard* interativo! Sabemos que para que tenhamos uma boa
 estimativa do risco preditivo, devemos utilizar novas observações. No
-dashboard é possível observar que a forma errada (usando o conjunto de
+*dashboard* é possível observar que a forma errada (usando o conjunto de
 treinamento para avaliar o risco), sugere que sempre será bom adicionar
 mais parâmetros ao modelo, levando a *overfitting*. Perceba que usando a
 forma correta (usando validação cruzada), o EQM (risco estimado) sugere
