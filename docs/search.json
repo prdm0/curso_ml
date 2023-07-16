@@ -1173,7 +1173,7 @@
     "href": "index.html#nadaraya-watson-6",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Nadaraya-Watson",
-    "text": "Nadaraya-Watson\n\n\n\nSolução do exempĺo de Nadaraya-Watson\nlibrary(tidymodels)\nlibrary(glue)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(patchwork)\n\ntidymodels::tidymodels_prefer()\n\n\n# Lendo dados\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\narquivo_temp &lt;- tempfile()\ndownload.file(url = url, destfile = arquivo_temp)\nload(arquivo_temp)\n\ndados &lt;- \n  dados_expectativa_renda |&gt; \n  dplyr::select(-CountryName) |&gt; \n  dplyr::rename(y = LifeExpectancy, x = GDPercapita)\n\nnadaraya_watson_exp_pip &lt;- function(dados, h = 1, ...){\n  # Criando receita\n  receita &lt;- \n    recipe(y ~ x, data = dados) |&gt; \n    step_normalize()\n  \n  # Definindo o modelo\n  modelo_knn &lt;- nearest_neighbor(dist_power = h, ...) |&gt; \n    set_mode(\"regression\") |&gt; \n    set_engine(\"kknn\")\n  \n  # Workflow\n  ajuste_final &lt;- \n    workflow() |&gt; \n    add_model(modelo_knn) |&gt; \n    add_recipe(receita) |&gt; \n    fit(data = dados)\n  \n  # Retornando previsoes\n  y_chapeu &lt;- predict(ajuste_final, new_data = dados)\n  \n  dados &lt;- \n    dados |&gt; \n    mutate(y_chapeu = y_chapeu$.pred)\n  \n  dados |&gt; \n    ggplot() +\n    geom_point(aes(x = x, y = y), size = 3) +\n    geom_line(aes(x = x, y = y_chapeu), col = \"red\", alpha = 0.6, size = 2) +\n    labs(title = \"Nadaraya-Watson\", subtitle = glue(\"h = {h}\")) +\n    theme(\n      title = element_text(face = \"bold\")\n    )\n}\n\np1 &lt;- nadaraya_watson_exp_pip(dados, h = 1, weight_func = \"gaussian\")\np2 &lt;- nadaraya_watson_exp_pip(dados, h = 1000, weight_func = \"gaussian\")\n\np &lt;- p1 + p2 + plot_annotation(tag_levels = \"A\")\n\nggsave(p, file = \"imgs/nadaraya_watson.png\", width = 30, height = 15, units = \"cm\")"
+    "text": "Nadaraya-Watson\n\n\n\nSolução do exempĺo de Nadaraya-Watson\nlibrary(tidymodels)\nlibrary(glue)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(patchwork)\n\ntidymodels::tidymodels_prefer()\n\n\n# Lendo dados\nurl &lt;- \"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData\"\narquivo_temp &lt;- tempfile()\ndownload.file(url = url, destfile = arquivo_temp)\nload(arquivo_temp)\n\ndados &lt;- \n  dados_expectativa_renda |&gt; \n  dplyr::select(-CountryName) |&gt; \n  dplyr::rename(y = LifeExpectancy, x = GDPercapita)\n\nnadaraya_watson_exp_pip &lt;- function(dados, h = 1, ...){\n  # Criando receita\n  receita &lt;- \n    recipe(y ~ x, data = dados) |&gt; \n    step_normalize()\n  \n  # Definindo o modelo\n  modelo_knn &lt;- nearest_neighbor(dist_power = h, ...) |&gt; \n    set_mode(\"regression\") |&gt; \n    set_engine(\"kknn\")\n  \n  # Workflow\n  ajuste_final &lt;- \n    workflow() |&gt; \n    add_model(modelo_knn) |&gt; \n    add_recipe(receita) |&gt; \n    fit(data = dados)\n  \n  # Retornando previsoes\n  y_chapeu &lt;- predict(ajuste_final, new_data = dados)\n  \n  dados &lt;- \n    dados |&gt; \n    mutate(y_chapeu = y_chapeu$.pred)\n  \n  dados |&gt; \n    ggplot() +\n    geom_point(aes(x = x, y = y), size = 3) +\n    geom_line(aes(x = x, y = y_chapeu), col = \"red\", alpha = 0.6, size = 2) +\n    labs(title = \"Nadaraya-Watson\", subtitle = glue(\"h = {h}\")) +\n    theme(\n      title = element_text(face = \"bold\")\n    )\n}\n\np1 &lt;- nadaraya_watson_exp_pip(dados, h = 1, weight_func = \"gaussian\")\np2 &lt;- nadaraya_watson_exp_pip(dados, h = 1000, weight_func = \"gaussian\")\n\np &lt;- p1 + p2 + plot_annotation(tag_levels = \"A\")\n\nggsave(p, file = \"imgs/nadaraya_watson.png\", width = 30, height = 15, units = \"cm\")\n\n\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   },
   {
     "objectID": "index.html#tidymodels",
@@ -1215,6 +1215,27 @@
     "href": "index.html#tidymodels-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros e o yardstick é mais responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os hiperparâmetros eventuais do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros.\n\n\n\n\n\n\n\n \n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros e o yardstick é mais responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os hiperparâmetros eventuais do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros."
+  },
+  {
+    "objectID": "index.html#tidymodels-6",
+    "href": "index.html#tidymodels-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Tidymodels",
+    "text": "Tidymodels\n\nTodo o fluxo de trabalho é gerido pela biblioteca workflows de R."
+  },
+  {
+    "objectID": "index.html#tidymodels-7",
+    "href": "index.html#tidymodels-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Tidymodels",
+    "text": "Tidymodels\n\n\nPerceba o papel da biblioteca workflows de R. Basicamente gostaríamos de ter uma automação da faze do tratamento das features realizada com o recipes com a modelagem."
+  },
+  {
+    "objectID": "index.html#tidymodels-8",
+    "href": "index.html#tidymodels-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Tidymodels",
+    "text": "Tidymodels\n\nNão necessariamente iremos utilizar o tidymodels em todos os exemplos e exercícios. Porém, iremos explorar bastante, até o fim do curso, o treinamento de modelos usando o tidymodels. Por tanto, aos poucos, a medida em que exemplos são apresentados e exercícios forem passados, o aprendizado do uso do tidymodels se dará.\n\n \n\nSempre que possível, deveremos colocar as “mãos na massa” 🍝 para que possamos dominar e compreender uma ferramenta computacional. A prática é importante!"
   }
 ]

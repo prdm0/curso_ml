@@ -342,8 +342,8 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 
 1.  [Generativos]{.red}: são os métodos que dada as variáveis $X$ e $Y$,
     o objetivo é encontrar a distribuição de probabilidade conjunta
-    $P(X, Y)$, para então poder determinar $P(Y|X = \bf{x})$.
-    Alguns métodos são:
+    $P(X, Y)$, para então poder determinar $P(Y|X = \bf{x})$. Alguns
+    métodos são:
 
     -   Naive Bayes;
     -   Descriminante linear.
@@ -351,8 +351,8 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 <br>
 
 2.  [Descriminativos]{.red}: são os métodos que estimam diretamente a
-    probabilidade condicional $P(Y|X = \bf{x})$ ou que mesmo nem
-    assumem modelos probabilísticos. Podemos citar:
+    probabilidade condicional $P(Y|X = \bf{x})$ ou que mesmo nem assumem
+    modelos probabilísticos. Podemos citar:
     -   Regressão logistica;
     -   Perceptron;
     -   Support Vector Machine - SVM.
@@ -749,7 +749,7 @@ dados, na fase de tratamento das observações. Porém, não estranhe não
 ter cidado bibliotecas do framework
 [tidymodels](https://www.tidymodels.org/packages/), em especial o
 [recipes](https://recipes.tidymodels.org/) que é muito utilizado no
-workflow de aprendizagem de máquina na fase de pré-processamento dos
+*workflow* de aprendizagem de máquina na fase de pré-processamento dos
 dados. Muitas dessas transformações são aplicadas como receitas de
 pré-processamento com o pacote
 [recipes](https://recipes.tidymodels.org/).
@@ -765,6 +765,232 @@ tidymodels.
 <br>
 
 ![](gifs/ok-2.gif){width="20%"}
+
+## Tidymodels
+
+<br>
+
+Diversas bibliotecas na linguagem R são preparadas para trabalharem na
+área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo
+desenvolvidas há anos. Por exemplo,as bibliotecas
+[glmnet](https://cran.r-project.org/web/packages/glmnet/index.html),
+[ranger](https://cran.r-project.org/web/packages/ranger/index.html),
+[kknn](https://cran.r-project.org/web/packages/kknn/index.html),
+[xgboost](https://cran.r-project.org/web/packages/xgboost/index.html),
+[keras](https://cran.r-project.org/web/packages/keras/index.html),
+[rpart](https://cran.r-project.org/web/packages/rpart/index.html),
+[randomForest](https://cran.r-project.org/web/packages/randomForest/index.html),
+entre diversos outros.
+
+<br>
+
+```{r, cache=TRUE}
+#| code-fold: true
+#| code-summary: O número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.
+library(xml2)
+library(httr)
+library(stringr)
+
+numero_pacotes_r <- httr::GET("https://cloud.r-project.org/web/packages/index.html") |> 
+  xml2::read_html() |> 
+  xml2::xml_find_all("//p[1]") |> 
+  xml2::xml_text() |> 
+  stringr::str_extract(pattern = "[0-9]+")
+```
+
+<br>
+
+Atualmente, a linguagem R possui [`r numero_pacotes_r`]{.red}, em que
+muitos deles são preparados para para trabalharem em tarefas de
+aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos
+implementam o mesmo modelo, uns com algumas variações, porém, o uso é
+totalmente diferente, nomes de parâmetros distintos, saídas distintas,
+etc.
+
+![](gifs/chaves-isso.gif)
+
+## Tidymodels
+
+<br>
+
+Essas diferentes implementações torna confuso trabalhar e testar
+diferentes modelos ao mesmo tempo.
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+Uma das primeiras ideias mais conhecidas de unificação de sintaxe do
+*workflow* de machine learning, na linguagem R, foi idealizada pelo
+estatístico [Max Khun](https://www.linkedin.com/in/max-kuhn-864a9110/).
+
+<br>
+
+Ele criou a biblioteca
+[caret](https://cran.r-project.org/web/packages/caret/index.html) -
+**C**lassification **A**nd **RE**gression **T**raining de R que é muito
+bem desenvolvida e abrangente. Você poderá estudar o
+[caret](https://cran.r-project.org/web/packages/caret/index.html)
+clicando [aqui](https://topepo.github.io/caret/).
+
+<br>
+
+Não foi um trabalho simples, veja uma tabela com a quantidade de modelos
+que o [caret](https://cran.r-project.org/web/packages/caret/index.html)
+suporta, clicando
+[aqui](https://topepo.github.io/caret/available-models.html). Então,
+"por baixo dos panos", a ideia era unificar a entrada e saída. A
+biblioteca **caret** continua sendo mantida, apesar da existência do
+[tidymodels](https://www.tidymodels.org/).
+:::
+
+::: {.column width="50%"}
+![](imgs/max_kuhn.jpeg){fig-aling="center"}
+:::
+:::
+
+## Tidymodels
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+![](imgs/max_kuhn.jpeg){fig-aling="center"}
+:::
+
+::: {.column width="50%"}
+Max Kuhn, atualmente, no momento de escrita desse frame é funcionário da
+Posit Ltda e foi contratado para estar a frente do desenvolvimento de
+uma versão "arrumada" (*tidy*) do
+[caret](https://cran.r-project.org/web/packages/caret/index.html), que é
+o [tidymodels](https://www.tidymodels.org/).
+
+<br>
+
+![](imgs/tidymodels.png){width="50%" fig-aling="center"}
+:::
+:::
+
+## Tidymodels
+
+<br>
+
+![O *workflow* (*pipeline*) do treinamento de um modelo usando o
+*framework* [tidymodels](https://www.tidymodels.org/). Todos os pacotes
+(rsample, recipes, parsnip, tune, dails, yardstick) são gerenciados pelo
+pacote [tidymodels](https://www.tidymodels.org/). Cada um desses pacotes
+fornece um conjunto de funções úteis em tarefas específicas no workflow
+de machine learning.](imgs/workflow_tidymodels.png){fig-aling="center"
+width="70%"}
+
+## Tidymodels
+
+<br>
+
+1.  [rsample](https://rsample.tidymodels.org/): responsável pela
+    reamostragem dos dados, parte importante para que possamos treinar
+    um modelo de aprendizagem de máquina. É nele que encontra-se funções
+    para realizar reamostragem como bootstrap, $k$-folds
+    cross-validation, nested cross-validation, entre outras.
+
+![](imgs/rsample.png){width="10%" fig-aling="center"}
+
+2.  [recipes](https://recipes.tidymodels.org/): apresenta diversas
+    funções para transformações de variáveis como criação de variáveis
+    dummy, normalização de variáveis, inputação de dados pela média,
+    mediana, knn, entre outras formas de imputação, transformações de
+    variáveis categórias em numéricas, entre outras funcionalidades. Ele
+    permite que possamos criar uma receita de transformações nos dados
+    para que esses, após transformados, possam entrar no modelo.
+
+![](imgs/recipes.png){width="10%" fig-aling="center"}
+
+3.  [parsnip](https://parsnip.tidymodels.org/): é o pacote que unifica
+    as entradas e saídas de diversos pacotes de aprendizagem de máquina
+    de R. Ele possui os motores (engines) que são as comunicações com os
+    algoritmos implementados em diversos pacotes de R que trabalham com
+    tarefas de regressão e classificação, em aprendizagem de máquina.
+
+## Tidymodels
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+Os pacotes [tune](https://tune.tidymodels.org/),
+[dails](https://dials.tidymodels.org/) e
+[yardstick](https://yardstick.tidymodels.org/) tomará conta da parte de
+treino do modelo. Os pacote [tune](https://tune.tidymodels.org/) e
+[dails](https://dials.tidymodels.org/) são responsáveis pela "tunagem"
+dos eventuais hiperparâmetros e o
+[yardstick](https://yardstick.tidymodels.org/) é mais responsável pelas
+métricas de avaliação do modelo.
+
+<br>
+
+A biblioteca [dails](https://dials.tidymodels.org/) está mais
+relacionada a criação dos *grids* para os hiperparâmetros eventuais do
+modelo. Já o pacote [tune](https://tune.tidymodels.org/), utiliza-se da
+validação cruzada criada pelo pacote
+[rsample](https://rsample.tidymodels.org/) para varrer as combinações de
+hiperparâmetros criadas pelo [dails](https://dials.tidymodels.org/),
+i.e., o [tune](https://tune.tidymodels.org/) está mais relacionado com a
+otimização dos hiperparâmetros.
+:::
+
+::: {.column width="25%"}
+![](imgs/tune.png){fig-aling="right"}
+:::
+
+::: {.column width="25%"}
+![](imgs/dails.png){fig-aling="right"}
+![](imgs/yardstick.png){fig-aling="right"}
+:::
+:::
+
+## Tidymodels
+
+<br>
+
+Todo o fluxo de trabalho é gerido pela biblioteca
+[workflows](https://workflows.tidymodels.org/) de R.
+
+<br>
+
+![](imgs/workflows_lib.png){fig-aling="center"}
+
+## Tidymodels
+
+<br>
+
+![Perceba o papel da biblioteca
+[workflows](https://workflows.tidymodels.org/) de R. Basicamente
+gostaríamos de ter uma automação da faze do tratamento das *features*
+realizada com o [recipes](https://recipes.tidymodels.org/) com a
+modelagem.](imgs/MachineLearning_tidymodels.png){fig-aling="center"}
+
+## Tidymodels
+
+<br>
+
+Não necessariamente iremos utilizar o
+[tidymodels](https://www.tidymodels.org/) em todos os exemplos e
+exercícios. Porém, iremos explorar bastante, até o fim do curso, o
+treinamento de modelos usando o
+[tidymodels](https://www.tidymodels.org/). Por tanto, aos poucos, a
+medida em que exemplos são apresentados e exercícios forem passados, o
+aprendizado do uso do [tidymodels](https://www.tidymodels.org/) se dará.
+
+<br>
+
+![](gifs/thumbs-up-nod.gif){width="25%"}
+![](gifs/teclado-anime.gif){width="25%"}
+
+<br>
+
+Sempre que possível, deveremos colocar as "mãos na massa" 🍝 para que
+possamos dominar e compreender uma ferramenta computacional. A prática é
+importante!
 
 ## As duas culturas
 
@@ -1093,9 +1319,8 @@ $$\argmin_g \mathbb{E}(L(Y - g)|X).$$
 
 Para o caso da função perda quadrática (função $L_2$), o melhor preditor
 de $Y$ condicional à $X$ é a média condicional de $Y$ dado $X$, i.e.,
-$r(X) = \mathbb{E}(Y|X)$. Já, na situação em que considera-se a
-perda absoluta (função $L_1$), o melhor estimador é a mediana
-condicional.
+$r(X) = \mathbb{E}(Y|X)$. Já, na situação em que considera-se a perda
+absoluta (função $L_1$), o melhor estimador é a mediana condicional.
 
 <br>
 
@@ -1528,7 +1753,7 @@ Considere os textos:
 <br>
 
 | Textos          | disciplina | amo | aprendizagem | máquina | estatistica | adoro | UFPB |
-|-----------------|------------|-----|--------------|---------|-------------|-------|------|
+|---------|---------|---------|---------|---------|---------|---------|---------|
 | [Texto 1]{.red} | 1          | 1   | 0            | 0       | 0           | 0     | 0    |
 | [Texto 2]{.red} | 0          | 0   | 0            | 0       | 0           | 1     | 0    |
 | [Texto 3]{.red} | 0          | 0   | 1            | 1       | 0           | 0     | 0    |
@@ -3228,11 +3453,19 @@ você utilizaria. Explique!
 
 <br>
 
-Métodos paramétricos podem impor muitas limitações na solução de um problema de regressão, i.e., em problemas que desejamos estimar a função de regressão $r({\bf x})$. Por exemplo, nem sempre o melhor estimador linear é um bom estimador para $r({\bf x})$.
+Métodos paramétricos podem impor muitas limitações na solução de um
+problema de regressão, i.e., em problemas que desejamos estimar a função
+de regressão $r({\bf x})$. Por exemplo, nem sempre o melhor estimador
+linear é um bom estimador para $r({\bf x})$.
 
 <br>
 
-Métodos paramétricos são muitas vezes simplistas e restritivos, em que normalmente abrimos mãos para se ter um estimador um pouco mais viesado, em detrimento da diminuição da variância do modelo. Por exemplo, nas regressões penalizadas que vimos anteriormente (**ridge**, **lasso** e **elastic-net**), penalizamos modelos com muitas covariáveis o que naturalmente aumentará o viés, na maioria das vezes.
+Métodos paramétricos são muitas vezes simplistas e restritivos, em que
+normalmente abrimos mãos para se ter um estimador um pouco mais viesado,
+em detrimento da diminuição da variância do modelo. Por exemplo, nas
+regressões penalizadas que vimos anteriormente (**ridge**, **lasso** e
+**elastic-net**), penalizamos modelos com muitas covariáveis o que
+naturalmente aumentará o viés, na maioria das vezes.
 
 <br>
 
@@ -3242,46 +3475,64 @@ Métodos paramétricos são muitas vezes simplistas e restritivos, em que normal
 
 <br>
 
-Em situações em que temos muitos dados ($n$ grande), os modelos não-paramétricos possuem, em geral, boa peformance, uma vez que apesar de que nessa classe de modelos existir um aumento da variância, porém, seguida de uma redução de viés, a variância do modelo não aumenta muito.
+Em situações em que temos muitos dados ($n$ grande), os modelos
+não-paramétricos possuem, em geral, boa peformance, uma vez que apesar
+de que nessa classe de modelos existir um aumento da variância, porém,
+seguida de uma redução de viés, a variância do modelo não aumenta muito.
 
 <br>
 
-De um lado, nos modelos de regressão que vimos até o momento, introduzimos uma penalização para diminuir a variância do modelo frente ao método dos mínimos quadrados (quando não usamos penalização) em troca de um aumento no víes. Aqui, em modelos não paramétricos, desejamos fazer a troca oposta, i.e., diminuir o viés, em troca de um ganho na variância no modelo.
+De um lado, nos modelos de regressão que vimos até o momento,
+introduzimos uma penalização para diminuir a variância do modelo frente
+ao método dos mínimos quadrados (quando não usamos penalização) em troca
+de um aumento no víes. Aqui, em modelos não paramétricos, desejamos
+fazer a troca oposta, i.e., diminuir o viés, em troca de um ganho na
+variância no modelo.
 
 <br>
 
-Qualquer abordagem paramétrica trás consigo a possibilidade de que a forma funcional $g$ para estimar $f$ seja muito diferente da verdadeira, claro, se o modelo resultante não se ajustar bem aos dados, isto é $\widehat{g}$ não tem boa capacidade preditiva, muito embora, também é possível que tenhamos $\widehat{g}$ com boa capacidade preditiva, porém, não represente a estrutura real de $f$ (sempre desconhecida). 
+Qualquer abordagem paramétrica trás consigo a possibilidade de que a
+forma funcional $g$ para estimar $f$ seja muito diferente da verdadeira,
+claro, se o modelo resultante não se ajustar bem aos dados, isto é
+$\widehat{g}$ não tem boa capacidade preditiva, muito embora, também é
+possível que tenhamos $\widehat{g}$ com boa capacidade preditiva, porém,
+não represente a estrutura real de $f$ (sempre desconhecida).
 
 ## Métodos não-paramétricos
 
-<br>
+<br> <br>
+
+Isso não é regra, porém ajuda a entender um pouco o dilema entre essas
+classes de modelos (paramétricos e não-paramétricos).
+
 <br>
 
-Isso não é regra, porém ajuda a entender um pouco o dilema entre essas classes de modelos (paramétricos e não-paramétricos).
-
-<br>
-
-![](imgs/vies_variancia_nao_parametrico.png){fig-aling='center'}
+![](imgs/vies_variancia_nao_parametrico.png){fig-aling="center"}
 
 ## $k$-vizinhos mais próximo próximos
 
 <br>
 
-Também chamado de [*$k$-nearest neighbours* - KNN]{.red}, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:
+Também chamado de [$k$-nearest neighbours - KNN]{.red}, o KNN é um dos
+métodos mais populares na comunidade de aprendizagem de máquina. O
+método foi formulado em uma sequência de dois artigos:
 
 <br>
 
-1 - Benedetti, J. K. (1977). **On the nonparametric estimation of regression functions**. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;
+1 - Benedetti, J. K. (1977). **On the nonparametric estimation of
+regression functions**. Journal of the Royal Statistical Society. Series
+B (Methodological), 248--253;
 
 <br>
 
-2 - Stone, C. J. (1977). **Consistent nonparametric regression**. The Annals of Statistics, 595–
-620.
+2 - Stone, C. J. (1977). **Consistent nonparametric regression**. The
+Annals of Statistics, 595-- 620.
 
 <br>
 
-A ideia do método é estimar a função de regressão $r({\bf x})$, para um dado ${\bf x}$ com base nas respostas $Y$ dos $k$-vizinhos mais próximos de ${\bf x}$. 
-
+A ideia do método é estimar a função de regressão $r({\bf x})$, para um
+dado ${\bf x}$ com base nas respostas $Y$ dos $k$-vizinhos mais próximos
+de ${\bf x}$.
 
 ## $k$-vizinhos mais próximo próximos
 
@@ -3289,31 +3540,43 @@ A ideia do método é estimar a função de regressão $r({\bf x})$, para um dad
 
 Formalmente, temos que
 
-$$g({\bf x^*}) = \frac{1}{k}\sum_{i \in \mathcal{N}_{\bf x^*}}y_i,$$
-em que $\mathcal{N}_{\bf x}$ é o conjunto índices das $k$ observações mais próximas de ${\bf x}$, i.e,
+$$g({\bf x^*}) = \frac{1}{k}\sum_{i \in \mathcal{N}_{\bf x^*}}y_i,$$ em
+que $\mathcal{N}_{\bf x}$ é o conjunto índices das $k$ observações mais
+próximas de ${\bf x}$, i.e,
 
 $$\mathcal{N}_{\bf x^*} = \{i \in \{1, \cdots, n\}\, : \, d({\bf x}_i, {\bf x^*}) \leq d_{\bf x^*}^k\},$$
-em que $d_{\bf x^*}^k$ é a distância do $k$-ésimo vizinho mais próximo de $\bf{x^*}$ em $\bf{x}$. Portanto, o valor da regressão no ponto ${\bf x^*},$ i.e., o valor de $r({\bf x^*}) = \mathbb{E}(Y|{\bf X} = {\bf x^*})$ é estimado pela média de $Y_{N_{\bf x^*}}$. Ou seja, estimamos por:
+em que $d_{\bf x^*}^k$ é a distância do $k$-ésimo vizinho mais próximo
+de $\bf{x^*}$ em $\bf{x}$. Portanto, o valor da regressão no ponto
+${\bf x^*},$ i.e., o valor de
+$r({\bf x^*}) = \mathbb{E}(Y|{\bf X} = {\bf x^*})$ é estimado pela média
+de $Y_{N_{\bf x^*}}$. Ou seja, estimamos por:
 
 $$\overline{Y}_{N_{\bf x^*}} = \frac{1}{k} \sum_{i \in \mathcal{N}_{\bf x^*}}y_i.$$
 
 ## $k$-vizinhos mais próximo próximos
 
-<br>
-<!-- http://leg.ufpr.br/~lucambio/MSM/MSM03.html -->
-Para determinar $d_{\bf x^*}^k$, poderemos utilizar alguma métrica de distância e assim mensurarmos a proximidade. Entre elas:
+<br> <!-- http://leg.ufpr.br/~lucambio/MSM/MSM03.html --> Para
+determinar $d_{\bf x^*}^k$, poderemos utilizar alguma métrica de
+distância e assim mensurarmos a proximidade. Entre elas:
 
 <br>
 
-1. [Distância Euclidiana]{.red} ou distância $L_2$: $d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}$;
+1.  [Distância Euclidiana]{.red} ou distância $L_2$:
+    $d(x^a, x^b) = \sqrt{(x_1^a - x_1^b)^2 + \cdots + (x_d^a - x_d^b)^2}$;
 
 <br>
 
-2. [Distância de Manhattan]{.red}, City Block ou distância $L_1$: $d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}$;
+2.  [Distância de Manhattan]{.red}, City Block ou distância $L_1$:
+    $d(x^a, x^b) = \sqrt{|x_1^a - x_1^b| + \cdots + |x_d^a - x_d^b|}$;
 
 <br>
 
-2. [Distância de Mahalanobis]{.red}: $d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}$, em que $S$ é a matriz de covariância, em que na diagonal princial temos as variâncias e fora dela as covariâncias entre os pontos. Lembre-se que se $x$ e $y$ são vetores de dados quaisquer, a interdependência linear entre eles poderá ser estimada como:
+2.  [Distância de Mahalanobis]{.red}:
+    $d(x^a, x^b) = \sqrt{(x^a - x^b)^{T}S^{-1}(x^a - x^b)}$, em que $S$
+    é a matriz de covariância, em que na diagonal princial temos as
+    variâncias e fora dela as covariâncias entre os pontos. Lembre-se
+    que se $x$ e $y$ são vetores de dados quaisquer, a interdependência
+    linear entre eles poderá ser estimada como:
 
 <br>
 
@@ -3323,11 +3586,22 @@ $$\mathrm{cov}(x, y) = \frac{1}{n-1}\sum_{i = 1}^n (x_i - \overline{x})(y_i - \o
 
 <br>
 
-Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.
+Você poderá utilizar qualquer outra medida de distância além das que
+foram citadas acima.
 
 <br>
 
-É importante perceber que **o método KNN não faz uma "compressão" dos dados** como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de $Y$, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$ deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O KNN não possui coeficientes para interpretar. Diferentemente da regressão linear, o KNN é um pouco mais "*black box*".
+É importante perceber que **o método KNN não faz uma "compressão" dos
+dados** como a regressão linear que estudamos. Lá, temos uma equação que
+utilizamos para estimar o valor de $Y$, após as estimação dos
+coeficientes do modelo de regressão, ou seja, não precisamos mais dos
+dados para estimar novas observações. Já no KNN, precisamos sempre nos
+recorrer aos dados para fazer novas predições, ou seja, sempre que
+desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$
+deveremos sempre fazer uma nova consulta aos dados para calcular a média
+dos vizinhos mais próximos. O KNN não possui coeficientes para
+interpretar. Diferentemente da regressão linear, o KNN é um pouco mais
+"*black box*".
 
 <br>
 
@@ -3335,13 +3609,24 @@ Você poderá utilizar qualquer outra medida de distância além das que foram c
 
 ## $k$-vizinhos mais próximo próximos
 
-<br>
-O valor da constante $k$ é um hiperparâmetro do KNN e deverá ser obtido por validação cruzada. Perceba que se $k = n$ temos um modelo muito viesado, porém com variância pequena. Isso, porquê para $k = n$ basicamente iremos tirar uma média dos dados. Para $k = 1$, teremos um *overfitting*, uma vez que o estimador irá interpolar os dados.
+<br> O valor da constante $k$ é um hiperparâmetro do KNN e deverá ser
+obtido por validação cruzada. Perceba que se $k = n$ temos um modelo
+muito viesado, porém com variância pequena. Isso, porquê para $k = n$
+basicamente iremos tirar uma média dos dados. Para $k = 1$, teremos um
+*overfitting*, uma vez que o estimador irá interpolar os dados.
 
-<br>
-[Exemplo]{.red}: Considere novamente o conjunto de dados de expectativa de vida versus PIB per
-Capita disponíveis
-[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData). Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir uma fução que retorne um gráfico com as estimativas do KNN. A função receberá como argumentos o conjunto de dados e o valor de $k$. Você também poderia utilizar outras bibliotecas, como por exemplo a [FNN](https://cran.r-project.org/web/packages/FNN/index.html), ou a [KKNN](https://github.com/KlausVigo/kknn), esta útlima é a que é utilizada internamente na biblioteca [parsnip](https://parsnip.tidymodels.org/) do [tidymodels](https://www.tidymodels.org/).
+<br> [Exemplo]{.red}: Considere novamente o conjunto de dados de
+expectativa de vida versus PIB per Capita disponíveis
+[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData).
+Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir
+uma fução que retorne um gráfico com as estimativas do KNN. A função
+receberá como argumentos o conjunto de dados e o valor de $k$. Você
+também poderia utilizar outras bibliotecas, como por exemplo a
+[FNN](https://cran.r-project.org/web/packages/FNN/index.html), ou a
+[KKNN](https://github.com/KlausVigo/kknn), esta útlima é a que é
+utilizada internamente na biblioteca
+[parsnip](https://parsnip.tidymodels.org/) do
+[tidymodels](https://www.tidymodels.org/).
 
 <br>
 
@@ -3351,7 +3636,16 @@ Capita disponíveis
 
 <br>
 
-Abrindo apenas um parêntese, o [tidymodels](https://www.tidymodels.org/) refere-se a um conjunto de pacotes que são úteis para o tratamento, treinamento, tunagem e avaliação de modelos de aprendizagem de máquina, em que o [parsnip](https://parsnip.tidymodels.org/) implementa as *engines* (algoritmos/motores) que iremos utilizar para treinar um modelo. Na verdade, os algoritmos estão implementados em pacotes de terceiros e não precisamente no [parsnip](https://parsnip.tidymodels.org/). Porém, o [parsnip](https://parsnip.tidymodels.org/) unifica a sintaxe de diversos algoritmos implementados em pacotes separados.
+Abrindo apenas um parêntese, o [tidymodels](https://www.tidymodels.org/)
+refere-se a um conjunto de pacotes que são úteis para o tratamento,
+treinamento, tunagem e avaliação de modelos de aprendizagem de máquina,
+em que o [parsnip](https://parsnip.tidymodels.org/) implementa as
+*engines* (algoritmos/motores) que iremos utilizar para treinar um
+modelo. Na verdade, os algoritmos estão implementados em pacotes de
+terceiros e não precisamente no
+[parsnip](https://parsnip.tidymodels.org/). Porém, o
+[parsnip](https://parsnip.tidymodels.org/) unifica a sintaxe de diversos
+algoritmos implementados em pacotes separados.
 
 <br>
 
@@ -3361,11 +3655,15 @@ Abrindo apenas um parêntese, o [tidymodels](https://www.tidymodels.org/) refere
 
 <br>
 
-Observe que na imagem abaixo, a Figura [A]{.red}, quando $k=1$, percebemos initidamente que houve *overfitting*, i.e., há uma interpolação dos dados. Já na Figura [D]{.red} temos um modelo com variância menor, porém, este é muito simplista, o que sugere um alto viés.
+Observe que na imagem abaixo, a Figura [A]{.red}, quando $k=1$,
+percebemos initidamente que houve *overfitting*, i.e., há uma
+interpolação dos dados. Já na Figura [D]{.red} temos um modelo com
+variância menor, porém, este é muito simplista, o que sugere um alto
+viés.
 
 <br>
 
-![](imgs/knn_plot.png){fig-aling='center'}
+![](imgs/knn_plot.png){fig-aling="center"}
 
 ## $k$-vizinhos mais próximo próximos
 
@@ -3441,9 +3739,10 @@ p <- p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "A")
 
 ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 ```
+
 <br>
 
-![](gifs/chapulin-colorado-no.gif){width='25%'}
+![](gifs/chapulin-colorado-no.gif){width="25%"}
 
 ## $k$-vizinhos mais próximo próximos
 
@@ -3453,13 +3752,17 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-1. É totalmente dependente do conjunto de dados para fazer novas predições;
+1.  É totalmente dependente do conjunto de dados para fazer novas
+    predições;
 
-2. Para novas observações que são fora dos limites dos dados de treinamento, as predições do KNN tendem a serem imprecisas;
+2.  Para novas observações que são fora dos limites dos dados de
+    treinamento, as predições do KNN tendem a serem imprecisas;
 
-3. Pode ser custoso para uma grande base de dados;
+3.  Pode ser custoso para uma grande base de dados;
 
-4. O cálculo de distâncias pode sofrer com a chamada "maldição da dimensionalidade", em que a depender da métrica de distância utilizada, tudo fica muito distante.
+4.  O cálculo de distâncias pode sofrer com a chamada "maldição da
+    dimensionalidade", em que a depender da métrica de distância
+    utilizada, tudo fica muito distante.
 
 <br>
 
@@ -3467,31 +3770,38 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-1. É um método simples de ser implementado;
+1.  É um método simples de ser implementado;
 
-2. É muito utilizado para imputação de observações faltantes;
+2.  É muito utilizado para imputação de observações faltantes;
 
-3. É comumente utilizado, por conta de sua simplicidade, em explorações iniciais.
-
+3.  É comumente utilizado, por conta de sua simplicidade, em explorações
+    iniciais.
 
 ## Nadaraya-Watson
 
 <br>
 
-Uma variação do método KNN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:
+Uma variação do método KNN que é bastante difundida na comunidade
+estatística é o método de Nadaraya-Watson, propostos nos artigos:
 
 <br>
 
-1. Nadaraya, E. A. (1964). **On estimating regression**. Theory of Probability & Its Applications, 9(1), 141–142;
+1.  Nadaraya, E. A. (1964). **On estimating regression**. Theory of
+    Probability & Its Applications, 9(1), 141--142;
 
-2. Watson, G. S. (1964). **Smooth regression analysis**. Sankhya: The Indian Journal of Statistics, Series A, 359–372.
+2.  Watson, G. S. (1964). **Smooth regression analysis**. Sankhya: The
+    Indian Journal of Statistics, Series A, 359--372.
 
 <br>
 
-Esse método também é chamado de estimador $k$-vizinhos ponderados (KNN ponderado), uma vez que a estimação da função de regressão em um dado ponto ${\bf x}$ utiliza de médias ponderadas das observações do conjunto de treinamento:
+Esse método também é chamado de estimador $k$-vizinhos ponderados (KNN
+ponderado), uma vez que a estimação da função de regressão em um dado
+ponto ${\bf x}$ utiliza de médias ponderadas das observações do conjunto
+de treinamento:
 
-$$g({\bf x}) = \sum_{i = 1}^n w_i({\bf x})y_i,$$
-em que $w_i({\bf x})$ é o peso atribuído à $i$-ésima observação, medindo a similaridade de ${\bf x}_i$ à ${\bf x}$.
+$$g({\bf x}) = \sum_{i = 1}^n w_i({\bf x})y_i,$$ em que $w_i({\bf x})$ é
+o peso atribuído à $i$-ésima observação, medindo a similaridade de
+${\bf x}_i$ à ${\bf x}$.
 
 ## Nadaraya-Watson
 
@@ -3500,20 +3810,31 @@ em que $w_i({\bf x})$ é o peso atribuído à $i$-ésima observação, medindo a
 Temos que $w_i({\bf x})$ é definido por:
 
 $$w_i({\bf x}) = \frac{K({\bf x}, {\bf x}_i)}{\sum_{j = 1}^n K({\bf x}, {\bf x}_j)},$$
-em que $K({\bf x}, {\bf x}_j)$ é um kernel de suavização usado para medir a similaridade entre as observações. Escolhas que são populares para $K({\bf x}, {\bf x}_j)$, são:
+em que $K({\bf x}, {\bf x}_j)$ é um kernel de suavização usado para
+medir a similaridade entre as observações. Escolhas que são populares
+para $K({\bf x}, {\bf x}_j)$, são:
 
 <br>
 
-1. [Kernel uniforme]{.red}: $K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
-2. [Kernel gaussiano]{.red}: $K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}$;
-3. [Kernel triangular]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
-4. [Kernel de Epanechnikov]{.red}: $K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$.
+1.  [Kernel uniforme]{.red}:
+    $K({\bf x}, {\bf x}_i) = \mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
+2.  [Kernel gaussiano]{.red}:
+    $K({\bf x}, {\bf x}_i) = (\sqrt{2\pi h^2})^{-1}\exp\left\{ -\frac{d^2({\bf x}, {\bf x}_i)}{2h^2}\right\}$;
+3.  [Kernel triangular]{.red}:
+    $K({\bf x}, {\bf x}_i) = (1 - d({\bf x}, {\bf x}_i)/h)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$;
+4.  [Kernel de Epanechnikov]{.red}:
+    $K({\bf x}, {\bf x}_i) = (1 - d^2({\bf x}, {\bf x}_i)/h^2)\mathbb{I}(d({\bf x}, {\bf x}_i) \leq h)$.
 
 ## Nadaraya-Watson
 
 <br>
 
-Enquanto no kernel uniforme, os pesos são iguais para as observações a uma distância menor que $h$ de ${\bf x}$ e atribui peso zero para observações maiores que $h$, os kernels triangular e de Epanechnikov atribui pesos maiores para observações mais próximas de ${\bf x}$. A quantidade $h$ é um [*tuning parameter*]{.red}, e na prática, deve ser estimada por um procedimento de validação cruzada.
+Enquanto no kernel uniforme, os pesos são iguais para as observações a
+uma distância menor que $h$ de ${\bf x}$ e atribui peso zero para
+observações maiores que $h$, os kernels triangular e de Epanechnikov
+atribui pesos maiores para observações mais próximas de ${\bf x}$. A
+quantidade $h$ é um [*tuning parameter*]{.red}, e na prática, deve ser
+estimada por um procedimento de validação cruzada.
 
 <br>
 
@@ -3521,30 +3842,47 @@ Enquanto no kernel uniforme, os pesos são iguais para as observações a uma di
 
 <br>
 
-1. **Simetria**: $K(x,y) = K(y,x)$, permitindo que a função de similaridade seja invariante em relação a ordem dos argumentos;
-2. **Positiva definida**: Para qualquer vetor $c$, em que seja possível fazer $c^{T}K(x,y)$, temos que $c^{T}K(x,y)c > 0$. 
+1.  **Simetria**: $K(x,y) = K(y,x)$, permitindo que a função de
+    similaridade seja invariante em relação a ordem dos argumentos;
+2.  **Positiva definida**: Para qualquer vetor $c$, em que seja possível
+    fazer $c^{T}K(x,y)$, temos que $c^{T}K(x,y)c > 0$.
 
 <br>
 
-Você poderá encontrar outras funções kernel [aqui](https://en.wikipedia.org/wiki/Kernel_(statistics)).
-
+Você poderá encontrar outras funções kernel
+[aqui](https://en.wikipedia.org/wiki/Kernel_(statistics)).
 
 ## Nadaraya-Watson
 
 <br>
 
-[Exemplo]{.red}: Novamente, considerando o conjunto de dados de expectativa de vida versus PIB per
-Capita disponíveis
-[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData). Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir uma fução que retorne um gráfico com as estimativas. A função receberá como argumentos o conjunto de dados e o valor de $h$. Observe a documentação da função `nearest_neighbor` do pacote [parsnip](https://parsnip.tidymodels.org/). Perceba que o argumento `weight_func` permite que possamos escolher entre algumas funções kernel. Porém, como métrica de distâncias, apenas poderemos utilizar a de Minkowski. Seja $x = (x_1, \cdots, x_n)$ e $y = (y_1, \cdots, y_n)$, ambos vetores do $\mathbb{R}^n$. Então, a distância de Minkowski é dada por:
+[Exemplo]{.red}: Novamente, considerando o conjunto de dados de
+expectativa de vida versus PIB per Capita disponíveis
+[aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData).
+Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir
+uma fução que retorne um gráfico com as estimativas. A função receberá
+como argumentos o conjunto de dados e o valor de $h$. Observe a
+documentação da função `nearest_neighbor` do pacote
+[parsnip](https://parsnip.tidymodels.org/). Perceba que o argumento
+`weight_func` permite que possamos escolher entre algumas funções
+kernel. Porém, como métrica de distâncias, apenas poderemos utilizar a
+de Minkowski. Seja $x = (x_1, \cdots, x_n)$ e $y = (y_1, \cdots, y_n)$,
+ambos vetores do $\mathbb{R}^n$. Então, a distância de Minkowski é dada
+por:
 
 $$d(x,y) = \left(\sum_{i = 1}^n |x_i - y_i|^p\right)^{\frac{1}{p}},$$
-com $p \geq 1$. Note que se $p = 1$ temos a distância euclidiana (distância $L_1$) e se $p = 2$ teremos a distancia de Manhattan (distância $L_2$).
+com $p \geq 1$. Note que se $p = 1$ temos a distância euclidiana
+(distância $L_1$) e se $p = 2$ teremos a distancia de Manhattan
+(distância $L_2$).
 
 ## Nadaraya-Watson
 
 <br>
 
-Portanto, com o argumento `dist_power` da função `nearest_neighbor`, do pacote [parsnip](https://parsnip.tidymodels.org/), você poderá especificar o valor de $p$, que inclusive poderá ser um hiperparâmetro, podendo ser obtido por meio de uma validação cruzada.
+Portanto, com o argumento `dist_power` da função `nearest_neighbor`, do
+pacote [parsnip](https://parsnip.tidymodels.org/), você poderá
+especificar o valor de $p$, que inclusive poderá ser um hiperparâmetro,
+podendo ser obtido por meio de uma validação cruzada.
 
 <br>
 
@@ -3552,17 +3890,17 @@ Portanto, com o argumento `dist_power` da função `nearest_neighbor`, do pacote
 
 <br>
 
-No exemplo não iremos fazer a validação cruzada, pois apenas queremos implementar uma função em que seja possível experimentar o método para diferentes valores de $h$ e diferentes funções de kernel.
-
+No exemplo não iremos fazer a validação cruzada, pois apenas queremos
+implementar uma função em que seja possível experimentar o método para
+diferentes valores de $h$ e diferentes funções de kernel.
 
 ## Nadaraya-Watson
 
-<br>
-A imagem abaixo utiliza o kernel gaussiano:
+<br> A imagem abaixo utiliza o kernel gaussiano:
 
 <br>
 
-![](imgs/nadaraya_watson.png){fig-aling='center'}
+![](imgs/nadaraya_watson.png){fig-aling="center"}
 
 ## Nadaraya-Watson
 
@@ -3634,120 +3972,7 @@ p <- p1 + p2 + plot_annotation(tag_levels = "A")
 
 ggsave(p, file = "imgs/nadaraya_watson.png", width = 30, height = 15, units = "cm")
 ```
+
 <br>
 
 ![](gifs/side-eyeing-chloe-chloe.gif)
-
-## Tidymodels
-
-<br>
-
-Diversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html), [ranger](https://cran.r-project.org/web/packages/ranger/index.html), [kknn](https://cran.r-project.org/web/packages/kknn/index.html), [xgboost](https://cran.r-project.org/web/packages/xgboost/index.html), [keras](https://cran.r-project.org/web/packages/keras/index.html), [rpart](https://cran.r-project.org/web/packages/rpart/index.html), [randomForest](https://cran.r-project.org/web/packages/randomForest/index.html), entre diversos outros.   
-
-<br>
-
-```{r, cache=TRUE}
-#| code-fold: true
-#| code-summary: O número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.
-library(xml2)
-library(httr)
-library(stringr)
-
-numero_pacotes_r <- httr::GET("https://cloud.r-project.org/web/packages/index.html") |> 
-  xml2::read_html() |> 
-  xml2::xml_find_all("//p[1]") |> 
-  xml2::xml_text() |> 
-  stringr::str_extract(pattern = "[0-9]+")
-```
-
-<br>
-
-Atualmente, a linguagem R possui [`r numero_pacotes_r`]{.red}, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.
-
-![](gifs/chaves-isso.gif)
-
-## Tidymodels
-
-<br>
-
-Essas diferentes implementações torna confuso trabalhar e testar diferentes modelos ao mesmo tempo.
-
-<br> 
-
-
-::: columns
-::: {.column width='50%'}
-Uma das primeiras ideias mais conhecidas de unificação de sintaxe do *workflow* de machine learning, na linguagem R, foi idealizada pelo estatístico [Max Khun](https://www.linkedin.com/in/max-kuhn-864a9110/). 
-
-<br>
-
-Ele criou a biblioteca [caret](https://cran.r-project.org/web/packages/caret/index.html) - **C**lassification **A**nd **RE**gression **T**raining de R que é muito bem desenvolvida e abrangente. Você poderá estudar o [caret](https://cran.r-project.org/web/packages/caret/index.html) clicando [aqui](https://topepo.github.io/caret/).
-
-<br>
-
-Não foi um trabalho simples, veja uma tabela com a quantidade de modelos que o [caret](https://cran.r-project.org/web/packages/caret/index.html) suporta, clicando [aqui](https://topepo.github.io/caret/available-models.html). Então, "por baixo dos panos", a ideia era unificar a entrada e saída. A biblioteca **caret** continua sendo mantida, apesar da existência do [tidymodels](https://www.tidymodels.org/).
-:::
-
-::: {.column width='50%'}
-![](imgs/max_kuhn.jpeg){fig-aling='center'}
-:::
-:::
-
-## Tidymodels
-
-<br>
-
-::: columns
-:::{.column width='50%'}
-![](imgs/max_kuhn.jpeg){fig-aling='center'}
-:::
-:::{.column width='50%'}
-Max Kuhn, atualmente, no momento de escrita desse frame é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão "arrumada" (*tidy*) do [caret](https://cran.r-project.org/web/packages/caret/index.html), que é o [tidymodels](https://www.tidymodels.org/).
-
-<br>
-
-![](imgs/tidymodels.png){width='50%' fig-aling='center'}
-
-:::
-:::
-
-## Tidymodels
-
-<br>
-
-![O workflow (pipeline) do treinamento de um modelo usando o framework tidymodels. Todos os pacotes (rsample, recipes, parsnip, tune, dails, yardstick) são gerenciados pelo pacote tidymodels. Cada um desses pacotes fornece um conjunto de funções úteis em tarefas específicas no workflow de machine learning.](imgs/workflow_tidymodels.png){fig-aling='center' width='70%'}
-
-## Tidymodels
-
-<br>
-
-1. [rsample](https://rsample.tidymodels.org/): responsável pela reamostragem dos dados, parte importante para que possamos treinar um modelo de aprendizagem de máquina. É nele que encontra-se funções para realizar reamostragem como bootstrap, $k$-folds cross-validation, nested cross-validation, entre outras. 
-
-![](imgs/rsample.png){width='10%' fig-aling='center'}
-
-2. [recipes](https://recipes.tidymodels.org/): apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, knn, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.
-
-![](imgs/recipes.png){width='10%' fig-aling='center'}
-
-3. [parsnip](https://parsnip.tidymodels.org/): é o pacote que unifica as entradas e saídas de diversos pacotes de aprendizagem de máquina de R. Ele possui os motores (engines) que são as comunicações com os algoritmos implementados em diversos pacotes de R que trabalham com tarefas de regressão e classificação, em aprendizagem de máquina.
-
-## Tidymodels
-
-<br>
-
-::: columns
-::: {.column width='50%'}
-Os pacotes [tune](https://tune.tidymodels.org/), [dails](https://dials.tidymodels.org/) e [yardstick](https://yardstick.tidymodels.org/) tomará conta da parte de treino do modelo. Os pacote [tune](https://tune.tidymodels.org/) e [dails](https://dials.tidymodels.org/) são responsáveis pela "tunagem" dos eventuais hiperparâmetros e o [yardstick](https://yardstick.tidymodels.org/) é mais responsável pelas métricas de avaliação do modelo.
-
-<br>
-
-A biblioteca [dails](https://dials.tidymodels.org/) está mais relacionada a criação dos *grids* para os hiperparâmetros eventuais do modelo. Já o pacote [tune](https://tune.tidymodels.org/), utiliza-se da validação cruzada criada pelo pacote [rsample](https://rsample.tidymodels.org/) para varrer as combinações de hiperparâmetros criadas pelo [dails](https://dials.tidymodels.org/), i.e., o [tune](https://tune.tidymodels.org/) está mais relacionado com a otimização dos hiperparâmetros.  
-:::
-::: {.column width='25%'}
-![](imgs/tune.png){fig-aling='right'}
-:::
-::: {.column width='25%'}
-![](imgs/dails.png){fig-aling='right'}
-![](imgs/yardstick.png){fig-aling='right'}
-:::
-:::
