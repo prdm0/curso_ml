@@ -3637,3 +3637,117 @@ ggsave(p, file = "imgs/nadaraya_watson.png", width = 30, height = 15, units = "c
 <br>
 
 ![](gifs/side-eyeing-chloe-chloe.gif)
+
+## Tidymodels
+
+<br>
+
+Diversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html), [ranger](https://cran.r-project.org/web/packages/ranger/index.html), [kknn](https://cran.r-project.org/web/packages/kknn/index.html), [xgboost](https://cran.r-project.org/web/packages/xgboost/index.html), [keras](https://cran.r-project.org/web/packages/keras/index.html), [rpart](https://cran.r-project.org/web/packages/rpart/index.html), [randomForest](https://cran.r-project.org/web/packages/randomForest/index.html), entre diversos outros.   
+
+<br>
+
+```{r, cache=TRUE}
+#| code-fold: true
+#| code-summary: O número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.
+library(xml2)
+library(httr)
+library(stringr)
+
+numero_pacotes_r <- httr::GET("https://cloud.r-project.org/web/packages/index.html") |> 
+  xml2::read_html() |> 
+  xml2::xml_find_all("//p[1]") |> 
+  xml2::xml_text() |> 
+  stringr::str_extract(pattern = "[0-9]+")
+```
+
+<br>
+
+Atualmente, a linguagem R possui [`r numero_pacotes_r`]{.red}, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.
+
+![](gifs/chaves-isso.gif)
+
+## Tidymodels
+
+<br>
+
+Essas diferentes implementações torna confuso trabalhar e testar diferentes modelos ao mesmo tempo.
+
+<br> 
+
+
+::: columns
+::: {.column width='50%'}
+Uma das primeiras ideias mais conhecidas de unificação de sintaxe do *workflow* de machine learning, na linguagem R, foi idealizada pelo estatístico [Max Khun](https://www.linkedin.com/in/max-kuhn-864a9110/). 
+
+<br>
+
+Ele criou a biblioteca [caret](https://cran.r-project.org/web/packages/caret/index.html) - **C**lassification **A**nd **RE**gression **T**raining de R que é muito bem desenvolvida e abrangente. Você poderá estudar o [caret](https://cran.r-project.org/web/packages/caret/index.html) clicando [aqui](https://topepo.github.io/caret/).
+
+<br>
+
+Não foi um trabalho simples, veja uma tabela com a quantidade de modelos que o [caret](https://cran.r-project.org/web/packages/caret/index.html) suporta, clicando [aqui](https://topepo.github.io/caret/available-models.html). Então, "por baixo dos panos", a ideia era unificar a entrada e saída. A biblioteca **caret** continua sendo mantida, apesar da existência do [tidymodels](https://www.tidymodels.org/).
+:::
+
+::: {.column width='50%'}
+![](imgs/max_kuhn.jpeg){fig-aling='center'}
+:::
+:::
+
+## Tidymodels
+
+<br>
+
+::: columns
+:::{.column width='50%'}
+![](imgs/max_kuhn.jpeg){fig-aling='center'}
+:::
+:::{.column width='50%'}
+Max Kuhn, atualmente, no momento de escrita desse frame é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão "arrumada" (*tidy*) do [caret](https://cran.r-project.org/web/packages/caret/index.html), que é o [tidymodels](https://www.tidymodels.org/).
+
+<br>
+
+![](imgs/tidymodels.png){width='50%' fig-aling='center'}
+
+:::
+:::
+
+## Tidymodels
+
+<br>
+
+![O workflow (pipeline) do treinamento de um modelo usando o framework tidymodels. Todos os pacotes (rsample, recipes, parsnip, tune, dails, yardstick) são gerenciados pelo pacote tidymodels. Cada um desses pacotes fornece um conjunto de funções úteis em tarefas específicas no workflow de machine learning.](imgs/workflow_tidymodels.png){fig-aling='center' width='70%'}
+
+## Tidymodels
+
+<br>
+
+1. [rsample](https://rsample.tidymodels.org/): responsável pela reamostragem dos dados, parte importante para que possamos treinar um modelo de aprendizagem de máquina. É nele que encontra-se funções para realizar reamostragem como bootstrap, $k$-folds cross-validation, nested cross-validation, entre outras. 
+
+![](imgs/rsample.png){width='10%' fig-aling='center'}
+
+2. [recipes](https://recipes.tidymodels.org/): apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, knn, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.
+
+![](imgs/recipes.png){width='10%' fig-aling='center'}
+
+3. [parsnip](https://parsnip.tidymodels.org/): é o pacote que unifica as entradas e saídas de diversos pacotes de aprendizagem de máquina de R. Ele possui os motores (engines) que são as comunicações com os algoritmos implementados em diversos pacotes de R que trabalham com tarefas de regressão e classificação, em aprendizagem de máquina.
+
+## Tidymodels
+
+<br>
+
+::: columns
+::: {.column width='50%'}
+Os pacotes [tune](https://tune.tidymodels.org/), [dails](https://dials.tidymodels.org/) e [yardstick](https://yardstick.tidymodels.org/) tomará conta da parte de treino do modelo. Os pacote [tune](https://tune.tidymodels.org/) e [dails](https://dials.tidymodels.org/) são responsáveis pela "tunagem" dos eventuais hiperparâmetros e o [yardstick](https://yardstick.tidymodels.org/) é mais responsável pelas métricas de avaliação do modelo.
+
+<br>
+
+A biblioteca [dails](https://dials.tidymodels.org/) está mais relacionada a criação dos *grids* para os hiperparâmetros eventuais do modelo. Já o pacote [tune](https://tune.tidymodels.org/), utiliza-se da validação cruzada criada pelo pacote [rsample](https://rsample.tidymodels.org/) para varrer as combinações de hiperparâmetros criadas pelo [dails](https://dials.tidymodels.org/), i.e., o [tune](https://tune.tidymodels.org/) está mais relacionado com a otimização dos hiperparâmetros.  
+:::
+::: {.column width='25%'}
+![](imgs/tune.png){fig-aling='right'}
+:::
+::: {.column width='25%'}
+![](imgs/dails.png){fig-aling='right'}
+![](imgs/yardstick.png){fig-aling='right'}
+:::
+:::
