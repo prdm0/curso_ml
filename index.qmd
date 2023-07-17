@@ -4025,3 +4025,14 @@ ggsave(p, file = "imgs/nadaraya_watson.png", width = 30, height = 15, units = "c
 <br>
 
 ![](gifs/side-eyeing-chloe-chloe.gif)
+
+
+## Tidymodels KNN e Nadaraya-Watson
+
+<br>
+
+Para que possamos experimentar o [tidymodels](https://www.tidymodels.org/) seguindo todo o fluxo de "padrão" de aprendizagem de máquina, com divisão do conjunto de dados, validação cruzada e busca pelos melhores hiperparâmetros ("tunagem"). Iremos reproduir dois exemplos com os dados de expectativa de vida e PIB per Capita.
+
+<br>
+
+[Exemplo]{.red}: Nesse exemplo estamos realizando o KNN, em que estamos otimizando o valor de $k$.

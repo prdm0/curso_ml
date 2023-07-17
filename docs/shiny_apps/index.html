@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-width="full" class="anchored" data-anchor-id="rows">Rows</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out8518ef11188c5814" style="width:100%;height:400px;"></div>
+<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out17338fc9704c7419" style="width:100%;height:400px;"></div>
 </div>
 </div>
 <p><br></p>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc_ajustes</span>(<span class="at">mc =</span> input<span class="sc">$</span>numeromodelos, <span class="at">n =</span> input<span class="sc">$</span>tamanhoamostral, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> input<span class="sc">$</span>grau)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out26ec314abaf4bb71" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="out5b26c6d615ea7192" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -233,15 +233,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="entrada-de-informações-1" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações-1">Entrada de informações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau_polinomio"</span>, <span class="st">"p:"</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> 1L, <span class="at">max =</span> 30L,</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau_polinomio"</span>, <span class="st">"Grau do polinômio:"</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> 1L, <span class="at">max =</span> 40L,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> 1L,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">step =</span> 1L</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
-<label class="control-label" id="grau_polinomio-label" for="grau_polinomio">p:</label>
-<input class="js-range-slider" id="grau_polinomio" data-skin="shiny" data-min="1" data-max="30" data-from="1" data-step="1" data-grid="true" data-grid-num="9.66666666666667" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+<label class="control-label" id="grau_polinomio-label" for="grau_polinomio">Grau do polinômio:</label>
+<input class="js-range-slider" id="grau_polinomio" data-skin="shiny" data-min="1" data-max="40" data-from="1" data-step="1" data-grid="true" data-grid-num="9.75" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dados</span></span>
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_bar</span>(input<span class="sc">$</span>grau_polinomio)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out423ad65dbccbbaea" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="outffa819afa255c0e5" style="width:100%;height:400px;"></div>
 </div>
 </div>
 
