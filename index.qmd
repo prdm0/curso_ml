@@ -358,10 +358,12 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 
 2.  [Descriminativos]{.red}: são os métodos que estimam diretamente a
     probabilidade condicional $P(Y|X = \bf{x})$ ou que mesmo nem assumem
-    modelos probabilísticos. Podemos citar:
+    modelos probabilísticos. Os modelos dessa classe são projetados para aprender
+    a fronteira de decisão que separa as classes diretamente com base nas características
+    de entrada. Podemos citar:
     -   Regressão logistica;
     -   Perceptron;
-    -   Support Vector Machine - SVM.
+    -   **S**upport **V**ector **M**achine - SVM.
 
 ## Aprendizagem supervisionada
 
@@ -1564,6 +1566,20 @@ aproximação linear pelo método dos mínimos quadrados.
 <br>
 
 ![](gifs/uau.gif)
+
+## Leia mais sobre regressão linear
+
+<br>
+
+Caso você deseje ler um pouco mais sobre regressão linear sob homocedasticidade e
+sob heteroscedasticidades, leia o segundo Capítulo de minha dissertação de mestrado
+intitulada **Estimadores Intervalares sob Heteroscedasticidade de Forma Desconhecida
+via Bootstrap Duplo**. Apesar do título, o segundo capítulo é uma revisão do
+conceito de regressão linear é apresentado de forma didática. Clique [aqui](pdf/regressao_linear.pdf) para ler.
+
+<br>
+
+![](gifs/chapulin-colorado-no.gif){width='20%'}
 
 ## Predição versus Inferência
 

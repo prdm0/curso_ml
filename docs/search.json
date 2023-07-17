@@ -88,7 +88,7 @@
     "href": "index.html#aprendizagem-supervisionada-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem supervisionada",
-    "text": "Aprendizagem supervisionada\n\nEm se tratando de métodos de classificação, podemos ter os métodos:\n\n\nGenerativos: são os métodos que dada as variáveis X e Y, o objetivo é encontrar a distribuição de probabilidade conjunta P(X, Y), para então poder determinar P(Y|X = \\bf{x}). Alguns métodos são:\n\nNaive Bayes;\nDescriminante linear.\n\n\n\n\nDescriminativos: são os métodos que estimam diretamente a probabilidade condicional P(Y|X = \\bf{x}) ou que mesmo nem assumem modelos probabilísticos. Podemos citar:\n\nRegressão logistica;\nPerceptron;\nSupport Vector Machine - SVM."
+    "text": "Aprendizagem supervisionada\n\nEm se tratando de métodos de classificação, podemos ter os métodos:\n\n\nGenerativos: são os métodos que dada as variáveis X e Y, o objetivo é encontrar a distribuição de probabilidade conjunta P(X, Y), para então poder determinar P(Y|X = \\bf{x}). Alguns métodos são:\n\nNaive Bayes;\nDescriminante linear.\n\n\n\n\nDescriminativos: são os métodos que estimam diretamente a probabilidade condicional P(Y|X = \\bf{x}) ou que mesmo nem assumem modelos probabilísticos. Os modelos dessa classe são projetados para aprender a fronteira de decisão que separa as classes diretamente com base nas características de entrada. Podemos citar:\n\nRegressão logistica;\nPerceptron;\nSupport Vector Machine - SVM."
   },
   {
     "objectID": "index.html#aprendizagem-supervisionada-2",
@@ -1251,5 +1251,12 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "As duas culturas",
     "text": "As duas culturas\n\n\n\nLeo Breiman, renomado estatístico, contribuiu significativamente para o campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos populares e influentes para a área. Entre tais métodos famosos, cito dois:\n\n\nRandom forest (florestas aleatórias): método que combina a previsão de vários modelos de árvores de decisão (decision tree), que veremos mais a frente, por isso o termo “floresta” para problemas de regressão e classificação;\nBootstrap aggregating (bagging): técnica de aprendizagem ensemble, em que cria-se multiplos conjuntos de dados obtidos com reposição da amostra de treinamento. O modelo de aprendizagem de máquina é treinado em cada conjunto de dados e as previsões de cada um dos modelos são combinadas por meio da média (em problemas de regressão), ou por voto majoritário, em problemas de classificação. O bagging é utilizado para reduzir a variância e melhorar a estabilidade do modelo."
+  },
+  {
+    "objectID": "index.html#leia-mais-sobre-regressão-linear",
+    "href": "index.html#leia-mais-sobre-regressão-linear",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leia mais sobre regressão linear",
+    "text": "Leia mais sobre regressão linear\n\nCaso você deseje ler um pouco mais sobre regressão linear sob homocedasticidade e sob heteroscedasticidades, leia o segundo Capítulo de minha dissertação de mestrado intitulada Estimadores Intervalares sob Heteroscedasticidade de Forma Desconhecida via Bootstrap Duplo. Apesar do título, o segundo capítulo é uma revisão do conceito de regressão linear é apresentado de forma didática. Clique aqui para ler."
   }
 ]
