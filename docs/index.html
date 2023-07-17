@@ -10,10 +10,10 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/roughnotation-0.5.1/rough-notation.iife.js"></script>
 <script src="site_libs/quarto-contrib/roughnotation-init-1.0.0/rough.js"></script><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-16">
+  <meta name="dcterms.date" content="2023-07-17">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -244,7 +244,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -433,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-16</p>
+  <p class="date">2023-07-17</p>
 </section>
 <section class="slide level2">
 
@@ -487,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4b0e1ec88a3c2d730316" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-4b0e1ec88a3c2d730316">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-012b6864beeef2114064" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-012b6864beeef2114064">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1303,7 +1304,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Considere o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. O comportamente entre as variáveis <code>LifeExpectancy</code> e <code>GDPercapita</code>, se fizermos um gráfico, não é linear.</p>
 <p><br></p>
-<p>Todavia, isso não impede que possamos ajustar um modelo de regerssão linear, muito embora o seu poder preditivo será baixo.</p>
+<p>Todavia, isso não impede que possamos ajustar um modelo de regressão linear, muito embora o seu poder preditivo será baixo.</p>
 <p><br></p>
 <p>Porém, como já sabemos, ao menos conseguiremos o melhor oráculo, denotado por <span class="math inline">\beta_{*}</span>, i.e., o melhor estimador dentre os possíveis estimadores lineares, como mostrado em teoremas anteriores.</p>
 <p><br></p>
@@ -1624,7 +1625,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>O percentual de divisão dos dados normalmente é empírico. Usa-se normalmente a proporção de <span class="math inline">70\%</span> para treinamento e <span class="math inline">30\%</span> para teste <span class="math inline">(70\%, 30\%)</span>. Outros esquemas de divisões são bastante utilizados, por exemplo, <span class="math inline">(80\%, 20\%)</span>, <span class="math inline">(99\%, 1\%)</span>, a depender da quantidade de observações (tamanho do conjunto de dados).</p>
 <p><br></p>
-<p>Portanto, utilizar o EQM sob o conjunto de dados de teste para avaliar <span class="math inline">g_1({\bf x}), g_2({\bf x}), \cdots,</span>, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em <a href="#/função-de-risco-3">Equação&nbsp;1</a>, i.e,</p>
+<p>Portanto, utilizar o EQM sob o conjunto de dados de teste para avaliar <span class="math inline">g_1({\bf x}), g_2({\bf x}), \cdots,</span>, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em <a href="#/função-de-risco-3" class="quarto-xref">Equação&nbsp;1</a>, i.e,</p>
 <p><span class="math display">\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].</span></p>
 <p><br></p>
 <p>Esse resultado valeria para qualquer outra função de perda.</p>
@@ -2245,7 +2246,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="lasso-2" class="slide level2">
 <h2>Lasso</h2>
 <p><br></p>
-<p>No lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (<span class="math inline">L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0</span>) em <a href="#/melhor-subconjunto-de-covariáveis-2">Equação&nbsp;2</a>, usa-se a penalização <span class="math inline">L_1 = \sum_{i = 1}^d|\beta_i|</span>. No lasso, buscamos:</p>
+<p>No lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (<span class="math inline">L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0</span>) em <a href="#/melhor-subconjunto-de-covariáveis-2" class="quarto-xref">Equação&nbsp;2</a>, usa-se a penalização <span class="math inline">L_1 = \sum_{i = 1}^d|\beta_i|</span>. No lasso, buscamos:</p>
 <p><span class="math display">\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},</span> em que <span class="math inline">\lambda</span> é um <em>tuning parameter</em>. Perceba que quando <span class="math inline">\lambda = 0</span>, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando <span class="math inline">\lambda \rightarrow \infty</span>, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante.</p>
 </section>
 <section id="lasso-3" class="slide level2">
@@ -3125,10 +3126,9 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -3138,8 +3138,17 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

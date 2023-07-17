@@ -1622,7 +1622,7 @@ fizermos um gráfico, não é linear.
 
 <br>
 
-Todavia, isso não impede que possamos ajustar um modelo de regerssão
+Todavia, isso não impede que possamos ajustar um modelo de regressão
 linear, muito embora o seu poder preditivo será baixo.
 
 <br>

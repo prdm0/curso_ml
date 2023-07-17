@@ -6,7 +6,6 @@ library(patchwork)
 
 tidymodels::tidymodels_prefer()
 
-
 # Lendo dados
 url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
 arquivo_temp <- tempfile()
@@ -52,7 +51,6 @@ nadaraya_watson_exp_pip <- function(dados, h = 1, ...){
       title = element_text(face = "bold")
     )
 }
-
 
 p1 <- nadaraya_watson_exp_pip(dados, h = 1, weight_func = "gaussian")
 p2 <- nadaraya_watson_exp_pip(dados, h = 1000, weight_func = "gaussian")
