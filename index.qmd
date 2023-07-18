@@ -164,8 +164,7 @@ também poderá ser uma ótima opção.
 
 ## `r fontawesome::fa("robot", "black")` Aprendizagem de máquina
 
-<br>
-<br>
+<br> <br>
 
 ![](gifs/am.gif){.fragment width="930" height="600"}
 
@@ -358,9 +357,9 @@ Em se tratando de métodos de classificação, podemos ter os métodos:
 
 2.  [Descriminativos]{.red}: são os métodos que estimam diretamente a
     probabilidade condicional $P(Y|X = \bf{x})$ ou que mesmo nem assumem
-    modelos probabilísticos. Os modelos dessa classe são projetados para aprender
-    a fronteira de decisão que separa as classes diretamente com base nas características
-    de entrada. Podemos citar:
+    modelos probabilísticos. Os modelos dessa classe são projetados para
+    aprender a fronteira de decisão que separa as classes diretamente
+    com base nas características de entrada. Podemos citar:
     -   Regressão logistica;
     -   Perceptron;
     -   **S**upport **V**ector **M**achine - SVM.
@@ -589,8 +588,8 @@ manipular e explorar bases de dados. Enumero algumas:
     consistente de verbos que ajudam a resolver os desafios mais comuns
     de manipulação de dados;
 2.  [tidyr](https://tidyr.tidyverse.org/): ferramentas para ajudar a
-    criar dados organizados, em que cada coluna é uma variável, cada linha
-    é uma observação e cada célula contém um único valor;
+    criar dados organizados, em que cada coluna é uma variável, cada
+    linha é uma observação e cada célula contém um único valor;
 3.  [ggplot2](https://ggplot2-book.org/): um sistema para criar gráficos
     'declarativamente', baseado no livro [The Grammar of
     Graphics](https://www.amazon.com.br/Grammar-Graphics-Leland-Wilkinson/dp/0387245448),
@@ -650,15 +649,15 @@ objeto, respeitando a regra três de conjuntos de dados *tidy*.
 
 <br>
 
-**As vezes transformamos variáveis**. Por exemplo, é comum tomar o logaritmo
-de uma variável numérica que é assimétrica, se $x \geq 1$, em que $x$ é um
-atributo numérico qualquer.
+**As vezes transformamos variáveis**. Por exemplo, é comum tomar o
+logaritmo de uma variável numérica que é assimétrica, se $x \geq 1$, em
+que $x$ é um atributo numérico qualquer.
 
 <br>
 
 Em diveras situações, também é comum a base de dados apresentar
-**informações faltantes**. Nos data frames de R, a falta de informação na
-base, normlamente serão representadas por `NA`.
+**informações faltantes**. Nos data frames de R, a falta de informação
+na base, normlamente serão representadas por `NA`.
 
 ## `r fontawesome::fa("database", "black")` Dados: exploração e tratamento
 
@@ -673,8 +672,8 @@ a informação, por exemplo:
 1.  Tomando alguma medida de tendência central como média/moda/mediana
     dos valores que são conhecidos para aquele atributo;
 2.  Criar um novo valor que é indicação de valor faltante;
-3.  Usar algoritmos como $k$-nearest neighbors - $K$**NN** ($k$ vizinhos mais
-    próximos) para imputar valores coerentes;
+3.  Usar algoritmos como $k$-nearest neighbors - $K$**NN** ($k$ vizinhos
+    mais próximos) para imputar valores coerentes;
 4.  Interpolar os dados.
 
 Esses são alguns exemplos de como podemos imputar observações faltantes.
@@ -765,10 +764,11 @@ pré-processamento com o pacote
 
 <br>
 
-O [tidymodels](https://www.tidymodels.org/packages/) será muito útil para nós, mas, aos poucos, seu uso e
-explicações mais detalhadas serão apresentadas, apesar que em algumas
-situações mais simples, poderei não utilizá-lo, para expor detalhes que
-eventualmente não será possível ou estariam camuflados na utilização do
+O [tidymodels](https://www.tidymodels.org/packages/) será muito útil
+para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão
+apresentadas, apesar que em algumas situações mais simples, poderei não
+utilizá-lo, para expor detalhes que eventualmente não será possível ou
+estariam camuflados na utilização do
 [tidymodels](https://www.tidymodels.org/packages/).
 
 <br>
@@ -1082,18 +1082,31 @@ Association](https://community.amstat.org/slds/awards/breiman-award).
 <br>
 
 ::: columns
-::: {.column width='70%'}
-Leo Breiman, renomado estatístico, contribuiu significativamente para o campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos populares e influentes para a área. Entre tais métodos famosos, cito dois:
+::: {.column width="70%"}
+Leo Breiman, renomado estatístico, contribuiu significativamente para o
+campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos
+populares e influentes para a área. Entre tais métodos famosos, cito
+dois:
 
 <br>
 
-1. **Random forest** (**florestas aleatórias**): método que combina a previsão de vários modelos de árvores de decisão (*decision tree*), que veremos mais a frente, por isso o termo "floresta" para problemas de regressão e classificação;
+1.  **Random forest** (**florestas aleatórias**): método que combina a
+    previsão de vários modelos de árvores de decisão (*decision tree*),
+    que veremos mais a frente, por isso o termo "floresta" para
+    problemas de regressão e classificação;
 
-2. **Bootstrap aggregating** (**bagging**): técnica de aprendizagem *ensemble*, em que cria-se multiplos conjuntos de dados obtidos com reposição da amostra de treinamento. O modelo de aprendizagem de máquina é treinado em cada conjunto de dados e as previsões de cada um dos modelos são combinadas por meio da média (em problemas de regressão), ou por voto majoritário, em problemas de classificação. O *bagging* é utilizado para reduzir a variância e melhorar a estabilidade do modelo.
+2.  **Bootstrap aggregating** (**bagging**): técnica de aprendizagem
+    *ensemble*, em que cria-se multiplos conjuntos de dados obtidos com
+    reposição da amostra de treinamento. O modelo de aprendizagem de
+    máquina é treinado em cada conjunto de dados e as previsões de cada
+    um dos modelos são combinadas por meio da média (em problemas de
+    regressão), ou por voto majoritário, em problemas de classificação.
+    O *bagging* é utilizado para reduzir a variância e melhorar a
+    estabilidade do modelo.
 :::
 
-::: {.column width='30%'}
-![](imgs/sign1357-gra-0003-m.jpg){fig-aling='right'}
+::: {.column width="30%"}
+![](imgs/sign1357-gra-0003-m.jpg){fig-aling="right"}
 :::
 :::
 
@@ -1364,7 +1377,8 @@ No caso da regressão linear simples ($d = 1$), temos que o modelo é dado
 por:
 
 $$g(x) = \beta_0 + \beta_1 x_{i,1} + \varepsilon_i, \,\, i = 1, \cdots, n,$$
-em que $\varepsilon_i$ é um erro aleatório. Na abordagem *data modeling culture*, várias suposições poderem ser feitas para $\varepsilon_i$.
+em que $\varepsilon_i$ é um erro aleatório. Na abordagem *data modeling
+culture*, várias suposições poderem ser feitas para $\varepsilon_i$.
 
 Assumindo que a regressão linear simples é o modelo $g$ que iremos
 utilizar, então, desejamos minimizar:
@@ -1420,9 +1434,9 @@ relação a função de perda absoluta. Listo algumas:
     ao fato dos erros serem levado ao quadrado;
 
 2.  A função de perda quadrática é mais sensível a presença de
-    [*outlier*](https://en.wikipedia.org/wiki/Outlier), que em compensação
-    são menos penalizados ao se considerar a função de perda absoluta
-    (função $L_1$);
+    [*outlier*](https://en.wikipedia.org/wiki/Outlier), que em
+    compensação são menos penalizados ao se considerar a função de perda
+    absoluta (função $L_1$);
 
 3.  Em situações em que o erro tem distribuição normal, a estimativa de
     mínimos quadrados é a solução de máxima verossimilhança e é a
@@ -1449,8 +1463,8 @@ $$Y = g({\bf X}) = \beta^{T}{\bf X} + \varepsilon,$$
 em que $Y$ é um vetor $n \times 1$, ${\bf X}$ é uma matriz fixa e
 conhecida com os atributos de dimensão $n \times d$, em que a primeira
 coluna é preenchida de 1, $\beta = (\beta_0, \cdots, \beta_d)$. Na
-cultura de *machine learning*, iremos desconsiderar $\varepsilon$, i.e., não
-feremos suposições sobre $\varepsilon$. Portanto, considere
+cultura de *machine learning*, iremos desconsiderar $\varepsilon$, i.e.,
+não feremos suposições sobre $\varepsilon$. Portanto, considere
 
 $$g({\bf x}) = \beta^{T}{\bf X} = \beta_{0}x_0 + \beta_1x_{i,1} + \cdots + \beta_dx_{i,d},$$
 em que $x_0 \equiv 1$.
@@ -1571,15 +1585,17 @@ aproximação linear pelo método dos mínimos quadrados.
 
 <br>
 
-Caso você deseje ler um pouco mais sobre regressão linear sob homocedasticidade e
-sob heteroscedasticidades, leia o segundo Capítulo de minha dissertação de mestrado
-intitulada **Estimadores Intervalares sob Heteroscedasticidade de Forma Desconhecida
-via Bootstrap Duplo**. Apesar do título, o segundo capítulo é uma revisão do
-conceito de regressão linear é apresentado de forma didática. Clique [aqui](pdf/regressao_linear.pdf) para ler.
+Caso você deseje ler um pouco mais sobre regressão linear sob
+homocedasticidade e sob heteroscedasticidades, leia o segundo Capítulo
+de minha dissertação de mestrado intitulada **Estimadores Intervalares
+sob Heteroscedasticidade de Forma Desconhecida via Bootstrap Duplo**.
+Apesar do título, o segundo capítulo é uma revisão do conceito de
+regressão linear é apresentado de forma didática. Clique
+[aqui](pdf/regressao_linear.pdf) para ler.
 
 <br>
 
-![](gifs/chapulin-colorado-no.gif){width='20%'}
+![](gifs/chapulin-colorado-no.gif){width="20%"}
 
 ## Predição versus Inferência
 
@@ -2144,9 +2160,9 @@ dados sem a $i$-ésima observação.
 <br>
 
 Não é difícil perceber que a depender do valor de $n$, o método LOOCV é
-**computacionalmente intensivo**. O método requer que ajustemos $n$ modelos.
-Em algumas situações isso não é um grande problema, porém, em diversas
-outras pode ser impeditivo utilizar o LOOCV. 🤯
+**computacionalmente intensivo**. O método requer que ajustemos $n$
+modelos. Em algumas situações isso não é um grande problema, porém, em
+diversas outras pode ser impeditivo utilizar o LOOCV. 🤯
 
 ## $k$-fold cross-validation
 
@@ -2583,20 +2599,20 @@ resolver esse problema:
 
 1.  Para realizar uma **primeira divisão** do conjunto de dados (*data
     splitting/hold-out*), utiliza-se a função `initial_split`;
-2.  Para acessar o conjunto de **treinamento** dos dados, usamos a função
-    `training`;
+2.  Para acessar o conjunto de **treinamento** dos dados, usamos a
+    função `training`;
 3.  Para acessar o conjunto de **teste**, usamos a função `testing`;
 4.  Para constuir todas as divisões da validação cruzada, entre
     treinamento e validação, no conjunto de treinamento inicial, usamos
     a função `vfold_cv` já mencionada;
-5.  Para acessar o conjunto de **treinamento** de um *split* da validação
-    cruzada, usamos a função `analysis`;
+5.  Para acessar o conjunto de **treinamento** de um *split* da
+    validação cruzada, usamos a função `analysis`;
 6.  Para acessar o conjunto de **validação**, utilizamos a função
     `assessment`.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
-![](imgs/rsample.png){fig-align='center' width='5%'}
+![](imgs/rsample.png){fig-align="center" width="5%"}
 
 <br> Note que realizar uma validação cruzada é importante para podemos
 selecionar o melhor polinômio, i.e., o melhor valor de $p$. Caso
@@ -2608,8 +2624,8 @@ melhor modelo dentro de um esquema de validação cruzada.
 <br>
 
 No mundo de aprendizagem de máquina, muitos chamam o processo de
-encontrar o melhor hiperparâmetro de ["tunagem"]{.red}. Em vários modelos, 
-podemos ter mais de um.
+encontrar o melhor hiperparâmetro de ["tunagem"]{.red}. Em vários
+modelos, podemos ter mais de um.
 
 ## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
 
@@ -3562,8 +3578,8 @@ classes de modelos (paramétricos e não-paramétricos).
 
 <br>
 
-Também chamado de [$k$-nearest neighbours - $k$NN]{.red}, o $k$NN é um dos
-métodos mais populares na comunidade de aprendizagem de máquina. O
+Também chamado de [$k$-nearest neighbours - $k$NN]{.red}, o $k$NN é um
+dos métodos mais populares na comunidade de aprendizagem de máquina. O
 método foi formulado em uma sequência de dois artigos:
 
 <br>
@@ -3640,9 +3656,9 @@ foram citadas acima.
 
 <br>
 
-É importante perceber que **o método $k$NN não faz uma "compressão" dos
-dados** como a regressão linear que estudamos. Lá, temos uma equação que
-utilizamos para estimar o valor de $Y$, após as estimação dos
+É importante perceber que **o método** $k$NN não faz uma "compressão"
+dos dados como a regressão linear que estudamos. Lá, temos uma equação
+que utilizamos para estimar o valor de $Y$, após as estimação dos
 coeficientes do modelo de regressão, ou seja, não precisamos mais dos
 dados para estimar novas observações. Já no $k$NN, precisamos sempre nos
 recorrer aos dados para fazer novas predições, ou seja, sempre que
@@ -3797,7 +3813,7 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-**Algumas limitações do $k$NN são**:
+**Algumas limitações do** $k$NN são:
 
 <br>
 
@@ -4026,16 +4042,34 @@ ggsave(p, file = "imgs/nadaraya_watson.png", width = 30, height = 15, units = "c
 
 ![](gifs/side-eyeing-chloe-chloe.gif)
 
-
 ## Tidymodels $k$NN e Nadaraya-Watson
 
 <br>
 
-Para que possamos experimentar o [tidymodels](https://www.tidymodels.org/) seguindo todo o fluxo de "padrão" de aprendizagem de máquina, com divisão do conjunto de dados, validação cruzada e busca pelos melhores hiperparâmetros ("tunagem"). Iremos reproduir dois exemplos com os dados de expectativa de vida e PIB per Capita.
+Para que possamos experimentar o
+[tidymodels](https://www.tidymodels.org/) seguindo todo o fluxo de
+"padrão" de aprendizagem de máquina, com divisão do conjunto de dados,
+validação cruzada e busca pelos melhores hiperparâmetros ("tunagem").
+Iremos reproduir dois exemplos com os dados de expectativa de vida e PIB
+per Capita.
 
 <br>
 
-[Exemplo]{.red}: Nesse exemplo estamos realizando o $k$NN, em que estamos obtendo um candidato para o valor de $k$, por meio de um procedimento de *cross-validation* (10-*folds cross-validation*). Aqui, a busca do hiperparâmetro $k$ fará uso de um *grid search*. Perceba, no código que segue o exemplo, que no processo de "tunagem", alterei o grid de valores usando a função `grid_max_entropy` do pacote [dails](https://dials.tidymodels.org/reference/grid_max_entropy.html). Uma observação é que você poderia criar uma tibble com valores do seu interesse. O argumento `grid` da função `tune_grid` do pacote [tune](https://tune.tidymodels.org/reference/tune_grid.html) deve ser um data frame/tibble ou um número inteiro. Esse objeto conterá todas as possíveis combinações de hiperparâmetros que serão testadas na validação cruzada, no nosso caso, temos apenas um hiperparâmetro. Foi utilizado um *grid* de tamanho 60. Foi utilizado uma divisão de $80\%$ para treinamento e $20\%$ para teste.
+[Exemplo]{.red}: Nesse exemplo estamos realizando o $k$NN, em que
+estamos obtendo um candidato para o valor de $k$, por meio de um
+procedimento de *cross-validation* (10-*folds cross-validation*). Aqui,
+a busca do hiperparâmetro $k$ fará uso de um *grid search*. Perceba, no
+código que segue o exemplo, que no processo de "tunagem", alterei o grid
+de valores usando a função `grid_max_entropy` do pacote
+[dails](https://dials.tidymodels.org/reference/grid_max_entropy.html).
+Uma observação é que você poderia criar uma tibble com valores do seu
+interesse. O argumento `grid` da função `tune_grid` do pacote
+[tune](https://tune.tidymodels.org/reference/tune_grid.html) deve ser um
+data frame/tibble ou um número inteiro. Esse objeto conterá todas as
+possíveis combinações de hiperparâmetros que serão testadas na validação
+cruzada, no nosso caso, temos apenas um hiperparâmetro. Foi utilizado um
+*grid* de tamanho 60. Foi utilizado uma divisão de $80\%$ para
+treinamento e $20\%$ para teste.
 
 ## Tidymodels $k$NN e Nadaraya-Watson
 
@@ -4170,14 +4204,21 @@ ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_knn_whatson.png", width = 30
        height = 15, units = "cm")
 ```
 
-O pacote [dials](https://dials.tidymodels.org/reference/grid_max_entropy.html) fornece três funções o *grid* de parâmetros. São apenas funções que criam *grids* para os hiperparâmetros, segundo algumas metodologias, mas que na prática não há garantias de qual irá funcionar melhor. A ideia é experimentar e, por meio de uma validação cruzada, decidir por qual utilizar. Normalmente, a `grid_max_entropy`, utilizada no código acima, funciona bem. 
+O pacote
+[dials](https://dials.tidymodels.org/reference/grid_max_entropy.html)
+fornece três funções o *grid* de parâmetros. São apenas funções que
+criam *grids* para os hiperparâmetros, segundo algumas metodologias, mas
+que na prática não há garantias de qual irá funcionar melhor. A ideia é
+experimentar e, por meio de uma validação cruzada, decidir por qual
+utilizar. Normalmente, a `grid_max_entropy`, utilizada no código acima,
+funciona bem.
 
 ::: columns
 ::: {.column width="50%"}
-1. [`grid_max_entropy`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
-2. [`grid_latin_hypercube`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
-3. [`grid_regular`](https://dials.tidymodels.org/reference/grid_regular.html)
-4. [`grid_random`](https://dials.tidymodels.org/reference/grid_regular.html)
+1.  [`grid_max_entropy`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
+2.  [`grid_latin_hypercube`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
+3.  [`grid_regular`](https://dials.tidymodels.org/reference/grid_regular.html)
+4.  [`grid_random`](https://dials.tidymodels.org/reference/grid_regular.html)
 :::
 
 ::: {.column width="50%"}
@@ -4191,11 +4232,26 @@ O pacote [dials](https://dials.tidymodels.org/reference/grid_max_entropy.html) f
 
 <br>
 
-Para demonstar que podemos realizar transformações (receitas) na base de dados, entre do processo de treinamento, foi realizado duas transformações na variável `GDPercapita`. A primeira foi a Yeo–Johnson *transformation* e a segunda foi uma simples normalização dos dados (subitrair da média e dividir pelo desvio padrão). A [transformação de Yeo–Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation) é uma transformação semelhante a de [Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation). A transformação de [Yeo–Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation) trata de situações que a transformação de [Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation) não trata. Por exemplo, ela trata de valores negativos e zero.
+Para demonstar que podemos realizar transformações (receitas) na base de
+dados, entre do processo de treinamento, foi realizado duas
+transformações na variável `GDPercapita`. A primeira foi a Yeo--Johnson
+*transformation* e a segunda foi uma simples normalização dos dados
+(subitrair da média e dividir pelo desvio padrão). A [transformação de
+Yeo--Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation)
+é uma transformação semelhante a de
+[Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation).
+A transformação de
+[Yeo--Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation)
+trata de situações que a transformação de
+[Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation)
+não trata. Por exemplo, ela trata de valores negativos e zero.
 
 <br>
 
-A ideia do *steps* utilizados na faze de pré-processamento dos dados, em que utilizamos o pacote recipes do R, é que para novas observações, depois do modelo ajustado, essas transformações serão automaticamente aplicadas aos novos dados.
+A ideia do *steps* utilizados na faze de pré-processamento dos dados, em
+que utilizamos o pacote recipes do R, é que para novas observações,
+depois do modelo ajustado, essas transformações serão automaticamente
+aplicadas aos novos dados.
 
 <br>
 
@@ -4205,13 +4261,24 @@ A ideia do *steps* utilizados na faze de pré-processamento dos dados, em que ut
 
 <br>
 
-![](imgs/plot_hiper_ajuste_tidymodels_knn.png){fig-aling='center' width='50%'}
+![](imgs/plot_hiper_ajuste_tidymodels_knn.png){fig-aling="center"
+width="50%"}
 
 ## Tidymodels $k$NN e Nadaraya-Watson
 
 <br>
 
-[Exemplo]{.red}: Vamos reproduzir todo o fluxo de treinamento que fizemos com o método $k$NN no exemplo anterior, agora, utilizando o modelo Nadaraya-Watson. Note que uma vez que entendemos o [tidymodels](https://www.tidymodels.org/), fica fácil adaptar um código já existente para o treinamento de um outro modelo. Na verdade, o método de Nadaraya-Watson implementado no tidymodels é um pouco diferente. Ainda utilizamos a informação de $k$, em que o valor de $h$ é deverminado pela média dos vizinhos mais próximos de ${\bf x}_i$ à ${\bf x}$. Além de $k$, temos o valor de $p$ para a distância de Minkowski como hiperparâmetro. Portanto, aqui, teremos dois hiperparâmetros (parâmetros de sintonização). 
+[Exemplo]{.red}: Vamos reproduzir todo o fluxo de treinamento que
+fizemos com o método $k$NN no exemplo anterior, agora, utilizando o
+modelo Nadaraya-Watson. Note que uma vez que entendemos o
+[tidymodels](https://www.tidymodels.org/), fica fácil adaptar um código
+já existente para o treinamento de um outro modelo. Na verdade, o método
+de Nadaraya-Watson implementado no tidymodels é um pouco diferente.
+Ainda utilizamos a informação de $k$, em que o valor de $h$ é
+deverminado pela média dos vizinhos mais próximos de ${\bf x}_i$ à
+${\bf x}$. Além de $k$, temos o valor de $p$ para a distância de
+Minkowski como hiperparâmetro. Portanto, aqui, teremos dois
+hiperparâmetros (parâmetros de sintonização).
 
 <br>
 
@@ -4352,12 +4419,13 @@ ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_nadaraya.png", width = 30,
 
 <br>
 
-![](imgs/plot_hiper_ajuste_tidymodels_nadaraya.png){fig-aling='center'}
-## Tidymodels $k$NN e Nadaraya-Watson
+![](imgs/plot_hiper_ajuste_tidymodels_nadaraya.png){fig-aling="center"}
+\## Tidymodels $k$NN e Nadaraya-Watson
 
 <br>
 
-Podemos visualizar a melhor combinação de hiperparâmetros, segundo $\widehat{R}(g)$ usando fazendo:
+Podemos visualizar a melhor combinação de hiperparâmetros, segundo
+$\widehat{R}(g)$ usando fazendo:
 
 ```{r}
 #| eval: false
@@ -4368,3 +4436,182 @@ tunagem |>
 ```
 
 ![](gifs/bean_simple.gif)
+
+## Comparando dois ou mais modelos
+
+<br>
+
+**Você poderia perguntar**: "Certo, mais tenho como comparar dois ou
+mais modelos de uma única vez?"
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+![](gifs/giphy.gif)
+:::
+
+::: {.column width="50%"}
+<br>
+
+A resposta é **Sim**!
+
+<br>
+
+![](gifs/yes.gif)
+:::
+:::
+
+## Comparando dois ou mais modelos
+
+<br>
+
+Na verdade, é bem mais interessante comparar conjuntamente, visto que para poder
+compararmos devemos garantir que as mesmas amostras de treinamento e teste estão
+sendo utilizadas, i.e., para termos uma comparação mais justa. Claro que dá para
+fazer de forma separada, fixando a semente dos geradores de números pseudo-aleatórios,
+para que a biblioteca rsample possa reproduzir a mesma divisão para ambos os modelos.
+Porém, a estratégia do exemplo abaixo é mais consistente.
+
+<br>
+
+[Exemplo]{.red}: Estude o código que segue! Ele compara os modelos de $k$NN com o método de Nadaraya-Watson.
+
+<br>
+
+```{r}
+#| code-fold: true
+#| code-summary: Workflow completo do treimanento e comparação de dois modelos (KNN e Nadaraya-Whatson).
+#| eval: false
+
+library(tidymodels)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+
+# Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente
+# carregados:
+tidymodels::tidymodels_prefer()
+
+# Lendo a base de dados:
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+arquivo_temp <- tempfile()
+download.file(url = url, destfile = arquivo_temp)
+load(arquivo_temp)
+
+dados_expectativa_renda <-
+  dados_expectativa_renda |>
+  dplyr::select(-CountryName)
+
+# Setando uma semente
+set.seed(0)
+
+# Divisão da base de dados ------------------------------------------------
+# Divisão inicial (treino e teste)
+splits <- 
+  rsample::initial_split(
+    dados_expectativa_renda,
+    strata = "LifeExpectancy", 
+    prop = 0.8 
+  )
+
+# O conjunto de dados de treinamento será utilizado para ajustar/treinar o
+# modelo:
+treinamento <- rsample::training(splits)
+
+# O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho
+# preditivo final do modelo:
+teste <- rsample::testing(splits) 
+
+# Criando uma receita para os dados ---------------------------------------
+
+# Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".
+# O comando recipes já entende que deverá utilizar o conjunto de treinamento.
+receita_knn <- 
+  recipes::recipe(formula = LifeExpectancy ~ ., data = treinamento) |> 
+  step_YeoJohnson(all_predictors()) |> # Ajuda na normalização dos dados. Pode ser bom!
+  step_normalize(all_predictors()) # Normalizando variáveis numéricas.
+
+receita_nadaraya <- receita_knn
+
+# Construindo modelo kNN --------------------------------------------------
+modelo_knn <- 
+  parsnip::nearest_neighbor(neighbors = tune()) |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kknn")
+
+# Construindo modelo Nadaraya ---------------------------------------------
+modelo_nadaraya <- 
+  parsnip::nearest_neighbor(dist_power = tune(), neighbors = tune(),
+                            weight_func = "gaussian") |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kknn")
+
+# Validação cruzada -------------------------------------------------------
+set.seed(0)
+cv <- rsample::vfold_cv(treinamento, v = 5L)
+
+# Criando workflow conjunto -----------------------------------------------
+all_wf <- 
+  workflow_set(
+    preproc = list(receita_knn, receita_nadaraya),
+    models = list(modelo_knn = modelo_knn, modelo_nadaraya = modelo_nadaraya)
+  )
+
+# Tunando ambos os modelos ------------------------------------------------
+tunagem <- 
+  all_wf |> 
+  workflow_map(
+    seed = 0, 
+    verbose = TRUE,
+    resamples = cv,
+    grid = 50,
+    metrics = metric_set(rmse)
+  )
+
+# Selecionando o melhor de cada um dos modelos ----------------------------
+melhor_knn <- 
+  tunagem |> 
+  extract_workflow_set_result("recipe_1_modelo_knn") |> 
+  select_best("rmse")
+
+melhor_nadaraya <- 
+  tunagem |> 
+  extract_workflow_set_result("recipe_1_modelo_nadaraya") |> 
+  select_best("rmse")
+
+# Avaliando o desempenho no conjunto de teste
+teste_knn <- 
+  tunagem |> 
+  extract_workflow("recipe_1_modelo_knn") |> 
+  finalize_workflow(melhor_knn) |> 
+  last_fit(split = splits)
+
+teste_nadaraya <- 
+  tunagem |> 
+  extract_workflow("recipe_1_modelo_nadaraya") |> 
+  finalize_workflow(melhor_nadaraya) |> 
+  last_fit(split = splits)
+
+# Visualizando as métricas de cada um
+collect_metrics(teste_knn)
+collect_metrics(teste_nadaraya)
+
+# Ajustando o modelo com todos os dados. Aqui escolhemos o Nadaraya-Watson
+modelo_final <- 
+  teste_nadaraya |> 
+  extract_workflow("recipe_1_modelo_nadaraya") |> 
+  fit(data = dados_expectativa_renda)
+
+# Fazendo previsões com novos dados. Aqui usarei os mesmos dados
+predict(modelo_final, new_data = dados_expectativa_renda)
+
+# Salvando o modelo em um arquivo. Aqui estou supondo que salvei em
+# "~/Downloads/modelo_final.rds":
+# saveRDS(modelo_final, file = "~/Downloads/modelo_final.rds")
+
+# Lendo um modelo salvo para depois fazer predições. Aqui estou supondo que 
+# o modelo encontra-se salvo em "~/Downloads/modelo_final.rds":
+# readRDS("~/Downloads/modelo_final.rds")
+````
+![](gifs/bom.gif)

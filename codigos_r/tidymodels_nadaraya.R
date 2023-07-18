@@ -89,7 +89,7 @@ tunagem <-
   )
 
 p_hiper <- autoplot(tunagem) +
-  labs(title = "Nadaraya-Watson", subtitle = "Sintonização do hiperparâmetro") +
+  labs(title = "Nadaraya-Watson", subtitle = "Sintonização do hiperparâmetro (distância p)") +
   theme(
     title = element_text(face = "bold")
   )
@@ -123,5 +123,5 @@ p_ajuste <- ajuste_final$.predictions[[1L]] |>
 p <- p_hiper + p_ajuste + plot_annotation(tag_levels = "A")
 
 # Salvando gráficos
-ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_nadaraya.png", width = 30,
+ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_knn.png", width = 30,
        height = 15, units = "cm")

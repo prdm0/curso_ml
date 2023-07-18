@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e98f10fcba3a1d23ea48" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-e98f10fcba3a1d23ea48">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1e052298e1bdd33d2658" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-1e052298e1bdd33d2658">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2566,7 +2566,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.</p>
 <p><br></p>
-<p>É importante perceber que <strong>o método <span class="math inline">k</span>NN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no <span class="math inline">k</span>NN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O <span class="math inline">k</span>NN não possui coeficientes para interpretar. Diferentemente da regressão linear, o <span class="math inline">k</span>NN é um pouco mais “<em>black box</em>”.</p>
+<p>É importante perceber que <strong>o método</strong> <span class="math inline">k</span>NN não faz uma “compressão” dos dados como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no <span class="math inline">k</span>NN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O <span class="math inline">k</span>NN não possui coeficientes para interpretar. Diferentemente da regressão linear, o <span class="math inline">k</span>NN é um pouco mais “<em>black box</em>”.</p>
 <p><br></p>
 
 <img data-src="gifs/giphy.gif" class="r-stretch"></section>
@@ -2667,7 +2667,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="k-vizinhos-mais-próximo-próximos-8" class="slide level2">
 <h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
 <p><br></p>
-<p><strong>Algumas limitações do <span class="math inline">k</span>NN são</strong>:</p>
+<p><strong>Algumas limitações do</strong> <span class="math inline">k</span>NN são:</p>
 <p><br></p>
 <ol type="1">
 <li class="fragment"><p>É totalmente dependente do conjunto de dados para fazer novas predições;</p></li>
@@ -3134,6 +3134,165 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">show_best</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img data-src="gifs/bean_simple.gif"></p>
+</section>
+<section id="comparando-dois-ou-mais-modelos" class="slide level2">
+<h2>Comparando dois ou mais modelos</h2>
+<p><br></p>
+<p><strong>Você poderia perguntar</strong>: “Certo, mais tenho como comparar dois ou mais modelos de uma única vez?”</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="gifs/giphy.gif"></p>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<p>A resposta é <strong>Sim</strong>!</p>
+<p><br></p>
+<p><img data-src="gifs/yes.gif"></p>
+</div>
+</div>
+</section>
+<section id="comparando-dois-ou-mais-modelos-1" class="slide level2">
+<h2>Comparando dois ou mais modelos</h2>
+<p><br></p>
+<p>Na verdade, é bem mais interessante comparar conjuntamente, visto que para poder compararmos devemos garantir que as mesmas amostras de treinamento e teste estão sendo utilizadas, i.e., para termos uma comparação mais justa. Claro que dá para fazer de forma separada, fixando a semente dos geradores de números pseudo-aleatórios, para que a biblioteca rsample possa reproduzir a mesma divisão para ambos os modelos. Porém, a estratégia do exemplo abaixo é mais consistente.</p>
+<p><br></p>
+<p><span class="red">Exemplo</span>: Estude o código que segue! Ele compara os modelos de <span class="math inline">k</span>NN com o método de Nadaraya-Watson.</p>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Workflow completo do treimanento e comparação de dois modelos (KNN e Nadaraya-Whatson).</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="co"># Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># carregados:</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb17-9"><a href="#cb17-9"></a></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co"># Lendo a base de dados:</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb17-15"><a href="#cb17-15"></a></span>
+<span id="cb17-16"><a href="#cb17-16"></a>dados_expectativa_renda <span class="ot">&lt;-</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a>  dados_expectativa_renda <span class="sc">|&gt;</span></span>
+<span id="cb17-18"><a href="#cb17-18"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName)</span>
+<span id="cb17-19"><a href="#cb17-19"></a></span>
+<span id="cb17-20"><a href="#cb17-20"></a><span class="co"># Setando uma semente</span></span>
+<span id="cb17-21"><a href="#cb17-21"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb17-22"><a href="#cb17-22"></a></span>
+<span id="cb17-23"><a href="#cb17-23"></a><span class="co"># Divisão da base de dados ------------------------------------------------</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a><span class="co"># Divisão inicial (treino e teste)</span></span>
+<span id="cb17-25"><a href="#cb17-25"></a>splits <span class="ot">&lt;-</span> </span>
+<span id="cb17-26"><a href="#cb17-26"></a>  rsample<span class="sc">::</span><span class="fu">initial_split</span>(</span>
+<span id="cb17-27"><a href="#cb17-27"></a>    dados_expectativa_renda,</span>
+<span id="cb17-28"><a href="#cb17-28"></a>    <span class="at">strata =</span> <span class="st">"LifeExpectancy"</span>, </span>
+<span id="cb17-29"><a href="#cb17-29"></a>    <span class="at">prop =</span> <span class="fl">0.8</span> </span>
+<span id="cb17-30"><a href="#cb17-30"></a>  )</span>
+<span id="cb17-31"><a href="#cb17-31"></a></span>
+<span id="cb17-32"><a href="#cb17-32"></a><span class="co"># O conjunto de dados de treinamento será utilizado para ajustar/treinar o</span></span>
+<span id="cb17-33"><a href="#cb17-33"></a><span class="co"># modelo:</span></span>
+<span id="cb17-34"><a href="#cb17-34"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(splits)</span>
+<span id="cb17-35"><a href="#cb17-35"></a></span>
+<span id="cb17-36"><a href="#cb17-36"></a><span class="co"># O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho</span></span>
+<span id="cb17-37"><a href="#cb17-37"></a><span class="co"># preditivo final do modelo:</span></span>
+<span id="cb17-38"><a href="#cb17-38"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(splits) </span>
+<span id="cb17-39"><a href="#cb17-39"></a></span>
+<span id="cb17-40"><a href="#cb17-40"></a><span class="co"># Criando uma receita para os dados ---------------------------------------</span></span>
+<span id="cb17-41"><a href="#cb17-41"></a></span>
+<span id="cb17-42"><a href="#cb17-42"></a><span class="co"># Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".</span></span>
+<span id="cb17-43"><a href="#cb17-43"></a><span class="co"># O comando recipes já entende que deverá utilizar o conjunto de treinamento.</span></span>
+<span id="cb17-44"><a href="#cb17-44"></a>receita_knn <span class="ot">&lt;-</span> </span>
+<span id="cb17-45"><a href="#cb17-45"></a>  recipes<span class="sc">::</span><span class="fu">recipe</span>(<span class="at">formula =</span> LifeExpectancy <span class="sc">~</span> ., <span class="at">data =</span> treinamento) <span class="sc">|&gt;</span> </span>
+<span id="cb17-46"><a href="#cb17-46"></a>  <span class="fu">step_YeoJohnson</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span> <span class="co"># Ajuda na normalização dos dados. Pode ser bom!</span></span>
+<span id="cb17-47"><a href="#cb17-47"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>()) <span class="co"># Normalizando variáveis numéricas.</span></span>
+<span id="cb17-48"><a href="#cb17-48"></a></span>
+<span id="cb17-49"><a href="#cb17-49"></a>receita_nadaraya <span class="ot">&lt;-</span> receita_knn</span>
+<span id="cb17-50"><a href="#cb17-50"></a></span>
+<span id="cb17-51"><a href="#cb17-51"></a><span class="co"># Construindo modelo kNN --------------------------------------------------</span></span>
+<span id="cb17-52"><a href="#cb17-52"></a>modelo_knn <span class="ot">&lt;-</span> </span>
+<span id="cb17-53"><a href="#cb17-53"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(<span class="at">neighbors =</span> <span class="fu">tune</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb17-54"><a href="#cb17-54"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-55"><a href="#cb17-55"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb17-56"><a href="#cb17-56"></a></span>
+<span id="cb17-57"><a href="#cb17-57"></a><span class="co"># Construindo modelo Nadaraya ---------------------------------------------</span></span>
+<span id="cb17-58"><a href="#cb17-58"></a>modelo_nadaraya <span class="ot">&lt;-</span> </span>
+<span id="cb17-59"><a href="#cb17-59"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(<span class="at">dist_power =</span> <span class="fu">tune</span>(), <span class="at">neighbors =</span> <span class="fu">tune</span>(),</span>
+<span id="cb17-60"><a href="#cb17-60"></a>                            <span class="at">weight_func =</span> <span class="st">"gaussian"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-61"><a href="#cb17-61"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-62"><a href="#cb17-62"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb17-63"><a href="#cb17-63"></a></span>
+<span id="cb17-64"><a href="#cb17-64"></a><span class="co"># Validação cruzada -------------------------------------------------------</span></span>
+<span id="cb17-65"><a href="#cb17-65"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb17-66"><a href="#cb17-66"></a>cv <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(treinamento, <span class="at">v =</span> 5L)</span>
+<span id="cb17-67"><a href="#cb17-67"></a></span>
+<span id="cb17-68"><a href="#cb17-68"></a><span class="co"># Criando workflow conjunto -----------------------------------------------</span></span>
+<span id="cb17-69"><a href="#cb17-69"></a>all_wf <span class="ot">&lt;-</span> </span>
+<span id="cb17-70"><a href="#cb17-70"></a>  <span class="fu">workflow_set</span>(</span>
+<span id="cb17-71"><a href="#cb17-71"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(receita_knn, receita_nadaraya),</span>
+<span id="cb17-72"><a href="#cb17-72"></a>    <span class="at">models =</span> <span class="fu">list</span>(<span class="at">modelo_knn =</span> modelo_knn, <span class="at">modelo_nadaraya =</span> modelo_nadaraya)</span>
+<span id="cb17-73"><a href="#cb17-73"></a>  )</span>
+<span id="cb17-74"><a href="#cb17-74"></a></span>
+<span id="cb17-75"><a href="#cb17-75"></a><span class="co"># Tunando ambos os modelos ------------------------------------------------</span></span>
+<span id="cb17-76"><a href="#cb17-76"></a>tunagem <span class="ot">&lt;-</span> </span>
+<span id="cb17-77"><a href="#cb17-77"></a>  all_wf <span class="sc">|&gt;</span> </span>
+<span id="cb17-78"><a href="#cb17-78"></a>  <span class="fu">workflow_map</span>(</span>
+<span id="cb17-79"><a href="#cb17-79"></a>    <span class="at">seed =</span> <span class="dv">0</span>, </span>
+<span id="cb17-80"><a href="#cb17-80"></a>    <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-81"><a href="#cb17-81"></a>    <span class="at">resamples =</span> cv,</span>
+<span id="cb17-82"><a href="#cb17-82"></a>    <span class="at">grid =</span> <span class="dv">50</span>,</span>
+<span id="cb17-83"><a href="#cb17-83"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse)</span>
+<span id="cb17-84"><a href="#cb17-84"></a>  )</span>
+<span id="cb17-85"><a href="#cb17-85"></a></span>
+<span id="cb17-86"><a href="#cb17-86"></a><span class="co"># Selecionando o melhor de cada um dos modelos ----------------------------</span></span>
+<span id="cb17-87"><a href="#cb17-87"></a>melhor_knn <span class="ot">&lt;-</span> </span>
+<span id="cb17-88"><a href="#cb17-88"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb17-89"><a href="#cb17-89"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"recipe_1_modelo_knn"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-90"><a href="#cb17-90"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb17-91"><a href="#cb17-91"></a></span>
+<span id="cb17-92"><a href="#cb17-92"></a>melhor_nadaraya <span class="ot">&lt;-</span> </span>
+<span id="cb17-93"><a href="#cb17-93"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb17-94"><a href="#cb17-94"></a>  <span class="fu">extract_workflow_set_result</span>(<span class="st">"recipe_1_modelo_nadaraya"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-95"><a href="#cb17-95"></a>  <span class="fu">select_best</span>(<span class="st">"rmse"</span>)</span>
+<span id="cb17-96"><a href="#cb17-96"></a></span>
+<span id="cb17-97"><a href="#cb17-97"></a><span class="co"># Avaliando o desempenho no conjunto de teste</span></span>
+<span id="cb17-98"><a href="#cb17-98"></a>teste_knn <span class="ot">&lt;-</span> </span>
+<span id="cb17-99"><a href="#cb17-99"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb17-100"><a href="#cb17-100"></a>  <span class="fu">extract_workflow</span>(<span class="st">"recipe_1_modelo_knn"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-101"><a href="#cb17-101"></a>  <span class="fu">finalize_workflow</span>(melhor_knn) <span class="sc">|&gt;</span> </span>
+<span id="cb17-102"><a href="#cb17-102"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> splits)</span>
+<span id="cb17-103"><a href="#cb17-103"></a></span>
+<span id="cb17-104"><a href="#cb17-104"></a>teste_nadaraya <span class="ot">&lt;-</span> </span>
+<span id="cb17-105"><a href="#cb17-105"></a>  tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb17-106"><a href="#cb17-106"></a>  <span class="fu">extract_workflow</span>(<span class="st">"recipe_1_modelo_nadaraya"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-107"><a href="#cb17-107"></a>  <span class="fu">finalize_workflow</span>(melhor_nadaraya) <span class="sc">|&gt;</span> </span>
+<span id="cb17-108"><a href="#cb17-108"></a>  <span class="fu">last_fit</span>(<span class="at">split =</span> splits)</span>
+<span id="cb17-109"><a href="#cb17-109"></a></span>
+<span id="cb17-110"><a href="#cb17-110"></a><span class="co"># Visualizando as métricas de cada um</span></span>
+<span id="cb17-111"><a href="#cb17-111"></a><span class="fu">collect_metrics</span>(teste_knn)</span>
+<span id="cb17-112"><a href="#cb17-112"></a><span class="fu">collect_metrics</span>(teste_nadaraya)</span>
+<span id="cb17-113"><a href="#cb17-113"></a></span>
+<span id="cb17-114"><a href="#cb17-114"></a><span class="co"># Ajustando o modelo com todos os dados. Aqui escolhemos o Nadaraya-Watson</span></span>
+<span id="cb17-115"><a href="#cb17-115"></a>modelo_final <span class="ot">&lt;-</span> </span>
+<span id="cb17-116"><a href="#cb17-116"></a>  teste_nadaraya <span class="sc">|&gt;</span> </span>
+<span id="cb17-117"><a href="#cb17-117"></a>  <span class="fu">extract_workflow</span>(<span class="st">"recipe_1_modelo_nadaraya"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-118"><a href="#cb17-118"></a>  <span class="fu">fit</span>(<span class="at">data =</span> dados_expectativa_renda)</span>
+<span id="cb17-119"><a href="#cb17-119"></a></span>
+<span id="cb17-120"><a href="#cb17-120"></a><span class="co"># Fazendo previsões com novos dados. Aqui usarei os mesmos dados</span></span>
+<span id="cb17-121"><a href="#cb17-121"></a><span class="fu">predict</span>(modelo_final, <span class="at">new_data =</span> dados_expectativa_renda)</span>
+<span id="cb17-122"><a href="#cb17-122"></a></span>
+<span id="cb17-123"><a href="#cb17-123"></a><span class="co"># Salvando o modelo em um arquivo. Aqui estou supondo que salvei em</span></span>
+<span id="cb17-124"><a href="#cb17-124"></a><span class="co"># "~/Downloads/modelo_final.rds":</span></span>
+<span id="cb17-125"><a href="#cb17-125"></a><span class="co"># saveRDS(modelo_final, file = "~/Downloads/modelo_final.rds")</span></span>
+<span id="cb17-126"><a href="#cb17-126"></a></span>
+<span id="cb17-127"><a href="#cb17-127"></a><span class="co"># Lendo um modelo salvo para depois fazer predições. Aqui estou supondo que </span></span>
+<span id="cb17-128"><a href="#cb17-128"></a><span class="co"># o modelo encontra-se salvo em "~/Downloads/modelo_final.rds":</span></span>
+<span id="cb17-129"><a href="#cb17-129"></a><span class="co"># readRDS("~/Downloads/modelo_final.rds")</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><img data-src="gifs/bom.gif"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">
