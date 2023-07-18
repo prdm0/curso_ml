@@ -1,5 +1,4 @@
 library(tidymodels)
-library(glue)
 library(dplyr)
 library(ggplot2)
 library(patchwork)
@@ -17,6 +16,9 @@ load(arquivo_temp)
 dados_expectativa_renda <-
   dados_expectativa_renda |>
   dplyr::select(-CountryName)
+
+# Setando uma semente
+set.seed(0)
 
 # Divisão da base de dados ------------------------------------------------
 # Divisão inicial (treino e teste)
@@ -64,16 +66,25 @@ cv <-
 # Busca do hiperparâmetro k -----------------------------------------------
 metrica <- metric_set(rmse)
 
-tunagem <-
+# Extraindo e atualizando range do parâmetro ------------------------------
+update_parametros <-
   wf_knn |> 
+  extract_parameter_set_dials() |>
+  update("neighbors" = neighbors(c(1, 50)))
+
+# Tunagem -----------------------------------------------------------------
+meu_grid <- dials::grid_max_entropy(update_parametros, size = 60)
+
+tunagem <-
   tune::tune_grid(
+    wf_knn,
     resamples = cv,
-    grid = 100,
+    grid = meu_grid,
     metrics = metrica,
     control = control_grid(save_pred = TRUE, verbose = TRUE)
   )
 
-autoplot(tunagem) +
+p_hiper <- autoplot(tunagem) +
   labs(title = "KNN - Seleção do número k (vizinhos)", subtitle = "Sintonização do hiperparâmetro (valor de k)") +
   theme(
     title = element_text(face = "bold")
@@ -89,3 +100,24 @@ ajuste_final <- last_fit(wf_knn, splits)
 
 # Ajuste final com toda a base de dados -----------------------------------
 modelo_final <- fit(wf_knn, data = dados_expectativa_renda)
+
+# Visualizando as predições na base de treino
+p_ajuste <- ajuste_final$.predictions[[1L]] |> 
+  ggplot(aes(x = LifeExpectancy, y = .pred)) + 
+  geom_point(size = 3, alpha = 0.7, col = "red") +
+  labs(
+    title = "Predições versus Real", 
+    subtitle = "Usando apenas os dados de teste"
+  ) +
+  xlab("LifeExpectancy") + 
+  xlab("LifeExpectancy predito") + 
+  theme(
+    title = element_text(face = "bold")
+  )
+
+# Unindo os dois plots
+p <- p_hiper + p_ajuste + plot_annotation(tag_levels = "A")
+
+# Salvando gráficos
+ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_knn.png", width = 30,
+       height = 15, units = "cm")

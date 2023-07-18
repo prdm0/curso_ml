@@ -673,7 +673,7 @@ a informação, por exemplo:
 1.  Tomando alguma medida de tendência central como média/moda/mediana
     dos valores que são conhecidos para aquele atributo;
 2.  Criar um novo valor que é indicação de valor faltante;
-3.  Usar algoritmos como $k$-nearest neighbors - **KNN** ($k$ vizinhos mais
+3.  Usar algoritmos como $k$-nearest neighbors - $K$**NN** ($k$ vizinhos mais
     próximos) para imputar valores coerentes;
 4.  Interpolar os dados.
 
@@ -907,7 +907,7 @@ width="70%"}
 2.  [recipes](https://recipes.tidymodels.org/): apresenta diversas
     funções para transformações de variáveis como criação de variáveis
     dummy, normalização de variáveis, inputação de dados pela média,
-    mediana, knn, entre outras formas de imputação, transformações de
+    mediana, $k$NN, entre outras formas de imputação, transformações de
     variáveis categórias em numéricas, entre outras funcionalidades. Ele
     permite que possamos criar uma receita de transformações nos dados
     para que esses, após transformados, possam entrar no modelo.
@@ -3562,7 +3562,7 @@ classes de modelos (paramétricos e não-paramétricos).
 
 <br>
 
-Também chamado de [$k$-nearest neighbours - KNN]{.red}, o KNN é um dos
+Também chamado de [$k$-nearest neighbours - $k$NN]{.red}, o $k$NN é um dos
 métodos mais populares na comunidade de aprendizagem de máquina. O
 método foi formulado em uma sequência de dois artigos:
 
@@ -3640,16 +3640,16 @@ foram citadas acima.
 
 <br>
 
-É importante perceber que **o método KNN não faz uma "compressão" dos
+É importante perceber que **o método $k$NN não faz uma "compressão" dos
 dados** como a regressão linear que estudamos. Lá, temos uma equação que
 utilizamos para estimar o valor de $Y$, após as estimação dos
 coeficientes do modelo de regressão, ou seja, não precisamos mais dos
-dados para estimar novas observações. Já no KNN, precisamos sempre nos
+dados para estimar novas observações. Já no $k$NN, precisamos sempre nos
 recorrer aos dados para fazer novas predições, ou seja, sempre que
 desejarmos calcular $r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})$
 deveremos sempre fazer uma nova consulta aos dados para calcular a média
-dos vizinhos mais próximos. O KNN não possui coeficientes para
-interpretar. Diferentemente da regressão linear, o KNN é um pouco mais
+dos vizinhos mais próximos. O $k$NN não possui coeficientes para
+interpretar. Diferentemente da regressão linear, o $k$NN é um pouco mais
 "*black box*".
 
 <br>
@@ -3658,7 +3658,7 @@ interpretar. Diferentemente da regressão linear, o KNN é um pouco mais
 
 ## $k$-vizinhos mais próximo próximos
 
-<br> O valor da constante $k$ é um hiperparâmetro do KNN e deverá ser
+<br> O valor da constante $k$ é um hiperparâmetro do $k$NN e deverá ser
 obtido por validação cruzada. Perceba que se $k = n$ temos um modelo
 muito viesado, porém com variância pequena. Isso, porquê para $k = n$
 basicamente iremos tirar uma média dos dados. Para $k = 1$, teremos um
@@ -3668,7 +3668,7 @@ basicamente iremos tirar uma média dos dados. Para $k = 1$, teremos um
 expectativa de vida versus PIB per Capita disponíveis
 [aqui](https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData).
 Utilizando o [tidymodels](https://www.tidymodels.org/), vamos construir
-uma fução que retorne um gráfico com as estimativas do KNN. A função
+uma fução que retorne um gráfico com as estimativas do $k$NN. A função
 receberá como argumentos o conjunto de dados e o valor de $k$. Você
 também poderia utilizar outras bibliotecas, como por exemplo a
 [FNN](https://cran.r-project.org/web/packages/FNN/index.html), ou a
@@ -3797,7 +3797,7 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-**Algumas limitações do KNN são**:
+**Algumas limitações do $k$NN são**:
 
 <br>
 
@@ -3805,7 +3805,7 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
     predições;
 
 2.  Para novas observações que são fora dos limites dos dados de
-    treinamento, as predições do KNN tendem a serem imprecisas;
+    treinamento, as predições do $k$NN tendem a serem imprecisas;
 
 3.  Pode ser custoso para uma grande base de dados;
 
@@ -3830,7 +3830,7 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-Uma variação do método KNN que é bastante difundida na comunidade
+Uma variação do método $k$NN que é bastante difundida na comunidade
 estatística é o método de Nadaraya-Watson, propostos nos artigos:
 
 <br>
@@ -3843,7 +3843,7 @@ estatística é o método de Nadaraya-Watson, propostos nos artigos:
 
 <br>
 
-Esse método também é chamado de estimador $k$-vizinhos ponderados (KNN
+Esse método também é chamado de estimador $k$-vizinhos ponderados ($k$NN
 ponderado), uma vez que a estimação da função de regressão em um dado
 ponto ${\bf x}$ utiliza de médias ponderadas das observações do conjunto
 de treinamento:
@@ -4027,7 +4027,7 @@ ggsave(p, file = "imgs/nadaraya_watson.png", width = 30, height = 15, units = "c
 ![](gifs/side-eyeing-chloe-chloe.gif)
 
 
-## Tidymodels KNN e Nadaraya-Watson
+## Tidymodels $k$NN e Nadaraya-Watson
 
 <br>
 
@@ -4035,4 +4035,336 @@ Para que possamos experimentar o [tidymodels](https://www.tidymodels.org/) segui
 
 <br>
 
-[Exemplo]{.red}: Nesse exemplo estamos realizando o KNN, em que estamos otimizando o valor de $k$.
+[Exemplo]{.red}: Nesse exemplo estamos realizando o $k$NN, em que estamos obtendo um candidato para o valor de $k$, por meio de um procedimento de *cross-validation* (10-*folds cross-validation*). Aqui, a busca do hiperparâmetro $k$ fará uso de um *grid search*. Perceba, no código que segue o exemplo, que no processo de "tunagem", alterei o grid de valores usando a função `grid_max_entropy` do pacote [dails](https://dials.tidymodels.org/reference/grid_max_entropy.html). Uma observação é que você poderia criar uma tibble com valores do seu interesse. O argumento `grid` da função `tune_grid` do pacote [tune](https://tune.tidymodels.org/reference/tune_grid.html) deve ser um data frame/tibble ou um número inteiro. Esse objeto conterá todas as possíveis combinações de hiperparâmetros que serão testadas na validação cruzada, no nosso caso, temos apenas um hiperparâmetro. Foi utilizado um *grid* de tamanho 60. Foi utilizado uma divisão de $80\%$ para treinamento e $20\%$ para teste.
+
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+```{r}
+#| code-fold: true
+#| code-summary: Workflow completo do treimanento de um modelo KNN.
+#| eval: false
+library(tidymodels)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+
+# Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente
+# carregados:
+tidymodels::tidymodels_prefer()
+
+# Lendo a base de dados:
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+arquivo_temp <- tempfile()
+download.file(url = url, destfile = arquivo_temp)
+load(arquivo_temp)
+
+dados_expectativa_renda <-
+  dados_expectativa_renda |>
+  dplyr::select(-CountryName)
+
+# Setando uma semente
+set.seed(0)
+
+# Divisão da base de dados ------------------------------------------------
+# Divisão inicial (treino e teste)
+splits <- 
+  rsample::initial_split(
+    dados_expectativa_renda,
+    strata = "LifeExpectancy", 
+    prop = 0.8 
+  )
+
+# O conjunto de dados de treinamento será utilizado para ajustar/treinar o
+# modelo:
+treinamento <- rsample::training(splits)
+
+# O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho
+# preditivo final do modelo:
+teste <- rsample::testing(splits) 
+
+# Criando uma receita para os dados ---------------------------------------
+
+# Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".
+# O comando recipes já entende que deverá utilizar o conjunto de treinamento.
+receita <- 
+  recipes::recipe(formula = LifeExpectancy ~ ., data = treinamento) |> 
+  step_YeoJohnson(all_predictors()) |> # Ajuda na normalização dos dados. Pode ser bom!
+  step_normalize(all_predictors()) # Normalizando variáveis numéricas.
+
+# Construindo modelo kNN --------------------------------------------------
+modelo_knn <- 
+  parsnip::nearest_neighbor(neighbors = tune()) |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kknn")
+
+# Construindo um workflow (pipeline) --------------------------------------
+wf_knn <-
+  workflows::workflow() |>
+  workflows::add_recipe(receita) |>
+  workflows::add_model(modelo_knn)
+
+# Cross-validation --------------------------------------------------------
+cv <- 
+  treinamento |> 
+  rsample::vfold_cv(v = 10L, strata = "LifeExpectancy")
+
+# Busca do hiperparâmetro k -----------------------------------------------
+metrica <- metric_set(rmse)
+
+# Extraindo e atualizando range do parâmetro ------------------------------
+update_parametros <-
+  wf_knn |> 
+  extract_parameter_set_dials() |>
+  update("neighbors" = neighbors(c(1, 50)))
+
+# Tunagem -----------------------------------------------------------------
+meu_grid <- dials::grid_max_entropy(update_parametros, size = 60)
+
+tunagem <-
+  tune::tune_grid(
+    wf_knn,
+    resamples = cv,
+    grid = meu_grid,
+    metrics = metrica,
+    control = control_grid(save_pred = TRUE, verbose = TRUE)
+  )
+
+p_hiper <- autoplot(tunagem) +
+  labs(title = "KNN - Seleção do número k (vizinhos)", subtitle = "Sintonização do hiperparâmetro (valor de k)") +
+  theme(
+    title = element_text(face = "bold")
+  )
+
+# Atualizando workflow ----------------------------------------------------
+wf_knn <- 
+  wf_knn |> 
+  finalize_workflow(select_best(tunagem))
+
+# Ajustar o modelo ao conjunto de treinamento e avaliar no teste --------
+ajuste_final <- last_fit(wf_knn, splits)
+
+# Ajuste final com toda a base de dados -----------------------------------
+modelo_final <- fit(wf_knn, data = dados_expectativa_renda)
+
+# Visualizando as predições na base de treino
+p_ajuste <- ajuste_final$.predictions[[1L]] |> 
+  ggplot(aes(x = LifeExpectancy, y = .pred)) + 
+  geom_point(size = 3, alpha = 0.7, col = "red") +
+  labs(
+    title = "Predições versus Real", 
+    subtitle = "Usando apenas os dados de teste"
+  ) +
+  xlab("LifeExpectancy") + 
+  xlab("LifeExpectancy predito") + 
+  theme(
+    title = element_text(face = "bold")
+  )
+
+# Unindo os dois plots
+p <- p_hiper + p_ajuste + plot_annotation(tag_levels = "A")
+
+# Salvando gráficos
+ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_knn_whatson.png", width = 30,
+       height = 15, units = "cm")
+```
+
+O pacote [dials](https://dials.tidymodels.org/reference/grid_max_entropy.html) fornece três funções o *grid* de parâmetros. São apenas funções que criam *grids* para os hiperparâmetros, segundo algumas metodologias, mas que na prática não há garantias de qual irá funcionar melhor. A ideia é experimentar e, por meio de uma validação cruzada, decidir por qual utilizar. Normalmente, a `grid_max_entropy`, utilizada no código acima, funciona bem. 
+
+::: columns
+::: {.column width="50%"}
+1. [`grid_max_entropy`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
+2. [`grid_latin_hypercube`](https://dials.tidymodels.org/reference/grid_max_entropy.html)
+3. [`grid_regular`](https://dials.tidymodels.org/reference/grid_regular.html)
+4. [`grid_random`](https://dials.tidymodels.org/reference/grid_regular.html)
+:::
+
+::: {.column width="50%"}
+![](imgs/dails.png)
+:::
+:::
+
+![](gifs/thumbs-up-nod.gif)
+
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+Para demonstar que podemos realizar transformações (receitas) na base de dados, entre do processo de treinamento, foi realizado duas transformações na variável `GDPercapita`. A primeira foi a Yeo–Johnson *transformation* e a segunda foi uma simples normalização dos dados (subitrair da média e dividir pelo desvio padrão). A [transformação de Yeo–Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation) é uma transformação semelhante a de [Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation). A transformação de [Yeo–Johnson](https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation) trata de situações que a transformação de [Box-Cox](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation) não trata. Por exemplo, ela trata de valores negativos e zero.
+
+<br>
+
+A ideia do *steps* utilizados na faze de pré-processamento dos dados, em que utilizamos o pacote recipes do R, é que para novas observações, depois do modelo ajustado, essas transformações serão automaticamente aplicadas aos novos dados.
+
+<br>
+
+![](gifs/hum.gif)
+
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+![](imgs/plot_hiper_ajuste_tidymodels_knn.png){fig-aling='center' width='50%'}
+
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+[Exemplo]{.red}: Vamos reproduzir todo o fluxo de treinamento que fizemos com o método $k$NN no exemplo anterior, agora, utilizando o modelo Nadaraya-Watson. Note que uma vez que entendemos o [tidymodels](https://www.tidymodels.org/), fica fácil adaptar um código já existente para o treinamento de um outro modelo. Na verdade, o método de Nadaraya-Watson implementado no tidymodels é um pouco diferente. Ainda utilizamos a informação de $k$, em que o valor de $h$ é deverminado pela média dos vizinhos mais próximos de ${\bf x}_i$ à ${\bf x}$. Além de $k$, temos o valor de $p$ para a distância de Minkowski como hiperparâmetro. Portanto, aqui, teremos dois hiperparâmetros (parâmetros de sintonização). 
+
+<br>
+
+```{r}
+#| code-fold: true
+#| code-summary: Workflow completo do treimanento de um modelo Nadaraya-Watson.
+#| eval: false
+library(tidymodels)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+library(doMC)
+
+# Paralelizando o código em sistemas Unix
+registerDoMC(cores = parallel::detectCores())
+
+# Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente
+# carregados:
+tidymodels::tidymodels_prefer()
+
+# Lendo a base de dados:
+url <- "https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"
+arquivo_temp <- tempfile()
+download.file(url = url, destfile = arquivo_temp)
+load(arquivo_temp)
+
+dados_expectativa_renda <-
+  dados_expectativa_renda |>
+  dplyr::select(-CountryName)
+
+# Setando uma semente
+set.seed(0)
+
+# Divisão da base de dados ------------------------------------------------
+# Divisão inicial (treino e teste)
+splits <- 
+  rsample::initial_split(
+    dados_expectativa_renda,
+    strata = "LifeExpectancy", 
+    prop = 0.8 
+  )
+
+# O conjunto de dados de treinamento será utilizado para ajustar/treinar o
+# modelo:
+treinamento <- rsample::training(splits)
+
+# O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho
+# preditivo final do modelo:
+teste <- rsample::testing(splits) 
+
+# Criando uma receita para os dados ---------------------------------------
+
+# Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".
+# O comando recipes já entende que deverá utilizar o conjunto de treinamento.
+receita <- 
+  recipes::recipe(formula = LifeExpectancy ~ ., data = treinamento) |> 
+  step_YeoJohnson(all_predictors()) |> # Ajuda na normalização dos dados. Pode ser bom!
+  step_normalize(all_predictors()) # Normalizando variáveis numéricas.
+
+# Construindo modelo Nadaraya ---------------------------------------------
+modelo_nadaraya <- 
+  parsnip::nearest_neighbor(dist_power = tune(), weight_func = "gaussian") |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kknn")
+
+# Construindo um workflow (pipeline) --------------------------------------
+wf_nadaraya <-
+  workflows::workflow() |>
+  workflows::add_recipe(receita) |>
+  workflows::add_model(modelo_nadaraya)
+
+# Cross-validation --------------------------------------------------------
+cv <- 
+  treinamento |> 
+  rsample::vfold_cv(v = 10L, strata = "LifeExpectancy")
+
+# Busca do hiperparâmetro k -----------------------------------------------
+metrica <- metric_set(rmse)
+
+# Extraindo e atualizando range do parâmetro ------------------------------
+update_parametros <-
+  wf_nadaraya |> 
+  extract_parameter_set_dials() |>
+  update("dist_power" = dist_power(c(2, 50)))
+
+# Tunagem -----------------------------------------------------------------
+meu_grid <- dials::grid_max_entropy(update_parametros, size = 100L)
+
+tunagem <-
+  tune::tune_grid(
+    wf_knn,
+    resamples = cv,
+    grid = meu_grid,
+    metrics = metrica,
+    control = control_grid(save_pred = TRUE, verbose = TRUE)
+  )
+
+p_hiper <- autoplot(tunagem) +
+  labs(title = "Nadaraya-Watson - Seleção do parâmetro p", subtitle = "Sintonização do hiperparâmetro (distância p)") +
+  theme(
+    title = element_text(face = "bold")
+  )
+
+# Atualizando workflow ----------------------------------------------------
+wf_nadaraya <- 
+  wf_nadaraya |> 
+  finalize_workflow(select_best(tunagem))
+
+# Ajustar o modelo ao conjunto de treinamento e avaliar no teste --------
+ajuste_final <- last_fit(wf_nadaraya, splits)
+
+# Ajuste final com toda a base de dados -----------------------------------
+modelo_final <- fit(wf_nadaraya, data = dados_expectativa_renda)
+
+# Visualizando as predições na base de treino
+p_ajuste <- ajuste_final$.predictions[[1L]] |> 
+  ggplot(aes(x = LifeExpectancy, y = .pred)) + 
+  geom_point(size = 3, alpha = 0.7, col = "red") +
+  labs(
+    title = "Predições versus Real", 
+    subtitle = "Usando apenas os dados de teste"
+  ) +
+  xlab("LifeExpectancy") + 
+  xlab("LifeExpectancy predito") + 
+  theme(
+    title = element_text(face = "bold")
+  )
+
+# Unindo os dois plots
+p <- p_hiper + p_ajuste + plot_annotation(tag_levels = "A")
+
+# Salvando gráficos
+ggsave(p, file = "imgs/plot_hiper_ajuste_tidymodels_nadaraya.png", width = 30,
+       height = 15, units = "cm")
+```
+
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+![](imgs/plot_hiper_ajuste_tidymodels_nadaraya.png){fig-aling='center'}
+## Tidymodels $k$NN e Nadaraya-Watson
+
+<br>
+
+Podemos visualizar a melhor combinação de hiperparâmetros, segundo $\widehat{R}(g)$ usando fazendo:
+
+```{r}
+#| eval: false
+
+# As cinco melhores combinações
+tunagem |> 
+  show_best()
+```
+
+![](gifs/bean_simple.gif)

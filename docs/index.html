@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-17">
+  <meta name="dcterms.date" content="2023-07-18">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-17</p>
+  <p class="date">2023-07-18</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5059a6b85d61f476f96a" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-5059a6b85d61f476f96a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e98f10fcba3a1d23ea48" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e98f10fcba3a1d23ea48">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -778,7 +778,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <ol type="1">
 <li class="fragment">Tomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;</li>
 <li class="fragment">Criar um novo valor que é indicação de valor faltante;</li>
-<li class="fragment">Usar algoritmos como <span class="math inline">k</span>-nearest neighbors - <strong>KNN</strong> (<span class="math inline">k</span> vizinhos mais próximos) para imputar valores coerentes;</li>
+<li class="fragment">Usar algoritmos como <span class="math inline">k</span>-nearest neighbors - <span class="math inline">K</span><strong>NN</strong> (<span class="math inline">k</span> vizinhos mais próximos) para imputar valores coerentes;</li>
 <li class="fragment">Interpolar os dados.</li>
 </ol>
 <p>Esses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados.</p>
@@ -924,7 +924,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </figure>
 </div>
 <ol start="2" type="1">
-<li class="fragment"><a href="https://recipes.tidymodels.org/">recipes</a>: apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, knn, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.</li>
+<li class="fragment"><a href="https://recipes.tidymodels.org/">recipes</a>: apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, <span class="math inline">k</span>NN, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -2527,7 +2527,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="k-vizinhos-mais-próximo-próximos" class="slide level2">
 <h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
 <p><br></p>
-<p>Também chamado de <span class="red"><span class="math inline">k</span>-nearest neighbours - KNN</span>, o KNN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:</p>
+<p>Também chamado de <span class="red"><span class="math inline">k</span>-nearest neighbours - <span class="math inline">k</span>NN</span>, o <span class="math inline">k</span>NN é um dos métodos mais populares na comunidade de aprendizagem de máquina. O método foi formulado em uma sequência de dois artigos:</p>
 <p><br></p>
 <p>1 - Benedetti, J. K. (1977). <strong>On the nonparametric estimation of regression functions</strong>. Journal of the Royal Statistical Society. Series B (Methodological), 248–253;</p>
 <p><br></p>
@@ -2566,14 +2566,14 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Você poderá utilizar qualquer outra medida de distância além das que foram citadas acima.</p>
 <p><br></p>
-<p>É importante perceber que <strong>o método KNN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no KNN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O KNN não possui coeficientes para interpretar. Diferentemente da regressão linear, o KNN é um pouco mais “<em>black box</em>”.</p>
+<p>É importante perceber que <strong>o método <span class="math inline">k</span>NN não faz uma “compressão” dos dados</strong> como a regressão linear que estudamos. Lá, temos uma equação que utilizamos para estimar o valor de <span class="math inline">Y</span>, após as estimação dos coeficientes do modelo de regressão, ou seja, não precisamos mais dos dados para estimar novas observações. Já no <span class="math inline">k</span>NN, precisamos sempre nos recorrer aos dados para fazer novas predições, ou seja, sempre que desejarmos calcular <span class="math inline">r({\bf x}) = \mathbb{E}(Y|{\bf X} = {\bf x})</span> deveremos sempre fazer uma nova consulta aos dados para calcular a média dos vizinhos mais próximos. O <span class="math inline">k</span>NN não possui coeficientes para interpretar. Diferentemente da regressão linear, o <span class="math inline">k</span>NN é um pouco mais “<em>black box</em>”.</p>
 <p><br></p>
 
 <img data-src="gifs/giphy.gif" class="r-stretch"></section>
 <section id="k-vizinhos-mais-próximo-próximos-4" class="slide level2">
 <h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
-<p><br> O valor da constante <span class="math inline">k</span> é um hiperparâmetro do KNN e deverá ser obtido por validação cruzada. Perceba que se <span class="math inline">k = n</span> temos um modelo muito viesado, porém com variância pequena. Isso, porquê para <span class="math inline">k = n</span> basicamente iremos tirar uma média dos dados. Para <span class="math inline">k = 1</span>, teremos um <em>overfitting</em>, uma vez que o estimador irá interpolar os dados.</p>
-<p><br> <span class="red">Exemplo</span>: Considere novamente o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. Utilizando o <a href="https://www.tidymodels.org/">tidymodels</a>, vamos construir uma fução que retorne um gráfico com as estimativas do KNN. A função receberá como argumentos o conjunto de dados e o valor de <span class="math inline">k</span>. Você também poderia utilizar outras bibliotecas, como por exemplo a <a href="https://cran.r-project.org/web/packages/FNN/index.html">FNN</a>, ou a <a href="https://github.com/KlausVigo/kknn">KKNN</a>, esta útlima é a que é utilizada internamente na biblioteca <a href="https://parsnip.tidymodels.org/">parsnip</a> do <a href="https://www.tidymodels.org/">tidymodels</a>.</p>
+<p><br> O valor da constante <span class="math inline">k</span> é um hiperparâmetro do <span class="math inline">k</span>NN e deverá ser obtido por validação cruzada. Perceba que se <span class="math inline">k = n</span> temos um modelo muito viesado, porém com variância pequena. Isso, porquê para <span class="math inline">k = n</span> basicamente iremos tirar uma média dos dados. Para <span class="math inline">k = 1</span>, teremos um <em>overfitting</em>, uma vez que o estimador irá interpolar os dados.</p>
+<p><br> <span class="red">Exemplo</span>: Considere novamente o conjunto de dados de expectativa de vida versus PIB per Capita disponíveis <a href="https://github.com/prdm0/dados/blob/main/dados_expectativa_renda.RData">aqui</a>. Utilizando o <a href="https://www.tidymodels.org/">tidymodels</a>, vamos construir uma fução que retorne um gráfico com as estimativas do <span class="math inline">k</span>NN. A função receberá como argumentos o conjunto de dados e o valor de <span class="math inline">k</span>. Você também poderia utilizar outras bibliotecas, como por exemplo a <a href="https://cran.r-project.org/web/packages/FNN/index.html">FNN</a>, ou a <a href="https://github.com/KlausVigo/kknn">KKNN</a>, esta útlima é a que é utilizada internamente na biblioteca <a href="https://parsnip.tidymodels.org/">parsnip</a> do <a href="https://www.tidymodels.org/">tidymodels</a>.</p>
 <p><br></p>
 
 <img data-src="imgs/parsnip.png" class="r-stretch"></section>
@@ -2667,11 +2667,11 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="k-vizinhos-mais-próximo-próximos-8" class="slide level2">
 <h2><span class="math inline">k</span>-vizinhos mais próximo próximos</h2>
 <p><br></p>
-<p><strong>Algumas limitações do KNN são</strong>:</p>
+<p><strong>Algumas limitações do <span class="math inline">k</span>NN são</strong>:</p>
 <p><br></p>
 <ol type="1">
 <li class="fragment"><p>É totalmente dependente do conjunto de dados para fazer novas predições;</p></li>
-<li class="fragment"><p>Para novas observações que são fora dos limites dos dados de treinamento, as predições do KNN tendem a serem imprecisas;</p></li>
+<li class="fragment"><p>Para novas observações que são fora dos limites dos dados de treinamento, as predições do <span class="math inline">k</span>NN tendem a serem imprecisas;</p></li>
 <li class="fragment"><p>Pode ser custoso para uma grande base de dados;</p></li>
 <li class="fragment"><p>O cálculo de distâncias pode sofrer com a chamada “maldição da dimensionalidade”, em que a depender da métrica de distância utilizada, tudo fica muito distante.</p></li>
 </ol>
@@ -2687,14 +2687,14 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="nadaraya-watson" class="slide level2">
 <h2>Nadaraya-Watson</h2>
 <p><br></p>
-<p>Uma variação do método KNN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:</p>
+<p>Uma variação do método <span class="math inline">k</span>NN que é bastante difundida na comunidade estatística é o método de Nadaraya-Watson, propostos nos artigos:</p>
 <p><br></p>
 <ol type="1">
 <li class="fragment"><p>Nadaraya, E. A. (1964). <strong>On estimating regression</strong>. Theory of Probability &amp; Its Applications, 9(1), 141–142;</p></li>
 <li class="fragment"><p>Watson, G. S. (1964). <strong>Smooth regression analysis</strong>. Sankhya: The Indian Journal of Statistics, Series A, 359–372.</p></li>
 </ol>
 <p><br></p>
-<p>Esse método também é chamado de estimador <span class="math inline">k</span>-vizinhos ponderados (KNN ponderado), uma vez que a estimação da função de regressão em um dado ponto <span class="math inline">{\bf x}</span> utiliza de médias ponderadas das observações do conjunto de treinamento:</p>
+<p>Esse método também é chamado de estimador <span class="math inline">k</span>-vizinhos ponderados (<span class="math inline">k</span>NN ponderado), uma vez que a estimação da função de regressão em um dado ponto <span class="math inline">{\bf x}</span> utiliza de médias ponderadas das observações do conjunto de treinamento:</p>
 <p><span class="math display">g({\bf x}) = \sum_{i = 1}^n w_i({\bf x})y_i,</span> em que <span class="math inline">w_i({\bf x})</span> é o peso atribuído à <span class="math inline">i</span>-ésima observação, medindo a similaridade de <span class="math inline">{\bf x}_i</span> à <span class="math inline">{\bf x}</span>.</p>
 </section>
 <section id="nadaraya-watson-1" class="slide level2">
@@ -2818,14 +2818,325 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 
 <img data-src="gifs/side-eyeing-chloe-chloe.gif" class="r-stretch"></section>
 <section id="tidymodels-knn-e-nadaraya-watson" class="slide level2">
-<h2>Tidymodels KNN e Nadaraya-Watson</h2>
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
 <p><br></p>
 <p>Para que possamos experimentar o <a href="https://www.tidymodels.org/">tidymodels</a> seguindo todo o fluxo de “padrão” de aprendizagem de máquina, com divisão do conjunto de dados, validação cruzada e busca pelos melhores hiperparâmetros (“tunagem”). Iremos reproduir dois exemplos com os dados de expectativa de vida e PIB per Capita.</p>
 <p><br></p>
-<p><span class="red">Exemplo</span>: Nesse exemplo estamos realizando o KNN, em que estamos otimizando o valor de <span class="math inline">k</span>.</p>
+<p><span class="red">Exemplo</span>: Nesse exemplo estamos realizando o <span class="math inline">k</span>NN, em que estamos obtendo um candidato para o valor de <span class="math inline">k</span>, por meio de um procedimento de <em>cross-validation</em> (10-<em>folds cross-validation</em>). Aqui, a busca do hiperparâmetro <span class="math inline">k</span> fará uso de um <em>grid search</em>. Perceba, no código que segue o exemplo, que no processo de “tunagem”, alterei o grid de valores usando a função <code>grid_max_entropy</code> do pacote <a href="https://dials.tidymodels.org/reference/grid_max_entropy.html">dails</a>. Uma observação é que você poderia criar uma tibble com valores do seu interesse. O argumento <code>grid</code> da função <code>tune_grid</code> do pacote <a href="https://tune.tidymodels.org/reference/tune_grid.html">tune</a> deve ser um data frame/tibble ou um número inteiro. Esse objeto conterá todas as possíveis combinações de hiperparâmetros que serão testadas na validação cruzada, no nosso caso, temos apenas um hiperparâmetro. Foi utilizado um <em>grid</em> de tamanho 60. Foi utilizado uma divisão de <span class="math inline">80\%</span> para treinamento e <span class="math inline">20\%</span> para teste.</p>
+</section>
+<section id="tidymodels-knn-e-nadaraya-watson-1" class="slide level2">
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Workflow completo do treimanento de um modelo KNN.</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co"># Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># carregados:</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb14-9"><a href="#cb14-9"></a></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># Lendo a base de dados:</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb14-15"><a href="#cb14-15"></a></span>
+<span id="cb14-16"><a href="#cb14-16"></a>dados_expectativa_renda <span class="ot">&lt;-</span></span>
+<span id="cb14-17"><a href="#cb14-17"></a>  dados_expectativa_renda <span class="sc">|&gt;</span></span>
+<span id="cb14-18"><a href="#cb14-18"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName)</span>
+<span id="cb14-19"><a href="#cb14-19"></a></span>
+<span id="cb14-20"><a href="#cb14-20"></a><span class="co"># Setando uma semente</span></span>
+<span id="cb14-21"><a href="#cb14-21"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb14-22"><a href="#cb14-22"></a></span>
+<span id="cb14-23"><a href="#cb14-23"></a><span class="co"># Divisão da base de dados ------------------------------------------------</span></span>
+<span id="cb14-24"><a href="#cb14-24"></a><span class="co"># Divisão inicial (treino e teste)</span></span>
+<span id="cb14-25"><a href="#cb14-25"></a>splits <span class="ot">&lt;-</span> </span>
+<span id="cb14-26"><a href="#cb14-26"></a>  rsample<span class="sc">::</span><span class="fu">initial_split</span>(</span>
+<span id="cb14-27"><a href="#cb14-27"></a>    dados_expectativa_renda,</span>
+<span id="cb14-28"><a href="#cb14-28"></a>    <span class="at">strata =</span> <span class="st">"LifeExpectancy"</span>, </span>
+<span id="cb14-29"><a href="#cb14-29"></a>    <span class="at">prop =</span> <span class="fl">0.8</span> </span>
+<span id="cb14-30"><a href="#cb14-30"></a>  )</span>
+<span id="cb14-31"><a href="#cb14-31"></a></span>
+<span id="cb14-32"><a href="#cb14-32"></a><span class="co"># O conjunto de dados de treinamento será utilizado para ajustar/treinar o</span></span>
+<span id="cb14-33"><a href="#cb14-33"></a><span class="co"># modelo:</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(splits)</span>
+<span id="cb14-35"><a href="#cb14-35"></a></span>
+<span id="cb14-36"><a href="#cb14-36"></a><span class="co"># O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho</span></span>
+<span id="cb14-37"><a href="#cb14-37"></a><span class="co"># preditivo final do modelo:</span></span>
+<span id="cb14-38"><a href="#cb14-38"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(splits) </span>
+<span id="cb14-39"><a href="#cb14-39"></a></span>
+<span id="cb14-40"><a href="#cb14-40"></a><span class="co"># Criando uma receita para os dados ---------------------------------------</span></span>
+<span id="cb14-41"><a href="#cb14-41"></a></span>
+<span id="cb14-42"><a href="#cb14-42"></a><span class="co"># Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".</span></span>
+<span id="cb14-43"><a href="#cb14-43"></a><span class="co"># O comando recipes já entende que deverá utilizar o conjunto de treinamento.</span></span>
+<span id="cb14-44"><a href="#cb14-44"></a>receita <span class="ot">&lt;-</span> </span>
+<span id="cb14-45"><a href="#cb14-45"></a>  recipes<span class="sc">::</span><span class="fu">recipe</span>(<span class="at">formula =</span> LifeExpectancy <span class="sc">~</span> ., <span class="at">data =</span> treinamento) <span class="sc">|&gt;</span> </span>
+<span id="cb14-46"><a href="#cb14-46"></a>  <span class="fu">step_YeoJohnson</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span> <span class="co"># Ajuda na normalização dos dados. Pode ser bom!</span></span>
+<span id="cb14-47"><a href="#cb14-47"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>()) <span class="co"># Normalizando variáveis numéricas.</span></span>
+<span id="cb14-48"><a href="#cb14-48"></a></span>
+<span id="cb14-49"><a href="#cb14-49"></a><span class="co"># Construindo modelo kNN --------------------------------------------------</span></span>
+<span id="cb14-50"><a href="#cb14-50"></a>modelo_knn <span class="ot">&lt;-</span> </span>
+<span id="cb14-51"><a href="#cb14-51"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(<span class="at">neighbors =</span> <span class="fu">tune</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb14-52"><a href="#cb14-52"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-53"><a href="#cb14-53"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb14-54"><a href="#cb14-54"></a></span>
+<span id="cb14-55"><a href="#cb14-55"></a><span class="co"># Construindo um workflow (pipeline) --------------------------------------</span></span>
+<span id="cb14-56"><a href="#cb14-56"></a>wf_knn <span class="ot">&lt;-</span></span>
+<span id="cb14-57"><a href="#cb14-57"></a>  workflows<span class="sc">::</span><span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-58"><a href="#cb14-58"></a>  workflows<span class="sc">::</span><span class="fu">add_recipe</span>(receita) <span class="sc">|&gt;</span></span>
+<span id="cb14-59"><a href="#cb14-59"></a>  workflows<span class="sc">::</span><span class="fu">add_model</span>(modelo_knn)</span>
+<span id="cb14-60"><a href="#cb14-60"></a></span>
+<span id="cb14-61"><a href="#cb14-61"></a><span class="co"># Cross-validation --------------------------------------------------------</span></span>
+<span id="cb14-62"><a href="#cb14-62"></a>cv <span class="ot">&lt;-</span> </span>
+<span id="cb14-63"><a href="#cb14-63"></a>  treinamento <span class="sc">|&gt;</span> </span>
+<span id="cb14-64"><a href="#cb14-64"></a>  rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(<span class="at">v =</span> 10L, <span class="at">strata =</span> <span class="st">"LifeExpectancy"</span>)</span>
+<span id="cb14-65"><a href="#cb14-65"></a></span>
+<span id="cb14-66"><a href="#cb14-66"></a><span class="co"># Busca do hiperparâmetro k -----------------------------------------------</span></span>
+<span id="cb14-67"><a href="#cb14-67"></a>metrica <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(rmse)</span>
+<span id="cb14-68"><a href="#cb14-68"></a></span>
+<span id="cb14-69"><a href="#cb14-69"></a><span class="co"># Extraindo e atualizando range do parâmetro ------------------------------</span></span>
+<span id="cb14-70"><a href="#cb14-70"></a>update_parametros <span class="ot">&lt;-</span></span>
+<span id="cb14-71"><a href="#cb14-71"></a>  wf_knn <span class="sc">|&gt;</span> </span>
+<span id="cb14-72"><a href="#cb14-72"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-73"><a href="#cb14-73"></a>  <span class="fu">update</span>(<span class="st">"neighbors"</span> <span class="ot">=</span> <span class="fu">neighbors</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">50</span>)))</span>
+<span id="cb14-74"><a href="#cb14-74"></a></span>
+<span id="cb14-75"><a href="#cb14-75"></a><span class="co"># Tunagem -----------------------------------------------------------------</span></span>
+<span id="cb14-76"><a href="#cb14-76"></a>meu_grid <span class="ot">&lt;-</span> dials<span class="sc">::</span><span class="fu">grid_max_entropy</span>(update_parametros, <span class="at">size =</span> <span class="dv">60</span>)</span>
+<span id="cb14-77"><a href="#cb14-77"></a></span>
+<span id="cb14-78"><a href="#cb14-78"></a>tunagem <span class="ot">&lt;-</span></span>
+<span id="cb14-79"><a href="#cb14-79"></a>  tune<span class="sc">::</span><span class="fu">tune_grid</span>(</span>
+<span id="cb14-80"><a href="#cb14-80"></a>    wf_knn,</span>
+<span id="cb14-81"><a href="#cb14-81"></a>    <span class="at">resamples =</span> cv,</span>
+<span id="cb14-82"><a href="#cb14-82"></a>    <span class="at">grid =</span> meu_grid,</span>
+<span id="cb14-83"><a href="#cb14-83"></a>    <span class="at">metrics =</span> metrica,</span>
+<span id="cb14-84"><a href="#cb14-84"></a>    <span class="at">control =</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-85"><a href="#cb14-85"></a>  )</span>
+<span id="cb14-86"><a href="#cb14-86"></a></span>
+<span id="cb14-87"><a href="#cb14-87"></a>p_hiper <span class="ot">&lt;-</span> <span class="fu">autoplot</span>(tunagem) <span class="sc">+</span></span>
+<span id="cb14-88"><a href="#cb14-88"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"KNN - Seleção do número k (vizinhos)"</span>, <span class="at">subtitle =</span> <span class="st">"Sintonização do hiperparâmetro (valor de k)"</span>) <span class="sc">+</span></span>
+<span id="cb14-89"><a href="#cb14-89"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-90"><a href="#cb14-90"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb14-91"><a href="#cb14-91"></a>  )</span>
+<span id="cb14-92"><a href="#cb14-92"></a></span>
+<span id="cb14-93"><a href="#cb14-93"></a><span class="co"># Atualizando workflow ----------------------------------------------------</span></span>
+<span id="cb14-94"><a href="#cb14-94"></a>wf_knn <span class="ot">&lt;-</span> </span>
+<span id="cb14-95"><a href="#cb14-95"></a>  wf_knn <span class="sc">|&gt;</span> </span>
+<span id="cb14-96"><a href="#cb14-96"></a>  <span class="fu">finalize_workflow</span>(<span class="fu">select_best</span>(tunagem))</span>
+<span id="cb14-97"><a href="#cb14-97"></a></span>
+<span id="cb14-98"><a href="#cb14-98"></a><span class="co"># Ajustar o modelo ao conjunto de treinamento e avaliar no teste --------</span></span>
+<span id="cb14-99"><a href="#cb14-99"></a>ajuste_final <span class="ot">&lt;-</span> <span class="fu">last_fit</span>(wf_knn, splits)</span>
+<span id="cb14-100"><a href="#cb14-100"></a></span>
+<span id="cb14-101"><a href="#cb14-101"></a><span class="co"># Ajuste final com toda a base de dados -----------------------------------</span></span>
+<span id="cb14-102"><a href="#cb14-102"></a>modelo_final <span class="ot">&lt;-</span> <span class="fu">fit</span>(wf_knn, <span class="at">data =</span> dados_expectativa_renda)</span>
+<span id="cb14-103"><a href="#cb14-103"></a></span>
+<span id="cb14-104"><a href="#cb14-104"></a><span class="co"># Visualizando as predições na base de treino</span></span>
+<span id="cb14-105"><a href="#cb14-105"></a>p_ajuste <span class="ot">&lt;-</span> ajuste_final<span class="sc">$</span>.predictions[[1L]] <span class="sc">|&gt;</span> </span>
+<span id="cb14-106"><a href="#cb14-106"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> LifeExpectancy, <span class="at">y =</span> .pred)) <span class="sc">+</span> </span>
+<span id="cb14-107"><a href="#cb14-107"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb14-108"><a href="#cb14-108"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-109"><a href="#cb14-109"></a>    <span class="at">title =</span> <span class="st">"Predições versus Real"</span>, </span>
+<span id="cb14-110"><a href="#cb14-110"></a>    <span class="at">subtitle =</span> <span class="st">"Usando apenas os dados de teste"</span></span>
+<span id="cb14-111"><a href="#cb14-111"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-112"><a href="#cb14-112"></a>  <span class="fu">xlab</span>(<span class="st">"LifeExpectancy"</span>) <span class="sc">+</span> </span>
+<span id="cb14-113"><a href="#cb14-113"></a>  <span class="fu">xlab</span>(<span class="st">"LifeExpectancy predito"</span>) <span class="sc">+</span> </span>
+<span id="cb14-114"><a href="#cb14-114"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-115"><a href="#cb14-115"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb14-116"><a href="#cb14-116"></a>  )</span>
+<span id="cb14-117"><a href="#cb14-117"></a></span>
+<span id="cb14-118"><a href="#cb14-118"></a><span class="co"># Unindo os dois plots</span></span>
+<span id="cb14-119"><a href="#cb14-119"></a>p <span class="ot">&lt;-</span> p_hiper <span class="sc">+</span> p_ajuste <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb14-120"><a href="#cb14-120"></a></span>
+<span id="cb14-121"><a href="#cb14-121"></a><span class="co"># Salvando gráficos</span></span>
+<span id="cb14-122"><a href="#cb14-122"></a><span class="fu">ggsave</span>(p, <span class="at">file =</span> <span class="st">"imgs/plot_hiper_ajuste_tidymodels_knn_whatson.png"</span>, <span class="at">width =</span> <span class="dv">30</span>,</span>
+<span id="cb14-123"><a href="#cb14-123"></a>       <span class="at">height =</span> <span class="dv">15</span>, <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>O pacote <a href="https://dials.tidymodels.org/reference/grid_max_entropy.html">dials</a> fornece três funções o <em>grid</em> de parâmetros. São apenas funções que criam <em>grids</em> para os hiperparâmetros, segundo algumas metodologias, mas que na prática não há garantias de qual irá funcionar melhor. A ideia é experimentar e, por meio de uma validação cruzada, decidir por qual utilizar. Normalmente, a <code>grid_max_entropy</code>, utilizada no código acima, funciona bem.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment"><a href="https://dials.tidymodels.org/reference/grid_max_entropy.html"><code>grid_max_entropy</code></a></li>
+<li class="fragment"><a href="https://dials.tidymodels.org/reference/grid_max_entropy.html"><code>grid_latin_hypercube</code></a></li>
+<li class="fragment"><a href="https://dials.tidymodels.org/reference/grid_regular.html"><code>grid_regular</code></a></li>
+<li class="fragment"><a href="https://dials.tidymodels.org/reference/grid_regular.html"><code>grid_random</code></a></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><img data-src="imgs/dails.png"></p>
+</div>
+</div>
+<p><img data-src="gifs/thumbs-up-nod.gif"></p>
+</section>
+<section id="tidymodels-knn-e-nadaraya-watson-2" class="slide level2">
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
+<p><br></p>
+<p>Para demonstar que podemos realizar transformações (receitas) na base de dados, entre do processo de treinamento, foi realizado duas transformações na variável <code>GDPercapita</code>. A primeira foi a Yeo–Johnson <em>transformation</em> e a segunda foi uma simples normalização dos dados (subitrair da média e dividir pelo desvio padrão). A <a href="https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation">transformação de Yeo–Johnson</a> é uma transformação semelhante a de <a href="https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation">Box-Cox</a>. A transformação de <a href="https://en.wikipedia.org/wiki/Power_transform#Yeo%E2%80%93Johnson_transformation">Yeo–Johnson</a> trata de situações que a transformação de <a href="https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation">Box-Cox</a> não trata. Por exemplo, ela trata de valores negativos e zero.</p>
+<p><br></p>
+<p>A ideia do <em>steps</em> utilizados na faze de pré-processamento dos dados, em que utilizamos o pacote recipes do R, é que para novas observações, depois do modelo ajustado, essas transformações serão automaticamente aplicadas aos novos dados.</p>
+<p><br></p>
 
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="tidymodels-knn-e-nadaraya-watson-3" class="slide level2">
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
+<p><br></p>
 
-<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<img data-src="imgs/plot_hiper_ajuste_tidymodels_knn.png" style="width:50.0%" class="r-stretch quarto-figure-center"></section>
+<section id="tidymodels-knn-e-nadaraya-watson-4" class="slide level2">
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
+<p><br></p>
+<p><span class="red">Exemplo</span>: Vamos reproduzir todo o fluxo de treinamento que fizemos com o método <span class="math inline">k</span>NN no exemplo anterior, agora, utilizando o modelo Nadaraya-Watson. Note que uma vez que entendemos o <a href="https://www.tidymodels.org/">tidymodels</a>, fica fácil adaptar um código já existente para o treinamento de um outro modelo. Na verdade, o método de Nadaraya-Watson implementado no tidymodels é um pouco diferente. Ainda utilizamos a informação de <span class="math inline">k</span>, em que o valor de <span class="math inline">h</span> é deverminado pela média dos vizinhos mais próximos de <span class="math inline">{\bf x}_i</span> à <span class="math inline">{\bf x}</span>. Além de <span class="math inline">k</span>, temos o valor de <span class="math inline">p</span> para a distância de Minkowski como hiperparâmetro. Portanto, aqui, teremos dois hiperparâmetros (parâmetros de sintonização).</p>
+<p><br></p>
+<div class="cell">
+<details>
+<summary>Workflow completo do treimanento de um modelo Nadaraya-Watson.</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">library</span>(doMC)</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># Paralelizando o código em sistemas Unix</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="fu">registerDoMC</span>(<span class="at">cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co"># Resolvendo eventuais conflitos entre tidymodels e outros pacotes eventualmente</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># carregados:</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>tidymodels<span class="sc">::</span><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co"># Lendo a base de dados:</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-20"><a href="#cb15-20"></a>dados_expectativa_renda <span class="ot">&lt;-</span></span>
+<span id="cb15-21"><a href="#cb15-21"></a>  dados_expectativa_renda <span class="sc">|&gt;</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName)</span>
+<span id="cb15-23"><a href="#cb15-23"></a></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="co"># Setando uma semente</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb15-26"><a href="#cb15-26"></a></span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="co"># Divisão da base de dados ------------------------------------------------</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="co"># Divisão inicial (treino e teste)</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a>splits <span class="ot">&lt;-</span> </span>
+<span id="cb15-30"><a href="#cb15-30"></a>  rsample<span class="sc">::</span><span class="fu">initial_split</span>(</span>
+<span id="cb15-31"><a href="#cb15-31"></a>    dados_expectativa_renda,</span>
+<span id="cb15-32"><a href="#cb15-32"></a>    <span class="at">strata =</span> <span class="st">"LifeExpectancy"</span>, </span>
+<span id="cb15-33"><a href="#cb15-33"></a>    <span class="at">prop =</span> <span class="fl">0.8</span> </span>
+<span id="cb15-34"><a href="#cb15-34"></a>  )</span>
+<span id="cb15-35"><a href="#cb15-35"></a></span>
+<span id="cb15-36"><a href="#cb15-36"></a><span class="co"># O conjunto de dados de treinamento será utilizado para ajustar/treinar o</span></span>
+<span id="cb15-37"><a href="#cb15-37"></a><span class="co"># modelo:</span></span>
+<span id="cb15-38"><a href="#cb15-38"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(splits)</span>
+<span id="cb15-39"><a href="#cb15-39"></a></span>
+<span id="cb15-40"><a href="#cb15-40"></a><span class="co"># O conjunto de teste será utilizado apenas no fim, para avaliar o desempenho</span></span>
+<span id="cb15-41"><a href="#cb15-41"></a><span class="co"># preditivo final do modelo:</span></span>
+<span id="cb15-42"><a href="#cb15-42"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(splits) </span>
+<span id="cb15-43"><a href="#cb15-43"></a></span>
+<span id="cb15-44"><a href="#cb15-44"></a><span class="co"># Criando uma receita para os dados ---------------------------------------</span></span>
+<span id="cb15-45"><a href="#cb15-45"></a></span>
+<span id="cb15-46"><a href="#cb15-46"></a><span class="co"># Poderia ter passado o conjunto treinamento ou posso passar o conjunto "splits".</span></span>
+<span id="cb15-47"><a href="#cb15-47"></a><span class="co"># O comando recipes já entende que deverá utilizar o conjunto de treinamento.</span></span>
+<span id="cb15-48"><a href="#cb15-48"></a>receita <span class="ot">&lt;-</span> </span>
+<span id="cb15-49"><a href="#cb15-49"></a>  recipes<span class="sc">::</span><span class="fu">recipe</span>(<span class="at">formula =</span> LifeExpectancy <span class="sc">~</span> ., <span class="at">data =</span> treinamento) <span class="sc">|&gt;</span> </span>
+<span id="cb15-50"><a href="#cb15-50"></a>  <span class="fu">step_YeoJohnson</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span> <span class="co"># Ajuda na normalização dos dados. Pode ser bom!</span></span>
+<span id="cb15-51"><a href="#cb15-51"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>()) <span class="co"># Normalizando variáveis numéricas.</span></span>
+<span id="cb15-52"><a href="#cb15-52"></a></span>
+<span id="cb15-53"><a href="#cb15-53"></a><span class="co"># Construindo modelo Nadaraya ---------------------------------------------</span></span>
+<span id="cb15-54"><a href="#cb15-54"></a>modelo_nadaraya <span class="ot">&lt;-</span> </span>
+<span id="cb15-55"><a href="#cb15-55"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(<span class="at">dist_power =</span> <span class="fu">tune</span>(), <span class="at">weight_func =</span> <span class="st">"gaussian"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-56"><a href="#cb15-56"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-57"><a href="#cb15-57"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb15-58"><a href="#cb15-58"></a></span>
+<span id="cb15-59"><a href="#cb15-59"></a><span class="co"># Construindo um workflow (pipeline) --------------------------------------</span></span>
+<span id="cb15-60"><a href="#cb15-60"></a>wf_nadaraya <span class="ot">&lt;-</span></span>
+<span id="cb15-61"><a href="#cb15-61"></a>  workflows<span class="sc">::</span><span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-62"><a href="#cb15-62"></a>  workflows<span class="sc">::</span><span class="fu">add_recipe</span>(receita) <span class="sc">|&gt;</span></span>
+<span id="cb15-63"><a href="#cb15-63"></a>  workflows<span class="sc">::</span><span class="fu">add_model</span>(modelo_nadaraya)</span>
+<span id="cb15-64"><a href="#cb15-64"></a></span>
+<span id="cb15-65"><a href="#cb15-65"></a><span class="co"># Cross-validation --------------------------------------------------------</span></span>
+<span id="cb15-66"><a href="#cb15-66"></a>cv <span class="ot">&lt;-</span> </span>
+<span id="cb15-67"><a href="#cb15-67"></a>  treinamento <span class="sc">|&gt;</span> </span>
+<span id="cb15-68"><a href="#cb15-68"></a>  rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(<span class="at">v =</span> 10L, <span class="at">strata =</span> <span class="st">"LifeExpectancy"</span>)</span>
+<span id="cb15-69"><a href="#cb15-69"></a></span>
+<span id="cb15-70"><a href="#cb15-70"></a><span class="co"># Busca do hiperparâmetro k -----------------------------------------------</span></span>
+<span id="cb15-71"><a href="#cb15-71"></a>metrica <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(rmse)</span>
+<span id="cb15-72"><a href="#cb15-72"></a></span>
+<span id="cb15-73"><a href="#cb15-73"></a><span class="co"># Extraindo e atualizando range do parâmetro ------------------------------</span></span>
+<span id="cb15-74"><a href="#cb15-74"></a>update_parametros <span class="ot">&lt;-</span></span>
+<span id="cb15-75"><a href="#cb15-75"></a>  wf_nadaraya <span class="sc">|&gt;</span> </span>
+<span id="cb15-76"><a href="#cb15-76"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-77"><a href="#cb15-77"></a>  <span class="fu">update</span>(<span class="st">"dist_power"</span> <span class="ot">=</span> <span class="fu">dist_power</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">50</span>)))</span>
+<span id="cb15-78"><a href="#cb15-78"></a></span>
+<span id="cb15-79"><a href="#cb15-79"></a><span class="co"># Tunagem -----------------------------------------------------------------</span></span>
+<span id="cb15-80"><a href="#cb15-80"></a>meu_grid <span class="ot">&lt;-</span> dials<span class="sc">::</span><span class="fu">grid_max_entropy</span>(update_parametros, <span class="at">size =</span> 100L)</span>
+<span id="cb15-81"><a href="#cb15-81"></a></span>
+<span id="cb15-82"><a href="#cb15-82"></a>tunagem <span class="ot">&lt;-</span></span>
+<span id="cb15-83"><a href="#cb15-83"></a>  tune<span class="sc">::</span><span class="fu">tune_grid</span>(</span>
+<span id="cb15-84"><a href="#cb15-84"></a>    wf_knn,</span>
+<span id="cb15-85"><a href="#cb15-85"></a>    <span class="at">resamples =</span> cv,</span>
+<span id="cb15-86"><a href="#cb15-86"></a>    <span class="at">grid =</span> meu_grid,</span>
+<span id="cb15-87"><a href="#cb15-87"></a>    <span class="at">metrics =</span> metrica,</span>
+<span id="cb15-88"><a href="#cb15-88"></a>    <span class="at">control =</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-89"><a href="#cb15-89"></a>  )</span>
+<span id="cb15-90"><a href="#cb15-90"></a></span>
+<span id="cb15-91"><a href="#cb15-91"></a>p_hiper <span class="ot">&lt;-</span> <span class="fu">autoplot</span>(tunagem) <span class="sc">+</span></span>
+<span id="cb15-92"><a href="#cb15-92"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Nadaraya-Watson - Seleção do parâmetro p"</span>, <span class="at">subtitle =</span> <span class="st">"Sintonização do hiperparâmetro (distância p)"</span>) <span class="sc">+</span></span>
+<span id="cb15-93"><a href="#cb15-93"></a>  <span class="fu">theme</span>(</span>
+<span id="cb15-94"><a href="#cb15-94"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb15-95"><a href="#cb15-95"></a>  )</span>
+<span id="cb15-96"><a href="#cb15-96"></a></span>
+<span id="cb15-97"><a href="#cb15-97"></a><span class="co"># Atualizando workflow ----------------------------------------------------</span></span>
+<span id="cb15-98"><a href="#cb15-98"></a>wf_nadaraya <span class="ot">&lt;-</span> </span>
+<span id="cb15-99"><a href="#cb15-99"></a>  wf_nadaraya <span class="sc">|&gt;</span> </span>
+<span id="cb15-100"><a href="#cb15-100"></a>  <span class="fu">finalize_workflow</span>(<span class="fu">select_best</span>(tunagem))</span>
+<span id="cb15-101"><a href="#cb15-101"></a></span>
+<span id="cb15-102"><a href="#cb15-102"></a><span class="co"># Ajustar o modelo ao conjunto de treinamento e avaliar no teste --------</span></span>
+<span id="cb15-103"><a href="#cb15-103"></a>ajuste_final <span class="ot">&lt;-</span> <span class="fu">last_fit</span>(wf_nadaraya, splits)</span>
+<span id="cb15-104"><a href="#cb15-104"></a></span>
+<span id="cb15-105"><a href="#cb15-105"></a><span class="co"># Ajuste final com toda a base de dados -----------------------------------</span></span>
+<span id="cb15-106"><a href="#cb15-106"></a>modelo_final <span class="ot">&lt;-</span> <span class="fu">fit</span>(wf_nadaraya, <span class="at">data =</span> dados_expectativa_renda)</span>
+<span id="cb15-107"><a href="#cb15-107"></a></span>
+<span id="cb15-108"><a href="#cb15-108"></a><span class="co"># Visualizando as predições na base de treino</span></span>
+<span id="cb15-109"><a href="#cb15-109"></a>p_ajuste <span class="ot">&lt;-</span> ajuste_final<span class="sc">$</span>.predictions[[1L]] <span class="sc">|&gt;</span> </span>
+<span id="cb15-110"><a href="#cb15-110"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> LifeExpectancy, <span class="at">y =</span> .pred)) <span class="sc">+</span> </span>
+<span id="cb15-111"><a href="#cb15-111"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb15-112"><a href="#cb15-112"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-113"><a href="#cb15-113"></a>    <span class="at">title =</span> <span class="st">"Predições versus Real"</span>, </span>
+<span id="cb15-114"><a href="#cb15-114"></a>    <span class="at">subtitle =</span> <span class="st">"Usando apenas os dados de teste"</span></span>
+<span id="cb15-115"><a href="#cb15-115"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-116"><a href="#cb15-116"></a>  <span class="fu">xlab</span>(<span class="st">"LifeExpectancy"</span>) <span class="sc">+</span> </span>
+<span id="cb15-117"><a href="#cb15-117"></a>  <span class="fu">xlab</span>(<span class="st">"LifeExpectancy predito"</span>) <span class="sc">+</span> </span>
+<span id="cb15-118"><a href="#cb15-118"></a>  <span class="fu">theme</span>(</span>
+<span id="cb15-119"><a href="#cb15-119"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb15-120"><a href="#cb15-120"></a>  )</span>
+<span id="cb15-121"><a href="#cb15-121"></a></span>
+<span id="cb15-122"><a href="#cb15-122"></a><span class="co"># Unindo os dois plots</span></span>
+<span id="cb15-123"><a href="#cb15-123"></a>p <span class="ot">&lt;-</span> p_hiper <span class="sc">+</span> p_ajuste <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb15-124"><a href="#cb15-124"></a></span>
+<span id="cb15-125"><a href="#cb15-125"></a><span class="co"># Salvando gráficos</span></span>
+<span id="cb15-126"><a href="#cb15-126"></a><span class="fu">ggsave</span>(p, <span class="at">file =</span> <span class="st">"imgs/plot_hiper_ajuste_tidymodels_nadaraya.png"</span>, <span class="at">width =</span> <span class="dv">30</span>,</span>
+<span id="cb15-127"><a href="#cb15-127"></a>       <span class="at">height =</span> <span class="dv">15</span>, <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="tidymodels-knn-e-nadaraya-watson-5" class="slide level2">
+<h2>Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</h2>
+<p><br></p>
+<p><img data-src="imgs/plot_hiper_ajuste_tidymodels_nadaraya.png" data-fig-aling="center"> ## Tidymodels <span class="math inline">k</span>NN e Nadaraya-Watson</p>
+<p><br></p>
+<p>Podemos visualizar a melhor combinação de hiperparâmetros, segundo <span class="math inline">\widehat{R}(g)</span> usando fazendo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># As cinco melhores combinações</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>tunagem <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">show_best</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img data-src="gifs/bean_simple.gif"></p>
+
+<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>
