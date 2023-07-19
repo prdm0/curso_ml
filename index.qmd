@@ -438,7 +438,7 @@ distância, formando grupos (*clusters*).
 <br>
 
 A ideia é maximizar a distância entre os clusters e minimizar a
-distância entre os elementos no interrior do grupo. Em outras palavras,
+distância entre os elementos no interior do grupo. Em outras palavras,
 o que se quer é tornar os grupos mais diferentes possíveis e tornar os
 elementos dos grupos o mais parecido possível.
 
@@ -447,6 +447,8 @@ elementos dos grupos o mais parecido possível.
 Aqui, por não haver rótulos, um problema comum é determinar a quantidade
 de grupos ideal que muitas vezes são obtidos de forma subjetiva ou por
 heurísticas. A quantidade de grupos é um dilema!
+
+![](gifs/hum.gif)
 
 ## Aprendizagem não-supervisionada
 
@@ -463,7 +465,7 @@ representa no problema em questão.
 <br>
 
 A aprendizagem semi-supervisionada é uma abordagem na área de
-aprendizagem de máquina em que um algoritmo utiliza tanto dados
+aprendizagem de máquina, em que um algoritmo utiliza tanto dados
 rotulados quanto não rotulados para treinamento. Por exemplo, algoritmos
 que propagam rótulos, como o *Label Propagation*, em que rótulos
 conhecidos são propagados para dados não rotulados com base em sua sua
@@ -623,7 +625,7 @@ autor aborda de forma básica o pacote
 
 Durante o curso, na medida da necessidade de utilização dessas
 ferramentas, durante a exposição de exemplos, abordaremos alguns
-conceitos. Ok?!
+conceitos. Você terá a oportunidade de também explorar essas bibliotecas nos exercícios. Ok?!
 
 <br>
 
@@ -672,7 +674,7 @@ a informação, por exemplo:
 1.  Tomando alguma medida de tendência central como média/moda/mediana
     dos valores que são conhecidos para aquele atributo;
 2.  Criar um novo valor que é indicação de valor faltante;
-3.  Usar algoritmos como $k$-nearest neighbors - $K$**NN** ($k$ vizinhos
+3.  Usar algoritmos como $k$-nearest neighbors - $k$**NN** ($k$ vizinhos
     mais próximos) para imputar valores coerentes;
 4.  Interpolar os dados.
 
@@ -757,10 +759,14 @@ dados, na fase de tratamento das observações. Porém, não estranhe não
 ter, até o momento, citado bibliotecas do *framework*
 [tidymodels](https://www.tidymodels.org/packages/), em especial o
 [recipes](https://recipes.tidymodels.org/) que é muito utilizado no
-*workflow* de aprendizagem de máquina na fase de pré-processamento dos
+*workflow* de aprendizagem de máquina, na fase de pré-processamento dos
 dados. Muitas dessas transformações são aplicadas como receitas de
 pré-processamento com o pacote
 [recipes](https://recipes.tidymodels.org/).
+
+<br>
+
+![](imgs/recipes.png)
 
 <br>
 
@@ -768,10 +774,14 @@ O [tidymodels](https://www.tidymodels.org/packages/) será muito útil
 para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão
 apresentadas, apesar que em algumas situações mais simples, poderei não
 utilizá-lo, para expor detalhes que eventualmente não será possível ou
-estariam camuflados na utilização do
+estariam camuflados (*black box*) na utilização do
 [tidymodels](https://www.tidymodels.org/packages/).
 
 <br>
+
+Para não deixar de valar sobre o [tidymodels](https://www.tidymodels.org/packages/), 
+explicarei, agora, a sua filosofia e como ele está dividido em outras bibliotecas
+que são úteis em cada parte do processo de treinamento de um modelo de *machine learning*.
 
 ![](gifs/ok-2.gif){width="20%"}
 
@@ -793,8 +803,9 @@ entre diversos outros.
 
 <br>
 
-```{r, cache=TRUE}
+```{r}
 #| code-fold: true
+#| eval: true
 #| code-summary: O número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.
 library(xml2)
 library(httr)

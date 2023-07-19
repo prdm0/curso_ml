@@ -165,7 +165,7 @@
     "href": "index.html#aprendizagem-não-supervisionada",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem não-supervisionada",
-    "text": "Aprendizagem não-supervisionada\n\nNesse tipo de aprendizagem, os algoritmos trabalham sobre dados não rotulados, por exemplo, em uma trarefa de agrupamento.\n\nOs algoritmos verificam se as instâncias observadas poderão ser arranjadas de alguma maneira, por exemplo, usando alguma métrica de distância, formando grupos (clusters).\n\nA ideia é maximizar a distância entre os clusters e minimizar a distância entre os elementos no interrior do grupo. Em outras palavras, o que se quer é tornar os grupos mais diferentes possíveis e tornar os elementos dos grupos o mais parecido possível.\n\nAqui, por não haver rótulos, um problema comum é determinar a quantidade de grupos ideal que muitas vezes são obtidos de forma subjetiva ou por heurísticas. A quantidade de grupos é um dilema!"
+    "text": "Aprendizagem não-supervisionada\n\nNesse tipo de aprendizagem, os algoritmos trabalham sobre dados não rotulados, por exemplo, em uma trarefa de agrupamento.\n\nOs algoritmos verificam se as instâncias observadas poderão ser arranjadas de alguma maneira, por exemplo, usando alguma métrica de distância, formando grupos (clusters).\n\nA ideia é maximizar a distância entre os clusters e minimizar a distância entre os elementos no interior do grupo. Em outras palavras, o que se quer é tornar os grupos mais diferentes possíveis e tornar os elementos dos grupos o mais parecido possível.\n\nAqui, por não haver rótulos, um problema comum é determinar a quantidade de grupos ideal que muitas vezes são obtidos de forma subjetiva ou por heurísticas. A quantidade de grupos é um dilema!"
   },
   {
     "objectID": "index.html#aprendizagem-não-supervisionada-1",
@@ -179,7 +179,7 @@
     "href": "index.html#aprendizagem-semi-supervisionada",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Aprendizagem semi-supervisionada",
-    "text": "Aprendizagem semi-supervisionada\n\nA aprendizagem semi-supervisionada é uma abordagem na área de aprendizagem de máquina em que um algoritmo utiliza tanto dados rotulados quanto não rotulados para treinamento. Por exemplo, algoritmos que propagam rótulos, como o Label Propagation, em que rótulos conhecidos são propagados para dados não rotulados com base em sua sua proximidade no espaço de características.\n\nUma outra abordagem seria misturar modelos (Model Blending), em que diferentes modelos são treinados em diferentes partes do conjunto de dados, por exemplo, um modelo para a parte roturada e um para a parte não rotulada."
+    "text": "Aprendizagem semi-supervisionada\n\nA aprendizagem semi-supervisionada é uma abordagem na área de aprendizagem de máquina, em que um algoritmo utiliza tanto dados rotulados quanto não rotulados para treinamento. Por exemplo, algoritmos que propagam rótulos, como o Label Propagation, em que rótulos conhecidos são propagados para dados não rotulados com base em sua sua proximidade no espaço de características.\n\nUma outra abordagem seria misturar modelos (Model Blending), em que diferentes modelos são treinados em diferentes partes do conjunto de dados, por exemplo, um modelo para a parte roturada e um para a parte não rotulada."
   },
   {
     "objectID": "index.html#aprendizagem-por-reforço",
@@ -228,7 +228,7 @@
     "href": "index.html#dados-exploração-e-tratamento-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nNo Capítulo 12, do livro R for Data Science, o autor aborda mais sobre o formato Tidy e como trabalhar com a biblioteca tidyr. Aqui o autor aborda de forma básica o pacote dplyr.\n\nDurante o curso, na medida da necessidade de utilização dessas ferramentas, durante a exposição de exemplos, abordaremos alguns conceitos. Ok?!"
+    "text": "Dados: exploração e tratamento\n\nNo Capítulo 12, do livro R for Data Science, o autor aborda mais sobre o formato Tidy e como trabalhar com a biblioteca tidyr. Aqui o autor aborda de forma básica o pacote dplyr.\n\nDurante o curso, na medida da necessidade de utilização dessas ferramentas, durante a exposição de exemplos, abordaremos alguns conceitos. Você terá a oportunidade de também explorar essas bibliotecas nos exercícios. Ok?!"
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-6",
@@ -242,7 +242,7 @@
     "href": "index.html#dados-exploração-e-tratamento-7",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nPoderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:\n\n\nTomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;\nCriar um novo valor que é indicação de valor faltante;\nUsar algoritmos como k-nearest neighbors - KNN (k vizinhos mais próximos) para imputar valores coerentes;\nInterpolar os dados.\n\nEsses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados."
+    "text": "Dados: exploração e tratamento\n\nPoderá ser que um dado atributo apresente informação faltante, e normalmente não optaremos em remover a observação e precisaremos imputar a informação, por exemplo:\n\n\nTomando alguma medida de tendência central como média/moda/mediana dos valores que são conhecidos para aquele atributo;\nCriar um novo valor que é indicação de valor faltante;\nUsar algoritmos como k-nearest neighbors - kNN (k vizinhos mais próximos) para imputar valores coerentes;\nInterpolar os dados.\n\nEsses são alguns exemplos de como podemos imputar observações faltantes. Muitas vezes não podemos nos dar o luxo de percer observações de nossa base de dados."
   },
   {
     "objectID": "index.html#dados-exploração-e-tratamento-8",
@@ -263,14 +263,14 @@
     "href": "index.html#dados-exploração-e-tratamento-10",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Dados: exploração e tratamento",
-    "text": "Dados: exploração e tratamento\n\nAnteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter, até o momento, citado bibliotecas do framework tidymodels, em especial o recipes que é muito utilizado no workflow de aprendizagem de máquina na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote recipes.\n\nO tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, para expor detalhes que eventualmente não será possível ou estariam camuflados na utilização do tidymodels."
+    "text": "Dados: exploração e tratamento\n\nAnteriormente eu citei algumas bibliotecas úteis de R para explorar os dados, na fase de tratamento das observações. Porém, não estranhe não ter, até o momento, citado bibliotecas do framework tidymodels, em especial o recipes que é muito utilizado no workflow de aprendizagem de máquina, na fase de pré-processamento dos dados. Muitas dessas transformações são aplicadas como receitas de pré-processamento com o pacote recipes.\n\n\n\nO tidymodels será muito útil para nós, mas, aos poucos, seu uso e explicações mais detalhadas serão apresentadas, apesar que em algumas situações mais simples, poderei não utilizá-lo, para expor detalhes que eventualmente não será possível ou estariam camuflados (black box) na utilização do tidymodels.\n\nPara não deixar de valar sobre o tidymodels, explicarei, agora, a sua filosofia e como ele está dividido em outras bibliotecas que são úteis em cada parte do processo de treinamento de um modelo de machine learning."
   },
   {
     "objectID": "index.html#tidymodels",
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19835, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19846, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
