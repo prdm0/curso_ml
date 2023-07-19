@@ -1329,11 +1329,10 @@ $$\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).$$
 A definição de risco preditivo $R_{pred}$, que também denotaremos
 simplesmente por $R$, tem um apelo frequentista. Dessa forma, para um
 novo conjunto com $m$ novas observaçõs,
-$({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que
-que essa nova amostra é i.i.d à amostra observada (utilizada no
-treinamento do modelo/na estimação). Então, pela Lei dos Grandes
-Números, temos que um bom estimador para a função para o risco preditivo
-é dado por:
+$({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que essa 
+nova amostra é i.i.d à amostra observada (utilizada no treinamento do modelo/na 
+estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para 
+a função para o risco preditivo é dado por:
 
 $$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$ {#eq-risco-correto}
 
