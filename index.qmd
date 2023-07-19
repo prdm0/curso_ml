@@ -879,8 +879,8 @@ biblioteca **caret** continua sendo mantida, apesar da existência do
 :::
 
 ::: {.column width="50%"}
-Max Kuhn, atualmente, no momento de escrita desse frame é funcionário da
-Posit Ltda e foi contratado para estar a frente do desenvolvimento de
+Max Kuhn, atualmente, no momento de escrita desse mateiral, é funcionário da
+[Posit Ltda](https://posit.co/) e foi contratado para estar a frente do desenvolvimento de
 uma versão "arrumada" (*tidy*) do
 [caret](https://cran.r-project.org/web/packages/caret/index.html), que é
 o [tidymodels](https://www.tidymodels.org/).
@@ -949,7 +949,7 @@ métricas de avaliação do modelo.
 <br>
 
 A biblioteca [dails](https://dials.tidymodels.org/) está mais
-relacionada a criação dos *grids* para os hiperparâmetros eventuais do
+relacionada a criação dos *grids* para os eventuais hiperparâmetros do
 modelo. Já o pacote [tune](https://tune.tidymodels.org/), utiliza-se da
 validação cruzada criada pelo pacote
 [rsample](https://rsample.tidymodels.org/) para varrer as combinações de

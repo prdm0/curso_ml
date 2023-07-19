@@ -270,7 +270,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19846, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19857, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -284,7 +284,7 @@
     "href": "index.html#tidymodels-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\n\n\n\n\n\n\n\n\nMax Kuhn, atualmente, no momento de escrita desse frame é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão “arrumada” (tidy) do caret, que é o tidymodels."
+    "text": "Tidymodels\n\n\n\n\n\n\n\n\n\nMax Kuhn, atualmente, no momento de escrita desse mateiral, é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão “arrumada” (tidy) do caret, que é o tidymodels."
   },
   {
     "objectID": "index.html#tidymodels-3",
@@ -305,7 +305,7 @@
     "href": "index.html#tidymodels-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros e o yardstick é mais responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os hiperparâmetros eventuais do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros."
+    "text": "Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros e o yardstick é mais responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os eventuais hiperparâmetros do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros."
   },
   {
     "objectID": "index.html#tidymodels-6",
