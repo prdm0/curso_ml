@@ -4625,3 +4625,54 @@ predict(modelo_final, new_data = dados_expectativa_renda)
 # readRDS("~/Downloads/modelo_final.rds")
 ````
 ![](gifs/bom.gif)
+
+## Suport Vector Regression Machine
+
+<br>
+
+Métodos de estimação da função de regressão $r({\bf x})$ com base em *Reproducing Kernel Hilbert Spaces* - RKHs são famílias de metodologias bastante gerais. A ideia desses métodos envolvem definir uma função objetivo para a quantificação da qualidade das predições e, porteriormente, busca-se uma função que melhor se ajuste ao espaço de funções $\mathcal{H}$. Busca-se uma solução para
+
+$$\argmin_{g \in \mathcal{H}} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \mathcal{P}(g),$${#eq-objetivo-geral-hilbert}
+em que $L$ é uma função de perda arbitrária, $\mathcal{P}$ uma medida de complexidade de $g$ e $\mathcal{H}$ um subespaço de funções.
+
+<br>
+
+::: columns
+
+::: {.column width='50%'}
+Ocorre que para um espaço de funções arbitrário, a solução para o problema seria bastante difícil. A ideia é poder uma grande família de espaços $\mathcal{H}$ (RKHs) de modo que a solução do problema seja relativamente simples de ser implementada.
+:::
+
+::: {.column width='50%'}
+![](gifs/ok.gif){fig-aling='rigth'}
+:::
+:::
+
+## Suport Vector Regression Machine
+
+<br>
+
+Métodos de regressão que se baseiam em panalização em RKHS são uma generalização da @eq-objetivo-geral-hilbert, em que a função objetivo nesse caso é dada por:
+
+$$\argmin_{g \in \mathcal{H}_k} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \lambda||g||_{\mathcal{H}_k}^2,$${#eq-funcao-objetivo-geral}
+em que $\mathcal{H}_{k}$ é um RKHS e $L$ é uma função adequada para o problema em questão. Calma que vai ser relativamente simples definir $\mathcal{H}_{k}$, uma vez que isso é feito utilizando funções kernel, em particular, o [kernel de Mercer](https://en.wikipedia.org/wiki/Mercer%27s_theorem).
+
+![](gifs/bean_simple.gif)
+
+## Suport Vector Regression Machine
+
+<br>
+
+O termo $||g||_{\mathcal{H}_k}^2$ na @eq-funcao-objetivo-geral reflete a suavidade das funções em $\mathcal{H}_k$ e cada espaço poderá conter uma noção de suavidade diferente, a depender da função de kernel escolhida. Sim, a função ed kernel e função de perda $L$ são escolhidas pelo usuário da metodologia.
+
+<br>
+
+É claro que para diferenças kernel (kernel de Mercer), poderemos ter diferentes resultados que pode ser avaliado em um procedimento de validação-cruzada (*cross-validation*). O parâmetro $\lambda$ é um hiperparâmetro que podemos obter dentro de uma validação-cruzada, testando, por exemplo, um *grid* de parâmetros, para selecionarmos um $\lambda$ que forneça o melhor risco estimado $\widehat{R}(g)$.
+
+<br>
+
+A parcela $||g||_{\mathcal{H}_k}^2$ mensura a suavidade das funções em $\mathcal{H}_k$. Assim como $g$, $||g||_{\mathcal{H}_k}^2$ será definidas em termos da função de kernel, e essa é a grande sacada!
+
+<br>
+
+![](gifs/uau.gif)
