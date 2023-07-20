@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-62304a042770031045c0" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-62304a042770031045c0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-575bbe471abe6d2eab19" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-575bbe471abe6d2eab19">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -866,7 +866,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </details>
 </div>
 <p><br></p>
-<p>Atualmente, a linguagem R possui <span class="red">19866</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
+<p>Atualmente, a linguagem R possui <span class="red">19869</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
 
 <img data-src="gifs/chaves-isso.gif" class="r-stretch"></section>
 <section id="tidymodels-1" class="slide level2">
@@ -3378,7 +3378,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>A essência dos métodos métodos baseado em kernel, é que não precisamos conhecer <span class="math inline">\phi(\cdot)</span>. Os produtos internos no espaço de características poderá ser calculado utilizando um kernel de Mercer.</p>
 <p><br></p>
 <p><span class="red">Teorema de Mercer</span>: Todo kernel de Mercer <span class="math inline">K</span> pode ser decomposto como</p>
-<p><span class="math display">K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),</span> em que <span class="math inline">\sum_{i \geq 0} \gamma_i^2 &lt; \infty</span> e <span class="math inline">\phi_0, \phi_1, \cdots</span> é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer <span class="math inline">\phi(\cdot)</span> para o cálculo de produtos internos no espaço de características é comumente denominada de <span class="red"><em>kernel trick</em></span>/<span class="red">truque kernel</span>. Ver detalhes em <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016">aqui</a>.</p>
+<p><span id="eq-mercer-decomposicao"><span class="math display">K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b), \tag{5}</span></span> em que <span class="math inline">\sum_{i \geq 0} \gamma_i^2 &lt; \infty</span> e <span class="math inline">\phi_0, \phi_1, \cdots</span> é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer <span class="math inline">\phi(\cdot)</span> para o cálculo de produtos internos no espaço de características é comumente denominada de <span class="red"><em>kernel trick</em></span>/<span class="red">truque kernel</span>. Ver detalhes em <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016">aqui</a>.</p>
 </section>
 <section id="suport-vector-regression-machine-7" class="slide level2">
 <h2>Suport Vector Regression Machine</h2>
@@ -3390,7 +3390,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Diremos que <span class="math inline">\mathcal{H}_k</span> é o <em>Reproducing Kernel Hilbert Space</em> - RKHS associado ao kernel <span class="math inline">K</span>, em que a norma de uma função <span class="math inline">g({\bf x}) = \sum_{i\geq0}c_i\phi({\bf x})</span> é definda por</p>
 <p><span class="math display">||g||_{\mathcal{H}_k}^2 := \sum_{i \geq 0} c_i^2/\gamma_i.</span></p>
 <p><br></p>
-<p>Além disso, tem-se que <span class="math inline">\mathcal{H}_K</span> é <strong>única</strong> para um dado <span class="math inline">K</span>.</p>
+<p>Além disso, tem-se que <span class="math inline">\mathcal{H}_K</span> é <strong>única</strong> para um dado <span class="math inline">K</span>, muito embora a decomposição dada pela <a href="#/suport-vector-regression-machine-6" class="quarto-xref">Equação&nbsp;5</a> não seja única.</p>
 </section>
 <section id="suport-vector-regression-machine-8" class="slide level2">
 <h2>Suport Vector Regression Machine</h2>
@@ -3398,18 +3398,18 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p><span class="red">Teorema da Representação</span>: Seja <span class="math inline">K</span> um kernel de Mercer correspondente ap RKHS <span class="math inline">\mathcal{H}_K</span>. Considere o conjunto de treinamento <span class="math inline">({\bf x}_1, y_1), \cdots, ({\bf x}_n, y_n)</span> e uma função de perda arbitrária <span class="math inline">L</span>. Então, a solução de</p>
 <p><br></p>
-<p><span id="eq-teorema-representacao"><span class="math display">\argmin_{g \in \mathcal{H}_K} \sum_{k = 1}^n L(g({\bf x}_k), y_k) + \lambda||g||_{\mathcal{H}_K^2}, \tag{5}</span></span> existe, e é única, em que</p>
+<p><span id="eq-teorema-representacao"><span class="math display">\argmin_{g \in \mathcal{H}_K} \sum_{k = 1}^n L(g({\bf x}_k), y_k) + \lambda||g||_{\mathcal{H}_K^2}, \tag{6}</span></span> existe, e é única, em que</p>
 <p><br></p>
-<p><span class="math display">g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}).</span></p>
+<p><span class="math display">g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}),</span> em que <span class="math inline">\alpha_1, \cdots, \alpha_n</span> é uma sequência de valores reais.</p>
 </section>
 <section id="suport-vector-regression-machine-9" class="slide level2">
 <h2>Suport Vector Regression Machine</h2>
 <p><br></p>
-<p>É possível desmontrar que a otimização da <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;5</a> poderá se dar pela otimização de</p>
+<p>É possível desmontrar que a otimização da <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;6</a> poderá se dar pela otimização de</p>
 <p><br></p>
 <p><span class="math display">\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1}^n\alpha_iK({\bf x}_i, {\bf x})}^{g({\bf x})}, y_k) \right) + \lambda\underbrace{\sum_{1 \leq j,k \leq n}\alpha_i\alpha_k K({\bf x}_j, {\bf x}_k)}_{||g||_{\mathcal{H}_K}^2}.</span></p>
 <p><br></p>
-<p>Portanto, o problema de otimizar a função objetivo dada na <a href="#/suport-vector-regression-machine-1" class="quarto-xref">Equação&nbsp;4</a> se reduz a encontrar os valores de <span class="math inline">\alpha_1, \cdots, \alpha_n</span> que minimiza a <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;5</a>. Portanto, irá especificar o kernel <span class="math inline">K</span> e a função de perda <span class="math inline">L</span>, em que <span class="math inline">\lambda</span> é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada.</p>
+<p>Portanto, o problema de otimizar a função objetivo dada na <a href="#/suport-vector-regression-machine-1" class="quarto-xref">Equação&nbsp;4</a> se reduz a encontrar os valores de <span class="math inline">\alpha_1, \cdots, \alpha_n</span> que minimiza a <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;6</a>. Portanto, irá especificar o kernel <span class="math inline">K</span> e a função de perda <span class="math inline">L</span>, em que <span class="math inline">\lambda</span> é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada.</p>
 </section>
 <section id="suport-vector-regression-machine-10" class="slide level2">
 <h2>Suport Vector Regression Machine</h2>
@@ -3418,10 +3418,15 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Eles definem a seguinte função de perda <span class="math inline">L(g({\bf x}_k, y_k)) = (|y_k - g({\bf x}_k)| - \varepsilon)_{+}</span>, que assume o valor 0 se <span class="math inline">|y_k - g({\bf x}_k)| &lt; \varepsilon</span> e assumirá <span class="math inline">|y_k - g({\bf x}_k)| - \varepsilon</span>, caso contrário.</p>
 <p><br></p>
-<p><img data-src="gifs/hum.gif"></p>
 
-<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="suport-vector-regression-machine-11" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><span class="red">Exemplo</span>: Vamos consirar a base de dados de vinho vermelho🍷, disponíveis <a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009">aqui</a>, faça uma pequena análise exploratória dos dados. No <a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009">link</a> do Kaggle você consegue uma explicação sobre o que significa cada uma das variáveis.</p>
+ <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+
+
+<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>

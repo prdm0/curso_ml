@@ -1,0 +1,128 @@
+---
+title: "Suport Vector Regression Machine - SVRM"
+subtitle: "Comparando com outros modelos"
+date: "`r Sys.Date()`"
+lang: pt
+author: "Prof. Dr. Pedro Rafael D. Marinho"
+format:
+  html:
+    grid:
+      margin-width: 350px
+  pdf: default
+reference-location: margin
+citation-location: margin
+---
+
+## Carregando bibliotecas necessárias
+
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(GGally)
+library(skimr)
+
+# Resolvendo possíveis conflitos entre o tidymodels e outras bibliotecas
+tidymodels::tidymodels_prefer()
+```
+
+## Importando a base de dados
+
+Utilizando os dados de vinho vermelho🍷,
+disponíveis
+[aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
+faça uma pequena análise exploratória dos dados. No
+[link](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
+do Kaggle você consegue uma explicação sobre o que significa cada uma
+das variáveis.
+
+Os dados, no meu caso, estão no diretório `"../dados/winequality-red.csv"`. Você
+deverá alterar o *path* para o diretório encontra-se a base que deverá ser obtida
+no link acima.
+
+```{r}
+dados <- readr::read_csv(file = "../dados/winequality-red.csv")
+```
+## Uma exploração rápida dos dados
+
+É sempre importante olhar os dados antes de tentar modelar. Uma análise exploratória
+sempre será útil para identificarmos possíveis inconsistências.
+
+```{r}
+visdat::vis_dat(dados)
+```
+
+O gráfico acima mostra que temos uma base de dados sem informações faltantes e todas as *features*
+presentes na base são numéricas. É uma situação confortável, haja vista que, aqui, não precisaremos
+nos preocupar com imputação de dados faltantes.
+
+Um resumo dos dados poderá ser obtido utilizando a função `glimpse` do pacote **dplyr** que é carregado
+com a biblioteca **tidyverse** de R.
+
+```{r}
+dados |> 
+  dplyr::glimpse()
+```
+
+É possível todas as correlações entre todas as variáveis da base, com a função `data_vis_cor`. Um gráfico útil com as correlações poderá ser obtido usando a função `vis_cor`, conforme abaixo:
+
+```{r}
+visdat::data_vis_cor(dados)
+visdat::vis_cor(dados)
+```
+
+As bibliotecas **GGally** e **skimr** também possuem funções úteis que podem nos 
+auxiliar no processo de exploração dos dados.
+
+```{r}
+dados |> 
+  GGally::ggpairs()
+
+dados |> 
+  skimr::skim()
+```
+
+## Construindo os workflows dos modelos
+
+Iremos comparar os modelos de regressão linar utilizando *elastic net*, com o método $k$NN e *suport vector regression machine* - SVRM. Buscaremos pelo melhor modelo de cada uma das metodologias consideradas. Posteriormente iremos escolher o melhor modelo entre os melhores de cada uma das classes. A ideia é escolher o melhor modelo que consiga prever melhor a qualidade do vinho, i.e., prever a variável `quality`.
+
+### Partição dos dados
+
+Como sabemos, precisamos dividir nossa base de dados em conjunto de treinamento, em que nesse conjunto iremos será realizado o procedimento de validação cruzada e uma base de dados de teste para a avaliação final dos nossos modelos. Deixaremos $80\%$ para o treniamento do modelo e $20\%$ para teste. Iremos estratificar nossa amostra usando a variável `quality`, variável que queremos estimar (*label*/rótulo).
+
+```{r}
+divisao <- rsample::initial_split(dados, prop = 0.8, strata = "quality")
+treinamento <- rsample::training(divisao)
+teste <- rsample::testing(divisao)
+```
+
+### Definindo os modelos
+
+O código que segue faz a configuração realiza a configuração dos modelos que serão
+comparados. O código `tune::tune()` especifica que o respectivo parâmetro de sintonização
+será obtido no processo de validação cruzada, particularmente, um *grid search*.
+
+```{r}
+modelo_elastic <- 
+  parsnip::linear_reg(penalty = tune::tune(), mixture = tune::tune()) |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("glmnet")
+
+modelo_knn <-
+  parsnip::nearest_neighbor(
+    neighbors = tune::tune(),
+    dist_power = tune::tune(), 
+    weight_func = "gaussian" 
+  ) |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kknn")
+
+modelo_svm <- 
+  parsnip::svm_rbf(
+    cost = tune::tune(),
+    rbf_sigma = tune::tune(),
+    margin = tune::tune()
+  ) |> 
+  parsnip::set_mode("regression") |> 
+  parsnip::set_engine("kernlab")
+```
+

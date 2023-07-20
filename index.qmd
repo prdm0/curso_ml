@@ -4747,7 +4747,7 @@ A essência dos métodos métodos baseado em kernel, é que não precisamos conh
 
 [Teorema de Mercer]{.red}: Todo kernel de Mercer $K$ pode ser decomposto como 
 
-$$K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),$$
+$$K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),$$ {#eq-mercer-decomposicao}
 em que $\sum_{i \geq 0} \gamma_i^2 < \infty$ e $\phi_0, \phi_1, \cdots$ é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer $\phi(\cdot)$ para o cálculo de produtos internos no espaço de características é comumente denominada de [*kernel trick*]{.red}/[truque kernel]{.red}.  Ver detalhes em [aqui](https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016).
 
 
@@ -4769,7 +4769,7 @@ $$||g||_{\mathcal{H}_k}^2 := \sum_{i \geq 0} c_i^2/\gamma_i.$$
 
 <br>
 
-Além disso, tem-se que $\mathcal{H}_K$ é **única** para um dado $K$.
+Além disso, tem-se que $\mathcal{H}_K$ é **única** para um dado $K$, muito embora a decomposição dada pela @eq-mercer-decomposicao não seja única.
 
 ## Suport Vector Regression Machine
 
@@ -4788,7 +4788,8 @@ existe, e é única, em que
 
 <br>
 
-$$g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}).$$
+$$g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}),$$
+em que $\alpha_1, \cdots, \alpha_n$ é uma sequência de valores reais.
 
 ## Suport Vector Regression Machine
 
@@ -4817,3 +4818,17 @@ Eles definem a seguinte função de perda $L(g({\bf x}_k, y_k)) = (|y_k - g({\bf
 <br>
 
 ![](gifs/hum.gif)
+
+## Suport Vector Regression Machine
+
+[Exemplo]{.red}: Vamos consirar a base de dados de vinho vermelho🍷,
+disponíveis
+[aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
+faça uma pequena análise exploratória dos dados. No
+[link](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
+do Kaggle você consegue uma explicação sobre o que significa cada uma
+das variáveis.
+
+```{=html}
+ <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
