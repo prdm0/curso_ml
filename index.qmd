@@ -4676,3 +4676,144 @@ A parcela $||g||_{\mathcal{H}_k}^2$ mensura a suavidade das funções em $\mathc
 <br>
 
 ![](gifs/uau.gif)
+
+## Suport Vector Regression Machine
+
+<br>
+
+**Definição** ([Kernel de Mercer]{.red}): Seja $K({\bf x}_a, {\bf x}_b)$ uma função
+com domínio em $\mathcal{X} \times \mathcal{X}$ (domínio das *features*/covariáveis/espaço de características) que 
+poderá ser mais geral que $\mathbb{R}^d$. Diremos que uma função $K$, tal que $K:{\mathcal{X}\times\mathcal{X}}\longrightarrow \mathbb{R}$ é um **Kernel de Mercer**
+se ele satisfaz às condições que seguem:
+
+<br>
+
+1. [Simetria]{.red}: $K({\bf x}_a, {\bf x}_b) = K({\bf x}_b, {\bf x}_a)$, para todo
+${\bf x}_a,{\bf x}_b \in \mathcal{X}$;
+
+2. [Positivo semi-definido]{.red}: a matriz $\big[K({\bf x}_a,{\bf x}_b)\big]_{i,j = 1}^n$ é 
+positiva semi-definida para todo $n \in \mathbb{N}$ e para todo ${\bf x}_1,\cdots, {\bf x}_n \in \mathcal{X}$.
+
+<br>
+
+Ser positiva semi-definida, significa que para qualquer sequência $c_r \in \mathbb{R}\,, \forall r = 1, \cdots, n$, temos que
+
+$$\sum_{i = 1}^n\sum_{k = 1}^n c_i c_k K({\bf x}_i,{\bf x}_k)\geq 0,\, \forall n \geq 2.$$
+
+## Suport Vector Regression Machine
+
+<br>
+
+Alguns kernels de Mercer comuns são:
+
+<br>
+
+1. **Kernel Linear**: $K({\bf x}_i, {\bf x}_l) = {\bf x}_i^T{\bf x}_l$;
+2. **Kernel Polinomial de grau** $p$: $K({\bf x}_i, {\bf x}_l) = (1 + \langle{\bf x}_i, {\bf x}_l\rangle)^p, \gamma > 0, \theta \geq 0, p \in \mathbb{N}$;
+3. **Kernel Gaussiano**: $K({\bf x}_i, {\bf x}_l) = \exp\left\{-\frac{d^2({\bf x}_i, {\bf x}_l)}{2h^2}\right\},\, h > 0$;
+4. **Kernel Laplaciano**: $K({\bf x}_i, {\bf x}_l) = \mathrm{e}^{-\gamma d({\bf x}_i, {\bf x}_l)}\,, \gamma > 0$;
+5. **Kernel Sigmóide**: $K({\bf x}_i, {\bf x}_l) = \tanh(\gamma {\bf x}_i^T{\bf x}_l + \theta), \, \gamma>0, \theta>0$.
+
+<br>
+
+em que $\gamma, h, \theta$ e $p$, são parâmetros do kernel.
+
+
+## Suport Vector Regression Machine
+
+<br>
+
+A ideia principal por trás dos métodos que fazem uso de kernel é fazer o uso de um mapeamento não-linear
+arbitrário $\phi$ do espaço original dos padrões de entrada para um espaço de mais alta dimensão, $\mathcal{X} \times \mathcal{X}$ chamado de espaço de características.
+
+<br>
+
+Um conjunto de padrões que entrada, em um problema de classificação, por exemplo, que não é linearmente separável
+poderá se tornar linearmente separável através desse mapeamento não linear.
+
+<br>
+
+Em um espaço vetorial, o **produto interno**, $\langle{\bf x}_i,{\bf x}_j\rangle = {\bf x}_i^{T}{\bf x}_j$, normalmente é utilizado como medida de similaridade entre vetores. Porém, como não conhecemos $\phi(\cdot)$, não é possível realizar $\phi({\bf x}_i)^T\phi({\bf x}_j)$ em $\mathcal{X}\times\mathcal{X}.$ Aparentemente é bem complicado calcular $\langle\phi({\bf x}_i),\phi({\bf x}_j)\rangle$, sem conhecer $\phi(\cdot)$, não é verdade?!
+
+![](gifs/ok.gif)
+
+## Suport Vector Regression Machine
+
+<br>
+
+A essência dos métodos métodos baseado em kernel, é que não precisamos conhecer $\phi(\cdot)$. Os produtos internos no espaço de características poderá ser calculado utilizando um kernel de Mercer. 
+
+<br>
+
+[Teorema de Mercer]{.red}: Todo kernel de Mercer $K$ pode ser decomposto como 
+
+$$K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),$$
+em que $\sum_{i \geq 0} \gamma_i^2 < \infty$ e $\phi_0, \phi_1, \cdots$ é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer $\phi(\cdot)$ para o cálculo de produtos internos no espaço de características é comumente denominada de [*kernel trick*]{.red}/[truque kernel]{.red}.  Ver detalhes em [aqui](https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016).
+
+
+## Suport Vector Regression Machine
+
+<br>
+
+[Definição]{.red}: Seja $K$ um kernel de Mercer, e sejam $\phi_i$ e $\gamma_i,\, i \geq 0$, da forma do teorema acima. Então,
+
+<br>
+
+$$\mathcal{H}_K = \left\{g \in L^2(\mathcal{X}):\,\, existem\,\, (c_i)_{i\geq0}\,\, com\,\,\sum_{i\geq1}\frac{c_i^2}{\gamma_i} < \infty\,\,,\, tais\,\, que\,\, g({\bf x}) = \sum_{i\geq1} c_i\phi_i({\bf x}) \right\}.$$
+
+<br>
+
+Diremos que $\mathcal{H}_k$ é o *Reproducing Kernel Hilbert Space* - RKHS associado ao kernel $K$, em que a norma de uma função $g({\bf x}) = \sum_{i\geq0}c_i\phi({\bf x})$ é definda por
+
+$$||g||_{\mathcal{H}_k}^2 := \sum_{i \geq 0} c_i^2/\gamma_i.$$
+
+<br>
+
+Além disso, tem-se que $\mathcal{H}_K$ é **única** para um dado $K$.
+
+## Suport Vector Regression Machine
+
+<br>
+O Teorema que segue, frequentemente atribuído a ao artigo Kimeldorf, G. S. & Wahba, G. (1970). **A correspondence between Bayesian estimation on stochastic processes and smoothing by splines**. The Annals of Mathematical
+Statistics, 495–502, simplifica o problema de otimizar a função objetivo dada na @eq-funcao-objetivo-geral.
+
+<br>
+
+[Teorema da Representação]{.red}: Seja $K$ um kernel de Mercer correspondente ap RKHS $\mathcal{H}_K$. Considere o conjunto de treinamento $({\bf x}_1, y_1), \cdots, ({\bf x}_n, y_n)$ e uma função de perda arbitrária $L$. Então, a solução de 
+
+<br>
+
+$$\argmin_{g \in \mathcal{H}_K} \sum_{k = 1}^n L(g({\bf x}_k), y_k) + \lambda||g||_{\mathcal{H}_K^2},$$ {#eq-teorema-representacao}
+existe, e é única, em que
+
+<br>
+
+$$g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}).$$
+
+## Suport Vector Regression Machine
+
+<br>
+
+É possível desmontrar que a otimização da @eq-teorema-representacao poderá se dar pela otimização de
+
+<br>
+
+$$\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1}^n\alpha_iK({\bf x}_i, {\bf x})}^{g({\bf x})}, y_k) \right) + \lambda\underbrace{\sum_{1 \leq j,k \leq n}\alpha_i\alpha_k K({\bf x}_j, {\bf x}_k)}_{||g||_{\mathcal{H}_K}^2}.$$
+
+<br>
+
+Portanto, o problema de otimizar a função objetivo dada na @eq-funcao-objetivo-geral se reduz a encontrar os valores de $\alpha_1, \cdots, \alpha_n$ que minimiza a @eq-teorema-representacao. Portanto, irá especificar o kernel $K$ e a função de perda $L$, em que $\lambda$ é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada.
+
+## Suport Vector Regression Machine
+
+<br>
+
+Em se tratando de estimadores de regressão, *Support Vector Regression Machines*, utiliza-se uma função de perda diferente da quadrática, como definido em Drucker, H., Burges, C. J., Kaufman, L., Smola, A. J. & Vapnik, V. (1997). **Support vector regression machines** em Advances in neural information processing systems.
+
+<br>
+
+Eles definem a seguinte função de perda $L(g({\bf x}_k, y_k)) = (|y_k - g({\bf x}_k)| - \varepsilon)_{+}$, que assume o valor 0 se $|y_k - g({\bf x}_k)| < \varepsilon$ e assumirá $|y_k - g({\bf x}_k)| - \varepsilon$, caso contrário.
+
+<br>
+
+![](gifs/hum.gif)

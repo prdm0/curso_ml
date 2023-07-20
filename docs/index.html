@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-19">
+  <meta name="dcterms.date" content="2023-07-20">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-19</p>
+  <p class="date">2023-07-20</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f549e3dc632488989f26" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-f549e3dc632488989f26">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-62304a042770031045c0" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-62304a042770031045c0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -866,7 +866,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </details>
 </div>
 <p><br></p>
-<p>Atualmente, a linguagem R possui <span class="red">19863</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
+<p>Atualmente, a linguagem R possui <span class="red">19866</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
 
 <img data-src="gifs/chaves-isso.gif" class="r-stretch"></section>
 <section id="tidymodels-1" class="slide level2">
@@ -3332,7 +3332,93 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>A parcela <span class="math inline">||g||_{\mathcal{H}_k}^2</span> mensura a suavidade das funções em <span class="math inline">\mathcal{H}_k</span>. Assim como <span class="math inline">g</span>, <span class="math inline">||g||_{\mathcal{H}_k}^2</span> será definidas em termos da função de kernel, e essa é a grande sacada!</p>
 <p><br></p>
-<p><img data-src="gifs/uau.gif"></p>
+
+<img data-src="gifs/uau.gif" class="r-stretch"></section>
+<section id="suport-vector-regression-machine-3" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p><strong>Definição</strong> (<span class="red">Kernel de Mercer</span>): Seja <span class="math inline">K({\bf x}_a, {\bf x}_b)</span> uma função com domínio em <span class="math inline">\mathcal{X} \times \mathcal{X}</span> (domínio das <em>features</em>/covariáveis/espaço de características) que poderá ser mais geral que <span class="math inline">\mathbb{R}^d</span>. Diremos que uma função <span class="math inline">K</span>, tal que <span class="math inline">K:{\mathcal{X}\times\mathcal{X}}\longrightarrow \mathbb{R}</span> é um <strong>Kernel de Mercer</strong> se ele satisfaz às condições que seguem:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><p><span class="red">Simetria</span>: <span class="math inline">K({\bf x}_a, {\bf x}_b) = K({\bf x}_b, {\bf x}_a)</span>, para todo <span class="math inline">{\bf x}_a,{\bf x}_b \in \mathcal{X}</span>;</p></li>
+<li class="fragment"><p><span class="red">Positivo semi-definido</span>: a matriz <span class="math inline">\big[K({\bf x}_a,{\bf x}_b)\big]_{i,j = 1}^n</span> é positiva semi-definida para todo <span class="math inline">n \in \mathbb{N}</span> e para todo <span class="math inline">{\bf x}_1,\cdots, {\bf x}_n \in \mathcal{X}</span>.</p></li>
+</ol>
+<p><br></p>
+<p>Ser positiva semi-definida, significa que para qualquer sequência <span class="math inline">c_r \in \mathbb{R}\,, \forall r = 1, \cdots, n</span>, temos que</p>
+<p><span class="math display">\sum_{i = 1}^n\sum_{k = 1}^n c_i c_k K({\bf x}_i,{\bf x}_k)\geq 0,\, \forall n \geq 2.</span></p>
+</section>
+<section id="suport-vector-regression-machine-4" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p>Alguns kernels de Mercer comuns são:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><strong>Kernel Linear</strong>: <span class="math inline">K({\bf x}_i, {\bf x}_l) = {\bf x}_i^T{\bf x}_l</span>;</li>
+<li class="fragment"><strong>Kernel Polinomial de grau</strong> <span class="math inline">p</span>: <span class="math inline">K({\bf x}_i, {\bf x}_l) = (1 + \langle{\bf x}_i, {\bf x}_l\rangle)^p, \gamma &gt; 0, \theta \geq 0, p \in \mathbb{N}</span>;</li>
+<li class="fragment"><strong>Kernel Gaussiano</strong>: <span class="math inline">K({\bf x}_i, {\bf x}_l) = \exp\left\{-\frac{d^2({\bf x}_i, {\bf x}_l)}{2h^2}\right\},\, h &gt; 0</span>;</li>
+<li class="fragment"><strong>Kernel Laplaciano</strong>: <span class="math inline">K({\bf x}_i, {\bf x}_l) = \mathrm{e}^{-\gamma d({\bf x}_i, {\bf x}_l)}\,, \gamma &gt; 0</span>;</li>
+<li class="fragment"><strong>Kernel Sigmóide</strong>: <span class="math inline">K({\bf x}_i, {\bf x}_l) = \tanh(\gamma {\bf x}_i^T{\bf x}_l + \theta), \, \gamma&gt;0, \theta&gt;0</span>.</li>
+</ol>
+<p><br></p>
+<p>em que <span class="math inline">\gamma, h, \theta</span> e <span class="math inline">p</span>, são parâmetros do kernel.</p>
+</section>
+<section id="suport-vector-regression-machine-5" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p>A ideia principal por trás dos métodos que fazem uso de kernel é fazer o uso de um mapeamento não-linear arbitrário <span class="math inline">\phi</span> do espaço original dos padrões de entrada para um espaço de mais alta dimensão, <span class="math inline">\mathcal{X} \times \mathcal{X}</span> chamado de espaço de características.</p>
+<p><br></p>
+<p>Um conjunto de padrões que entrada, em um problema de classificação, por exemplo, que não é linearmente separável poderá se tornar linearmente separável através desse mapeamento não linear.</p>
+<p><br></p>
+<p>Em um espaço vetorial, o <strong>produto interno</strong>, <span class="math inline">\langle{\bf x}_i,{\bf x}_j\rangle = {\bf x}_i^{T}{\bf x}_j</span>, normalmente é utilizado como medida de similaridade entre vetores. Porém, como não conhecemos <span class="math inline">\phi(\cdot)</span>, não é possível realizar <span class="math inline">\phi({\bf x}_i)^T\phi({\bf x}_j)</span> em <span class="math inline">\mathcal{X}\times\mathcal{X}.</span> Aparentemente é bem complicado calcular <span class="math inline">\langle\phi({\bf x}_i),\phi({\bf x}_j)\rangle</span>, sem conhecer <span class="math inline">\phi(\cdot)</span>, não é verdade?!</p>
+
+<img data-src="gifs/ok.gif" class="r-stretch"></section>
+<section id="suport-vector-regression-machine-6" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p>A essência dos métodos métodos baseado em kernel, é que não precisamos conhecer <span class="math inline">\phi(\cdot)</span>. Os produtos internos no espaço de características poderá ser calculado utilizando um kernel de Mercer.</p>
+<p><br></p>
+<p><span class="red">Teorema de Mercer</span>: Todo kernel de Mercer <span class="math inline">K</span> pode ser decomposto como</p>
+<p><span class="math display">K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),</span> em que <span class="math inline">\sum_{i \geq 0} \gamma_i^2 &lt; \infty</span> e <span class="math inline">\phi_0, \phi_1, \cdots</span> é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer <span class="math inline">\phi(\cdot)</span> para o cálculo de produtos internos no espaço de características é comumente denominada de <span class="red"><em>kernel trick</em></span>/<span class="red">truque kernel</span>. Ver detalhes em <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016">aqui</a>.</p>
+</section>
+<section id="suport-vector-regression-machine-7" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p><span class="red">Definição</span>: Seja <span class="math inline">K</span> um kernel de Mercer, e sejam <span class="math inline">\phi_i</span> e <span class="math inline">\gamma_i,\, i \geq 0</span>, da forma do teorema acima. Então,</p>
+<p><br></p>
+<p><span class="math display">\mathcal{H}_K = \left\{g \in L^2(\mathcal{X}):\,\, existem\,\, (c_i)_{i\geq0}\,\, com\,\,\sum_{i\geq1}\frac{c_i^2}{\gamma_i} &lt; \infty\,\,,\, tais\,\, que\,\, g({\bf x}) = \sum_{i\geq1} c_i\phi_i({\bf x}) \right\}.</span></p>
+<p><br></p>
+<p>Diremos que <span class="math inline">\mathcal{H}_k</span> é o <em>Reproducing Kernel Hilbert Space</em> - RKHS associado ao kernel <span class="math inline">K</span>, em que a norma de uma função <span class="math inline">g({\bf x}) = \sum_{i\geq0}c_i\phi({\bf x})</span> é definda por</p>
+<p><span class="math display">||g||_{\mathcal{H}_k}^2 := \sum_{i \geq 0} c_i^2/\gamma_i.</span></p>
+<p><br></p>
+<p>Além disso, tem-se que <span class="math inline">\mathcal{H}_K</span> é <strong>única</strong> para um dado <span class="math inline">K</span>.</p>
+</section>
+<section id="suport-vector-regression-machine-8" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br> O Teorema que segue, frequentemente atribuído a ao artigo Kimeldorf, G. S. &amp; Wahba, G. (1970). <strong>A correspondence between Bayesian estimation on stochastic processes and smoothing by splines</strong>. The Annals of Mathematical Statistics, 495–502, simplifica o problema de otimizar a função objetivo dada na <a href="#/suport-vector-regression-machine-1" class="quarto-xref">Equação&nbsp;4</a>.</p>
+<p><br></p>
+<p><span class="red">Teorema da Representação</span>: Seja <span class="math inline">K</span> um kernel de Mercer correspondente ap RKHS <span class="math inline">\mathcal{H}_K</span>. Considere o conjunto de treinamento <span class="math inline">({\bf x}_1, y_1), \cdots, ({\bf x}_n, y_n)</span> e uma função de perda arbitrária <span class="math inline">L</span>. Então, a solução de</p>
+<p><br></p>
+<p><span id="eq-teorema-representacao"><span class="math display">\argmin_{g \in \mathcal{H}_K} \sum_{k = 1}^n L(g({\bf x}_k), y_k) + \lambda||g||_{\mathcal{H}_K^2}, \tag{5}</span></span> existe, e é única, em que</p>
+<p><br></p>
+<p><span class="math display">g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}).</span></p>
+</section>
+<section id="suport-vector-regression-machine-9" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p>É possível desmontrar que a otimização da <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;5</a> poderá se dar pela otimização de</p>
+<p><br></p>
+<p><span class="math display">\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1}^n\alpha_iK({\bf x}_i, {\bf x})}^{g({\bf x})}, y_k) \right) + \lambda\underbrace{\sum_{1 \leq j,k \leq n}\alpha_i\alpha_k K({\bf x}_j, {\bf x}_k)}_{||g||_{\mathcal{H}_K}^2}.</span></p>
+<p><br></p>
+<p>Portanto, o problema de otimizar a função objetivo dada na <a href="#/suport-vector-regression-machine-1" class="quarto-xref">Equação&nbsp;4</a> se reduz a encontrar os valores de <span class="math inline">\alpha_1, \cdots, \alpha_n</span> que minimiza a <a href="#/suport-vector-regression-machine-8" class="quarto-xref">Equação&nbsp;5</a>. Portanto, irá especificar o kernel <span class="math inline">K</span> e a função de perda <span class="math inline">L</span>, em que <span class="math inline">\lambda</span> é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada.</p>
+</section>
+<section id="suport-vector-regression-machine-10" class="slide level2">
+<h2>Suport Vector Regression Machine</h2>
+<p><br></p>
+<p>Em se tratando de estimadores de regressão, <em>Support Vector Regression Machines</em>, utiliza-se uma função de perda diferente da quadrática, como definido em Drucker, H., Burges, C. J., Kaufman, L., Smola, A. J. &amp; Vapnik, V. (1997). <strong>Support vector regression machines</strong> em Advances in neural information processing systems.</p>
+<p><br></p>
+<p>Eles definem a seguinte função de perda <span class="math inline">L(g({\bf x}_k, y_k)) = (|y_k - g({\bf x}_k)| - \varepsilon)_{+}</span>, que assume o valor 0 se <span class="math inline">|y_k - g({\bf x}_k)| &lt; \varepsilon</span> e assumirá <span class="math inline">|y_k - g({\bf x}_k)| - \varepsilon</span>, caso contrário.</p>
+<p><br></p>
+<p><img data-src="gifs/hum.gif"></p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">

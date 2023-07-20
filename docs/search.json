@@ -270,7 +270,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19863, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19866, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -1208,6 +1208,69 @@
     "href": "index.html#suport-vector-regression-machine-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Suport Vector Regression Machine",
-    "text": "Suport Vector Regression Machine\n\nO termo ||g||_{\\mathcal{H}_k}^2 na Equação 4 reflete a suavidade das funções em \\mathcal{H}_k e cada espaço poderá conter uma noção de suavidade diferente, a depender da função de kernel escolhida. Sim, a função ed kernel e função de perda L são escolhidas pelo usuário da metodologia.\n\nÉ claro que para diferenças kernel (kernel de Mercer), poderemos ter diferentes resultados que pode ser avaliado em um procedimento de validação-cruzada (cross-validation). O parâmetro \\lambda é um hiperparâmetro que podemos obter dentro de uma validação-cruzada, testando, por exemplo, um grid de parâmetros, para selecionarmos um \\lambda que forneça o melhor risco estimado \\widehat{R}(g).\n\nA parcela ||g||_{\\mathcal{H}_k}^2 mensura a suavidade das funções em \\mathcal{H}_k. Assim como g, ||g||_{\\mathcal{H}_k}^2 será definidas em termos da função de kernel, e essa é a grande sacada!\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Suport Vector Regression Machine\n\nO termo ||g||_{\\mathcal{H}_k}^2 na Equação 4 reflete a suavidade das funções em \\mathcal{H}_k e cada espaço poderá conter uma noção de suavidade diferente, a depender da função de kernel escolhida. Sim, a função ed kernel e função de perda L são escolhidas pelo usuário da metodologia.\n\nÉ claro que para diferenças kernel (kernel de Mercer), poderemos ter diferentes resultados que pode ser avaliado em um procedimento de validação-cruzada (cross-validation). O parâmetro \\lambda é um hiperparâmetro que podemos obter dentro de uma validação-cruzada, testando, por exemplo, um grid de parâmetros, para selecionarmos um \\lambda que forneça o melhor risco estimado \\widehat{R}(g).\n\nA parcela ||g||_{\\mathcal{H}_k}^2 mensura a suavidade das funções em \\mathcal{H}_k. Assim como g, ||g||_{\\mathcal{H}_k}^2 será definidas em termos da função de kernel, e essa é a grande sacada!"
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-3",
+    "href": "index.html#suport-vector-regression-machine-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nDefinição (Kernel de Mercer): Seja K({\\bf x}_a, {\\bf x}_b) uma função com domínio em \\mathcal{X} \\times \\mathcal{X} (domínio das features/covariáveis/espaço de características) que poderá ser mais geral que \\mathbb{R}^d. Diremos que uma função K, tal que K:{\\mathcal{X}\\times\\mathcal{X}}\\longrightarrow \\mathbb{R} é um Kernel de Mercer se ele satisfaz às condições que seguem:\n\n\nSimetria: K({\\bf x}_a, {\\bf x}_b) = K({\\bf x}_b, {\\bf x}_a), para todo {\\bf x}_a,{\\bf x}_b \\in \\mathcal{X};\nPositivo semi-definido: a matriz \\big[K({\\bf x}_a,{\\bf x}_b)\\big]_{i,j = 1}^n é positiva semi-definida para todo n \\in \\mathbb{N} e para todo {\\bf x}_1,\\cdots, {\\bf x}_n \\in \\mathcal{X}.\n\n\nSer positiva semi-definida, significa que para qualquer sequência c_r \\in \\mathbb{R}\\,, \\forall r = 1, \\cdots, n, temos que\n\\sum_{i = 1}^n\\sum_{k = 1}^n c_i c_k K({\\bf x}_i,{\\bf x}_k)\\geq 0,\\, \\forall n \\geq 2."
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-4",
+    "href": "index.html#suport-vector-regression-machine-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nAlguns kernels de Mercer comuns são:\n\n\nKernel Linear: K({\\bf x}_i, {\\bf x}_l) = {\\bf x}_i^T{\\bf x}_l;\nKernel Polinomial de grau p: K({\\bf x}_i, {\\bf x}_l) = (1 + \\langle{\\bf x}_i, {\\bf x}_l\\rangle)^p, \\gamma &gt; 0, \\theta \\geq 0, p \\in \\mathbb{N};\nKernel Gaussiano: K({\\bf x}_i, {\\bf x}_l) = \\exp\\left\\{-\\frac{d^2({\\bf x}_i, {\\bf x}_l)}{2h^2}\\right\\},\\, h &gt; 0;\nKernel Laplaciano: K({\\bf x}_i, {\\bf x}_l) = \\mathrm{e}^{-\\gamma d({\\bf x}_i, {\\bf x}_l)}\\,, \\gamma &gt; 0;\nKernel Sigmóide: K({\\bf x}_i, {\\bf x}_l) = \\tanh(\\gamma {\\bf x}_i^T{\\bf x}_l + \\theta), \\, \\gamma&gt;0, \\theta&gt;0.\n\n\nem que \\gamma, h, \\theta e p, são parâmetros do kernel."
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-5",
+    "href": "index.html#suport-vector-regression-machine-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nA ideia principal por trás dos métodos que fazem uso de kernel é fazer o uso de um mapeamento não-linear arbitrário \\phi do espaço original dos padrões de entrada para um espaço de mais alta dimensão, \\mathcal{X} \\times \\mathcal{X} chamado de espaço de características.\n\nUm conjunto de padrões que entrada, em um problema de classificação, por exemplo, que não é linearmente separável poderá se tornar linearmente separável através desse mapeamento não linear.\n\nEm um espaço vetorial, o produto interno, \\langle{\\bf x}_i,{\\bf x}_j\\rangle = {\\bf x}_i^{T}{\\bf x}_j, normalmente é utilizado como medida de similaridade entre vetores. Porém, como não conhecemos \\phi(\\cdot), não é possível realizar \\phi({\\bf x}_i)^T\\phi({\\bf x}_j) em \\mathcal{X}\\times\\mathcal{X}. Aparentemente é bem complicado calcular \\langle\\phi({\\bf x}_i),\\phi({\\bf x}_j)\\rangle, sem conhecer \\phi(\\cdot), não é verdade?!"
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-6",
+    "href": "index.html#suport-vector-regression-machine-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nA essência dos métodos métodos baseado em kernel, é que não precisamos conhecer \\phi(\\cdot). Os produtos internos no espaço de características poderá ser calculado utilizando um kernel de Mercer.\n\nTeorema de Mercer: Todo kernel de Mercer K pode ser decomposto como\nK({\\bf x}_a,{\\bf x}_b) = \\sum_{i \\geq 0} \\gamma_i \\phi_i({\\bf x}_a)\\phi_i({\\bf x}_b), em que \\sum_{i \\geq 0} \\gamma_i^2 &lt; \\infty e \\phi_0, \\phi_1, \\cdots é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer \\phi(\\cdot) para o cálculo de produtos internos no espaço de características é comumente denominada de kernel trick/truque kernel. Ver detalhes em aqui."
+  },
+  {
+    "objectID": "index.html#section-4",
+    "href": "index.html#section-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "",
+    "text": "O Teorema que segue, frequentemente atribuído a ao artigo Kimeldorf, G. S. & Wahba, G. (1970). A correspondence between Bayesian estimation on stochastic processes and smoothing by splines. The Annals of Mathematical Statistics, 495–502, simplifica o problema de otimizar a função objetivo dada na Equação 4.\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-7",
+    "href": "index.html#suport-vector-regression-machine-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nDefinição: Seja K um kernel de Mercer, e sejam \\phi_i e \\gamma_i,\\, i \\geq 0, da forma do teorema acima. Então,\n\n\\mathcal{H}_K = \\left\\{g \\in L^2(\\mathcal{X}):\\,\\, existem\\,\\, (c_i)_{i\\geq0}\\,\\, com\\,\\,\\sum_{i\\geq1}\\frac{c_i^2}{\\gamma_i} &lt; \\infty\\,\\,,\\, tais\\,\\, que\\,\\, g({\\bf x}) = \\sum_{i\\geq1} c_i\\phi_i({\\bf x}) \\right\\}.\n\nDiremos que \\mathcal{H}_k é o Reproducing Kernel Hilbert Space - RKHS associado ao kernel K, em que a norma de uma função g({\\bf x}) = \\sum_{i\\geq0}c_i\\phi({\\bf x}) é definda por\n||g||_{\\mathcal{H}_k}^2 := \\sum_{i \\geq 0} c_i^2/\\gamma_i.\n\nAlém disso, tem-se que \\mathcal{H}_K é única para um dado K."
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-8",
+    "href": "index.html#suport-vector-regression-machine-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n O Teorema que segue, frequentemente atribuído a ao artigo Kimeldorf, G. S. & Wahba, G. (1970). A correspondence between Bayesian estimation on stochastic processes and smoothing by splines. The Annals of Mathematical Statistics, 495–502, simplifica o problema de otimizar a função objetivo dada na Equação 4.\n\nTeorema da Representação: Seja K um kernel de Mercer correspondente ap RKHS \\mathcal{H}_K. Considere o conjunto de treinamento ({\\bf x}_1, y_1), \\cdots, ({\\bf x}_n, y_n) e uma função de perda arbitrária L. Então, a solução de\n\n\\argmin_{g \\in \\mathcal{H}_K} \\sum_{k = 1}^n L(g({\\bf x}_k), y_k) + \\lambda||g||_{\\mathcal{H}_K^2}, \\tag{5} existe, e é única, em que\n\ng({\\bf x}) = \\sum_{k=1}^n \\alpha_k K({\\bf x}_k, {\\bf x})."
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-9",
+    "href": "index.html#suport-vector-regression-machine-9",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nÉ possível desmontrar que a otimização da Equação 5 poderá se dar pela otimização de\n\n\\argmin_{\\alpha_1, \\cdots, \\alpha_n}\\sum_{k = 1}^n L\\left(\\overbrace{\\sum_{i=1}^n\\alpha_iK({\\bf x}_i, {\\bf x})}^{g({\\bf x})}, y_k) \\right) + \\lambda\\underbrace{\\sum_{1 \\leq j,k \\leq n}\\alpha_i\\alpha_k K({\\bf x}_j, {\\bf x}_k)}_{||g||_{\\mathcal{H}_K}^2}.\n\nPortanto, o problema de otimizar a função objetivo dada na Equação 4 se reduz a encontrar os valores de \\alpha_1, \\cdots, \\alpha_n que minimiza a Equação 5. Portanto, irá especificar o kernel K e a função de perda L, em que \\lambda é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada."
+  },
+  {
+    "objectID": "index.html#suport-vector-regression-machine-10",
+    "href": "index.html#suport-vector-regression-machine-10",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Suport Vector Regression Machine",
+    "text": "Suport Vector Regression Machine\n\nEm se tratando de estimadores de regressão, Support Vector Regression Machines, utiliza-se uma função de perda diferente da quadrática, como definido em Drucker, H., Burges, C. J., Kaufman, L., Smola, A. J. & Vapnik, V. (1997). Support vector regression machines em Advances in neural information processing systems.\n\nEles definem a seguinte função de perda L(g({\\bf x}_k, y_k)) = (|y_k - g({\\bf x}_k)| - \\varepsilon)_{+}, que assume o valor 0 se |y_k - g({\\bf x}_k)| &lt; \\varepsilon e assumirá |y_k - g({\\bf x}_k)| - \\varepsilon, caso contrário.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
