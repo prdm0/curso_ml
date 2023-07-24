@@ -11,11 +11,14 @@ format:
   pdf: default
 reference-location: margin
 citation-location: margin
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Carregando bibliotecas necessárias
 
-```{r}
+```{r cache=TRUE}
 library(tidymodels)
 library(tidyverse)
 library(GGally)
@@ -27,51 +30,64 @@ tidymodels::tidymodels_prefer()
 
 ## Importando a base de dados
 
-Utilizando os dados de vinho vermelho🍷,
-disponíveis
+Utilizando os dados de vinho vermelho🍷, disponíveis
 [aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
 faça uma pequena análise exploratória dos dados. No
 [link](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
 do Kaggle você consegue uma explicação sobre o que significa cada uma
 das variáveis.
 
-Os dados, no meu caso, estão no diretório `"../dados/winequality-red.csv"`. Você
-deverá alterar o *path* para o diretório encontra-se a base que deverá ser obtida
-no link acima.
+Os dados, no meu caso, estão no diretório
+`"../dados/winequality-red.csv"`. Você deverá alterar o *path* para o
+diretório encontra-se a base que deverá ser obtida no link acima.
 
 ```{r}
 dados <- readr::read_csv(file = "../dados/winequality-red.csv")
 ```
+
 ## Uma exploração rápida dos dados
 
-É sempre importante olhar os dados antes de tentar modelar. Uma análise exploratória
-sempre será útil para identificarmos possíveis inconsistências.
+É sempre importante olhar os dados antes de tentar modelar. Uma análise
+exploratória sempre será útil para identificarmos possíveis
+inconsistências.
 
 ```{r}
 visdat::vis_dat(dados)
 ```
 
-O gráfico acima mostra que temos uma base de dados sem informações faltantes e todas as *features*
-presentes na base são numéricas. É uma situação confortável, haja vista que, aqui, não precisaremos
-nos preocupar com imputação de dados faltantes.
+O gráfico acima mostra que temos uma base de dados sem informações
+faltantes e todas as *features* presentes na base são numéricas. É uma
+situação confortável, haja vista que, aqui, não precisaremos nos
+preocupar com imputação de dados faltantes.
 
-Um resumo dos dados poderá ser obtido utilizando a função `glimpse` do pacote **dplyr** que é carregado
-com a biblioteca **tidyverse** de R.
+Um resumo dos dados poderá ser obtido utilizando a função `glimpse` do
+pacote **dplyr** que é carregado com a biblioteca **tidyverse** de R.
 
 ```{r}
 dados |> 
   dplyr::glimpse()
 ```
 
-É possível todas as correlações entre todas as variáveis da base, com a função `data_vis_cor`. Um gráfico útil com as correlações poderá ser obtido usando a função `vis_cor`, conforme abaixo:
+É possível todas as correlações entre todas as variáveis da base, com a
+função `data_vis_cor`. Um gráfico útil com as correlações poderá ser
+obtido usando a função `vis_cor`, conforme abaixo:
 
 ```{r}
 visdat::data_vis_cor(dados)
 visdat::vis_cor(dados)
 ```
 
-As bibliotecas **GGally** e **skimr** também possuem funções úteis que podem nos 
-auxiliar no processo de exploração dos dados.
+Um gráfico de scatterplot para as variáveis numéricas poderá ser útil.
+Você poderá fazer isso, usando a função `ggcatmat` do pacote
+[GGally](https://ggobi.github.io/ggally/index.html).
+
+```{r}
+dados |> 
+  GGally::ggscatmat()
+```
+
+As bibliotecas **GGally** e **skimr** também possuem funções úteis que
+podem nos auxiliar no processo de exploração dos dados.
 
 ```{r}
 dados |> 
@@ -83,11 +99,62 @@ dados |>
 
 ## Construindo os workflows dos modelos
 
-Iremos comparar os modelos de regressão linar utilizando *elastic net*, com o método $k$NN e *suport vector regression machine* - SVRM. Buscaremos pelo melhor modelo de cada uma das metodologias consideradas. Posteriormente iremos escolher o melhor modelo entre os melhores de cada uma das classes. A ideia é escolher o melhor modelo que consiga prever melhor a qualidade do vinho, i.e., prever a variável `quality`.
+Iremos comparar os modelos de regressão linar utilizando *elastic net*,
+com o método $k$NN e *suport vector regression machine* - SVRM.
+Buscaremos pelo melhor modelo de cada uma das metodologias consideradas.
+Posteriormente iremos escolher o melhor modelo entre os melhores de cada
+uma das classes. A ideia é escolher o melhor modelo que consiga prever
+melhor a qualidade do vinho, i.e., prever a variável `quality`.
+
+### Tratamento dos dados
+
+Apesar de não haver muito o que fazer nos dados que estamos utilizando
+nesse exemplo, em que nosso objetivo aqui é ter uma análise explicativa
+de como comparar modelos usando o
+[tidymodels](https://www.tidymodels.org/), iremos utilizar a biblioteca
+[recipes](https://recipes.tidymodels.org/). Os dados contém apenas
+variáveis numéricas com todas informações presentes, tornando o problema
+um pouco mais simples.
+
+**Na receita, iremos colocar as seguintes etapas**:
+
+1.  Tomaremos o logarítmo de todas as variáveis peditoras (*features*);
+2.  Remover variáveis preditoras (*features*) que eventualmente estão
+    altamente correlacionadas (usando a função `step_corr`);
+3.  Remover variáveis que possam ter variância próxima à zero, i.e., que
+    sejam aproximadamente constantes (usando `step_zv`);
+4.  Normalizar os dados utilizando a função `step_normalize`.
+
+Para que iremos remover variáveis altamente correlacionadas apenas nas
+variáveis preditoras, utilizamos a função `all_predictors` como
+argumentod a função `step_corr`. Já no passo de normalização dos dados,
+quando consideramos todas as variáveis numéricas, passamos para a função
+`step_normalize` a função `all_numeric` que especifica que deverá ser
+normalizado todas as variáveis numéricas. Na verdade, a normalização se
+dá em todas as variáveis numéricas, e portanto, esse argumento poderia
+ser omitido. Além disso, toda nossa base é formada por variáveis
+numéricas, o que torna redundante o uso, mas irei deixar explícito que
+todas as variáveis numéricas estão sendo normalizadas.
+
+```{r}
+receita <- 
+  dados |> 
+  recipe(formula = quality ~ .)
+```
+
+
+**Como fazemos para observar se nosso pré-processamento funcionou?**
+
+![](/gifs/hum.gif)
 
 ### Partição dos dados
 
-Como sabemos, precisamos dividir nossa base de dados em conjunto de treinamento, em que nesse conjunto iremos será realizado o procedimento de validação cruzada e uma base de dados de teste para a avaliação final dos nossos modelos. Deixaremos $80\%$ para o treniamento do modelo e $20\%$ para teste. Iremos estratificar nossa amostra usando a variável `quality`, variável que queremos estimar (*label*/rótulo).
+Como sabemos, precisamos dividir nossa base de dados em conjunto de
+treinamento, em que nesse conjunto iremos será realizado o procedimento
+de validação cruzada e uma base de dados de teste para a avaliação final
+dos nossos modelos. Deixaremos $80\%$ para o treniamento do modelo e
+$20\%$ para teste. Iremos estratificar nossa amostra usando a variável
+`quality`, variável que queremos estimar (*label*/rótulo).
 
 ```{r}
 divisao <- rsample::initial_split(dados, prop = 0.8, strata = "quality")
@@ -97,9 +164,10 @@ teste <- rsample::testing(divisao)
 
 ### Definindo os modelos
 
-O código que segue faz a configuração realiza a configuração dos modelos que serão
-comparados. O código `tune::tune()` especifica que o respectivo parâmetro de sintonização
-será obtido no processo de validação cruzada, particularmente, um *grid search*.
+O código que segue faz a configuração realiza a configuração dos modelos
+que serão comparados. O código `tune::tune()` especifica que o
+respectivo parâmetro de sintonização será obtido no processo de
+validação cruzada, particularmente, um *grid search*.
 
 ```{r}
 modelo_elastic <- 
@@ -125,4 +193,3 @@ modelo_svm <-
   parsnip::set_mode("regression") |> 
   parsnip::set_engine("kernlab")
 ```
-

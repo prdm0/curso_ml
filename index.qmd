@@ -942,8 +942,8 @@ Os pacotes [tune](https://tune.tidymodels.org/),
 [yardstick](https://yardstick.tidymodels.org/) tomará conta da parte de
 treino do modelo. Os pacote [tune](https://tune.tidymodels.org/) e
 [dails](https://dials.tidymodels.org/) são responsáveis pela "tunagem"
-dos eventuais hiperparâmetros e o
-[yardstick](https://yardstick.tidymodels.org/) é mais responsável pelas
+dos eventuais hiperparâmetros, já o
+[yardstick](https://yardstick.tidymodels.org/) é responsável pelas
 métricas de avaliação do modelo.
 
 <br>
@@ -973,7 +973,7 @@ otimização dos hiperparâmetros.
 <br>
 
 Todo o fluxo de trabalho é gerido pela biblioteca
-[workflows](https://workflows.tidymodels.org/) de R.
+[workflows](https://workflows.tidymodels.org/) de R. Em especial, as etapas de *feature engineering* e especificação do modelo.
 
 <br>
 
@@ -1399,7 +1399,7 @@ manipulações algébricas, temos que:
 
 $$\widehat{\beta} = \frac{\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = r_{xy}\frac{s_y}{s_x},$$
 em que $s_x$ e $s_y$ são os desvio-padrão de $x$ e $y$, respectivamente,
-e $r_{xy}$ é o coeficiente de correlação da amostra.
+e $r_{xy}$ é o coeficiente de correlação da amostra, em que $-1 \leq r_{xy} \leq 1$.
 
 ## Regressão linear simples
 

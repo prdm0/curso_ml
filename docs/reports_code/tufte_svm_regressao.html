@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">20 de julho de 2023</p>
+      <p class="date">24 de julho de 2023</p>
     </div>
   </div>
   
@@ -170,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::filter()  masks stats::filter()
 ✖ dplyr::lag()     masks stats::lag()
 ✖ recipes::step()  masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -272,15 +272,29 @@ $ quality                &lt;dbl&gt; 5, 5, 5, 6, 5, 5, 5, 7, 7, 5, 5, 5, 5, 5, 5
 <p><img src="tufte_svm_regressao_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>As bibliotecas <strong>GGally</strong> e <strong>skimr</strong> também possuem funções úteis que podem nos auxiliar no processo de exploração dos dados.</p>
+<p>Um gráfico de scatterplot para as variáveis numéricas poderá ser útil. Você poderá fazer isso, usando a função <code>ggcatmat</code> do pacote <a href="https://ggobi.github.io/ggally/index.html">GGally</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggscatmat</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The dot-dot notation (`..scaled..`) was deprecated in ggplot2 3.4.0.
+ℹ Please use `after_stat(scaled)` instead.
+ℹ The deprecated feature was likely used in the GGally package.
+  Please report the issue at &lt;https://github.com/ggobi/ggally/issues&gt;.</code></pre>
+</div>
 <div class="cell-output-display">
 <p><img src="tufte_svm_regressao_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  skimr<span class="sc">::</span><span class="fu">skim</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As bibliotecas <strong>GGally</strong> e <strong>skimr</strong> também possuem funções úteis que podem nos auxiliar no processo de exploração dos dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="tufte_svm_regressao_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  skimr<span class="sc">::</span><span class="fu">skim</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -514,41 +528,55 @@ $ quality                &lt;dbl&gt; 5, 5, 5, 6, 5, 5, 5, 7, 7, 5, 5, 5, 5, 5, 5
 <section id="construindo-os-workflows-dos-modelos" class="level2">
 <h2 class="anchored" data-anchor-id="construindo-os-workflows-dos-modelos">Construindo os workflows dos modelos</h2>
 <p>Iremos comparar os modelos de regressão linar utilizando <em>elastic net</em>, com o método <span class="math inline">\(k\)</span>NN e <em>suport vector regression machine</em> - SVRM. Buscaremos pelo melhor modelo de cada uma das metodologias consideradas. Posteriormente iremos escolher o melhor modelo entre os melhores de cada uma das classes. A ideia é escolher o melhor modelo que consiga prever melhor a qualidade do vinho, i.e., prever a variável <code>quality</code>.</p>
+<section id="tratamento-dos-dados" class="level3">
+<h3 class="anchored" data-anchor-id="tratamento-dos-dados">Tratamento dos dados</h3>
+<p>Apesar de não haver muito o que fazer nos dados que estamos utilizando nesse exemplo, em que nosso objetivo aqui é ter uma análise explicativa de como comparar modelos usando o <a href="https://www.tidymodels.org/">tidymodels</a>, iremos utilizar a biblioteca <a href="https://recipes.tidymodels.org/">recipes</a>. Os dados contém apenas variáveis numéricas com todas informações presentes, tornando o problema um pouco mais simples.</p>
+<p><strong>Na receita, iremos colocar as seguintes etapas</strong>:</p>
+<ol type="1">
+<li>Tomaremos o logarítmo de todas as variáveis peditoras (<em>features</em>);</li>
+<li>Remover variáveis preditoras (<em>features</em>) que eventualmente estão altamente correlacionadas (usando a função <code>step_corr</code>);</li>
+<li>Remover variáveis que possam ter variância próxima à zero, i.e., que sejam aproximadamente constantes (usando <code>step_zv</code>);</li>
+<li>Normalizar os dados utilizando a função <code>step_normalize</code>.</li>
+</ol>
+<p>Para que iremos remover variáveis altamente correlacionadas apenas nas variáveis preditoras, utilizamos a função <code>all_predictors</code> como argumentod a função <code>step_corr</code>. Já no passo de normalização dos dados, quando consideramos todas as variáveis numéricas, passamos para a função <code>step_normalize</code> a função <code>all_numeric</code> que especifica que deverá ser normalizado todas as variáveis numéricas. Na verdade, a normalização se dá em todas as variáveis numéricas, e portanto, esse argumento poderia ser omitido. Além disso, toda nossa base é formada por variáveis numéricas, o que torna redundante o uso, mas irei deixar explícito que todas as variáveis numéricas estão sendo normalizadas.</p>
+<p>Como fazemos para observar se nosso pré-processamento funcionou?</p>
+<p><img src="../gifs/hum.gif" class="img-fluid"></p>
+</section>
 <section id="partição-dos-dados" class="level3">
 <h3 class="anchored" data-anchor-id="partição-dos-dados">Partição dos dados</h3>
 <p>Como sabemos, precisamos dividir nossa base de dados em conjunto de treinamento, em que nesse conjunto iremos será realizado o procedimento de validação cruzada e uma base de dados de teste para a avaliação final dos nossos modelos. Deixaremos <span class="math inline">\(80\%\)</span> para o treniamento do modelo e <span class="math inline">\(20\%\)</span> para teste. Iremos estratificar nossa amostra usando a variável <code>quality</code>, variável que queremos estimar (<em>label</em>/rótulo).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(dados, <span class="at">prop =</span> <span class="fl">0.8</span>, <span class="at">strata =</span> <span class="st">"quality"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(divisao)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(divisao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(dados, <span class="at">prop =</span> <span class="fl">0.8</span>, <span class="at">strata =</span> <span class="st">"quality"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(divisao)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(divisao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="definindo-os-modelos" class="level3">
 <h3 class="anchored" data-anchor-id="definindo-os-modelos">Definindo os modelos</h3>
 <p>O código que segue faz a configuração realiza a configuração dos modelos que serão comparados. O código <code>tune::tune()</code> especifica que o respectivo parâmetro de sintonização será obtido no processo de validação cruzada, particularmente, um <em>grid search</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo_elastic <span class="ot">&lt;-</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">linear_reg</span>(<span class="at">penalty =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), <span class="at">mixture =</span> tune<span class="sc">::</span><span class="fu">tune</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>modelo_knn <span class="ot">&lt;-</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">neighbors =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_power =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight_func =</span> <span class="st">"gaussian"</span> </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>modelo_svm <span class="ot">&lt;-</span> </span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">svm_rbf</span>(</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">rbf_sigma =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> tune<span class="sc">::</span><span class="fu">tune</span>()</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kernlab"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>modelo_elastic <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">linear_reg</span>(<span class="at">penalty =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), <span class="at">mixture =</span> tune<span class="sc">::</span><span class="fu">tune</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>modelo_knn <span class="ot">&lt;-</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">nearest_neighbor</span>(</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">neighbors =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_power =</span> tune<span class="sc">::</span><span class="fu">tune</span>(), </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight_func =</span> <span class="st">"gaussian"</span> </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>modelo_svm <span class="ot">&lt;-</span> </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">svm_rbf</span>(</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">rbf_sigma =</span> tune<span class="sc">::</span><span class="fu">tune</span>(),</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> tune<span class="sc">::</span><span class="fu">tune</span>()</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kernlab"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
