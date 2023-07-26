@@ -10,9 +10,12 @@ format:
     code-tools: true
     code-copy: true
     number-sections: true
+    embed-resources: true
+    self-contained-math: true
 self-contained: true
 page-layout: full
 editor: source
+output: "Suport Vector Regression Machine - SVRM.html"
 ---
 
 ## Carregando bibliotecas necessárias
@@ -349,4 +352,28 @@ Agora que temos os hiperparâmetros estimados e temos uma boa estimativa do risc
 modelo_final <- 
   wf_final |> 
   fit(dados)
+```
+
+### Salvando o modelo
+
+Depois que temos o modelo finalizado, podemos ter alguns interesses de como utilizar o resultado, i.e., o modelo treinado. Entre alguns motivos, posso citar:
+
+1. Salvar o modelo para uso no futuro, sem ter que retreinar;
+2. Distribuir o modelo para que outras pessoas possam experimentar, sem terem que executar seu script R e retreinar o modelo;
+3. Introduzir seu modelo treinado em uma API que irá consumir os resultados, i.e., consumir as previsões do modelo.
+
+Nessas situações, é conveniente salvar o modelo em um arquivo serializado (*R Data Serialization*). Tais arquivos possuem a extensão `.rds`. Devemos fazer:
+
+
+```{r}
+#| eval: false
+
+# Salvando o modelo em um arquivo serializado
+saveRDS(modelo_final, file = "modelo_final.rds")
+
+# Lendo o arquivo serializado com o modelo final
+load(file = "modelo_final.rds")
+
+# Fazendo novas previsões
+predict(modelo_final, new_data = novos_dados)
 ```
