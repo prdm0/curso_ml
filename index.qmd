@@ -4832,3 +4832,7 @@ das variáveis.
 ```{=html}
  <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+
+## 🌳 Árvores de decisão
+
+

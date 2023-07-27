@@ -127,3 +127,8 @@ predict(modelo_final, new_data = dados_expectativa_renda)
 # Lendo um modelo salvo para depois fazer predições. Aqui estou supondo que 
 # o modelo encontra-se salvo em "~/Downloads/modelo_final.rds":
 # readRDS("~/Downloads/modelo_final.rds")
+
+
+?purrr::accumulate()
+
+1+1
