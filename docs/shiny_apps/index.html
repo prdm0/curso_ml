@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-width="full" class="anchored" data-anchor-id="rows">Rows</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out17338fc9704c7419" style="width:100%;height:400px;"></div>
+<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="outd4e910e8eeba1a87" style="width:100%;height:400px;"></div>
 </div>
 </div>
 <p><br></p>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc_ajustes</span>(<span class="at">mc =</span> input<span class="sc">$</span>numeromodelos, <span class="at">n =</span> input<span class="sc">$</span>tamanhoamostral, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> input<span class="sc">$</span>grau)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out5b26c6d615ea7192" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="out1a0dda6356bfbba8" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -331,7 +331,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_bar</span>(input<span class="sc">$</span>grau_polinomio)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="outffa819afa255c0e5" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="out6bf3465e5c6331b0" style="width:100%;height:400px;"></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="árvore-de-regressão" class="level1" data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced">
+<h1 data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced">Árvore de regressão</h1>
+<section id="column-4" class="level2">
+<h2 class="anchored" data-anchor-id="column-4">Column</h2>
+<section id="entrada-de-informações-2" class="level3">
+<h3 class="anchored" data-anchor-id="entrada-de-informações-2">Entrada de informações</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"complexidade"</span>, <span class="st">"Valor de complecidade:"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fl">0.0001</span>, <span class="at">max =</span> <span class="dv">1</span>, <span class="at">value =</span> <span class="fl">0.001</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="complexidade-label" for="complexidade">Valor de complecidade:</label>
+<input class="js-range-slider" id="complexidade" data-skin="shiny" data-min="0.0001" data-max="1" data-from="0.001" data-step="0.01" data-grid="true" data-grid-num="9.999" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>random_y <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 250L, <span class="at">sigma =</span> <span class="fl">0.1</span>){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="fu">sin</span>(x), <span class="at">sd =</span> sigma))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>arvore <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">complexidade =</span> <span class="fl">0.5</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, ...){</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(...)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">rpart</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">prune</span>(arvore, <span class="at">cp =</span> complexidade) <span class="co"># Realizando poda</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(arvore, <span class="at">newdata =</span> dados)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando x versus y -----------------------------------------------------</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span> </span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(x, y_chapeu), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Árvore de regressão"</span>,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Parâmetro de coplexidade = {complexidade}"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arvore</span>(<span class="at">complexidade =</span> input<span class="sc">$</span>complexidade)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="shiny-plot-output html-fill-item" id="out59ced55334b998d6" style="width:100%;height:400px;"></div>
 </div>
 </div>
 

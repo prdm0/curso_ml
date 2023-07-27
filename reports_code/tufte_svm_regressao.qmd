@@ -10,12 +10,8 @@ format:
     code-tools: true
     code-copy: true
     number-sections: true
-    embed-resources: true
-    self-contained-math: true
-self-contained: true
 page-layout: full
 editor: source
-output: "Suport Vector Regression Machine - SVRM.html"
 ---
 
 ## Carregando bibliotecas necessárias

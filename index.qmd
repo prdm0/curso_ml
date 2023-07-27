@@ -438,8 +438,8 @@ distância, formando grupos (*clusters*).
 <br>
 
 A ideia é maximizar a distância entre os clusters e minimizar a
-distância entre os elementos no interior do grupo. Em outras palavras,
-o que se quer é tornar os grupos mais diferentes possíveis e tornar os
+distância entre os elementos no interior do grupo. Em outras palavras, o
+que se quer é tornar os grupos mais diferentes possíveis e tornar os
 elementos dos grupos o mais parecido possível.
 
 <br>
@@ -625,7 +625,8 @@ autor aborda de forma básica o pacote
 
 Durante o curso, na medida da necessidade de utilização dessas
 ferramentas, durante a exposição de exemplos, abordaremos alguns
-conceitos. Você terá a oportunidade de também explorar essas bibliotecas nos exercícios. Ok?!
+conceitos. Você terá a oportunidade de também explorar essas bibliotecas
+nos exercícios. Ok?!
 
 <br>
 
@@ -779,9 +780,11 @@ estariam camuflados (*black box*) na utilização do
 
 <br>
 
-Para não deixar de valar sobre o [tidymodels](https://www.tidymodels.org/packages/), 
-explicarei, agora, a sua filosofia e como ele está dividido em outras bibliotecas
-que são úteis em cada parte do processo de treinamento de um modelo de *machine learning*.
+Para não deixar de valar sobre o
+[tidymodels](https://www.tidymodels.org/packages/), explicarei, agora, a
+sua filosofia e como ele está dividido em outras bibliotecas que são
+úteis em cada parte do processo de treinamento de um modelo de *machine
+learning*.
 
 ![](gifs/ok-2.gif){width="20%"}
 
@@ -879,9 +882,9 @@ biblioteca **caret** continua sendo mantida, apesar da existência do
 :::
 
 ::: {.column width="50%"}
-Max Kuhn, atualmente, no momento de escrita desse mateiral, é funcionário da
-[Posit Ltda](https://posit.co/) e foi contratado para estar a frente do desenvolvimento de
-uma versão "arrumada" (*tidy*) do
+Max Kuhn, atualmente, no momento de escrita desse mateiral, é
+funcionário da [Posit Ltda](https://posit.co/) e foi contratado para
+estar a frente do desenvolvimento de uma versão "arrumada" (*tidy*) do
 [caret](https://cran.r-project.org/web/packages/caret/index.html), que é
 o [tidymodels](https://www.tidymodels.org/).
 
@@ -973,7 +976,8 @@ otimização dos hiperparâmetros.
 <br>
 
 Todo o fluxo de trabalho é gerido pela biblioteca
-[workflows](https://workflows.tidymodels.org/) de R. Em especial, as etapas de *feature engineering* e especificação do modelo.
+[workflows](https://workflows.tidymodels.org/) de R. Em especial, as
+etapas de *feature engineering* e especificação do modelo.
 
 <br>
 
@@ -1329,10 +1333,10 @@ $$\argmin_g R_{pred}(g) = \argmin_g R_{reg}(g) = r({\bf x}).$$
 A definição de risco preditivo $R_{pred}$, que também denotaremos
 simplesmente por $R$, tem um apelo frequentista. Dessa forma, para um
 novo conjunto com $m$ novas observaçõs,
-$({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que essa 
-nova amostra é i.i.d. à amostra observada (utilizada no treinamento do modelo/na 
-estimação). Então, pela Lei dos Grandes Números, temos que um bom estimador para 
-a função para o risco preditivo é dado por:
+$({\bf X}_{n+1}, Y_{n+1}), \cdots, ({\bf X}_{n+m}, Y_{n+m})$, temos que
+essa nova amostra é i.i.d. à amostra observada (utilizada no treinamento
+do modelo/na estimação). Então, pela Lei dos Grandes Números, temos que
+um bom estimador para a função para o risco preditivo é dado por:
 
 $$\frac{1}{m}\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \approx R(g) := \mathbb{E}\left[(Y - g({\bf X}))^2\right].$$ {#eq-risco-correto}
 
@@ -1399,7 +1403,8 @@ manipulações algébricas, temos que:
 
 $$\widehat{\beta} = \frac{\sum_{i = 1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = r_{xy}\frac{s_y}{s_x},$$
 em que $s_x$ e $s_y$ são os desvio-padrão de $x$ e $y$, respectivamente,
-e $r_{xy}$ é o coeficiente de correlação da amostra, em que $-1 \leq r_{xy} \leq 1$.
+e $r_{xy}$ é o coeficiente de correlação da amostra, em que
+$-1 \leq r_{xy} \leq 1$.
 
 ## Regressão linear simples
 
@@ -4476,16 +4481,18 @@ A resposta é **Sim**!
 
 <br>
 
-Na verdade, é bem mais interessante comparar conjuntamente, visto que para poder
-compararmos devemos garantir que as mesmas amostras de treinamento e teste estão
-sendo utilizadas, i.e., para termos uma comparação mais justa. Claro que dá para
-fazer de forma separada, fixando a semente dos geradores de números pseudo-aleatórios,
-para que a biblioteca rsample possa reproduzir a mesma divisão para ambos os modelos.
-Porém, a estratégia do exemplo abaixo é mais consistente.
+Na verdade, é bem mais interessante comparar conjuntamente, visto que
+para poder compararmos devemos garantir que as mesmas amostras de
+treinamento e teste estão sendo utilizadas, i.e., para termos uma
+comparação mais justa. Claro que dá para fazer de forma separada,
+fixando a semente dos geradores de números pseudo-aleatórios, para que a
+biblioteca rsample possa reproduzir a mesma divisão para ambos os
+modelos. Porém, a estratégia do exemplo abaixo é mais consistente.
 
 <br>
 
-[Exemplo]{.red}: Estude o código que segue! Ele compara os modelos de $k$NN com o método de Nadaraya-Watson.
+[Exemplo]{.red}: Estude o código que segue! Ele compara os modelos de
+$k$NN com o método de Nadaraya-Watson.
 
 <br>
 
@@ -4623,8 +4630,8 @@ predict(modelo_final, new_data = dados_expectativa_renda)
 # Lendo um modelo salvo para depois fazer predições. Aqui estou supondo que 
 # o modelo encontra-se salvo em "~/Downloads/modelo_final.rds":
 # readRDS("~/Downloads/modelo_final.rds")
-````
 ![](gifs/bom.gif)
+```
 
 ## Suport Vector Regression Machine
 
@@ -4799,7 +4806,7 @@ em que $\alpha_1, \cdots, \alpha_n$ é uma sequência de valores reais.
 
 <br>
 
-$$\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1}^n\alpha_iK({\bf x}_i, {\bf x})}^{g({\bf x})}, y_k) \right) + \lambda\underbrace{\sum_{1 \leq j,k \leq n}\alpha_i\alpha_k K({\bf x}_j, {\bf x}_k)}_{||g||_{\mathcal{H}_K}^2}.$$
+$$\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1}^n\alpha_iK({\bf x}_i, {\bf x})}^{g({\bf x})}, y_k \right) + \lambda\underbrace{\sum_{1 \leq j,k \leq n}\alpha_i\alpha_k K({\bf x}_j, {\bf x}_k)}_{||g||_{\mathcal{H}_K}^2}.$$
 
 <br>
 
@@ -4833,6 +4840,269 @@ das variáveis.
  <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
 
-## 🌳 Árvores de decisão
+## 🌳 Árvores de regressão
+
+<br>
+
+Em aprendizagem de máquina, uma arvore de regressão consiste em uma
+metodologia não-paramétrica que nos leva a resultados que são facilmente
+interpretáveis. A árvore é construirda por meio de particionamentos
+recursivos no espaço das covariáveis. Cada partição recebe o nome de
+[nó]{.red} e o resultado final (valor da regressão) é denominado de
+[folha]{.red}.
+
+<br>
+
+[Exemplo]{.red}: Construindo uma árvore de regressão, usando a
+biblioteca
+[rpart](https://cran.r-project.org/web/packages/rpart/index.html) para
+construção da árvore e a biblioteca
+[rpart.plot](https://cran.r-project.org/web/packages/rpart.plot/index.html)
+para a plotagem da árvore estimada.
+
+```{r}
+library(rpart)
+library(rpart.plot)
+
+dados <- readr::read_csv(file = "dados/winequality-red.csv", show_col_types = FALSE)
+arvore <-  rpart::rpart(formula = quality ~ ., data = dados)
+rpart.plot(arvore, type = 4, extra = 1)
+```
+
+Perceba que há um particionamento binário em cada nó da árvore 🌳 e que
+poderemos sequir para a aresta da esquerda quando a condição no nó for
+verdadeira e para direita caso contrário. Dada uma nova observação
+${\bf x}_i$, poderemos seguir as condições da árvore até chegar a uma
+folha 🍃 dessa árvore. Nesse caso, a folha 🍃 contém uma estimativa da
+qualidade do vinho.
+
+<br>
+
+Por exemplo, na árvore acima podemos perceber que vinhos com teor
+alcoólico inferior à 11 nos conduzem a vinhos 🍷 de qualidade inferior.
+Temos que vinhos com teor alcoólico maior que 11 e com sulfato maior que
+0.65 nos levam à ótimos vinhos, segundo o conjunto de dados utilizado.
+
+<br>
+
+Perceba que dado ${\bf x}_i$, poderemos percorrer a árvore a mão.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+Formalmente, temos que a metodologia de estimação de uma árvore de
+regressão cria uma partição no espaço das covariáveis em regiões
+distintas e disjuntas, que denotaremos de $R_1, R_2, \cdots, R_j$, com
+$R_a \cap R_b$, $\forall a,b \in 1, \cdots, j$. A predição é dada por:
+
+$$g({\bf x}) = \frac{1}{|\{i:{\bf x}_i \in R_k\}|}\sum_{i:{\bf x}_i \in R_k} y_i.$$
+
+<br>
+
+**A construção de uma árvore de regressão envolve dois passos
+principais**:
+
+<br>
+
+1.  A criação de uma árvore complexa que nos leve a partições "puras",
+    i.e., a partições nas observações do conjunto de coveriáveis que nos
+    leve a valores de $Y$, no conjunto de treinamento em cada uma das
+    folhas sejam homogêneas;
+
+2.  Podar a árvore, com a finalidade de evitarmos super-ajuste
+    (*overffiting*), e portanto, termos uma alta variância do modelo.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+No passo 1, para avaliarmos o quão razoável é uma árvore $T$, utilizamos
+o Erro Quadrático Médio - EQM, em que
+
+$$\mathcal{P}(T) = \sum_{R}\sum_{i:{\bf x}_i \in R} \frac{(y_i - \widehat{y}_R)^2}{n},$$
+em que $\widehat{y}_R$ é o valor predito de $y$ para a resposta de uma
+observação pertencente à região $R$.
+
+<br>
+
+Encontrar uma árvore $T$ que minimize $\mathcal{P}(T)$ é uma tarefa
+computacionalmente cara. Por isso, que os algoritmos de estimação de $T$
+normalmente utilizam partições binárias, como no exemplo anterior.
+
+<br>
+
+Existem diversos algoritmos utilizados para estimação de $T$, em que o
+[*C*]{.red}*lassification [A]{.red}nd [R]{.red}egression [T]{.red}ree* -
+[CART]{.red} é o mais conhecido. O algoritmo foi estabelecido no livro Breiman
+L., Friedman J. H., Olshen R. A., and Stone, C. J. (1984)
+**Classification and Regression Trees**. Wadsworth.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+O algoritmo particiona o espaço de covariáveis em duas regiões
+disjuntas. Para a escolha dessa partição, busca-se, dentre todas as
+covariáveis $x_i$ e cortes $t_1$, a combinação que conduz a uma partição
+$(R_1, R_2)$ com menor predições de erro quadrático, i.e., dado um nó, a
+partição é construída de modo a minimizar:
+
+$$SSE = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2,$${#eq-sse-tree}
+em que $\widehat{y}_{R_k}$ é a predição de $y$ fornecida pela região
+$R_k$ e SSE é denominado *[S]{.red}um of [S]{.red}quares of [E]{.red}rrors* - SSE.
+
+<br>
+
+Assim, tem-se que o algoritmo irá fornecer:
+
+<br>
+
+$$R_1 = \{{\bf x} : {\bf x}_i < t_1\}\, \mathrm{e}\, R_2 = \{{\bf x} : {\bf x}_i \geq t_1\},$$
+em que $x_i$ é a variável escolhida e $t_1$ é o corte definido.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+Uma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte, o algoritmo irá particionar as regiões $R_1$ e $R_2$ em regiões menores, seguindo o mesmo critério,tanto para $R_1$ quanto para $R_2$. O algoritmo continua de forma recursiva até que tenhamos uma árvore com poucas observações em uma das folhas 🍃. 
+
+<br>
+
+Por exemplo, podemos decidir em parar de tornar a árvore profunda quando em cada folha tivermos menos de 5 observações. Porém, essa árvore criada irá produzir boas predições para o conjunto de treinamento, porém, não irá performar bem em novas observações. Isso, por conta, do *trade off* entre viés e variância. Em outras palavas, haverá *overfitting*.
+
+<br>
+Na etapa do processo de poda, cada nó é retirado, um por vmez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o *overffiting* do modelo.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+Para limitar a profundidade da arvore $T$ a ser estimada, um parâmetro de penalização/complexidade poderá ser introduzido na @eq-sse-tree. Assim, o problema consistem em obter regiões e pontos de cortes que minimize:
+
+$$SSE + \alpha|T|,$$
+em que $\alpha > 0$ é o hiperparâmetro de complexidade do modelo e $|T|$ é um valor inteiro que define a profundidade máxima da árvore. Por exemplo, $|T|$ na biblioteca [rpart](https://cran.r-project.org/web/packages/rpart/index.html) é definido pelo parâmetro `tree_depth` em 30. Normalmente nos concentramos em em tunar o parâmetro `cost_complexity` que é o $\alpha$. 
+
+![](gifs/hum.gif)
+
+## 🌳 Árvores de regressão
+
+<br>
+
+[Exemplo]{.red}: Poderemos podar a árvore usando a função `prune` do pacote [rpart](https://cran.r-project.org/web/packages/rpart/index.html). Considerando o exemplo anterior, tornando a árvore menos compleça, poderíamos decidir em podar alterando o seu parâmetro de complexidade.
+
+```{r}
+library(rpart)
+library(rpart.plot)
+
+dados <- readr::read_csv(file = "dados/winequality-red.csv")
+
+arvore <- dados |> 
+  rpart::rpart(formula = quality ~ ., data = _) 
+
+# O melhor parâmetro de custo
+melhor_grau <- arvore$cptable[nrow(arvore$cptable),][1L]
+
+# Aumentando o parâmetro de custo de 0.01 para 0.04
+arvore_podada <- rpart::prune(tree = arvore, cp = 0.04)
+
+# Plotando a árvore podada
+rpart.plot::rpart.plot(arvore_podada)
+```
+
+## 🌳 Árvores de regressão
+
+<br>
+O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado dentro de um procedimento de validação cruzada.
 
 
+<br>
+
+![](gifs/bom.gif)
+
+## 🌳 Árvores de regressão
+
+<br>
+**Algumas observações sobre a árvore 🌳 de regressão**:
+
+<br>
+
+1. É um método não-paramétrico;
+2. Pode ser representado graficamente;
+3. É útil na análise exploratória dos dados do problema em questão;
+4. Pode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;
+5. Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas. Veremos o uso de árvore de classificação mais a frente.
+
+<br>
+
+![](gifs/chapulin-colorado-no.gif)
+
+## 🌳 Árvores de regressão
+
+<br>
+
+O nível de complexidade é obtido via *cross-validation* de modo a encontrar a menor subárvore que generaliza melhor o problema para dados não visto. 
+
+<br>
+
+Assim como nos modelos de regressão com penalidade que vimos anteriormente, aqui, para valores menores de $\alpha$ tende a produzir modelos mais complexos. Consequentemente, à medida que uma árvore cresce, a redução no $SSE$ deve ser maior do que a penalidade de complexidade de custo.
+
+<br>
+
+![](gifs/chaves-isso.gif)
+
+## 📚 Exercícios
+
+<br>
+
+[Exercício]{.red}: Considere a variável aleatória $Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com $X_i \in \mathcal{U}(0, 10)\,, \forall i.$ Utilizando a biblioteca **rpart**, implemente a função `arvore(n = 250L, complexidade, sigma = 0.1)` que devolve o gráfico *scatterplot* com os pontos $X_i$ e $Y_i$ e por cima deles o gráfico de linha com os valores preditos. A função deverá ter três argumentos, `n`, `complexidade` e `sigma`, que são o tamanho da amostra, o grau de complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se preocupe com divisão entre treino e teste nem validação cruzada. A solução desse exercício não tem como objetivo encontrar o melhor hiperparâmetro, i.e., não é necessário "tunar" o parâmetro `complexidade`. A função deverá retornar algo como:
+
+```{r}
+#| echo: false
+library(ggplot2)
+library(tibble)
+library(rpart)
+
+random_y <- function(n = 250L, sigma = 0.1){
+  x <- runif(n = n, min = 0, max = 10)
+  tibble(x = x, y = rnorm(n = n, mean = sin(x), sd = sigma))
+}
+
+set.seed(0)
+
+arvore <- function(dados, complexidade = 0.5, graph = TRUE, ...){
+  
+  dados <- random_y(...)
+  
+  arvore <- rpart::rpart(formula = y ~ ., data = dados)
+  arvore <- rpart::prune(arvore, cp = complexidade) # Realizando poda
+  
+  dados$y_chapeu <- predict(arvore, newdata = dados)
+  
+  # Plotando x versus y -----------------------------------------------------
+  dados |> 
+    ggplot(aes(x, y)) + 
+    geom_point() + 
+    geom_line(aes(x, y_chapeu), linewidth = 1.5, col = "red") +
+    labs(
+      title = "Árvore de regressão",
+      subtitle = glue::glue("Parâmetro de coplexidade = {complexidade}")
+    )
+}
+
+arvore(complexidade = 0.2)
+```
+
+## 📚 Exercícios
+
+<br>
+
+[Exercício]{.red}: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de $X_i$ e $Y_i$. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de `complexidade`, dado `n` e `sigma` fixos. 
+
+<br>
+
+[Exercício]{.red}: Sem utilizar a biblioteca **tidymodels**, apenas as bibliotecas **rsample** e **rpart**, treine um modelo com 10 mil observações geradas. No procedimento $k$-folds cross-validation, para $k = 20$, encontre um bom valor para o grau de complexidade considerando um *grid* de possíveis valores. *Dica*: experimente testar um parâmetro dentro do conjunto de treino no procedimento de *cross-validation*. Por exemplo, experimente criar um *grid* com valores entre $0.001$ e $0.4$. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.
+
+<br>
+
+[Exercício]{.red}: Refaça o exercício anterior utilizando a biblioteca **tidymodels**. Fique livre para tunar o hiperparâmetro que achar necessário, da *engine* que utilizar com a biblioteca **parsnip**. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o **tidymodels**.
