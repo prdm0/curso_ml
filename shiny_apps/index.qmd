@@ -30,7 +30,7 @@ runtime: shiny
 }
 ```
 
-```{r setup, include=FALSE}
+```{r setup}
 library(ggplot2)
 library(tibble)
 library(ggplot2)
@@ -122,11 +122,10 @@ mc_ajustes <- function(mc = 100L, n = 50L, desvio_padrao = 5, grau = 1L){
 Rows {data-width=full}
 -------------------------------------
 
-```{r  eval=require('leaflet'), echo = FALSE}
-library(leaflet)
-df_map <- reactive({leaflet() |>  
-  addMarkers(-34.846199, -7.140400) |> 
-  leaflet::addTiles() |> 
+```{r, echo = FALSE}
+df_map <- reactive({leaflet() |>
+  addMarkers(-34.846199, -7.140400) |>
+  leaflet::addTiles() |>
   setView(
   -34.846199, -7.140400, zoom = 27,
   options = popupOptions(
@@ -193,25 +192,25 @@ arquivo_temp <- tempfile()
 download.file(url = url, destfile = arquivo_temp)
 load(arquivo_temp)
 
-dados <- 
-  dados_expectativa_renda |> 
-  dplyr::select(-CountryName) |> 
+dados <-
+  dados_expectativa_renda |>
+  dplyr::select(-CountryName) |>
   dplyr::rename(y = LifeExpectancy, x = GDPercapita)
-  
+
 iteracoes <- function(tibble_data, grau) {
   x <- tibble_data$x
   iteracoes <- lapply(X = 2L:grau, FUN = function(i) x^i)
-  
+
   result <- cbind(tibble_data, do.call(cbind, iteracoes))
   colnames(result)[(ncol(tibble_data) + 1):ncol(result)] <- paste0("x", 2L:grau)
-  
+
   as_tibble(result)
-}  
+}
 
 reg_polinomial <- function(dados, grau = 1L) {
   if(grau >= 2L)
     dados <- iteracoes(dados, grau = grau)
-  
+
   lm(formula = y ~ ., data = dados)
 }
 
@@ -222,15 +221,15 @@ teste <- rsample::testing(divisao_inicial) # Teste final
 
 # v-folds cross-validation
 validacao <- function(dados, grau = 1L, errado = FALSE, ...){
-  
+
   # Todas as divisões da validacao cruzada
   cv <- rsample::vfold_cv(dados, ...)
-  
+
   hiper <- function(i){
     treino <- rsample::analysis(cv$splits[[i]]) # Treinamento
     validacao <- rsample::assessment(cv$splits[[i]]) # Validacação
     ajuste <- reg_polinomial(dados = treino, grau = grau)
-    
+
     if(errado){
       df_treino <- iteracoes(treino, grau = grau)
       df_treino <- df_treino |> dplyr::mutate(y_chapeu = predict(ajuste, newdata = df_treino))
@@ -241,7 +240,7 @@ validacao <- function(dados, grau = 1L, errado = FALSE, ...){
       yardstick::rmse(data = df_validacao, truth = y, estimate = y_chapeu)$.estimate
     }
   }
-  purrr::map_dbl(.x = seq_along(cv$splits), .f = hiper) |> 
+  purrr::map_dbl(.x = seq_along(cv$splits), .f = hiper) |>
     mean()
 }
 
@@ -249,16 +248,16 @@ plot_bar <- function(grau){
   ruim <- validacao(dados, errado = TRUE, grau = grau)
   bom <- validacao(dados, errado = FALSE, grau = grau)
   df <- tibble::tibble(x = c("Errado", "Certo"), y = c(log(ruim), log(bom)))
-  
-  df |> 
+
+  df |>
     ggplot(aes(x = x, y = y)) +
     geom_bar(stat = "identity", fill = "#0f385d") +
     geom_text(aes(label = round(y, digits = 2L)), vjust = -0.5, size = 10) +
-    labs(x = "Estratégia", y = "EQM estimado") + 
+    labs(x = "Estratégia", y = "EQM estimado") +
     theme(
       plot.title = element_text(size = 18, face = "bold"),
       plot.subtitle = element_text(size = 16),
-      axis.text = element_text(size = 20), 
+      axis.text = element_text(size = 20),
       axis.title = element_text(size = 14, face = "bold")
     )
 }
@@ -283,8 +282,8 @@ Column
 ### Entrada de informações
 
 ```{r}
-sliderInput("complexidade", "Valor de complecidade:",
-    min = 0.0001, max = 1, value = 0.001
+sliderInput("complexidade", "Valor de complexidade:",
+    min = 0.0001, max = 0.4, value = 0.001
 )
 
 random_y <- function(n = 250L, sigma = 0.1){
@@ -295,19 +294,19 @@ random_y <- function(n = 250L, sigma = 0.1){
 set.seed(0)
 
 arvore <- function(dados, complexidade = 0.5, graph = TRUE, ...){
-  
+
   dados <- random_y(...)
-  
+
   arvore <- rpart::rpart(formula = y ~ ., data = dados)
   arvore <- rpart::prune(arvore, cp = complexidade) # Realizando poda
-  
+
   dados$y_chapeu <- predict(arvore, newdata = dados)
-  
+
   # Plotando x versus y -----------------------------------------------------
-  dados |> 
-    ggplot(aes(x, y)) + 
-    geom_point() + 
-    geom_line(aes(x, y_chapeu), size = 1.5, col = "red") +
+  dados |>
+    ggplot(aes(x, y)) +
+    geom_point() +
+    geom_line(aes(x, y_chapeu), linewidth = 1.5, col = "red") +
     labs(
       title = "Árvore de regressão",
       subtitle = glue::glue("Parâmetro de coplexidade = {complexidade}")

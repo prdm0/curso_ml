@@ -2809,7 +2809,7 @@ plot_bar <- function(grau){
 
 ![](gifs/mr-bean-pivot.gif)
 
-## `r fontawesome::fa("book", "black")` Exercícios
+## 📚 Exercícios
 
 <br>
 
@@ -2836,7 +2836,7 @@ Quadrático Médio - EQM para avaliar o desempenho de um modelo é ruim
 quando não adotamos nenhuma estratégia de divisão do conjunto de dados
 em treinamento e teste.
 
-## `r fontawesome::fa("book", "black")` Exercícios
+## 📚 Exercícios
 
 <br>
 
@@ -3467,7 +3467,7 @@ finalizando_lasso |> collect_predictions()
 finalizando_elastic |> collect_predictions()
 ```
 
-## `r fontawesome::fa("book", "black")` Exercícios
+## 📚 Exercícios
 
 <br> [Exercício]{.red}: Utilizando os dados de vinho vermelho🍷,
 disponíveis
@@ -3479,7 +3479,7 @@ das variáveis.
 
 ![](gifs/mr-bean-test.gif){width="211"}
 
-## `r fontawesome::fa("book", "black")` Exercícios
+## 📚 Exercícios
 
 <br>
 
@@ -3512,7 +3512,7 @@ anterior, rafaça usando a biblioteca
 Caso contrário, resolva-o utilizando o
 [tidymodels](https://www.tidymodels.org/).
 
-## `r fontawesome::fa("book", "black")` Exercícios
+## 📚 Exercícios
 
 <br>
 
@@ -4849,7 +4849,7 @@ metodologia não-paramétrica que nos leva a resultados que são facilmente
 interpretáveis. A árvore é construirda por meio de particionamentos
 recursivos no espaço das covariáveis. Cada partição recebe o nome de
 [nó]{.red} e o resultado final (valor da regressão) é denominado de
-[folha]{.red}.
+[folha]{.red} 🍃.
 
 <br>
 
@@ -5050,6 +5050,20 @@ Assim como nos modelos de regressão com penalidade que vimos anteriormente, aqu
 <br>
 
 ![](gifs/chaves-isso.gif)
+
+## 🌳 Árvores de regressão
+
+<br>
+
+Experimente alterar o parâmetro de complexidade e perceba como ele influencia nas regições da árvore de regressão. Quando maior o valor, maior a penalidade, e portanto, mais simples será a árvore de regressão que irá estimar os valores de $Y_i$ com base em $X_i$.
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-%C3%A1rvore-de-regress%C3%A3o" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
+
+![](gifs/giphy.gif)
 
 ## 📚 Exercícios
 
