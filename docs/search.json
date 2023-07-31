@@ -228,7 +228,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19880, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19878, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -578,14 +578,14 @@
     "href": "index.html#data-splitting-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Data Splitting",
-    "text": "Data Splitting\n\nEssa divisão é feita de forma aleatória, algumas vezes estratificada de acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de problemas de conjunto de dados ordenados. Queremos que tanto no conjunto de treinamento Training quanto no conjunto de teste Testing, na imagem, contenham a mesma diversidade de observações.\n\nPor exemplo, ainda no exemplo de PIB per Capita versus Expectaitiva de Vida, não quero correr o risco de ter no conjunto de treinamento apenas o países com maiores valores de PIB per Capita, caso o conjunto de dados tenha sido ordenado pela variável GDPercapita. Por isso aleatorizar o conjunto de treinamento e teste é simple uma ótima ideia. Certo!?"
+    "text": "Data Splitting\n\nEssa divisão é feita de forma aleatória, algumas vezes estratificada de acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de problemas de conjunto de dados ordenados. Queremos que tanto no conjunto de treinamento Training quanto no conjunto Testing, na imagem, contenham a mesma diversidade de observações.\n\nAinda no exemplo de PIB per Capita versus Expectaitiva de Vida, não quero correr o risco de ter no conjunto de treinamento apenas o países com maiores valores de PIB per Capita, caso o conjunto de dados tenha sido ordenado pela variável GDPercapita. Por isso, aleatorizar o conjunto de treinamento e teste é sempre uma ótima ideia. Certo!?"
   },
   {
     "objectID": "index.html#data-splitting-2",
     "href": "index.html#data-splitting-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Data Splitting",
-    "text": "Data Splitting\n\nO percentual de divisão dos dados normalmente é empírico. Usa-se normalmente a proporção de 70\\% para treinamento e 30\\% para teste (70\\%, 30\\%). Outros esquemas de divisões são bastante utilizados, por exemplo, (80\\%, 20\\%), (99\\%, 1\\%), a depender da quantidade de observações (tamanho do conjunto de dados).\n\nPortanto, utilizar o EQM sob o conjunto de dados de teste para avaliar g_1({\\bf x}), g_2({\\bf x}), \\cdots,, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em Equação 1, i.e,\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right].\n\nEsse resultado valeria para qualquer outra função de perda."
+    "text": "Data Splitting\n\nO percentual de divisão dos dados normalmente é empírico. Usa-se normalmente a proporção de 70\\% para treinamento e 30\\% para teste (70\\%, 30\\%). Outros esquemas de divisões são bastante utilizados, por exemplo, (80\\%, 20\\%), (99\\%, 1\\%), a depender da quantidade de observações (tamanho do conjunto de dados).\n\nPortanto, utilizar o EQM sob o conjunto de dados de teste para avaliar g_1({\\bf x}), g_2({\\bf x}), \\cdots,, é uma boa estratégia, uma vez que agora não teremos mais uma dependência no numerador do cálculo do EQM. Em notação matemática, poderíamos escrever como já apresentado anteriormente, em Equação 1, i.e.,\n\\frac{1}{m}\\sum_{i = 1}^m (Y_{n + i} - g(X_{n + i}))^2 \\approx R(g) := \\mathbb{E}\\left[(Y - g({\\bf X}))^2\\right].\n\nEsse resultado valeria para qualquer outra função de perda."
   },
   {
     "objectID": "index.html#data-splitting-3",
@@ -599,14 +599,14 @@
     "href": "index.html#data-splitting-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Data Splitting",
-    "text": "Data Splitting\n\nAgora você entende por que dividimos os dados em treinamento e teste?\n\n\n\nDividimos para obermos um bom estimador do risco utilizando o EQM. 🎊"
+    "text": "Data Splitting\n\nAgora você entende por que dividimos os dados em treinamento e teste?\n\n\n\nDividimos para obermos um bom estimador do risco utilizando o EQM. 🎁"
   },
   {
     "objectID": "index.html#data-splitting-5",
     "href": "index.html#data-splitting-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Data Splitting",
-    "text": "Data Splitting\n\nPodemos argumentar que o procedimento de data splitting, em que dividimos o nosso conjunto de dados em treinamento e teste fará com que venhamos perder muitas observações que poderiam ter sido utilizadas para treinar o modelo. E de certa forma isso é verdade, principalmente quando termos um conjunto não muito grande de observações.\n\nPortanto, uma melhor abordagem, sendo esta uma variação do método de data splitting é o procedimento de cross-validation - cv (validação cruzada). Uma versão mais geral de uma validação cruzada é o leave-one-out cross-validation.\n\nEm palavras, o procedimento consiste em tirar de fora uma única observação das n observações da base de dados para ser o nosso conjunto de teste e treinar o modelo com as observações que permaneceram. Daí, calcula-se o risco observado (EQM, sob o conjunto de teste). Na segunda iteração, a observação que antes era de teste volta para perterncer ao conjunto de treinamento e uma nova observação é removida para ser teste. Esse procedimento ocorre de forma iterativa até a retirada da última observação como teste."
+    "text": "Data Splitting\n\nPodemos argumentar que o procedimento de data splitting, em que dividimos o nosso conjunto de dados em treinamento e teste fará com que venhamos perder muitas observações que poderiam ter sido utilizadas para treinar o modelo. E de certa forma isso é verdade, principalmente quando termos um conjunto não muito grande de observações.\n\nPortanto, uma melhor abordagem, sendo esta uma variação do método de data splitting é o procedimento de cross-validation - cv (validação cruzada). Uma versão mais geral de uma validação cruzada é o leave-one-out cross-validation.\n\nEm palavras, o procedimento consiste em tirar de fora uma única observação das n observações da base de dados para ser o nosso conjunto de teste e treinar o modelo com as observações que permaneceram. Daí, calcula-se o risco observado (EQM, sob o conjunto de teste/validação). Na segunda iteração, a observação que antes era de teste volta para perterncer ao conjunto de treinamento e uma nova observação é removida para ser teste. Esse procedimento ocorre de forma iterativa até a retirada da última observação como teste."
   },
   {
     "objectID": "index.html#leave-one-out-cross-validation",
@@ -620,7 +620,7 @@
     "href": "index.html#leave-one-out-cross-validation-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Leave-one-out cross-validation",
-    "text": "Leave-one-out cross-validation\n\nVejo muitas pessoas que usam uma validação cruzada, por exemplo, leave-one-out cross-validation - LOOCV comparando com o método Jackknife e algumas inclusive dizendo ser a mesma coisa. Não, não são!\n\nO algoritmo Jackknife é um procedimento de estimação e que por sua vez deve estar dentro do conjunto de treinamento. Para haver algum Jackknife, a estimativa com n-1 observações deve estar dentro do conjunto de treinamento, em que dentro do treinamento teria a remoção de um observação por vez. Consegue perceber a diferença sutil?"
+    "text": "Leave-one-out cross-validation\n\nVejo muitas pessoas que usam uma validação cruzada, por exemplo, leave-one-out cross-validation - LOOCV comparando com o método Jackknife e algumas inclusive dizendo ser a mesma coisa. Não, não são!\n\nO algoritmo Jackknife é um procedimento de estimação, e que, por sua vez, deve estar dentro do conjunto de treinamento. Para haver algum Jackknife, a estimativa com n-1 observações deve estar dentro do conjunto de treinamento, em que dentro do treinamento teria a remoção de um observação por vez. Consegue perceber a diferença sutil?"
   },
   {
     "objectID": "index.html#leave-one-out-cross-validation-2",
@@ -634,7 +634,7 @@
     "href": "index.html#k-fold-cross-validation",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-fold cross-validation",
-    "text": "k-fold cross-validation\n\nUma alternativa ao LOOCV é utilizar o método k-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em k-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} são, cada um, um conjunto de indices aleatórios associados a cada um dos lotes. A ideia aqui é construir k estimadores da função de regressão, denotados por \\widehat{g}_{-1}, \\cdots, \\widehat{g}_{-k}, em que \\widehat{g}_{-j} é criado usando todas as observações do banco de dados, com exceção daquelas do lote L_j, utilizado para validação. O estimador do risco é dado por:\n\\widehat{R}(g) = \\frac{1}{n}\\sum_{j=1}^k \\sum_{i \\in L_j}(Y_i - g_{-j}({\\bf X}_i))^2. Perceba que, que o LOOCV é um caso particular do k-fold cross-validation, quando fazemos k = n. Em outras palavras, L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} representam os índices aleatórios do conjunto de treinamento nos k lotes."
+    "text": "k-fold cross-validation\n\nUma alternativa ao LOOCV é utilizar o método k-fold cross-validation. Nessa abordagem, dividimos o conjunto de dados em k-folds (lotes) disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} são, cada um, um conjunto de índices aleatórios associados a cada um dos lotes. A ideia aqui é construir k estimadores da função de regressão, denotados por \\widehat{g}_{-1}, \\cdots, \\widehat{g}_{-k}, em que \\widehat{g}_{-j} é criado usando todas as observações do banco de dados, com exceção daquelas do lote L_j, utilizado para validação. O estimador do risco é dado por:\n\\widehat{R}(g) = \\frac{1}{n}\\sum_{j=1}^k \\sum_{i \\in L_j}(Y_i - g_{-j}({\\bf X}_i))^2. Perceba que, que o LOOCV é um caso particular do k-fold cross-validation, quando fazemos k = n. Em outras palavras, L_1, \\cdots, L_k \\subset \\{1, \\cdots, n\\} representam os índices aleatórios do conjunto de treinamento nos k lotes."
   },
   {
     "objectID": "index.html#k-fold-cross-validation-1",
@@ -655,7 +655,7 @@
     "href": "index.html#k-fold-cross-validation-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-fold cross-validation",
-    "text": "k-fold cross-validation\n\n\n\nO termo validação refere-se à parcela do conjunto de treinamento incial que dividimos em validação e treinamento, dentro de uma validação cruzada.\n\nO conjunto Testing na segunda hierarquia da árvore ao lado, só usamos no final para avaliar o desempenho do modelo nesse conjunto.\n\nPerceba que o conjunto de treinamento (Not Testing) é particionado em treinamento e validação. Poderíamos fazer uma única partição, mas o procedimento comumente utilizado é particionar entre Training e Validation uzando algum procedimento de validação cruzada."
+    "text": "k-fold cross-validation\n\n\n\nO termo validação refere-se à parcela do conjunto de treinamento incial que dividimos em validação e treinamento, dentro de uma validação cruzada.\n\nO conjunto Testing na segunda hierarquia da árvore ao lado, só usamos no final para avaliar o desempenho do modelo nesse conjunto. Isto é, usamos o Testing para o cálculo do risco observado.\n\nPerceba que o conjunto de treinamento (Not Testing) é particionado em treinamento e validação. Poderíamos fazer uma única partição, mas o procedimento comumente utilizado é particionar entre Training e Validation uzando algum procedimento de validação cruzada."
   },
   {
     "objectID": "index.html#k-fold-cross-validation-4",
@@ -669,7 +669,7 @@
     "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
-    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\n\n\n\nO simples procedimento de dividir o conjunto de dados em dois, uma parte para treinar o modelo e a outra parte (conjunto de teste) para estimar o risco R(g) é denominado de data splitting ou Hold-out Method. É um procedimento mais simples, porém, pode não ser útil em conjunto de dados não muito grandes.\nA segunda linha da ilustração, demonstra o procedimento de cross-validation (validação cruzada), procedimento mais utilizado nos treinamentos de modelos de aprendizagem de máquina.\nA terceira linha é uma abordagem também utilizada, porém não tão interessante quanto a validação cruzada. Nessa abordagem o banco de dados é dividido aleatoriamente em três partes. Treina-se o modelo com a parte verde, estima-se o risco com o conjunto de validação amarelo e testa-se o modelo com o conjunto de teste."
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\n\n\n\nO simples procedimento de dividir o conjunto de dados em dois, uma parte para treinar o modelo e a outra parte (conjunto de teste) para estimar o risco R(g) é denominado de data splitting ou hold-out method. É um procedimento mais simples, porém, pode não ser útil em conjunto de dados não muito grandes.\nA segunda linha da ilustração, demonstra o procedimento de cross-validation (validação cruzada), procedimento mais utilizado nos treinamentos de modelos de aprendizagem de máquina.\nA terceira linha é uma abordagem também utilizada, porém não tão interessante quanto a validação cruzada. Nessa abordagem o banco de dados é dividido aleatoriamente em três partes. Treina-se o modelo com a parte verde, estima-se o risco com o conjunto de validação amarelo e testa-se o modelo com o conjunto de teste."
   },
   {
     "objectID": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-1",
@@ -690,7 +690,7 @@
     "href": "index.html#resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
-    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nUm outro detalhe que muitas vezes não é falado é que apesar de temos duas tarefas de estimação, uma envolvendo o conjunto de treinamento, em que treinamos o modelo e outra envolvendo o conjunto de teste, em que queremos estimar o risco R(g), de modo a poder selecionar o melhor modelo, a segunda tarefa é bem mais fácil É por isso que o conjunto de treinamento tende a ser menor que o conjunto de teste."
+    "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nUm outro detalhe que muitas vezes não é falado é que apesar de temos duas tarefas de estimação, uma envolvendo o conjunto de treinamento, em que treinamos o modelo e outra envolvendo o conjunto de teste, em que queremos estimar o risco R(g), de modo a poder selecionar o melhor modelo, a segunda tarefa é bem mais fácil. É por isso que o conjunto de treinamento tende a ser menor que o conjunto de teste."
   },
   {
     "objectID": "index.html#balanço-viés-e-variância",
@@ -767,7 +767,7 @@
     "href": "index.html#tuning-parameters-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": " Tuning Parameters",
-    "text": "Tuning Parameters\n\nObserve o dashboard interativo! Sabemos que para que tenhamos uma boa estimativa do risco preditivo, devemos utilizar novas observações. No dashboard é possível observar que a forma errada (usando o conjunto de treinamento para avaliar o risco), sugere que sempre será bom adicionar mais parâmetros ao modelo, levando a overfitting. Perceba que usando a forma correta (usando validação cruzada), o EQM (risco estimado) sugere que não podemos aumentar muito a quantidade de parâmetros."
+    "text": "Tuning Parameters\n\nObserve o dashboard interativo! Sabemos que para que tenhamos uma boa estimativa do risco preditivo, devemos utilizar novas observações. No dashboard, é possível observar que a forma errada (usando o conjunto de treinamento para avaliar o risco), sugere que sempre será bom adicionar mais parâmetros ao modelo, levando a overfitting. Perceba que usando a forma correta (usando validação cruzada), o EQM (risco estimado) sugere que não podemos aumentar muito a quantidade de parâmetros."
   },
   {
     "objectID": "index.html#tuning-parameters-6",
@@ -1412,5 +1412,19 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
     "text": "📚 Exercícios\n\nExercício: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de X_i e Y_i. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de complexidade, dado n e sigma fixos.\n\nExercício: Sem utilizar a biblioteca tidymodels, apenas as bibliotecas rsample e rpart, treine um modelo com 10 mil observações geradas. No procedimento k-folds cross-validation, para k = 20, encontre um bom valor para o grau de complexidade considerando um grid de possíveis valores. Dica: experimente testar um parâmetro dentro do conjunto de treino no procedimento de cross-validation. Por exemplo, experimente criar um grid com valores entre 0.001 e 0.4. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.\n\nExercício: Refaça o exercício anterior utilizando a biblioteca tidymodels. Fique livre para tunar o hiperparâmetro que achar necessário, da engine que utilizar com a biblioteca parsnip. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o tidymodels.\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#leave-one-out-cross-validation-3",
+    "href": "index.html#leave-one-out-cross-validation-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leave-one-out cross-validation",
+    "text": "Leave-one-out cross-validation\n\nO método LOOCV converge assintotivamente para o AIC, porém, este, muitas vezes não poderemos calcular diretamente, uma vez que não conhecemos a distribuição conjunta dos dados, i.e., não conhecemos a estrutura probabilística."
+  },
+  {
+    "objectID": "index.html#leave-one-out-cross-validation-4",
+    "href": "index.html#leave-one-out-cross-validation-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Leave-one-out cross-validation",
+    "text": "Leave-one-out cross-validation\n\nEssa relação entre o LOOCV e o Akaike Information Criterion - AIC foi provada no paper Stone (1977) intitulado An Asymptotic Equivalence of Choice of Model by Cross-Validation and Akaike’s Criterion e publicado no Journal of the Royal Statistical Society, Series B. Clique aqui, se quiser ler o artigo."
   }
 ]
