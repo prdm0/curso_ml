@@ -1229,7 +1229,7 @@
     "href": "index.html#suport-vector-regression-machine-11",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Suport Vector Regression Machine",
-    "text": "Suport Vector Regression Machine\nExemplo: Vamos consirar a base de dados de vinho vermelho🍷, disponíveis aqui, faça uma pequena análise exploratória dos dados. No link do Kaggle você consegue uma explicação sobre o que significa cada uma das variáveis."
+    "text": "Suport Vector Regression Machine\n\nExemplo: Vamos consirar a base de dados de vinho vermelho🍷, disponíveis aqui, faça uma pequena análise exploratória dos dados. No link do Kaggle você consegue uma explicação sobre o que significa cada uma das variáveis."
   },
   {
     "objectID": "index.html#árvores-de-regressão",
@@ -1404,14 +1404,14 @@
     "href": "index.html#exercícios-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Considere a variável aleatória Y_i \\sim \\mathcal{N}(\\sin(X_i), \\sigma^2), com X_i \\in \\mathcal{U}(0, 10)\\,, \\forall i. Utilizando a biblioteca rpart, implemente a função arvore(n = 250L, complexidade, sigma = 0.1) que devolve o gráfico scatterplot com os pontos X_i e Y_i e por cima deles o gráfico de linha com os valores preditos. A função deverá ter três argumentos, n, complexidade e sigma, que são o tamanho da amostra, o grau de complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se preocupe com divisão entre treino e teste nem validação cruzada. A solução desse exercício não tem como objetivo encontrar o melhor hiperparâmetro, i.e., não é necessário “tunar” o parâmetro complexidade. A função deverá retornar algo como:"
+    "text": "📚 Exercícios\n\nExercício: Considere o problema em que o objetivo é prever a pontuação (score) / (item 2) do aluno com base em algumas variáveis. São elas:\n\n\nHoras estudadas: o número total de horas gastas estudando por cada aluno;\nPontuação: As notas obtidas pelos alunos em testes anteriores;\nAtividades extracurriculares: Se o aluno participa de atividades extracurriculares (Sim ou Não);\nHoras de sono: o número médio de horas de sono que o aluno teve por dia;\nAmostras de perguntas praticadas: O número de amostras de perguntas que o aluno praticou.\n\n\nVocê poderá baixar e ter uma descrição maior da base de dados clicando aqui. Avalie o poder preditivo do modelo lasso com o do kNN. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de k-folds cross-validation, com k = 20 e considerar um esquema de data splitting na proporção 90\\% para treino e 10\\% para teste. Sua análise deverá estar em um notebook de quarto, em que você deverá comentar cada passo da análise."
   },
   {
     "objectID": "index.html#exercícios-6",
     "href": "index.html#exercícios-6",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de X_i e Y_i. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de complexidade, dado n e sigma fixos.\n\nExercício: Sem utilizar a biblioteca tidymodels, apenas as bibliotecas rsample e rpart, treine um modelo com 10 mil observações geradas. No procedimento k-folds cross-validation, para k = 20, encontre um bom valor para o grau de complexidade considerando um grid de possíveis valores. Dica: experimente testar um parâmetro dentro do conjunto de treino no procedimento de cross-validation. Por exemplo, experimente criar um grid com valores entre 0.001 e 0.4. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.\n\nExercício: Refaça o exercício anterior utilizando a biblioteca tidymodels. Fique livre para tunar o hiperparâmetro que achar necessário, da engine que utilizar com a biblioteca parsnip. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o tidymodels.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "📚 Exercícios\n\nExercício: Considere o problema em que o objetivo é prever a pontuação (score) / (item 2) do aluno com base em algumas variáveis. São elas:\n\n\nHoras estudadas: o número total de horas gastas estudando por cada aluno;\nPontuação: As notas obtidas pelos alunos em testes anteriores;\nAtividades Extracurriculares: Se o aluno participa de atividades extracurriculares (Sim ou Não);\nHoras de sono: o número médio de horas de sono que o aluno teve por dia;\nAmostras de perguntas praticadas: O número de amostras de perguntas que o aluno praticou.\n\n\nVocê poderá baixar e ter uma descrição maior da base de dados clicando aqui. Avalie o poder preditivo do modelo lasso com o do SVRM. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de k-folds cross-validation, com k = 20 e considerar um esquema de data splitting na proporção 90\\% para treino e 10\\% para teste. Sua análise deverá estar em um notebook de quarto, em que você deverá comentar cada passo da análise."
   },
   {
     "objectID": "index.html#leave-one-out-cross-validation-3",
@@ -1426,5 +1426,26 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Leave-one-out cross-validation",
     "text": "Leave-one-out cross-validation\n\nEssa relação entre o LOOCV e o Akaike Information Criterion - AIC foi provada no paper Stone (1977) intitulado An Asymptotic Equivalence of Choice of Model by Cross-Validation and Akaike’s Criterion e publicado no Journal of the Royal Statistical Society, Series B. Clique aqui, se quiser ler o artigo."
+  },
+  {
+    "objectID": "index.html#exercícios-7",
+    "href": "index.html#exercícios-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "📚 Exercícios",
+    "text": "📚 Exercícios\n\nExercício: Refaça o exercício anterior considerando a base de dados de dados pessoais de custos médicos disponível aqui. As informações contidas na base são:\n\n\nIdade (age): idade do beneficiário principal;\nSexo (sex): sexo do beneficiário;\nÍndice de massa corporal - IMC (bmi): IMC = \\frac{Peso}{altura^2}, com peso em Kg e altura em m (metro);\nNúmero de filhos (children): número de filhos cobertos pelo plano de saúde;\nFumante (smoker): variável dummy que informa se o beneficiário é ou não fumante;\nRegião (region): região dos EUA em que o beneficiário reside (northeast, southeast, southwest ou northwest);\nCusto (charges): custos médicos cobrados, em dólares.\n\n\nO objetivo é prever o custo (charges) com base nas demais informações. Dica: utilizando a biblioteca recipes, utilize a função step_dummy especificando o argumento one_hot = TRUE para realizar um one hot encoding com a variável region. Dessa forma, region deixará ser ser uma variável nominal e se tornará uma variável numérica."
+  },
+  {
+    "objectID": "index.html#exercícios-8",
+    "href": "index.html#exercícios-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "📚 Exercícios",
+    "text": "📚 Exercícios\n\nExercício: Considere a variável aleatória Y_i \\sim \\mathcal{N}(\\sin(X_i), \\sigma^2), com X_i \\in \\mathcal{U}(0, 10)\\,, \\forall i. Utilizando a biblioteca rpart, implemente a função arvore(n = 250L, complexidade, sigma = 0.1) que devolve o gráfico scatterplot com os pontos X_i e Y_i e por cima deles o gráfico de linha com os valores preditos. A função deverá ter três argumentos, n, complexidade e sigma, que são o tamanho da amostra, o grau de complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se preocupe com divisão entre treino e teste nem validação cruzada. A solução desse exercício não tem como objetivo encontrar o melhor hiperparâmetro, i.e., não é necessário “tunar” o parâmetro complexidade. A função deverá retornar algo como:"
+  },
+  {
+    "objectID": "index.html#exercícios-9",
+    "href": "index.html#exercícios-9",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "📚 Exercícios",
+    "text": "📚 Exercícios\n\nExercício: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de X_i e Y_i. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de complexidade, dado n e sigma fixos.\n\nExercício: Sem utilizar a biblioteca tidymodels, apenas as bibliotecas rsample e rpart, treine um modelo com 10 mil observações geradas. No procedimento k-folds cross-validation, para k = 20, encontre um bom valor para o grau de complexidade considerando um grid de possíveis valores. Dica: experimente testar um parâmetro dentro do conjunto de treino no procedimento de cross-validation. Por exemplo, experimente criar um grid com valores entre 0.001 e 0.4. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.\n\nExercício: Refaça o exercício anterior utilizando a biblioteca tidymodels. Fique livre para tunar o hiperparâmetro que achar necessário, da engine que utilizar com a biblioteca parsnip. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o tidymodels.\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

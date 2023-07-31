@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-dc2eb943d6896a92126c" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-dc2eb943d6896a92126c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-789a410dd2fe1857a4fa" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-789a410dd2fe1857a4fa">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2710,6 +2710,21 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <li class="fragment"><p>É comumente utilizado, por conta de sua simplicidade, em explorações iniciais.</p></li>
 </ol>
 </section>
+<section id="exercícios-5" class="slide level2">
+<h2>📚 Exercícios</h2>
+<p><br></p>
+<p><span class="red">Exercício</span>: Considere o problema em que o objetivo é prever a <strong>pontuação</strong> (<em>score</em>) / (item 2) do aluno com base em algumas variáveis. São elas:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><strong>Horas estudadas</strong>: o número total de horas gastas estudando por cada aluno;</li>
+<li class="fragment"><strong>Pontuação</strong>: As notas obtidas pelos alunos em testes anteriores;</li>
+<li class="fragment"><strong>Atividades extracurriculares</strong>: Se o aluno participa de atividades extracurriculares (Sim ou Não);</li>
+<li class="fragment"><strong>Horas de sono</strong>: o número médio de horas de sono que o aluno teve por dia;</li>
+<li class="fragment"><strong>Amostras de perguntas praticadas</strong>: O número de amostras de perguntas que o aluno praticou.</li>
+</ol>
+<p><br></p>
+<p>Você poderá baixar e ter uma descrição maior da base de dados clicando <a href="https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression">aqui</a>. Avalie o poder preditivo do modelo lasso com o do <span class="math inline">k</span>NN. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de <span class="math inline">k</span>-<em>folds cross-validation</em>, com <span class="math inline">k = 20</span> e considerar um esquema de <em>data splitting</em> na proporção <span class="math inline">90\%</span> para treino e <span class="math inline">10\%</span> para teste. Sua análise deverá estar em um notebook de <a href="https://quarto.org/">quarto</a>, em que você deverá comentar cada passo da análise.</p>
+</section>
 <section id="nadaraya-watson" class="slide level2">
 <h2>Nadaraya-Watson</h2>
 <p><br></p>
@@ -3444,8 +3459,42 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <img data-src="gifs/hum.gif" class="r-stretch"></section>
 <section id="suport-vector-regression-machine-11" class="slide level2">
 <h2>Suport Vector Regression Machine</h2>
+<p><br></p>
 <p><span class="red">Exemplo</span>: Vamos consirar a base de dados de vinho vermelho🍷, disponíveis <a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009">aqui</a>, faça uma pequena análise exploratória dos dados. No <a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009">link</a> do Kaggle você consegue uma explicação sobre o que significa cada uma das variáveis.</p>
+<p><br></p>
  <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+</section>
+<section id="exercícios-6" class="slide level2">
+<h2>📚 Exercícios</h2>
+<p><br></p>
+<p><span class="red">Exercício</span>: Considere o problema em que o objetivo é prever a <strong>pontuação</strong> (<em>score</em>) / (item 2) do aluno com base em algumas variáveis. São elas:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><strong>Horas estudadas</strong>: o número total de horas gastas estudando por cada aluno;</li>
+<li class="fragment"><strong>Pontuação</strong>: As notas obtidas pelos alunos em testes anteriores;</li>
+<li class="fragment"><strong>Atividades</strong> Extracurriculares: Se o aluno participa de atividades extracurriculares (Sim ou Não);</li>
+<li class="fragment"><strong>Horas de sono</strong>: o número médio de horas de sono que o aluno teve por dia;</li>
+<li class="fragment"><strong>Amostras de perguntas praticadas</strong>: O número de amostras de perguntas que o aluno praticou.</li>
+</ol>
+<p><br></p>
+<p>Você poderá baixar e ter uma descrição maior da base de dados clicando <a href="https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression">aqui</a>. Avalie o poder preditivo do modelo lasso com o do SVRM. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de <span class="math inline">k</span>-<em>folds cross-validation</em>, com <span class="math inline">k = 20</span> e considerar um esquema de <em>data splitting</em> na proporção <span class="math inline">90\%</span> para treino e <span class="math inline">10\%</span> para teste. Sua análise deverá estar em um notebook de <a href="https://quarto.org/">quarto</a>, em que você deverá comentar cada passo da análise.</p>
+</section>
+<section id="exercícios-7" class="slide level2">
+<h2>📚 Exercícios</h2>
+<p><br></p>
+<p><span class="red">Exercício</span>: Refaça o exercício anterior considerando a base de dados de dados pessoais de custos médicos disponível <a href="https://www.kaggle.com/datasets/mirichoi0218/insurance">aqui</a>. As informações contidas na base são:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><strong>Idade</strong> (<code>age</code>): idade do beneficiário principal;</li>
+<li class="fragment"><strong>Sexo</strong> (<code>sex</code>): sexo do beneficiário;</li>
+<li class="fragment"><strong>Índice de massa corporal - IMC</strong> (<code>bmi</code>): <span class="math inline">IMC = \frac{Peso}{altura^2}</span>, com peso em <span class="math inline">Kg</span> e altura em <span class="math inline">m</span> (metro);</li>
+<li class="fragment"><strong>Número de filhos</strong> (<code>children</code>): número de filhos cobertos pelo plano de saúde;</li>
+<li class="fragment"><strong>Fumante</strong> (<code>smoker</code>): variável <em>dummy</em> que informa se o beneficiário é ou não fumante;</li>
+<li class="fragment"><strong>Região</strong> (<code>region</code>): região dos EUA em que o beneficiário reside (<em>northeast</em>, <em>southeast</em>, <em>southwest</em> ou <em>northwest</em>);</li>
+<li class="fragment"><strong>Custo</strong> (<code>charges</code>): custos médicos cobrados, em dólares.</li>
+</ol>
+<p><br></p>
+<p>O objetivo é prever o custo (<code>charges</code>) com base nas demais informações. <strong>Dica</strong>: utilizando a biblioteca <a href="https://recipes.tidymodels.org/">recipes</a>, utilize a função <code>step_dummy</code> especificando o argumento <code>one_hot = TRUE</code> para realizar um <em>one hot encoding</em> com a variável <code>region</code>. Dessa forma, <code>region</code> deixará ser ser uma variável nominal e se tornará uma variável numérica.</p>
 </section>
 <section id="árvores-de-regressão" class="slide level2">
 <h2>🌳 Árvores de regressão</h2>
@@ -3577,13 +3626,13 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-%C3%A1rvore-de-regress%C3%A3o" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 
 <img data-src="gifs/giphy.gif" class="r-stretch"></section>
-<section id="exercícios-5" class="slide level2">
+<section id="exercícios-8" class="slide level2">
 <h2>📚 Exercícios</h2>
 <p><br></p>
 <p><span class="red">Exercício</span>: Considere a variável aleatória <span class="math inline">Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)</span>, com <span class="math inline">X_i \in \mathcal{U}(0, 10)\,, \forall i.</span> Utilizando a biblioteca <strong>rpart</strong>, implemente a função <code>arvore(n = 250L, complexidade, sigma = 0.1)</code> que devolve o gráfico <em>scatterplot</em> com os pontos <span class="math inline">X_i</span> e <span class="math inline">Y_i</span> e por cima deles o gráfico de linha com os valores preditos. A função deverá ter três argumentos, <code>n</code>, <code>complexidade</code> e <code>sigma</code>, que são o tamanho da amostra, o grau de complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se preocupe com divisão entre treino e teste nem validação cruzada. A solução desse exercício não tem como objetivo encontrar o melhor hiperparâmetro, i.e., não é necessário “tunar” o parâmetro <code>complexidade</code>. A função deverá retornar algo como:</p>
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
-<section id="exercícios-6" class="slide level2">
+<section id="exercícios-9" class="slide level2">
 <h2>📚 Exercícios</h2>
 <p><br></p>
 <p><span class="red">Exercício</span>: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de <span class="math inline">X_i</span> e <span class="math inline">Y_i</span>. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de <code>complexidade</code>, dado <code>n</code> e <code>sigma</code> fixos.</p>
