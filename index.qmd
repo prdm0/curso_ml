@@ -2413,7 +2413,7 @@ treinamento tende a ser menor que o conjunto de teste.
 
 ![](gifs/hum.gif)
 
-## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+## ⚖️ Balanço viés e variância
 
 <br>
 
@@ -2426,7 +2426,7 @@ viés e variância, que seria o estimador ilustrado pelo item [d]{.red}.
 
 ![](imgs/precisao_exatidao.png){fig-align="center" width="55%"}
 
-## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+## ⚖️ Balanço viés e variância
 
 <br>
 
@@ -2435,7 +2435,7 @@ a função de perda $L_2$ é sua interpretabilidade. Temos que o risco
 quadrático $R(g)$ condicional a um novo ${\bf x}$ poderá ser decomposto
 por:
 
-$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$
+$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$${#eq-decomposicao-risco-l2}
 **Temos que**:
 
 <br>
@@ -2450,7 +2450,7 @@ do modelo);
 
 iii - É a variância do estimador $\widehat{g}$.
 
-## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+## ⚖️ Balanço viés e variância
 
 <br>
 
@@ -2476,7 +2476,7 @@ Entendeu!?
 
 ![](gifs/mais_ou_menos.gif)
 
-## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+## ⚖️ Balanço viés e variância
 
 <br>
 
@@ -2574,7 +2574,7 @@ ggsave(p, file = "imgs/vies_variancia.png", device = "png", width = 40, height =
 
 ![](imgs/vies_variancia.png){fig-align="center" width="60%"}
 
-## `r fontawesome::fa("scale-balanced", "black")` Balanço viés e variância
+## ⚖️ Balanço viés e variância
 
 <br>
 
@@ -2585,7 +2585,7 @@ Experimente de forma interativa altera a complefixade do modelo.
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -2610,7 +2610,7 @@ teremos escolhas razoáveis.
 
 ![](gifs/interesting-batman.gif)
 
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -2636,7 +2636,7 @@ verdade ela faz a divisão da base de dados em $v$ *splits* de tamanho
 aproximadamente iguais. Por padrão, $v = 10$. Esse é o procedimento de
 $k$-*fold cross-validation* que apresentamos aqui, em que $v = k$.
 
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -2659,7 +2659,7 @@ resolver esse problema:
 6.  Para acessar o conjunto de **validação**, utilizamos a função
     `assessment`.
 
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 ![](imgs/rsample.png){fig-align="center" width="5%"}
 
@@ -2676,7 +2676,7 @@ No mundo de aprendizagem de máquina, muitos chamam o processo de
 encontrar o melhor hiperparâmetro de ["tunagem"]{.red}. Em vários
 modelos, podemos ter mais de um.
 
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -2698,7 +2698,7 @@ equilíbrio que temos que ter entre viés e variância. A Figura [B]{.red}
 mostra que um polinômio com grau próximo à $p = 8$ é a melhor
 alternativa.
 
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -2715,7 +2715,7 @@ que não podemos aumentar muito a quantidade de parâmetros.
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-avalia%C3%A7%C3%A3o-do-risco-preditivo" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
-## `r fontawesome::fa("scale-balanced", "black")` Tuning Parameters
+## 🎛 Tuning Parameters
 
 <br>
 
@@ -5267,4 +5267,44 @@ arvore(complexidade = 0.2)
 
 <br>
 
-As árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa
+As árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa.
+
+<br>
+
+Uma das ideias de melhorar a capacidade preditiva é combinar árvores usando a metodologia de reamostragem *bootstrap*. As técnicas de reamostragem via bootstrap não-paramétrico são bastante difundidas na estatística e consiste reamostrar da amostra original com reposição.
+
+<br>
+
+Na estatística, a ideia de *bootstrap* é muito comum para correção de víes de um estimador, cálculo do erro-padrão de um estimador, construção de intervalos de confianças e teste de hipóteses.
+
+<br>
+
+Em aprendizagem de máquina, o conceito de *bagging* consiste em reaplicar uma metodologia, nesse caso a de árvore 🌳 de regressão em diferentes amostras obtidas da amostra original com reposição.
+
+<br>
+
+![](gifs/laughing-ha.gif)
+
+## Combinando predições - bagging
+
+<br>
+
+Portanto, é importante ficar claro que o *bagging* é uma metodologia genérica que poderá ser aplicada em situações ao qual desejamos combinar modelos. Por exemplo, o método [ramdom forest](https://en.wikipedia.org/wiki/Random_forest) que veremos mais a frente é uma pequena modificação de um *bagging* de árvores de regressão que vimos anteriormente. Na verdade o [ramdom forest](https://en.wikipedia.org/wiki/Random_forest), assim como as árvores de decisões podem ser utilizadas também para problemas de classificação, como veremos mais adiante no curso.
+
+<br>
+
+![](gifs/ok-2.gif)
+
+## Combinando predições - bagging
+
+<br>
+
+A ideia de combinar árvores de regressão é interessante, uma vez que o risco preditivo da média das previsões das árvores é menor que o risco individual de cada uma das árvores.
+
+<br>
+
+Lembre-se que quando falávamos em momentos anteriores do curso sobre o balanço entre viés e variância, apresentamos uma decomposição do risco quadrático $R(g)$ condicional a um novo ${\bf x}$ dada na @eq-decomposicao-risco-l2. Para que não seja necessário necessário voltar um grande número de slides, recoloco a decomposição abaixo:
+
+<br>
+
+$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$
