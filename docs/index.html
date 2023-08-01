@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-07-31">
+  <meta name="dcterms.date" content="2023-08-01">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-07-31</p>
+  <p class="date">2023-08-01</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-789a410dd2fe1857a4fa" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-789a410dd2fe1857a4fa">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-eb27a5e945783e8f472a" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-eb27a5e945783e8f472a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -3604,7 +3604,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <li class="fragment">Pode ser representado graficamente;</li>
 <li class="fragment">É útil na análise exploratória dos dados do problema em questão;</li>
 <li class="fragment">Pode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;</li>
-<li class="fragment">Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas. Veremos o uso de árvore de classificação mais a frente.</li>
+<li class="fragment">Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;</li>
+<li class="fragment">A árvore é robusta na presença de variáveis irrelevantes.</li>
 </ol>
 <p><br></p>
 
@@ -3626,6 +3627,20 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-%C3%A1rvore-de-regress%C3%A3o" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 
 <img data-src="gifs/giphy.gif" class="r-stretch"></section>
+<section id="árvores-de-regressão-11" class="slide level2">
+<h2>🌳 Árvores de regressão</h2>
+<p><br></p>
+<p><strong>Algumas outras características das 🌳 árvores de regressão são</strong>:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment">A função de regressão estimada <span class="math inline">\widehat{r}({\bf x})</span> é <strong>constante por partes</strong>, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de <span class="math inline">\widehat{r}({\bf x})</span>;</li>
+<li class="fragment">Em uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;</li>
+<li class="fragment">Elas são uma espécie de “samambaias”, em que crescem para baixo;</li>
+<li class="fragment">É fácil introduzir variáveis categóricas 🎉;</li>
+<li class="fragment">Uma pessoa sem muito conhecimento poderá estimar <span class="math inline">\widehat{r}({\bf x})</span>, dada uma árvore, para cada nova observação <span class="math inline">{\bf x}</span>.</li>
+</ol>
+
+<img data-src="gifs/hum_02.gif" class="r-stretch"></section>
 <section id="exercícios-8" class="slide level2">
 <h2>📚 Exercícios</h2>
 <p><br></p>
@@ -3640,6 +3655,11 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><span class="red">Exercício</span>: Sem utilizar a biblioteca <strong>tidymodels</strong>, apenas as bibliotecas <strong>rsample</strong> e <strong>rpart</strong>, treine um modelo com 10 mil observações geradas. No procedimento <span class="math inline">k</span>-folds cross-validation, para <span class="math inline">k = 20</span>, encontre um bom valor para o grau de complexidade considerando um <em>grid</em> de possíveis valores. <em>Dica</em>: experimente testar um parâmetro dentro do conjunto de treino no procedimento de <em>cross-validation</em>. Por exemplo, experimente criar um <em>grid</em> com valores entre <span class="math inline">0.001</span> e <span class="math inline">0.4</span>. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.</p>
 <p><br></p>
 <p><span class="red">Exercício</span>: Refaça o exercício anterior utilizando a biblioteca <strong>tidymodels</strong>. Fique livre para tunar o hiperparâmetro que achar necessário, da <em>engine</em> que utilizar com a biblioteca <strong>parsnip</strong>. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o <strong>tidymodels</strong>.</p>
+</section>
+<section id="combinando-predições---bagging" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>As árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa</p>
 
 
 <img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">

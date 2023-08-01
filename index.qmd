@@ -5127,7 +5127,9 @@ O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado
 2. Pode ser representado graficamente;
 3. É útil na análise exploratória dos dados do problema em questão;
 4. Pode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;
-5. Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas. Veremos o uso de árvore de classificação mais a frente.
+5. Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;
+6. A árvore é robusta na presença de variáveis irrelevantes.
+
 
 <br>
 
@@ -5160,6 +5162,22 @@ Experimente alterar o parâmetro de complexidade e perceba como ele influencia n
 ```
 
 ![](gifs/giphy.gif)
+
+## 🌳 Árvores de regressão
+
+<br>
+
+**Algumas outras características das 🌳 árvores de regressão são**:
+
+<br>
+
+1. A função de regressão estimada $\widehat{r}({\bf x})$ é **constante por partes**, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de $\widehat{r}({\bf x})$;
+2. Em uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;
+3. Elas são uma espécie de "samambaias", em que crescem para baixo;
+4. É fácil introduzir variáveis categóricas 🎉;
+5. Uma pessoa sem muito conhecimento poderá estimar $\widehat{r}({\bf x})$, dada uma árvore, para cada nova observação ${\bf x}$.
+
+![](gifs/hum_02.gif)
 
 ## 📚 Exercícios
 
@@ -5217,7 +5235,7 @@ arvore(complexidade = 0.2)
 
 [Exercício]{.red}: Refaça o exercício anterior utilizando a biblioteca **tidymodels**. Fique livre para tunar o hiperparâmetro que achar necessário, da *engine* que utilizar com a biblioteca **parsnip**. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o **tidymodels**.
 
-## Bagging e árvores de regressão 🌳
+## Combinando predições - bagging
 
 <br>
 

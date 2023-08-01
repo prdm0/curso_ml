@@ -1299,7 +1299,7 @@
     "href": "index.html#árvores-de-regressão-8",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n Algumas observações sobre a árvore 🌳 de regressão:\n\n\nÉ um método não-paramétrico;\nPode ser representado graficamente;\nÉ útil na análise exploratória dos dados do problema em questão;\nPode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;\nPoderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas. Veremos o uso de árvore de classificação mais a frente."
+    "text": "🌳 Árvores de regressão\n Algumas observações sobre a árvore 🌳 de regressão:\n\n\nÉ um método não-paramétrico;\nPode ser representado graficamente;\nÉ útil na análise exploratória dos dados do problema em questão;\nPode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;\nPoderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;\nA árvore é robusta na presença de variáveis irrelevantes."
   },
   {
     "objectID": "reports_code/tufte_svm_regressao.html",
@@ -1446,6 +1446,27 @@
     "href": "index.html#exercícios-9",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de X_i e Y_i. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de complexidade, dado n e sigma fixos.\n\nExercício: Sem utilizar a biblioteca tidymodels, apenas as bibliotecas rsample e rpart, treine um modelo com 10 mil observações geradas. No procedimento k-folds cross-validation, para k = 20, encontre um bom valor para o grau de complexidade considerando um grid de possíveis valores. Dica: experimente testar um parâmetro dentro do conjunto de treino no procedimento de cross-validation. Por exemplo, experimente criar um grid com valores entre 0.001 e 0.4. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.\n\nExercício: Refaça o exercício anterior utilizando a biblioteca tidymodels. Fique livre para tunar o hiperparâmetro que achar necessário, da engine que utilizar com a biblioteca parsnip. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o tidymodels.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "📚 Exercícios\n\nExercício: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de X_i e Y_i. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de complexidade, dado n e sigma fixos.\n\nExercício: Sem utilizar a biblioteca tidymodels, apenas as bibliotecas rsample e rpart, treine um modelo com 10 mil observações geradas. No procedimento k-folds cross-validation, para k = 20, encontre um bom valor para o grau de complexidade considerando um grid de possíveis valores. Dica: experimente testar um parâmetro dentro do conjunto de treino no procedimento de cross-validation. Por exemplo, experimente criar um grid com valores entre 0.001 e 0.4. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.\n\nExercício: Refaça o exercício anterior utilizando a biblioteca tidymodels. Fique livre para tunar o hiperparâmetro que achar necessário, da engine que utilizar com a biblioteca parsnip. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o tidymodels."
+  },
+  {
+    "objectID": "index.html#bagging-e-árvores-de-regressão",
+    "href": "index.html#bagging-e-árvores-de-regressão",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Bagging e árvores de regressão 🌳",
+    "text": "Bagging e árvores de regressão 🌳\n\nAs árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#árvores-de-regressão-11",
+    "href": "index.html#árvores-de-regressão-11",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🌳 Árvores de regressão",
+    "text": "🌳 Árvores de regressão\n\nAlgumas outras características das 🌳 árvores de regressão são:\n\n\nA função de regressão estimada \\widehat{r}({\\bf x}) é constante por partes, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de \\widehat{r}({\\bf x});\nEm uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;\nElas são uma espécie de “samambaias”, em que crescem para baixo;\nÉ fácil introduzir variáveis categóricas 🎉;\nUma pessoa sem muito conhecimento poderá estimar \\widehat{r}({\\bf x}), dada uma árvore, para cada nova observação {\\bf x}."
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging",
+    "href": "index.html#combinando-predições---bagging",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nAs árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
