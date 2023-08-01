@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9c15c2df606cd305a4be" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-9c15c2df606cd305a4be">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4fd0b57d0ff906075e31" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-4fd0b57d0ff906075e31">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -3553,7 +3553,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>🌳 Árvores de regressão</h2>
 <p><br></p>
 <p>O algoritmo particiona o espaço de covariáveis em duas regiões disjuntas. Para a escolha dessa partição, busca-se, dentre todas as covariáveis <span class="math inline">x_i</span> e cortes <span class="math inline">t_1</span>, a combinação que conduz a uma partição <span class="math inline">(R_1, R_2)</span> com menor predições de erro quadrático, i.e., dado um nó, a partição é construída de modo a minimizar:</p>
-<p><span id="eq-sse-tree"><span class="math display">\overbrace{SSE}^{\text{sum of squares error}} = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2, \tag{8}</span></span> em que <span class="math inline">\widehat{y}_{R_k}</span> é a predição de <span class="math inline">y</span> fornecida pela região <span class="math inline">R_k</span> e SSE é denominado <em><span class="red">S</span>um of <span class="red">S</span>quares of <span class="red">E</span>rrors</em> - SSE.</p>
+<p><span id="eq-sse-tree"><span class="math display">\overbrace{SSE}^{\text{sum of squares error}} = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2, \tag{8}</span></span> em que <span class="math inline">\widehat{y}_{R_k}</span> é a predição de <span class="math inline">y</span> fornecida pela região <span class="math inline">R_k</span> e SSE é denominado <span class="red"><em>S</em></span><em>um of <span class="red">S</span>quares of <span class="red">E</span>rrors</em> - SSE.</p>
 <p><br></p>
 <p>Assim, tem-se que o algoritmo irá fornecer:</p>
 <p><br></p>
@@ -3687,12 +3687,18 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <img data-src="gifs/laughing-ha.gif" class="r-stretch"></section>
 <section id="combinando-predições---bagging-1" class="slide level2">
 <h2>Combinando predições - bagging</h2>
+<p><br> Caso você tenha interesse e entender o método de <em>bootstrap</em>, no contexto mais difundido na estatística como mencionado no slide anterior, assista a vídeo aula sobre bootstrap do Prof.&nbsp;Pedro Rafael do Departamento de Estatística da Universidade Federal da Paraíba - UFPB.</p>
+<p><br></p>
+<iframe data-external="1" src="https://www.youtube.com/embed/XEQlzfVc6lI" width="50%" height="50%" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="combinando-predições---bagging-2" class="slide level2">
+<h2>Combinando predições - bagging</h2>
 <p><br></p>
 <p>Portanto, é importante ficar claro que o <em>bagging</em> é uma metodologia genérica que poderá ser aplicada em situações ao qual desejamos combinar modelos. Por exemplo, o método <a href="https://en.wikipedia.org/wiki/Random_forest">ramdom forest</a> que veremos mais a frente é uma pequena modificação de um <em>bagging</em> de árvores de regressão que vimos anteriormente. Na verdade o <a href="https://en.wikipedia.org/wiki/Random_forest">ramdom forest</a>, assim como as árvores de decisões podem ser utilizadas também para problemas de classificação, como veremos mais adiante no curso.</p>
 <p><br></p>
 
 <img data-src="gifs/ok-2.gif" class="r-stretch"></section>
-<section id="combinando-predições---bagging-2" class="slide level2">
+<section id="combinando-predições---bagging-3" class="slide level2">
 <h2>Combinando predições - bagging</h2>
 <p><br></p>
 <p>A ideia de combinar árvores de regressão é interessante, uma vez que o risco preditivo da média das previsões das árvores é menor que o risco individual de cada uma das árvores.</p>
@@ -3700,6 +3706,89 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Lembre-se que quando falávamos em momentos anteriores do curso sobre o balanço entre viés e variância, apresentamos uma decomposição do risco quadrático <span class="math inline">R(g)</span> condicional a um novo <span class="math inline">{\bf x}</span> dada na <a href="#/balanço-viés-e-variância-1" class="quarto-xref">Equação&nbsp;2</a>. Para que não seja necessário necessário voltar um grande número de slides, recoloco a decomposição abaixo:</p>
 <p><br></p>
 <p><span class="math display">\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.</span></p>
+</section>
+<section id="combinando-predições---bagging-4" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Ainda no caso de árvores 🌳 de regressão, suponha um caso mais simples, em que temos dois modelos de árvores de regressão, sejam eles <span class="math inline">g_1</span> e <span class="math inline">g_2</span>, respectivamente, em que a previsão combinada é dada por:</p>
+<p><span class="math display">\widehat{g}({\bf x}) = \frac{\widehat{g_1}({\bf x})  + \widehat{g_2}({\bf x})}{2},</span> em que <span class="math inline">\widehat{g_1}({\bf x})</span> e <span class="math inline">\widehat{g_2}({\bf x})</span> são as estimativas da função de regressão <span class="math inline">r({\bf x})</span> fornecidades pelas árvores <span class="math inline">g_1</span> e <span class="math inline">g_2</span>, respectivamente.</p>
+<p><br></p>
+<p>Supondo que <span class="math inline">\widehat{g_1}({\bf x})</span> e <span class="math inline">\widehat{g_2}({\bf x})</span> são não-viesados e possuem a mesma variância, e além disso são não correlacionados então:</p>
+<span class="math display">\begin{align*}
+\mathbb{E}[(Y - g({\bf x}))^2|{\bf x}] &amp;= \mathbb{V}[Y|{\bf x}] + \frac{1}{4}(\mathbb{V}[\widehat{g}_1({\bf x}) + \widehat{g}_2({\bf x})|{\bf x}]) \\
+&amp;\quad + \left(\mathbb{E}[Y|{\bf x}] - \frac{\mathbb{E}[\widehat{g}_1({\bf x})|{\bf x}]+\mathbb{E}[\widehat{g}_2({\bf x})|{\bf x}]}{2} \right)^2
+\end{align*}</span>
+</section>
+<section id="combinando-predições---bagging-5" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Note que se <span class="math inline">\widehat{g_1}({\bf x})</span> e <span class="math inline">\widehat{g_2}({\bf x})</span> então <span class="math inline">\mathbb{E}(\widehat{g}_1({\bf x})|{\bf x}) = \mathbb{E}(\widehat{g}_2({\bf x})|{\bf x}) = r({\bf x})</span>. Isso faz com que a última parcela da equação anterior seja zero. Se além disso, se os estimadores possuem a mesma variância, então a decomposição do risco preditivo combinado é simplificada e dada por:</p>
+<p><span id="eq-risco-combinado-decom"><span class="math display">\overbrace{\mathbb{E}[(Y - \widehat{g}({\bf x}))^2|{\bf x}]}^{\text{Risco preditivo combinado}} = \mathbb{V}[Y|{\bf x}] + \frac{1}{2}\mathbb{V}[\widehat{g}_i({\bf x})| {\bf x}] \leq \underbrace{\mathbb{E}[(Y - \widehat{g}_i({\bf x}))^2 | {\bf x}]}_{\text{Risco preditivo individual}}, \tag{9}</span></span> para um dado <span class="math inline">i</span>, com <span class="math inline">i = 1, 2</span>. Dado as suposições de estimadores não-viesados, variância iguais e que os estimadores são não-correlacionados, a <a href="#/combinando-predições---bagging-5" class="quarto-xref">Equação&nbsp;9</a> poderia ser generalizada para o caso de mais de dois estimadores, no nosso caso, para mais de duas árvores de regressão 🌳. Basta utilizar indução matemática!</p>
+<p><br></p>
+
+<img data-src="gifs/bom.gif" class="r-stretch"></section>
+<section id="combinando-predições---bagging-6" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Devemos notar, contudo que, para que tenhamos árvores 🌳 aproximadamente não-viesadas, não devemos “podar” as árvores️ 🌳. Muito embora elas possam aprensenta <em>overfitting</em> quando consideradas individualmente o <strong>risco preditivo combinado irá diminuir</strong>.</p>
+<p><br></p>
+<p>Portanto, seja <span class="math inline">B</span> o número de pseudo-amostras <em>bootstrap</em>, i.e., amostras obtidas da amostra original com reposição. Então, o estimador combinado em um procedimento de <em>bagging</em> é dado por:</p>
+<p><span class="math display">\widehat{g}({\bf x}) = \frac{1}{B}\sum_{b = 1}^B \widehat{g}_b({\bf x}).</span></p>
+
+<img data-src="gifs/bean_01.gif" class="r-stretch"></section>
+<section id="combinando-predições---bagging-7" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Uma observação importante é que o <em>bagging</em> pode ser ruim em modelos quando utilizado em modelos intrinsecamente estáveis, como é o caso de modelos lineares de regressão, <span class="math inline">k</span>NN, regressão logística, entre outros. O procedimento de <em>bagging</em> costuma ser eficaz quando são utilizados em modelos que possuem uma alta variância e que tendem a ter <em>overfitting</em>, como o caso da árvore de decisão profunda (árvores de regressão e de classificação).</p>
+<p><br></p>
+
+<img data-src="gifs/bean_01.gif" class="r-stretch"></section>
+<section id="combinando-predições---bagging-8" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Muito embora a combinação preditiva usando <em>bagging</em> de um conjunto de árvores de regressão não são tão fáceis de interpretar quando comparada com uma única árvore de regressão, ele permite que possamos criar uma medida de importância para cada variável. Essa medida baseia-se na redução da <em>Residual Sum of squares</em> - RSS <strong>de cada divisão</strong>.</p>
+<p><br></p>
+
+<img data-src="imgs/dendograma_simples.png" class="r-stretch quarto-figure-center"><p class="caption">Uma simples divisão binária em qualquer ponto de uma dada árvore 🌳 de regressão. Desejamos encontrar a importância da variável “pai” que poderá aparecer em diversas divisões em uma mesma árvore.</p><p><br></p>
+<p>Devemos computar a redução da soma dos quadrados dos resíduos em cada nó em que a variável do nó “pai” aparece em todas as árvores obtidas pelo procedimento de <em>bagging</em>, em que calculamos a soma dos quadrados no nó “pai” e subtraímos da soma dos quadrados do nó esquerdo e do nó direito.</p>
+</section>
+<section id="combinando-predições---bagging-9" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
+<p>Assim, a importância da variável no nó “pai”, em uma dada divisão binária em uma dada árvore 🌳 do procedimento de <em>bagging</em> é dada por:</p>
+<p><br></p>
+<p><span class="math display">\begin{align*}
+\text{Importância local} &amp;= RSS_{pai} - RSS_{esq} - RSS_{dir} = \\
+&amp; \sum_{i \in pai} (y_i - \overline{y}_{pai})^2 - \sum_{i \in esq} (y_i - \overline{y}_{esq})^2 - \sum_{i \in dir} (y_i - \overline{y}_{dir})^2.
+\end{align*}</span></p>
+<p><br></p>
+<p>Foi denominado de <strong>“Importância local”</strong>, uma vez que o nó “pai” (variável de interesse) poderá aparecer nas diversas <span class="math inline">B</span> árvores de regressão do procedimento <em>bagging</em>, e mais, poderá aparecer várias vezes em uma mesma árvore. Portanto, em todas as <span class="math inline">B</span> e em todas as ocorrências da variável “pai” em qualquer ponto de uma árvore a “Importância local” deverá ser calculada. Ao fim, deverá somar todas as importâncias locais para se ter a <strong>importância global</strong> da variável no nó “pai”.</p>
+</section>
+<section id="random-forest" class="slide level2">
+<h2>🌲🌳🌲🌳🌲 Random Forest</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>O <em>random forest</em> (floresta aleatória) é um procedimento de <em>bagging</em> em que introduz um níveo de aleatoriedade maior no processo de selação das variáveis, visando reduzir ainda mais a correção entre as árvores de regressão. Isso é feito sorteando <span class="math inline">m &lt; d</span> covariáveis em cada particionamento, i.e., essa randomização é feita em toda divisão de todas as <span class="math inline">B</span> árvores do procedimento de <em>bagging</em>, em que <span class="math inline">d</span> é o total de covariáveis consideradas.</p>
+<p><br></p>
+<p>O valor de <span class="math inline">m</span> poderá ser obtido via algum procedimento de <em>cross-validation</em>, i.e., é um hiperparâmetro que poderá ser “tunado”.</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="gifs/forest.gif"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest-1" class="slide level2">
+<h2>🌲🌳🌲🌳🌲 Random Forest</h2>
+<p><br></p>
+<p>A ideia de construir árvores que sejam menos correlacionadas uma com as outras nos aproxima melhor do critério de não correlação que utilizamos para mostrar que o risco preditivo combinado é menor que o risco preditivo ao considerar uma única árvore, como mostra a <a href="#/combinando-predições---bagging-5" class="quarto-xref">Equação&nbsp;9</a>.</p>
+<p><br></p>
+<p>O algoritmo <em>random forest</em> consegue produzir um estimador com menor variância que o <em>bagging</em>. Além disso, assim como no <em>bagging</em>, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.</p>
+<p><br></p>
+<p>Muito embora o <em>bagging</em> é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de <em>random forest</em> para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.</p>
 
 
 <img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">

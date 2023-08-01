@@ -1488,13 +1488,76 @@
     "href": "index.html#combinando-predições---bagging-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Combinando predições - bagging",
-    "text": "Combinando predições - bagging\n\nPortanto, é importante ficar claro que o bagging é uma metodologia genérica que poderá ser aplicada em situações ao qual desejamos combinar modelos. Por exemplo, o método ramdom forest que veremos mais a frente é uma pequena modificação de um bagging de árvores de regressão que vimos anteriormente. Na verdade o ramdom forest, assim como as árvores de decisões podem ser utilizadas também para problemas de classificação, como veremos mais adiante no curso."
+    "text": "Combinando predições - bagging\n Caso você tenha interesse e entender o método de bootstrap, no contexto mais difundido na estatística como mencionado no slide anterior, assista a vídeo aula sobre bootstrap do Prof. Pedro Rafael do Departamento de Estatística da Universidade Federal da Paraíba - UFPB."
   },
   {
     "objectID": "index.html#combinando-predições---bagging-2",
     "href": "index.html#combinando-predições---bagging-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Combinando predições - bagging",
-    "text": "Combinando predições - bagging\n\nA ideia de combinar árvores de regressão é interessante, uma vez que o risco preditivo da média das previsões das árvores é menor que o risco individual de cada uma das árvores.\n\nLembre-se que quando falávamos em momentos anteriores do curso sobre o balanço entre viés e variância, apresentamos uma decomposição do risco quadrático R(g) condicional a um novo {\\bf x} dada na Equação 2. Para que não seja necessário necessário voltar um grande número de slides, recoloco a decomposição abaixo:\n\n\\mathbb{E}\\left[(Y - \\widehat{g}({\\bf X}))^2| {\\bf X} = {\\bf x}\\right] = \\underbrace{\\mathbb{V}[Y | {\\bf X = x}]}_{\\mathrm{i - Variância\\,\\, intrínseca}} + \\overbrace{(r({\\bf x}) - \\mathbb{E}[\\widehat{g}({\\bf x})])^2}^{\\mathrm{ii - Viés\\, ao\\, quadrado\\, do\\, modelo}} + \\underbrace{\\mathbb{V}[\\widehat{g}({\\bf x})]}_{\\mathrm{iii - Variância\\, do\\, modelo}}.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "Combinando predições - bagging\n\nPortanto, é importante ficar claro que o bagging é uma metodologia genérica que poderá ser aplicada em situações ao qual desejamos combinar modelos. Por exemplo, o método ramdom forest que veremos mais a frente é uma pequena modificação de um bagging de árvores de regressão que vimos anteriormente. Na verdade o ramdom forest, assim como as árvores de decisões podem ser utilizadas também para problemas de classificação, como veremos mais adiante no curso."
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-3",
+    "href": "index.html#combinando-predições---bagging-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nA ideia de combinar árvores de regressão é interessante, uma vez que o risco preditivo da média das previsões das árvores é menor que o risco individual de cada uma das árvores.\n\nLembre-se que quando falávamos em momentos anteriores do curso sobre o balanço entre viés e variância, apresentamos uma decomposição do risco quadrático R(g) condicional a um novo {\\bf x} dada na Equação 2. Para que não seja necessário necessário voltar um grande número de slides, recoloco a decomposição abaixo:\n\n\\mathbb{E}\\left[(Y - \\widehat{g}({\\bf X}))^2| {\\bf X} = {\\bf x}\\right] = \\underbrace{\\mathbb{V}[Y | {\\bf X = x}]}_{\\mathrm{i - Variância\\,\\, intrínseca}} + \\overbrace{(r({\\bf x}) - \\mathbb{E}[\\widehat{g}({\\bf x})])^2}^{\\mathrm{ii - Viés\\, ao\\, quadrado\\, do\\, modelo}} + \\underbrace{\\mathbb{V}[\\widehat{g}({\\bf x})]}_{\\mathrm{iii - Variância\\, do\\, modelo}}."
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-4",
+    "href": "index.html#combinando-predições---bagging-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nAinda no caso de árvores 🌳 de regressão, suponha um caso mais simples, em que temos dois modelos de árvores de regressão, sejam eles g_1 e g_2, respectivamente, em que a previsão combinada é dada por:\n\\widehat{g}({\\bf x}) = \\frac{\\widehat{g_1}({\\bf x})  + \\widehat{g_2}({\\bf x})}{2}, em que \\widehat{g_1}({\\bf x}) e \\widehat{g_2}({\\bf x}) são as estimativas da função de regressão r({\\bf x}) fornecidades pelas árvores g_1 e g_2, respectivamente.\n\nSupondo que \\widehat{g_1}({\\bf x}) e \\widehat{g_2}({\\bf x}) são não-viesados e possuem a mesma variância, e além disso são não correlacionados então:\n\\begin{align*}\n\\mathbb{E}[(Y - g({\\bf x}))^2|{\\bf x}] &= \\mathbb{V}[Y|{\\bf x}] + \\frac{1}{4}(\\mathbb{V}[\\widehat{g}_1({\\bf x}) + \\widehat{g}_2({\\bf x})|{\\bf x}]) \\\\\n&\\quad + \\left(\\mathbb{E}[Y|{\\bf x}] - \\frac{\\mathbb{E}[\\widehat{g}_1({\\bf x})|{\\bf x}]+\\mathbb{E}[\\widehat{g}_2({\\bf x})|{\\bf x}]}{2} \\right)^2\n\\end{align*}"
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-5",
+    "href": "index.html#combinando-predições---bagging-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nNote que se \\widehat{g_1}({\\bf x}) e \\widehat{g_2}({\\bf x}) então \\mathbb{E}(\\widehat{g}_1({\\bf x})|{\\bf x}) = \\mathbb{E}(\\widehat{g}_2({\\bf x})|{\\bf x}) = r({\\bf x}). Isso faz com que a última parcela da equação anterior seja zero. Se além disso, se os estimadores possuem a mesma variância, então a decomposição do risco preditivo combinado é simplificada e dada por:\n\\overbrace{\\mathbb{E}[(Y - \\widehat{g}({\\bf x}))^2|{\\bf x}]}^{\\text{Risco preditivo combinado}} = \\mathbb{V}[Y|{\\bf x}] + \\frac{1}{2}\\mathbb{V}[\\widehat{g}_i({\\bf x})| {\\bf x}] \\leq \\underbrace{\\mathbb{E}[(Y - \\widehat{g}_i({\\bf x}))^2 | {\\bf x}]}_{\\text{Risco preditivo individual}}, \\tag{9} para um dado i, com i = 1, 2. Dado as suposições de estimadores não-viesados, variância iguais e que os estimadores são não-correlacionados, a Equação 9 poderia ser generalizada para o caso de mais de dois estimadores, no nosso caso, para mais de duas árvores de regressão 🌳. Basta utilizar indução matemática!"
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-6",
+    "href": "index.html#combinando-predições---bagging-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nDevemos notar, contudo que, para que tenhamos árvores 🌳 aproximadamente não-viesadas, não devemos “podar” as árvores️ 🌳. Muito embora elas possam aprensenta overfitting quando consideradas individualmente o risco preditivo combinado irá diminuir.\n\nPortanto, seja B o número de pseudo-amostras bootstrap, i.e., amostras obtidas da amostra original com reposição. Então, o estimador combinado em um procedimento de bagging é dado por:\n\\widehat{g}({\\bf x}) = \\frac{1}{B}\\sum_{b = 1}^B \\widehat{g}_b({\\bf x})."
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-7",
+    "href": "index.html#combinando-predições---bagging-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nUma observação importante é que o bagging pode ser ruim em modelos quando utilizado em modelos intrinsecamente estáveis, como é o caso de modelos lineares de regressão, kNN, regressão logística, entre outros. O procedimento de bagging costuma ser eficaz quando são utilizados em modelos que possuem uma alta variância e que tendem a ter overfitting, como o caso da árvore de decisão profunda (árvores de regressão e de classificação)."
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-8",
+    "href": "index.html#combinando-predições---bagging-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nMuito embora a combinação preditiva usando bagging de um conjunto de árvores de regressão não são tão fáceis de interpretar quando comparada com uma única árvore de regressão, ele permite que possamos criar uma medida de importância para cada variável. Essa medida baseia-se na redução da Residual Sum of squares - RSS de cada divisão.\n\n\nUma simples divisão binária em qualquer ponto de uma dada árvore 🌳 de regressão. Desejamos encontrar a importância da variável “pai” que poderá aparecer em diversas divisões em uma mesma árvore.\nDevemos computar a redução da soma dos quadrados dos resíduos em cada nó em que a variável do nó “pai” aparece em todas as árvores obtidas pelo procedimento de bagging, em que calculamos a soma dos quadrados no nó “pai” e subtraímos da soma dos quadrados do nó esquerdo e do nó direito."
+  },
+  {
+    "objectID": "index.html#random-forest",
+    "href": "index.html#random-forest",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🌲🌳🌲🌳🌲 Random Forest",
+    "text": "🌲🌳🌲🌳🌲 Random Forest\n\n\n\nO random forest (floresta aleatória) é um procedimento de bagging em que introduz um níveo de aleatoriedade maior no processo de selação das variáveis, visando reduzir ainda mais a correção entre as árvores de regressão. Isso é feito sorteando m &lt; d covariáveis em cada particionamento, i.e., essa randomização é feita em toda divisão de todas as B árvores do procedimento de bagging, em que d é o total de covariáveis consideradas.\n\nO valor de m poderá ser obtido via algum procedimento de cross-validation, i.e., é um hiperparâmetro que poderá ser “tunado”."
+  },
+  {
+    "objectID": "index.html#random-forest-1",
+    "href": "index.html#random-forest-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🌲🌳🌲🌳🌲 Random Forest",
+    "text": "🌲🌳🌲🌳🌲 Random Forest\n\nA ideia de construir árvores que sejam menos correlacionadas uma com as outras nos aproxima melhor do critério de não correlação que utilizamos para mostrar que o risco preditivo combinado é menor que o risco preditivo ao considerar uma única árvore, como mostra a Equação 9.\n\nO algoritmo random forest consegue produzir um estimador com menor variância que o bagging. Além disso, assim como no bagging, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.\n\nMuito embora o bagging é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de random forest para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#combinando-predições---bagging-9",
+    "href": "index.html#combinando-predições---bagging-9",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Combinando predições - bagging",
+    "text": "Combinando predições - bagging\n\nAssim, a importância da variável no nó “pai”, em uma dada divisão binária em uma dada árvore 🌳 do procedimento de bagging é dada por:\n\n\\begin{align*}\n\\text{Importância local} &= RSS_{pai} - RSS_{esq} - RSS_{dir} = \\\\\n& \\sum_{i \\in pai} (y_i - \\overline{y}_{pai})^2 - \\sum_{i \\in esq} (y_i - \\overline{y}_{esq})^2 - \\sum_{i \\in dir} (y_i - \\overline{y}_{dir})^2.\n\\end{align*}\n\nFoi denominado de “Importância local”, uma vez que o nó “pai” (variável de interesse) poderá aparecer nas diversas B árvores de regressão do procedimento bagging, e mais, poderá aparecer várias vezes em uma mesma árvore. Portanto, em todas as B e em todas as ocorrências da variável “pai” em qualquer ponto de uma árvore a “Importância local” deverá ser calculada. Ao fim, deverá somar todas as importâncias locais para se ter a importância global da variável no nó “pai”."
   }
 ]

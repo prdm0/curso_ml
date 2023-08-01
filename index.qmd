@@ -2002,8 +2002,8 @@ Isso é um pecado mortal! Ok?!
 
 Corrigir o problema de dependência que há ao estimarmos o risco usando o
 EQM é fácil. Uma abordagem muito utilizada é utilizar [*data
-splitting*]{.red}, também chamado de método [*hold-out*]{.red}. Algo como
-a segunda linha da imagem abaixo:
+splitting*]{.red}, também chamado de método [*hold-out*]{.red}. Algo
+como a segunda linha da imagem abaixo:
 
 <br>
 
@@ -2016,15 +2016,15 @@ a segunda linha da imagem abaixo:
 Essa divisão é feita de forma aleatória, algumas vezes estratificada de
 acordo com algumas variáváveis. A ideia de aleatorizar é se livrar de
 problemas de conjunto de dados ordenados. Queremos que tanto no conjunto
-de treinamento [*Training*]{.red} quanto no conjunto [*Testing*]{.red}, na imagem,
-contenham a mesma diversidade de observações.
+de treinamento [*Training*]{.red} quanto no conjunto [*Testing*]{.red},
+na imagem, contenham a mesma diversidade de observações.
 
 <br>
 
-Ainda no exemplo de PIB per Capita versus Expectaitiva de
-Vida, não quero correr o risco de ter no conjunto de treinamento apenas
-o países com maiores valores de PIB per Capita, caso o conjunto de dados
-tenha sido ordenado pela variável `GDPercapita`. Por isso, aleatorizar o
+Ainda no exemplo de PIB per Capita versus Expectaitiva de Vida, não
+quero correr o risco de ter no conjunto de treinamento apenas o países
+com maiores valores de PIB per Capita, caso o conjunto de dados tenha
+sido ordenado pela variável `GDPercapita`. Por isso, aleatorizar o
 conjunto de treinamento e teste é sempre uma ótima ideia. Certo!?
 
 <br>
@@ -2114,10 +2114,10 @@ Em palavras, o procedimento consiste em tirar de fora uma única
 observação das $n$ observações da base de dados para ser o nosso
 conjunto de teste e treinar o modelo com as observações que
 permaneceram. Daí, calcula-se o **risco observado** (EQM, sob o conjunto
-de teste/validação). Na segunda iteração, a observação que antes era de teste
-volta para perterncer ao conjunto de treinamento e uma nova observação é
-removida para ser teste. Esse procedimento ocorre de forma iterativa até
-a retirada da última observação como teste.
+de teste/validação). Na segunda iteração, a observação que antes era de
+teste volta para perterncer ao conjunto de treinamento e uma nova
+observação é removida para ser teste. Esse procedimento ocorre de forma
+iterativa até a retirada da última observação como teste.
 
 ## Leave-one-out cross-validation
 
@@ -2138,13 +2138,13 @@ observado, estimamos o risco de $R(g)$.
 <br>
 
 Vejo muitas pessoas que usam uma validação cruzada, por exemplo,
-*leave-one-out cross-validation* - LOOCV comparando com o método Jackknife
-e algumas inclusive dizendo ser a mesma coisa. Não, não são!
+*leave-one-out cross-validation* - LOOCV comparando com o método
+Jackknife e algumas inclusive dizendo ser a mesma coisa. Não, não são!
 
 <br>
 
-O algoritmo Jackknife é um procedimento de estimação, e que, por sua vez,
-deve estar dentro do conjunto de treinamento. Para haver algum
+O algoritmo Jackknife é um procedimento de estimação, e que, por sua
+vez, deve estar dentro do conjunto de treinamento. Para haver algum
 Jackknife, a estimativa com $n-1$ observações deve estar dentro do
 conjunto de treinamento, em que dentro do treinamento teria a remoção de
 um observação por vez. **Consegue perceber a diferença sutil?**
@@ -2182,9 +2182,10 @@ diversas outras pode ser impeditivo utilizar o LOOCV. 🤯
 
 <br>
 
-O método LOOCV converge assintotivamente para o AIC, porém, este, muitas vezes não poderemos
-calcular diretamente, uma vez que não conhecemos a distribuição conjunta dos dados, i.e., não
-conhecemos a estrutura probabilística. 
+O método LOOCV converge assintotivamente para o AIC, porém, este, muitas
+vezes não poderemos calcular diretamente, uma vez que não conhecemos a
+distribuição conjunta dos dados, i.e., não conhecemos a estrutura
+probabilística.
 
 <br>
 
@@ -2194,18 +2195,22 @@ conhecemos a estrutura probabilística.
 
 <br>
 
-Essa relação entre o LOOCV e o *Akaike Information Criterion* - AIC foi provada no paper Stone (1977) intitulado **An Asymptotic Equivalence of Choice of Model by Cross-Validation and Akaike's Criterion** e publicado no *Journal of the Royal Statistical Society, Series B*. Clique [aqui](https://iri.columbia.edu/~tippett/cv_papers/Stone1977.pdf), se quiser ler o artigo.
+Essa relação entre o LOOCV e o *Akaike Information Criterion* - AIC foi
+provada no paper Stone (1977) intitulado **An Asymptotic Equivalence of
+Choice of Model by Cross-Validation and Akaike's Criterion** e publicado
+no *Journal of the Royal Statistical Society, Series B*. Clique
+[aqui](https://iri.columbia.edu/~tippett/cv_papers/Stone1977.pdf), se
+quiser ler o artigo.
 
 <br>
 
 ::: columns
-::: {.column width='50%'}
+::: {.column width="50%"}
 ![](imgs/loocn_aic.png)
 :::
-::: {.column width='50%'}
-<br>
-<br>
-![](gifs/thumbs-up-nod.gif)
+
+::: {.column width="50%"}
+<br> <br> ![](gifs/thumbs-up-nod.gif)
 :::
 :::
 
@@ -2213,15 +2218,16 @@ Essa relação entre o LOOCV e o *Akaike Information Criterion* - AIC foi provad
 
 <br>
 
-Uma alternativa ao LOOCV é utilizar o método $k$-*fold cross-validation*.
-Nessa abordagem, dividimos o conjunto de dados em $k$-*folds* (lotes)
-disjuntos e com aproximadamente o mesmo tamanho. Dessa forma, temos
-$L_1, \cdots, L_k \subset \{1, \cdots, n\}$ são, cada um, um conjunto de índices
-aleatórios associados a cada um dos lotes. A ideia aqui é construir $k$ estimadores
-da função de regressão, denotados por $\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}$,
-em que $\widehat{g}_{-j}$ é criado usando todas as observações do banco de dados, com exceção
-daquelas do lote $L_j$, utilizado para **validação**. O estimador do
-risco é dado por:
+Uma alternativa ao LOOCV é utilizar o método $k$-*fold
+cross-validation*. Nessa abordagem, dividimos o conjunto de dados em
+$k$-*folds* (lotes) disjuntos e com aproximadamente o mesmo tamanho.
+Dessa forma, temos $L_1, \cdots, L_k \subset \{1, \cdots, n\}$ são, cada
+um, um conjunto de índices aleatórios associados a cada um dos lotes. A
+ideia aqui é construir $k$ estimadores da função de regressão, denotados
+por $\widehat{g}_{-1}, \cdots, \widehat{g}_{-k}$, em que
+$\widehat{g}_{-j}$ é criado usando todas as observações do banco de
+dados, com exceção daquelas do lote $L_j$, utilizado para **validação**.
+O estimador do risco é dado por:
 
 $$\widehat{R}(g) = \frac{1}{n}\sum_{j=1}^k \sum_{i \in L_j}(Y_i - g_{-j}({\bf X}_i))^2.$$
 Perceba que, que o LOOCV é um caso particular do $k$-*fold
@@ -2259,8 +2265,8 @@ cruzada, para além da estimação do risco $R(g)$.
 
 <br>
 
-Ao estimar $k$ modelos, normalmente faz-se um *grid* de possíveis valores
-para esses hiperparâmetros em que ao final, escolhe-se como
+Ao estimar $k$ modelos, normalmente faz-se um *grid* de possíveis
+valores para esses hiperparâmetros em que ao final, escolhe-se como
 hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo
 final, com todo o conjunto de treinamento usando o valor do
 hiperparâmetro que retornou o menor EQM no conjunto de validação.
@@ -2282,8 +2288,8 @@ cruzada.
 <br>
 
 O conjunto [*Testing*]{.red} na segunda hierarquia da árvore ao lado, só
-usamos no final para avaliar o desempenho do modelo nesse conjunto. Isto é, usamos o 
-[*Testing*]{.red} para o cálculo do **risco observado**.
+usamos no final para avaliar o desempenho do modelo nesse conjunto. Isto
+é, usamos o [*Testing*]{.red} para o cálculo do **risco observado**.
 
 <br>
 
@@ -2301,8 +2307,8 @@ validação cruzada.
 
 ## $k$-fold cross-validation
 
-A imagem abaixo ilustra o procedimento $k$-*fold cross-validation*, em que
-uma $5$-*fold cross-validation* é realizada dentro do conjunto de
+A imagem abaixo ilustra o procedimento $k$-*fold cross-validation*, em
+que uma $5$-*fold cross-validation* é realizada dentro do conjunto de
 treinamento. Em cada *split*, o conjunto verde de observações (fold
 [verde]{.green}) são utilizados para treinar/ajustar o modelo e o
 conjunto [azul]{.trueblue}, em cada um dos *splits* é utilizado para
@@ -2374,20 +2380,20 @@ como divisão simples de treinamento/validação/teste.
 Por outro lado, a validação cruzada $k$-*fold* é uma abordagem que visa
 obter uma estimativa mais robusta do desempenho do modelo. Nessa
 abordagem, o conjunto de treinamento é dividido em $k$ subconjuntos
-(*folds*) de tamanho aproximadamente igual. O modelo é treinado $k$ vezes,
-cada vez usando $k-1$ *folds* como conjunto de treinamento e $1$ *fold* como
-conjunto de validação. O desempenho do modelo é então calculado como a
-média dos resultados obtidos em cada iteração. Isso permite avaliar o
-modelo de forma mais precisa, pois utiliza todos os dados para
-treinamento e validação, evitando a dependência de uma única divisão do
-conjunto de treinamento.
+(*folds*) de tamanho aproximadamente igual. O modelo é treinado $k$
+vezes, cada vez usando $k-1$ *folds* como conjunto de treinamento e $1$
+*fold* como conjunto de validação. O desempenho do modelo é então
+calculado como a média dos resultados obtidos em cada iteração. Isso
+permite avaliar o modelo de forma mais precisa, pois utiliza todos os
+dados para treinamento e validação, evitando a dependência de uma única
+divisão do conjunto de treinamento.
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
 <br>
 
-A validação cruzada $k$-*fold* é particularmente útil quando o conjunto de
-dados é limitado, pois aproveita ao máximo os dados disponíveis. Além
+A validação cruzada $k$-*fold* é particularmente útil quando o conjunto
+de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além
 disso, ela permite verificar se o modelo é estável e se seu desempenho
 varia significativamente com diferentes divisões dos dados. É importante
 ressaltar que a validação cruzada $k$-*fold* pode ser computacionalmente
@@ -2435,7 +2441,7 @@ a função de perda $L_2$ é sua interpretabilidade. Temos que o risco
 quadrático $R(g)$ condicional a um novo ${\bf x}$ poderá ser decomposto
 por:
 
-$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$${#eq-decomposicao-risco-l2}
+$$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$ {#eq-decomposicao-risco-l2}
 **Temos que**:
 
 <br>
@@ -2591,9 +2597,9 @@ Experimente de forma interativa altera a complefixade do modelo.
 
 No exemplo anterior, note que os parâmetros dos modelos são os
 coeficientes $\beta$'s que indexam a regressão polinomial. Porém,
-perceba que á um **parâmetro de sintonização** ([*tuning parameter*]{.red})
-que é o valor de $p$, isto é, qual o grau do polinômio que iremos
-utilizar.
+perceba que á um **parâmetro de sintonização** ([*tuning
+parameter*]{.red}) que é o valor de $p$, isto é, qual o grau do
+polinômio que iremos utilizar.
 
 <br>
 
@@ -2704,11 +2710,12 @@ alternativa.
 
 Observe o *dashboard* interativo! Sabemos que para que tenhamos uma boa
 estimativa do risco preditivo, devemos utilizar novas observações. No
-*dashboard*, é possível observar que a forma errada (usando o conjunto de
-treinamento para avaliar o risco), sugere que sempre será bom adicionar
-mais parâmetros ao modelo, levando a *overfitting*. Perceba que usando a
-forma correta (usando validação cruzada), o EQM (risco estimado) sugere
-que não podemos aumentar muito a quantidade de parâmetros.
+*dashboard*, é possível observar que a forma errada (usando o conjunto
+de treinamento para avaliar o risco), sugere que sempre será bom
+adicionar mais parâmetros ao modelo, levando a *overfitting*. Perceba
+que usando a forma correta (usando validação cruzada), o EQM (risco
+estimado) sugere que não podemos aumentar muito a quantidade de
+parâmetros.
 
 <br>
 
@@ -3895,20 +3902,33 @@ ggsave(p, file = "imgs/knn_plot.png", width = 50, height = 30, units = "cm")
 
 <br>
 
-[Exercício]{.red}: Considere o problema em que o objetivo é prever a **pontuação** (*score*) / (item 2) do aluno com base em algumas variáveis. São elas:
+[Exercício]{.red}: Considere o problema em que o objetivo é prever a
+**pontuação** (*score*) / (item 2) do aluno com base em algumas
+variáveis. São elas:
 
 <br>
 
-1. **Horas estudadas**: o número total de horas gastas estudando por cada aluno;
-2. **Pontuação**: As notas obtidas pelos alunos em testes anteriores;
-3. **Atividades extracurriculares**: Se o aluno participa de atividades extracurriculares (Sim ou Não);
-4. **Horas de sono**: o número médio de horas de sono que o aluno teve por dia;
-5. **Amostras de perguntas praticadas**: O número de amostras de perguntas que o aluno praticou.
+1.  **Horas estudadas**: o número total de horas gastas estudando por
+    cada aluno;
+2.  **Pontuação**: As notas obtidas pelos alunos em testes anteriores;
+3.  **Atividades extracurriculares**: Se o aluno participa de atividades
+    extracurriculares (Sim ou Não);
+4.  **Horas de sono**: o número médio de horas de sono que o aluno teve
+    por dia;
+5.  **Amostras de perguntas praticadas**: O número de amostras de
+    perguntas que o aluno praticou.
 
 <br>
 
-Você poderá baixar e ter uma descrição maior da base de dados clicando [aqui](https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression). Avalie o poder preditivo do modelo lasso com o do $k$NN. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de $k$-*folds cross-validation*, com $k = 20$ e considerar um esquema de *data splitting* na proporção $90\%$ para treino e $10\%$ para teste. Sua análise deverá estar em um notebook de [quarto](https://quarto.org/), em que você deverá comentar cada passo da análise.
-
+Você poderá baixar e ter uma descrição maior da base de dados clicando
+[aqui](https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression).
+Avalie o poder preditivo do modelo lasso com o do $k$NN. Sua análise
+deve conter uma análise exploratória dos dados, deverá utilizar um
+esquema de $k$-*folds cross-validation*, com $k = 20$ e considerar um
+esquema de *data splitting* na proporção $90\%$ para treino e $10\%$
+para teste. Sua análise deverá estar em um notebook de
+[quarto](https://quarto.org/), em que você deverá comentar cada passo da
+análise.
 
 ## Nadaraya-Watson
 
@@ -4690,21 +4710,29 @@ predict(modelo_final, new_data = dados_expectativa_renda)
 
 <br>
 
-Métodos de estimação da função de regressão $r({\bf x})$ com base em *Reproducing Kernel Hilbert Spaces* - RKHs são famílias de metodologias bastante gerais. A ideia desses métodos envolvem definir uma função objetivo para a quantificação da qualidade das predições e, porteriormente, busca-se uma função que melhor se ajuste ao espaço de funções $\mathcal{H}$. Busca-se uma solução para
+Métodos de estimação da função de regressão $r({\bf x})$ com base em
+*Reproducing Kernel Hilbert Spaces* - RKHs são famílias de metodologias
+bastante gerais. A ideia desses métodos envolvem definir uma função
+objetivo para a quantificação da qualidade das predições e,
+porteriormente, busca-se uma função que melhor se ajuste ao espaço de
+funções $\mathcal{H}$. Busca-se uma solução para
 
-$$\argmin_{g \in \mathcal{H}} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \mathcal{P}(g),$${#eq-objetivo-geral-hilbert}
-em que $L$ é uma função de perda arbitrária, $\mathcal{P}$ uma medida de complexidade de $g$ e $\mathcal{H}$ um subespaço de funções.
+$$\argmin_{g \in \mathcal{H}} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \mathcal{P}(g),$$ {#eq-objetivo-geral-hilbert}
+em que $L$ é uma função de perda arbitrária, $\mathcal{P}$ uma medida de
+complexidade de $g$ e $\mathcal{H}$ um subespaço de funções.
 
 <br>
 
 ::: columns
-
-::: {.column width='50%'}
-Ocorre que para um espaço de funções arbitrário, a solução para o problema seria bastante difícil. A ideia é poder uma grande família de espaços $\mathcal{H}$ (RKHs) de modo que a solução do problema seja relativamente simples de ser implementada.
+::: {.column width="50%"}
+Ocorre que para um espaço de funções arbitrário, a solução para o
+problema seria bastante difícil. A ideia é poder uma grande família de
+espaços $\mathcal{H}$ (RKHs) de modo que a solução do problema seja
+relativamente simples de ser implementada.
 :::
 
-::: {.column width='50%'}
-![](gifs/ok.gif){fig-aling='rigth'}
+::: {.column width="50%"}
+![](gifs/ok.gif){fig-aling="rigth"}
 :::
 :::
 
@@ -4712,10 +4740,16 @@ Ocorre que para um espaço de funções arbitrário, a solução para o problema
 
 <br>
 
-Métodos de regressão que se baseiam em panalização em RKHS são uma generalização da @eq-objetivo-geral-hilbert, em que a função objetivo nesse caso é dada por:
+Métodos de regressão que se baseiam em panalização em RKHS são uma
+generalização da @eq-objetivo-geral-hilbert, em que a função objetivo
+nesse caso é dada por:
 
-$$\argmin_{g \in \mathcal{H}_k} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \lambda||g||_{\mathcal{H}_k}^2,$${#eq-funcao-objetivo-geral}
-em que $\mathcal{H}_{k}$ é um RKHS e $L$ é uma função adequada para o problema em questão. Calma que vai ser relativamente simples definir $\mathcal{H}_{k}$, uma vez que isso é feito utilizando funções kernel, em particular, o [kernel de Mercer](https://en.wikipedia.org/wiki/Mercer%27s_theorem).
+$$\argmin_{g \in \mathcal{H}_k} \sum_{k = 1}^n L(g({\bf x}_k, y_k)) + \lambda||g||_{\mathcal{H}_k}^2,$$ {#eq-funcao-objetivo-geral}
+em que $\mathcal{H}_{k}$ é um RKHS e $L$ é uma função adequada para o
+problema em questão. Calma que vai ser relativamente simples definir
+$\mathcal{H}_{k}$, uma vez que isso é feito utilizando funções kernel,
+em particular, o [kernel de
+Mercer](https://en.wikipedia.org/wiki/Mercer%27s_theorem).
 
 ![](gifs/bean_simple.gif)
 
@@ -4723,15 +4757,26 @@ em que $\mathcal{H}_{k}$ é um RKHS e $L$ é uma função adequada para o proble
 
 <br>
 
-O termo $||g||_{\mathcal{H}_k}^2$ na @eq-funcao-objetivo-geral reflete a suavidade das funções em $\mathcal{H}_k$ e cada espaço poderá conter uma noção de suavidade diferente, a depender da função de kernel escolhida. Sim, a função ed kernel e função de perda $L$ são escolhidas pelo usuário da metodologia.
+O termo $||g||_{\mathcal{H}_k}^2$ na @eq-funcao-objetivo-geral reflete a
+suavidade das funções em $\mathcal{H}_k$ e cada espaço poderá conter uma
+noção de suavidade diferente, a depender da função de kernel escolhida.
+Sim, a função ed kernel e função de perda $L$ são escolhidas pelo
+usuário da metodologia.
 
 <br>
 
-É claro que para diferenças kernel (kernel de Mercer), poderemos ter diferentes resultados que pode ser avaliado em um procedimento de validação-cruzada (*cross-validation*). O parâmetro $\lambda$ é um hiperparâmetro que podemos obter dentro de uma validação-cruzada, testando, por exemplo, um *grid* de parâmetros, para selecionarmos um $\lambda$ que forneça o melhor risco estimado $\widehat{R}(g)$.
+É claro que para diferenças kernel (kernel de Mercer), poderemos ter
+diferentes resultados que pode ser avaliado em um procedimento de
+validação-cruzada (*cross-validation*). O parâmetro $\lambda$ é um
+hiperparâmetro que podemos obter dentro de uma validação-cruzada,
+testando, por exemplo, um *grid* de parâmetros, para selecionarmos um
+$\lambda$ que forneça o melhor risco estimado $\widehat{R}(g)$.
 
 <br>
 
-A parcela $||g||_{\mathcal{H}_k}^2$ mensura a suavidade das funções em $\mathcal{H}_k$. Assim como $g$, $||g||_{\mathcal{H}_k}^2$ será definidas em termos da função de kernel, e essa é a grande sacada!
+A parcela $||g||_{\mathcal{H}_k}^2$ mensura a suavidade das funções em
+$\mathcal{H}_k$. Assim como $g$, $||g||_{\mathcal{H}_k}^2$ será
+definidas em termos da função de kernel, e essa é a grande sacada!
 
 <br>
 
@@ -4741,22 +4786,28 @@ A parcela $||g||_{\mathcal{H}_k}^2$ mensura a suavidade das funções em $\mathc
 
 <br>
 
-**Definição** ([Kernel de Mercer]{.red}): Seja $K({\bf x}_a, {\bf x}_b)$ uma função
-com domínio em $\mathcal{X} \times \mathcal{X}$ (domínio das *features*/covariáveis/espaço de características) que 
-poderá ser mais geral que $\mathbb{R}^d$. Diremos que uma função $K$, tal que $K:{\mathcal{X}\times\mathcal{X}}\longrightarrow \mathbb{R}$ é um **Kernel de Mercer**
-se ele satisfaz às condições que seguem:
+**Definição** ([Kernel de Mercer]{.red}): Seja $K({\bf x}_a, {\bf x}_b)$
+uma função com domínio em $\mathcal{X} \times \mathcal{X}$ (domínio das
+*features*/covariáveis/espaço de características) que poderá ser mais
+geral que $\mathbb{R}^d$. Diremos que uma função $K$, tal que
+$K:{\mathcal{X}\times\mathcal{X}}\longrightarrow \mathbb{R}$ é um
+**Kernel de Mercer** se ele satisfaz às condições que seguem:
 
 <br>
 
-1. [Simetria]{.red}: $K({\bf x}_a, {\bf x}_b) = K({\bf x}_b, {\bf x}_a)$, para todo
-${\bf x}_a,{\bf x}_b \in \mathcal{X}$;
+1.  [Simetria]{.red}:
+    $K({\bf x}_a, {\bf x}_b) = K({\bf x}_b, {\bf x}_a)$, para todo
+    ${\bf x}_a,{\bf x}_b \in \mathcal{X}$;
 
-2. [Positivo semi-definido]{.red}: a matriz $\big[K({\bf x}_a,{\bf x}_b)\big]_{i,j = 1}^n$ é 
-positiva semi-definida para todo $n \in \mathbb{N}$ e para todo ${\bf x}_1,\cdots, {\bf x}_n \in \mathcal{X}$.
+2.  [Positivo semi-definido]{.red}: a matriz
+    $\big[K({\bf x}_a,{\bf x}_b)\big]_{i,j = 1}^n$ é positiva
+    semi-definida para todo $n \in \mathbb{N}$ e para todo
+    ${\bf x}_1,\cdots, {\bf x}_n \in \mathcal{X}$.
 
 <br>
 
-Ser positiva semi-definida, significa que para qualquer sequência $c_r \in \mathbb{R}\,, \forall r = 1, \cdots, n$, temos que
+Ser positiva semi-definida, significa que para qualquer sequência
+$c_r \in \mathbb{R}\,, \forall r = 1, \cdots, n$, temos que
 
 $$\sum_{i = 1}^n\sum_{k = 1}^n c_i c_k K({\bf x}_i,{\bf x}_k)\geq 0,\, \forall n \geq 2.$$
 
@@ -4768,32 +4819,45 @@ Alguns kernels de Mercer comuns são:
 
 <br>
 
-1. **Kernel Linear**: $K({\bf x}_i, {\bf x}_l) = {\bf x}_i^T{\bf x}_l$;
-2. **Kernel Polinomial de grau** $p$: $K({\bf x}_i, {\bf x}_l) = (1 + \langle{\bf x}_i, {\bf x}_l\rangle)^p, \gamma > 0, \theta \geq 0, p \in \mathbb{N}$;
-3. **Kernel Gaussiano**: $K({\bf x}_i, {\bf x}_l) = \exp\left\{-\frac{d^2({\bf x}_i, {\bf x}_l)}{2h^2}\right\},\, h > 0$;
-4. **Kernel Laplaciano**: $K({\bf x}_i, {\bf x}_l) = \mathrm{e}^{-\gamma d({\bf x}_i, {\bf x}_l)}\,, \gamma > 0$;
-5. **Kernel Sigmóide**: $K({\bf x}_i, {\bf x}_l) = \tanh(\gamma {\bf x}_i^T{\bf x}_l + \theta), \, \gamma>0, \theta>0$.
+1.  **Kernel Linear**: $K({\bf x}_i, {\bf x}_l) = {\bf x}_i^T{\bf x}_l$;
+2.  **Kernel Polinomial de grau** $p$:
+    $K({\bf x}_i, {\bf x}_l) = (1 + \langle{\bf x}_i, {\bf x}_l\rangle)^p, \gamma > 0, \theta \geq 0, p \in \mathbb{N}$;
+3.  **Kernel Gaussiano**:
+    $K({\bf x}_i, {\bf x}_l) = \exp\left\{-\frac{d^2({\bf x}_i, {\bf x}_l)}{2h^2}\right\},\, h > 0$;
+4.  **Kernel Laplaciano**:
+    $K({\bf x}_i, {\bf x}_l) = \mathrm{e}^{-\gamma d({\bf x}_i, {\bf x}_l)}\,, \gamma > 0$;
+5.  **Kernel Sigmóide**:
+    $K({\bf x}_i, {\bf x}_l) = \tanh(\gamma {\bf x}_i^T{\bf x}_l + \theta), \, \gamma>0, \theta>0$.
 
 <br>
 
 em que $\gamma, h, \theta$ e $p$, são parâmetros do kernel.
 
-
 ## Suport Vector Regression Machine
 
 <br>
 
-A ideia principal por trás dos métodos que fazem uso de kernel é fazer o uso de um mapeamento não-linear
-arbitrário $\phi$ do espaço original dos padrões de entrada para um espaço de mais alta dimensão, $\mathcal{X} \times \mathcal{X}$ chamado de espaço de características.
+A ideia principal por trás dos métodos que fazem uso de kernel é fazer o
+uso de um mapeamento não-linear arbitrário $\phi$ do espaço original dos
+padrões de entrada para um espaço de mais alta dimensão,
+$\mathcal{X} \times \mathcal{X}$ chamado de espaço de características.
 
 <br>
 
-Um conjunto de padrões que entrada, em um problema de classificação, por exemplo, que não é linearmente separável
-poderá se tornar linearmente separável através desse mapeamento não linear.
+Um conjunto de padrões que entrada, em um problema de classificação, por
+exemplo, que não é linearmente separável poderá se tornar linearmente
+separável através desse mapeamento não linear.
 
 <br>
 
-Em um espaço vetorial, o **produto interno**, $\langle{\bf x}_i,{\bf x}_j\rangle = {\bf x}_i^{T}{\bf x}_j$, normalmente é utilizado como medida de similaridade entre vetores. Porém, como não conhecemos $\phi(\cdot)$, não é possível realizar $\phi({\bf x}_i)^T\phi({\bf x}_j)$ em $\mathcal{X}\times\mathcal{X}.$ Aparentemente é bem complicado calcular $\langle\phi({\bf x}_i),\phi({\bf x}_j)\rangle$, sem conhecer $\phi(\cdot)$, não é verdade?!
+Em um espaço vetorial, o **produto interno**,
+$\langle{\bf x}_i,{\bf x}_j\rangle = {\bf x}_i^{T}{\bf x}_j$,
+normalmente é utilizado como medida de similaridade entre vetores.
+Porém, como não conhecemos $\phi(\cdot)$, não é possível realizar
+$\phi({\bf x}_i)^T\phi({\bf x}_j)$ em $\mathcal{X}\times\mathcal{X}.$
+Aparentemente é bem complicado calcular
+$\langle\phi({\bf x}_i),\phi({\bf x}_j)\rangle$, sem conhecer
+$\phi(\cdot)$, não é verdade?!
 
 ![](gifs/ok.gif)
 
@@ -4801,21 +4865,30 @@ Em um espaço vetorial, o **produto interno**, $\langle{\bf x}_i,{\bf x}_j\rangl
 
 <br>
 
-A essência dos métodos métodos baseado em kernel, é que não precisamos conhecer $\phi(\cdot)$. Os produtos internos no espaço de características poderá ser calculado utilizando um kernel de Mercer. 
+A essência dos métodos métodos baseado em kernel, é que não precisamos
+conhecer $\phi(\cdot)$. Os produtos internos no espaço de
+características poderá ser calculado utilizando um kernel de Mercer.
 
 <br>
 
-[Teorema de Mercer]{.red}: Todo kernel de Mercer $K$ pode ser decomposto como 
+[Teorema de Mercer]{.red}: Todo kernel de Mercer $K$ pode ser decomposto
+como
 
 $$K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),$$ {#eq-mercer-decomposicao}
-em que $\sum_{i \geq 0} \gamma_i^2 < \infty$ e $\phi_0, \phi_1, \cdots$ é uma sequência de funções. Essa propriedade dos em que o kernel de Mercer poderá ser decomposto na forma acima e que não precisamos conhecer $\phi(\cdot)$ para o cálculo de produtos internos no espaço de características é comumente denominada de [*kernel trick*]{.red}/[truque kernel]{.red}.  Ver detalhes em [aqui](https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016).
-
+em que $\sum_{i \geq 0} \gamma_i^2 < \infty$ e $\phi_0, \phi_1, \cdots$
+é uma sequência de funções. Essa propriedade dos em que o kernel de
+Mercer poderá ser decomposto na forma acima e que não precisamos
+conhecer $\phi(\cdot)$ para o cálculo de produtos internos no espaço de
+características é comumente denominada de [*kernel trick*]{.red}/[truque
+kernel]{.red}. Ver detalhes em
+[aqui](https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1909.0016).
 
 ## Suport Vector Regression Machine
 
 <br>
 
-[Definição]{.red}: Seja $K$ um kernel de Mercer, e sejam $\phi_i$ e $\gamma_i,\, i \geq 0$, da forma do teorema acima. Então,
+[Definição]{.red}: Seja $K$ um kernel de Mercer, e sejam $\phi_i$ e
+$\gamma_i,\, i \geq 0$, da forma do teorema acima. Então,
 
 <br>
 
@@ -4823,23 +4896,32 @@ $$\mathcal{H}_K = \left\{g \in L^2(\mathcal{X}):\,\, existem\,\, (c_i)_{i\geq0}\
 
 <br>
 
-Diremos que $\mathcal{H}_k$ é o *Reproducing Kernel Hilbert Space* - RKHS associado ao kernel $K$, em que a norma de uma função $g({\bf x}) = \sum_{i\geq0}c_i\phi({\bf x})$ é definda por
+Diremos que $\mathcal{H}_k$ é o *Reproducing Kernel Hilbert Space* -
+RKHS associado ao kernel $K$, em que a norma de uma função
+$g({\bf x}) = \sum_{i\geq0}c_i\phi({\bf x})$ é definda por
 
 $$||g||_{\mathcal{H}_k}^2 := \sum_{i \geq 0} c_i^2/\gamma_i.$$
 
 <br>
 
-Além disso, tem-se que $\mathcal{H}_K$ é **única** para um dado $K$, muito embora a decomposição dada pela @eq-mercer-decomposicao não seja única.
+Além disso, tem-se que $\mathcal{H}_K$ é **única** para um dado $K$,
+muito embora a decomposição dada pela @eq-mercer-decomposicao não seja
+única.
 
 ## Suport Vector Regression Machine
 
-<br>
-O Teorema que segue, frequentemente atribuído a ao artigo Kimeldorf, G. S. & Wahba, G. (1970). **A correspondence between Bayesian estimation on stochastic processes and smoothing by splines**. The Annals of Mathematical
-Statistics, 495–502, simplifica o problema de otimizar a função objetivo dada na @eq-funcao-objetivo-geral.
+<br> O Teorema que segue, frequentemente atribuído a ao artigo
+Kimeldorf, G. S. & Wahba, G. (1970). **A correspondence between Bayesian
+estimation on stochastic processes and smoothing by splines**. The
+Annals of Mathematical Statistics, 495--502, simplifica o problema de
+otimizar a função objetivo dada na @eq-funcao-objetivo-geral.
 
 <br>
 
-[Teorema da Representação]{.red}: Seja $K$ um kernel de Mercer correspondente ap RKHS $\mathcal{H}_K$. Considere o conjunto de treinamento $({\bf x}_1, y_1), \cdots, ({\bf x}_n, y_n)$ e uma função de perda arbitrária $L$. Então, a solução de 
+[Teorema da Representação]{.red}: Seja $K$ um kernel de Mercer
+correspondente ap RKHS $\mathcal{H}_K$. Considere o conjunto de
+treinamento $({\bf x}_1, y_1), \cdots, ({\bf x}_n, y_n)$ e uma função de
+perda arbitrária $L$. Então, a solução de
 
 <br>
 
@@ -4848,14 +4930,15 @@ existe, e é única, em que
 
 <br>
 
-$$g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}),$$
-em que $\alpha_1, \cdots, \alpha_n$ é uma sequência de valores reais.
+$$g({\bf x}) = \sum_{k=1}^n \alpha_k K({\bf x}_k, {\bf x}),$$ em que
+$\alpha_1, \cdots, \alpha_n$ é uma sequência de valores reais.
 
 ## Suport Vector Regression Machine
 
 <br>
 
-É possível desmontrar que a otimização da @eq-teorema-representacao poderá se dar pela otimização de
+É possível desmontrar que a otimização da @eq-teorema-representacao
+poderá se dar pela otimização de
 
 <br>
 
@@ -4863,17 +4946,29 @@ $$\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1
 
 <br>
 
-Portanto, o problema de otimizar a função objetivo dada na @eq-funcao-objetivo-geral se reduz a encontrar os valores de $\alpha_1, \cdots, \alpha_n$ que minimiza a @eq-teorema-representacao. Portanto, irá especificar o kernel $K$ e a função de perda $L$, em que $\lambda$ é um parâmetro de sintonização (hiperparâmetro) que poderá ser obtido por uma validação cruzada.
+Portanto, o problema de otimizar a função objetivo dada na
+@eq-funcao-objetivo-geral se reduz a encontrar os valores de
+$\alpha_1, \cdots, \alpha_n$ que minimiza a @eq-teorema-representacao.
+Portanto, irá especificar o kernel $K$ e a função de perda $L$, em que
+$\lambda$ é um parâmetro de sintonização (hiperparâmetro) que poderá ser
+obtido por uma validação cruzada.
 
 ## Suport Vector Regression Machine
 
 <br>
 
-Em se tratando de estimadores de regressão, *Support Vector Regression Machines*, utiliza-se uma função de perda diferente da quadrática, como definido em Drucker, H., Burges, C. J., Kaufman, L., Smola, A. J. & Vapnik, V. (1997). **Support vector regression machines** em Advances in neural information processing systems.
+Em se tratando de estimadores de regressão, *Support Vector Regression
+Machines*, utiliza-se uma função de perda diferente da quadrática, como
+definido em Drucker, H., Burges, C. J., Kaufman, L., Smola, A. J. &
+Vapnik, V. (1997). **Support vector regression machines** em Advances in
+neural information processing systems.
 
 <br>
 
-Eles definem a seguinte função de perda $L(g({\bf x}_k, y_k)) = (|y_k - g({\bf x}_k)| - \varepsilon)_{+}$, que assume o valor 0 se $|y_k - g({\bf x}_k)| < \varepsilon$ e assumirá $|y_k - g({\bf x}_k)| - \varepsilon$, caso contrário.
+Eles definem a seguinte função de perda
+$L(g({\bf x}_k, y_k)) = (|y_k - g({\bf x}_k)| - \varepsilon)_{+}$, que
+assume o valor 0 se $|y_k - g({\bf x}_k)| < \varepsilon$ e assumirá
+$|y_k - g({\bf x}_k)| - \varepsilon$, caso contrário.
 
 <br>
 
@@ -4896,45 +4991,70 @@ das variáveis.
 ```{=html}
  <iframe id="example1" src="reports_code/tufte_svm_regressao.html" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+## 📚 Exercícios
+
+<br>
+
+[Exercício]{.red}: Considere o problema em que o objetivo é prever a
+**pontuação** (*score*) / (item 2) do aluno com base em algumas
+variáveis. São elas:
+
+<br>
+
+1.  **Horas estudadas**: o número total de horas gastas estudando por
+    cada aluno;
+2.  **Pontuação**: As notas obtidas pelos alunos em testes anteriores;
+3.  **Atividades** Extracurriculares: Se o aluno participa de atividades
+    extracurriculares (Sim ou Não);
+4.  **Horas de sono**: o número médio de horas de sono que o aluno teve
+    por dia;
+5.  **Amostras de perguntas praticadas**: O número de amostras de
+    perguntas que o aluno praticou.
+
+<br>
+
+Você poderá baixar e ter uma descrição maior da base de dados clicando
+[aqui](https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression).
+Avalie o poder preditivo do modelo lasso com o do SVRM. Sua análise deve
+conter uma análise exploratória dos dados, deverá utilizar um esquema de
+$k$-*folds cross-validation*, com $k = 20$ e considerar um esquema de
+*data splitting* na proporção $90\%$ para treino e $10\%$ para teste.
+Sua análise deverá estar em um notebook de
+[quarto](https://quarto.org/), em que você deverá comentar cada passo da
+análise.
 
 ## 📚 Exercícios
 
 <br>
 
-[Exercício]{.red}: Considere o problema em que o objetivo é prever a **pontuação** (*score*) / (item 2) do aluno com base em algumas variáveis. São elas:
+[Exercício]{.red}: Refaça o exercício anterior considerando a base de
+dados de dados pessoais de custos médicos disponível
+[aqui](https://www.kaggle.com/datasets/mirichoi0218/insurance). As
+informações contidas na base são:
 
 <br>
 
-1. **Horas estudadas**: o número total de horas gastas estudando por cada aluno;
-2. **Pontuação**: As notas obtidas pelos alunos em testes anteriores;
-3. **Atividades** Extracurriculares: Se o aluno participa de atividades extracurriculares (Sim ou Não);
-4. **Horas de sono**: o número médio de horas de sono que o aluno teve por dia;
-5. **Amostras de perguntas praticadas**: O número de amostras de perguntas que o aluno praticou.
+1.  **Idade** (`age`): idade do beneficiário principal;
+2.  **Sexo** (`sex`): sexo do beneficiário;
+3.  **Índice de massa corporal - IMC** (`bmi`):
+    $IMC = \frac{Peso}{altura^2}$, com peso em $Kg$ e altura em $m$
+    (metro);
+4.  **Número de filhos** (`children`): número de filhos cobertos pelo
+    plano de saúde;
+5.  **Fumante** (`smoker`): variável *dummy* que informa se o
+    beneficiário é ou não fumante;
+6.  **Região** (`region`): região dos EUA em que o beneficiário reside
+    (*northeast*, *southeast*, *southwest* ou *northwest*);
+7.  **Custo** (`charges`): custos médicos cobrados, em dólares.
 
 <br>
 
-Você poderá baixar e ter uma descrição maior da base de dados clicando [aqui](https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression). Avalie o poder preditivo do modelo lasso com o do SVRM. Sua análise deve conter uma análise exploratória dos dados, deverá utilizar um esquema de $k$-*folds cross-validation*, com $k = 20$ e considerar um esquema de *data splitting* na proporção $90\%$ para treino e $10\%$ para teste. Sua análise deverá estar em um notebook de [quarto](https://quarto.org/), em que você deverá comentar cada passo da análise.
-
-## 📚 Exercícios
-
-<br>
-
-[Exercício]{.red}: Refaça o exercício anterior considerando a base de dados de dados pessoais de custos médicos disponível [aqui](https://www.kaggle.com/datasets/mirichoi0218/insurance). As informações contidas na base são:
-
-<br>
-
-1. **Idade** (`age`): idade do beneficiário principal;
-2. **Sexo** (`sex`): sexo do beneficiário;
-3. **Índice de massa corporal - IMC** (`bmi`): $IMC = \frac{Peso}{altura^2}$, com peso em $Kg$ e altura em $m$ (metro);
-4. **Número de filhos** (`children`): número de filhos cobertos pelo plano de saúde;
-5. **Fumante** (`smoker`): variável *dummy* que informa se o beneficiário é ou não fumante;
-6. **Região** (`region`): região dos EUA em que o beneficiário reside (*northeast*, *southeast*, *southwest* ou *northwest*);
-7. **Custo** (`charges`): custos médicos cobrados, em dólares.
-
-<br>
-
-O objetivo é prever o custo (`charges`) com base nas demais informações. **Dica**: utilizando a biblioteca [recipes](https://recipes.tidymodels.org/), utilize a função `step_dummy` especificando o argumento `one_hot = TRUE` para realizar um *one hot encoding* com a variável `region`. Dessa forma, `region` deixará ser ser uma variável nominal e se tornará uma variável numérica.
-
+O objetivo é prever o custo (`charges`) com base nas demais informações.
+**Dica**: utilizando a biblioteca
+[recipes](https://recipes.tidymodels.org/), utilize a função
+`step_dummy` especificando o argumento `one_hot = TRUE` para realizar um
+*one hot encoding* com a variável `region`. Dessa forma, `region`
+deixará ser ser uma variável nominal e se tornará uma variável numérica.
 
 ## 🌳 Árvores de regressão
 
@@ -5013,18 +5133,18 @@ principais**:
 
 <br>
 
-A ideia de uma árvore 🌳 pura é de que "todo mundo" que cai em uma dada folha é muito homogêneo
-em relação a variável resposta (ao rótulo/*label*).
+A ideia de uma árvore 🌳 pura é de que "todo mundo" que cai em uma dada
+folha é muito homogêneo em relação a variável resposta (ao
+rótulo/*label*).
 
 <br>
 
-Em uma árvore de regressão, a maneira mais simples de definir pureza é utilizar o EQM. 
+Em uma árvore de regressão, a maneira mais simples de definir pureza é
+utilizar o EQM.
 
 <br>
 
 ![](gifs/hum.gif)
-
-
 
 ## 🌳 Árvores de regressão
 
@@ -5035,7 +5155,9 @@ o Erro Quadrático Médio - EQM, em que
 
 $$\mathcal{P}(T) = \sum_{R}\sum_{i:{\bf x}_i \in R} \frac{(y_i - \widehat{y}_R)^2}{n},$$
 em que $\widehat{y}_R$ é o valor predito de $y$ para a resposta de uma
-observação pertencente à região $R$. No gráfico de uma árvore de regressão, o $R$ é dado por todos os indivíduos na base de dados que estão em uma dada folha 🍃. 
+observação pertencente à região $R$. No gráfico de uma árvore de
+regressão, o $R$ é dado por todos os indivíduos na base de dados que
+estão em uma dada folha 🍃.
 
 <br>
 
@@ -5047,8 +5169,8 @@ normalmente utilizam partições binárias, como no exemplo anterior.
 
 Existem diversos algoritmos utilizados para estimação de $T$, em que o
 [*C*]{.red}*lassification [A]{.red}nd [R]{.red}egression [T]{.red}ree* -
-[CART]{.red} é o mais conhecido. O algoritmo foi estabelecido no livro Breiman
-L., Friedman J. H., Olshen R. A., and Stone, C. J. (1984)
+[CART]{.red} é o mais conhecido. O algoritmo foi estabelecido no livro
+Breiman L., Friedman J. H., Olshen R. A., and Stone, C. J. (1984)
 **Classification and Regression Trees**. Wadsworth.
 
 ## 🌳 Árvores de regressão
@@ -5061,9 +5183,10 @@ covariáveis $x_i$ e cortes $t_1$, a combinação que conduz a uma partição
 $(R_1, R_2)$ com menor predições de erro quadrático, i.e., dado um nó, a
 partição é construída de modo a minimizar:
 
-$$\overbrace{SSE}^{\text{sum of squares error}} = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2,$${#eq-sse-tree}
+$$\overbrace{SSE}^{\text{sum of squares error}} = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2,$$ {#eq-sse-tree}
 em que $\widehat{y}_{R_k}$ é a predição de $y$ fornecida pela região
-$R_k$ e SSE é denominado *[S]{.red}um of [S]{.red}quares of [E]{.red}rrors* - SSE.
+$R_k$ e SSE é denominado [*S*]{.red}*um of [S]{.red}quares of
+[E]{.red}rrors* - SSE.
 
 <br>
 
@@ -5078,34 +5201,57 @@ em que $x_i$ é a variável escolhida e $t_1$ é o corte definido.
 
 <br>
 
-Uma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte, o algoritmo irá particionar as regiões $R_1$ e $R_2$ em regiões menores, seguindo o mesmo critério,tanto para $R_1$ quanto para $R_2$. O algoritmo continua de forma recursiva até que tenhamos uma árvore com poucas observações em uma das folhas 🍃. 
+Uma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte,
+o algoritmo irá particionar as regiões $R_1$ e $R_2$ em regiões menores,
+seguindo o mesmo critério,tanto para $R_1$ quanto para $R_2$. O
+algoritmo continua de forma recursiva até que tenhamos uma árvore com
+poucas observações em uma das folhas 🍃.
 
 <br>
 
-Por exemplo, podemos decidir em parar de tornar a árvore profunda quando em cada folha tivermos menos de 5 observações. Porém, essa árvore criada irá produzir boas predições para o conjunto de treinamento, porém, não irá performar bem em novas observações. Isso, por conta, do *trade off* entre viés e variância. Em outras palavas, haverá *overfitting*.
+Por exemplo, podemos decidir em parar de tornar a árvore profunda quando
+em cada folha tivermos menos de 5 observações. Porém, essa árvore criada
+irá produzir boas predições para o conjunto de treinamento, porém, não
+irá performar bem em novas observações. Isso, por conta, do *trade off*
+entre viés e variância. Em outras palavas, haverá *overfitting*.
 
-<br>
-Na etapa do processo de poda, cada nó é retirado, um por vez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o *overffiting* do modelo.
+<br> Na etapa do processo de poda, cada nó é retirado, um por vez, e
+observa-se como o erro de predição varia no conjunto de validação. Com
+base nisso, decide-se quais nós permanecem na árvore. O processo de poda
+reduz o *overffiting* do modelo.
 
 ## 🌳 Árvores de regressão
 
 <br>
 
-Uma observação importante é que sempre é bom crescer a árvore ao máximo possível e depois proceder com a etapa de "poda", em que removemos os ramos mais profundos e reavaliamos o poder preditivo da árvore 🌳 $T$. Isso porquê a melhoria do poder preditivo da árvore não é linear, i.e., as vezes podemos ter uma divisão que piore um pouco a capacidade preditiva da árvore, porém, a divisão seguinte poderá dar um grande salto de melhoria. Dessa forma, é mais conveniente deixar a árvore "profunda" para depois sairmos "podando" ✂️ a árvore 🌳.
+Uma observação importante é que sempre é bom crescer a árvore ao máximo
+possível e depois proceder com a etapa de "poda", em que removemos os
+ramos mais profundos e reavaliamos o poder preditivo da árvore 🌳 $T$.
+Isso porquê a melhoria do poder preditivo da árvore não é linear, i.e.,
+as vezes podemos ter uma divisão que piore um pouco a capacidade
+preditiva da árvore, porém, a divisão seguinte poderá dar um grande
+salto de melhoria. Dessa forma, é mais conveniente deixar a árvore
+"profunda" para depois sairmos "podando" ✂️ a árvore 🌳.
 
 <br>
 
 ![](gifs/cortando-a-arvore-fail.gif)
 
-
 ## 🌳 Árvores de regressão
 
 <br>
 
-Para limitar a profundidade da arvore $T$ a ser estimada, um parâmetro de penalização/complexidade poderá ser introduzido na @eq-sse-tree. Assim, o problema consistem em obter regiões e pontos de cortes que minimize:
+Para limitar a profundidade da arvore $T$ a ser estimada, um parâmetro
+de penalização/complexidade poderá ser introduzido na @eq-sse-tree.
+Assim, o problema consistem em obter regiões e pontos de cortes que
+minimize:
 
-$$SSE + \alpha|T|,$$
-em que $\alpha > 0$ é o hiperparâmetro de complexidade do modelo e $|T|$ é um valor inteiro que define a profundidade máxima da árvore. Por exemplo, $|T|$ na biblioteca [rpart](https://cran.r-project.org/web/packages/rpart/index.html) é definido pelo parâmetro `tree_depth` em 30. Normalmente nos concentramos em em tunar o parâmetro `cost_complexity` que é o $\alpha$. 
+$$SSE + \alpha|T|,$$ em que $\alpha > 0$ é o hiperparâmetro de
+complexidade do modelo e $|T|$ é um valor inteiro que define a
+profundidade máxima da árvore. Por exemplo, $|T|$ na biblioteca
+[rpart](https://cran.r-project.org/web/packages/rpart/index.html) é
+definido pelo parâmetro `tree_depth` em 30. Normalmente nos concentramos
+em em tunar o parâmetro `cost_complexity` que é o $\alpha$.
 
 ![](gifs/hum.gif)
 
@@ -5113,7 +5259,11 @@ em que $\alpha > 0$ é o hiperparâmetro de complexidade do modelo e $|T|$ é um
 
 <br>
 
-[Exemplo]{.red}: Poderemos podar a árvore usando a função `prune` do pacote [rpart](https://cran.r-project.org/web/packages/rpart/index.html). Considerando o exemplo anterior, tornando a árvore menos compleça, poderíamos decidir em podar alterando o seu parâmetro de complexidade.
+[Exemplo]{.red}: Poderemos podar a árvore usando a função `prune` do
+pacote
+[rpart](https://cran.r-project.org/web/packages/rpart/index.html).
+Considerando o exemplo anterior, tornando a árvore menos compleça,
+poderíamos decidir em podar alterando o seu parâmetro de complexidade.
 
 ```{r}
 library(rpart)
@@ -5136,9 +5286,8 @@ rpart.plot::rpart.plot(arvore_podada)
 
 ## 🌳 Árvores de regressão
 
-<br>
-O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado dentro de um procedimento de validação cruzada.
-
+<br> O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser
+estimado dentro de um procedimento de validação cruzada.
 
 <br>
 
@@ -5146,18 +5295,19 @@ O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado
 
 ## 🌳 Árvores de regressão
 
-<br>
-**Algumas observações sobre a árvore 🌳 de regressão**:
+<br> **Algumas observações sobre a árvore 🌳 de regressão**:
 
 <br>
 
-1. É um método não-paramétrico;
-2. Pode ser representado graficamente;
-3. É útil na análise exploratória dos dados do problema em questão;
-4. Pode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;
-5. Poderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;
-6. A árvore é robusta na presença de variáveis irrelevantes.
-
+1.  É um método não-paramétrico;
+2.  Pode ser representado graficamente;
+3.  É útil na análise exploratória dos dados do problema em questão;
+4.  Pode ser utilizada para selecionar variáveis. Aparentemente, as
+    variáveis que pertence à árvore tem uma maior importância para o
+    problema em questão;
+5.  Poderá trabalhar com variáveis numéricas, mas também poderá
+    trabalhar com variáveis categóricas;
+6.  A árvore é robusta na presença de variáveis irrelevantes.
 
 <br>
 
@@ -5167,11 +5317,17 @@ O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado
 
 <br>
 
-O nível de complexidade é obtido via *cross-validation* de modo a encontrar a menor subárvore que generaliza melhor o problema para dados não visto. 
+O nível de complexidade é obtido via *cross-validation* de modo a
+encontrar a menor subárvore que generaliza melhor o problema para dados
+não visto.
 
 <br>
 
-Assim como nos modelos de regressão com penalidade que vimos anteriormente, aqui, para valores menores de $\alpha$ tende a produzir modelos mais complexos. Consequentemente, à medida que uma árvore cresce, a redução no $SSE$ deve ser maior do que a penalidade de complexidade de custo.
+Assim como nos modelos de regressão com penalidade que vimos
+anteriormente, aqui, para valores menores de $\alpha$ tende a produzir
+modelos mais complexos. Consequentemente, à medida que uma árvore
+cresce, a redução no $SSE$ deve ser maior do que a penalidade de
+complexidade de custo.
 
 <br>
 
@@ -5181,14 +5337,16 @@ Assim como nos modelos de regressão com penalidade que vimos anteriormente, aqu
 
 <br>
 
-Experimente alterar o parâmetro de complexidade e perceba como ele influencia nas regições da árvore de regressão. Quando maior o valor, maior a penalidade, e portanto, mais simples será a árvore de regressão que irá estimar os valores de $Y_i$ com base em $X_i$.
+Experimente alterar o parâmetro de complexidade e perceba como ele
+influencia nas regições da árvore de regressão. Quando maior o valor,
+maior a penalidade, e portanto, mais simples será a árvore de regressão
+que irá estimar os valores de $Y_i$ com base em $X_i$.
 
 <br>
 
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-%C3%A1rvore-de-regress%C3%A3o" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
-
 ![](gifs/giphy.gif)
 
 ## 🌳 Árvores de regressão
@@ -5199,11 +5357,17 @@ Experimente alterar o parâmetro de complexidade e perceba como ele influencia n
 
 <br>
 
-1. A função de regressão estimada $\widehat{r}({\bf x})$ é **constante por partes**, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de $\widehat{r}({\bf x})$;
-2. Em uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;
-3. Elas são uma espécie de "samambaias", em que crescem para baixo;
-4. É fácil introduzir variáveis categóricas 🎉;
-5. Uma pessoa sem muito conhecimento poderá estimar $\widehat{r}({\bf x})$, dada uma árvore, para cada nova observação ${\bf x}$.
+1.  A função de regressão estimada $\widehat{r}({\bf x})$ é **constante
+    por partes**, i.e., em uma folha 🍃 tendemos predizer que vários
+    indivíduos distintos tem o mesmo valor de $\widehat{r}({\bf x})$;
+2.  Em uma árvore 🌳 de regressão as interações entre variáveis são
+    consideradas de forma automática, enquanto em uma regressão as
+    interações são introduzidas como os produtos entre covariáveis;
+3.  Elas são uma espécie de "samambaias", em que crescem para baixo;
+4.  É fácil introduzir variáveis categóricas 🎉;
+5.  Uma pessoa sem muito conhecimento poderá estimar
+    $\widehat{r}({\bf x})$, dada uma árvore, para cada nova observação
+    ${\bf x}$.
 
 ![](gifs/hum_02.gif)
 
@@ -5211,7 +5375,19 @@ Experimente alterar o parâmetro de complexidade e perceba como ele influencia n
 
 <br>
 
-[Exercício]{.red}: Considere a variável aleatória $Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com $X_i \in \mathcal{U}(0, 10)\,, \forall i.$ Utilizando a biblioteca **rpart**, implemente a função `arvore(n = 250L, complexidade, sigma = 0.1)` que devolve o gráfico *scatterplot* com os pontos $X_i$ e $Y_i$ e por cima deles o gráfico de linha com os valores preditos. A função deverá ter três argumentos, `n`, `complexidade` e `sigma`, que são o tamanho da amostra, o grau de complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se preocupe com divisão entre treino e teste nem validação cruzada. A solução desse exercício não tem como objetivo encontrar o melhor hiperparâmetro, i.e., não é necessário "tunar" o parâmetro `complexidade`. A função deverá retornar algo como:
+[Exercício]{.red}: Considere a variável aleatória
+$Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com
+$X_i \in \mathcal{U}(0, 10)\,, \forall i.$ Utilizando a biblioteca
+**rpart**, implemente a função
+`arvore(n = 250L, complexidade, sigma = 0.1)` que devolve o gráfico
+*scatterplot* com os pontos $X_i$ e $Y_i$ e por cima deles o gráfico de
+linha com os valores preditos. A função deverá ter três argumentos, `n`,
+`complexidade` e `sigma`, que são o tamanho da amostra, o grau de
+complexidade do modelo, e o desvio padrão, respectivamente. Aqui não se
+preocupe com divisão entre treino e teste nem validação cruzada. A
+solução desse exercício não tem como objetivo encontrar o melhor
+hiperparâmetro, i.e., não é necessário "tunar" o parâmetro
+`complexidade`. A função deverá retornar algo como:
 
 ```{r}
 #| echo: false
@@ -5253,33 +5429,59 @@ arvore(complexidade = 0.2)
 
 <br>
 
-[Exercício]{.red}: Ainda com base no exercício anterior, construa uma função que retorne várias estimativas obtidas por árvores de regressão, com base em várias amostra de $X_i$ e $Y_i$. O gráfico deverá mostrar as estimativas das diversas árvores de regressão, sem mostrar os pontos. Perceba a flutuação das estimativas em diferentes valores de `complexidade`, dado `n` e `sigma` fixos. 
+[Exercício]{.red}: Ainda com base no exercício anterior, construa uma
+função que retorne várias estimativas obtidas por árvores de regressão,
+com base em várias amostra de $X_i$ e $Y_i$. O gráfico deverá mostrar as
+estimativas das diversas árvores de regressão, sem mostrar os pontos.
+Perceba a flutuação das estimativas em diferentes valores de
+`complexidade`, dado `n` e `sigma` fixos.
 
 <br>
 
-[Exercício]{.red}: Sem utilizar a biblioteca **tidymodels**, apenas as bibliotecas **rsample** e **rpart**, treine um modelo com 10 mil observações geradas. No procedimento $k$-folds cross-validation, para $k = 20$, encontre um bom valor para o grau de complexidade considerando um *grid* de possíveis valores. *Dica*: experimente testar um parâmetro dentro do conjunto de treino no procedimento de *cross-validation*. Por exemplo, experimente criar um *grid* com valores entre $0.001$ e $0.4$. Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de fixar um valor de semente, para que os resultados possam ser reproduzidos.
+[Exercício]{.red}: Sem utilizar a biblioteca **tidymodels**, apenas as
+bibliotecas **rsample** e **rpart**, treine um modelo com 10 mil
+observações geradas. No procedimento $k$-folds cross-validation, para
+$k = 20$, encontre um bom valor para o grau de complexidade considerando
+um *grid* de possíveis valores. *Dica*: experimente testar um parâmetro
+dentro do conjunto de treino no procedimento de *cross-validation*. Por
+exemplo, experimente criar um *grid* com valores entre $0.001$ e $0.4$.
+Aprensente o gráfico com a estimativa do melhor modelo. Não esqueça de
+fixar um valor de semente, para que os resultados possam ser
+reproduzidos.
 
 <br>
 
-[Exercício]{.red}: Refaça o exercício anterior utilizando a biblioteca **tidymodels**. Fique livre para tunar o hiperparâmetro que achar necessário, da *engine* que utilizar com a biblioteca **parsnip**. Compare o risco preditivo do exercício anterior com o que você obteve utilizando o **tidymodels**.
+[Exercício]{.red}: Refaça o exercício anterior utilizando a biblioteca
+**tidymodels**. Fique livre para tunar o hiperparâmetro que achar
+necessário, da *engine* que utilizar com a biblioteca **parsnip**.
+Compare o risco preditivo do exercício anterior com o que você obteve
+utilizando o **tidymodels**.
 
 ## Combinando predições - bagging
 
 <br>
 
-As árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa.
+As árvores 🌳 de regressão tem a característica de ser facilmente
+interpretável, porém, costumam ser uma capacidade preditiva baixa.
 
 <br>
 
-Uma das ideias de melhorar a capacidade preditiva é combinar árvores usando a metodologia de reamostragem *bootstrap*. As técnicas de reamostragem via bootstrap não-paramétrico são bastante difundidas na estatística e consiste reamostrar da amostra original com reposição.
+Uma das ideias de melhorar a capacidade preditiva é combinar árvores
+usando a metodologia de reamostragem *bootstrap*. As técnicas de
+reamostragem via bootstrap não-paramétrico são bastante difundidas na
+estatística e consiste reamostrar da amostra original com reposição.
 
 <br>
 
-Na estatística, a ideia de *bootstrap* é muito comum para correção de víes de um estimador, cálculo do erro-padrão de um estimador, construção de intervalos de confianças e teste de hipóteses.
+Na estatística, a ideia de *bootstrap* é muito comum para correção de
+víes de um estimador, cálculo do erro-padrão de um estimador, construção
+de intervalos de confianças e teste de hipóteses.
 
 <br>
 
-Em aprendizagem de máquina, o conceito de *bagging* consiste em reaplicar uma metodologia, nesse caso a de árvore 🌳 de regressão em diferentes amostras obtidas da amostra original com reposição.
+Em aprendizagem de máquina, o conceito de *bagging* consiste em
+reaplicar uma metodologia, nesse caso a de árvore 🌳 de regressão em
+diferentes amostras obtidas da amostra original com reposição.
 
 <br>
 
@@ -5288,8 +5490,26 @@ Em aprendizagem de máquina, o conceito de *bagging* consiste em reaplicar uma m
 ## Combinando predições - bagging
 
 <br>
+Caso você tenha interesse e entender o método de *bootstrap*, no contexto mais difundido na estatística como mencionado no slide anterior, assista a vídeo aula sobre bootstrap do Prof. Pedro Rafael do Departamento de Estatística da Universidade Federal da Paraíba - UFPB.
 
-Portanto, é importante ficar claro que o *bagging* é uma metodologia genérica que poderá ser aplicada em situações ao qual desejamos combinar modelos. Por exemplo, o método [ramdom forest](https://en.wikipedia.org/wiki/Random_forest) que veremos mais a frente é uma pequena modificação de um *bagging* de árvores de regressão que vimos anteriormente. Na verdade o [ramdom forest](https://en.wikipedia.org/wiki/Random_forest), assim como as árvores de decisões podem ser utilizadas também para problemas de classificação, como veremos mais adiante no curso.
+<br>
+
+{{< video https://youtu.be/XEQlzfVc6lI width="50%" height="50%" >}}
+
+
+## Combinando predições - bagging
+
+<br>
+
+Portanto, é importante ficar claro que o *bagging* é uma metodologia
+genérica que poderá ser aplicada em situações ao qual desejamos combinar
+modelos. Por exemplo, o método [ramdom
+forest](https://en.wikipedia.org/wiki/Random_forest) que veremos mais a
+frente é uma pequena modificação de um *bagging* de árvores de regressão
+que vimos anteriormente. Na verdade o [ramdom
+forest](https://en.wikipedia.org/wiki/Random_forest), assim como as
+árvores de decisões podem ser utilizadas também para problemas de
+classificação, como veremos mais adiante no curso.
 
 <br>
 
@@ -5299,12 +5519,155 @@ Portanto, é importante ficar claro que o *bagging* é uma metodologia genérica
 
 <br>
 
-A ideia de combinar árvores de regressão é interessante, uma vez que o risco preditivo da média das previsões das árvores é menor que o risco individual de cada uma das árvores.
+A ideia de combinar árvores de regressão é interessante, uma vez que o
+risco preditivo da média das previsões das árvores é menor que o risco
+individual de cada uma das árvores.
 
 <br>
 
-Lembre-se que quando falávamos em momentos anteriores do curso sobre o balanço entre viés e variância, apresentamos uma decomposição do risco quadrático $R(g)$ condicional a um novo ${\bf x}$ dada na @eq-decomposicao-risco-l2. Para que não seja necessário necessário voltar um grande número de slides, recoloco a decomposição abaixo:
+Lembre-se que quando falávamos em momentos anteriores do curso sobre o
+balanço entre viés e variância, apresentamos uma decomposição do risco
+quadrático $R(g)$ condicional a um novo ${\bf x}$ dada na
+@eq-decomposicao-risco-l2. Para que não seja necessário necessário
+voltar um grande número de slides, recoloco a decomposição abaixo:
 
 <br>
 
 $$\mathbb{E}\left[(Y - \widehat{g}({\bf X}))^2| {\bf X} = {\bf x}\right] = \underbrace{\mathbb{V}[Y | {\bf X = x}]}_{\mathrm{i - Variância\,\, intrínseca}} + \overbrace{(r({\bf x}) - \mathbb{E}[\widehat{g}({\bf x})])^2}^{\mathrm{ii - Viés\, ao\, quadrado\, do\, modelo}} + \underbrace{\mathbb{V}[\widehat{g}({\bf x})]}_{\mathrm{iii - Variância\, do\, modelo}}.$$
+
+## Combinando predições - bagging
+
+<br>
+
+Ainda no caso de árvores 🌳 de regressão, suponha um caso mais simples,
+em que temos dois modelos de árvores de regressão, sejam eles $g_1$ e
+$g_2$, respectivamente, em que a previsão combinada é dada por:
+
+$$\widehat{g}({\bf x}) = \frac{\widehat{g_1}({\bf x})  + \widehat{g_2}({\bf x})}{2},$$
+em que $\widehat{g_1}({\bf x})$ e $\widehat{g_2}({\bf x})$ são as
+estimativas da função de regressão $r({\bf x})$ fornecidades pelas
+árvores $g_1$ e $g_2$, respectivamente.
+
+<br>
+
+Supondo que $\widehat{g_1}({\bf x})$ e $\widehat{g_2}({\bf x})$ são
+não-viesados e possuem a mesma variância, e além disso são não
+correlacionados então:
+
+```{=tex}
+\begin{align*}
+\mathbb{E}[(Y - g({\bf x}))^2|{\bf x}] &= \mathbb{V}[Y|{\bf x}] + \frac{1}{4}(\mathbb{V}[\widehat{g}_1({\bf x}) + \widehat{g}_2({\bf x})|{\bf x}]) \\
+&\quad + \left(\mathbb{E}[Y|{\bf x}] - \frac{\mathbb{E}[\widehat{g}_1({\bf x})|{\bf x}]+\mathbb{E}[\widehat{g}_2({\bf x})|{\bf x}]}{2} \right)^2
+\end{align*}
+```
+## Combinando predições - bagging
+
+<br>
+
+Note que se $\widehat{g_1}({\bf x})$ e $\widehat{g_2}({\bf x})$ então
+$\mathbb{E}(\widehat{g}_1({\bf x})|{\bf x}) = \mathbb{E}(\widehat{g}_2({\bf x})|{\bf x}) = r({\bf x})$.
+Isso faz com que a última parcela da equação anterior seja zero. Se além
+disso, se os estimadores possuem a mesma variância, então a decomposição
+do risco preditivo combinado é simplificada e dada por:
+
+$$\overbrace{\mathbb{E}[(Y - \widehat{g}({\bf x}))^2|{\bf x}]}^{\text{Risco preditivo combinado}} = \mathbb{V}[Y|{\bf x}] + \frac{1}{2}\mathbb{V}[\widehat{g}_i({\bf x})| {\bf x}] \leq \underbrace{\mathbb{E}[(Y - \widehat{g}_i({\bf x}))^2 | {\bf x}]}_{\text{Risco preditivo individual}},$$ {#eq-risco-combinado-decom}
+para um dado $i$, com $i = 1, 2$. Dado as suposições de estimadores
+não-viesados, variância iguais e que os estimadores são
+não-correlacionados, a @eq-risco-combinado-decom poderia ser
+generalizada para o caso de mais de dois estimadores, no nosso caso,
+para mais de duas árvores de regressão 🌳. Basta utilizar indução
+matemática!
+
+<br>
+
+![](gifs/bom.gif)
+
+## Combinando predições - bagging
+
+<br>
+
+Devemos notar, contudo que, para que tenhamos árvores 🌳 aproximadamente
+não-viesadas, não devemos "podar" as árvores️ 🌳. Muito embora elas
+possam aprensenta *overfitting* quando consideradas individualmente o **risco preditivo combinado
+irá diminuir**.
+
+<br>
+
+Portanto, seja $B$ o número de pseudo-amostras *bootstrap*, i.e., amostras obtidas da amostra original com reposição. Então, o estimador combinado em um procedimento de *bagging* é dado por:
+
+$$\widehat{g}({\bf x}) = \frac{1}{B}\sum_{b = 1}^B \widehat{g}_b({\bf x}).$$
+
+![](gifs/bean_01.gif)
+
+## Combinando predições - bagging
+
+<br>
+
+Uma observação importante é que o *bagging* pode ser ruim em modelos quando utilizado em modelos intrinsecamente estáveis, como é o caso de modelos lineares de regressão, $k$NN, regressão logística, entre outros. O procedimento de *bagging* costuma ser eficaz quando são utilizados em modelos que possuem uma alta variância e que tendem a ter *overfitting*, como o caso da árvore de decisão profunda (árvores de regressão e de classificação).
+
+<br>
+
+![](gifs/bean_01.gif)
+
+## Combinando predições - bagging
+
+<br>
+
+Muito embora a combinação preditiva usando *bagging* de um conjunto de árvores de regressão não são tão fáceis de interpretar quando comparada com uma única árvore de regressão, ele permite que possamos criar uma medida de importância para cada variável. Essa medida baseia-se na redução da *Residual Sum of squares* - RSS **de cada divisão**.
+
+<br>
+
+![Uma simples divisão binária em qualquer ponto de uma dada árvore 🌳 de regressão. Desejamos encontrar a importância da variável "pai" que poderá aparecer em diversas divisões em uma mesma árvore.](imgs/dendograma_simples.png){fig-aling='center'}
+
+<br>
+
+Devemos computar a redução da soma dos quadrados dos resíduos em cada nó em que a variável do nó "pai" aparece em todas as árvores obtidas pelo procedimento de *bagging*, em que calculamos a soma dos quadrados no nó "pai" e subtraímos da soma dos quadrados do nó esquerdo e do nó direito.
+
+## Combinando predições - bagging
+
+<br>
+
+Assim, a importância da variável no nó "pai", em uma dada divisão binária em uma dada árvore 🌳 do procedimento de *bagging* é dada por:
+
+<br>
+
+\begin{align*}
+\text{Importância local} &= RSS_{pai} - RSS_{esq} - RSS_{dir} = \\
+& \sum_{i \in pai} (y_i - \overline{y}_{pai})^2 - \sum_{i \in esq} (y_i - \overline{y}_{esq})^2 - \sum_{i \in dir} (y_i - \overline{y}_{dir})^2.
+\end{align*}
+
+<br>
+
+Foi denominado de **"Importância local"**, uma vez que o nó "pai" (variável de interesse) poderá aparecer nas diversas $B$ árvores de regressão do procedimento *bagging*, e mais, poderá aparecer várias vezes em uma mesma árvore. Portanto, em todas as $B$ e em todas as ocorrências da variável "pai" em qualquer ponto de uma árvore a "Importância local" deverá ser calculada. Ao fim, deverá somar todas as importâncias locais para se ter a **importância global** da variável no nó "pai".
+
+## 🌲🌳🌲🌳🌲 Random Forest 
+
+<br>
+
+
+::: columns
+::: {.column width='50%'}
+O *random forest* (floresta aleatória) é um procedimento de *bagging* em que introduz um níveo de aleatoriedade maior no processo de selação das variáveis, visando reduzir ainda mais a correção entre as árvores de regressão. Isso é feito sorteando $m < d$ covariáveis em cada particionamento, i.e., essa randomização é feita em toda divisão de todas as $B$ árvores do procedimento de *bagging*, em que $d$ é o total de covariáveis consideradas.
+
+<br>
+
+O valor de $m$ poderá ser obtido via algum procedimento de *cross-validation*, i.e., é um hiperparâmetro que poderá ser "tunado".
+:::
+::: {.column width='50%'}
+![](gifs/forest.gif){fig-aling='center'}
+:::
+:::
+
+## 🌲🌳🌲🌳🌲 Random Forest
+
+<br>
+
+A ideia de construir árvores que sejam menos correlacionadas uma com as outras nos aproxima melhor do critério de não correlação que utilizamos para mostrar que o risco preditivo combinado é menor que o risco preditivo ao considerar uma única árvore, como mostra a @eq-risco-combinado-decom.
+
+<br>
+
+O algoritmo *random forest* consegue produzir um estimador com menor variância que o *bagging*. Além disso, assim como no *bagging*, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.
+
+<br>
+
+Muito embora o *bagging* é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de *random forest* para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.
