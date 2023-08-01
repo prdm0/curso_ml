@@ -1243,14 +1243,14 @@
     "href": "index.html#árvores-de-regressão-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nFormalmente, temos que a metodologia de estimação de uma árvore de regressão cria uma partição no espaço das covariáveis em regiões distintas e disjuntas, que denotaremos de R_1, R_2, \\cdots, R_j, com R_a \\cap R_b, \\forall a,b \\in 1, \\cdots, j. A predição é dada por:\ng({\\bf x}) = \\frac{1}{|\\{i:{\\bf x}_i \\in R_k\\}|}\\sum_{i:{\\bf x}_i \\in R_k} y_i.\n\nA construção de uma árvore de regressão envolve dois passos principais:\n\n\nA criação de uma árvore complexa que nos leve a partições “puras”, i.e., a partições nas observações do conjunto de coveriáveis que nos leve a valores de Y, no conjunto de treinamento em cada uma das folhas sejam homogêneas;\nPodar a árvore, com a finalidade de evitarmos super-ajuste (overffiting), e portanto, termos uma alta variância do modelo."
+    "text": "🌳 Árvores de regressão\n\nFormalmente, temos que a metodologia de estimação de uma árvore de regressão cria uma partição no espaço das covariáveis em regiões distintas e disjuntas, que denotaremos de R_1, R_2, \\cdots, R_j, com R_a \\cap R_b, \\forall a,b \\in 1, \\cdots, j. A predição é dada por:\ng({\\bf x}) = \\frac{1}{|\\{i:{\\bf x}_i \\in R_k\\}|}\\sum_{i:{\\bf x}_i \\in R_k} y_i.\n\nA construção de uma árvore de regressão envolve dois passos principais:\n\n\nA criação de uma árvore complexa que nos leve a partições “puras”, i.e., a partições nas observações do conjunto de covariáveis que nos leve a valores de Y, no conjunto de treinamento em cada uma das folhas sejam homogêneas;\nPodar a árvore, com a finalidade de evitarmos super-ajuste (overffiting), e portanto, termos uma alta variância do modelo."
   },
   {
     "objectID": "index.html#árvores-de-regressão-2",
     "href": "index.html#árvores-de-regressão-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nNo passo 1, para avaliarmos o quão razoável é uma árvore T, utilizamos o Erro Quadrático Médio - EQM, em que\n\\mathcal{P}(T) = \\sum_{R}\\sum_{i:{\\bf x}_i \\in R} \\frac{(y_i - \\widehat{y}_R)^2}{n}, em que \\widehat{y}_R é o valor predito de y para a resposta de uma observação pertencente à região R.\n\nEncontrar uma árvore T que minimize \\mathcal{P}(T) é uma tarefa computacionalmente cara. Por isso, que os algoritmos de estimação de T normalmente utilizam partições binárias, como no exemplo anterior.\n\nExistem diversos algoritmos utilizados para estimação de T, em que o Classification And Regression Tree - CART é o mais conhecido. O algoritmo foi estabelecido no livro Breiman L., Friedman J. H., Olshen R. A., and Stone, C. J. (1984) Classification and Regression Trees. Wadsworth."
+    "text": "🌳 Árvores de regressão\n\nA ideia de uma árvore 🌳 pura é de que “todo mundo” que cai em uma dada folha é muito homogêneo em relação a variável resposta (ao rótulo/label).\n\nEm uma árvore de regressão, a maneira mais simples de definir pureza é utilizar o EQM."
   },
   {
     "objectID": "index.html",
@@ -1264,42 +1264,42 @@
     "href": "index.html#árvores-de-regressão-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nO algoritmo particiona o espaço de covariáveis em duas regiões disjuntas. Para a escolha dessa partição, busca-se, dentre todas as covariáveis x_i e cortes t_1, a combinação que conduz a uma partição (R_1, R_2) com menor predições de erro quadrático, i.e., dado um nó, a partição é construída de modo a minimizar:\nSSE = \\sum_{i:{\\bf x}_i \\in R_1}^n (y_i - \\widehat{y}_{R_1})^2 + \\sum_{i:{\\bf x}_i \\in R_2}^n (y_i - \\widehat{y}_{R_2})^2, \\tag{7} em que \\widehat{y}_{R_k} é a predição de y fornecida pela região R_k e SSE é denominado Sum of Squares of Errors - SSE.\n\nAssim, tem-se que o algoritmo irá fornecer:\n\nR_1 = \\{{\\bf x} : {\\bf x}_i &lt; t_1\\}\\, \\mathrm{e}\\, R_2 = \\{{\\bf x} : {\\bf x}_i \\geq t_1\\}, em que x_i é a variável escolhida e t_1 é o corte definido."
+    "text": "🌳 Árvores de regressão\n\nNo passo 1, para avaliarmos o quão razoável é uma árvore T, utilizamos o Erro Quadrático Médio - EQM, em que\n\\mathcal{P}(T) = \\sum_{R}\\sum_{i:{\\bf x}_i \\in R} \\frac{(y_i - \\widehat{y}_R)^2}{n}, em que \\widehat{y}_R é o valor predito de y para a resposta de uma observação pertencente à região R. No gráfico de uma árvore de regressão, o R é dado por todos os indivíduos na base de dados que estão em uma dada folha 🍃.\n\nEncontrar uma árvore T que minimize \\mathcal{P}(T) é uma tarefa computacionalmente cara. Por isso, que os algoritmos de estimação de T normalmente utilizam partições binárias, como no exemplo anterior.\n\nExistem diversos algoritmos utilizados para estimação de T, em que o Classification And Regression Tree - CART é o mais conhecido. O algoritmo foi estabelecido no livro Breiman L., Friedman J. H., Olshen R. A., and Stone, C. J. (1984) Classification and Regression Trees. Wadsworth."
   },
   {
     "objectID": "index.html#árvores-de-regressão-4",
     "href": "index.html#árvores-de-regressão-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nUma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte, o algoritmo irá particionar as regiões R_1 e R_2 em regiões menores, seguindo o mesmo critério,tanto para R_1 quanto para R_2. O algoritmo continua de forma recursiva até que tenhamos uma árvore com poucas observações em uma das folhas 🍃.\n\nPor exemplo, podemos decidir em parar de tornar a árvore profunda quando em cada folha tivermos menos de 5 observações. Porém, essa árvore criada irá produzir boas predições para o conjunto de treinamento, porém, não irá performar bem em novas observações. Isso, por conta, do trade off entre viés e variância. Em outras palavas, haverá overfitting.\n Na etapa do processo de poda, cada nó é retirado, um por vmez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o overffiting do modelo."
+    "text": "🌳 Árvores de regressão\n\nO algoritmo particiona o espaço de covariáveis em duas regiões disjuntas. Para a escolha dessa partição, busca-se, dentre todas as covariáveis x_i e cortes t_1, a combinação que conduz a uma partição (R_1, R_2) com menor predições de erro quadrático, i.e., dado um nó, a partição é construída de modo a minimizar:\n\\overbrace{SSE}^{\\text{sum of squares error}} = \\sum_{i:{\\bf x}_i \\in R_1}^n (y_i - \\widehat{y}_{R_1})^2 + \\sum_{i:{\\bf x}_i \\in R_2}^n (y_i - \\widehat{y}_{R_2})^2, \\tag{7} em que \\widehat{y}_{R_k} é a predição de y fornecida pela região R_k e SSE é denominado Sum of Squares of Errors - SSE.\n\nAssim, tem-se que o algoritmo irá fornecer:\n\nR_1 = \\{{\\bf x} : {\\bf x}_i &lt; t_1\\}\\, \\mathrm{e}\\, R_2 = \\{{\\bf x} : {\\bf x}_i \\geq t_1\\}, em que x_i é a variável escolhida e t_1 é o corte definido."
   },
   {
     "objectID": "index.html#árvores-de-regressão-5",
     "href": "index.html#árvores-de-regressão-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nPara limitar a profundidade da arvore T a ser estimada, um parâmetro de penalização/complexidade poderá ser introduzido na Equação 7. Assim, o problema consistem em obter regiões e pontos de cortes que minimize:\nSSE + \\alpha|T|, em que \\alpha &gt; 0 é o hiperparâmetro de complexidade do modelo e |T| é um valor inteiro que define a profundidade máxima da árvore. Por exemplo, |T| na biblioteca rpart é definido pelo parâmetro tree_depth em 30. Normalmente nos concentramos em em tunar o parâmetro cost_complexity que é o \\alpha."
+    "text": "🌳 Árvores de regressão\n\nUma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte, o algoritmo irá particionar as regiões R_1 e R_2 em regiões menores, seguindo o mesmo critério,tanto para R_1 quanto para R_2. O algoritmo continua de forma recursiva até que tenhamos uma árvore com poucas observações em uma das folhas 🍃.\n\nPor exemplo, podemos decidir em parar de tornar a árvore profunda quando em cada folha tivermos menos de 5 observações. Porém, essa árvore criada irá produzir boas predições para o conjunto de treinamento, porém, não irá performar bem em novas observações. Isso, por conta, do trade off entre viés e variância. Em outras palavas, haverá overfitting.\n Na etapa do processo de poda, cada nó é retirado, um por vez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o overffiting do modelo."
   },
   {
     "objectID": "index.html#árvores-de-regressão-6",
     "href": "index.html#árvores-de-regressão-6",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nExemplo: Poderemos podar a árvore usando a função prune do pacote rpart. Considerando o exemplo anterior, tornando a árvore menos compleça, poderíamos decidir em podar alterando o seu parâmetro de complexidade.\n\nlibrary(rpart)\nlibrary(rpart.plot)\n\ndados &lt;- readr::read_csv(file = \"dados/winequality-red.csv\")\n\narvore &lt;- dados |&gt; \n  rpart::rpart(formula = quality ~ ., data = _) \n\n# O melhor parâmetro de custo\nmelhor_grau &lt;- arvore$cptable[nrow(arvore$cptable),][1L]\n\n# Aumentando o parâmetro de custo de 0.01 para 0.04\narvore_podada &lt;- rpart::prune(tree = arvore, cp = 0.04)\n\n# Plotando a árvore podada\nrpart.plot::rpart.plot(arvore_podada)"
+    "text": "🌳 Árvores de regressão\n\nUma observação importante é que sempre é bom crescer a árvore ao máximo possível e depois proceder com a etapa de “poda”, em que removemos os ramos mais profundos e reavaliamos o poder preditivo da árvore 🌳 T. Isso porquê a melhoria do poder preditivo da árvore não é linear, i.e., as vezes podemos ter uma divisão que piore um pouco a capacidade preditiva da árvore, porém, a divisão seguinte poderá dar um grande salto de melhoria. Dessa forma, é mais conveniente deixar a árvore “profunda” para depois sairmos “podando” ✂️ a árvore 🌳."
   },
   {
     "objectID": "index.html#árvores-de-regressão-7",
     "href": "index.html#árvores-de-regressão-7",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado dentro de um procedimento de validação cruzada."
+    "text": "🌳 Árvores de regressão\n\nPara limitar a profundidade da arvore T a ser estimada, um parâmetro de penalização/complexidade poderá ser introduzido na Equação 7. Assim, o problema consistem em obter regiões e pontos de cortes que minimize:\nSSE + \\alpha|T|, em que \\alpha &gt; 0 é o hiperparâmetro de complexidade do modelo e |T| é um valor inteiro que define a profundidade máxima da árvore. Por exemplo, |T| na biblioteca rpart é definido pelo parâmetro tree_depth em 30. Normalmente nos concentramos em em tunar o parâmetro cost_complexity que é o \\alpha."
   },
   {
     "objectID": "index.html#árvores-de-regressão-8",
     "href": "index.html#árvores-de-regressão-8",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n Algumas observações sobre a árvore 🌳 de regressão:\n\n\nÉ um método não-paramétrico;\nPode ser representado graficamente;\nÉ útil na análise exploratória dos dados do problema em questão;\nPode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;\nPoderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;\nA árvore é robusta na presença de variáveis irrelevantes."
+    "text": "🌳 Árvores de regressão\n\nExemplo: Poderemos podar a árvore usando a função prune do pacote rpart. Considerando o exemplo anterior, tornando a árvore menos compleça, poderíamos decidir em podar alterando o seu parâmetro de complexidade.\n\nlibrary(rpart)\nlibrary(rpart.plot)\n\ndados &lt;- readr::read_csv(file = \"dados/winequality-red.csv\")\n\narvore &lt;- dados |&gt; \n  rpart::rpart(formula = quality ~ ., data = _) \n\n# O melhor parâmetro de custo\nmelhor_grau &lt;- arvore$cptable[nrow(arvore$cptable),][1L]\n\n# Aumentando o parâmetro de custo de 0.01 para 0.04\narvore_podada &lt;- rpart::prune(tree = arvore, cp = 0.04)\n\n# Plotando a árvore podada\nrpart.plot::rpart.plot(arvore_podada)"
   },
   {
     "objectID": "reports_code/tufte_svm_regressao.html",
@@ -1383,14 +1383,14 @@
     "href": "index.html#árvores-de-regressão-9",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nO nível de complexidade é obtido via cross-validation de modo a encontrar a menor subárvore que generaliza melhor o problema para dados não visto.\n\nAssim como nos modelos de regressão com penalidade que vimos anteriormente, aqui, para valores menores de \\alpha tende a produzir modelos mais complexos. Consequentemente, à medida que uma árvore cresce, a redução no SSE deve ser maior do que a penalidade de complexidade de custo."
+    "text": "🌳 Árvores de regressão\n O parâmetro de complexidade/custo é um hiperparâmetro, e deverá ser estimado dentro de um procedimento de validação cruzada."
   },
   {
     "objectID": "index.html#árvores-de-regressão-10",
     "href": "index.html#árvores-de-regressão-10",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nExperimente alterar o parâmetro de complexidade e perceba como ele influencia nas regições da árvore de regressão. Quando maior o valor, maior a penalidade, e portanto, mais simples será a árvore de regressão que irá estimar os valores de Y_i com base em X_i."
+    "text": "🌳 Árvores de regressão\n Algumas observações sobre a árvore 🌳 de regressão:\n\n\nÉ um método não-paramétrico;\nPode ser representado graficamente;\nÉ útil na análise exploratória dos dados do problema em questão;\nPode ser utilizada para selecionar variáveis. Aparentemente, as variáveis que pertence à árvore tem uma maior importância para o problema em questão;\nPoderá trabalhar com variáveis numéricas, mas também poderá trabalhar com variáveis categóricas;\nA árvore é robusta na presença de variáveis irrelevantes."
   },
   {
     "objectID": "shiny_apps/index.html#column-4",
@@ -1460,7 +1460,7 @@
     "href": "index.html#árvores-de-regressão-11",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌳 Árvores de regressão",
-    "text": "🌳 Árvores de regressão\n\nAlgumas outras características das 🌳 árvores de regressão são:\n\n\nA função de regressão estimada \\widehat{r}({\\bf x}) é constante por partes, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de \\widehat{r}({\\bf x});\nEm uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;\nElas são uma espécie de “samambaias”, em que crescem para baixo;\nÉ fácil introduzir variáveis categóricas 🎉;\nUma pessoa sem muito conhecimento poderá estimar \\widehat{r}({\\bf x}), dada uma árvore, para cada nova observação {\\bf x}."
+    "text": "🌳 Árvores de regressão\n\nO nível de complexidade é obtido via cross-validation de modo a encontrar a menor subárvore que generaliza melhor o problema para dados não visto.\n\nAssim como nos modelos de regressão com penalidade que vimos anteriormente, aqui, para valores menores de \\alpha tende a produzir modelos mais complexos. Consequentemente, à medida que uma árvore cresce, a redução no SSE deve ser maior do que a penalidade de complexidade de custo."
   },
   {
     "objectID": "index.html#combinando-predições---bagging",
@@ -1468,5 +1468,19 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Combinando predições - bagging",
     "text": "Combinando predições - bagging\n\nAs árvores 🌳 de regressão tem a característica de ser facilmente interpretável, porém, costumam ser uma capacidade preditiva baixa\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#árvores-de-regressão-12",
+    "href": "index.html#árvores-de-regressão-12",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🌳 Árvores de regressão",
+    "text": "🌳 Árvores de regressão\n\nExperimente alterar o parâmetro de complexidade e perceba como ele influencia nas regições da árvore de regressão. Quando maior o valor, maior a penalidade, e portanto, mais simples será a árvore de regressão que irá estimar os valores de Y_i com base em X_i."
+  },
+  {
+    "objectID": "index.html#árvores-de-regressão-13",
+    "href": "index.html#árvores-de-regressão-13",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🌳 Árvores de regressão",
+    "text": "🌳 Árvores de regressão\n\nAlgumas outras características das 🌳 árvores de regressão são:\n\n\nA função de regressão estimada \\widehat{r}({\\bf x}) é constante por partes, i.e., em uma folha 🍃 tendemos predizer que vários indivíduos distintos tem o mesmo valor de \\widehat{r}({\\bf x});\nEm uma árvore 🌳 de regressão as interações entre variáveis são consideradas de forma automática, enquanto em uma regressão as interações são introduzidas como os produtos entre covariáveis;\nElas são uma espécie de “samambaias”, em que crescem para baixo;\nÉ fácil introduzir variáveis categóricas 🎉;\nUma pessoa sem muito conhecimento poderá estimar \\widehat{r}({\\bf x}), dada uma árvore, para cada nova observação {\\bf x}."
   }
 ]

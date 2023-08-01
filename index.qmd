@@ -5002,7 +5002,7 @@ principais**:
 <br>
 
 1.  A criação de uma árvore complexa que nos leve a partições "puras",
-    i.e., a partições nas observações do conjunto de coveriáveis que nos
+    i.e., a partições nas observações do conjunto de covariáveis que nos
     leve a valores de $Y$, no conjunto de treinamento em cada uma das
     folhas sejam homogêneas;
 
@@ -5013,12 +5013,29 @@ principais**:
 
 <br>
 
+A ideia de uma árvore 🌳 pura é de que "todo mundo" que cai em uma dada folha é muito homogêneo
+em relação a variável resposta (ao rótulo/*label*).
+
+<br>
+
+Em uma árvore de regressão, a maneira mais simples de definir pureza é utilizar o EQM. 
+
+<br>
+
+![](gifs/hum.gif)
+
+
+
+## 🌳 Árvores de regressão
+
+<br>
+
 No passo 1, para avaliarmos o quão razoável é uma árvore $T$, utilizamos
 o Erro Quadrático Médio - EQM, em que
 
 $$\mathcal{P}(T) = \sum_{R}\sum_{i:{\bf x}_i \in R} \frac{(y_i - \widehat{y}_R)^2}{n},$$
 em que $\widehat{y}_R$ é o valor predito de $y$ para a resposta de uma
-observação pertencente à região $R$.
+observação pertencente à região $R$. No gráfico de uma árvore de regressão, o $R$ é dado por todos os indivíduos na base de dados que estão em uma dada folha 🍃. 
 
 <br>
 
@@ -5044,7 +5061,7 @@ covariáveis $x_i$ e cortes $t_1$, a combinação que conduz a uma partição
 $(R_1, R_2)$ com menor predições de erro quadrático, i.e., dado um nó, a
 partição é construída de modo a minimizar:
 
-$$SSE = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2,$${#eq-sse-tree}
+$$\overbrace{SSE}^{\text{sum of squares error}} = \sum_{i:{\bf x}_i \in R_1}^n (y_i - \widehat{y}_{R_1})^2 + \sum_{i:{\bf x}_i \in R_2}^n (y_i - \widehat{y}_{R_2})^2,$${#eq-sse-tree}
 em que $\widehat{y}_{R_k}$ é a predição de $y$ fornecida pela região
 $R_k$ e SSE é denominado *[S]{.red}um of [S]{.red}quares of [E]{.red}rrors* - SSE.
 
@@ -5068,7 +5085,18 @@ Uma vez que estabelecemos um nó raiz, este é fixado. No passo seguinte, o algo
 Por exemplo, podemos decidir em parar de tornar a árvore profunda quando em cada folha tivermos menos de 5 observações. Porém, essa árvore criada irá produzir boas predições para o conjunto de treinamento, porém, não irá performar bem em novas observações. Isso, por conta, do *trade off* entre viés e variância. Em outras palavas, haverá *overfitting*.
 
 <br>
-Na etapa do processo de poda, cada nó é retirado, um por vmez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o *overffiting* do modelo.
+Na etapa do processo de poda, cada nó é retirado, um por vez, e observa-se como o erro de predição varia no conjunto de validação. Com base nisso, decide-se quais nós permanecem na árvore. O processo de poda reduz o *overffiting* do modelo.
+
+## 🌳 Árvores de regressão
+
+<br>
+
+Uma observação importante é que sempre é bom crescer a árvore ao máximo possível e depois proceder com a etapa de "poda", em que removemos os ramos mais profundos e reavaliamos o poder preditivo da árvore 🌳 $T$. Isso porquê a melhoria do poder preditivo da árvore não é linear, i.e., as vezes podemos ter uma divisão que piore um pouco a capacidade preditiva da árvore, porém, a divisão seguinte poderá dar um grande salto de melhoria. Dessa forma, é mais conveniente deixar a árvore "profunda" para depois sairmos "podando" ✂️ a árvore 🌳.
+
+<br>
+
+![](gifs/cortando-a-arvore-fail.gif)
+
 
 ## 🌳 Árvores de regressão
 
