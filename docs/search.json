@@ -1543,15 +1543,15 @@
     "objectID": "index.html#random-forest",
     "href": "index.html#random-forest",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "🌲🌳🌲🌳🌲 Random Forest",
-    "text": "🌲🌳🌲🌳🌲 Random Forest\n\n\n\nO random forest (floresta aleatória) é um procedimento de bagging em que introduz um níveo de aleatoriedade maior no processo de selação das variáveis, visando reduzir ainda mais a correção entre as árvores de regressão. Isso é feito sorteando m &lt; d covariáveis em cada particionamento, i.e., essa randomização é feita em toda divisão de todas as B árvores do procedimento de bagging, em que d é o total de covariáveis consideradas.\n\nO valor de m poderá ser obtido via algum procedimento de cross-validation, i.e., é um hiperparâmetro que poderá ser “tunado”."
+    "section": "🌲🐞🌳🐝🌲🦋🌳 Random Forest",
+    "text": "🌲🐞🌳🐝🌲🦋🌳 Random Forest\n\n\n\nO random forest (floresta aleatória) é um procedimento de bagging em que introduz um níveo de aleatoriedade maior no processo de selação das variáveis, visando reduzir ainda mais a correção entre as árvores de regressão. Isso é feito sorteando m &lt; d covariáveis em cada particionamento, i.e., essa randomização é feita em toda divisão de todas as B árvores do procedimento de bagging, em que d é o total de covariáveis consideradas.\n\nO valor de m poderá ser obtido via algum procedimento de cross-validation, i.e., é um hiperparâmetro que poderá ser “tunado”."
   },
   {
     "objectID": "index.html#random-forest-1",
     "href": "index.html#random-forest-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "🌲🌳🌲🌳🌲 Random Forest",
-    "text": "🌲🌳🌲🌳🌲 Random Forest\n\nA ideia de construir árvores que sejam menos correlacionadas uma com as outras nos aproxima melhor do critério de não correlação que utilizamos para mostrar que o risco preditivo combinado é menor que o risco preditivo ao considerar uma única árvore, como mostra a Equação 9.\n\nO algoritmo random forest consegue produzir um estimador com menor variância que o bagging. Além disso, assim como no bagging, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.\n\nMuito embora o bagging é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de random forest para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.\n\nUm valor de m frequentemente considerado é o valor inteiro que aproxima \\sqrt{d}.\n\n\n\nDepartamento de Estatística da UFPB"
+    "section": "🌲🐞🌳🐝🌲🦋🌳 Random Forest",
+    "text": "🌲🐞🌳🐝🌲🦋🌳 Random Forest\n\nA ideia de construir árvores que sejam menos correlacionadas uma com as outras nos aproxima melhor do critério de não correlação que utilizamos para mostrar que o risco preditivo combinado é menor que o risco preditivo ao considerar uma única árvore, como mostra a Equação 9.\n\nO algoritmo random forest consegue produzir um estimador com menor variância que o bagging. Além disso, assim como no bagging, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.\n\nMuito embora o bagging é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de random forest para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.\n\nUm valor de m frequentemente considerado é o valor inteiro que aproxima \\sqrt{d}.\n\n\n\nDepartamento de Estatística da UFPB"
   },
   {
     "objectID": "index.html#combinando-predições---bagging-9",

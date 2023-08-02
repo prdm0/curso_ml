@@ -5681,7 +5681,7 @@ Assim, a importância da variável no nó "pai", em uma dada divisão binária e
 
 Foi denominado de **"Importância local"**, uma vez que o nó "pai" (variável de interesse) poderá aparecer nas diversas $B$ árvores de regressão do procedimento *bagging*, e mais, poderá aparecer várias vezes em uma mesma árvore. Portanto, em todas as $B$ e em todas as ocorrências da variável "pai" em qualquer ponto de uma árvore a "Importância local" deverá ser calculada. Ao fim, deverá somar todas as importâncias locais para se ter a **importância global** da variável no nó "pai".
 
-## 🌲🌳🌲🌳🌲 Random Forest 
+## 🌲🐞🌳🐝🌲🦋🌳 Random Forest 
 
 <br>
 
@@ -5699,7 +5699,7 @@ O valor de $m$ poderá ser obtido via algum procedimento de *cross-validation*, 
 :::
 :::
 
-## 🌲🌳🌲🌳🌲 Random Forest
+## 🌲🐞🌳🐝🌲🦋🌳 Random Forest
 
 <br>
 
