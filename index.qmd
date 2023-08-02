@@ -5613,6 +5613,24 @@ Uma observação importante é que o *bagging* pode ser ruim em modelos quando u
 
 <br>
 
+Uma forma de perceber a estabilidade de um modelo de aprendizagem de máquina é avaliar as predições do modelo em diferentes partições do conjunto de dados, por exemplo, em um procedimento de validação cruzada repetida. A função `rsample::vfold_cv()`, permite a possibilidade de retepir uma validação cruzada por meio do argumento `repeats`, que por *default*  é igual à $1$. 
+
+<br>
+
+Uma outra forma seria utilizar um procedimento de *bootstrap* não-paramétrico (reamostrar da amostra com reposição) e treinar o modelo em cada pseudo-amostra *bootstrap* e avaliar a variabilidade das estimativas no conjunto de validação.
+
+<br>
+
+Uma outra forma seria avaliar a **curva de aprendizado** do modelo. Essa curva poderá ser obtida treinando o modelo em diferentes tamanhos de conjunto de treinamento, em que observa-se como varia a peformance do modelo nos diferentes tamanhos do conjunto de treinamento.
+
+<br>
+
+![](gifs/hum.gif)
+
+## Combinando predições - bagging
+
+<br>
+
 Muito embora a combinação preditiva usando *bagging* de um conjunto de árvores de regressão não são tão fáceis de interpretar quando comparada com uma única árvore de regressão, ele permite que possamos criar uma medida de importância para cada variável. Essa medida baseia-se na redução da *Residual Sum of squares* - RSS **de cada divisão**.
 
 <br>
@@ -5671,3 +5689,7 @@ O algoritmo *random forest* consegue produzir um estimador com menor variância 
 <br>
 
 Muito embora o *bagging* é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de *random forest* para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.
+
+<br>
+
+Um valor de $m$ frequentemente considerado é o valor inteiro que aproxima $\sqrt{d}$.

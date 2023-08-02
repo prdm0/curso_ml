@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-08-01">
+  <meta name="dcterms.date" content="2023-08-02">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-08-01</p>
+  <p class="date">2023-08-02</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4fd0b57d0ff906075e31" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-4fd0b57d0ff906075e31">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b3b5798c73af49de231f" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-b3b5798c73af49de231f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -3746,13 +3746,24 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="combinando-predições---bagging-8" class="slide level2">
 <h2>Combinando predições - bagging</h2>
 <p><br></p>
+<p>Uma forma de perceber a estabilidade de um modelo de aprendizagem de máquina é avaliar as predições do modelo em diferentes partições do conjunto de dados, por exemplo, em um procedimento de validação cruzada repetida. A função <code>rsample::vfold_cv()</code>, permite a possibilidade de retepir uma validação cruzada por meio do argumento <code>repeats</code>, que por <em>default</em> é igual à <span class="math inline">1</span>.</p>
+<p><br></p>
+<p>Uma outra forma seria utilizar um procedimento de <em>bootstrap</em> não-paramétrico (reamostrar da amostra com reposição) e treinar o modelo em cada pseudo-amostra <em>bootstrap</em> e avaliar a variabilidade das estimativas no conjunto de validação.</p>
+<p><br></p>
+<p>Uma outra forma seria avaliar a <strong>curva de aprendizado</strong> do modelo. Essa curva poderá ser obtida treinando o modelo em diferentes tamanhos de conjunto de treinamento, em que observa-se como varia a peformance do modelo nos diferentes tamanhos do conjunto de treinamento.</p>
+<p><br></p>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="combinando-predições---bagging-9" class="slide level2">
+<h2>Combinando predições - bagging</h2>
+<p><br></p>
 <p>Muito embora a combinação preditiva usando <em>bagging</em> de um conjunto de árvores de regressão não são tão fáceis de interpretar quando comparada com uma única árvore de regressão, ele permite que possamos criar uma medida de importância para cada variável. Essa medida baseia-se na redução da <em>Residual Sum of squares</em> - RSS <strong>de cada divisão</strong>.</p>
 <p><br></p>
 
 <img data-src="imgs/dendograma_simples.png" class="r-stretch quarto-figure-center"><p class="caption">Uma simples divisão binária em qualquer ponto de uma dada árvore 🌳 de regressão. Desejamos encontrar a importância da variável “pai” que poderá aparecer em diversas divisões em uma mesma árvore.</p><p><br></p>
 <p>Devemos computar a redução da soma dos quadrados dos resíduos em cada nó em que a variável do nó “pai” aparece em todas as árvores obtidas pelo procedimento de <em>bagging</em>, em que calculamos a soma dos quadrados no nó “pai” e subtraímos da soma dos quadrados do nó esquerdo e do nó direito.</p>
 </section>
-<section id="combinando-predições---bagging-9" class="slide level2">
+<section id="combinando-predições---bagging-10" class="slide level2">
 <h2>Combinando predições - bagging</h2>
 <p><br></p>
 <p>Assim, a importância da variável no nó “pai”, em uma dada divisão binária em uma dada árvore 🌳 do procedimento de <em>bagging</em> é dada por:</p>
@@ -3789,6 +3800,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>O algoritmo <em>random forest</em> consegue produzir um estimador com menor variância que o <em>bagging</em>. Além disso, assim como no <em>bagging</em>, podemos calcular a importância de cada variável usando o mesmo procedimento apresentado anteriormente.</p>
 <p><br></p>
 <p>Muito embora o <em>bagging</em> é um procedimento útil para diminuir a variância de um modelo utilizando predições combinadas, o procedimento de <em>random forest</em> para o caso de árvores de regressão ou de classificação nos conduz a um estimador com menor variância.</p>
+<p><br></p>
+<p>Um valor de <span class="math inline">m</span> frequentemente considerado é o valor inteiro que aproxima <span class="math inline">\sqrt{d}</span>.</p>
 
 
 <img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
