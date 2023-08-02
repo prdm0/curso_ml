@@ -5627,6 +5627,29 @@ Uma outra forma seria avaliar a **curva de aprendizado** do modelo. Essa curva p
 
 ![](gifs/hum.gif)
 
+## 📚 Exercícios
+
+<br>
+
+Considere a variável aleatória $Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com
+$X_i \in \mathcal{U}(0, 10)\,, \forall i$. 
+
+<br>
+
+[Exercício]{.red}: Avalie a estabilidade de uma árvore de regressão usando um validação cruzada repetida. 
+
+<br>
+
+[Exercício]{.red}: Avalie a estibilidade usando um procedimento de bootstrap.
+
+<br>
+
+[Exercício]{.red}: Por fim, avalie a estabilidade utilizando avaliando a curva de aprendizado do modelo.
+
+<br>
+
+![](gifs/bean_01.gif)
+
 ## Combinando predições - bagging
 
 <br>
