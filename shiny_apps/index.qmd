@@ -45,6 +45,8 @@ library(rsample)
 library(yardstick)
 library(rpart)
 library(evaluate)
+library(tibble)
+library(ranger)
 
 # Função de regressão verdadeira. Na prática é desconhecida.
 regressao_verdadeira <- function(x)
@@ -317,4 +319,103 @@ renderPlot({
   arvore(complexidade = input$complexidade)
 })
 
+```
+
+# Bagging vs Random Forest {data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced"}
+
+Column
+-------------------------------------
+
+### Entrada de informações
+
+```{r}
+
+selectInput("modelo_bagging_floresta", label = "Estratégia:",
+            choices = c("Bagging" = "bagging", "Random Forest" = "floresta"))
+
+sliderInput("n_bagging_floresta", "n:",
+    min = 10, max = 250, value = 50
+)
+
+sliderInput("sd_bagging_floresta", "Desvio Padrão:",
+    min = 0.001, max = 0.7, value = 0.2
+)
+
+sliderInput("replicas_bagging_floresta", "Número de modelos:",
+    min = 1, max = 100, value = 50, step = 1
+)
+
+mc <- function(m = 10L, n = 10, sigma = 0.1, modelo = "floresta"){
+
+  cenarios <- function(n, sigma){
+    dados <- random_y(n = n, sigma = sigma)
+    if(modelo == "bagging"){
+      dados <- 
+        dados[rsample::bootstraps(dados, times = 1L) |> 
+        _$splits[[1L]]$in_id,]
+    }
+    
+    # Modelos
+    arvore <- 
+      rpart::rpart(formula = y ~ ., data = dados) |> 
+      predict(new.data = dados)
+    
+    floresta <- 
+      ranger::ranger(formula = y ~ ., data = dados) |> 
+      predict(data = dados, type = "response") |> 
+      _$predictions
+    
+    dados$y_arvore <- arvore
+    dados$y_floresta <- floresta
+    
+    dados
+  }
+  
+  step_arvore <- function(i){
+    resultados <- cenarios(n = n, sigma)
+    tibble(
+      x = resultados$x,
+      y = resultados$y,
+      arvore = resultados$y_arvore,
+      floresta = resultados$y_floresta
+    )
+  }
+  
+  resultados_mc <- purrr::map(.x = 1L:m, .f = step_arvore)
+  resultados_mc <- purrr::list_rbind(resultados_mc)
+  resultados_mc$modelos <- rep(1L:(nrow(resultados_mc)/n), each = n) 
+
+  # Plotando
+  
+  if(modelo == "floresta"){
+    resultados_mc |>
+      ggplot(aes(x = x, y = y)) +
+      geom_line(aes(x = x, y = floresta, color = modelos)) +
+      geom_smooth(se = FALSE, color = "red")
+  } else if(modelo == "bagging") {
+    resultados_mc |>
+      ggplot(aes(x = x, y = y)) +
+      geom_line(aes(x = x, y = arvore, color = modelos)) +
+      geom_smooth(se = FALSE, color = "red")
+  }
+}
+```
+
+Column
+-------------------------------------
+
+Considere a variável aleatória
+$Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com
+$X_i \in \mathcal{U}(0, 10)\,, \forall i.$
+
+
+```{r}
+renderPlot({
+  mc(
+    m = round(input$replicas_bagging_floresta,0),
+    n = input$n_bagging_floresta,
+    sigma = input$sd_bagging_floresta,
+    modelo = input$modelo_bagging_floresta
+  )
+})
 ```

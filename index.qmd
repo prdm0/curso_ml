@@ -5716,3 +5716,16 @@ Muito embora o *bagging* é um procedimento útil para diminuir a variância de 
 <br>
 
 Um valor de $m$ frequentemente considerado é o valor inteiro que aproxima $\sqrt{d}$.
+
+
+## 🌲🐞🌳🐝🌲🦋🌳 Random Forest
+
+<br> 
+
+A aplicação abaixo permite que você possa comparar as estratégias de *bagging* com o *random forest*, sendo este um *bagging* de árvores de regressão com o pequeno ajuste mencionado anteriormente, permitindo termos árvores menos correlacionadas. Perceba que o *random forest* consegue diminuir ainda mais a variância das previsões de $Y$. A linha [vermelha]{.red} é a distribuição verdadeira.
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-bagging-vs-random-forest" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
