@@ -5729,3 +5729,7 @@ A aplicação abaixo permite que você possa comparar as estratégias de *baggin
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-bagging-vs-random-forest" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+
+<br>
+
+Se desejar ver de forma ampliada, acesse a aplicação clicando [aqui](https://pedro-rafael.shinyapps.io/shiny_apps).
