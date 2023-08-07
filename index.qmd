@@ -2313,6 +2313,26 @@ validação cruzada.
 
 ## $k$-fold cross-validation
 
+<br>
+
+Em alguns livros o conjunto de treinamento é denominado de *not-testing* (não-teste).
+Isso, porquê eles querem enfatizar o fato de que o conjunto *not-testing* é utilizado
+para treinar/ensinar o modelo e jamais deverá ser utilizado para avaliar o risco
+preditivo $R(g)$.
+ 
+<br>
+
+Ao usar essa terminologia, os autores dos livros tentam enfatizar que o conjunto
+de treinamento é usado exclusivamente para ensinar o modelo a aprender os padrões
+nos dados, enquanto o conjunto de teste é usado para medir quão bem o modelo
+generaliza esses padrões para dados não vistos anteriormente.
+ 
+<br>
+
+![](gifs/hum.gif)
+
+## $k$-fold cross-validation
+
 A imagem abaixo ilustra o procedimento $k$-*fold cross-validation*, em
 que uma $5$-*fold cross-validation* é realizada dentro do conjunto de
 treinamento. Em cada *split*, o conjunto verde de observações (fold

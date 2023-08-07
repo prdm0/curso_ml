@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bfe5490bfe374c4990a8" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-bfe5490bfe374c4990a8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-266f351f9cb2a5aefd1d" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-266f351f9cb2a5aefd1d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1759,6 +1759,15 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </section>
 <section id="k-fold-cross-validation-4" class="slide level2">
+<h2><span class="math inline">k</span>-fold cross-validation</h2>
+<p><br></p>
+<p>Em alguns livros o conjunto de treinamento é denominado de <em>not-testing</em> (não-teste). Isso, porquê eles querem enfatizar o fato de que o conjunto <em>not-testing</em> é utilizado para treinar/ensinar o modelo e jamais deverá ser utilizado para avaliar o risco preditivo <span class="math inline">R(g)</span>.</p>
+<p><br></p>
+<p>Ao usar essa terminologia, os autores dos livros tentam enfatizar que o conjunto de treinamento é usado exclusivamente para ensinar o modelo a aprender os padrões nos dados, enquanto o conjunto de teste é usado para medir quão bem o modelo generaliza esses padrões para dados não vistos anteriormente.</p>
+<p><br></p>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="k-fold-cross-validation-5" class="slide level2">
 <h2><span class="math inline">k</span>-fold cross-validation</h2>
 <p>A imagem abaixo ilustra o procedimento <span class="math inline">k</span>-<em>fold cross-validation</em>, em que uma <span class="math inline">5</span>-<em>fold cross-validation</em> é realizada dentro do conjunto de treinamento. Em cada <em>split</em>, o conjunto verde de observações (fold <span class="green">verde</span>) são utilizados para treinar/ajustar o modelo e o conjunto <span class="trueblue">azul</span>, em cada um dos <em>splits</em> é utilizado para avaliar o risco preditivo <span class="math inline">R(g)</span> (através, por exemplo do EQM).</p>
 <div class="columns">
