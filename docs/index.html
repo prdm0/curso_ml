@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6bcb68d1adff9807d24b" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-6bcb68d1adff9807d24b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-09261cb26680daf7ea29" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-09261cb26680daf7ea29">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1800,7 +1800,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-2" class="slide level2">
 <h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
 <p><br></p>
-<p>A validação cruzada <span class="math inline">k</span>-<em>fold</em> é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados. É importante ressaltar que a validação cruzada <span class="math inline">k</span>-<em>fold</em> pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.</p>
+<p>A validação cruzada <span class="math inline">k</span>-<em>fold</em> é particularmente útil quando o conjunto de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além disso, <strong>ela permite verificar se o modelo é estável e se seu desempenho varia significativamente com diferentes divisões dos dados</strong>. É importante ressaltar que a validação cruzada <span class="math inline">k</span>-<em>fold</em> pode ser computacionalmente mais cara do que a abordagem do conjunto de validação, uma vez que envolve treinar e avaliar o modelo várias vezes.</p>
 <p><br></p>
 
 <img data-src="gifs/chapulin-colorado-no.gif" style="width:40.0%" class="r-stretch"></section>
@@ -1811,6 +1811,20 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 
 <img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="resumindo-data-splitting-validação-cruzada-e-conjunto-de-validação-4" class="slide level2">
+<h2>Resumindo: data splitting, validação cruzada e conjunto de validação</h2>
+<p><br></p>
+<p>No <a href="https://www.tidymodels.org/">tidymodels</a>, utilizamos a biblioteca <a href="https://rsample.tidymodels.org/">rsample</a> para realizar procedimentos de validação cruzada:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment"><p><code>initial_split()</code>: útil para uma divisão inicial dos dados, i.e., para aplicação do <em>hold-out</em>;</p></li>
+<li class="fragment"><p><code>loo_cv()</code>: se desejar realizar um procedimento de <em>leave-one-out cross-validation</em>;</p></li>
+<li class="fragment"><p><code>vfold_cv()</code>: para um procedimento de <span class="math inline">k</span>-<em>folds cross-validation</em>. Podemos inclusive realizar várias repetições de validação cruzada o que poderá remelhorar ainda mais a seleção da melhor combinação de hiperparâmetros. O número de repetições de validação cruzada poderá ser especificado no argumento <code>repeats</code> que por padrão é <code>1L</code>;</p></li>
+<li class="fragment"><p><code>bootstraps()</code>: se for desejado utilizar um procedimento de <em>bootstrap</em> não-paramétrico ao invés de uma validação cruzada. O papel do <em>bootstrap</em> é o mesmo da validação cruzada, porém, a seleção das amostras de treinamento é de mesmo tamanho da amostra de treinamento original e o procedimento é feito com reposição, i.e., os mesmos dados podem aparecer nas amostras. O conjunto de avaliação é definido como as linhas dos dados originais que não foram incluídos na amostra bootstrap. Isso geralmente é chamado de amostra <span class="red"><em>out-of-bag</em></span> - OOB. Podemos alterar o número de amostras <em>bootstrap</em> modificando o argumento <code>times</code> que por padrão é <code>25L</code>.</p></li>
+</ol>
+<p><br></p>
+<p><strong>Lembre-se que qualquer procedimento de validação cruzada que você escolher deve ser realizado no conjunto de treinamento</strong>! 📌</p>
+</section>
 <section id="balanço-viés-e-variância" class="slide level2">
 <h2>⚖️ Balanço viés e variância</h2>
 <p><br></p>

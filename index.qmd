@@ -2420,8 +2420,8 @@ a dependência de uma única divisão do conjunto de treinamento.
 
 A validação cruzada $k$-*fold* é particularmente útil quando o conjunto
 de dados é limitado, pois aproveita ao máximo os dados disponíveis. Além
-disso, ela permite verificar se o modelo é estável e se seu desempenho
-varia significativamente com diferentes divisões dos dados. É importante
+disso, **ela permite verificar se o modelo é estável e se seu desempenho
+varia significativamente com diferentes divisões dos dados**. É importante
 ressaltar que a validação cruzada $k$-*fold* pode ser computacionalmente
 mais cara do que a abordagem do conjunto de validação, uma vez que
 envolve treinar e avaliar o modelo várias vezes.
@@ -2444,6 +2444,34 @@ treinamento tende a ser menor que o conjunto de teste.
 <br>
 
 ![](gifs/hum.gif)
+
+## Resumindo: data splitting, validação cruzada e conjunto de validação
+
+<br>
+
+No [tidymodels](https://www.tidymodels.org/), utilizamos a biblioteca [rsample](https://rsample.tidymodels.org/) para realizar procedimentos de validação
+cruzada:
+
+<br>
+
+1. `initial_split()`: útil para uma divisão inicial dos dados, i.e., para aplicação do
+*hold-out*;
+
+2. `loo_cv()`: se desejar realizar um procedimento de *leave-one-out cross-validation*;
+
+2. `vfold_cv()`: para um procedimento de $k$-*folds cross-validation*. Podemos inclusive 
+realizar várias repetições de validação cruzada o que poderá remelhorar ainda mais a seleção
+da melhor combinação de hiperparâmetros. O número de repetições de validação cruzada poderá 
+ser especificado no argumento `repeats` que por padrão é `1L`;
+
+3. `bootstraps()`: se for desejado utilizar um procedimento de *bootstrap* não-paramétrico
+ao invés de uma validação cruzada. O papel do *bootstrap* é o mesmo da validação cruzada, porém,
+a seleção das amostras de treinamento é de mesmo tamanho da amostra de treinamento original e o procedimento é feito com reposição, i.e., os mesmos dados podem aparecer nas amostras. O conjunto de avaliação é definido como as linhas dos dados originais que não foram incluídos na amostra bootstrap. Isso geralmente é chamado de amostra [*out-of-bag*]{.red} - OOB. Podemos alterar o número de amostras *bootstrap* modificando o argumento `times` que por padrão é `25L`.
+
+<br>
+
+**Lembre-se que qualquer procedimento de validação cruzada que você escolher deve ser realizado no conjunto 
+de treinamento**! 📌
 
 ## ⚖️ Balanço viés e variância
 
