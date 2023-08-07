@@ -2391,11 +2391,11 @@ amarelo e testa-se o modelo com o conjunto de teste.
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
-<br> A abordagem do conjunto de validação envolve dividir o conjunto de
-treinamento em duas partes: uma parte é usada para treinar o modelo e a
-outra parte é usada para avaliar o desempenho do modelo. O conjunto de
-validação é utilizado para ajustar os hiperparâmetros do modelo, como a
-taxa de aprendizado, o número de camadas ocultas em uma rede neural,
+<br> A abordagem do conjunto de validação envolve **dividir o conjunto de
+treinamento em duas partes**: uma parte é usada para treinar o modelo e a
+outra parte é usada para avaliar o desempenho do modelo para uma dada combinação.
+de hiperparâmetros. O conjunto de validação é utilizado para avaliar os hiperparâmetros 
+do modelo, como a taxa de aprendizado, o número de camadas ocultas em uma rede neural,
 entre outros. Após o ajuste dos hiperparâmetros, o modelo final é
 treinado com o conjunto de treinamento completo e avaliado em um
 conjunto separado chamado conjunto de teste. Essa abordagem é conhecida
@@ -2410,9 +2410,9 @@ abordagem, o conjunto de treinamento é dividido em $k$ subconjuntos
 vezes, cada vez usando $k-1$ *folds* como conjunto de treinamento e $1$
 *fold* como conjunto de validação. O desempenho do modelo é então
 calculado como a média dos resultados obtidos em cada iteração. Isso
-permite avaliar o modelo de forma mais precisa, pois utiliza todos os
-dados para treinamento e validação, evitando a dependência de uma única
-divisão do conjunto de treinamento.
+permite avaliar o modelo, em diferentes combinações dos hiperparâmetros, de forma
+mais precisa, pois utiliza todos os dados para treinamento e validação, evitando
+a dependência de uma única divisão do conjunto de treinamento.
 
 ## Resumindo: data splitting, validação cruzada e conjunto de validação
 
