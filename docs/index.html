@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-08-04">
+  <meta name="dcterms.date" content="2023-08-07">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-08-04</p>
+  <p class="date">2023-08-07</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-cea0bbb975b1732d541e" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-cea0bbb975b1732d541e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bfe5490bfe374c4990a8" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-bfe5490bfe374c4990a8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -1723,7 +1723,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <img data-src="gifs/hum.gif" class="r-stretch"></section>
 <section id="k-fold-cross-validation-1" class="slide level2">
 <h2><span class="math inline">k</span>-fold cross-validation</h2>
-<p>A animação abaixo, ilustra o procedimento de <span class="math inline">3</span>-fold cross-validation (<span class="math inline">k = 3</span>), para uma amostra de tamanho <span class="math inline">n = 12</span> observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de <span class="math inline">k</span>-fold cross-validation é randomizado.</p>
+<p>A animação abaixo, ilustra o procedimento de <span class="math inline">3</span>-<em>fold cross-validation</em> (<span class="math inline">k = 3</span>), para uma amostra de tamanho <span class="math inline">n = 12</span> observações. Note que os valores que pertencem a cada um dos lotes são aleatórios. Portanto, o procedimento LOOCV é deterministico, já o procedimento de <span class="math inline">k</span>-<em>fold cross-validation</em> é randomizado.</p>
 <p><br></p>
 
 <img data-src="gifs/KfoldCV.gif" class="r-stretch"><p>Perceba que teremos agora apenas <span class="math inline">3</span> modelos. Para cada um desses lotes, calulamos o EQM com o conjunto de teste (parte <span class="trueblue">azul</span>) e treinamos o modelo com o conjunto de treinamento (parte <span class="truered">vermelha</span>).</p>
@@ -1731,9 +1731,11 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="k-fold-cross-validation-2" class="slide level2">
 <h2><span class="math inline">k</span>-fold cross-validation</h2>
 <p><br></p>
-<p>Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco <span class="math inline">R(g)</span>.</p>
+<p>Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco <span class="math inline">R(g)</span> no conjunto de validação.</p>
 <p><br></p>
 <p>Ao estimar <span class="math inline">k</span> modelos, normalmente faz-se um <em>grid</em> de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação.</p>
+<p><br></p>
+<p>Alias, utilizamos um procedimento de validação para selecionar a melhor combinação de hiperparâmetros e é será risco preditivo observado sob o conjunto de teste que realmente irá nos fornecer uma estimativa válida do risco preditivo <span class="math inline">R(g)</span>.</p>
 <p><br></p>
 
 <img data-src="gifs/ok.gif" class="r-stretch"></section>

@@ -648,7 +648,7 @@
     "href": "index.html#k-fold-cross-validation-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "k-fold cross-validation",
-    "text": "k-fold cross-validation\n\nMuitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco R(g).\n\nAo estimar k modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação."
+    "text": "k-fold cross-validation\n\nMuitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros de sintonização) que não dependem dos dados. É muito comum os algoritmos de aprendizagem de máquina se utilizarem do procedimento de validação cruzada, para além da estimação do risco R(g) no conjunto de validação.\n\nAo estimar k modelos, normalmente faz-se um grid de possíveis valores para esses hiperparâmetros em que ao final, escolhe-se como hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo final, com todo o conjunto de treinamento usando o valor do hiperparâmetro que retornou o menor EQM no conjunto de validação.\n\nAlias, utilizamos um procedimento de validação para selecionar a melhor combinação de hiperparâmetros e é será risco preditivo observado sob o conjunto de teste que realmente irá nos fornecer uma estimativa válida do risco preditivo R(g)."
   },
   {
     "objectID": "index.html#k-fold-cross-validation-3",

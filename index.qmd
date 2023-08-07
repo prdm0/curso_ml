@@ -2239,11 +2239,11 @@ aleatórios do conjunto de treinamento nos $k$ lotes.
 
 ## $k$-fold cross-validation
 
-A animação abaixo, ilustra o procedimento de $3$-fold cross-validation
+A animação abaixo, ilustra o procedimento de $3$-*fold cross-validation*
 ($k = 3$), para uma amostra de tamanho $n = 12$ observações. Note que os
 valores que pertencem a cada um dos lotes são aleatórios. Portanto, o
-procedimento LOOCV é deterministico, já o procedimento de $k$-fold
-cross-validation é randomizado.
+procedimento LOOCV é deterministico, já o procedimento de $k$-*fold
+cross-validation* é randomizado.
 
 <br>
 
@@ -2261,7 +2261,7 @@ treinamos o modelo com o conjunto de treinamento (parte
 Muitos modelos mais sofisticados apresentam hiperparâmetros (parâmetros
 de sintonização) que não dependem dos dados. É muito comum os algoritmos
 de aprendizagem de máquina se utilizarem do procedimento de validação
-cruzada, para além da estimação do risco $R(g)$.
+cruzada, para além da estimação do risco $R(g)$ no conjunto de validação.
 
 <br>
 
@@ -2270,6 +2270,12 @@ valores para esses hiperparâmetros em que ao final, escolhe-se como
 hiperparâmetro o modelo com menor EQM. Por fim, ajusta-se um modelo
 final, com todo o conjunto de treinamento usando o valor do
 hiperparâmetro que retornou o menor EQM no conjunto de validação.
+
+<br>
+
+Alias, utilizamos um procedimento de validação para selecionar a melhor combinação de 
+hiperparâmetros e é será risco preditivo observado sob o conjunto de teste que 
+realmente irá nos fornecer uma estimativa válida do risco preditivo $R(g)$.
 
 <br>
 
