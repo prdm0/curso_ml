@@ -2645,6 +2645,11 @@ Experimente de forma interativa altera a complefixade do modelo.
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+
+<br>
+
+Para ampliar a aplicação, clique [aqui](https://pedro-rafael.shinyapps.io/shiny_apps/).
+
 ## 🎛 Tuning Parameters
 
 <br>
