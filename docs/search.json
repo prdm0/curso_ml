@@ -228,7 +228,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19874, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19875, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -1593,7 +1593,7 @@
     "href": "index.html#random-forest-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🌲🐞🌳🐝🌲🦋🌳 Random Forest",
-    "text": "🌲🐞🌳🐝🌲🦋🌳 Random Forest\n\nA aplicação abaixo permite que você possa comparar as estratégias de bagging com o random forest, sendo este um bagging de árvores de regressão com o pequeno ajuste mencionado anteriormente, permitindo termos árvores menos correlacionadas. Perceba que o random forest consegue diminuir ainda mais a variância das previsões de Y. A linha vermelha é a distribuição verdadeira.\n\n \n\nSe desejar ver de forma ampliada, acesse a aplicação clicando aqui.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "🌲🐞🌳🐝🌲🦋🌳 Random Forest\n\nA aplicação abaixo permite que você possa comparar as estratégias de bagging com o random forest, sendo este um bagging de árvores de regressão com o pequeno ajuste mencionado anteriormente, permitindo termos árvores menos correlacionadas. Perceba que o random forest consegue diminuir ainda mais a variância das previsões de Y. A linha vermelha é a distribuição verdadeira.\n\n \n\nSe desejar ver de forma ampliada, acesse a aplicação clicando aqui."
   },
   {
     "objectID": "shiny_apps/index.html#column-7",
@@ -1622,5 +1622,40 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Resumindo: data splitting, validação cruzada e conjunto de validação",
     "text": "Resumindo: data splitting, validação cruzada e conjunto de validação\n\nNo tidymodels, utilizamos a biblioteca rsample para realizar procedimentos de validação cruzada:\n\n\ninitial_split(): útil para uma divisão inicial dos dados, i.e., para aplicação do hold-out;\nloo_cv(): se desejar realizar um procedimento de leave-one-out cross-validation;\nvfold_cv(): para um procedimento de k-folds cross-validation. Podemos inclusive realizar várias repetições de validação cruzada o que poderá remelhorar ainda mais a seleção da melhor combinação de hiperparâmetros. O número de repetições de validação cruzada poderá ser especificado no argumento repeats que por padrão é 1L;\nbootstraps(): se for desejado utilizar um procedimento de bootstrap não-paramétrico ao invés de uma validação cruzada. O papel do bootstrap é o mesmo da validação cruzada, porém, a seleção das amostras de treinamento é de mesmo tamanho da amostra de treinamento original e o procedimento é feito com reposição, i.e., os mesmos dados podem aparecer nas amostras. O conjunto de avaliação é definido como as linhas dos dados originais que não foram incluídos na amostra bootstrap. Isso geralmente é chamado de amostra out-of-bag - OOB. Podemos alterar o número de amostras bootstrap modificando o argumento times que por padrão é 25L.\n\n\nLembre-se que qualquer procedimento de validação cruzada que você escolher deve ser realizado no conjunto de treinamento! 📌"
+  },
+  {
+    "objectID": "index.html#boosting",
+    "href": "index.html#boosting",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🚀 Boosting",
+    "text": "🚀 Boosting\n\nDa mesma forma que métodos como bagging e random forest, os métodos de boosting também tem como objetivo agregar diferentes estimadores da função de regreção r({\\bf x}). A ideia desses métodos que combinam diferentes estimadores da função de regressão é melhora a precisão e a performance preditiva dos modelos de máquina, convertendo vários aprendizes fracos em um único modelo de aprendizado forte.\n\nO boosting 🚀 funciona construindo os modelos de forma sequencial, dando mais peso às instâncias que foram classificadas incorretamente nos modelos anteriores. O funcionamento do boosting é semelhante ao bagging e random forest, exceto pelo fato de que a árvore irá crescendo sequencialmente: cada árvore é “cultivada” 🌱🚿🌳 usando informações de árvores crescidas. Boosting não envolve amostragem bootstrap; em vez de cada árvore é ajustada em uma versão modificada do conjunto de dados original."
+  },
+  {
+    "objectID": "index.html#boosting-1",
+    "href": "index.html#boosting-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🚀 Boosting",
+    "text": "🚀 Boosting\n\nExistem diversas variações e implementações de boosting com diversas implementações distintas em diferentes frameworks de aprendizagem de máquina. Aqui, será descrito o conceito geral, sendo este a forma mais usual do boosting.\n\nNo boosting, como mencionado anteriormente, o estimador g({\\bf x}) é constrído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se g({\\bf x}) \\equiv 0. Fazer g({\\bf x}) \\equiv 0 estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.\n\nA cada passo do algoritmo, procuramos obter uma árvore menos viesada, porém, como mencionado em anteriormente, quadando falamos sobre o trade off entre viés e variância, obtemos uma árvore atualizada com uma variância um pouco maior. Por isso é importante partir de uma árvore inicial com variância muito baixa."
+  },
+  {
+    "objectID": "index.html#boosting-2",
+    "href": "index.html#boosting-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🚀 Boosting",
+    "text": "🚀 Boosting\n\nA ideia é construir um estimador para r_i, em que na primeira iteração, considera-se r_i = y_i. A cada passo subsequente, atualizamos r_i para r_i = y_i - g({\\bf x}_i), em que r_i denominados de resíduo. Portanto, a ideia do boosting é prever o resíduo que inicia-se no rótulo/label y_i.\n\nUma observação importante é que as árvores tenham profundida pequena de modo a evitar overfitting.\n\nAlém disso, considera-se uma taxa de aprendizagem (learning rate) que denotaremos por \\lambda \\in [0, 1] que tem como objetivo controlar o super-ajuste. Trata-se de um hiperparâmetro que deverá ser obtido via algum procedimento de cross-validation. Portanto, deveremos “tunar” 🎛 o valor de \\lambda de modo a encontrar um valor adequado que maximize nosso risco observado, i.e., que maximize a previsão de R(g)."
+  },
+  {
+    "objectID": "index.html#boosting-3",
+    "href": "index.html#boosting-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🚀 Boosting",
+    "text": "🚀 Boosting\n\nOs passos para conseguir boas estimativas de usando o boosting são:\n\n\nDefinimos g({\\bf x}) \\equiv 0 e r_i = y_i, \\, \\forall i = 1, \\cdots, n;\nPara cada b = 1, \\cdots, B, fazemos:\n\n\nAjustamos uma árvore com p folhas para ({\\bf x}_1, r_1), \\cdots, ({\\bf x}_n, r_n), em que denotamos essa função de predição por g^b({\\bf x}). Lembre-se que estamos estimando r_i com base em {\\bf x}_i;\nAtualizamos g e os resíduos: g({\\bf x}) \\leftarrow g({\\bf x}) + \\lambda g^b({\\bf x}) e r_i \\leftarrow Y_i - g({\\bf x}).\n\n\nRetorna-se o modelo final g({\\bf x}).\n\nNo boosting, os valores de \\lambda, p e B são hiperparâmetros e devem ser obtidos por meio de algum procedimento de validação cruzada, i.e., você deverá “tunar” 🎛. É comum que \\lambda seja pequeno, por exemplo, 0,01 ou 0,001, B \\approx 1000 e p de ordem próxima à 2 ou 4."
+  },
+  {
+    "objectID": "index.html#boosting-4",
+    "href": "index.html#boosting-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🚀 Boosting",
+    "text": "🚀 Boosting\n\nConsidere a variável aleatória Y_i \\sim \\mathcal{N}(\\sin(X_i), \\sigma^2), com X_i \\in \\mathcal{U}(0, 10)\\,, \\forall i. Experimente na aplicação web que segue o método boosting. Observe o comportamento do estimador variando os parâmetros do algoritmo boosting. Perceba que para \\lambda = 0 não há aprendizado algum! Se desejar visualizar a aplicação abaixo de forma ampliada, clique aqui.\n\n \n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

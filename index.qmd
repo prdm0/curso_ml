@@ -5792,3 +5792,84 @@ A aplicação abaixo permite que você possa comparar as estratégias de *baggin
 <br>
 
 Se desejar ver de forma ampliada, acesse a aplicação clicando [aqui](https://pedro-rafael.shinyapps.io/shiny_apps).
+
+## 🚀 Boosting
+
+<br>
+
+Da mesma forma que métodos como *bagging*  e *random forest*, os métodos de *boosting* também tem como objetivo agregar diferentes estimadores da função de regreção $r({\bf x})$. A ideia desses métodos que combinam diferentes estimadores da função de regressão é melhora a precisão e a performance preditiva dos modelos de máquina, convertendo vários aprendizes fracos em um único modelo de aprendizado forte.
+
+
+<br>
+
+O *boosting* 🚀 funciona construindo os modelos de forma sequencial, dando mais peso às instâncias que foram classificadas incorretamente nos modelos anteriores. O funcionamento do *boosting* é semelhante ao *bagging* e *random forest*, exceto pelo fato de que a árvore irá crescendo sequencialmente: cada árvore é "cultivada" 🌱🚿🌳 usando informações de árvores crescidas. *Boosting* não envolve amostragem *bootstrap*; em vez de cada árvore é ajustada em uma versão modificada do conjunto de dados original.
+
+<br>
+
+![](gifs/prestando_atencao.gif)
+
+## 🚀 Boosting
+
+<br>
+
+Existem diversas variações e implementações de *boosting* com diversas implementações distintas em diferentes *frameworks* de aprendizagem de máquina. Aqui, será descrito o conceito geral, sendo este a forma mais usual do *boosting*.
+
+<br>
+
+No *boosting*, como mencionado anteriormente, o estimador $g({\bf x})$ é constrído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se $g({\bf x}) \equiv 0$. Fazer $g({\bf x}) \equiv 0$ estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.
+
+<br>
+
+A cada passo do algoritmo, procuramos obter uma árvore menos viesada, porém, como mencionado em anteriormente, quadando falamos sobre o *trade off* entre viés e variância, obtemos uma árvore atualizada com uma variância um pouco maior. Por isso é importante partir de uma árvore inicial com variância muito baixa.
+
+<br>
+
+![](gifs/hum.gif)
+
+## 🚀 Boosting
+
+<br>
+
+A ideia é construir um estimador para $r_i$, em que na primeira iteração, considera-se $r_i = y_i$. A cada passo subsequente, atualizamos $r_i$ para $r_i =  y_i - g({\bf x}_i)$, em que $r_i$ denominados de resíduo. Portanto, a ideia do *boosting* é prever o resíduo que inicia-se no rótulo/*label* $y_i$.
+
+<br>
+
+Uma observação importante é que as árvores tenham **profundida pequena** de modo a evitar *overfitting*.
+
+<br>
+
+Além disso, considera-se uma taxa de aprendizagem (*learning rate*) que denotaremos por $\lambda \in [0, 1]$ que tem como objetivo controlar o super-ajuste. Trata-se de um hiperparâmetro que deverá ser obtido via algum procedimento de *cross-validation*. Portanto, deveremos "tunar" 🎛 o valor de $\lambda$ de modo a encontrar um valor adequado que maximize nosso risco observado, i.e., que maximize a previsão de $R(g)$.
+
+## 🚀 Boosting
+
+<br>
+
+Os passos para conseguir boas estimativas de usando o *boosting* são:
+
+<br>
+
+1. Definimos $g({\bf x}) \equiv 0$ e $r_i = y_i, \, \forall i = 1, \cdots, n$;
+2. Para cada $b = 1, \cdots, B$, fazemos:
+  + Ajustamos uma árvore com $p$ folhas para $({\bf x}_1, r_1), \cdots, ({\bf x}_n, r_n)$, em que denotamos essa função de predição por $g^b({\bf x})$. Lembre-se que estamos estimando $r_i$ com base em ${\bf x}_i$;
+  + Atualizamos $g$ e os resíduos: $g({\bf x}) \leftarrow g({\bf x}) + \lambda g^b({\bf x})$ e $r_i \leftarrow Y_i - g({\bf x})$.
+3. Retorna-se o modelo final $g({\bf x})$.
+
+No *boosting*, os valores de $\lambda$, $p$ e $B$ são hiperparâmetros e devem ser obtidos por meio de algum
+procedimento de validação cruzada, i.e., você deverá "tunar" 🎛. É comum que $\lambda$ seja pequeno, por exemplo, $0,01$ ou $0,001$, $B \approx 1000$ e $p$ de ordem próxima à $2$ ou $4$.
+
+## 🚀 Boosting
+
+<br>
+
+Considere a variável aleatória
+$Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com
+$X_i \in \mathcal{U}(0, 10)\,, \forall i.$ Experimente na aplicação web que segue 
+o método *boosting*. Observe o comportamento do estimador variando os parâmetros do 
+algoritmo *boosting*. Perceba que para $\lambda = 0$ não há aprendizado algum! Se desejar
+visualizar a aplicação abaixo de forma ampliada, clique [aqui](https://pedro-rafael.shinyapps.io/shiny_apps/#section-boosting).
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-boosting" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
