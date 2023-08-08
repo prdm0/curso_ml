@@ -5898,7 +5898,11 @@ No R, o algoritmo está implementado na biblioteca [xgboost](https://github.com/
 
 <br>
 
-Uma outra forma de obter um valor adequado de $B$ é parar de adicionar iterações quando o risco observado começa a aumentar. Lembre-se que há um *tread off* entre viés e variância, em que as iterações começam por um estimador $\widehat{g}$ com variância nula e na medida que as iterações progridem, $\widehat{g}$ aumenta sua variância em troca da diminuição do viés. Para algum valor de $B$ o estimador poderá perder um pouco de performance. A ideia é escolher um valor de $B$ antes de atingir uma piora de $\widehat{R}(g)$ (risco observado). Essa estratégia é denominada de *early stopping*.
+Uma outra forma de obter um valor adequado de $B$ é parar de adicionar iterações quando o risco observado começa a aumentar. Lembre-se que há um *trade off* entre viés e variância, em que as iterações começam por um estimador $\widehat{g}$ com variância nula e na medida que as iterações progridem, $\widehat{g}$ aumenta sua variância em troca da diminuição do viés. Para algum valor de $B$ o estimador poderá perder um pouco de performance. A ideia é escolher um valor de $B$ antes de atingir uma piora de $\widehat{R}(g)$ (risco observado). Essa estratégia é denominada de *early stopping* ⌛.   
+
+<br>
+
+**Muito embora aqui apresentamos o algoritmo *boostring* em um contexto de árvores de regressão, esse algoritmo é genérico e poderá ser utilizado como estatégia para combinar modelos que são individualmente fracos**.
 
 <br>
 
