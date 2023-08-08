@@ -5873,3 +5873,33 @@ visualizar a aplicação abaixo de forma ampliada, clique [aqui](https://pedro-r
 ```{=html}
  <iframe id="example1" src="https://pedro-rafael.shinyapps.io/shiny_apps/#section-boosting" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
 ```
+
+## 🚀 Boosting
+
+<br>
+
+Em geral, as abordagens de aprendizagem estatística que aprendem lentamente tendem a
+executar bem. Observe que no *boosting*, ao contrário do ensacamento, a construção de
+cada árvore depende fortemente das árvores que já foram "cultivadas" 🌱🚿🌳. Portanto, 
+diferentemente do *bagging* que é um algoritmo em que as árvores em cada iteração são 
+mutuamente independentes e, portanto, facilmente paralelizável, no *boosting* as árvores
+são dependentes umas das outras.
+
+<br>
+
+Na literatura de *machine learning* há diversos algoritmos que implementam o *boosting*.  Uma
+implementação bastante popular, por conta de seu desempenho, é denominada **XGBoost**, proposto em CHEN, Tianqi; GUESTRIN, Carlos. [**Xgboost: A scalable tree boosting system**](https://arxiv.org/pdf/1603.02754.pdf). In: *Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining*. 2016. p. 785-794.
+
+<br>
+
+No R, o algoritmo está implementado na biblioteca [xgboost](https://github.com/dmlc/xgboost). Caso deseje utilizar a biblioteca [tidymodels](https://www.tidymodels.org/) em sua modelagem, é possível utilizar o **XGBoost** usando a função `boost_tree` da biblioteca [parsnip](https://parsnip.tidymodels.org/reference/boost_tree.html) que faz parte do [tidymodels](https://www.tidymodels.org/). Por padrão, essa função já utiliza o algoritmo **XGBoost**.
+
+## 🚀 Boosting
+
+<br>
+
+Uma outra forma de obter um valor adequado de $B$ é parar de adicionar iterações quando o risco observado começa a aumentar. Lembre-se que há um *tread off* entre viés e variância, em que as iterações começam por um estimador $\widehat{g}$ com variância nula e na medida que as iterações progridem, $\widehat{g}$ aumenta sua variância em troca da diminuição do viés. Para algum valor de $B$ o estimador poderá perder um pouco de performance. A ideia é escolher um valor de $B$ antes de atingir uma piora de $\widehat{R}(g)$ (risco observado). Essa estratégia é denominada de *early stopping*.
+
+<br>
+
+![](gifs/pensativo.gif)
