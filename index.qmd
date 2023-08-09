@@ -3002,8 +3002,8 @@ $\widehat{g}$.
 
 Você poderá entender que estamos em busca de um estimador $\widehat{g}$
 de $g$ um **pouco** mais viesado. Trata-se de uma troca em que desejamos
-reduzir substancialmente a variabilidade do estiamdor do modelo e troca
-de ganharmos um pouco mais de viés.
+reduzir substancialmente a variabilidade do estiamdor do modelo em troca
+de um pouco mais de viés.
 
 <br>
 

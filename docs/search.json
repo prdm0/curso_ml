@@ -802,7 +802,7 @@
     "href": "index.html#melhor-subconjunto-de-covariáveis-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Melhor subconjunto de covariáveis",
-    "text": "Melhor subconjunto de covariáveis\n\nA ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de \\widehat{g}.\n\nVocê poderá entender que estamos em busca de um estimador \\widehat{g} de g um pouco mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo e troca de ganharmos um pouco mais de viés."
+    "text": "Melhor subconjunto de covariáveis\n\nA ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de \\widehat{g}.\n\nVocê poderá entender que estamos em busca de um estimador \\widehat{g} de g um pouco mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo em troca de um pouco mais de viés."
   },
   {
     "objectID": "index.html#melhor-subconjunto-de-covariáveis-2",
