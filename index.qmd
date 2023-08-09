@@ -3015,7 +3015,7 @@ de ganharmos um pouco mais de viés.
 
 Matematicamente, uma maneira de fazer isso, é buscar a estimativa para
 
-$$\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}.$$ {#eq-risco-penalizacao}
+$$\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{k,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}.$$ {#eq-risco-penalizacao}
 
 Note que a penalização $\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)$ nos
 conduz na direção de modelos com poucas covariáveis, quando $\lambda$ é

@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.176">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho Departamento de Estatística - UFPB ">
-  <meta name="dcterms.date" content="2023-08-08">
+  <meta name="dcterms.date" content="2023-08-09">
   <title>Machine Learning / Aprendizagem de Máquina</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -434,7 +434,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </div>
 </div>
 
-  <p class="date">2023-08-08</p>
+  <p class="date">2023-08-09</p>
 </section>
 <section class="slide level2">
 
@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6840cea5125c691b8365" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-6840cea5125c691b8365">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d7265d11bb28b50a3a8e" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d7265d11bb28b50a3a8e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -866,7 +866,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </details>
 </div>
 <p><br></p>
-<p>Atualmente, a linguagem R possui <span class="red">19889</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
+<p>Atualmente, a linguagem R possui <span class="red">19892</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
 
 <img data-src="gifs/chaves-isso.gif" class="r-stretch"></section>
 <section id="tidymodels-1" class="slide level2">
@@ -2177,7 +2177,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Melhor subconjunto de covariáveis</h2>
 <p><br></p>
 <p>Matematicamente, uma maneira de fazer isso, é buscar a estimativa para</p>
-<p><span id="eq-risco-penalizacao"><span class="math display">\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}. \tag{3}</span></span></p>
+<p><span id="eq-risco-penalizacao"><span class="math display">\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{k,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}. \tag{3}</span></span></p>
 <p>Note que a penalização <span class="math inline">\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)</span> nos conduz na direção de modelos com poucas covariáveis, quando <span class="math inline">\lambda</span> é um valor alto. Em particualr, quando <span class="math inline">\lambda \to \infty</span>, forçamos a retirada de todas as covariáveis <span class="math inline">\beta_i</span>’s, i.e., a solução para o problema seria <span class="math inline">\widehat{\beta}_{L_0} \equiv (\overline{y}, {\bf 0})</span>. Note que não há penalização para o intercepto <span class="math inline">\beta_0</span>.</p>
 <p><br> No outro extremo, para <span class="math inline">\lambda = 0</span>, temos o estimador de mínimos quadrados, em que nenhuma penalização será considerada.</p>
 <p><br> <span class="red">Não há uma forma fácil de minimizar <span class="math inline">\widehat{\beta}_{L_0}</span>.</span></p>
