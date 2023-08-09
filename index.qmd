@@ -3015,7 +3015,7 @@ de um pouco mais de viés.
 
 Matematicamente, uma maneira de fazer isso, é buscar a estimativa para
 
-$$\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{k,i}\right)^2 + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}.$$ {#eq-risco-penalizacao}
+$$\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{k,i}\right)^2}^{n \times EQM} + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}.$$ {#eq-risco-penalizacao}
 
 Note que a penalização $\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)$ nos
 conduz na direção de modelos com poucas covariáveis, quando $\lambda$ é
@@ -3277,7 +3277,7 @@ quadrados usando a complexidade
 @eq-risco-penalizacao, usa-se a penalização
 $L_1 = \sum_{i = 1}^d|\beta_i|$. No lasso, buscamos:
 
-$$\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},$$
+$$\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2}^{n \times EQM} + \lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}},$$
 em que $\lambda$ é um *tuning parameter*. Perceba que quando
 $\lambda = 0$, caímos no caso do modelo de regressão por mínimos
 quadrados sem penalização. Já, quando $\lambda \rightarrow \infty$,
@@ -3338,7 +3338,7 @@ regression: Biased estimation for nonorthogonal problems. Technometrics,
 como medida de complexidade a norma $L_2$, em que, o estimador é dado
 por:
 
-$$\widehat{\beta}_{L_2,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2 + \lambda \,\,\underbrace{\sum_{j = 1}^d\beta_j^2}_{\text{Penalização}}.$$
+$$\widehat{\beta}_{L_2,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2}^{n \times EQM} + \lambda \,\,\underbrace{\sum_{j = 1}^d\beta_j^2}_{\text{Penalização}}.$$
 Diferentemente do lasso, a regressão ridge possui solução analítica,
 dada por:
 
