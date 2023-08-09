@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-742f20a0c9e6c1d425a6" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-742f20a0c9e6c1d425a6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5775a8644014d2953180" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-5775a8644014d2953180">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2160,7 +2160,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Isso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo será muito alta.</p>
 <p><br></p>
-<p><strong>Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis.</strong></p>
+<p><strong>Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!</strong></p>
 <p><br></p>
 
 <img data-src="gifs/chapulin-colorado-no.gif" style="width:20.0%" class="r-stretch"></section>
@@ -3866,7 +3866,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Existem diversas variações e implementações de <em>boosting</em> com diversas implementações distintas em diferentes <em>frameworks</em> de aprendizagem de máquina. Aqui, será descrito o conceito geral, sendo este a forma mais usual do <em>boosting</em>.</p>
 <p><br></p>
-<p>No <em>boosting</em>, como mencionado anteriormente, o estimador <span class="math inline">g({\bf x})</span> é constrído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se <span class="math inline">g({\bf x}) \equiv 0</span>. Fazer <span class="math inline">g({\bf x}) \equiv 0</span> estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.</p>
+<p>No <em>boosting</em>, como mencionado anteriormente, o estimador <span class="math inline">\widehat{g}({\bf x})</span> é consturído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se <span class="math inline">\widehat{g}({\bf x}) \equiv 0</span>. Fazer <span class="math inline">\widehat{g}({\bf x}) \equiv 0</span> estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.</p>
 <p><br></p>
 <p>A cada passo do algoritmo, procuramos obter uma árvore menos viesada, porém, como mencionado em anteriormente, quadando falamos sobre o <em>trade off</em> entre viés e variância, obtemos uma árvore atualizada com uma variância um pouco maior. Por isso é importante partir de uma árvore inicial com variância muito baixa.</p>
 <p><br></p>
@@ -3875,7 +3875,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="boosting-2" class="slide level2">
 <h2>🚀 Boosting</h2>
 <p><br></p>
-<p>A ideia é construir um estimador para <span class="math inline">r_i</span>, em que na primeira iteração, considera-se <span class="math inline">r_i = y_i</span>. A cada passo subsequente, atualizamos <span class="math inline">r_i</span> para <span class="math inline">r_i = y_i - g({\bf x}_i)</span>, em que <span class="math inline">r_i</span> denominados de resíduo. Portanto, a ideia do <em>boosting</em> é prever o resíduo que inicia-se no rótulo/<em>label</em> <span class="math inline">y_i</span>.</p>
+<p>A ideia é construir um estimador para <span class="math inline">r_i</span>, em que na primeira iteração, considera-se <span class="math inline">r_i = y_i</span>. A cada passo subsequente, atualizamos <span class="math inline">r_i</span> para <span class="math inline">r_i = y_i - \widehat{g}({\bf x}_i)</span>, em que <span class="math inline">r_i</span> denominados de resíduo. Portanto, a ideia do <em>boosting</em> é prever o resíduo que inicia-se no rótulo/<em>label</em> <span class="math inline">y_i</span>.</p>
 <p><br></p>
 <p>Uma observação importante é que as árvores tenham <strong>profundida pequena</strong> de modo a evitar <em>overfitting</em>.</p>
 <p><br></p>
@@ -3887,15 +3887,15 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Os passos para conseguir boas estimativas de usando o <em>boosting</em> são:</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment">Definimos <span class="math inline">g({\bf x}) \equiv 0</span> e <span class="math inline">r_i = y_i, \, \forall i = 1, \cdots, n</span>;</li>
+<li class="fragment">Definimos <span class="math inline">\widehat{g}({\bf x}) \equiv 0</span> e <span class="math inline">r_i = y_i, \, \forall i = 1, \cdots, n</span>;</li>
 <li class="fragment">Para cada <span class="math inline">b = 1, \cdots, B</span>, fazemos:</li>
 </ol>
 <ul>
-<li class="fragment">Ajustamos uma árvore com <span class="math inline">p</span> folhas para <span class="math inline">({\bf x}_1, r_1), \cdots, ({\bf x}_n, r_n)</span>, em que denotamos essa função de predição por <span class="math inline">g^b({\bf x})</span>. Lembre-se que estamos estimando <span class="math inline">r_i</span> com base em <span class="math inline">{\bf x}_i</span>;</li>
-<li class="fragment">Atualizamos <span class="math inline">g</span> e os resíduos: <span class="math inline">g({\bf x}) \leftarrow g({\bf x}) + \lambda g^b({\bf x})</span> e <span class="math inline">r_i \leftarrow Y_i - g({\bf x})</span>.</li>
+<li class="fragment">Ajustamos uma árvore com <span class="math inline">p</span> folhas para <span class="math inline">({\bf x}_1, r_1), \cdots, ({\bf x}_n, r_n)</span>, em que denotamos essa função de predição por <span class="math inline">\widehat{g}^b({\bf x})</span>. Lembre-se que estamos estimando <span class="math inline">r_i</span> com base em <span class="math inline">{\bf x}_i</span>;</li>
+<li class="fragment">Atualizamos <span class="math inline">g</span> e os resíduos: <span class="math inline">\widehat{g}({\bf x}) \leftarrow \widehat{g}({\bf x}) + \lambda \widehat{g}^b({\bf x})</span> e <span class="math inline">r_i \leftarrow Y_i - \widehat{g}({\bf x})</span>.</li>
 </ul>
 <ol start="3" type="1">
-<li class="fragment">Retorna-se o modelo final <span class="math inline">g({\bf x})</span>.</li>
+<li class="fragment">Retorna-se o modelo final <span class="math inline">\widehat{g}({\bf x})</span>.</li>
 </ol>
 <p>No <em>boosting</em>, os valores de <span class="math inline">\lambda</span>, <span class="math inline">p</span> e <span class="math inline">B</span> são hiperparâmetros e devem ser obtidos por meio de algum procedimento de validação cruzada, i.e., você deverá “tunar” 🎛. É comum que <span class="math inline">\lambda</span> seja pequeno, por exemplo, <span class="math inline">0,01</span> ou <span class="math inline">0,001</span>, <span class="math inline">B \approx 1000</span> e <span class="math inline">p</span> de ordem próxima à <span class="math inline">2</span> ou <span class="math inline">4</span>.</p>
 </section>

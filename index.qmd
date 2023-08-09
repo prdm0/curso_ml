@@ -2984,7 +2984,7 @@ alta.
 <br>
 
 **Portanto, deveremos buscar meios de encontrar o melhor (ao menos um
-bom) comjunto de covariáveis.**
+bom) comjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!**
 
 <br>
 
@@ -5816,7 +5816,7 @@ Existem diversas variações e implementações de *boosting* com diversas imple
 
 <br>
 
-No *boosting*, como mencionado anteriormente, o estimador $g({\bf x})$ é constrído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se $g({\bf x}) \equiv 0$. Fazer $g({\bf x}) \equiv 0$ estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.
+No *boosting*, como mencionado anteriormente, o estimador $\widehat{g}({\bf x})$ é consturído incrementalmente, i.e., de forma sequencial, melhorando a cada passo. Inicialmente considera-se $\widehat{g}({\bf x}) \equiv 0$. Fazer $\widehat{g}({\bf x}) \equiv 0$ estamos iniciando um estimador com alto viés, porém, com variância muito baixa, a saber, variância zero.
 
 <br>
 
@@ -5830,7 +5830,7 @@ A cada passo do algoritmo, procuramos obter uma árvore menos viesada, porém, c
 
 <br>
 
-A ideia é construir um estimador para $r_i$, em que na primeira iteração, considera-se $r_i = y_i$. A cada passo subsequente, atualizamos $r_i$ para $r_i =  y_i - g({\bf x}_i)$, em que $r_i$ denominados de resíduo. Portanto, a ideia do *boosting* é prever o resíduo que inicia-se no rótulo/*label* $y_i$.
+A ideia é construir um estimador para $r_i$, em que na primeira iteração, considera-se $r_i = y_i$. A cada passo subsequente, atualizamos $r_i$ para $r_i =  y_i - \widehat{g}({\bf x}_i)$, em que $r_i$ denominados de resíduo. Portanto, a ideia do *boosting* é prever o resíduo que inicia-se no rótulo/*label* $y_i$.
 
 <br>
 
@@ -5848,11 +5848,11 @@ Os passos para conseguir boas estimativas de usando o *boosting* são:
 
 <br>
 
-1. Definimos $g({\bf x}) \equiv 0$ e $r_i = y_i, \, \forall i = 1, \cdots, n$;
+1. Definimos $\widehat{g}({\bf x}) \equiv 0$ e $r_i = y_i, \, \forall i = 1, \cdots, n$;
 2. Para cada $b = 1, \cdots, B$, fazemos:
-  + Ajustamos uma árvore com $p$ folhas para $({\bf x}_1, r_1), \cdots, ({\bf x}_n, r_n)$, em que denotamos essa função de predição por $g^b({\bf x})$. Lembre-se que estamos estimando $r_i$ com base em ${\bf x}_i$;
-  + Atualizamos $g$ e os resíduos: $g({\bf x}) \leftarrow g({\bf x}) + \lambda g^b({\bf x})$ e $r_i \leftarrow Y_i - g({\bf x})$.
-3. Retorna-se o modelo final $g({\bf x})$.
+  + Ajustamos uma árvore com $p$ folhas para $({\bf x}_1, r_1), \cdots, ({\bf x}_n, r_n)$, em que denotamos essa função de predição por $\widehat{g}^b({\bf x})$. Lembre-se que estamos estimando $r_i$ com base em ${\bf x}_i$;
+  + Atualizamos $g$ e os resíduos: $\widehat{g}({\bf x}) \leftarrow \widehat{g}({\bf x}) + \lambda \widehat{g}^b({\bf x})$ e $r_i \leftarrow Y_i - \widehat{g}({\bf x})$.
+3. Retorna-se o modelo final $\widehat{g}({\bf x})$.
 
 No *boosting*, os valores de $\lambda$, $p$ e $B$ são hiperparâmetros e devem ser obtidos por meio de algum
 procedimento de validação cruzada, i.e., você deverá "tunar" 🎛. É comum que $\lambda$ seja pequeno, por exemplo, $0,01$ ou $0,001$, $B \approx 1000$ e $p$ de ordem próxima à $2$ ou $4$.
