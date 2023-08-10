@@ -5961,3 +5961,33 @@ Você poderá baixar e ter uma descrição maior da base de dados clicando
 [Exercício]{.red}: Refaça o exercício anterior usando os dados de vermelho 🍇🍷,
 disponíveis
 [aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009).
+
+## 📚 Exercícios
+
+<br>
+
+[Exercício]{.red}: Considere os dados reais de imóveis anunciados para venda na cidade de [João Pessoa - PB](dados/joao_pessoa.csv). São mais de 27 mil observações obtidas via *web scraping* de sites de anúncios imobiliários e referem-se à anúncios do primeiro semestre de 2023. O interesse consiste em prever o **valor** de um novo imóvel com base nas *features*. Clique [aqui](dados/joao_pessoa.csv) 🗃️ para acessar a base. Nessa base encontra-se diversas o *label* (valor dos imóveis) e *features* numéricas como área, número de quartos, número de banheiros, coordenadas geográficas (latitude e longitude), quantidade de vagas de estacionamento, além de diversas outras *features* em forma de variáveis *dummy* com valores `TRUE`e `FALSE`, como por exemplo, `elevador` (se tem  `TRUE` ou não `FALSE`), `piscina` (se tem `TRUE` ou não `FALSE`), `salao_de_festa` (se tem `TRUE` ou não `FALSE`), entre outras. Crie um notebook em [quarto](https://quarto.org/) comparando todos os modelos de regressão apresentados até aqui. Realize uma análise exploratória dos dados e comente todos os resultados intermediários de sua análise. Conclua sua análise realizando um *rank* da performance preditiva de cada modelo apresentando o risco preditivo $R(g)$ estimado. Algumas sugestões:
+
+1. Note que a *feature* `tipo` apresenta os tipos de imóveis. Foque em `casas`, `apartamentos` e `terrenos`. Por exemplo, o tipo `terrenos_lotes_condominio` considere apenas como `terrenos` e o tipo `casas_de_condominio` considere como sendo `casas`. Você poderá utilizar um **one hot encoding** para tornar essa variável numérica;
+
+2. Você não irá precisar das *features* `endereco` e `bairro`, já que essas informações está contida nas coordenadas geográficas;
+
+3. Desconsidere as colunas `iptu` e `condomínio`, já que são bastante incipientes;
+
+4. Impute observações faltantes (as que contém `NA`) pelo método $k$NN. Veja como fazer isso usando a função [`step_impute_knn`](https://recipes.tidymodels.org/reference/step_impute_knn.html) da biblioteca [recipes](https://recipes.tidymodels.org/).
+
+
+## 📚 Exercícios
+
+<br>
+
+[Exercício]{.red}: Refaça o exercício anterior para outras cidades. Acesse os dados clicando nos nomes das cidades abaixo:
+
+<br>
+
+1. [Recife](dados/recife.csv) 🗃️
+2. [Natal](dados/natal.csv) 🗃️
+3. [Maceió](dados/maceio.csv) 🗃️
+4. [Brasília](dados/brasilia.csv) 🗃️
+
+![](gifs/mr-bean-test.gif)
