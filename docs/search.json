@@ -227,99 +227,99 @@
     "objectID": "index.html#tidymodels",
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19905, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19907, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
     "href": "index.html#tidymodels-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\nEssas diferentes implementações torna confuso trabalhar e testar diferentes modelos ao mesmo tempo.\n\n\n\nUma das primeiras ideias mais conhecidas de unificação de sintaxe do workflow de machine learning, na linguagem R, foi idealizada pelo estatístico Max Khun.\n\nEle criou a biblioteca caret - Classification And REgression Training de R que é muito bem desenvolvida e abrangente. Você poderá estudar o caret clicando aqui.\n\nNão foi um trabalho simples, veja uma tabela com a quantidade de modelos que o caret suporta, clicando aqui. Então, “por baixo dos panos”, a ideia era unificar a entrada e saída. A biblioteca caret continua sendo mantida, apesar da existência do tidymodels."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\nEssas diferentes implementações torna confuso trabalhar e testar diferentes modelos ao mesmo tempo.\n\n\n\nUma das primeiras ideias mais conhecidas de unificação de sintaxe do workflow de machine learning, na linguagem R, foi idealizada pelo estatístico Max Khun.\n\nEle criou a biblioteca caret - Classification And REgression Training de R que é muito bem desenvolvida e abrangente. Você poderá estudar o caret clicando aqui.\n\nNão foi um trabalho simples, veja uma tabela com a quantidade de modelos que o caret suporta, clicando aqui. Então, “por baixo dos panos”, a ideia era unificar a entrada e saída. A biblioteca caret continua sendo mantida, apesar da existência do tidymodels."
   },
   {
     "objectID": "index.html#tidymodels-2",
     "href": "index.html#tidymodels-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\n\n\n\n\n\n\n\n\nMax Kuhn, atualmente, no momento de escrita desse mateiral, é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão “arrumada” (tidy) do caret, que é o tidymodels."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\n\n\n\n\n\n\n\n\nMax Kuhn, atualmente, no momento de escrita desse mateiral, é funcionário da Posit Ltda e foi contratado para estar a frente do desenvolvimento de uma versão “arrumada” (tidy) do caret, que é o tidymodels."
   },
   {
     "objectID": "index.html#tidymodels-3",
     "href": "index.html#tidymodels-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\n\nO workflow (pipeline) do treinamento de um modelo usando o framework tidymodels. Todos os pacotes (rsample, recipes, parsnip, tune, dails, yardstick) são gerenciados pelo pacote tidymodels. Cada um desses pacotes fornece um conjunto de funções úteis em tarefas específicas no workflow de machine learning."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\n\nO workflow (pipeline) do treinamento de um modelo usando o framework tidymodels. Todos os pacotes (rsample, recipes, parsnip, tune, dails, yardstick) são gerenciados pelo pacote tidymodels. Cada um desses pacotes fornece um conjunto de funções úteis em tarefas específicas no workflow de machine learning."
   },
   {
     "objectID": "index.html#tidymodels-4",
     "href": "index.html#tidymodels-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\n\nrsample: responsável pela reamostragem dos dados, parte importante para que possamos treinar um modelo de aprendizagem de máquina. É nele que encontra-se funções para realizar reamostragem como bootstrap, k-folds cross-validation, nested cross-validation, entre outras.\n\n\n\n\n\n\n\nrecipes: apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, kNN, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.\n\n\n\n\n\n\n\nparsnip: é o pacote que unifica as entradas e saídas de diversos pacotes de aprendizagem de máquina de R. Ele possui os motores (engines) que são as comunicações com os algoritmos implementados em diversos pacotes de R que trabalham com tarefas de regressão e classificação, em aprendizagem de máquina."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\n\nrsample: responsável pela reamostragem dos dados, parte importante para que possamos treinar um modelo de aprendizagem de máquina. É nele que encontra-se funções para realizar reamostragem como bootstrap, k-folds cross-validation, nested cross-validation, entre outras.\n\n\n\n\n\n\n\nrecipes: apresenta diversas funções para transformações de variáveis como criação de variáveis dummy, normalização de variáveis, inputação de dados pela média, mediana, kNN, entre outras formas de imputação, transformações de variáveis categórias em numéricas, entre outras funcionalidades. Ele permite que possamos criar uma receita de transformações nos dados para que esses, após transformados, possam entrar no modelo.\n\n\n\n\n\n\n\nparsnip: é o pacote que unifica as entradas e saídas de diversos pacotes de aprendizagem de máquina de R. Ele possui os motores (engines) que são as comunicações com os algoritmos implementados em diversos pacotes de R que trabalham com tarefas de regressão e classificação, em aprendizagem de máquina."
   },
   {
     "objectID": "index.html#tidymodels-5",
     "href": "index.html#tidymodels-5",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros, já o yardstick é responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os eventuais hiperparâmetros do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\n\n\nOs pacotes tune, dails e yardstick tomará conta da parte de treino do modelo. Os pacote tune e dails são responsáveis pela “tunagem” dos eventuais hiperparâmetros, já o yardstick é responsável pelas métricas de avaliação do modelo.\n\nA biblioteca dails está mais relacionada a criação dos grids para os eventuais hiperparâmetros do modelo. Já o pacote tune, utiliza-se da validação cruzada criada pelo pacote rsample para varrer as combinações de hiperparâmetros criadas pelo dails, i.e., o tune está mais relacionado com a otimização dos hiperparâmetros."
   },
   {
     "objectID": "index.html#tidymodels-6",
     "href": "index.html#tidymodels-6",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\nTodo o fluxo de trabalho é gerido pela biblioteca workflows de R. Em especial, as etapas de feature engineering e especificação do modelo."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\nTodo o fluxo de trabalho é gerido pela biblioteca workflows de R. Em especial, as etapas de feature engineering e especificação do modelo."
   },
   {
     "objectID": "index.html#tidymodels-7",
     "href": "index.html#tidymodels-7",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\n\nPerceba o papel da biblioteca workflows de R. Basicamente gostaríamos de ter uma automação da faze do tratamento das features realizada com o recipes com a modelagem."
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\n\nPerceba o papel da biblioteca workflows de R. Basicamente gostaríamos de ter uma automação da faze do tratamento das features realizada com o recipes com a modelagem."
   },
   {
     "objectID": "index.html#tidymodels-8",
     "href": "index.html#tidymodels-8",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "Tidymodels",
-    "text": "Tidymodels\n\nNão necessariamente iremos utilizar o tidymodels em todos os exemplos e exercícios. Porém, iremos explorar bastante, até o fim do curso, o treinamento de modelos usando o tidymodels. Por tanto, aos poucos, a medida em que exemplos são apresentados e exercícios forem passados, o aprendizado do uso do tidymodels se dará.\n\n \n\nSempre que possível, deveremos colocar as “mãos na massa” 🍝 para que possamos dominar e compreender uma ferramenta computacional. A prática é importante!"
+    "section": "💻 Tidymodels",
+    "text": "💻 Tidymodels\n\nNão necessariamente iremos utilizar o tidymodels em todos os exemplos e exercícios. Porém, iremos explorar bastante, até o fim do curso, o treinamento de modelos usando o tidymodels. Por tanto, aos poucos, a medida em que exemplos são apresentados e exercícios forem passados, o aprendizado do uso do tidymodels se dará.\n\n \n\nSempre que possível, deveremos colocar as “mãos na massa” 🍝 para que possamos dominar e compreender uma ferramenta computacional. A prática é importante!"
   },
   {
     "objectID": "index.html#as-duas-culturas",
     "href": "index.html#as-duas-culturas",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "As duas culturas",
-    "text": "As duas culturas\n\nEm Breiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231, o Leo Breiman argumenta que existe duas culturas no uso de modelos estatísticos, em especialmente na área de modelos de regressão. Segundo eles, as culturas são:\n\n\nData modeling culture: nela, em geral, se assume que o modelo de regressão utilizado r(x), por exemplo, r(x) = \\beta_0 + \\sum_{i = 1}^d \\beta_ix_i é correto. O principal objetivo dessa abordagem é a interpretação dos parâmetros que indexam o modelo r(x). Nesse tipo de cultura, a ideia também é construir intervalos aleatórios e testar hipóteses para os \\beta_i's. Sob essa ótica, muitas suposições sob o modelo são realizadas, em que formas para checar essas suposições são desenvolvidas, uma vez que elas são fundamentais para esse tipo de modelagem.\n\n\n\nAlgorithmic modeling culture: essa é a cultura que domina a comunidade de aprendizagem de máquina. Nessa abordagem, o principal objetivo são as predições por meio de novas observações. Não se assume que o modelo utilizado é o modelo correto. Nesse tipo de modelagem, muitas vezes os algoritmos não envolve nenhuma estrutura probabilística. Muitas vezes, modelos não bem especificado conduzem a boas predições."
+    "section": "🎭 As duas culturas",
+    "text": "🎭 As duas culturas\n\nEm Breiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231, o Leo Breiman argumenta que existe duas culturas no uso de modelos estatísticos, em especialmente na área de modelos de regressão. Segundo eles, as culturas são:\n\n\nData modeling culture: nela, em geral, se assume que o modelo de regressão utilizado r(x), por exemplo, r(x) = \\beta_0 + \\sum_{i = 1}^d \\beta_ix_i é correto. O principal objetivo dessa abordagem é a interpretação dos parâmetros que indexam o modelo r(x). Nesse tipo de cultura, a ideia também é construir intervalos aleatórios e testar hipóteses para os \\beta_i's. Sob essa ótica, muitas suposições sob o modelo são realizadas, em que formas para checar essas suposições são desenvolvidas, uma vez que elas são fundamentais para esse tipo de modelagem.\n\n\n\nAlgorithmic modeling culture: essa é a cultura que domina a comunidade de aprendizagem de máquina. Nessa abordagem, o principal objetivo são as predições por meio de novas observações. Não se assume que o modelo utilizado é o modelo correto. Nesse tipo de modelagem, muitas vezes os algoritmos não envolve nenhuma estrutura probabilística. Muitas vezes, modelos não bem especificado conduzem a boas predições."
   },
   {
     "objectID": "index.html#as-duas-culturas-1",
     "href": "index.html#as-duas-culturas-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "As duas culturas",
-    "text": "As duas culturas\n\n\n\n\n\n\nBreiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231.\n\n\n\n\n\n\nLeo, na época em que era um jovem probabilista na Universidade da Califórina."
+    "section": "🎭 As duas culturas",
+    "text": "🎭 As duas culturas\n\n\n\n\n\n\nBreiman, L. (2001a). Statistical modeling: The two cultures. Statistical Science, 16(3), 199–231.\n\n\n\n\n\n\nLeo, na época em que era um jovem probabilista na Universidade da Califórina."
   },
   {
     "objectID": "index.html#as-duas-culturas-2",
     "href": "index.html#as-duas-culturas-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "As duas culturas",
-    "text": "As duas culturas\n\nHá diversos artigos interessantes que são respostas ao artigo do Leo Breiman, como por exemplo, o artigo Statistical Modeling: The Two Cultures: Comment do David Cox e com comentários do Brad Efron.\n\nSir David Cox."
+    "section": "🎭 As duas culturas",
+    "text": "🎭 As duas culturas\n\nHá diversos artigos interessantes que são respostas ao artigo do Leo Breiman, como por exemplo, o artigo Statistical Modeling: The Two Cultures: Comment do David Cox e com comentários do Brad Efron.\n\nSir David Cox."
   },
   {
     "objectID": "index.html#as-duas-culturas-3",
     "href": "index.html#as-duas-culturas-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "As duas culturas",
-    "text": "As duas culturas\n\nMuito embora exista essa divisão entre as culturas, Breiman foi um estatístico que desempenhou um grande trabalho para unir a área de estatística com aprendizado de máquina. Por conta dessa grande importância, um prêmio concedido em sua homenagem foi criado pela American Statistical Association.\n\nLeo Breiman trabalhando em sua residência, em 1985."
+    "section": "🎭 As duas culturas",
+    "text": "🎭 As duas culturas\n\nMuito embora exista essa divisão entre as culturas, Breiman foi um estatístico que desempenhou um grande trabalho para unir a área de estatística com aprendizado de máquina. Por conta dessa grande importância, um prêmio concedido em sua homenagem foi criado pela American Statistical Association.\n\nLeo Breiman trabalhando em sua residência, em 1985."
   },
   {
     "objectID": "index.html#as-duas-culturas-4",
     "href": "index.html#as-duas-culturas-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
-    "section": "As duas culturas",
-    "text": "As duas culturas\n\n\n\nLeo Breiman, renomado estatístico, contribuiu significativamente para o campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos populares e influentes para a área. Entre tais métodos famosos, cito dois:\n\n\nRandom forest (florestas aleatórias): método que combina a previsão de vários modelos de árvores de decisão (decision tree), que veremos mais a frente, por isso o termo “floresta” para problemas de regressão e classificação;\nBootstrap aggregating (bagging): técnica de aprendizagem ensemble, em que cria-se multiplos conjuntos de dados obtidos com reposição da amostra de treinamento. O modelo de aprendizagem de máquina é treinado em cada conjunto de dados e as previsões de cada um dos modelos são combinadas por meio da média (em problemas de regressão), ou por voto majoritário, em problemas de classificação. O bagging é utilizado para reduzir a variância e melhorar a estabilidade do modelo."
+    "section": "🎭 As duas culturas",
+    "text": "🎭 As duas culturas\n\n\n\nLeo Breiman, renomado estatístico, contribuiu significativamente para o campo de aprendizagem de máquina. Ele é conhecido por ter criado métodos populares e influentes para a área. Entre tais métodos famosos, cito dois:\n\n\nRandom forest (florestas aleatórias): método que combina a previsão de vários modelos de árvores de decisão (decision tree), que veremos mais a frente, por isso o termo “floresta” para problemas de regressão e classificação;\nBootstrap aggregating (bagging): técnica de aprendizagem ensemble, em que cria-se multiplos conjuntos de dados obtidos com reposição da amostra de treinamento. O modelo de aprendizagem de máquina é treinado em cada conjunto de dados e as previsões de cada um dos modelos são combinadas por meio da média (em problemas de regressão), ou por voto majoritário, em problemas de classificação. O bagging é utilizado para reduzir a variância e melhorar a estabilidade do modelo."
   },
   {
     "objectID": "index.html#regressão",
@@ -1691,13 +1691,20 @@
     "href": "index.html#exercícios-13",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Considere os dados reais de imóveis anunciados para venda na cidade de João Pessoa - PB. São mais de 27 mil observações obtidas via web scraping de sites de anúncios imobiliários e referem-se à anúncios do primeiro semestre de 2023. O interesse consiste em prever o valor de um novo imóvel com base nas features. Clique aqui 🗃️ para acessar a base. Nessa base encontra-se diversas o label (valor dos imóveis) e features numéricas como área, número de quartos, número de banheiros, coordenadas geográficas (latitude e longitude), quantidade de vagas de estacionamento, além de diversas outras features em forma de variáveis dummy com valores TRUEe FALSE, como por exemplo, elevador (se tem TRUE ou não FALSE), piscina (se tem TRUE ou não FALSE), salao_de_festa (se tem TRUE ou não FALSE), entre outras. Crie um notebook em quarto comparando todos os modelos de regressão apresentados até aqui. Realize uma análise exploratória dos dados e comente todos os resultados intermediários de sua análise. Conclua sua análise realizando um rank da performance preditiva de cada modelo apresentando o risco preditivo R(g) estimado. Algumas sugestões:\n\nNote que a feature tipo apresenta os tipos de imóveis. Foque em casas, apartamentos e terrenos. Por exemplo, o tipo terrenos_lotes_condominio considere apenas como terrenos e o tipo casas_de_condominio considere como sendo casas. Você poderá utilizar um one hot encoding para tornar essa variável numérica;\nVocê não irá precisar das features endereco e bairro, já que essas informações está contida nas coordenadas geográficas;\nDesconsidere as colunas iptu e condomínio, já que são bastante incipientes;\nImpute observações faltantes (as que contém NA) pelo método kNN. Veja como fazer isso usando a função step_impute_knn da biblioteca recipes."
+    "text": "📚 Exercícios\n\nExercício: Considere os dados reais de imóveis anunciados para venda na cidade de João Pessoa - PB. São mais de 27 mil observações obtidas via web scraping de sites de anúncios imobiliários e referem-se à anúncios do primeiro semestre de 2023. O interesse consiste em prever o valor de um novo imóvel com base nas features. Clique aqui 🗃️ para acessar a base. Nessa base encontra-se diversas o label (valor dos imóveis) e features numéricas como área, número de quartos, número de banheiros, coordenadas geográficas (latitude e longitude), quantidade de vagas de estacionamento, além de diversas outras features em forma de variáveis dummy com valores TRUEe FALSE, como por exemplo, elevador (se tem TRUE ou não FALSE), piscina (se tem TRUE ou não FALSE), salao_de_festa (se tem TRUE ou não FALSE), entre outras. Crie um notebook em quarto comparando todos os modelos de regressão apresentados até aqui. Realize uma análise exploratória dos dados e comente todos os resultados intermediários de sua análise. Conclua sua análise realizando um rank da performance preditiva de cada modelo apresentando o risco preditivo R(g) estimado. Algumas sugestões:\n\nNote que a feature tipo apresenta os tipos de imóveis. Foque em casas, apartamentos e terrenos. Por exemplo, o tipo terrenos_lotes_condominio considere apenas como terrenos e o tipo casas_de_condominio considere como sendo casas. Você poderá utilizar um one hot encoding para tornar essa variável numérica;\nVocê não irá precisar das features endereco e bairro, já que essas informações está contida nas coordenadas geográficas;\nDesconsidere as colunas iptu e condomínio, já que são bastante incipientes;\nImpute observações faltantes (as que contém NA) pelo método kNN. Veja como fazer isso usando a função step_impute_knn da biblioteca recipes.\n\nVocê também estará livre para realizar outras receitas na base de dados antes dos treinamentos dos modelos."
   },
   {
     "objectID": "index.html#exercícios-14",
     "href": "index.html#exercícios-14",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Refaça o exercício anterior para outras cidades. Acesse os dados clicando nos nomes das cidades abaixo:\n\n\nRecife 🗃️\nNatal 🗃️\nMaceió 🗃️\nBrasília 🗃️\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "📚 Exercícios\n\nExercício: Refaça o exercício anterior para outras cidades. Acesse os dados clicando nos nomes das cidades abaixo:\n\n\nRecife 🗃️\nNatal 🗃️\nMaceió 🗃️\nBrasília 🗃️"
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais",
+    "href": "index.html#redes-neurais-artificiais",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]

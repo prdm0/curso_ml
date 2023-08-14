@@ -788,7 +788,7 @@ learning*.
 
 ![](gifs/ok-2.gif){width="20%"}
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -832,7 +832,7 @@ etc.
 
 ![](gifs/chaves-isso.gif)
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -872,7 +872,7 @@ biblioteca **caret** continua sendo mantida, apesar da existência do
 :::
 :::
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -894,7 +894,7 @@ o [tidymodels](https://www.tidymodels.org/).
 :::
 :::
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -906,7 +906,7 @@ fornece um conjunto de funções úteis em tarefas específicas no workflow
 de machine learning.](imgs/workflow_tidymodels.png){fig-aling="center"
 width="70%"}
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -934,7 +934,7 @@ width="70%"}
     algoritmos implementados em diversos pacotes de R que trabalham com
     tarefas de regressão e classificação, em aprendizagem de máquina.
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -971,7 +971,7 @@ otimização dos hiperparâmetros.
 :::
 :::
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -983,7 +983,7 @@ etapas de *feature engineering* e especificação do modelo.
 
 ![](imgs/workflows_lib.png){fig-aling="center"}
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -993,7 +993,7 @@ gostaríamos de ter uma automação da faze do tratamento das *features*
 realizada com o [recipes](https://recipes.tidymodels.org/) com a
 modelagem.](imgs/MachineLearning_tidymodels.png){fig-aling="center"}
 
-## Tidymodels
+## 💻 Tidymodels
 
 <br>
 
@@ -1016,7 +1016,7 @@ Sempre que possível, deveremos colocar as "mãos na massa" 🍝 para que
 possamos dominar e compreender uma ferramenta computacional. A prática é
 importante!
 
-## As duas culturas
+## 🎭 As duas culturas
 
 <br>
 
@@ -1050,7 +1050,7 @@ eles, as culturas são:
     probabilística. Muitas vezes, modelos não bem especificado conduzem
     a boas predições.
 
-## As duas culturas
+## 🎭 As duas culturas
 
 <br>
 
@@ -1066,7 +1066,7 @@ Califórina.](imgs/leo_breiman){width="60%"}
 :::
 :::
 
-## As duas culturas
+## 🎭 As duas culturas
 
 <br>
 
@@ -1078,7 +1078,7 @@ com comentários do Brad Efron.
 ![[Sir David
 Cox.](https://en.wikipedia.org/wiki/David_Cox_(statistician))](imgs/david_cox.png){width="20%"}
 
-## As duas culturas
+## 🎭 As duas culturas
 
 <br>
 
@@ -1092,7 +1092,7 @@ Association](https://community.amstat.org/slds/awards/breiman-award).
 ![[Leo Breiman trabalhando em sua residência, em
 1985.](https://projecteuclid.org/journalArticle/Download?urlid=10.1214%2Fss%2F1009213290)](imgs/breiman_residencia.png){width="30%"}
 
-## As duas culturas
+## 🎭 As duas culturas
 
 <br>
 
@@ -5977,6 +5977,8 @@ disponíveis
 4. Impute observações faltantes (as que contém `NA`) pelo método $k$NN. Veja como fazer isso usando a função [`step_impute_knn`](https://recipes.tidymodels.org/reference/step_impute_knn.html) da biblioteca [recipes](https://recipes.tidymodels.org/).
 
 
+Você também estará livre para realizar outras receitas na base de dados antes dos treinamentos dos modelos. 
+
 ## 📚 Exercícios
 
 <br>
@@ -5990,4 +5992,8 @@ disponíveis
 3. [Maceió](dados/maceio.csv) 🗃️
 4. [Brasília](dados/brasilia.csv) 🗃️
 
+<br>
+
 ![](gifs/mr-bean-test.gif)
+
+## 🧠 Redes neurais artificiais
