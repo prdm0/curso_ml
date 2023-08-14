@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0d768b79cbe80c35d5a9" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-0d768b79cbe80c35d5a9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-968e49fb25ac43568644" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-968e49fb25ac43568644">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2307,7 +2307,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Lasso</h2>
 <p><br></p>
 <p>No lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (<span class="math inline">L_0 = \sum_{i = 1}^d\mathbb{I}(\beta_i) \neq 0</span>) em <a href="#/melhor-subconjunto-de-covariáveis-2" class="quarto-xref">Equação&nbsp;3</a>, usa-se a penalização <span class="math inline">L_1 = \sum_{i = 1}^d|\beta_i|</span>. No lasso, buscamos:</p>
-<p><span class="math display">\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2}^{n \times EQM} + \overbrace{\lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}}}^{\text{A magnitude do coeficiente importa!}},</span> em que <span class="math inline">\lambda</span> é um <em>tuning parameter</em>. Perceba que quando <span class="math inline">\lambda = 0</span>, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando <span class="math inline">\lambda \rightarrow \infty</span>, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante.</p>
+<p><span class="math display">\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2}^{n \times EQM} + \overbrace{\lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}}}^{\text{A magnitude do coeficiente importa!}},</span> em que <span class="math inline">\lambda</span> é um <em>tuning parameter</em> 🎛. Perceba que quando <span class="math inline">\lambda = 0</span>, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando <span class="math inline">\lambda \rightarrow \infty</span>, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante.</p>
 </section>
 <section id="lasso-3" class="slide level2">
 <h2>Lasso</h2>
@@ -2315,8 +2315,10 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>Quando <span class="math inline">\lambda</span> é grande, temos que</p>
 <p><span class="math display">\sum_{k = 1}^n \left(y_k - \beta_0 - \sum_{j = 1}^d \beta_j x_{k,j}\right)^2 + \lambda \sum_{j = 1}^d |\beta_j| \approx \lambda \sum_{j = 1}^d |\beta_j|,</span> e portanto, <span class="math inline">\widehat{\beta}_1 = 0, \cdots, \widehat{\beta}_d = 0</span>.</p>
 <p><br></p>
-<p>A escolha de <span class="math inline">\lambda</span>, em geral, é feita utilizado algum método de validação cruzada.</p>
-</section>
+<p>A escolha de <span class="math inline">\lambda</span>, em geral, é feita utilizado algum método de validação cruzada. 🔍</p>
+<p><br></p>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
 <section id="lasso-4" class="slide level2">
 <h2>Lasso</h2>
 <p><br></p>

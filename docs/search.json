@@ -886,14 +886,14 @@
     "href": "index.html#lasso-2",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Lasso",
-    "text": "Lasso\n\nNo lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (L_0 = \\sum_{i = 1}^d\\mathbb{I}(\\beta_i) \\neq 0) em Equação 3, usa-se a penalização L_1 = \\sum_{i = 1}^d|\\beta_i|. No lasso, buscamos:\n\\widehat{\\beta}_{L_1,\\lambda} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\overbrace{\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2}^{n \\times EQM} + \\overbrace{\\lambda \\,\\,\\underbrace{\\sum_{j = 1}^d|\\beta_j|}_{\\text{Penalização}}}^{\\text{A magnitude do coeficiente importa!}}, em que \\lambda é um tuning parameter. Perceba que quando \\lambda = 0, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando \\lambda \\rightarrow \\infty, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante."
+    "text": "Lasso\n\nNo lasso, ao invés de reduzir a variância do estimador de mínimos quadrados usando a complexidade (L_0 = \\sum_{i = 1}^d\\mathbb{I}(\\beta_i) \\neq 0) em Equação 3, usa-se a penalização L_1 = \\sum_{i = 1}^d|\\beta_i|. No lasso, buscamos:\n\\widehat{\\beta}_{L_1,\\lambda} = \\argmin_{\\beta_0 \\in \\mathbb{R}, \\beta \\in \\mathbb{R}^d}\\sum_{k = 1}^n\\overbrace{\\left(y_k - \\beta_0 - \\sum_{i = 1}^d \\beta_i x_{x,i}\\right)^2}^{n \\times EQM} + \\overbrace{\\lambda \\,\\,\\underbrace{\\sum_{j = 1}^d|\\beta_j|}_{\\text{Penalização}}}^{\\text{A magnitude do coeficiente importa!}}, em que \\lambda é um tuning parameter 🎛. Perceba que quando \\lambda = 0, caímos no caso do modelo de regressão por mínimos quadrados sem penalização. Já, quando \\lambda \\rightarrow \\infty, temos um modelo em que todas as variáveis são removidas, uma vez que a primeira parte do modelo torna-se insignificante."
   },
   {
     "objectID": "index.html#lasso-3",
     "href": "index.html#lasso-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Lasso",
-    "text": "Lasso\n \nQuando \\lambda é grande, temos que\n\\sum_{k = 1}^n \\left(y_k - \\beta_0 - \\sum_{j = 1}^d \\beta_j x_{k,j}\\right)^2 + \\lambda \\sum_{j = 1}^d |\\beta_j| \\approx \\lambda \\sum_{j = 1}^d |\\beta_j|, e portanto, \\widehat{\\beta}_1 = 0, \\cdots, \\widehat{\\beta}_d = 0.\n\nA escolha de \\lambda, em geral, é feita utilizado algum método de validação cruzada."
+    "text": "Lasso\n \nQuando \\lambda é grande, temos que\n\\sum_{k = 1}^n \\left(y_k - \\beta_0 - \\sum_{j = 1}^d \\beta_j x_{k,j}\\right)^2 + \\lambda \\sum_{j = 1}^d |\\beta_j| \\approx \\lambda \\sum_{j = 1}^d |\\beta_j|, e portanto, \\widehat{\\beta}_1 = 0, \\cdots, \\widehat{\\beta}_d = 0.\n\nA escolha de \\lambda, em geral, é feita utilizado algum método de validação cruzada. 🔍"
   },
   {
     "objectID": "index.html#lasso-4",

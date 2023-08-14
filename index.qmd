@@ -3278,7 +3278,7 @@ quadrados usando a complexidade
 $L_1 = \sum_{i = 1}^d|\beta_i|$. No lasso, buscamos:
 
 $$\widehat{\beta}_{L_1,\lambda} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{x,i}\right)^2}^{n \times EQM} + \overbrace{\lambda \,\,\underbrace{\sum_{j = 1}^d|\beta_j|}_{\text{Penalização}}}^{\text{A magnitude do coeficiente importa!}},$$
-em que $\lambda$ é um *tuning parameter*. Perceba que quando
+em que $\lambda$ é um *tuning parameter* 🎛. Perceba que quando
 $\lambda = 0$, caímos no caso do modelo de regressão por mínimos
 quadrados sem penalização. Já, quando $\lambda \rightarrow \infty$,
 temos um modelo em que todas as variáveis são removidas, uma vez que a
@@ -3296,7 +3296,11 @@ e portanto, $\widehat{\beta}_1 = 0, \cdots, \widehat{\beta}_d = 0$.
 <br>
 
 A escolha de $\lambda$, em geral, é feita utilizado algum método de
-validação cruzada.
+validação cruzada. 🔍
+
+<br>
+
+![](gifs/hum.gif)
 
 ## Lasso
 
