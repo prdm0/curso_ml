@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1c5d3d9ba77fd6a6d196" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1c5d3d9ba77fd6a6d196">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-17facd7d8a89aca0a871" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-17facd7d8a89aca0a871">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2156,11 +2156,11 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="melhor-subconjunto-de-covariáveis" class="slide level2">
 <h2>Melhor subconjunto de covariáveis</h2>
 <p><br></p>
-<p>O estimador de mínimos quadrados - EMQ, na presença de muitas <em>features</em> (covariáveis), i.e., quando temos <span class="math inline">d</span> grande, possui um baixo poder preditivo devido <em>overfitting</em> (super-ajuste). Isso, porquê haverá muitos parâmetros a serem estimados, e portanto, a função de regressão estimada <span class="math inline">\widehat{r}({\bf x})</span> terá baixo poder preditivo.</p>
+<p>O estimador de mínimos quadrados - EMQ, na presença de muitas <em>features</em> (covariáveis), i.e., quando temos <span class="math inline">d</span> grande, possui um baixo poder preditivo devido a possibilidade de <em>overfitting</em> (super-ajuste). Isso, porquê haverá muitos parâmetros a serem estimados, e portanto, a função de regressão estimada <span class="math inline">\widehat{r}({\bf x})</span> terá baixo poder preditivo.</p>
 <p><br></p>
-<p>Isso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo será muito alta.</p>
+<p>Isso se deve ao fato do balanço de viés e variância. Havendo muitos parâmetros, como já tinhamos visto, a variância do modelo poderá ser muito alta.</p>
 <p><br></p>
-<p><strong>Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) comjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!</strong></p>
+<p><strong>Portanto, deveremos buscar meios de encontrar o melhor (ao menos um bom) conjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!</strong></p>
 <p><br></p>
 
 <img data-src="gifs/chapulin-colorado-no.gif" style="width:20.0%" class="r-stretch"></section>
@@ -2169,7 +2169,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>A ideia para resolver esse problema é retirar algumas covariáveis do modelo de regressão, com o objetivo de diminuir a variância de <span class="math inline">\widehat{g}</span>.</p>
 <p><br></p>
-<p>Você poderá entender que estamos em busca de um estimador <span class="math inline">\widehat{g}</span> de <span class="math inline">g</span> um <strong>pouco</strong> mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estiamdor do modelo em troca de um pouco mais de viés.</p>
+<p>Você poderá entender que estamos em busca de um estimador <span class="math inline">\widehat{g}</span> de <span class="math inline">g</span> um <strong>pouco</strong> mais viesado. Trata-se de uma troca em que desejamos reduzir substancialmente a variabilidade do estimador do modelo em troca de um pouco mais de viés.</p>
 <p><br></p>
 
 <img data-src="gifs/kiko.gif" class="r-stretch"></section>
@@ -2180,12 +2180,12 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><span id="eq-risco-penalizacao"><span class="math display">\widehat{\beta}_{L_0} = \argmin_{\beta_0 \in \mathbb{R}, \beta \in \mathbb{R}^d}\sum_{k = 1}^n\overbrace{\left(y_k - \beta_0 - \sum_{i = 1}^d \beta_i x_{k,i}\right)^2}^{n \times EQM} + \lambda \,\,\underbrace{\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)}_{\text{Penalização}}. \tag{3}</span></span></p>
 <p>Note que a penalização <span class="math inline">\sum_{i = 1}^d \mathbb{I}(\beta_i \neq 0)</span> nos conduz na direção de modelos com poucas covariáveis, quando <span class="math inline">\lambda</span> é um valor alto. Em particualr, quando <span class="math inline">\lambda \to \infty</span>, forçamos a retirada de todas as covariáveis <span class="math inline">\beta_i</span>’s, i.e., a solução para o problema seria <span class="math inline">\widehat{\beta}_{L_0} \equiv (\overline{y}, {\bf 0})</span>. Note que não há penalização para o intercepto <span class="math inline">\beta_0</span>.</p>
 <p><br> No outro extremo, para <span class="math inline">\lambda = 0</span>, temos o estimador de mínimos quadrados, em que nenhuma penalização será considerada.</p>
-<p><br> <span class="red">Não há uma forma fácil de minimizar <span class="math inline">\widehat{\beta}_{L_0}</span>.</span></p>
+<p><br> <span class="red">Não há uma forma fácil de minimizar <span class="math inline">\widehat{\beta}_{L_0}</span>.</span> 🤯</p>
 </section>
 <section id="melhor-subconjunto-de-covariáveis-3" class="slide level2">
 <h2>Melhor subconjunto de covariáveis</h2>
 <p><br></p>
-<p>Poderíamos, ingenuamente, pensar em ajustar todas as combinações possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em novas observações para escolher o melhor modelo de todas as combinações possíveis. Isto é, escolher o melhor modelo entre todas as <span class="math inline">2^d</span> combinações possíveis de modelos em <span class="math inline">\mathbb{G}</span>.</p>
+<p>Poderíamos, ingenuamente, pensar em ajustar todas as combinações possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em novas observações para escolher o melhor modelo entre todas as combinações possíveis. Isto é, escolher o melhor modelo entre todas as <span class="math inline">2^d</span> combinações possíveis de modelos em <span class="math inline">\mathbb{G}</span>.</p>
 <p><br></p>
 <p>Se <span class="math inline">\widehat{\lambda} = \frac{2}{n}\widehat{\sigma}^2</span>, estimar <span class="math inline">\widehat{\beta}_{L_0}</span> equivale uma busca entre <span class="math inline">2^d</span> modelos da classe <span class="math inline">\mathbb{G}</span>:</p>
 <p><br></p>
@@ -2217,18 +2217,18 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <section id="melhor-subconjunto-de-covariáveis-5" class="slide level2">
 <h2>Melhor subconjunto de covariáveis</h2>
 <p><br></p>
-<p>Temos que <span class="math inline">\widehat{R}(g)</span>, calculado em novas observações (oboservações não utilizadas no treinamento), pode se valer do Teorema Central do Limite, uma vez que <span class="math inline">\widehat{R}(g)</span> é calculado em uma sequência de variáveis aleatórias i.i.d.’s. Então:</p>
+<p>Temos que <span class="math inline">\widehat{R}(g)</span>, calculado em novas observações (observações não utilizadas no treinamento), pode se valer do Teorema Central do Limite, uma vez que <span class="math inline">\widehat{R}(g)</span> é calculado em uma sequência de variáveis aleatórias i.i.d.’s. Então:</p>
 <p><span class="math display">\widehat{R}(g) \sim \text{Normal}\left(R(g), \frac{1}{m}\mathbb{V}[W_1]\right).</span></p>
 <p>Portanto, um intervalo aleatório de aproximadamente <span class="math inline">95\%</span> de confiança para o erro preditivo <span class="math inline">R(g)</span> poderá ser calculado como:</p>
 <p><span class="math display">\widehat{R}(g) \pm 1,645 \sqrt{\frac{1}{m}\widehat{\sigma}^2}.</span></p>
-<p>O cálculo de um intervalo de confiança poderá ser útil para entendermos como está variando o risco preditivo do nosso modelo. Gostamos de ter modelos com intervalo de amplitude pequena. O intervalo poderá ser utilizado para fornecer insight de como escolher a divisão de treinamento e teste. Por exemplo, pode-se escolher o menor valor de <span class="math inline">m</span> de modo que a amplitude seja a menor possível.</p>
+<p>O cálculo de um intervalo de confiança poderá ser útil para entendermos como está variando o risco preditivo do nosso modelo. Gostamos de ter modelos com intervalo de amplitude pequena. O intervalo poderá ser utilizado para fornecer <em>insight</em> de como escolher a divisão de treinamento e teste. <strong>Por exemplo, pode-se escolher o menor valor de <span class="math inline">m</span> de modo que a amplitude seja a menor possível</strong>. 💭💡</p>
 </section>
 <section id="melhor-subconjunto-de-covariáveis-6" class="slide level2">
 <h2>Melhor subconjunto de covariáveis</h2>
 <p><br></p>
 <p>Por que essa seria uma escolha ingênua? Pense na situação em que temos <span class="math inline">d = 30</span>, i.e., trinta covariáveis. Teríamos portanto <span class="math inline">2^{30}</span> modelos para ajustar, ou seja, um bilhão e setenta e três milhões, setecentos e quarenta e um mil, oitocentos e vinte e quatro modelos para ajustar. É um a quantidade absurda de modelos para serem estimados!</p>
 <p><br></p>
-<p>Se <span class="math inline">d = 100</span>, teríamos que estimar uma quantidade de modelos que a quantidade estimada de estrelas no universo. Alias, seriam mais modelos para ajustar que a quantidade de átomos no universo.</p>
+<p>Se <span class="math inline">d = 100</span>, teríamos que estimar uma quantidade de modelos que a quantidade estimada de estrelas no universo. A depender do número de covariáveis, esqueça a ideia de estimar <span class="math inline">2^d</span> modelos! Não permita se frustrar facilmente. 😏</p>
 <p><br></p>
 
 <img data-src="gifs/side-eyeing-chloe-chloe.gif" class="r-stretch"></section>
@@ -2256,7 +2256,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p><span class="math display">R(g) \approx EQM(g) + \mathcal{P}(g).</span></p>
 <p><br></p>
-<p>Desejamos minimiar <span class="math inline">R(g)</span>, mas não a custa de muitos parâmetros, pois assim teríamos <span class="red">overfitting</span>. Portanto, para muitos parâmetros temos que ter EQM baixo, porém, <span class="math inline">\mathcal{P}(g)</span> deve ser alto. Já em modelos viesados, quando temos poucos parâmetros, o EQM normalmente é alto, mas a complexidade <span class="math inline">\mathcal{P}(g)</span> deve ser baixo, pois temos um modelo mais simplista.</p>
+<p>Desejamos minimiar <span class="math inline">R(g)</span>, mas não a custa de muitos parâmetros, pois assim teríamos <span class="red"><em>overfitting</em></span>. Portanto, para muitos parâmetros temos que ter EQM baixo, porém, <span class="math inline">\mathcal{P}(g)</span> deve ser alto. Já em modelos viesados, quando temos poucos parâmetros, o EQM normalmente é alto, mas a complexidade <span class="math inline">\mathcal{P}(g)</span> deve ser baixo, pois temos um modelo mais simplista.</p>
 </section>
 <section id="aic-e-bic" class="slide level2">
 <h2>AIC e BIC</h2>

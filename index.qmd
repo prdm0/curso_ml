@@ -2971,20 +2971,20 @@ a biblioteca [rsample](https://rsample.tidymodels.org/).
 
 O estimador de mínimos quadrados - EMQ, na presença de muitas *features*
 (covariáveis), i.e., quando temos $d$ grande, possui um baixo poder
-preditivo devido *overfitting* (super-ajuste). Isso, porquê haverá
+preditivo devido a possibilidade de *overfitting* (super-ajuste). Isso, porquê haverá
 muitos parâmetros a serem estimados, e portanto, a função de regressão
 estimada $\widehat{r}({\bf x})$ terá baixo poder preditivo.
 
 <br>
 
 Isso se deve ao fato do balanço de viés e variância. Havendo muitos
-parâmetros, como já tinhamos visto, a variância do modelo será muito
+parâmetros, como já tinhamos visto, a variância do modelo poderá ser muito
 alta.
 
 <br>
 
 **Portanto, deveremos buscar meios de encontrar o melhor (ao menos um
-bom) comjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!**
+bom) conjunto de covariáveis. Queremos diminuir a variância do Estimador de Mínimos Quadrados!**
 
 <br>
 
@@ -3002,7 +3002,7 @@ $\widehat{g}$.
 
 Você poderá entender que estamos em busca de um estimador $\widehat{g}$
 de $g$ um **pouco** mais viesado. Trata-se de uma troca em que desejamos
-reduzir substancialmente a variabilidade do estiamdor do modelo em troca
+reduzir substancialmente a variabilidade do estimador do modelo em troca
 de um pouco mais de viés.
 
 <br>
@@ -3028,7 +3028,7 @@ Note que não há penalização para o intercepto $\beta_0$.
 quadrados, em que nenhuma penalização será considerada.
 
 <br> [Não há uma forma fácil de minimizar
-$\widehat{\beta}_{L_0}$.]{.red}
+$\widehat{\beta}_{L_0}$.]{.red} 🤯
 
 ## Melhor subconjunto de covariáveis
 
@@ -3036,7 +3036,7 @@ $\widehat{\beta}_{L_0}$.]{.red}
 
 Poderíamos, ingenuamente, pensar em ajustar todas as combinações
 possíveis de parâmetros e utilizar algum critério, por exemplo, o EQM em
-novas observações para escolher o melhor modelo de todas as combinações
+novas observações para escolher o melhor modelo entre todas as combinações
 possíveis. Isto é, escolher o melhor modelo entre todas as $2^d$
 combinações possíveis de modelos em $\mathbb{G}$.
 
@@ -3088,7 +3088,7 @@ com $\overline{W} = \frac{1}{m}\sum_{k=1}^m W_k$.
 
 <br>
 
-Temos que $\widehat{R}(g)$, calculado em novas observações (oboservações
+Temos que $\widehat{R}(g)$, calculado em novas observações (observações
 não utilizadas no treinamento), pode se valer do Teorema Central do
 Limite, uma vez que $\widehat{R}(g)$ é calculado em uma sequência de
 variáveis aleatórias i.i.d.'s. Então:
@@ -3103,9 +3103,9 @@ $$\widehat{R}(g) \pm 1,645 \sqrt{\frac{1}{m}\widehat{\sigma}^2}.$$
 O cálculo de um intervalo de confiança poderá ser útil para entendermos
 como está variando o risco preditivo do nosso modelo. Gostamos de ter
 modelos com intervalo de amplitude pequena. O intervalo poderá ser
-utilizado para fornecer insight de como escolher a divisão de
-treinamento e teste. Por exemplo, pode-se escolher o menor valor de $m$
-de modo que a amplitude seja a menor possível.
+utilizado para fornecer *insight* de como escolher a divisão de
+treinamento e teste. **Por exemplo, pode-se escolher o menor valor de $m$
+de modo que a amplitude seja a menor possível**. 💭💡
 
 ## Melhor subconjunto de covariáveis
 
@@ -3120,8 +3120,8 @@ um a quantidade absurda de modelos para serem estimados!
 <br>
 
 Se $d = 100$, teríamos que estimar uma quantidade de modelos que a
-quantidade estimada de estrelas no universo. Alias, seriam mais modelos
-para ajustar que a quantidade de átomos no universo.
+quantidade estimada de estrelas no universo. A depender do número de covariáveis, 
+esqueça a ideia de estimar $2^d$ modelos! Não permita se frustrar facilmente. 😏
 
 <br>
 
@@ -3186,7 +3186,7 @@ $$R(g) \approx EQM(g) + \mathcal{P}(g).$$
 <br>
 
 Desejamos minimiar $R(g)$, mas não a custa de muitos parâmetros, pois
-assim teríamos [overfitting]{.red}. Portanto, para muitos parâmetros
+assim teríamos [*overfitting*]{.red}. Portanto, para muitos parâmetros
 temos que ter EQM baixo, porém, $\mathcal{P}(g)$ deve ser alto. Já em
 modelos viesados, quando temos poucos parâmetros, o EQM normalmente é
 alto, mas a complexidade $\mathcal{P}(g)$ deve ser baixo, pois temos um
