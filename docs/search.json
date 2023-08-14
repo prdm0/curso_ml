@@ -1706,5 +1706,12 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🧠 Redes neurais artificiais",
     "text": "🧠 Redes neurais artificiais\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#ridge-2",
+    "href": "index.html#ridge-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Ridge",
+    "text": "Ridge\n\nNa documentação da função glmnet, note que a função realiza o lasso mais o ridge, i.e.,\n\n(1 - \\alpha)/2 ||\\beta_j||^2_2 + \\alpha||\\beta_j||_2.\n\nNote que para \\alpha = 1, temos uma regressão do tipo lasso, já para \\alpha = 0 recaímos para uma penalização do tipo ridge. Ok?!"
   }
 ]
