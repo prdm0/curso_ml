@@ -3261,7 +3261,7 @@ grandes vantagens, em relação ao *stepwise*:
 
 A segunda vantagem ocorre, uma vez que ele realiza uma penalização que
 leva à estimativas de alguns coeficientes $\beta_i$ igual a zero,
-eliminando as variáveis menos importantes.
+eliminando as variáveis menos importantes. Normalmente o vetor $\beta$ é esparso!
 
 <br>
 

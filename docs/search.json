@@ -879,7 +879,7 @@
     "href": "index.html#lasso-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Lasso",
-    "text": "Lasso\n\nO lasso tem como objetivo encontrar um estimador de uma regressão linear que possui risco menor que o de mínimos quadrados, possuindo duas grandes vantagens, em relação ao stepwise:\n\n\nSua solução é mais rápida, ainda que stepwise seja consideravalmente mais rápido do que avaliar 2^d modelos;\nO lasso é capaz de selecionar automaticamente as variáveis mais relevantes para o modelo, reduzindo a dimensionalidade dos dados.\n\n\nA segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à estimativas de alguns coeficientes \\beta_i igual a zero, eliminando as variáveis menos importantes."
+    "text": "Lasso\n\nO lasso tem como objetivo encontrar um estimador de uma regressão linear que possui risco menor que o de mínimos quadrados, possuindo duas grandes vantagens, em relação ao stepwise:\n\n\nSua solução é mais rápida, ainda que stepwise seja consideravalmente mais rápido do que avaliar 2^d modelos;\nO lasso é capaz de selecionar automaticamente as variáveis mais relevantes para o modelo, reduzindo a dimensionalidade dos dados.\n\n\nA segunda vantagem ocorre, uma vez que ele realiza uma penalização que leva à estimativas de alguns coeficientes \\beta_i igual a zero, eliminando as variáveis menos importantes. Normalmente o vetor \\beta é esparso!"
   },
   {
     "objectID": "index.html#lasso-2",
