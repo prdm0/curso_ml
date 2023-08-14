@@ -3379,7 +3379,7 @@ ajuste <- cv.glmnet(x, y, alpha = 0)
 
 ![](gifs/teclado-anime.gif){width="21%"}
 
-## Ridge
+## Elastic Net
 
 <br>
 
@@ -3391,7 +3391,7 @@ $$(1 - \alpha)/2 ||\beta_j||^2_2 + \alpha||\beta_j||_2.$$
 
 <br>
 
-Note que para $\alpha = 1$, temos uma regressão do tipo lasso, já para $\alpha = 0$ recaímos para uma penalização do tipo ridge. Ok?!
+Note que para $\alpha = 1$, temos uma regressão do tipo lasso, já para $\alpha = 0$ recaímos para uma penalização do tipo ridge. Para $\alpha$ diferente de zero e um, temos uma *elastic net*, ok?!
 
 <br>
 

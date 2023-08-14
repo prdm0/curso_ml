@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f6677c118c49bab617f5" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-f6677c118c49bab617f5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2206a4b602db4ece5f29" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-2206a4b602db4ece5f29">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -2355,18 +2355,18 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 
 <img data-src="gifs/teclado-anime.gif" style="width:21.0%" class="r-stretch"></section>
-<section id="ridge-2" class="slide level2">
-<h2>Ridge</h2>
+<section id="elastic-net" class="slide level2">
+<h2>Elastic Net</h2>
 <p><br></p>
 <p>Na documentação da função <code>glmnet</code>, note que a função realiza o lasso mais o ridge, i.e.,</p>
 <p><br></p>
 <p><span class="math display">(1 - \alpha)/2 ||\beta_j||^2_2 + \alpha||\beta_j||_2.</span></p>
 <p><br></p>
-<p>Note que para <span class="math inline">\alpha = 1</span>, temos uma regressão do tipo lasso, já para <span class="math inline">\alpha = 0</span> recaímos para uma penalização do tipo ridge. Ok?!</p>
+<p>Note que para <span class="math inline">\alpha = 1</span>, temos uma regressão do tipo lasso, já para <span class="math inline">\alpha = 0</span> recaímos para uma penalização do tipo ridge. Para <span class="math inline">\alpha</span> diferente de zero e um, temos uma <em>elastic net</em>, ok?!</p>
 <p><br></p>
 
 <img data-src="gifs/thumbs-up-nod.gif" class="r-stretch"></section>
-<section id="elastic-net" class="slide level2">
+<section id="elastic-net-1" class="slide level2">
 <h2>Elastic Net</h2>
 <p><br></p>
 <p>Nesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.</p>

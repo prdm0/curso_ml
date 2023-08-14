@@ -921,7 +921,7 @@
     "href": "index.html#elastic-net",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Elastic Net",
-    "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1."
+    "text": "Elastic Net\n\nNa documentação da função glmnet, note que a função realiza o lasso mais o ridge, i.e.,\n\n(1 - \\alpha)/2 ||\\beta_j||^2_2 + \\alpha||\\beta_j||_2.\n\nNote que para \\alpha = 1, temos uma regressão do tipo lasso, já para \\alpha = 0 recaímos para uma penalização do tipo ridge. Para \\alpha diferente de zero e um, temos uma elastic net, ok?!"
   },
   {
     "objectID": "index.html#exemplo-emq-ridge-lasso-e-elastic-net",
@@ -1713,5 +1713,12 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Ridge",
     "text": "Ridge\n\nNa documentação da função glmnet, note que a função realiza o lasso mais o ridge, i.e.,\n\n(1 - \\alpha)/2 ||\\beta_j||^2_2 + \\alpha||\\beta_j||_2.\n\nNote que para \\alpha = 1, temos uma regressão do tipo lasso, já para \\alpha = 0 recaímos para uma penalização do tipo ridge. Ok?!"
+  },
+  {
+    "objectID": "index.html#elastic-net-1",
+    "href": "index.html#elastic-net-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "Elastic Net",
+    "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1."
   }
 ]
