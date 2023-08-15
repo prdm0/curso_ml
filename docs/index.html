@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-69a789bbbd88e30bc174" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-69a789bbbd88e30bc174">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-da6ccd159ffa57437839" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-da6ccd159ffa57437839">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -866,7 +866,7 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 </details>
 </div>
 <p><br></p>
-<p>Atualmente, a linguagem R possui <span class="red">19912</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
+<p>Atualmente, a linguagem R possui <span class="red">19916</span>, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc.</p>
 
 <img data-src="gifs/chaves-isso.gif" class="r-stretch"></section>
 <section id="tidymodels-1" class="slide level2">
@@ -4058,12 +4058,88 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p><br></p>
 <p>Uma rede <em>feedforward</em> normalmente terá limitações quando se trata de capturar dependências temporais. Porém, em muitos problemas em que não há uma dependência temporal nos dados, as redes <em>feedforwards</em> poderá ser uma escolha conveniente.</p>
 <p><br></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="gifs/rna_01.gif"></p>
-<figcaption>Animação de uma rede neural com propagação direta - <em>feedforward</em>, em que os sinais percorrem em um único sentido. O fluxo do sinal, destacado em branco representa os neurônios excitados nas respectivas camadas, de acordo dado um vetor de entrada <span class="math inline">{\bf x}</span>. Aqui, a camada de saída possui vários neurônios, sendo esta a representação de um problema de classificação. Se a camada de saída houversse apenas um neurônio, como na rede da <a href="#/redes-neurais-artificiais-2" class="quarto-xref">Figura&nbsp;1</a>, este seria um problema de regressão.</figcaption>
-</figure>
-</div>
+
+<img data-src="gifs/hum.gif" class="r-stretch"></section>
+<section id="redes-neurais-artificiais-5" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Abaixo, uma animação de uma rede neural com propagação direta - <em>feedforward</em>, em que os sinais percorrem em um único sentido. O fluxo do sinal, destacado em branco representa os neurônios excitados nas respectivas camadas, de acordo dado um vetor de entrada <span class="math inline">{\bf x}</span>. Aqui, a camada de saída possui vários neurônios, sendo esta a representação de um problema de classificação. Se a camada de saída houversse apenas um neurônio, como na rede da <a href="#/redes-neurais-artificiais-2" class="quarto-xref">Figura&nbsp;1</a>, este seria um problema de regressão.</p>
+<p><br></p>
+
+<img data-src="gifs/rna_01.gif" class="r-stretch"></section>
+<section id="redes-neurais-artificiais-6" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Considerando a rede apresentada na <a href="#/redes-neurais-artificiais-2" class="quarto-xref">Figura&nbsp;1</a>, para uma dado vetor de entrada <span class="math inline">{\bf x} = (x_1, x_2, x_3)</span>, o sinal em um dado neurônio <span class="math inline">j</span> da camada oculta é calculado como</p>
+<p><span class="math display">\overbrace{x_j^1}^{\text{Neurônio j da camada 1}} := f\left(\beta_{0,j}^0 + \sum_{i = 1}^3 \beta_{i,j}^0 x_{i}^0\right),</span> em que <span class="math inline">x_i^0 = x_i</span>, para <span class="math inline">i = 1, 2, 3</span> e <span class="math inline">f</span> é uma função definida pelo usuário, que denominaremos <a href="https://en.wikipedia.org/wiki/Activation_function"><strong>função de ativação</strong></a>. A <strong>função de ativação</strong> desempenha um papel crucial em um neurônio de uma RNA. Ela é responsável por introduzir não-linearidade nos cálculos realizados pelo neurônio, permitindo que a RNA seja capaz de aprender e representar relações complexas nos dados.</p>
+<p><br></p>
+
+<img data-src="gifs/bean_01.gif" class="r-stretch"></section>
+<section id="redes-neurais-artificiais-7" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Devido a possibilidade de adicionar diversas camadas ocultas, variar o número de neurônios em cada uma das camadas, e o mais importante, devido a introdução de funções de ativações diferentes em cada camada, que normalmente são funções não lineares, uma RNA consegue representar uma quantidade muito grande de funções não lineares. Além disso, a função de ativação desempenham um papel de controle no sinal de um neurônio. Algumas dessas funções podem ajudar na regularização da RNA, i.e., ajudam a reduzir a probabilidade de <em>overfitting</em>.</p>
+<p><br></p>
+<p>Ainda considerando a rede representada pela <a href="#/redes-neurais-artificiais-2" class="quarto-xref">Figura&nbsp;1</a>, calculado os sinais dos neurônios <span class="math inline">x_j^1</span>, para todo <span class="math inline">j = 1, \cdots, 5</span>, pode-se calcular o sinal do neurônio da camada de saída. Temos então que</p>
+<p><br></p>
+<p><span class="math display">\overbrace{x_1^2}^{\text{Neurônio j da camada 2}} := f\left(\beta_{0,1}^1 + \sum_{i = 1}^5 \beta_{i,1}^1 x_{i}^1\right) =: g_\beta({\bf x}).</span></p>
+</section>
+<section id="redes-neurais-artificiais-8" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>A Figura abaixo representa o procedimento de atualização e passagem de sinal de um neurônio.</p>
+<p><br></p>
+
+<img data-src="imgs/rede_02.png" class="r-stretch quarto-figure-center"><p>Multiplica-se as entradas <span class="math inline">x_i</span> da camada <span class="math inline">l</span> com os respectivos pesos <span class="math inline">\beta_i^l, \, i = 1, 2, 3</span>, realiza-se a soma que é passada para a função de ativação que retornará a saída. O sinal <span class="math inline">x_1^{l +1}</span> será transmitido para o neurônio <span class="math inline">1</span> da camada <span class="math inline">l + 1</span> (camada seguinte). A saída <span class="math inline">x_1^{l + 1}</span> é dada por <span class="math inline">f(\beta_{0,1}^l + \sum_{i=1}^3 \beta_{i,1}^lx_{i}^l)</span>.</p>
+</section>
+<section id="redes-neurais-artificiais-9" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>As escolhas comuns para <strong>função de ativação</strong> são:</p>
+<p><br></p>
+<ol type="1">
+<li class="fragment">Identidade: <span class="math inline">f(x) = x</span>;</li>
+<li class="fragment">Lógica: <span class="math inline">f(x) = \frac{1}{1 - \mathrm{e}^{-x}}</span>;</li>
+<li class="fragment">Tangente hiperbólica: <span class="math inline">f(x) = \frac{\mathrm{e}^x - \mathrm{e}^{-x}}{\mathrm{e}^x + \mathrm{e}^{-x}}</span>;</li>
+<li class="fragment">ReLu (<em>rectified linear</em>): <span class="math inline">f(x) = \max\{0, x\}</span>;</li>
+<li class="fragment">Leaky ReLu: <span class="math inline">f(x) = \begin{cases} x, &amp; \text{se}\ x &gt; 0 \\ \alpha x, &amp; \text{caso contrário} \end{cases}</span></li>
+</ol>
+<p><br></p>
+<p>Na função <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">Leaky ReLu</a>, o valor de <span class="math inline">\alpha &gt; 0</span>, normalmente pequeno que costuma ser <span class="math inline">0,01</span>. Todas as funções acima possue domínio em <span class="math inline">(-\infty, +\infty)</span>.</p>
+</section>
+<section id="redes-neurais-artificiais-10" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>De um modo geral, uma RNA poderá possuir mais de uma camada oculta, conforme representado Figura que segue:</p>
+<p><br></p>
+<p><img data-src="imgs/rede_03.png" data-fig-aling="center" alt="Arquitetura de uma RNA feedforward para um problema de regressão, i.e., com um único neurônio na camada de saída."> <br></p>
+<p>Com o avanço da capacidade computacional dos computadores atuais, é possível trabalhar com RNAs com diversas camadas ocultas, uma vez que os algoritmos de aprendizagem como é o caso do <em>backpropagation</em> que será discutido adiante pode ser executado com mais eficiência.</p>
+</section>
+<section id="redes-neurais-artificiais-11" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Os parâmetros <span class="math inline">\beta_{0,j}^l</span>, nas equações do sinal que será transmitido, que está <strong>em todos</strong> os neurônios de uma camada oculta é denominado de viés, ou, <em>bias</em> no inglês. O viés nos neurônios de uma RNA é crucial para permitir que a rede aprenda relações complexas e não-lineares nos dados, além de se <strong>adaptar a diferentes deslocamentos</strong> e tendências presentes nos dados do mundo real. Ele faz parte dos parâmetros treináveis da rede, que são ajustados durante o processo de treinamento para otimizar a capacidade da rede de fazer previsões ou classificações precisas. <strong>Sua função é aumentar ou diminuir a entrada líquida, de forma a transladar a função de ativação no eixo</strong>.</p>
+<p><br></p>
+<p>A propagação das observações das covariáveis por uma RNA é feita sequencialmente nessas camadas.</p>
+<p><br></p>
+
+<img data-src="gifs/bean_01.gif" class="r-stretch"></section>
+<section id="redes-neurais-artificiais-12" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Considere uma RNA <em>feedforward</em> com <span class="math inline">H</span> camadas ocultas, com <span class="math inline">h = 1, \cdots, H</span>, em que cada camada possui <span class="math inline">d_h</span> neurônios. Seja ainda <span class="math inline">\beta_{i,j}^l</span> o peso atribuído à conexão entre a <span class="math inline">i</span>-ésima entrada na camada <span class="math inline">l</span> e a <span class="math inline">j</span>-ésima saída na camada <span class="math inline">l + 1</span>, com <span class="math inline">l = 0, \cdots, H</span>. Perceba que a camada de entrada é denotada por <span class="math inline">h = 0</span>, já a camada de saída, denota-se por <span class="math inline">H + 1</span>. O estimador de uma RNA para a função de regressão <span class="math inline">r({\bf x})</span> é dado por:</p>
+<p><br></p>
+<p><span id="eq-rna-estimativa"><span class="math display">g({\bf x}) = \overbrace{x_1^{H + 1}}^{\text{So há um neurônio como saída}} = f\left(\beta_{0,1}^H + \sum_{i = 1}^{d_H}\beta_{i,1}^Hx_i^H\right), \tag{10}</span></span> em que, para todo <span class="math inline">l = 1, \cdots, H</span> e <span class="math inline">j = 1, \cdots, d_{l + 1}</span>,</p>
+<p><span class="math display">x_{j}^{l + 1} = f\left(\beta_{0,j}^{l} + \sum_{i=1}^{d_l}\beta_{i,j}^{l}x_{i}^l\right).</span></p>
+</section>
+<section id="redes-neurais-artificiais-13" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Se a RNA possui como função de ativação a função identidade <span class="math inline">f(x) = x</span> e nenhuma camada oculta, a <a href="#/redes-neurais-artificiais-12" class="quarto-xref">Equação&nbsp;10</a> se reduz à uma regressão linear que estudamos anteriormente. 🎉</p>
+<p><br></p>
+<p><img data-src="gifs/bean_simple.gif"></p>
+<p><br></p>
+<p>Nas RNAs, como já mencionado anteriormente, topologias mais complexas são admitidas, podendo retroalimentação, em que o sinal de uma camada posterior poderá para retroalimentar camadas anteriores. Mais detalhes aprofundados da teoria de RNAs podem ser obtidos Goodfellow, I., Bengio, Y. and Courville, A. <strong>Deep Learning</strong>. The MIT Press Cambridge, Massachusetts London, England. (2017). Clique <a href="https://github.com/janishar/mit-deep-learning-book-pdf/blob/0d90eb57bc81aacba1c56cb57ca3d28c99807385/complete-book-pdf/Ian%20Goodfellow%2C%20Yoshua%20Bengio%2C%20Aaron%20Courville%20-%20Deep%20Learning%20(2017%2C%20MIT).pdf">aqui</a>.</p>
 
 <p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
 <div class="footer footer-default">

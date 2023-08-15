@@ -228,7 +228,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "💻 Tidymodels",
-    "text": "💻 Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19912, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "💻 Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19916, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -1747,6 +1747,76 @@
     "href": "index.html#redes-neurais-artificiais-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🧠 Redes neurais artificiais",
-    "text": "🧠 Redes neurais artificiais\n\nDiversas arquiteturas de redes neurais já foram experimentadas. Por exemplo, algumas são úteis para problemas de classificação de imagens, outras possuem uma performance melhor para classificação de áudios, outras com boa performance em problemas de regressão, e assim por diante. Por exemplo, as RNAs feedforwards (redes de propagação direta), em suas diferentes topologias/arquiteturas, possuem boa performance em problemas de regressão, classificação, reconhecimento de padrões, entre outros. Sendo assim, é possível tratar uma gama muito ampla de problemas com redes neurais feedforwards. 🎉\n\nUma rede feedforward normalmente terá limitações quando se trata de capturar dependências temporais. Porém, em muitos problemas em que não há uma dependência temporal nos dados, as redes feedforwards poderá ser uma escolha conveniente.\n\n\n\n\nAnimação de uma rede neural com propagação direta - feedforward, em que os sinais percorrem em um único sentido. O fluxo do sinal, destacado em branco representa os neurônios excitados nas respectivas camadas, de acordo dado um vetor de entrada {\\bf x}. Aqui, a camada de saída possui vários neurônios, sendo esta a representação de um problema de classificação. Se a camada de saída houversse apenas um neurônio, como na rede da Figura 1, este seria um problema de regressão.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "🧠 Redes neurais artificiais\n\nDiversas arquiteturas de redes neurais já foram experimentadas. Por exemplo, algumas são úteis para problemas de classificação de imagens, outras possuem uma performance melhor para classificação de áudios, outras com boa performance em problemas de regressão, e assim por diante. Por exemplo, as RNAs feedforwards (redes de propagação direta), em suas diferentes topologias/arquiteturas, possuem boa performance em problemas de regressão, classificação, reconhecimento de padrões, entre outros. Sendo assim, é possível tratar uma gama muito ampla de problemas com redes neurais feedforwards. 🎉\n\nUma rede feedforward normalmente terá limitações quando se trata de capturar dependências temporais. Porém, em muitos problemas em que não há uma dependência temporal nos dados, as redes feedforwards poderá ser uma escolha conveniente."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-5",
+    "href": "index.html#redes-neurais-artificiais-5",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nAbaixo, uma animação de uma rede neural com propagação direta - feedforward, em que os sinais percorrem em um único sentido. O fluxo do sinal, destacado em branco representa os neurônios excitados nas respectivas camadas, de acordo dado um vetor de entrada {\\bf x}. Aqui, a camada de saída possui vários neurônios, sendo esta a representação de um problema de classificação. Se a camada de saída houversse apenas um neurônio, como na rede da Figura 1, este seria um problema de regressão."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-6",
+    "href": "index.html#redes-neurais-artificiais-6",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nConsiderando a rede apresentada na Figura 1, para uma dado vetor de entrada {\\bf x} = (x_1, x_2, x_3), o sinal em um dado neurônio j da camada oculta é calculado como\n\\overbrace{x_j^1}^{\\text{Neurônio j da camada 1}} := f\\left(\\beta_{0,j}^0 + \\sum_{i = 1}^3 \\beta_{i,j}^0 x_{i}^0\\right), em que x_i^0 = x_i, para i = 1, 2, 3 e f é uma função definida pelo usuário, que denominaremos função de ativação. A função de ativação desempenha um papel crucial em um neurônio de uma RNA. Ela é responsável por introduzir não-linearidade nos cálculos realizados pelo neurônio, permitindo que a RNA seja capaz de aprender e representar relações complexas nos dados."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-7",
+    "href": "index.html#redes-neurais-artificiais-7",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nDevido a possibilidade de adicionar diversas camadas ocultas, variar o número de neurônios em cada uma das camadas, e o mais importante, devido a introdução de funções de ativações diferentes em cada camada, que normalmente são funções não lineares, uma RNA consegue representar uma quantidade muito grande de funções não lineares. Além disso, a função de ativação desempenham um papel de controle no sinal de um neurônio. Algumas dessas funções podem ajudar na regularização da RNA, i.e., ajudam a reduzir a probabilidade de overfitting.\n\nAinda considerando a rede representada pela Figura 1, calculado os sinais dos neurônios x_j^1, para todo j = 1, \\cdots, 5, pode-se calcular o sinal do neurônio da camada de saída. Temos então que\n\n\\overbrace{x_1^2}^{\\text{Neurônio j da camada 2}} := f\\left(\\beta_{0,1}^1 + \\sum_{i = 1}^5 \\beta_{i,1}^1 x_{i}^1\\right) =: g_\\beta({\\bf x})."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-8",
+    "href": "index.html#redes-neurais-artificiais-8",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nA Figura abaixo representa o procedimento de atualização e passagem de sinal de um neurônio.\n\n\nMultiplica-se as entradas x_i da camada l com os respectivos pesos \\beta_i^l, \\, i = 1, 2, 3, realiza-se a soma que é passada para a função de ativação que retornará a saída. O sinal x_1^{l +1} será transmitido para o neurônio 1 da camada l + 1 (camada seguinte). A saída x_1^{l + 1} é dada por f(\\beta_{0,1}^l + \\sum_{i=1}^3 \\beta_{i,1}^lx_{i}^l)."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-9",
+    "href": "index.html#redes-neurais-artificiais-9",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nAs escolhas comuns para função de ativação são:\n\n\nIdentidade: f(x) = x;\nLógica: f(x) = \\frac{1}{1 - \\mathrm{e}^{-x}};\nTangente hiperbólica: f(x) = \\frac{\\mathrm{e}^x - \\mathrm{e}^{-x}}{\\mathrm{e}^x + \\mathrm{e}^{-x}};\nReLu (rectified linear): f(x) = \\max\\{0, x\\};\nLeaky ReLu: f(x) = \\begin{cases} x, & \\text{se}\\ x &gt; 0 \\\\ \\alpha x, & \\text{caso contrário} \\end{cases}\n\n\nNa função Leaky ReLu, o valor de \\alpha &gt; 0, normalmente pequeno que costuma ser 0,01. Todas as funções acima possue domínio em (-\\infty, +\\infty)."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-10",
+    "href": "index.html#redes-neurais-artificiais-10",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nDe um modo geral, uma RNA poderá possuir mais de uma camada oculta, conforme representado Figura que segue:\n\n \nCom o avanço da capacidade computacional dos computadores atuais, é possível trabalhar com RNAs com diversas camadas ocultas, uma vez que os algoritmos de aprendizagem como é o caso do backpropagation que será discutido adiante pode ser executado com mais eficiência."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-11",
+    "href": "index.html#redes-neurais-artificiais-11",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nOs parâmetros \\beta_{0,j}^l, nas equações do sinal que será transmitido, que está em todos os neurônios de uma camada oculta é denominado de viés, ou, bias no inglês. O viés nos neurônios de uma RNA é crucial para permitir que a rede aprenda relações complexas e não-lineares nos dados, além de se adaptar a diferentes deslocamentos e tendências presentes nos dados do mundo real. Ele faz parte dos parâmetros treináveis da rede, que são ajustados durante o processo de treinamento para otimizar a capacidade da rede de fazer previsões ou classificações precisas. Sua função é aumentar ou diminuir a entrada líquida, de forma a transladar a função de ativação no eixo.\n\nA propagação das observações das covariáveis por uma RNA é feita sequencialmente nessas camadas."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-12",
+    "href": "index.html#redes-neurais-artificiais-12",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nConsidere uma RNA feedforward com H camadas ocultas, com h = 1, \\cdots, H, em que cada camada possui d_h neurônios. Seja ainda \\beta_{i,j}^l o peso atribuído à conexão entre a i-ésima entrada na camada l e a j-ésima saída na camada l + 1, com l = 0, \\cdots, H. Perceba que a camada de entrada é denotada por h = 0, já a camada de saída, denota-se por H + 1. O estimador de uma RNA para a função de regressão r({\\bf x}) é dado por:\n\ng({\\bf x}) = \\overbrace{x_1^{H + 1}}^{\\text{So há um neurônio como saída}} = f\\left(\\beta_{0,1}^H + \\sum_{i = 1}^{d_H}\\beta_{i,1}^Hx_i^H\\right), \\tag{10} em que, para todo l = 1, \\cdots, H e j = 1, \\cdots, d_{l + 1},\nx_{j}^{l + 1} = f\\left(\\beta_{0,j}^{l} + \\sum_{i=1}^{d_l}\\beta_{i,j}^{l}x_{i}^l\\right)."
+  },
+  {
+    "objectID": "index.html#section-4",
+    "href": "index.html#section-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "",
+    "text": "Se a RNA possui como função de ativação a função f(x) = x e nenhuma camada oculta, a Equação 10 se reduz à uma regressão linear que estuamos anteriormente.\n\n\n\nDepartamento de Estatística da UFPB"
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-13",
+    "href": "index.html#redes-neurais-artificiais-13",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nSe a RNA possui como função de ativação a função identidade f(x) = x e nenhuma camada oculta, a Equação 10 se reduz à uma regressão linear que estudamos anteriormente. 🎉\n\n\n\nNas RNAs, como já mencionado anteriormente, topologias mais complexas são admitidas, podendo retroalimentação, em que o sinal de uma camada posterior poderá para retroalimentar camadas anteriores. Mais detalhes aprofundados da teoria de RNAs podem ser obtidos Goodfellow, I., Bengio, Y. and Courville, A. Deep Learning. The MIT Press Cambridge, Massachusetts London, England. (2017). Clique aqui.\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
