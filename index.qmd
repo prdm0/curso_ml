@@ -6275,7 +6275,7 @@ O valor $\eta > 0$ é denominado de **taxa de aprendizado**, e controla o tamanh
 
 <br>
 
-Muitas variações do algoritmo *backpropagation* surgiram, como é o caso do gradiente descendente estocástico, que nada mais é que o algoritmo *backpropagation* em apenas uma parte do conjunto de treinamento, denominados de lotes ou *mini-batches*. Esses lotes são sorteados aleatoriamente e de tamanhos aproximadamente iguais. É utilizado apenas um desses lotes por vez, durante o processo de atualização dos pesos da RNA. Esse de atualização aumenta a eficiência computacional, reduz o uso de memória, introduz estocasticidade que pode evitar mínimos locais indesejados permitindo, assim, uma exploração mais ampla do espaço de parâmetros.
+Muitas variações do algoritmo *backpropagation* surgiram, como é o caso do gradiente descendente estocástico, que nada mais é que o algoritmo *backpropagation* em apenas uma parte do conjunto de treinamento, denominados de lotes ou *mini-batches* 📦. Esses lotes são sorteados aleatoriamente e de tamanhos aproximadamente iguais. É utilizado apenas um desses lotes por vez, durante o processo de atualização dos pesos da RNA. Esse de atualização aumenta a eficiência computacional, reduz o uso de memória, introduz estocasticidade que pode evitar mínimos locais indesejados permitindo, assim, uma exploração mais ampla do espaço de parâmetros.
 
 <br>
 
@@ -6289,7 +6289,7 @@ Com o gradiente descendente estocástico, o problema de *overffiting* é menor. 
 
 <br>
 
-No conceito de gradiente descendente estocástico, a atualização dos pesos é realizada em cada um dos lotes. Dizemos, portanto, que o treinamento ocorreu em uma **época**. O conceito de época (*epoch*) é comum em RNA e consiste em realizar o treinamento com todos os *batches*. Normalmente, escolhemos treinar nossa rede usando várias épocas, i.e., em cada época novos lotes são sorteados, permitindo que a rede não aprenda padrões dependentes da ordem dos dados de treinamento, ajudando expor a rede a uma diversidade de exemplos, tornando o aprendizado mais robusto.
+No conceito de gradiente descendente estocástico, a atualização dos pesos é realizada em cada um dos lotes 📦. Dizemos, portanto, que o treinamento ocorreu em uma **época**. O conceito de época (*epoch*) 🕒 é comum em RNA e consiste em realizar o treinamento com todos os *batches*. Normalmente, escolhemos treinar nossa rede usando várias épocas, i.e., em cada época novos lotes são sorteados, permitindo que a rede não aprenda padrões dependentes da ordem dos dados de treinamento, ajudando expor a rede a uma diversidade de exemplos, tornando o aprendizado mais robusto.
 
 <br>
 
@@ -6298,3 +6298,15 @@ Uma forma muito comum de tentar regularizar uma RNA e diminuir o *overfitting* �
 <br>
 
 ![](gifs/hum.gif)
+
+## 🧠 Redes neurais artificiais
+
+<br>
+
+Experimente treinar uma rede neural em um problema de regressão, utilizando a aplicação abaixo. Clique [aqui](https://playground.tensorflow.org) para visualizar a aplicação ampliada. 🎁
+
+<br>
+
+```{=html}
+ <iframe id="example1" src="https://playground.tensorflow.org" style="border: none; width: 100%; height: 90%" frameborder="0"></iframe>
+```
