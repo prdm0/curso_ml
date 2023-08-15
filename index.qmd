@@ -6208,7 +6208,7 @@ $d_h$ neurônios. Seja ainda $\beta_{i,j}^l$ o peso atribuído à conexão entre
 
 <br>
 
-$$g({\bf x}) = \overbrace{x_1^{H + 1}}^{\text{So há um neurônio como saída}} = f\left(\beta_{0,1}^H + \sum_{i = 1}^{d_H}\beta_{i,1}^Hx_i^H\right),$${#eq-rna-estimativa}
+$$g_\beta({\bf x}) = \overbrace{x_1^{H + 1}}^{\text{So há um neurônio como saída}} = f\left(\beta_{0,1}^H + \sum_{i = 1}^{d_H}\beta_{i,1}^Hx_i^H\right),$${#eq-rna-estimativa}
 em que, para todo $l = 1, \cdots, H$ e $j = 1, \cdots, d_{l + 1}$,
 
 $$x_{j}^{l + 1} = f\left(\beta_{0,j}^{l} + \sum_{i=1}^{d_l}\beta_{i,j}^{l}x_{i}^l\right).$$
@@ -6226,3 +6226,43 @@ Se a RNA possui como função de ativação a função identidade $f(x) = x$ e n
 <br>
 
 Nas RNAs, como já mencionado anteriormente, topologias mais complexas são admitidas, podendo retroalimentação, em que o sinal de uma camada posterior poderá para retroalimentar camadas anteriores. Mais detalhes aprofundados da teoria de RNAs podem ser obtidos Goodfellow, I., Bengio, Y. and Courville, A. **Deep Learning**. The MIT Press Cambridge, Massachusetts London, England. (2017). Clique [aqui](https://github.com/janishar/mit-deep-learning-book-pdf/blob/0d90eb57bc81aacba1c56cb57ca3d28c99807385/complete-book-pdf/Ian%20Goodfellow%2C%20Yoshua%20Bengio%2C%20Aaron%20Courville%20-%20Deep%20Learning%20(2017%2C%20MIT).pdf). 
+
+## 🧠 Redes neurais artificiais
+
+<br>
+
+Para estimar os coeficientes $\beta_{i,j}^l$ da @eq-rna-estimativa, i.e., para estimarmos o peso da saída $i$ da camada $l$ que entra na entrada $j$ da camada $l + 1$, é necessário que haja uma função objetivo para ser otimizada. Como aprendemos, em um problema de regressão, essa função objetivo é o EQM. Portanto, desejamos minimizar
+
+<br>
+
+$$\underbrace{EQM(g_\beta) = \frac{1}{n}\sum_{k = 1}^n (g_\beta(x_k) - y_k)^2}_{\text{Precisamos de uma combinação de pesos que minimize essa Equação.}}.$${#eq-risco-rna}
+
+<br>
+
+Como também já sabemos, para termos uma estimativa consistente de $R(g_\beta)$, devemos avaliar a @eq-risco-rna no conjunto de teste. Encontrar os pesos $\beta$'s que minimize a @eq-risco-rna são tem solução analítica.
+
+## 🧠 Redes neurais artificiais
+
+<br>
+
+Para minimizar a @eq-risco-rna, podemos fazer uso de métodos numéricos. O método que mais conhecido para essa tarefa é o *backpropagation*, que nada mais é do que um método de gradiente descendente executado em uma determinada ordem específica. Nesse método, o gradiente descendente é calculado de trás para frente, i.e., primeiro atualizam-se os coeficientes da última camada, depois se atualizam os coeficientes da camada anterior, e assim por diante. Por isso o o termo *back* é utilizado no algoritmo.
+
+<br>
+
+A busca por uma solução global ou mínima global em uma função de perda não é garantida pelo *backpropagation*. O algoritmo pode convergir para mínimos locais, em que a função de perda é relativamente baixa dentro de uma região, mas esses mínimos locais podem não ser os melhores em termos de desempenho geral da rede neural. Portanto, o algoritmo de *backpropagation* em si não é uma técnica de otimização global. 
+
+<br>
+
+![](gifs/hum.gif)
+
+
+## 🧠 Redes neurais artificiais
+
+<br>
+
+De forma mais específica, em cada passo do algoritmo *backpropagation* o peso $\beta_{i,j}^l$ é atualizado por
+
+<br>
+
+$$\beta_{i,j}^l \leftarrow \beta_{i,j}^l - \eta \frac{\partial EQM(g_\beta)}{\partial\beta_{i,j}^l},$${#eq-backpropagation}
+com $j = 1, \cdots, d_{l + 1}$ e $i = 0, \cdots, d_l$, em que $l = H, \cdots, 0$. Lembre-se que o gradiente de uma função aponta para a direção de maior crescimento de uma função. Portanto, o gradiente com sinal trocado irá apontar para a região de descida mais rápida, e é por isso que a atualização do peso é feita subtraindo do gradiente, conforme a @eq-backpropagation.

@@ -1803,7 +1803,7 @@
     "href": "index.html#redes-neurais-artificiais-12",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🧠 Redes neurais artificiais",
-    "text": "🧠 Redes neurais artificiais\n\nConsidere uma RNA feedforward com H camadas ocultas, com h = 1, \\cdots, H, em que cada camada possui d_h neurônios. Seja ainda \\beta_{i,j}^l o peso atribuído à conexão entre a i-ésima entrada na camada l e a j-ésima saída na camada l + 1, com l = 0, \\cdots, H. Perceba que a camada de entrada é denotada por h = 0, já a camada de saída, denota-se por H + 1. O estimador de uma RNA para a função de regressão r({\\bf x}) é dado por:\n\ng({\\bf x}) = \\overbrace{x_1^{H + 1}}^{\\text{So há um neurônio como saída}} = f\\left(\\beta_{0,1}^H + \\sum_{i = 1}^{d_H}\\beta_{i,1}^Hx_i^H\\right), \\tag{10} em que, para todo l = 1, \\cdots, H e j = 1, \\cdots, d_{l + 1},\nx_{j}^{l + 1} = f\\left(\\beta_{0,j}^{l} + \\sum_{i=1}^{d_l}\\beta_{i,j}^{l}x_{i}^l\\right)."
+    "text": "🧠 Redes neurais artificiais\n\nConsidere uma RNA feedforward com H camadas ocultas, com h = 1, \\cdots, H, em que cada camada possui d_h neurônios. Seja ainda \\beta_{i,j}^l o peso atribuído à conexão entre a i-ésima entrada na camada l e a j-ésima saída na camada l + 1, com l = 0, \\cdots, H. Perceba que a camada de entrada é denotada por h = 0, já a camada de saída, denota-se por H + 1. O estimador de uma RNA para a função de regressão r({\\bf x}) é dado por:\n\ng_\\beta({\\bf x}) = \\overbrace{x_1^{H + 1}}^{\\text{So há um neurônio como saída}} = f\\left(\\beta_{0,1}^H + \\sum_{i = 1}^{d_H}\\beta_{i,1}^Hx_i^H\\right), \\tag{10} em que, para todo l = 1, \\cdots, H e j = 1, \\cdots, d_{l + 1},\nx_{j}^{l + 1} = f\\left(\\beta_{0,j}^{l} + \\sum_{i=1}^{d_l}\\beta_{i,j}^{l}x_{i}^l\\right)."
   },
   {
     "objectID": "index.html#section-4",
@@ -1817,6 +1817,27 @@
     "href": "index.html#redes-neurais-artificiais-13",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🧠 Redes neurais artificiais",
-    "text": "🧠 Redes neurais artificiais\n\nSe a RNA possui como função de ativação a função identidade f(x) = x e nenhuma camada oculta, a Equação 10 se reduz à uma regressão linear que estudamos anteriormente. 🎉\n\n\n\nNas RNAs, como já mencionado anteriormente, topologias mais complexas são admitidas, podendo retroalimentação, em que o sinal de uma camada posterior poderá para retroalimentar camadas anteriores. Mais detalhes aprofundados da teoria de RNAs podem ser obtidos Goodfellow, I., Bengio, Y. and Courville, A. Deep Learning. The MIT Press Cambridge, Massachusetts London, England. (2017). Clique aqui.\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "🧠 Redes neurais artificiais\n\nSe a RNA possui como função de ativação a função identidade f(x) = x e nenhuma camada oculta, a Equação 10 se reduz à uma regressão linear que estudamos anteriormente. 🎉\n\n\n\nNas RNAs, como já mencionado anteriormente, topologias mais complexas são admitidas, podendo retroalimentação, em que o sinal de uma camada posterior poderá para retroalimentar camadas anteriores. Mais detalhes aprofundados da teoria de RNAs podem ser obtidos Goodfellow, I., Bengio, Y. and Courville, A. Deep Learning. The MIT Press Cambridge, Massachusetts London, England. (2017). Clique aqui."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-14",
+    "href": "index.html#redes-neurais-artificiais-14",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nPara estimar os coeficientes \\beta_{i,j}^l da Equação 10, i.e., para estimarmos o peso da saída i da camada l que entra na entrada j da camada l + 1, é necessário que haja uma função objetivo para ser otimizada. Como aprendemos, em um problema de regressão, essa função objetivo é o EQM. Portanto, desejamos minimizar\n\n\\underbrace{EQM(g_\\beta) = \\frac{1}{n}\\sum_{k = 1}^n (g_\\beta(x_k) - y_k)^2}_{\\text{Precisamos de uma combinação de pesos que minimize essa Equação.}}. \\tag{11}\n\nComo também já sabemos, para termos uma estimativa consistente de R(g_\\beta), devemos avaliar a Equação 11 no conjunto de teste. Encontrar os pesos \\beta’s que minimize a Equação 11 são tem solução analítica."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-15",
+    "href": "index.html#redes-neurais-artificiais-15",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nPara minimizar a Equação 11, podemos fazer uso de métodos numéricos. O método que mais conhecido para essa tarefa é o backpropagation, que nada mais é do que um método de gradiente descendente executado em uma determinada ordem específica. Nesse método, o gradiente descendente é calculado de trás para frente, i.e., primeiro atualizam-se os coeficientes da última camada, depois se atualizam os coeficientes da camada anterior, e assim por diante. Por isso o o termo back é utilizado no algoritmo.\n\nA busca por uma solução global ou mínima global em uma função de perda não é garantida pelo backpropagation. O algoritmo pode convergir para mínimos locais, em que a função de perda é relativamente baixa dentro de uma região, mas esses mínimos locais podem não ser os melhores em termos de desempenho geral da rede neural. Portanto, o algoritmo de backpropagation em si não é uma técnica de otimização global."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-16",
+    "href": "index.html#redes-neurais-artificiais-16",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nDe forma mais específica, em cada passo do algoritmo backpropagation o peso \\beta_{i,j}^l é atualizado por\n\n\\beta_{i,j}^l \\leftarrow \\beta_{i,j}^l - \\eta \\frac{\\partial EQM(g_\\beta)}{\\partial\\beta_{i,j}^l}, \\tag{12} com j = 1, \\cdots, d_{l + 1} e i = 0, \\cdots, d_l, em que l = H, \\cdots, 0. Lembre-se que o gradiente de uma função aponta para a direção de maior crescimento de uma função. Portanto, o gradiente com sinal trocado irá apontar para a região de descida mais rápida, e é por isso que a atualização do peso é feita subtraindo do gradiente, conforme a Equação 12.\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
