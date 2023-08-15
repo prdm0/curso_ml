@@ -228,7 +228,7 @@
     "href": "index.html#tidymodels",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "💻 Tidymodels",
-    "text": "💻 Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19907, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
+    "text": "💻 Tidymodels\n\nDiversas bibliotecas na linguagem R são preparadas para trabalharem na área de aprendizagem de máquina. Várias dessas bibliotecas vem sendo desenvolvidas há anos. Por exemplo,as bibliotecas glmnet, ranger, kknn, xgboost, keras, rpart, randomForest, entre diversos outros.\n\n\n\nO número de pacotes abaixo é o mais recente. Obtido automaticamente por webscraping.\nlibrary(xml2)\nlibrary(httr)\nlibrary(stringr)\n\nnumero_pacotes_r &lt;- httr::GET(\"https://cloud.r-project.org/web/packages/index.html\") |&gt; \n  xml2::read_html() |&gt; \n  xml2::xml_find_all(\"//p[1]\") |&gt; \n  xml2::xml_text() |&gt; \n  stringr::str_extract(pattern = \"[0-9]+\")\n\n\n\nAtualmente, a linguagem R possui 19912, em que muitos deles são preparados para para trabalharem em tarefas de aprendizagem de máquina, porém, cada com sua sintaxe específica. Muitos implementam o mesmo modelo, uns com algumas variações, porém, o uso é totalmente diferente, nomes de parâmetros distintos, saídas distintas, etc."
   },
   {
     "objectID": "index.html#tidymodels-1",
@@ -1705,7 +1705,7 @@
     "href": "index.html#redes-neurais-artificiais",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "🧠 Redes neurais artificiais",
-    "text": "🧠 Redes neurais artificiais\n\n\n\nDepartamento de Estatística da UFPB"
+    "text": "🧠 Redes neurais artificiais\n\nRedes neurais artificiais - RNAs geralmente são apresentadas como sistemas de “neurônios interconectados, que podem computar/receber valores de entradas”, simulando o comportamento de redes neurais biológicas 🧠.\n\n\n\n\n\n\nMcculloch e Pitts.\n\n\n\nO primeiro modelo artificial de um neurônio biológico foi fruto do trabalho de Warren McCulloch e Walter Pitts, em 1943. MacCulloch, psicólogo e neurofisiologista, dedicou sua carreira à tentativa de representar e modelar eventos do sistema nervoso. Pitts, um matemático recém-graduado, juntou-se a ele em 1942. No trabalho que publicaram em 1943 intitulado A Logical Calculus of the Ideas Immanent in Nervous Activity, eles apresentam uma discussão sofisticada de redes lógicas de neurônios artificiais que denominaram de neurônio MCP, devido a McCulloch e Pitts."
   },
   {
     "objectID": "index.html#ridge-2",
@@ -1720,5 +1720,33 @@
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Elastic Net",
     "text": "Elastic Net\n\nNesse tipo de modelo de gressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-1",
+    "href": "index.html#redes-neurais-artificiais-1",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\n\n\n \n\nO aprendizado de redes artificiais veio a ser objeto de estudo somente alguns anos depois do trabalho de McCulloch e Pitts. O primeiro trabalho foi proposto por Donald Hebb em 1949, em que ele propôs uma teoria para explicar o aprendizado em neurônios biológicos baseada no reforço das ligações sinápticas entre neurônios excitados. A regra de Hebb, como é conhecida a sua teoria na comunidade de RNAs, foi interpretada do ponto de vista matemático, e é hoje utilizada em vários algoritmos de aprendizado.\n\nEm 1958, Rank Rosenblatt demonstrou, com seu novo modelo, o perceptron, que se fossem acescidas de sinapes ajustáveis as RNAs com neurônios MCP poderiam ser treinadas para classificar certos tipos de padrões. Rosenblatt descreveu uma topologia de RNA, estruturas de ligação entre os neurônios e, o mais importante, porpôs uma algoritmo para treinar a rede."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-2",
+    "href": "index.html#redes-neurais-artificiais-2",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nDo ponto de vista matemático, no contexto de regressão, uma RNA trata-se de um estimador não linear de r({\\bf x}) = \\mathbb{E}(Y|{\\bf X}) que pode ser representado por uma estrutura, que denominaremos de arquitetura da rede, como a da Figura que segue:\n\n\n\n\n\n\nFigura 1: Exemplo de uma simples rede neural feedforward, com apenas uma camada oculta, aplicável à umm problema de regressão.\n\n\n\nA Figura 1 ao lado é um exemplo representativo de uma RNA com apenas uma camada oculta. As “bolinhas” representam os neurônios, em que os verdes são denominados de “camada de entrada”. No exemplo, {\\bf x} = (x_1, x_2, x_3) representam covariáveis de nossa base de dados 💾. Cada flecha (arresta) representa uma conexão e possui um peso que denotaremos por \\beta, sendo estes os parâmetros de nossa rede neural que desejamos otimizar. A camada de saída representa a nossa estimativa de r({\\bf x}), i.e., \\widehat{r}({\\bf x})."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-3",
+    "href": "index.html#redes-neurais-artificiais-3",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nCada nó (neurônio) de uma camada posterior, em uma rede feedforward, i.e., redes com topologias cujo os sinais são propragados para frente, são transformações dos sinais dos neurônios das camadas anteriores.\n\nÉ importante deixar claro que existem diversas topologias de redes neurais, em que o número de camadas ocultas e o número de neurônios que irá compor cada uma das camadas é decidido por quem faz a análise. São hiperparâmetros que poderão ser investigados de modo a reduzir o risco preditivo R(g).\n\nVocê poderá visualizar a representação de diversas topologias/arquiteturas de RNAs clicando aqui. Esses são apenas exemplos de topologias de redes e você poderá em uma pesquisa rápida na internet encontrar diversas outras representações. Muitas delas já encontram-se implementadas em diversos frameworks de aprendizagem de máquina."
+  },
+  {
+    "objectID": "index.html#redes-neurais-artificiais-4",
+    "href": "index.html#redes-neurais-artificiais-4",
+    "title": "Machine Learning / Aprendizagem de Máquina",
+    "section": "🧠 Redes neurais artificiais",
+    "text": "🧠 Redes neurais artificiais\n\nDiversas arquiteturas de redes neurais já foram experimentadas. Por exemplo, algumas são úteis para problemas de classificação de imagens, outras possuem uma performance melhor para classificação de áudios, outras com boa performance em problemas de regressão, e assim por diante. Por exemplo, as RNAs feedforwards (redes de propagação direta), em suas diferentes topologias/arquiteturas, possuem boa performance em problemas de regressão, classificação, reconhecimento de padrões, entre outros. Sendo assim, é possível tratar uma gama muito ampla de problemas com redes neurais feedforwards. 🎉\n\nUma rede feedforward normalmente terá limitações quando se trata de capturar dependências temporais. Porém, em muitos problemas em que não há uma dependência temporal nos dados, as redes feedforwards poderá ser uma escolha conveniente.\n\n\n\n\nAnimação de uma rede neural com propagação direta - feedforward, em que os sinais percorrem em um único sentido. O fluxo do sinal, destacado em branco representa os neurônios excitados nas respectivas camadas, de acordo dado um vetor de entrada {\\bf x}. Aqui, a camada de saída possui vários neurônios, sendo esta a representação de um problema de classificação. Se a camada de saída houversse apenas um neurônio, como na rede da Figura 1, este seria um problema de regressão.\n\n\n\n\n\nDepartamento de Estatística da UFPB"
   }
 ]
