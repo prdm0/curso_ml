@@ -6275,7 +6275,7 @@ O valor $\eta > 0$ é denominado de **taxa de aprendizado**, e controla o tamanh
 
 <br>
 
-Muitas variações do algoritmo *backpropagation* surgiram, como é o caso do gradiente descendente estocástico, que nada mais é que o algoritmo *backpropagation* em apenas uma parte do conjunto de treinamento, denominados de lotes ou *mini-batches*. Esses lotes são sorteados aleatoriamente e utiliza-se apenas um desses lotes por vez, durante o processo de atualização dos pessos da rede neural. Esse de atualização aumenta a eficiência computacional, reduz o uso de memória, introduz estocasticidade que pode evitar mínimos locais indesejados, permitindo uma exploração mais ampla do espaço de parâmetros.
+Muitas variações do algoritmo *backpropagation* surgiram, como é o caso do gradiente descendente estocástico, que nada mais é que o algoritmo *backpropagation* em apenas uma parte do conjunto de treinamento, denominados de lotes ou *mini-batches*. Esses lotes são sorteados aleatoriamente e de tamanhos aproximadamente iguais. É utilizado apenas um desses lotes por vez, durante o processo de atualização dos pesos da RNA. Esse de atualização aumenta a eficiência computacional, reduz o uso de memória, introduz estocasticidade que pode evitar mínimos locais indesejados permitindo, assim, uma exploração mais ampla do espaço de parâmetros.
 
 <br>
 
