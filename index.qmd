@@ -6284,3 +6284,17 @@ Com o gradiente descendente estocástico, o problema de *overffiting* é menor. 
 <br>
 
 ![](gifs/pensativo.gif)
+
+## 🧠 Redes neurais artificiais
+
+<br>
+
+No conceito de gradiente descendente estocástico, a atualização dos pesos é realizada em cada um dos lotes. Dizemos, portanto, que o treinamento ocorreu em uma **época**. O conceito de época (*epoch*) é comum em RNA e consiste em realizar o treinamento com todos os *batches*. Normalmente, escolhemos treinar nossa rede usando várias épocas, i.e., em cada época novos lotes são sorteados, permitindo que a rede não aprenda padrões dependentes da ordem dos dados de treinamento, ajudando expor a rede a uma diversidade de exemplos, tornando o aprendizado mais robusto.
+
+<br>
+
+Uma forma muito comum de tentar regularizar uma RNA e diminuir o *overfitting* é realizar *dropout*, que consiste em sortear neurônios que não irão ser atualizados. Em palavras, consistem em "fingir" que não existem alguns neurônios no processo de atualização dos pesos. Também podemos introduzir uma penalização, assim como na regressão lasso.
+
+<br>
+
+![](gifs/hum.gif)
