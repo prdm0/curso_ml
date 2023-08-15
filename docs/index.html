@@ -488,8 +488,8 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <h2>Meu segundo lar</h2>
 <div class="cell" width="100" height="100">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-37972281e2f93897d178" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-37972281e2f93897d178">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-17b53cfb8e30cb878b80" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-17b53cfb8e30cb878b80">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addMarkers","args":[-7.1404,-34.846199,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"limits":{"lat":[-7.1404,-7.1404],"lng":[-34.846199,-34.846199]},"setView":[[-7.1404,-34.846199],37,{"maxWidth":1500,"minWidth":1600,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 <p>Departamento de Estatística da UFPB.</p>
 </div>
 </div>
@@ -4165,9 +4165,20 @@ Prof.&nbsp;Dr.&nbsp;Pedro Rafael D. Marinho<br>Departamento de Estatística - UF
 <p>De forma mais específica, em cada passo do algoritmo <em>backpropagation</em> o peso <span class="math inline">\beta_{i,j}^l</span> é atualizado por</p>
 <p><br></p>
 <p><span id="eq-backpropagation"><span class="math display">\beta_{i,j}^l \leftarrow \beta_{i,j}^l - \eta \frac{\partial EQM(g_\beta)}{\partial\beta_{i,j}^l}, \tag{12}</span></span> com <span class="math inline">j = 1, \cdots, d_{l + 1}</span> e <span class="math inline">i = 0, \cdots, d_l</span>, em que <span class="math inline">l = H, \cdots, 0</span>. Lembre-se que o gradiente de uma função aponta para a direção de maior crescimento de uma função. Portanto, o gradiente com sinal trocado irá apontar para a região de descida mais rápida, e é por isso que a atualização do peso é feita subtraindo do gradiente, conforme a <a href="#/redes-neurais-artificiais-16" class="quarto-xref">Equação&nbsp;12</a>.</p>
+<p><br></p>
+<p>O valor <span class="math inline">\eta &gt; 0</span> é denominado de <strong>taxa de aprendizado</strong>, e controla o tamanho do passo que o algoritmo de otimização dá em direção ao mínimo da função de perda. Valores altos para <span class="math inline">\eta</span> pode levar a oscilações e a dificuldades para convergir, enquanto uma taxa de aprendizado muito baixa pode resultar em convergência lenta.</p>
+</section>
+<section id="redes-neurais-artificiais-17" class="slide level2">
+<h2>🧠 Redes neurais artificiais</h2>
+<p><br></p>
+<p>Muitas variações do algoritmo <em>backpropagation</em> surgiram, como é o caso do gradiente descendente estocástico, que nada mais é que o algoritmo <em>backpropagation</em> em apenas uma parte do conjunto de treinamento, denominados de lotes ou <em>mini-batches</em>. Esses lotes são sorteados aleatoriamente e utiliza-se apenas um desses lotes por vez, durante o processo de atualização dos pessos da rede neural. Esse de atualização aumenta a eficiência computacional, reduz o uso de memória, introduz estocasticidade que pode evitar mínimos locais indesejados, permitindo uma exploração mais ampla do espaço de parâmetros.</p>
+<p><br></p>
+<p>Com o gradiente descendente estocástico, o problema de <em>overffiting</em> é menor. Essa metodologia realiza uma espécie de regularização da rede e possui boas propriedades que ainda não são muito bem entendidas.</p>
+<p><br></p>
+<p><img data-src="gifs/pensativo.gif"></p>
 
-
-<img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="https://www.ufpb.br/de/contents/imagens/logode.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://www.ufpb.br/de">Departamento de Estatística da UFPB</a></p>
 </div>
 </section></section>
