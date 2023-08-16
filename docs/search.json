@@ -1719,7 +1719,7 @@
     "href": "index.html#elastic-net-1",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "Elastic Net",
-    "text": "Elastic Net\n\nNesse tipo de modelo de regressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1."
+    "text": "Elastic Net\n\nNesse tipo de modelo de regressão, combina-se as penalizações da regressão ridge com a utilizada na regressão lasso, herdando os benefícios do uso de cada um dos métodos isoladamente, melhorando a estabilidade das estimativas do lasso, em situações de multicolinearidade entre as variáveis e também permitindo a seleção automática de variáveis.\n(1-\\alpha)\\widehat{\\beta}_{L_2,\\lambda} + \\alpha\\widehat{\\beta}_{L_1,\\lambda}, em que 0 \\leq \\alpha \\leq1. Em R, basta especificar para a função glmnet um valor de \\alpha diferente de 0 e 1. Esse valor normalmente é escolhido por um procedimento de validação cruzada."
   },
   {
     "objectID": "index.html#redes-neurais-artificiais-1",

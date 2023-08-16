@@ -3409,7 +3409,7 @@ variáveis e também permitindo a seleção automática de variáveis.
 
 $$(1-\alpha)\widehat{\beta}_{L_2,\lambda} + \alpha\widehat{\beta}_{L_1,\lambda},$$
 em que $0 \leq \alpha \leq1$. Em R, basta especificar para a função
-[`glmnet`](https://www.rdocumentation.org/packages/glmnet/versions/4.1-7/topics/glmnet) um valor de $\alpha$ diferente de 0 e 1.
+[`glmnet`](https://www.rdocumentation.org/packages/glmnet/versions/4.1-7/topics/glmnet) um valor de $\alpha$ diferente de 0 e 1. Esse valor normalmente é escolhido por um procedimento de validação cruzada.
 
 <br>
 
