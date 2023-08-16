@@ -3401,7 +3401,7 @@ Note que para $\alpha = 1$, temos uma regressão do tipo lasso, já para $\alpha
 
 <br>
 
-Nesse tipo de modelo de gressão, combina-se as penalizações da regressão
+Nesse tipo de modelo de regressão, combina-se as penalizações da regressão
 ridge com a utilizada na regressão lasso, herdando os benefícios do uso
 de cada um dos métodos isoladamente, melhorando a estabilidade das
 estimativas do lasso, em situações de multicolinearidade entre as
