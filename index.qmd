@@ -3699,7 +3699,7 @@ Qualquer abordagem paramétrica trás consigo a possibilidade de que a
 forma funcional $g$ para estimar $f$ seja muito diferente da verdadeira,
 claro, se o modelo resultante não se ajustar bem aos dados, isto é
 $\widehat{g}$ não tem boa capacidade preditiva, muito embora, também é
-possível que tenhamos $\widehat{g}$ com boa capacidade preditiva, porém,
+possível que tenhamos $\widehat{g}$ com boa capacidade preditiva, mesmo que $g$
 não represente a estrutura real de $f$ (sempre desconhecida).
 
 ## Métodos não-paramétricos
@@ -3745,7 +3745,7 @@ de ${\bf x}$.
 Formalmente, temos que
 
 $$g({\bf x^*}) = \frac{1}{k}\sum_{i \in \mathcal{N}_{\bf x^*}}y_i,$$ em
-que $\mathcal{N}_{\bf x}$ é o conjunto índices das $k$ observações mais
+que $\mathcal{N}_{\bf x^*}$ é o conjunto índices das $k$ observações mais
 próximas de ${\bf x}$, i.e,
 
 $$\mathcal{N}_{\bf x^*} = \{i \in \{1, \cdots, n\}\, : \, d({\bf x}_i, {\bf x^*}) \leq d_{\bf x^*}^k\},$$
