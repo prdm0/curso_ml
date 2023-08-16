@@ -3681,7 +3681,7 @@ naturalmente aumentará o viés, na maioria das vezes.
 
 Em situações em que temos muitos dados ($n$ grande), os modelos
 não-paramétricos possuem, em geral, boa peformance, uma vez que apesar
-de que nessa classe de modelos existir um aumento da variância, porém,
+de que nessa classe de modelos existir um aumento da variância, 
 seguida de uma redução de viés, a variância do modelo não aumenta muito.
 
 <br>
