@@ -949,14 +949,14 @@
     "href": "index.html#exercícios-3",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Utilizando os dados de vinho vermelho🍷, disponíveis aqui, obtenha o melhor modelo de regressão linear para modelar a qualidade do vinho, considerando:\n\n\ng_1 - Método dos mínimos quadrados;\ng_2 - Regressão ridge;\ng_3 - Regressao lasso;\ng_4 - Elastic Net.\n\n\nVocê deverá selecionar o melhor modelo de cada uma das classes de modelos de regressão e construir uma tabela com o risco estimado \\widehat{R}(g_i),\\,\\, i = 1, \\cdots, 4, em que aqui g_i representa o modelo geral não estimado. Ao fim, construa quatro gráficos mostrando o ajuste de cada um dos modelos.\n\nExercício: Se você utilizou o tidymodels para resolver o exercício anterior, rafaça usando a biblioteca glmnet. Caso contrário, resolva-o utilizando o tidymodels."
+    "text": "📚 Exercícios\n\nExercício: Utilizando os dados de vinho vermelho🍷, disponíveis aqui, obtenha o melhor modelo de regressão linear para modelar a qualidade do vinho, considerando:\n\n\ng_1 - Método dos mínimos quadrados;\ng_2 - Regressão ridge;\ng_3 - Regressao lasso;\ng_4 - Elastic Net.\n\n\nVocê deverá selecionar o melhor modelo de cada uma das classes de modelos de regressão e construir uma tabela com o risco estimado \\widehat{R}(g_i),\\,\\, i = 1, \\cdots, 4, em que aqui, g_i representa o modelo geral não estimado. Ao fim, construa quatro gráficos mostrando o ajuste de cada um dos modelos.\n\nExercício: Se você utilizou o tidymodels para resolver o exercício anterior, rafaça usando a biblioteca glmnet. Caso contrário, resolva-o utilizando o tidymodels."
   },
   {
     "objectID": "index.html#exercícios-4",
     "href": "index.html#exercícios-4",
     "title": "Machine Learning / Aprendizagem de Máquina",
     "section": "📚 Exercícios",
-    "text": "📚 Exercícios\n\nExercício: Considere agora o conjunto de dados de despesas médicas, disponível aqui, refaça o mesmo exercício dos dados de vinho vermelho, em que aqui, o objetivo é prever a variável charges. Perceba que algumas variáveis são qualitativas, e portão, você deverá transformá-las em dummy. Indique os melhores cenários dos quatro modelos e informe qual modelo você utilizaria. Explique!"
+    "text": "📚 Exercícios\n\nExercício: Considere agora o conjunto de dados de despesas médicas, disponível aqui. Refaça o mesmo exercício dos dados de vinho vermelho, em que aqui, o objetivo é prever a variável charges. Perceba que algumas variáveis são qualitativas, e portanto, você deverá transformá-las em dummy. Indique os melhores cenários dos quatro modelos e informe qual modelo você utilizaria. Explique! Dica: usando a função step_dummy() da biblioteca recipes, você poderá facilmente transformar variáveis qualitativas em numéricas."
   },
   {
     "objectID": "index.html#métodos-não-paramétricos",
