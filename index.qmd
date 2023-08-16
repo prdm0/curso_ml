@@ -3607,7 +3607,7 @@ das variáveis.
 
 [Exercício]{.red}: Utilizando os dados de vinho vermelho🍷, disponíveis
 [aqui](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009),
-obtenha o melhor modelo de regressão linar para modelar a qualidade do
+obtenha o melhor modelo de regressão linear para modelar a qualidade do
 vinho, considerando:
 
 <br>
