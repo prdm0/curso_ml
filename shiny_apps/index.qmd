@@ -10,11 +10,8 @@ output:
       secondary: "#EB6864"
     favicon: "img/logo.png"
     navbar:
-      - { icon: "fa-link", href: "https://tecnologiageo.com.br/", align: right}
-      - { icon: "fa-twitter", href: "https://twitter.com/tecgeobr", align: right}
-      - { icon: "fa-facebook", href: "https://www.facebook.com/tecnologiageo", align: right}
-      - { icon: "fa-instagram", href: "https://www.instagram.com/tecgeobr/", align: right}
-      - { icon: "fa-linkedin", href: "https://www.linkedin.com/company/tecgeo/?originalSubdomain=br", align: right}
+      - { icon: "fa-link", href: "https://github.com/prdm0", align: right}
+      - { icon: "fa-linkedin", href: "https://www.linkedin.com/in/prdm0/", align: right}
     options: (shiny.maxRequestSize = 700*1024^2)
 runtime: shiny
 ---
@@ -498,3 +495,166 @@ renderPlot({
   )
 })
 ```
+
+<!-- # Maria Eduarda {data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced"} -->
+
+<!-- Column -->
+<!-- ------------------------------------- -->
+
+<!-- ### Entrada de informações -->
+
+<!-- Considere a variável aleatória -->
+<!-- $Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com -->
+<!-- $X_i \in \mathcal{U}(0, 10)\,, \forall i.$ -->
+
+<!-- Essa é a regressão real, nesse experimento. O objetivo foi avaliar as estatística abaixo: -->
+
+
+<!-- $$P^2 = 1 - \frac{PRESS}{SST_{(-i)}}, $$ -->
+<!-- $i = 1, \cdots, n$· -->
+
+<!-- O que chamo de estratégia, é calcular $P^2$ com o mesmo conjunto de dados utilizado para ajustar a regressão polinomial (**treino**) e calcular $P^2$ usando uma amostra independente (**teste**). -->
+
+<!-- ```{r} -->
+<!-- selectInput("loacv", label = "Estratégia:", -->
+<!--             choices = c("Usar treino" = FALSE, "Usar teste" = TRUE)) -->
+<!-- ``` -->
+
+<!-- Column -->
+<!-- ------------------------------------- -->
+
+<!-- ### Estimativa -->
+
+<!-- ```{r} -->
+<!-- library(rsample) -->
+<!-- library(yardstick) -->
+<!-- library(tibble) -->
+<!-- library(purrr) -->
+<!-- library(ggplot2) -->
+<!-- library(patchwork) -->
+
+<!-- # Função de regressão verdadeira. Na prática é desconhecida. -->
+<!-- regressao_verdadeira <- function(x) -->
+<!--   45 * tanh(x/1.9 - 7) + 57 -->
+
+<!-- observacoes_regressao_real <- function(n, desvio_padrao = 0.2) { -->
+<!--   # Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na -->
+<!--   # pratica -->
+<!--   seq_x <- sample(seq(0, 17.5, length.out = n), size = n, replace = TRUE) -->
+
+<!--   step <- function(x) -->
+<!--     regressao_verdadeira(x) + rnorm(n = 1L, mean = 0, sd = desvio_padrao) -->
+
+<!--   tibble::tibble(y = purrr::map_vec(.x = seq_x, .f = step), x = seq_x) -->
+<!-- } -->
+
+<!-- iteracoes <- function(tibble_data, grau) { -->
+<!--   x <- tibble_data$x -->
+<!--   iteracoes <- lapply(X = 2L:grau, FUN = function(i) x^i) -->
+
+<!--   result <- cbind(tibble_data, do.call(cbind, iteracoes)) -->
+<!--   colnames(result)[(ncol(tibble_data) + 1):ncol(result)] <- paste0("x", 2L:grau) -->
+
+<!--   as_tibble(result) -->
+<!-- } -->
+
+<!-- dados <- observacoes_regressao_real(n = 1000L, desvio_padrao = 0.01) -->
+
+<!-- regressao_polinomial <- function(dados, grau = 1L) { -->
+<!--   if(grau >= 2L) -->
+<!--     dados <- iteracoes(dados, grau = grau) -->
+
+<!--   lm(formula = y ~ ., data = dados) -->
+<!-- } -->
+
+<!-- sst <- function(y) { -->
+<!--   n <- length(y)  # Tamanho do vetor y -->
+<!--   sum_of_squares <- 0 -->
+
+<!--   for (i in 1:n) { -->
+<!--     y_without_i <- y[-i]  # Remover a i-ésima observação -->
+<!--     mean_without_i <- mean(y_without_i)  # Média do vetor sem a i-ésima observação -->
+<!--     sum_of_squares <- sum_of_squares + (y[i] - mean_without_i)^2 -->
+<!--   } -->
+
+<!--   return(sum_of_squares) -->
+<!-- } -->
+
+<!-- # v-folds cross-validation -->
+<!-- validacao <- function(dados, grau = 1L){ -->
+
+<!--   # Divisão dos dados -->
+<!--   divisao_inicial <- rsample::initial_split(dados) -->
+<!--   treinamento <- rsample::training(divisao_inicial) -->
+<!--   teste <- rsample::testing(divisao_inicial) # Teste final -->
+
+<!--   ajuste <- regressao_polinomial(dados = treinamento, grau = grau) -->
+
+<!--   X <- as.matrix(treinamento[,-1L]) -->
+<!--   H <- X%*%solve(t(X)%*%X)%*%t(X) -->
+<!--   df_treino <- iteracoes(treinamento, grau = grau) -->
+<!--   y_chapeu <- predict(ajuste, newdata = df_treino) -->
+<!--   errado <- sum(((df_treino$y - y_chapeu)/(1 - diag(H)))^2) -->
+
+<!--   errado <- 1 - errado/sst(df_treino$y) -->
+
+<!--   X <- as.matrix(teste[,-1L]) -->
+<!--   H <- X%*%solve(t(X)%*%X)%*%t(X) -->
+<!--   df_teste <- iteracoes(teste, grau = grau) -->
+<!--   y_chapeu <- predict(ajuste, newdata = df_teste) -->
+<!--   certo <- sum(((df_teste$y - y_chapeu)/(1 - diag(H)))^2) -->
+
+<!--   certo <- 1 - certo/sst(df_teste$y) -->
+
+<!--   c(certo = certo, errado = errado) -->
+<!-- } -->
+
+<!-- plot_avaliacao <- function(dados, errado = FALSE){ -->
+<!--   # Testando iterativamente, vários valores de p: -->
+<!--   p <- seq(1L:20L) -->
+<!--   risco <- purrr::map(.x = p, .f = \(p) validacao(dados = dados, grau = p)) -->
+<!--   df_risco <- unlist(risco) |> matrix(byrow = TRUE, ncol =2) |> tibble::as_tibble() -->
+<!--   names(df_risco) <- c("certo", "errado") -->
+<!--   df_risco$p <- p -->
+
+<!--   if(errado){ -->
+<!--     # Plotando -->
+<!--     df_risco |> -->
+<!--       ggplot(aes(x = p, y = errado, color = errado)) + -->
+<!--       geom_point(size = 5) + -->
+<!--       scale_x_continuous(breaks = p) + -->
+<!--       scale_y_continuous(breaks = p) + -->
+<!--       labs( -->
+<!--         title = "Avaliando P^2", -->
+<!--         subtitle = "Usando o conjunto de dados de treino" -->
+<!--       ) + -->
+<!--       theme( -->
+<!--         plot.title = element_text(size = 18, face = "bold"), -->
+<!--         plot.subtitle = element_text(size = 16), -->
+<!--         axis.text = element_text(size = 10), -->
+<!--         axis.title = element_text(size = 14, face = "bold") -->
+<!--       ) -->
+<!--   } else { -->
+<!--     df_risco |> -->
+<!--       ggplot(aes(x = p, y = certo, color = certo)) + -->
+<!--       geom_point(size = 5) + -->
+<!--       scale_x_continuous(breaks = p) + -->
+<!--       scale_y_continuous(breaks = p) + -->
+<!--       labs( -->
+<!--         title = "Avaliando P^2", -->
+<!--         subtitle = "Usando um conjunto de dados independente" -->
+<!--       ) + -->
+<!--       theme( -->
+<!--         plot.title = element_text(size = 18, face = "bold"), -->
+<!--         plot.subtitle = element_text(size = 16), -->
+<!--         axis.text = element_text(size = 10), -->
+<!--         axis.title = element_text(size = 14, face = "bold") -->
+<!--       ) -->
+<!--   } -->
+<!-- } -->
+
+<!-- renderPlot({ -->
+<!--   plot_avaliacao(dados, errado = input$loacv) -->
+<!-- }) -->
+<!-- ``` -->
+

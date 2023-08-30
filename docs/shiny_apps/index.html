@@ -197,76 +197,85 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(evaluate)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ranger)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Função de regressão verdadeira. Na prática é desconhecida.</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>regressao_verdadeira <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">45</span> <span class="sc">*</span> <span class="fu">tanh</span>(x<span class="sc">/</span><span class="fl">1.9</span> <span class="sc">-</span> <span class="dv">7</span>) <span class="sc">+</span> <span class="dv">57</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>observacoes_regressao_real <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">desvio_padrao =</span> <span class="fl">0.2</span>) {</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na </span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pratica</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  seq_x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">17.5</span>, <span class="at">length.out =</span> n), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  step <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">regressao_verdadeira</span>(x) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> 1L, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> desvio_padrao)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">y =</span> purrr<span class="sc">::</span><span class="fu">map_vec</span>(<span class="at">.x =</span> seq_x, <span class="at">.f =</span> step), <span class="at">x =</span> seq_x)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Usaremos uma regressão polinomial para tentar ajustar à regressão -------</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>regressao_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 30L, <span class="at">desvio_padrao =</span> <span class="dv">4</span>, <span class="at">grau =</span> 1L) {</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">observacoes_regressao_real</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>      x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>      result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_tibble</span>(result)</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  }  </span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  ajuste <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste, <span class="at">new.data =</span> dados)</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span> </span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">relocate</span>(y_chapeu, <span class="at">.before =</span> x)</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>plotando <span class="ot">&lt;-</span> <span class="cf">function</span>(dados){</span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span>  </span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu)) <span class="sc">+</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>mc_ajustes <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">mc =</span> 100L, <span class="at">n =</span> 50L, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> 1L){</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> </span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">17.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>)) <span class="sc">+</span>      </span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ylab</span>(<span class="st">"Valores estimados"</span>)</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> 1L<span class="sc">:</span>mc){</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">regressao_polinomial</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao, <span class="at">grau =</span> grau)</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu))</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">+</span> </span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> regressao_verdadeira, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Regressão Polinomial"</span>,</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Grau: "</span>, grau)</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xgboost)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'xgboost'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    slice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função de regressão verdadeira. Na prática é desconhecida.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>regressao_verdadeira <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">45</span> <span class="sc">*</span> <span class="fu">tanh</span>(x<span class="sc">/</span><span class="fl">1.9</span> <span class="sc">-</span> <span class="dv">7</span>) <span class="sc">+</span> <span class="dv">57</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>observacoes_regressao_real <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">desvio_padrao =</span> <span class="fl">0.2</span>) {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pratica</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  seq_x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">17.5</span>, <span class="at">length.out =</span> n), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  step <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">regressao_verdadeira</span>(x) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> 1L, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> desvio_padrao)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">y =</span> purrr<span class="sc">::</span><span class="fu">map_vec</span>(<span class="at">.x =</span> seq_x, <span class="at">.f =</span> step), <span class="at">x =</span> seq_x)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Usaremos uma regressão polinomial para tentar ajustar à regressão -------</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>regressao_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 30L, <span class="at">desvio_padrao =</span> <span class="dv">4</span>, <span class="at">grau =</span> 1L) {</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">observacoes_regressao_real</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>      x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>      iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_tibble</span>(result)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  ajuste <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste, <span class="at">new.data =</span> dados)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span> </span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">relocate</span>(y_chapeu, <span class="at">.before =</span> x)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>plotando <span class="ot">&lt;-</span> <span class="cf">function</span>(dados){</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span>  </span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu)) <span class="sc">+</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>mc_ajustes <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">mc =</span> 100L, <span class="at">n =</span> 50L, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> 1L){</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> </span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">17.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>)) <span class="sc">+</span>      </span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ylab</span>(<span class="st">"Valores estimados"</span>)</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> 1L<span class="sc">:</span>mc){</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">regressao_polinomial</span>(<span class="at">n =</span> n, <span class="at">desvio_padrao =</span> desvio_padrao, <span class="at">grau =</span> grau)</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_chapeu))</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">+</span> </span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> regressao_verdadeira, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Regressão Polinomial"</span>,</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Grau: "</span>, grau)</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sobre" class="level1" data-icon="fa-home">
 <h1 data-icon="fa-home">Sobre</h1>
@@ -274,7 +283,7 @@ Attaching package: 'dplyr'</code></pre>
 <h2 data-width="full" class="anchored" data-anchor-id="rows">Rows</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out5b505537604c8681" style="width:100%;height:400px;"></div>
+<div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="outa255015df4b57539" style="width:100%;height:400px;"></div>
 </div>
 </div>
 <p><br></p>
@@ -288,27 +297,27 @@ Attaching package: 'dplyr'</code></pre>
 <section id="entrada-de-informações" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações">Entrada de informações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"numeromodelos"</span>, <span class="st">"Número de modelos:"</span>,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"numeromodelos"</span>, <span class="st">"Número de modelos:"</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="numeromodelos-label" for="numeromodelos">Número de modelos:</label>
 <input class="js-range-slider" id="numeromodelos" data-skin="shiny" data-min="1" data-max="100" data-from="50" data-step="1" data-grid="true" data-grid-num="9.9" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"tamanhoamostral"</span>, <span class="st">"Tamanho amostral:"</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">100</span>, <span class="at">max =</span> <span class="dv">250</span>, <span class="at">value =</span> <span class="dv">100</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"tamanhoamostral"</span>, <span class="st">"Tamanho amostral:"</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">100</span>, <span class="at">max =</span> <span class="dv">250</span>, <span class="at">value =</span> <span class="dv">100</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="tamanhoamostral-label" for="tamanhoamostral">Tamanho amostral:</label>
 <input class="js-range-slider" id="tamanhoamostral" data-skin="shiny" data-min="100" data-max="250" data-from="100" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau"</span>, <span class="st">"Grau do polinômio:"</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">200</span>, <span class="at">value =</span> <span class="dv">1</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau"</span>, <span class="st">"Grau do polinômio:"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">200</span>, <span class="at">value =</span> <span class="dv">1</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="grau-label" for="grau">Grau do polinômio:</label>
@@ -323,11 +332,11 @@ Attaching package: 'dplyr'</code></pre>
 <section id="resultado-gráfico-das-simulações" class="level3">
 <h3 class="anchored" data-anchor-id="resultado-gráfico-das-simulações">Resultado gráfico das simulações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc_ajustes</span>(<span class="at">mc =</span> input<span class="sc">$</span>numeromodelos, <span class="at">n =</span> input<span class="sc">$</span>tamanhoamostral, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> input<span class="sc">$</span>grau)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc_ajustes</span>(<span class="at">mc =</span> input<span class="sc">$</span>numeromodelos, <span class="at">n =</span> input<span class="sc">$</span>tamanhoamostral, <span class="at">desvio_padrao =</span> <span class="dv">5</span>, <span class="at">grau =</span> input<span class="sc">$</span>grau)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out5d44001e65d07d68" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="outc3fb94a44e694282" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -340,92 +349,92 @@ Attaching package: 'dplyr'</code></pre>
 <section id="entrada-de-informações-1" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações-1">Entrada de informações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau_polinomio"</span>, <span class="st">"Grau do polinômio:"</span>,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> 1L, <span class="at">max =</span> 40L,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> 1L,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">step =</span> 1L</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"grau_polinomio"</span>, <span class="st">"Grau do polinômio:"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> 1L, <span class="at">max =</span> 40L,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> 1L,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">step =</span> 1L</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="grau_polinomio-label" for="grau_polinomio">Grau do polinômio:</label>
 <input class="js-range-slider" id="grau_polinomio" data-skin="shiny" data-min="1" data-max="40" data-from="1" data-step="1" data-grid="true" data-grid-num="9.75" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dados</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(arquivo_temp)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  dados_expectativa_renda <span class="sc">|&gt;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName) <span class="sc">|&gt;</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">y =</span> LifeExpectancy, <span class="at">x =</span> GDPercapita)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(result)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>reg_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L) {</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Divisão dos dados</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>divisao_inicial <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(dados)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(divisao_inicial)</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(divisao_inicial) <span class="co"># Teste final</span></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># v-folds cross-validation</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>validacao <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L, <span class="at">errado =</span> <span class="cn">FALSE</span>, ...){</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Todas as divisões da validacao cruzada</span></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(dados, ...)</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>  hiper <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    treino <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">analysis</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Treinamento</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    validacao <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">assessment</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Validacação</span></span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    ajuste <span class="ot">&lt;-</span> <span class="fu">reg_polinomial</span>(<span class="at">dados =</span> treino, <span class="at">grau =</span> grau)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(errado){</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>      df_treino <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(treino, <span class="at">grau =</span> grau)</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>      df_treino <span class="ot">&lt;-</span> df_treino <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_treino))</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_treino, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>      df_validacao <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(validacao, <span class="at">grau =</span> grau)</span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>      df_validacao <span class="ot">&lt;-</span> df_validacao <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_validacao))</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_validacao, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_dbl</span>(<span class="at">.x =</span> <span class="fu">seq_along</span>(cv<span class="sc">$</span>splits), <span class="at">.f =</span> hiper) <span class="sc">|&gt;</span></span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>plot_bar <span class="ot">&lt;-</span> <span class="cf">function</span>(grau){</span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>  ruim <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">TRUE</span>, <span class="at">grau =</span> grau)</span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  bom <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">FALSE</span>, <span class="at">grau =</span> grau)</span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"Errado"</span>, <span class="st">"Certo"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="fu">log</span>(ruim), <span class="fu">log</span>(bom)))</span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"#0f385d"</span>) <span class="sc">+</span></span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(y, <span class="at">digits =</span> 2L)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estratégia"</span>, <span class="at">y =</span> <span class="st">"EQM estimado"</span>) <span class="sc">+</span></span>
-<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>),</span>
-<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dados</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/prdm0/dados/raw/main/dados_expectativa_renda.RData"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>arquivo_temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> url, <span class="at">destfile =</span> arquivo_temp)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(arquivo_temp)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  dados_expectativa_renda <span class="sc">|&gt;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>CountryName) <span class="sc">|&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">y =</span> LifeExpectancy, <span class="at">x =</span> GDPercapita)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>iteracoes <span class="ot">&lt;-</span> <span class="cf">function</span>(tibble_data, grau) {</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> tibble_data<span class="sc">$</span>x</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  iteracoes <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> 2L<span class="sc">:</span>grau, <span class="at">FUN =</span> <span class="cf">function</span>(i) x<span class="sc">^</span>i)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tibble_data, <span class="fu">do.call</span>(cbind, iteracoes))</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(result)[(<span class="fu">ncol</span>(tibble_data) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">ncol</span>(result)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, 2L<span class="sc">:</span>grau)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(result)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>reg_polinomial <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L) {</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(grau <span class="sc">&gt;=</span> 2L)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(dados, <span class="at">grau =</span> grau)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Divisão dos dados</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>divisao_inicial <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(dados)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>treinamento <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(divisao_inicial)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(divisao_inicial) <span class="co"># Teste final</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co"># v-folds cross-validation</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>validacao <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">grau =</span> 1L, <span class="at">errado =</span> <span class="cn">FALSE</span>, ...){</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Todas as divisões da validacao cruzada</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">vfold_cv</span>(dados, ...)</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  hiper <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    treino <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">analysis</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Treinamento</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    validacao <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">assessment</span>(cv<span class="sc">$</span>splits[[i]]) <span class="co"># Validacação</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    ajuste <span class="ot">&lt;-</span> <span class="fu">reg_polinomial</span>(<span class="at">dados =</span> treino, <span class="at">grau =</span> grau)</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(errado){</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>      df_treino <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(treino, <span class="at">grau =</span> grau)</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>      df_treino <span class="ot">&lt;-</span> df_treino <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_treino))</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_treino, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>      df_validacao <span class="ot">&lt;-</span> <span class="fu">iteracoes</span>(validacao, <span class="at">grau =</span> grau)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>      df_validacao <span class="ot">&lt;-</span> df_validacao <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">y_chapeu =</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> df_validacao))</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>      yardstick<span class="sc">::</span><span class="fu">rmse</span>(<span class="at">data =</span> df_validacao, <span class="at">truth =</span> y, <span class="at">estimate =</span> y_chapeu)<span class="sc">$</span>.estimate</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_dbl</span>(<span class="at">.x =</span> <span class="fu">seq_along</span>(cv<span class="sc">$</span>splits), <span class="at">.f =</span> hiper) <span class="sc">|&gt;</span></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>plot_bar <span class="ot">&lt;-</span> <span class="cf">function</span>(grau){</span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>  ruim <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">TRUE</span>, <span class="at">grau =</span> grau)</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>  bom <span class="ot">&lt;-</span> <span class="fu">validacao</span>(dados, <span class="at">errado =</span> <span class="cn">FALSE</span>, <span class="at">grau =</span> grau)</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"Errado"</span>, <span class="st">"Certo"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="fu">log</span>(ruim), <span class="fu">log</span>(bom)))</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"#0f385d"</span>) <span class="sc">+</span></span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(y, <span class="at">digits =</span> 2L)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estratégia"</span>, <span class="at">y =</span> <span class="st">"EQM estimado"</span>) <span class="sc">+</span></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -434,11 +443,11 @@ Attaching package: 'dplyr'</code></pre>
 <section id="avaliação-do-risco-estimado" class="level3">
 <h3 class="anchored" data-anchor-id="avaliação-do-risco-estimado">Avaliação do risco estimado</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_bar</span>(input<span class="sc">$</span>grau_polinomio)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_bar</span>(input<span class="sc">$</span>grau_polinomio)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="outc13e9e5819dfbb66" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="outea0913e2902abe3a" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -451,47 +460,47 @@ Attaching package: 'dplyr'</code></pre>
 <section id="entrada-de-informações-2" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações-2">Entrada de informações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"complexidade"</span>, <span class="st">"Valor de complexidade:"</span>,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fl">0.0001</span>, <span class="at">max =</span> <span class="fl">0.4</span>, <span class="at">value =</span> <span class="fl">0.001</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"complexidade"</span>, <span class="st">"Valor de complexidade:"</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fl">0.0001</span>, <span class="at">max =</span> <span class="fl">0.4</span>, <span class="at">value =</span> <span class="fl">0.001</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="complexidade-label" for="complexidade">Valor de complexidade:</label>
 <input class="js-range-slider" id="complexidade" data-skin="shiny" data-min="0.0001" data-max="0.4" data-from="0.001" data-step="0.005" data-grid="true" data-grid-num="9.9975" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>random_y <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 250L, <span class="at">sigma =</span> <span class="fl">0.1</span>){</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="fu">sin</span>(x), <span class="at">sd =</span> sigma))</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>arvore <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">complexidade =</span> <span class="fl">0.5</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, ...){</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(...)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">rpart</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">prune</span>(arvore, <span class="at">cp =</span> complexidade) <span class="co"># Realizando poda</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(arvore, <span class="at">newdata =</span> dados)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando x versus y -----------------------------------------------------</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(x, y_chapeu), <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Árvore de regressão"</span>,</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Parâmetro de coplexidade = {complexidade}"</span>)</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arvore</span>(<span class="at">complexidade =</span> input<span class="sc">$</span>complexidade)</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>random_y <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 250L, <span class="at">sigma =</span> <span class="fl">0.1</span>){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="fu">sin</span>(x), <span class="at">sd =</span> sigma))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>arvore <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, <span class="at">complexidade =</span> <span class="fl">0.5</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, ...){</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(...)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">rpart</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  arvore <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">prune</span>(arvore, <span class="at">cp =</span> complexidade) <span class="co"># Realizando poda</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_chapeu <span class="ot">&lt;-</span> <span class="fu">predict</span>(arvore, <span class="at">newdata =</span> dados)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando x versus y -----------------------------------------------------</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(x, y_chapeu), <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Árvore de regressão"</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Parâmetro de coplexidade = {complexidade}"</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arvore</span>(<span class="at">complexidade =</span> input<span class="sc">$</span>complexidade)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out25e3db0f67dee63b" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="outc1f522104a4057be" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -504,99 +513,99 @@ Attaching package: 'dplyr'</code></pre>
 <section id="entrada-de-informações-3" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações-3">Entrada de informações</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">selectInput</span>(<span class="st">"modelo_bagging_floresta"</span>, <span class="at">label =</span> <span class="st">"Estratégia:"</span>,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Bagging"</span> <span class="ot">=</span> <span class="st">"bagging"</span>, <span class="st">"Random Forest"</span> <span class="ot">=</span> <span class="st">"floresta"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">selectInput</span>(<span class="st">"modelo_bagging_floresta"</span>, <span class="at">label =</span> <span class="st">"Estratégia:"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Bagging"</span> <span class="ot">=</span> <span class="st">"bagging"</span>, <span class="st">"Random Forest"</span> <span class="ot">=</span> <span class="st">"floresta"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display no-overflow-x">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="modelo_bagging_floresta-label" for="modelo_bagging_floresta">Estratégia:</label>
 <div>
-<select id="modelo_bagging_floresta"><option value="bagging" selected="">Bagging</option>
+<select id="modelo_bagging_floresta" class="shiny-input-select"><option value="bagging" selected="">Bagging</option>
 <option value="floresta">Random Forest</option></select>
 <script type="application/json" data-for="modelo_bagging_floresta" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"n_bagging_floresta"</span>, <span class="st">"n:"</span>,</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">250</span>, <span class="at">value =</span> <span class="dv">50</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"n_bagging_floresta"</span>, <span class="st">"n:"</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">250</span>, <span class="at">value =</span> <span class="dv">50</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="n_bagging_floresta-label" for="n_bagging_floresta">n:</label>
 <input class="js-range-slider" id="n_bagging_floresta" data-skin="shiny" data-min="10" data-max="250" data-from="50" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"sd_bagging_floresta"</span>, <span class="st">"Desvio Padrão:"</span>,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fl">0.001</span>, <span class="at">max =</span> <span class="fl">0.7</span>, <span class="at">value =</span> <span class="fl">0.2</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"sd_bagging_floresta"</span>, <span class="st">"Desvio Padrão:"</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fl">0.001</span>, <span class="at">max =</span> <span class="fl">0.7</span>, <span class="at">value =</span> <span class="fl">0.2</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="sd_bagging_floresta-label" for="sd_bagging_floresta">Desvio Padrão:</label>
 <input class="js-range-slider" id="sd_bagging_floresta" data-skin="shiny" data-min="0.001" data-max="0.7" data-from="0.2" data-step="0.005" data-grid="true" data-grid-num="9.98571428571428" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"replicas_bagging_floresta"</span>, <span class="st">"Número de modelos:"</span>,</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span>, <span class="at">step =</span> <span class="dv">1</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"replicas_bagging_floresta"</span>, <span class="st">"Número de modelos:"</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">value =</span> <span class="dv">50</span>, <span class="at">step =</span> <span class="dv">1</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="replicas_bagging_floresta-label" for="replicas_bagging_floresta">Número de modelos:</label>
 <input class="js-range-slider" id="replicas_bagging_floresta" data-skin="shiny" data-min="1" data-max="100" data-from="50" data-step="1" data-grid="true" data-grid-num="9.9" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">m =</span> 10L, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">sigma =</span> <span class="fl">0.1</span>, <span class="at">modelo =</span> <span class="st">"floresta"</span>){</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  cenarios <span class="ot">&lt;-</span> <span class="cf">function</span>(n, sigma){</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(<span class="at">n =</span> n, <span class="at">sigma =</span> sigma)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"bagging"</span>){</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      dados <span class="ot">&lt;-</span> </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        dados[rsample<span class="sc">::</span><span class="fu">bootstraps</span>(dados, <span class="at">times =</span> 1L) <span class="sc">|&gt;</span> </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        _<span class="sc">$</span>splits[[1L]]<span class="sc">$</span>in_id,]</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Modelos</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    arvore <span class="ot">&lt;-</span> </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>      rpart<span class="sc">::</span><span class="fu">rpart</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados) <span class="sc">|&gt;</span> </span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(<span class="at">new.data =</span> dados)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    floresta <span class="ot">&lt;-</span> </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>      ranger<span class="sc">::</span><span class="fu">ranger</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados) <span class="sc">|&gt;</span> </span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(<span class="at">data =</span> dados, <span class="at">type =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>      _<span class="sc">$</span>predictions</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    dados<span class="sc">$</span>y_arvore <span class="ot">&lt;-</span> arvore</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    dados<span class="sc">$</span>y_floresta <span class="ot">&lt;-</span> floresta</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    dados</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  step_arvore <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    resultados <span class="ot">&lt;-</span> <span class="fu">cenarios</span>(<span class="at">n =</span> n, sigma)</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> resultados<span class="sc">$</span>x,</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> resultados<span class="sc">$</span>y,</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">arvore =</span> resultados<span class="sc">$</span>y_arvore,</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">floresta =</span> resultados<span class="sc">$</span>y_floresta</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  resultados_mc <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> 1L<span class="sc">:</span>m, <span class="at">.f =</span> step_arvore)</span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  resultados_mc <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">list_rbind</span>(resultados_mc)</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>  resultados_mc<span class="sc">$</span>modelos <span class="ot">&lt;-</span> <span class="fu">rep</span>(1L<span class="sc">:</span>(<span class="fu">nrow</span>(resultados_mc)<span class="sc">/</span>n), <span class="at">each =</span> n) </span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"floresta"</span>){</span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    resultados_mc <span class="sc">|&gt;</span></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> floresta, <span class="at">color =</span> modelos)) <span class="sc">+</span></span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"bagging"</span>) {</span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>    resultados_mc <span class="sc">|&gt;</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> arvore, <span class="at">color =</span> modelos)) <span class="sc">+</span></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">m =</span> 10L, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">sigma =</span> <span class="fl">0.1</span>, <span class="at">modelo =</span> <span class="st">"floresta"</span>){</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  cenarios <span class="ot">&lt;-</span> <span class="cf">function</span>(n, sigma){</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(<span class="at">n =</span> n, <span class="at">sigma =</span> sigma)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"bagging"</span>){</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      dados <span class="ot">&lt;-</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        dados[rsample<span class="sc">::</span><span class="fu">bootstraps</span>(dados, <span class="at">times =</span> 1L) <span class="sc">|&gt;</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        _<span class="sc">$</span>splits[[1L]]<span class="sc">$</span>in_id,]</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Modelos</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    arvore <span class="ot">&lt;-</span> </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>      rpart<span class="sc">::</span><span class="fu">rpart</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados) <span class="sc">|&gt;</span> </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(<span class="at">new.data =</span> dados)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    floresta <span class="ot">&lt;-</span> </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      ranger<span class="sc">::</span><span class="fu">ranger</span>(<span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados) <span class="sc">|&gt;</span> </span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(<span class="at">data =</span> dados, <span class="at">type =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>      _<span class="sc">$</span>predictions</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    dados<span class="sc">$</span>y_arvore <span class="ot">&lt;-</span> arvore</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    dados<span class="sc">$</span>y_floresta <span class="ot">&lt;-</span> floresta</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    dados</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  step_arvore <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    resultados <span class="ot">&lt;-</span> <span class="fu">cenarios</span>(<span class="at">n =</span> n, sigma)</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> resultados<span class="sc">$</span>x,</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> resultados<span class="sc">$</span>y,</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">arvore =</span> resultados<span class="sc">$</span>y_arvore,</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">floresta =</span> resultados<span class="sc">$</span>y_floresta</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  resultados_mc <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> 1L<span class="sc">:</span>m, <span class="at">.f =</span> step_arvore)</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  resultados_mc <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">list_rbind</span>(resultados_mc)</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>  resultados_mc<span class="sc">$</span>modelos <span class="ot">&lt;-</span> <span class="fu">rep</span>(1L<span class="sc">:</span>(<span class="fu">nrow</span>(resultados_mc)<span class="sc">/</span>n), <span class="at">each =</span> n) </span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando</span></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"floresta"</span>){</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>    resultados_mc <span class="sc">|&gt;</span></span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> floresta, <span class="at">color =</span> modelos)) <span class="sc">+</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(modelo <span class="sc">==</span> <span class="st">"bagging"</span>) {</span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>    resultados_mc <span class="sc">|&gt;</span></span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> arvore, <span class="at">color =</span> modelos)) <span class="sc">+</span></span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -604,16 +613,16 @@ Attaching package: 'dplyr'</code></pre>
 <h2 class="anchored" data-anchor-id="column-6">Column</h2>
 <p>Considere a variável aleatória <span class="math inline">\(Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)\)</span>, com <span class="math inline">\(X_i \in \mathcal{U}(0, 10)\,, \forall i.\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">round</span>(input<span class="sc">$</span>replicas_bagging_floresta,<span class="dv">0</span>),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> input<span class="sc">$</span>n_bagging_floresta,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma =</span> input<span class="sc">$</span>sd_bagging_floresta,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">modelo =</span> input<span class="sc">$</span>modelo_bagging_floresta</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mc</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">round</span>(input<span class="sc">$</span>replicas_bagging_floresta,<span class="dv">0</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> input<span class="sc">$</span>n_bagging_floresta,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma =</span> input<span class="sc">$</span>sd_bagging_floresta,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">modelo =</span> input<span class="sc">$</span>modelo_bagging_floresta</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="shiny-plot-output html-fill-item" id="out312ae18f729542c9" style="width:100%;height:400px;"></div>
+<div class="shiny-plot-output html-fill-item" id="outa4f6e89033cde33b" style="width:100%;height:400px;"></div>
 </div>
 </div>
 </section>
@@ -624,14 +633,54 @@ Attaching package: 'dplyr'</code></pre>
 <h2 class="anchored" data-anchor-id="column-7">Column</h2>
 <section id="entrada-de-informações-4" class="level3">
 <h3 class="anchored" data-anchor-id="entrada-de-informações-4">Entrada de informações</h3>
+<p><strong>Parâmetros para geração dos dados:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"n_boosting"</span>, <span class="st">"Tamanho da amostra:"</span>,</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">50</span>, <span class="at">max =</span> <span class="dv">1000</span>, <span class="at">value =</span> <span class="dv">500</span>, <span class="at">step =</span> <span class="dv">50</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"n_boosting"</span>, <span class="st">"Tamanho da amostra:"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">50</span>, <span class="at">max =</span> <span class="dv">1000</span>, <span class="at">value =</span> <span class="dv">500</span>, <span class="at">step =</span> <span class="dv">50</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
 <label class="control-label" id="n_boosting-label" for="n_boosting">Tamanho da amostra:</label>
 <input class="js-range-slider" id="n_boosting" data-skin="shiny" data-min="50" data-max="1000" data-from="500" data-step="50" data-grid="true" data-grid-num="9.5" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"sigma_boosting"</span>, <span class="st">"Desvio-Padrão:"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">5</span>, <span class="at">value =</span> <span class="fl">0.1</span>, <span class="at">step =</span> <span class="fl">0.1</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="sigma_boosting-label" for="sigma_boosting">Desvio-Padrão:</label>
+<input class="js-range-slider" id="sigma_boosting" data-skin="shiny" data-min="0" data-max="5" data-from="0.1" data-step="0.1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+</div>
+</div>
+</div>
+<p><strong>Parâmetros do bootting:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"b_boosting"</span>, <span class="st">"Número de iterações do boosting:"</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5000</span>, <span class="at">value =</span> <span class="dv">500</span>, <span class="at">step =</span> <span class="dv">20</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="b_boosting-label" for="b_boosting">Número de iterações do boosting:</label>
+<input class="js-range-slider" id="b_boosting" data-skin="shiny" data-min="1" data-max="5000" data-from="500" data-step="20" data-grid="true" data-grid-num="9.998" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"depth_boosting"</span>, <span class="st">"Profundidade da árvore:"</span>,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>, <span class="at">value =</span> <span class="dv">3</span>, <span class="at">step =</span> <span class="dv">1</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="depth_boosting-label" for="depth_boosting">Profundidade da árvore:</label>
+<input class="js-range-slider" id="depth_boosting" data-skin="shiny" data-min="1" data-max="10" data-from="3" data-step="1" data-grid="true" data-grid-num="9" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"learn_boosting"</span>, <span class="st">"Taxa de aprendizado:"</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>, <span class="at">value =</span> <span class="fl">0.001</span>, <span class="at">step =</span> <span class="fl">0.001</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="learn_boosting-label" for="learn_boosting">Taxa de aprendizado:</label>
+<input class="js-range-slider" id="learn_boosting" data-skin="shiny" data-min="0" data-max="1" data-from="0.001" data-step="0.001" data-grid="true" data-grid-num="10" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number">
 </div>
 </div>
 </div>
@@ -641,6 +690,167 @@ Attaching package: 'dplyr'</code></pre>
 <h2 class="anchored" data-anchor-id="column-8">Column</h2>
 <section id="estimativa" class="level3">
 <h3 class="anchored" data-anchor-id="estimativa">Estimativa</h3>
+<p>Considere a variável aleatória <span class="math inline">\(Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)\)</span>, com <span class="math inline">\(X_i \in \mathcal{U}(0, 10)\,, \forall i.\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>boosting <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> 250L, <span class="at">sigma =</span> <span class="fl">0.1</span>, <span class="at">B =</span> 1000L, <span class="at">depth =</span> 4L, <span class="at">lambda =</span> <span class="fl">0.01</span>){</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">random_y</span>(<span class="at">n =</span> n, <span class="at">sigma =</span> sigma)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  modelo <span class="ot">&lt;-</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">boost_tree</span>(<span class="at">trees =</span> B, <span class="at">tree_depth =</span> depth, <span class="at">learn_rate =</span> lambda) <span class="sc">|&gt;</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"xgboost"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  modelo_ajustado <span class="ot">&lt;-</span> </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    parsnip<span class="sc">::</span><span class="fu">fit</span>(<span class="at">object =</span> modelo, <span class="at">formula =</span> y <span class="sc">~</span> ., <span class="at">data =</span> dados)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  dados<span class="sc">$</span>y_boosting <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo_ajustado, <span class="at">new_data =</span> dados)<span class="sc">$</span>.pred</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">|&gt;</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_boosting))</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="fu">renderPlot</span>({</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">boosting</span>(</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> input<span class="sc">$</span>n_boosting,</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma =</span> input<span class="sc">$</span>sigma_boosting,</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> input<span class="sc">$</span>b_boosting,</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">depth =</span> input<span class="sc">$</span>depth_boosting,</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">lambda =</span> input<span class="sc">$</span>learn_boosting</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="shiny-plot-output html-fill-item" id="outdc2e819993bf2bde" style="width:100%;height:400px;"></div>
+</div>
+</div>
+<!-- # Maria Eduarda {data-navmenu="Experiências Interativas" data-icon="fa-scale-balanced"} -->
+<!-- Column -->
+<!-- ------------------------------------- -->
+<!-- ### Entrada de informações -->
+<!-- Considere a variável aleatória -->
+<!-- $Y_i \sim \mathcal{N}(\sin(X_i), \sigma^2)$, com -->
+<!-- $X_i \in \mathcal{U}(0, 10)\,, \forall i.$ -->
+<!-- Essa é a regressão real, nesse experimento. O objetivo foi avaliar as estatística abaixo: -->
+<!-- $$P^2 = 1 - \frac{PRESS}{SST_{(-i)}}, $$ -->
+<!-- $i = 1, \cdots, n$· -->
+<!-- O que chamo de estratégia, é calcular $P^2$ com o mesmo conjunto de dados utilizado para ajustar a regressão polinomial (**treino**) e calcular $P^2$ usando uma amostra independente (**teste**). -->
+<!-- ```{r} -->
+<!-- selectInput("loacv", label = "Estratégia:", -->
+<!--             choices = c("Usar treino" = FALSE, "Usar teste" = TRUE)) -->
+<!-- ``` -->
+<!-- Column -->
+<!-- ------------------------------------- -->
+<!-- ### Estimativa -->
+<!-- ```{r} -->
+<!-- library(rsample) -->
+<!-- library(yardstick) -->
+<!-- library(tibble) -->
+<!-- library(purrr) -->
+<!-- library(ggplot2) -->
+<!-- library(patchwork) -->
+<!-- # Função de regressão verdadeira. Na prática é desconhecida. -->
+<!-- regressao_verdadeira <- function(x) -->
+<!--   45 * tanh(x/1.9 - 7) + 57 -->
+<!-- observacoes_regressao_real <- function(n, desvio_padrao = 0.2) { -->
+<!--   # Permitindo que o mesmo x possa ter dois pontos de y, como ocorre na -->
+<!--   # pratica -->
+<!--   seq_x <- sample(seq(0, 17.5, length.out = n), size = n, replace = TRUE) -->
+<!--   step <- function(x) -->
+<!--     regressao_verdadeira(x) + rnorm(n = 1L, mean = 0, sd = desvio_padrao) -->
+<!--   tibble::tibble(y = purrr::map_vec(.x = seq_x, .f = step), x = seq_x) -->
+<!-- } -->
+<!-- iteracoes <- function(tibble_data, grau) { -->
+<!--   x <- tibble_data$x -->
+<!--   iteracoes <- lapply(X = 2L:grau, FUN = function(i) x^i) -->
+<!--   result <- cbind(tibble_data, do.call(cbind, iteracoes)) -->
+<!--   colnames(result)[(ncol(tibble_data) + 1):ncol(result)] <- paste0("x", 2L:grau) -->
+<!--   as_tibble(result) -->
+<!-- } -->
+<!-- dados <- observacoes_regressao_real(n = 1000L, desvio_padrao = 0.01) -->
+<!-- regressao_polinomial <- function(dados, grau = 1L) { -->
+<!--   if(grau >= 2L) -->
+<!--     dados <- iteracoes(dados, grau = grau) -->
+<!--   lm(formula = y ~ ., data = dados) -->
+<!-- } -->
+<!-- sst <- function(y) { -->
+<!--   n <- length(y)  # Tamanho do vetor y -->
+<!--   sum_of_squares <- 0 -->
+<!--   for (i in 1:n) { -->
+<!--     y_without_i <- y[-i]  # Remover a i-ésima observação -->
+<!--     mean_without_i <- mean(y_without_i)  # Média do vetor sem a i-ésima observação -->
+<!--     sum_of_squares <- sum_of_squares + (y[i] - mean_without_i)^2 -->
+<!--   } -->
+<!--   return(sum_of_squares) -->
+<!-- } -->
+<!-- # v-folds cross-validation -->
+<!-- validacao <- function(dados, grau = 1L){ -->
+<!--   # Divisão dos dados -->
+<!--   divisao_inicial <- rsample::initial_split(dados) -->
+<!--   treinamento <- rsample::training(divisao_inicial) -->
+<!--   teste <- rsample::testing(divisao_inicial) # Teste final -->
+<!--   ajuste <- regressao_polinomial(dados = treinamento, grau = grau) -->
+<!--   X <- as.matrix(treinamento[,-1L]) -->
+<!--   H <- X%*%solve(t(X)%*%X)%*%t(X) -->
+<!--   df_treino <- iteracoes(treinamento, grau = grau) -->
+<!--   y_chapeu <- predict(ajuste, newdata = df_treino) -->
+<!--   errado <- sum(((df_treino$y - y_chapeu)/(1 - diag(H)))^2) -->
+<!--   errado <- 1 - errado/sst(df_treino$y) -->
+<!--   X <- as.matrix(teste[,-1L]) -->
+<!--   H <- X%*%solve(t(X)%*%X)%*%t(X) -->
+<!--   df_teste <- iteracoes(teste, grau = grau) -->
+<!--   y_chapeu <- predict(ajuste, newdata = df_teste) -->
+<!--   certo <- sum(((df_teste$y - y_chapeu)/(1 - diag(H)))^2) -->
+<!--   certo <- 1 - certo/sst(df_teste$y) -->
+<!--   c(certo = certo, errado = errado) -->
+<!-- } -->
+<!-- plot_avaliacao <- function(dados, errado = FALSE){ -->
+<!--   # Testando iterativamente, vários valores de p: -->
+<!--   p <- seq(1L:20L) -->
+<!--   risco <- purrr::map(.x = p, .f = \(p) validacao(dados = dados, grau = p)) -->
+<!--   df_risco <- unlist(risco) |> matrix(byrow = TRUE, ncol =2) |> tibble::as_tibble() -->
+<!--   names(df_risco) <- c("certo", "errado") -->
+<!--   df_risco$p <- p -->
+<!--   if(errado){ -->
+<!--     # Plotando -->
+<!--     df_risco |> -->
+<!--       ggplot(aes(x = p, y = errado, color = errado)) + -->
+<!--       geom_point(size = 5) + -->
+<!--       scale_x_continuous(breaks = p) + -->
+<!--       scale_y_continuous(breaks = p) + -->
+<!--       labs( -->
+<!--         title = "Avaliando P^2", -->
+<!--         subtitle = "Usando o conjunto de dados de treino" -->
+<!--       ) + -->
+<!--       theme( -->
+<!--         plot.title = element_text(size = 18, face = "bold"), -->
+<!--         plot.subtitle = element_text(size = 16), -->
+<!--         axis.text = element_text(size = 10), -->
+<!--         axis.title = element_text(size = 14, face = "bold") -->
+<!--       ) -->
+<!--   } else { -->
+<!--     df_risco |> -->
+<!--       ggplot(aes(x = p, y = certo, color = certo)) + -->
+<!--       geom_point(size = 5) + -->
+<!--       scale_x_continuous(breaks = p) + -->
+<!--       scale_y_continuous(breaks = p) + -->
+<!--       labs( -->
+<!--         title = "Avaliando P^2", -->
+<!--         subtitle = "Usando um conjunto de dados independente" -->
+<!--       ) + -->
+<!--       theme( -->
+<!--         plot.title = element_text(size = 18, face = "bold"), -->
+<!--         plot.subtitle = element_text(size = 16), -->
+<!--         axis.text = element_text(size = 10), -->
+<!--         axis.title = element_text(size = 14, face = "bold") -->
+<!--       ) -->
+<!--   } -->
+<!-- } -->
+<!-- renderPlot({ -->
+<!--   plot_avaliacao(dados, errado = input$loacv) -->
+<!-- }) -->
+<!-- ``` -->
 
 
 </section>

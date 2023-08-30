@@ -4809,7 +4809,7 @@ complexidade de $g$ e $\mathcal{H}$ um subespaço de funções.
 ::: columns
 ::: {.column width="50%"}
 Ocorre que para um espaço de funções arbitrário, a solução para o
-problema seria bastante difícil. A ideia é poder uma grande família de
+problema seria bastante difícil. A ideia é ter uma grande família de
 espaços $\mathcal{H}$ (RKHs) de modo que a solução do problema seja
 relativamente simples de ser implementada.
 :::
@@ -4959,7 +4959,7 @@ como
 
 $$K({\bf x}_a,{\bf x}_b) = \sum_{i \geq 0} \gamma_i \phi_i({\bf x}_a)\phi_i({\bf x}_b),$$ {#eq-mercer-decomposicao}
 em que $\sum_{i \geq 0} \gamma_i^2 < \infty$ e $\phi_0, \phi_1, \cdots$
-é uma sequência de funções. Essa propriedade dos em que o kernel de
+é uma sequência de funções. Essa propriedade em que o kernel de
 Mercer poderá ser decomposto na forma acima e que não precisamos
 conhecer $\phi(\cdot)$ para o cálculo de produtos internos no espaço de
 características é comumente denominada de [*kernel trick*]{.red}/[truque
