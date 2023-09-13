@@ -4848,7 +4848,7 @@ usuário da metodologia.
 
 <br>
 
-É claro que para diferenças kernel (kernel de Mercer), poderemos ter
+É claro que para diferentes kernel (kernel de Mercer), poderemos ter
 diferentes resultados que pode ser avaliado em um procedimento de
 validação-cruzada (*cross-validation*). O parâmetro $\lambda$ é um
 hiperparâmetro que podemos obter dentro de uma validação-cruzada,
