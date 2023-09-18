@@ -5032,7 +5032,7 @@ $$\argmin_{\alpha_1, \cdots, \alpha_n}\sum_{k = 1}^n L\left(\overbrace{\sum_{i=1
 Portanto, o problema de otimizar a função objetivo dada na
 @eq-funcao-objetivo-geral se reduz a encontrar os valores de
 $\alpha_1, \cdots, \alpha_n$ que minimiza a @eq-teorema-representacao.
-Portanto, irá especificar o kernel $K$ e a função de perda $L$, em que
+Portanto, o problema reduz a especificar o kernel $K$ e a função de perda $L$, em que
 $\lambda$ é um parâmetro de sintonização (hiperparâmetro) que poderá ser
 obtido por uma validação cruzada.
 
