@@ -4843,7 +4843,7 @@ Mercer](https://en.wikipedia.org/wiki/Mercer%27s_theorem).
 O termo $||g||_{\mathcal{H}_k}^2$ na @eq-funcao-objetivo-geral reflete a
 suavidade das funções em $\mathcal{H}_k$ e cada espaço poderá conter uma
 noção de suavidade diferente, a depender da função de kernel escolhida.
-Sim, a função ed kernel e função de perda $L$ são escolhidas pelo
+Sim, a função de kernel e função de perda $L$ são escolhidas pelo
 usuário da metodologia.
 
 <br>
